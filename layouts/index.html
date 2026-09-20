@@ -1,8 +1,4 @@
 {{ define "main" }}
-  <h1>{{ .Site.Title }}</h1>
-  <p>{{ .Site.Params.description }}</p>
-
-  <hr>
 
   {{ $posts := where .Site.RegularPages "Section" "posts" }}
 
@@ -19,4 +15,5 @@
   {{ else }}
     <p>No posts yet.</p>
   {{ end }}
+
 {{ end }}
