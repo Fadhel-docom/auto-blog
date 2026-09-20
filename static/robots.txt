@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fadhel-docom.github.io/auto-blog/sitemap.xml
