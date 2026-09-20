@@ -10,7 +10,8 @@
     </p>
 
     {{ if .Params.image }}
-      <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}" class="post-image">
+      {{ $img := strings.TrimPrefix "/" .Params.image }}
+      <img src="{{ .Site.BaseURL }}{{ $img }}" alt="{{ .Title }}" class="post-image">
     {{ end }}
 
     <div class="post-content">
