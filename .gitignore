@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment variables and secrets
+.env
+.env.*
+*.env
+
+# Local API keys
+secrets.env
+secrets.local.env
+
+# Hugo generated files
+/public/
+/resources/_gen/
+
+# Local Hugo server files
+.hugo_build.lock
+
+# Temporary files
+/tmp/
+tmp/
+temp/
+*.tmp
+
+# Generated article data
+article.json
+generated_article.json
+
+# Downloaded images
+downloaded_image.*
+*.part
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+
+# Python cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Logs
+*.log
+logs/
+
+# Reports
+daily_report.txt
+daily_report.json
