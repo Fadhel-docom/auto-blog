@@ -1,0 +1,19 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+
+  {{ $posts := .Pages }}
+
+  {{ if $posts }}
+    <ul class="post-list">
+      {{ range $posts }}
+        <li class="post-list-item">
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          <p class="post-meta">{{ .Date.Format "January 2, 2006" }}</p>
+          <p class="post-excerpt">{{ .Description }}</p>
+        </li>
+      {{ end }}
+    </ul>
+  {{ else }}
+    <p>No posts yet.</p>
+  {{ end }}
+{{ end }}
