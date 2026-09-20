@@ -1,0 +1,45 @@
+baseURL = "https://fadhel-docom.github.io/auto-blog/"
+languageCode = "en-us"
+title = "Home Organization Ideas"
+
+enableRobotsTXT = true
+enableGitInfo = false
+
+[pagination]
+  pagerSize = 12
+
+[permalinks]
+  posts = "/posts/:slug/"
+
+[params]
+  description = "Practical home organization and small-space living ideas."
+  author = "Auto Blog"
+  keywords = [
+    "home organization",
+    "small space organization",
+    "small apartment organization",
+    "kitchen organization",
+    "bedroom organization",
+    "storage ideas",
+    "decluttering"
+  ]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+    ordered = false
+
+[outputs]
+  home = ["HTML", "RSS"]
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[sitemap]
+  changeFreq = "daily"
+  priority = 0.5
