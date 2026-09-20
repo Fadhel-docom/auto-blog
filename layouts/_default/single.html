@@ -1,0 +1,29 @@
+{{ define "main" }}
+  <article>
+    <h1 class="post-title">{{ .Title }}</h1>
+
+    <p class="post-meta">
+      {{ .Date.Format "January 2, 2006" }}
+      {{ if .Params.categories }}
+        · {{ delimit .Params.categories ", " }}
+      {{ end }}
+    </p>
+
+    {{ if .Params.image }}
+      <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="post-image">
+    {{ end }}
+
+    <div class="post-content">
+      {{ .Content }}
+    </div>
+
+    {{ if .Params.tags }}
+      <p class="post-meta">
+        Tags:
+        {{ range .Params.tags }}
+          <span>{{ . }}</span>
+        {{ end }}
+      </p>
+    {{ end }}
+  </article>
+{{ end }}
