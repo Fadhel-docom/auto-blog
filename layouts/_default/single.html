@@ -32,7 +32,6 @@
   {{ if .Params.tags }}
     <div class="post-tags">
       <strong>Tags:</strong>
-
       {{ range .Params.tags }}
         <span class="post-tag">{{ . }}</span>
       {{ end }}
@@ -42,42 +41,24 @@
   {{ if .Params.images }}
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const container =
-          document.getElementById("post-content");
+        const container = document.getElementById("post-content");
+        if (!container) return;
 
-        if (!container) {
-          return;
-        }
+        const images = {{ .Params.images | jsonify | safeJS }};
+        if (!Array.isArray(images) || images.length < 5) return;
 
-        const images =
-          {{ .Params.images | jsonify | safeJS }};
-
-        if (!Array.isArray(images) || images.length < 5) {
-          return;
-        }
-
-        const headings =
-          Array.from(container.querySelectorAll("h2"));
-
-        if (!headings.length) {
-          return;
-        }
+        const headings = Array.from(container.querySelectorAll("h2"));
+        if (!headings.length) return;
 
         function createImage(src) {
-          const figure =
-            document.createElement("figure");
-
+          const figure = document.createElement("figure");
           figure.className = "inline-post-image";
-
           const image = document.createElement("img");
-
           image.src = src.replace(/^\/+/, "/");
-          image.alt = "{{ .Title }}";
+          image.alt = "Article illustration";
           image.loading = "lazy";
           image.decoding = "async";
-
           figure.appendChild(image);
-
           return figure;
         }
 
@@ -85,50 +66,27 @@
 
         headings.forEach(function (heading, index) {
           const h2Number = index + 1;
-
-          if (
-            h2Number % 2 === 0 &&
-            inserted < 3 &&
-            images[inserted + 1]
-          ) {
-            heading.insertAdjacentElement(
-              "afterend",
-              createImage(images[inserted + 1])
-            );
-
+          if (h2Number % 2 === 0 && inserted < 3 && images[inserted + 1]) {
+            heading.insertAdjacentElement("afterend", createImage(images[inserted + 1]));
             inserted++;
           }
         });
 
         if (inserted < 3) {
-          const lastHeading =
-            headings[headings.length - 1];
-
+          const lastHeading = headings[headings.length - 1];
           if (lastHeading) {
             for (let i = inserted + 1; i < 4; i++) {
-              if (!images[i]) {
-                continue;
-              }
-
-              lastHeading.insertAdjacentElement(
-                "afterend",
-                createImage(images[i])
-              );
+              if (!images[i]) continue;
+              lastHeading.insertAdjacentElement("afterend", createImage(images[i]));
             }
-
             inserted = 3;
           }
         }
 
         if (images[4]) {
-          const lastHeading =
-            headings[headings.length - 1];
-
+          const lastHeading = headings[headings.length - 1];
           if (lastHeading) {
-            lastHeading.insertAdjacentElement(
-              "afterend",
-              createImage(images[4])
-            );
+            lastHeading.insertAdjacentElement("afterend", createImage(images[4]));
           }
         }
       });
@@ -150,14 +108,13 @@
 
             {{ if .Params.image }}
               {{ $relatedImage := strings.TrimPrefix "/" .Params.image }}
-
               <a
                 href="{{ .RelPermalink }}"
-                aria-label="{{ .Title }}"
+                aria-label="Read: {{ .Title }}"
               >
                 <img
                   src="{{ $relatedImage | absURL }}"
-                  alt="{{ .Title }}"
+                  alt=""
                   loading="lazy"
                 >
               </a>
