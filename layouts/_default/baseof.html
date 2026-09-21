@@ -27,74 +27,10 @@
     href="{{ "css/custom.css" | relURL }}"
   >
 
-  {{ if .IsPage }}
-    {{ $authorName := .Site.Params.author | default "Auto Blog" }}
-    {{ $imageURL := "" }}
-
-    {{ with .Params.image }}
-      {{ $imageURL = . | absURL }}
-    {{ end }}
-
-    {{ $articleSchema := dict
-      "@context" "https://schema.org"
-      "@type" "BlogPosting"
-      "headline" .Title
-      "description" .Description
-      "mainEntityOfPage" (dict
-        "@type" "WebPage"
-        "@id" .Permalink
-      )
-      "author" (dict
-        "@type" "Organization"
-        "name" $authorName
-      )
-      "publisher" (dict
-        "@type" "Organization"
-        "name" .Site.Title
-        "url" .Site.BaseURL
-      )
-      "datePublished" .Date
-      "dateModified" .Lastmod
-      "url" .Permalink
-    }}
-
-    {{ if $imageURL }}
-      {{ $articleSchema = merge $articleSchema (dict
-        "image" (slice $imageURL)
-      ) }}
-    {{ end }}
-
-    <script type="application/ld+json">
-      {{ $articleSchema | jsonify | safeHTML }}
-    </script>
-
-    {{ with .Params.faq }}
-      {{ if gt (len .) 0 }}
-        {{ $faqEntities := slice }}
-
-        {{ range . }}
-          {{ $faqEntities = $faqEntities | append (dict
-            "@type" "Question"
-            "name" .question
-            "acceptedAnswer" (dict
-              "@type" "Answer"
-              "text" .answer
-            )
-          ) }}
-        {{ end }}
-
-        {{ $faqSchema := dict
-          "@context" "https://schema.org"
-          "@type" "FAQPage"
-          "mainEntity" $faqEntities
-        }}
-
-        <script type="application/ld+json">
-          {{ $faqSchema | jsonify | safeHTML }}
-        </script>
-      {{ end }}
-    {{ end }}
-  {{ end }}
+  <link
+    rel="stylesheet"
+    href="{{ "css/competitive.css" | relURL }}"
+  >
 
   <script
     data-goatcounter="https://fadhel-blog.goatcounter.com/count"
