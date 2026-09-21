@@ -34,6 +34,7 @@ def find_column(fieldnames, candidates):
 
     for candidate in candidates:
         key = str(candidate).strip().lower()
+
         if key in normalized:
             return normalized[key]
 
@@ -47,7 +48,9 @@ def load_keywords():
         )
 
     with KEYWORDS_PATH.open(
-        "r", encoding="utf-8-sig", newline=""
+        "r",
+        encoding="utf-8-sig",
+        newline=""
     ) as file:
         reader = csv.DictReader(file)
         fieldnames = reader.fieldnames
@@ -61,33 +64,52 @@ def load_keywords():
 
     keyword_col = find_column(
         fieldnames,
-        ["keyword", "keywords", "focus_keyword",
-         "focus keyword", "query"],
+        [
+            "keyword",
+            "keywords",
+            "focus_keyword",
+            "focus keyword",
+            "query",
+        ],
     )
 
     status_col = find_column(
-        fieldnames, ["status", "state"]
+        fieldnames,
+        ["status", "state"],
     )
 
     if not keyword_col:
-        raise ValueError("Could not find keyword column.")
+        raise ValueError(
+            "Could not find keyword column."
+        )
 
     if not status_col:
-        raise ValueError("Could not find status column.")
+        raise ValueError(
+            "Could not find status column."
+        )
 
-    return (rows, fieldnames, keyword_col, status_col)
+    return (
+        rows,
+        fieldnames,
+        keyword_col,
+        status_col,
+    )
 
 
 def save_keywords(rows, fieldnames):
     temp_path = KEYWORDS_PATH.with_suffix(".csv.tmp")
 
     with temp_path.open(
-        "w", encoding="utf-8", newline=""
+        "w",
+        encoding="utf-8",
+        newline=""
     ) as file:
         writer = csv.DictWriter(
-            file, fieldnames=fieldnames,
-            extrasaction="ignore"
+            file,
+            fieldnames=fieldnames,
+            extrasaction="ignore",
         )
+
         writer.writeheader()
         writer.writerows(rows)
 
@@ -98,72 +120,166 @@ def get_first_pending_keyword():
     rows, fieldnames, keyword_col, status_col = load_keywords()
 
     for row in rows:
-        keyword = str(row.get(keyword_col, "")).strip()
-        status = str(row.get(status_col, "")).strip().lower()
+        keyword = str(
+            row.get(keyword_col, "")
+        ).strip()
+
+        status = str(
+            row.get(status_col, "")
+        ).strip().lower()
 
         if keyword and status == "pending":
             return (
-                keyword, rows, fieldnames,
-                keyword_col, status_col,
+                keyword,
+                rows,
+                fieldnames,
+                keyword_col,
+                status_col,
             )
 
-    raise RuntimeError("No pending keyword found.")
+    raise RuntimeError(
+        "No pending keyword found."
+    )
 
 
 def mark_keyword_processing(
-    keyword, rows, fieldnames, keyword_col, status_col,
+    keyword,
+    rows,
+    fieldnames,
+    keyword_col,
+    status_col,
 ):
     found = False
 
     for row in rows:
-        if str(row.get(keyword_col, "")).strip() == keyword:
+        if (
+            str(
+                row.get(keyword_col, "")
+            ).strip()
+            == keyword
+        ):
             row[status_col] = "processing"
             found = True
             break
 
     if not found:
-        raise ValueError(f"Keyword not found: {keyword}")
+        raise ValueError(
+            f"Keyword not found: {keyword}"
+        )
 
-    save_keywords(rows, fieldnames)
+    save_keywords(
+        rows,
+        fieldnames,
+    )
 
 
 def mark_keyword_pending(keyword):
-    rows, fieldnames, keyword_col, status_col = load_keywords()
+    rows, fieldnames, keyword_col, status_col = (
+        load_keywords()
+    )
 
     for row in rows:
-        if str(row.get(keyword_col, "")).strip() == keyword:
+        if (
+            str(
+                row.get(keyword_col, "")
+            ).strip()
+            == keyword
+        ):
             row[status_col] = "pending"
             break
 
-    save_keywords(rows, fieldnames)
+    save_keywords(
+        rows,
+        fieldnames,
+    )
 
 
 def slugify(text):
     stop_words = {
         "for", "to", "of", "the", "a", "an",
         "in", "on", "at", "and", "or", "with",
+        "how", "your", "this", "that", "from", "into",
     }
 
     text = str(text).strip().lower()
 
     text = re.sub(
-        r"[^\w\s-]", "", text, flags=re.UNICODE
+        r"[^\w\s-]",
+        "",
+        text,
+        flags=re.UNICODE,
     )
 
-    text = re.sub(r"[-\s]+", "-", text).strip("-")
+    text = re.sub(
+        r"[-\s]+",
+        "-",
+        text,
+    ).strip("-")
 
-    words = text.split("-")
+    if not text:
+        return ""
 
-    while words and words[-1] in stop_words:
-        words.pop()
+    raw_words = text.split("-")
 
-    slug = "-".join(words).strip("-")
+    useful_words = []
+
+    for word in raw_words:
+        if not word:
+            continue
+
+        if word in stop_words:
+            continue
+
+        useful_words.append(word)
+
+    if not useful_words:
+        useful_words = raw_words[:6]
+
+    selected_words = []
+
+    for word in useful_words[:3]:
+        selected_words.append(word)
+
+    number_index = None
+
+    for index, word in enumerate(useful_words):
+        if re.search(r"\d", word):
+            number_index = index
+            break
+
+    if number_index is not None:
+        measurement_words = useful_words[
+            number_index:number_index + 4
+        ]
+
+        for word in measurement_words:
+            if word not in selected_words:
+                selected_words.append(word)
+
+    for word in useful_words:
+        if word in selected_words:
+            continue
+
+        candidate_words = selected_words + [word]
+        candidate = "-".join(candidate_words)
+
+        if len(candidate) > 50:
+            break
+
+        selected_words.append(word)
+
+        if len(selected_words) >= 7:
+            break
+
+    slug = "-".join(selected_words).strip("-")
+
+    if len(slug) > 50:
+        slug = slug[:50].rstrip("-")
 
     if not slug:
-        slug = "-".join(text.split("-")[:6]).strip("-")
-
-    if len(slug) > 60:
-        slug = slug[:60].rstrip("-")
+        slug = "-".join(
+            text.split("-")[:6]
+        ).strip("-")
 
     return slug
 
@@ -173,10 +289,12 @@ def get_exception_status_code(exc):
 
     if response is not None:
         code = getattr(response, "status_code", None)
+
         if code is not None:
             return code
 
     code = getattr(exc, "status_code", None)
+
     return code
 
 
@@ -191,9 +309,12 @@ def extract_json_from_response(response_text):
 
     if text.startswith("```"):
         text = re.sub(
-            r"^```(?:json)?\s*", "",
-            text, flags=re.IGNORECASE,
+            r"^```(?:json)?\s*",
+            "",
+            text,
+            flags=re.IGNORECASE,
         )
+
         text = re.sub(r"\s*```$", "", text).strip()
 
     try:
@@ -208,6 +329,7 @@ def extract_json_from_response(response_text):
 
         try:
             return json.loads(text[start:end + 1])
+
         except json.JSONDecodeError as exc:
             raise ValueError(
                 f"Invalid JSON: {exc}"
@@ -303,7 +425,9 @@ Return only the required JSON object.
                 raise ValueError("No choices returned.")
 
             content = getattr(
-                response.choices[0].message, "content", None
+                response.choices[0].message,
+                "content",
+                None,
             )
 
             if not content:
@@ -326,7 +450,9 @@ Return only the required JSON object.
             for angle in raw_angles:
                 if not isinstance(angle, str):
                     continue
+
                 angle = angle.strip()
+
                 if angle and angle not in angles:
                     angles.append(angle)
 
@@ -345,12 +471,15 @@ Return only the required JSON object.
             selected_angle = selected_angle.strip()
 
             if not selected_angle:
-                raise ValueError("'selected_angle' is empty.")
+                raise ValueError(
+                    "'selected_angle' is empty."
+                )
 
             if selected_angle not in angles:
                 selected_angle = angles[0]
 
             print("Generated 5 article angles:")
+
             for index, angle in enumerate(angles, start=1):
                 marker = (
                     "  <-- SELECTED"
@@ -376,11 +505,14 @@ Return only the required JSON object.
                 break
 
             delay = min(2 ** (attempt - 1), 30)
+
             print(
                 f"Groq angle selection failed: {exc}",
                 file=sys.stderr,
             )
+
             print(f"Retry in {delay}s...")
+
             time.sleep(delay)
 
     raise RuntimeError(
@@ -409,7 +541,6 @@ EDITORIAL DIRECTION:
 LENGTH:
 - Write approximately 1500-1800 words of actual article content.
 - Never intentionally produce a short article.
-- Do not stop after a few sections.
 - Before returning the JSON, internally verify the article length.
 
 STRUCTURE:
@@ -445,9 +576,9 @@ ACCURACY:
 - Do not mention AI generation.
 
 IMAGES:
-- Generate exactly 5 distinct image search queries.
-- Each query must be a concise English phrase for Pexels.
-- The five queries should represent different visual aspects.
+- DO NOT generate image queries in this step.
+- Image queries will be generated in a separate step after
+  the complete article and its H2 sections are available.
 
 OUTPUT:
 Return ONLY one valid JSON object.
@@ -456,9 +587,6 @@ Return ONLY one valid JSON object.
   "title": "string",
   "meta_description": "string",
   "content_markdown": "string",
-  "image_queries": [
-    "string", "string", "string", "string", "string"
-  ],
   "tags": ["string", "string"]
 }
 
@@ -485,7 +613,7 @@ The article must be approximately 1500-1800 words.
 Use the exact focus keyword naturally in the title and
 introduction.
 
-Generate exactly 5 distinct Pexels image search queries.
+Do not generate image queries yet.
 
 Return only the required JSON object.
 """.strip()
@@ -495,7 +623,8 @@ Return only the required JSON object.
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             print(
-                f"Calling Groq (attempt {attempt}/{MAX_RETRIES})..."
+                f"Calling Groq for article "
+                f"(attempt {attempt}/{MAX_RETRIES})..."
             )
 
             response = client.chat.completions.create(
@@ -513,7 +642,9 @@ Return only the required JSON object.
                 raise ValueError("No choices returned.")
 
             content = getattr(
-                response.choices[0].message, "content", None
+                response.choices[0].message,
+                "content",
+                None,
             )
 
             if not content:
@@ -541,13 +672,309 @@ Return only the required JSON object.
                 break
 
             delay = min(2 ** (attempt - 1), 30)
-            print(f"Groq failed: {exc}", file=sys.stderr)
+
+            print(
+                f"Groq article generation failed: {exc}",
+                file=sys.stderr,
+            )
+
             print(f"Retry in {delay}s...")
+
             time.sleep(delay)
 
     raise RuntimeError(
-        f"Groq failed after {MAX_RETRIES} attempts: "
-        f"{last_exception}"
+        f"Groq article generation failed after "
+        f"{MAX_RETRIES} attempts: {last_exception}"
+    )
+
+
+def extract_h2_sections(content):
+    lines = str(content).splitlines()
+    sections = []
+    current_heading = None
+    current_body = []
+    in_fenced_code_block = False
+    fence_marker = None
+
+    for line in lines:
+        stripped = line.strip()
+
+        if (
+            stripped.startswith("```")
+            or stripped.startswith("~~~")
+        ):
+            if not in_fenced_code_block:
+                in_fenced_code_block = True
+
+                if stripped.startswith("```"):
+                    fence_marker = "```"
+                else:
+                    fence_marker = "~~~"
+
+            elif (
+                fence_marker
+                and stripped.startswith(fence_marker)
+            ):
+                in_fenced_code_block = False
+                fence_marker = None
+
+            if current_heading is not None:
+                current_body.append(line)
+
+            continue
+
+        if not in_fenced_code_block:
+            match = re.match(
+                r"^\s*##[ \t]+([^#].*?)\s*$",
+                line,
+            )
+
+            if match:
+                if current_heading is not None:
+                    sections.append(
+                        {
+                            "heading": current_heading,
+                            "body": "\n".join(
+                                current_body
+                            ).strip(),
+                        }
+                    )
+
+                current_heading = match.group(1).strip()
+                current_body = []
+                continue
+
+        if current_heading is not None:
+            current_body.append(line)
+
+    if current_heading is not None:
+        sections.append(
+            {
+                "heading": current_heading,
+                "body": "\n".join(
+                    current_body
+                ).strip(),
+            }
+        )
+
+    return sections
+
+
+def generate_image_queries(api_key, title, content_markdown):
+    sections = extract_h2_sections(content_markdown)
+
+    if len(sections) < 4:
+        raise ValueError(
+            "At least 4 H2 sections are required "
+            "to generate 5 image queries."
+        )
+
+    selected_sections = sections[:4]
+
+    section_payload = []
+
+    for index, section in enumerate(
+        selected_sections,
+        start=1,
+    ):
+        body = section["body"]
+
+        body = re.sub(r"\n{3,}", "\n\n", body).strip()
+
+        section_payload.append(
+            f"""
+SECTION {index}
+
+H2:
+{section["heading"]}
+
+SECTION CONTENT:
+{body}
+""".strip()
+        )
+
+    sections_text = "\n\n".join(section_payload)
+
+    system_prompt = """
+You are a professional visual content editor for an
+English-language Home Organization & Small-Space Living website.
+
+Your job is to create exactly 5 highly relevant Pexels search
+queries AFTER reading a completed article.
+
+QUERY STRUCTURE:
+
+1. Hero query:
+   - represents the overall article topic
+   - should be visually specific
+
+2. Section query #1:
+   - represents H2 section 1 and its actual content
+
+3. Section query #2:
+   - represents H2 section 2 and its actual content
+
+4. Section query #3:
+   - represents H2 section 3 and its actual content
+
+5. Section query #4:
+   - represents H2 section 4 and its actual content
+
+RULES:
+- Return exactly 5 unique queries.
+- Every query must be concise English.
+- Every query must be suitable for Pexels.
+- Prefer concrete visual objects, rooms, storage solutions,
+  furniture, containers, layouts, or real-life scenes.
+- Avoid abstract concepts.
+- Avoid generic queries such as "home organization".
+- Do not use photographer names.
+- Do not use quotation marks around queries.
+- The section queries must be meaningfully different from
+  one another.
+- The hero query must represent the article as a whole.
+
+Return ONLY valid JSON:
+
+{
+  "image_queries": [
+    "hero query",
+    "H2 section 1 query",
+    "H2 section 2 query",
+    "H2 section 3 query",
+    "H2 section 4 query"
+  ]
+}
+""".strip()
+
+    user_prompt = f"""
+ARTICLE TITLE:
+{title}
+
+The complete article has been written already.
+
+Use the article structure below to create image queries.
+
+{sections_text}
+
+Generate:
+- 1 hero query for the overall article
+- 1 query for each of the four supplied H2 sections
+
+Return exactly 5 unique Pexels queries in the required JSON.
+""".strip()
+
+    client = Groq(api_key=api_key)
+
+    last_exception = None
+
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            print(
+                f"Generating section-aware image queries "
+                f"with Groq "
+                f"(attempt {attempt}/{MAX_RETRIES})..."
+            )
+
+            response = client.chat.completions.create(
+                model=GROQ_MODEL,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt},
+                ],
+                temperature=0.4,
+                max_tokens=1200,
+                response_format={"type": "json_object"},
+            )
+
+            if not response.choices:
+                raise ValueError("No choices returned.")
+
+            content = getattr(
+                response.choices[0].message,
+                "content",
+                None,
+            )
+
+            if not content:
+                raise ValueError(
+                    "Empty image-query response."
+                )
+
+            result = extract_json_from_response(content)
+
+            if not isinstance(result, dict):
+                raise ValueError(
+                    "Image-query response is not a JSON object."
+                )
+
+            raw_queries = result.get("image_queries")
+
+            if not isinstance(raw_queries, list):
+                raise ValueError(
+                    "'image_queries' must be a list."
+                )
+
+            image_queries = []
+
+            for query in raw_queries:
+                if not isinstance(query, str):
+                    continue
+
+                query = query.strip()
+
+                if query and query not in image_queries:
+                    image_queries.append(query)
+
+            if len(image_queries) != 5:
+                raise ValueError(
+                    "Groq must return exactly 5 unique "
+                    "image queries."
+                )
+
+            print("Generated 5 section-aware image queries:")
+
+            for index, query in enumerate(
+                image_queries,
+                start=1,
+            ):
+                if index == 1:
+                    label = "HERO"
+                else:
+                    label = f"H2 #{index - 1}"
+
+                print(f"  {index}. [{label}] {query}")
+
+            return image_queries
+
+        except Exception as exc:
+            last_exception = exc
+            status_code = get_exception_status_code(exc)
+            retryable = {429, 500, 502, 503, 504}
+
+            if (
+                status_code is not None
+                and status_code not in retryable
+            ):
+                break
+
+            if attempt >= MAX_RETRIES:
+                break
+
+            delay = min(2 ** (attempt - 1), 30)
+
+            print(
+                f"Groq image-query generation failed: {exc}",
+                file=sys.stderr,
+            )
+
+            print(f"Retry in {delay}s...")
+
+            time.sleep(delay)
+
+    raise RuntimeError(
+        "Groq image-query generation failed after "
+        f"{MAX_RETRIES} attempts: {last_exception}"
     )
 
 
@@ -576,26 +1003,6 @@ def extract_generated_fields(generated):
         generated, "content_markdown"
     )
 
-    raw_image_queries = generated.get("image_queries")
-
-    if not isinstance(raw_image_queries, list):
-        raise ValueError("'image_queries' must be a list.")
-
-    image_queries = []
-
-    for query in raw_image_queries:
-        if not isinstance(query, str):
-            continue
-        query = query.strip()
-        if query and query not in image_queries:
-            image_queries.append(query)
-
-    if len(image_queries) != 5:
-        raise ValueError(
-            "'image_queries' must contain exactly 5 "
-            "unique search queries."
-        )
-
     raw_tags = generated.get("tags")
 
     if not isinstance(raw_tags, list):
@@ -606,7 +1013,9 @@ def extract_generated_fields(generated):
     for tag in raw_tags:
         if not isinstance(tag, str):
             continue
+
         tag = tag.strip()
+
         if tag and tag not in tags:
             tags.append(tag)
 
@@ -614,8 +1023,10 @@ def extract_generated_fields(generated):
         raise ValueError("Tags list is empty.")
 
     return (
-        title, meta_description,
-        content_markdown, image_queries, tags,
+        title,
+        meta_description,
+        content_markdown,
+        tags,
     )
 
 
@@ -623,15 +1034,19 @@ def clean_markdown(content):
     content = str(content).strip()
 
     content = re.sub(
-        r"^```(?:markdown|md)?\s*", "",
-        content, flags=re.IGNORECASE,
+        r"^```(?:markdown|md)?\s*",
+        "",
+        content,
+        flags=re.IGNORECASE,
     )
 
     content = re.sub(r"\s*```$", "", content)
 
     content = re.sub(
-        r"^\s*#\s+.+?\n+", "",
-        content, count=1,
+        r"^\s*#\s+.+?\n+",
+        "",
+        content,
+        count=1,
     )
 
     return content.strip()
@@ -643,29 +1058,38 @@ def count_words(text: str) -> int:
 
     return len(
         re.findall(
-            r"\b[\w'-]+\b", plain,
+            r"\b[\w'-]+\b",
+            plain,
             flags=re.UNICODE,
         )
     )
 
 
 def validate_generated_content(
-    keyword, title, meta_description,
-    content_markdown, image_queries, tags,
+    keyword,
+    title,
+    meta_description,
+    content_markdown,
+    image_queries,
+    tags,
 ):
     errors = []
 
     if not keyword:
         errors.append("Keyword empty.")
+
     if not title:
         errors.append("Title empty.")
+
     if not meta_description:
         errors.append("Meta description empty.")
+
     if not content_markdown:
         errors.append("Content empty.")
 
     if not isinstance(image_queries, list):
         errors.append("Image queries must be a list.")
+
     elif len(image_queries) != 5:
         errors.append(
             "Image queries must contain exactly 5 items."
@@ -676,6 +1100,7 @@ def validate_generated_content(
 
     if keyword:
         intro = content_markdown[:1500].lower()
+
         if keyword.lower() not in intro:
             errors.append("Keyword not in introduction.")
 
@@ -689,6 +1114,7 @@ def validate_generated_content(
 
     if h2_count == 0:
         errors.append("No H2 heading.")
+
     elif h2_count < 5 or h2_count > 9:
         errors.append(
             f"Expected 5-9 H2 headings, found {h2_count}."
@@ -698,6 +1124,7 @@ def validate_generated_content(
 
     if words < MIN_WORDS:
         errors.append(f"Too short: {words} words.")
+
     elif words > MAX_WORDS:
         errors.append(f"Too long: {words} words.")
 
@@ -711,12 +1138,17 @@ def save_article(article):
     temp_path = ARTICLE_PATH.with_suffix(".json.tmp")
 
     with temp_path.open(
-        "w", encoding="utf-8", newline="\n"
+        "w",
+        encoding="utf-8",
+        newline="\n"
     ) as file:
         json.dump(
-            article, file,
-            ensure_ascii=False, indent=2,
+            article,
+            file,
+            ensure_ascii=False,
+            indent=2,
         )
+
         file.write("\n")
 
     temp_path.replace(ARTICLE_PATH)
@@ -730,64 +1162,86 @@ def main():
             "ERROR: GROQ_API_KEY missing.",
             file=sys.stderr,
         )
+
         return 1
 
     try:
         (
-            keyword, rows, fieldnames,
-            keyword_col, status_col,
+            keyword,
+            rows,
+            fieldnames,
+            keyword_col,
+            status_col,
         ) = get_first_pending_keyword()
+
     except Exception as exc:
         print(
             f"ERROR loading keywords: {exc}",
             file=sys.stderr,
         )
+
         return 1
 
     print(f"Selected keyword: {keyword}")
 
     try:
         mark_keyword_processing(
-            keyword, rows, fieldnames,
-            keyword_col, status_col,
+            keyword,
+            rows,
+            fieldnames,
+            keyword_col,
+            status_col,
         )
+
         print("Keyword status changed to: processing")
+
     except Exception as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
+
         return 1
 
     try:
         specific_angle = pick_specific_angle(
-            api_key, keyword
+            api_key,
+            keyword,
         )
-        print(f"Selected specific angle: {specific_angle}")
+
+        print(
+            f"Selected specific angle: {specific_angle}"
+        )
 
         generated = generate_with_groq(
-            api_key, keyword, specific_angle
+            api_key,
+            keyword,
+            specific_angle,
         )
 
         (
-            title, meta_description,
-            content_markdown, image_queries, tags,
+            title,
+            meta_description,
+            content_markdown,
+            tags,
         ) = extract_generated_fields(generated)
 
         title = title.strip()
         meta_description = meta_description.strip()
         content_markdown = clean_markdown(content_markdown)
 
-        normalized_image_queries = []
-        for query in image_queries:
-            query = str(query).strip()
-            if query and query not in normalized_image_queries:
-                normalized_image_queries.append(query)
-        image_queries = normalized_image_queries
-
         normalized_tags = []
+
         for tag in tags:
             tag = str(tag).strip()
+
             if tag and tag not in normalized_tags:
                 normalized_tags.append(tag)
+
         tags = normalized_tags
+
+        image_queries = generate_image_queries(
+            api_key,
+            title,
+            content_markdown,
+        )
 
         if len(image_queries) != 5:
             raise ValueError(
@@ -800,14 +1254,19 @@ def main():
             raise ValueError("Empty slug from title.")
 
         errors = validate_generated_content(
-            keyword, title, meta_description,
-            content_markdown, image_queries, tags,
+            keyword,
+            title,
+            meta_description,
+            content_markdown,
+            image_queries,
+            tags,
         )
 
         if errors:
             error_text = "\n".join(
                 f"- {error}" for error in errors
             )
+
             print(
                 f"WARNING: validation issues:\n{error_text}",
                 file=sys.stderr,
@@ -839,11 +1298,19 @@ def main():
         print(f"Title: {title}")
         print(f"Slug: {slug}")
         print(f"Word count: {word_count}")
-        print("Image queries:")
+        print("Section-aware image queries:")
+
         for index, query in enumerate(
-            image_queries, start=1
+            image_queries,
+            start=1,
         ):
-            print(f"  {index}. {query}")
+            if index == 1:
+                label = "HERO"
+            else:
+                label = f"H2 #{index - 1}"
+
+            print(f"  {index}. [{label}] {query}")
+
         print(f"Tags: {', '.join(tags)}")
         print(f"Saved to: {ARTICLE_PATH}")
 
@@ -854,9 +1321,11 @@ def main():
 
         try:
             mark_keyword_pending(keyword)
+
             print(
                 f"Keyword returned to pending: {keyword}"
             )
+
         except Exception as reset_exc:
             print(
                 f"ERROR resetting keyword status: "
