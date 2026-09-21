@@ -25,7 +25,6 @@ MAX_WORDS = 2500
 def find_column(fieldnames, candidates):
     if not fieldnames:
         return None
-
     normalized = {
         str(name).strip().lower(): name
         for name in fieldnames
@@ -46,7 +45,6 @@ def load_keywords():
         raise FileNotFoundError(
             f"Keywords file not found: {KEYWORDS_PATH}"
         )
-
     with KEYWORDS_PATH.open(
         "r",
         encoding="utf-8-sig",
@@ -347,7 +345,6 @@ Your job is to turn broad SEO keywords into specific, useful,
 practical article angles.
 
 For the supplied keyword:
-
 1. Generate exactly 5 distinct article angles.
 2. Each angle must be substantially narrower and more specific
    than the original keyword.
@@ -799,46 +796,82 @@ SECTION CONTENT:
 You are a professional visual content editor for an
 English-language Home Organization & Small-Space Living website.
 
-Your job is to create exactly 5 highly relevant Pexels search
-queries AFTER reading a completed article.
+Your job is to create exactly 5 highly relevant, visually
+distinct Pexels search queries AFTER reading a completed article.
+
+The five queries will be used as separate images, so visual
+diversity is mandatory. Do not create five images that show
+essentially the same room, composition, viewpoint, or type of scene.
 
 QUERY STRUCTURE:
 
-1. Hero query:
-   - represents the overall article topic
-   - should be visually specific
+1. Query 1: HERO
+   - Represents the overall article topic.
+   - MUST be a WIDE-SHOT, visually appealing editorial scene.
+   - Think magazine-cover or feature-article hero photography.
+   - Show the whole relevant room, space, or living situation
+     rather than a close-up detail.
+   - Use a natural, realistic home environment with clear context.
+   - The composition should leave enough visual breathing room
+     and should work well as a blog hero image.
+   - Do NOT make the hero a close-up of a single object,
+     container, drawer, shelf, or small detail.
 
-2. Section query #1:
-   - represents H2 section 1 and its actual content
+2. Queries 2-5:
+   - Each represents one of the four supplied H2 sections.
+   - Each must be strongly grounded in the actual section content.
+   - Each should show a concrete, photographable situation
+     rather than merely repeating the section title.
 
-3. Section query #2:
-   - represents H2 section 2 and its actual content
+VISUAL DIVERSITY:
+- The five queries must be VISUALLY DIVERSE.
+- Vary the room, setting, viewpoint, composition, or type of
+  organization problem whenever the article allows it.
+- Mix wide room scenes, medium-distance practical scenes,
+  and closer detail-oriented scenes where appropriate.
+- Avoid repeatedly showing the same type of white shelf,
+  storage basket, closet, or neatly arranged room.
+- Avoid five nearly identical "organized home" photographs.
+- If a section concerns a specific object or technique, show
+  that object or technique in use rather than repeating a
+  generic organized-room image.
+- The hero should have the broadest visual context; the
+  section images should become more specific.
 
-4. Section query #3:
-   - represents H2 section 3 and its actual content
-
-5. Section query #4:
-   - represents H2 section 4 and its actual content
-
-RULES:
+PRACTICAL VISUAL RULES:
 - Return exactly 5 unique queries.
 - Every query must be concise English.
 - Every query must be suitable for Pexels.
 - Prefer concrete visual objects, rooms, storage solutions,
   furniture, containers, layouts, or real-life scenes.
-- Avoid abstract concepts.
+- Describe scenes that are realistically searchable as stock
+  photography.
+- Use specific visual nouns and useful descriptive modifiers.
+- Avoid abstract concepts such as "organization tips",
+  "minimalism", "better living", or "smart storage" by themselves.
 - Avoid generic queries such as "home organization".
 - Do not use photographer names.
 - Do not use quotation marks around queries.
+- Do not include instructions to Pexels or camera settings.
+- Do not mention article titles, H2 labels, or SEO keywords
+  inside the queries unless they are naturally part of the
+  visual scene.
 - The section queries must be meaningfully different from
   one another.
 - The hero query must represent the article as a whole.
+- Do not invent a scene that is unrelated to the article.
+
+IMPORTANT:
+Query 1 is the HERO and must be a wide-shot editorial scene.
+Queries 2-5 must be section-specific and visually diverse.
+The five queries must not be simple keyword variations of
+the same photograph.
 
 Return ONLY valid JSON:
 
 {
   "image_queries": [
-    "hero query",
+    "wide-shot hero query",
     "H2 section 1 query",
     "H2 section 2 query",
     "H2 section 3 query",
@@ -858,8 +891,14 @@ Use the article structure below to create image queries.
 {sections_text}
 
 Generate:
-- 1 hero query for the overall article
-- 1 query for each of the four supplied H2 sections
+- 1 WIDE-SHOT hero query representing the overall article
+- 1 visually specific query for H2 section 1
+- 1 visually specific query for H2 section 2
+- 1 visually specific query for H2 section 3
+- 1 visually specific query for H2 section 4
+
+Make all five queries visually diverse while keeping each
+section query faithful to its actual section content.
 
 Return exactly 5 unique Pexels queries in the required JSON.
 """.strip()
