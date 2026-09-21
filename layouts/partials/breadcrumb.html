@@ -1,0 +1,16 @@
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="{{ "/" | relURL }}">Home</a>
+
+  {{ with .Params.categories }}
+    {{ if gt (len .) 0 }}
+      {{ $category := index . 0 }}
+      <span aria-hidden="true">/</span>
+      <a href="{{ printf "/categories/%s/" ($category | urlize) | relURL }}">
+        {{ $category }}
+      </a>
+    {{ end }}
+  {{ end }}
+
+  <span aria-hidden="true">/</span>
+  <span aria-current="page">{{ .Title }}</span>
+</nav>
