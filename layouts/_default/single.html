@@ -78,11 +78,11 @@
             {{ $relatedPath := strings.TrimPrefix "/" $relatedImage }}
             <a
               href="{{ .RelPermalink }}"
-              aria-label="{{ .Title }}"
+              aria-label="Read: {{ .Title }}"
             >
               <img
                 src="{{ $relatedPath | relURL }}"
-                alt="{{ .Title }}"
+                alt=""
                 loading="lazy"
                 decoding="async"
               >
