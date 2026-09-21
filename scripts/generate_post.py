@@ -553,6 +553,17 @@ STRUCTURE:
 - Use blockquotes only when they add useful emphasis.
 - End with a practical conclusion and a natural CTA.
 
+HEADING FORMAT RULES (CRITICAL):
+- In all H2 and H3 headings, use ONLY ASCII characters:
+  A-Z, a-z, 0-9, spaces, and regular hyphen (-).
+- NEVER use en-dash (–), em-dash (—), or non-breaking hyphen (‑).
+  Use regular hyphen (-) instead.
+- Replace "&" with the word "and" in headings.
+- Do NOT use parentheses (), brackets [], or special punctuation
+  in headings.
+- Use "Step 1 - Title" format (regular hyphen with spaces around it).
+- Keep headings short (under 60 characters).
+
 CONTENT QUALITY:
 - Give concrete, practical advice.
 - Include 3-5 concrete examples relevant to real homes.
