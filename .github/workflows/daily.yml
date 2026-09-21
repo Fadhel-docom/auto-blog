@@ -7,8 +7,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
   generate-and-publish:
@@ -75,21 +73,3 @@ jobs:
       - name: Push changes
         run: |
           git push
-
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: "latest"
-          extended: true
-
-      - name: Build Hugo site
-        run: |
-          hugo --minify
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          publish_branch: gh-pages
-          force_orphan: true
