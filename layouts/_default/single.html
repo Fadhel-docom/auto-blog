@@ -12,15 +12,27 @@
     </p>
   </header>
 
-  {{ if .Params.image }}
-    {{ $hero := strings.TrimPrefix "/" .Params.image }}
+  {{ $heroImage := .Params.image }}
+  {{ if not $heroImage }}
+    {{ with .Params.images }}
+      {{ if gt (len .) 0 }}
+        {{ $heroImage = index . 0 }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  {{ if $heroImage }}
+    {{ $hero := strings.TrimPrefix "/" $heroImage }}
     <figure class="post-hero">
       <img src="{{ $hero | absURL }}" alt="{{ .Title }}" class="post-hero-image">
     </figure>
   {{ end }}
 
   <div class="post-content">
-    {{ .Content }}
+    {{ $rawContent := .RawContent }}
+    {{ $cleanContent := replaceRE `(?ms)^##[ \t]+Related Posts[ \t]*\r?\n.*?(?=^##[ \t]+|\z)` "" $rawContent }}
+    {{ $cleanContent = strings.TrimSpace $cleanContent }}
+    {{ $cleanContent | .RenderString }}
   </div>
 
   {{ if .Params.tags }}
@@ -37,27 +49,36 @@
 
     <div class="related-posts-grid">
       {{ $current := . }}
-      {{ $count := 0 }}
-      {{ range where site.RegularPages "Section" "posts" }}
-        {{ if and (ne .RelPermalink $current.RelPermalink) (lt $count 3) }}
-          {{ $count = add $count 1 }}
+      {{ $relatedPosts := where site.RegularPages "Section" "posts" }}
+      {{ $relatedPosts = where $relatedPosts "RelPermalink" "ne" $current.RelPermalink }}
 
-          <article class="related-post-card">
-            {{ if .Params.image }}
-              {{ $relatedImage := strings.TrimPrefix "/" .Params.image }}
-              <a href="{{ .RelPermalink }}">
-                <img src="{{ $relatedImage | absURL }}" alt="{{ .Title }}" loading="lazy">
-              </a>
+      {{ range first 3 $relatedPosts.ByDate.Reverse }}
+
+        {{ $relatedImage := .Params.image }}
+        {{ if not $relatedImage }}
+          {{ with .Params.images }}
+            {{ if gt (len .) 0 }}
+              {{ $relatedImage = index . 0 }}
             {{ end }}
-
-            <div class="related-post-card-content">
-              <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-              {{ with .Description }}
-                <p>{{ . | plainify | truncate 120 }}</p>
-              {{ end }}
-            </div>
-          </article>
+          {{ end }}
         {{ end }}
+
+        <article class="related-post-card">
+          {{ if $relatedImage }}
+            {{ $imagePath := strings.TrimPrefix "/" $relatedImage }}
+            <a href="{{ .RelPermalink }}" aria-label="{{ .Title }}">
+              <img src="{{ $imagePath | absURL }}" alt="{{ .Title }}" loading="lazy" decoding="async">
+            </a>
+          {{ end }}
+
+          <div class="related-post-card-content">
+            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            {{ with .Description }}
+              <p>{{ . | plainify | truncate 120 }}</p>
+            {{ end }}
+          </div>
+        </article>
+
       {{ end }}
     </div>
   </section>
