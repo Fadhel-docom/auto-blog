@@ -1,0 +1,32 @@
+<section class="author-box" aria-label="About the author">
+  <div class="author-box-inner">
+
+    <div class="author-avatar" aria-hidden="true">
+      {{ $author := .Site.Params.author | default "Home Organization Ideas" }}
+      {{ $firstLetter := substr $author 0 1 }}
+      {{ $firstLetter }}
+    </div>
+
+    <div class="author-content">
+
+      <p class="author-label">
+        Written by
+      </p>
+
+      <h2 class="author-name">
+        {{ .Site.Params.author | default "Home Organization Ideas" }}
+      </h2>
+
+      <p class="author-description">
+        Practical ideas for home organization, small-space living,
+        storage, decluttering, and making everyday rooms easier to use.
+      </p>
+
+      <a href="{{ "/" | relURL }}" class="author-link">
+        Explore more organization ideas →
+      </a>
+
+    </div>
+
+  </div>
+</section>
