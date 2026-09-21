@@ -37,9 +37,8 @@
 
   <div class="post-content">
     {{ $rawContent := .RawContent }}
-    {{ $cleanContent := replaceRE `(?ms)^##[ \t]+Related Posts.*?\n---` "---" $rawContent }}
-    {{ $cleanContent = strings.TrimSpace $cleanContent }}
-    {{ $cleanContent | .RenderString }}
+    {{ $cleanContent := replaceRE `(?ms)^##[ \t]+Related Posts[ \t]*\r?\n.*?\r?\n---` "---" $rawContent }}
+    {{ .RenderString $cleanContent }}
   </div>
 
   {{ if .Params.tags }}
