@@ -4,7 +4,7 @@
 
 {{ if $posts }}
 <ul class="post-list">
-  {{ range sort $posts ".Date.Unix" "desc" }}
+  {{ range $posts.ByDate.Reverse }}
   <li class="post-list-item">
     <h2>
       <a href="{{ .RelPermalink }}">{{ .Title }}</a>
