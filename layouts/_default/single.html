@@ -17,8 +17,12 @@
 
   {{ if not $heroImage }}
     {{ with .Params.images }}
-      {{ if gt (len .) 0 }}
-        {{ $heroImage = index . 0 }}
+      {{ if reflect.IsSlice . }}
+        {{ if gt (len .) 0 }}
+          {{ $heroImage = index . 0 }}
+        {{ end }}
+      {{ else }}
+        {{ $heroImage = . }}
       {{ end }}
     {{ end }}
   {{ end }}
@@ -34,6 +38,15 @@
         decoding="async"
       >
     </figure>
+  {{ end }}
+
+  {{ if .TableOfContents }}
+    <nav class="toc" aria-label="Table of Contents">
+      <details open>
+        <summary>Table of Contents</summary>
+        {{ .TableOfContents }}
+      </details>
+    </nav>
   {{ end }}
 
   <div class="post-content">
@@ -66,8 +79,12 @@
 
         {{ if not $relatedImage }}
           {{ with .Params.images }}
-            {{ if gt (len .) 0 }}
-              {{ $relatedImage = index . 0 }}
+            {{ if reflect.IsSlice . }}
+              {{ if gt (len .) 0 }}
+                {{ $relatedImage = index . 0 }}
+              {{ end }}
+            {{ else }}
+              {{ $relatedImage = . }}
             {{ end }}
           {{ end }}
         {{ end }}
@@ -76,13 +93,10 @@
 
           {{ if $relatedImage }}
             {{ $relatedPath := strings.TrimPrefix "/" $relatedImage }}
-            <a
-              href="{{ .RelPermalink }}"
-              aria-label="Read: {{ .Title }}"
-            >
+            <a href="{{ .RelPermalink }}" aria-label="{{ .Title }}">
               <img
                 src="{{ $relatedPath | relURL }}"
-                alt=""
+                alt="{{ .Title }}"
                 loading="lazy"
                 decoding="async"
               >
@@ -91,11 +105,8 @@
 
           <div class="related-post-card-content">
             <h3>
-              <a href="{{ .RelPermalink }}">
-                {{ .Title }}
-              </a>
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
             </h3>
-
             {{ with .Description }}
               <p>{{ . | plainify | truncate 120 }}</p>
             {{ end }}
