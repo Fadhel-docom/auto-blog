@@ -4,7 +4,6 @@
 
   <header class="post-header">
     <h1 class="post-title">{{ .Title }}</h1>
-
     <p class="post-meta">
       {{ .Date.Format "January 2, 2006" }}
       {{ with .Params.categories }}
@@ -15,17 +14,12 @@
 
   {{ if .Params.image }}
     {{ $hero := strings.TrimPrefix "/" .Params.image }}
-
     <figure class="post-hero">
-      <img
-        src="{{ $hero | absURL }}"
-        alt="{{ .Title }}"
-        class="post-hero-image"
-      >
+      <img src="{{ $hero | absURL }}" alt="{{ .Title }}" class="post-hero-image">
     </figure>
   {{ end }}
 
-  <div class="post-content" id="post-content">
+  <div class="post-content">
     {{ .Content }}
   </div>
 
@@ -38,110 +32,33 @@
     </div>
   {{ end }}
 
-  {{ if .Params.images }}
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const container = document.getElementById("post-content");
-        if (!container) return;
-
-        const images = {{ .Params.images | jsonify | safeJS }};
-        if (!Array.isArray(images) || images.length < 5) return;
-
-        const headings = Array.from(container.querySelectorAll("h2"));
-        if (!headings.length) return;
-
-        function createImage(src) {
-          const figure = document.createElement("figure");
-          figure.className = "inline-post-image";
-          const image = document.createElement("img");
-          image.src = src.replace(/^\/+/, "/");
-          image.alt = "Article illustration";
-          image.loading = "lazy";
-          image.decoding = "async";
-          figure.appendChild(image);
-          return figure;
-        }
-
-        let inserted = 0;
-
-        headings.forEach(function (heading, index) {
-          const h2Number = index + 1;
-          if (h2Number % 2 === 0 && inserted < 3 && images[inserted + 1]) {
-            heading.insertAdjacentElement("afterend", createImage(images[inserted + 1]));
-            inserted++;
-          }
-        });
-
-        if (inserted < 3) {
-          const lastHeading = headings[headings.length - 1];
-          if (lastHeading) {
-            for (let i = inserted + 1; i < 4; i++) {
-              if (!images[i]) continue;
-              lastHeading.insertAdjacentElement("afterend", createImage(images[i]));
-            }
-            inserted = 3;
-          }
-        }
-
-        if (images[4]) {
-          const lastHeading = headings[headings.length - 1];
-          if (lastHeading) {
-            lastHeading.insertAdjacentElement("afterend", createImage(images[4]));
-          }
-        }
-      });
-    </script>
-  {{ end }}
-
   <section class="related-posts">
     <h2>Related Posts</h2>
 
     <div class="related-posts-grid">
-
       {{ $current := . }}
-
-      {{ range first 3 (where site.RegularPages "Section" "posts") }}
-
-        {{ if ne .RelPermalink $current.RelPermalink }}
+      {{ $count := 0 }}
+      {{ range where site.RegularPages "Section" "posts" }}
+        {{ if and (ne .RelPermalink $current.RelPermalink) (lt $count 3) }}
+          {{ $count = add $count 1 }}
 
           <article class="related-post-card">
-
             {{ if .Params.image }}
               {{ $relatedImage := strings.TrimPrefix "/" .Params.image }}
-              <a
-                href="{{ .RelPermalink }}"
-                aria-label="Read: {{ .Title }}"
-              >
-                <img
-                  src="{{ $relatedImage | absURL }}"
-                  alt=""
-                  loading="lazy"
-                >
+              <a href="{{ .RelPermalink }}">
+                <img src="{{ $relatedImage | absURL }}" alt="{{ .Title }}" loading="lazy">
               </a>
             {{ end }}
 
             <div class="related-post-card-content">
-
-              <h3>
-                <a href="{{ .RelPermalink }}">
-                  {{ .Title }}
-                </a>
-              </h3>
-
+              <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
               {{ with .Description }}
-                <p>
-                  {{ . | plainify | truncate 120 }}
-                </p>
+                <p>{{ . | plainify | truncate 120 }}</p>
               {{ end }}
-
             </div>
-
           </article>
-
         {{ end }}
-
       {{ end }}
-
     </div>
   </section>
 
