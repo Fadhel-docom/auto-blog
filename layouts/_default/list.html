@@ -1,19 +1,25 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
 
-  {{ $posts := .Pages.ByDate.Reverse }}
+<h1>{{ .Title }}</h1>
 
-  {{ if $posts }}
-    <ul class="post-list">
-      {{ range $posts }}
-        <li class="post-list-item">
-          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-          <p class="post-meta">{{ .Date.Format "January 2, 2006" }}</p>
-          <p class="post-excerpt">{{ .Description }}</p>
-        </li>
-      {{ end }}
-    </ul>
-  {{ else }}
-    <p>No posts yet.</p>
+{{ $posts := sort .Pages ".Date.Unix" "desc" }}
+
+{{ if $posts }}
+<ul class="post-list">
+  {{ range $posts }}
+  <li class="post-list-item">
+    <h2>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </h2>
+    <p class="post-meta">{{ .Date.Format "January 2, 2006" }}</p>
+    {{ with .Description }}
+      <p class="post-excerpt">{{ . }}</p>
+    {{ end }}
+  </li>
   {{ end }}
+</ul>
+{{ else }}
+<p>No posts yet.</p>
+{{ end }}
+
 {{ end }}
