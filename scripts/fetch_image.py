@@ -19,6 +19,7 @@ PEXELS_SEARCH_URL = "https://api.pexels.com/v1/search"
 MAX_RETRIES = 5
 REQUEST_TIMEOUT = 30
 IMAGE_COUNT = 5
+MAX_PAGES = 3
 
 
 def get_required_env(name: str) -> str:
@@ -122,6 +123,7 @@ def get_retry_delay(
 def search_pexels(
     api_key: str,
     query: str,
+    page: int = 1,
 ) -> Dict[str, Any]:
     headers = {
         "Authorization": api_key,
@@ -133,7 +135,7 @@ def search_pexels(
         "orientation": "landscape",
         "size": "large",
         "per_page": 10,
-        "page": 1,
+        "page": page,
     }
 
     session = requests.Session()
@@ -213,7 +215,11 @@ def search_pexels(
     )
 
 
-def choose_photo(data: Dict[str, Any]) -> Dict[str, Any]:
+def choose_photo(
+    data: Dict[str, Any],
+    used_photo_ids: set,
+    used_photographers: set,
+) -> Optional[Dict[str, Any]]:
     photos = data.get("photos")
 
     if not isinstance(photos, list):
@@ -223,10 +229,9 @@ def choose_photo(data: Dict[str, Any]) -> Dict[str, Any]:
         )
 
     if not photos:
-        raise ValueError(
-            "Pexels returned no photos "
-            "for the requested image query."
-        )
+        return None
+
+    candidates = []
 
     for photo in photos:
         if not isinstance(photo, dict):
@@ -243,26 +248,63 @@ def choose_photo(data: Dict[str, Any]) -> Dict[str, Any]:
             or src.get("original")
         )
 
-        if image_url:
-            return {
-                "id": photo.get("id"),
+        if not image_url:
+            continue
+
+        photo_id = photo.get("id")
+        photographer = (
+            photo.get("photographer")
+            or "Unknown photographer"
+        )
+
+        if photo_id in used_photo_ids:
+            continue
+
+        width = photo.get("width") or 0
+        height = photo.get("height") or 0
+
+        if width and height:
+            aspect_ratio = width / height
+        else:
+            aspect_ratio = 0
+
+        candidates.append(
+            {
+                "id": photo_id,
                 "image_url": image_url,
-                "photographer": (
-                    photo.get("photographer")
-                    or "Unknown photographer"
-                ),
+                "photographer": photographer,
                 "photographer_url": (
                     photo.get("photographer_url") or ""
                 ),
                 "pexels_url": photo.get("url") or "",
-                "width": photo.get("width"),
-                "height": photo.get("height"),
+                "width": width,
+                "height": height,
+                "aspect_ratio": aspect_ratio,
             }
+        )
 
-    raise ValueError(
-        "Pexels returned photos, but none "
-        "contained a usable image URL."
+    if not candidates:
+        return None
+
+    unique_photographer_candidates = [
+        candidate
+        for candidate in candidates
+        if candidate["photographer"]
+        not in used_photographers
+    ]
+
+    if unique_photographer_candidates:
+        candidates = unique_photographer_candidates
+
+    candidates.sort(
+        key=lambda item: (
+            item["aspect_ratio"],
+            item["width"] * item["height"],
+        ),
+        reverse=True,
     )
+
+    return candidates[0]
 
 
 def download_image(
@@ -352,6 +394,9 @@ def download_all_images(
 
     images = []
 
+    used_photo_ids = set()
+    used_photographers = set()
+
     for index, query in enumerate(
         image_queries,
         start=1,
@@ -378,22 +423,64 @@ def download_all_images(
 
         print(f"Query: {query}")
 
-        data = search_pexels(api_key, query)
-        photo = choose_photo(data)
+        photo = None
+
+        for page in range(1, MAX_PAGES + 1):
+            data = search_pexels(
+                api_key,
+                query,
+                page=page,
+            )
+
+            photo = choose_photo(
+                data,
+                used_photo_ids,
+                used_photographers,
+            )
+
+            if photo is not None:
+                break
+
+            print(
+                f"No unused Pexels image found on "
+                f"page {page} for query: {query}"
+            )
+
+        if photo is None:
+            raise RuntimeError(
+                "Could not find a unique Pexels image "
+                f"for query {index}: {query}"
+            )
 
         image_url = photo["image_url"]
         photographer = photo["photographer"]
         photographer_url = photo["photographer_url"]
         pexels_url = photo["pexels_url"]
 
+        photo_id = photo.get("id")
+
+        if photo_id is not None:
+            used_photo_ids.add(photo_id)
+
+        if photographer:
+            used_photographers.add(photographer)
+
         filename = f"{slug}-{index}.jpg"
         image_path = IMAGE_DIR / filename
 
-        print(f"Selected photographer: {photographer}")
+        print(
+            f"Selected photographer: {photographer}"
+        )
+        print(
+            f"Selected image ID: {photo_id}"
+        )
         print(f"Image URL: {image_url}")
         print(f"Destination: {image_path}")
 
-        download_image(image_url, image_path)
+        download_image(
+            image_url,
+            image_path,
+        )
 
         images.append(
             {
@@ -407,7 +494,7 @@ def download_all_images(
                 "photographer_url": photographer_url,
                 "pexels_url": pexels_url,
                 "image_source_url": image_url,
-                "image_id": photo.get("id"),
+                "image_id": photo_id,
                 "width": photo.get("width"),
                 "height": photo.get("height"),
             }
