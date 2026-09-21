@@ -5,33 +5,51 @@
 {{ if $posts }}
 
 <ul class="post-list">
-
   {{ range sort $posts "Date" "desc" }}
 
-  <li class="post-list-item">
+    {{ $thumbnail := "" }}
 
-    <h2>
-      <a href="{{ .RelPermalink }}">
-        {{ .Title }}
-      </a>
-    </h2>
-
-    <p class="post-meta">
-      {{ .Date.Format "January 2, 2006" }}
-    </p>
-
-    {{ with .Description }}
-
-      <p class="post-excerpt">
-        {{ . }}
-      </p>
-
+    {{ with .Params.images }}
+      {{ if gt (len .) 0 }}
+        {{ $thumbnail = index . 0 }}
+      {{ end }}
     {{ end }}
 
-  </li>
+    {{ if not $thumbnail }}
+      {{ with .Params.image }}
+        {{ $thumbnail = . }}
+      {{ end }}
+    {{ end }}
+
+    <li class="post-list-item post-list-item-with-thumb">
+
+      {{ if $thumbnail }}
+        {{ $thumbPath := strings.TrimPrefix "/" $thumbnail }}
+        <a href="{{ .RelPermalink }}" class="post-thumb">
+          <img
+            src="{{ $thumbPath | relURL }}"
+            alt="{{ .Title }}"
+            loading="lazy"
+            decoding="async"
+          >
+        </a>
+      {{ end }}
+
+      <div class="post-list-content">
+        <h2>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </h2>
+
+        <p class="post-meta">{{ .Date.Format "January 2, 2006" }}</p>
+
+        {{ with .Description }}
+          <p class="post-excerpt">{{ . }}</p>
+        {{ end }}
+      </div>
+
+    </li>
 
   {{ end }}
-
 </ul>
 
 {{ else }}
