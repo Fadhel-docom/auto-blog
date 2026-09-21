@@ -15,6 +15,58 @@ IMAGE_DIR = ROOT_DIR / "static" / "images"
 KEYWORDS_PATH = ROOT_DIR / "keywords.csv"
 
 
+STOP_WORDS = {
+    "the", "and", "for", "with", "from", "that",
+    "this", "your", "you", "are", "into", "without",
+    "small", "home", "ideas", "tips", "guide",
+    "best", "ways", "how", "what", "when", "where",
+    "using", "use", "make", "get", "can", "more",
+    "room", "space",
+}
+
+TOPIC_GROUPS = {
+    "kitchen": {
+        "kitchen", "pantry", "spice", "spices",
+        "countertop", "cabinet", "cabinets",
+        "fridge", "refrigerator",
+    },
+    "bedroom": {
+        "bedroom", "closet", "wardrobe", "dresser",
+        "clothing", "clothes", "underbed", "under-bed",
+    },
+    "bathroom": {
+        "bathroom", "under-sink", "sink", "shower",
+        "toiletries", "towels",
+    },
+    "entryway": {
+        "entryway", "entry", "hallway", "foyer",
+        "shoes", "coat", "entry-door",
+    },
+    "living": {
+        "living", "living-room", "sofa", "couch",
+        "coffee-table", "tv",
+    },
+    "office": {
+        "office", "desk", "workspace", "home-office",
+        "paper", "documents",
+    },
+    "small-space": {
+        "small", "small-space", "small-apartment",
+        "studio", "tiny", "compact",
+        "space-saving", "storage",
+    },
+    "decluttering": {
+        "decluttering", "declutter", "minimalist",
+        "minimalism", "clutter", "organize",
+        "organization",
+    },
+    "rental": {
+        "renter", "rental", "renting",
+        "damage-free", "no-drill", "drill-free",
+    },
+}
+
+
 def load_article() -> dict[str, Any]:
     if not ARTICLE_PATH.exists():
         raise FileNotFoundError(
@@ -68,6 +120,30 @@ def toml_array(values: list[Any]) -> str:
     return "[" + ", ".join(
         toml_string(value) for value in values
     ) + "]"
+
+
+def toml_table_array(values: list[dict[str, str]]) -> str:
+    if not values:
+        return "[]"
+
+    parts = []
+
+    for value in values:
+        question = toml_string(
+            value.get("question", "")
+        )
+        answer = toml_string(
+            value.get("answer", "")
+        )
+
+        parts.append(
+            "{"
+            f"question = {question}, "
+            f"answer = {answer}"
+            "}"
+        )
+
+    return "[" + ", ".join(parts) + "]"
 
 
 def normalize_tags(tags: Any) -> list[str]:
@@ -351,6 +427,381 @@ def insert_images_between_h2(
     return "\n".join(output)
 
 
+def normalize_keywords(text: str) -> set[str]:
+    text = str(text).lower()
+
+    tokens = re.findall(
+        r"[a-z0-9]+(?:-[a-z0-9]+)*",
+        text,
+    )
+
+    keywords = set()
+
+    for token in tokens:
+        if token in STOP_WORDS:
+            continue
+
+        if len(token) < 3:
+            continue
+
+        keywords.add(token)
+
+    return keywords
+
+
+def detect_topic_groups(text: str) -> set[str]:
+    tokens = normalize_keywords(text)
+    groups = set()
+
+    for group_name, group_words in TOPIC_GROUPS.items():
+        if tokens.intersection(group_words):
+            groups.add(group_name)
+
+    return groups
+
+
+def read_existing_posts(
+    current_slug: str,
+) -> list[dict[str, Any]]:
+    posts = []
+
+    if not POSTS_DIR.exists():
+        return posts
+
+    for post_path in sorted(POSTS_DIR.glob("*.md")):
+        if post_path.stem == current_slug:
+            continue
+
+        try:
+            content = post_path.read_text(encoding="utf-8")
+        except OSError:
+            continue
+
+        match = re.match(
+            r"^\+\+\+\n(.*?)\n\+\+\+\n",
+            content,
+            flags=re.DOTALL,
+        )
+
+        if not match:
+            continue
+
+        frontmatter = match.group(1)
+
+        title_match = re.search(
+            r'^title\s*=\s*"((?:\\.|[^"])*)"',
+            frontmatter,
+            flags=re.MULTILINE,
+        )
+
+        tags_match = re.search(
+            r"^tags\s*=\s*\[(.*?)\]",
+            frontmatter,
+            flags=re.MULTILINE | re.DOTALL,
+        )
+
+        categories_match = re.search(
+            r"^categories\s*=\s*\[(.*?)\]",
+            frontmatter,
+            flags=re.MULTILINE | re.DOTALL,
+        )
+
+        title = (
+            title_match.group(1)
+            if title_match
+            else post_path.stem.replace("-", " ")
+        )
+
+        tags_text = (
+            tags_match.group(1)
+            if tags_match
+            else ""
+        )
+
+        categories_text = (
+            categories_match.group(1)
+            if categories_match
+            else ""
+        )
+
+        metadata_text = " ".join(
+            [
+                title,
+                tags_text,
+                categories_text,
+                post_path.stem.replace("-", " "),
+            ]
+        )
+
+        posts.append(
+            {
+                "slug": post_path.stem,
+                "title": title,
+                "keywords": normalize_keywords(
+                    metadata_text
+                ),
+                "topics": detect_topic_groups(
+                    metadata_text
+                ),
+            }
+        )
+
+    return posts
+
+
+def score_internal_link(
+    current_text: str,
+    target: dict[str, Any],
+) -> int:
+    current_keywords = normalize_keywords(current_text)
+    current_topics = detect_topic_groups(current_text)
+
+    score = 0
+
+    shared_keywords = current_keywords.intersection(
+        target["keywords"]
+    )
+    score += len(shared_keywords) * 4
+
+    shared_topics = current_topics.intersection(
+        target["topics"]
+    )
+    score += len(shared_topics) * 10
+
+    return score
+
+
+def select_internal_links(
+    content: str,
+    current_keyword: str,
+    current_slug: str,
+    limit: int = 3,
+) -> list[dict[str, Any]]:
+    existing_posts = read_existing_posts(current_slug)
+
+    if not existing_posts:
+        return []
+
+    context = f"{current_keyword}\n\n{content}"
+
+    scored = []
+
+    for post in existing_posts:
+        score = score_internal_link(context, post)
+
+        if score <= 0:
+            continue
+
+        scored.append((score, post))
+
+    scored.sort(
+        key=lambda item: (item[0], item[1]["title"]),
+        reverse=True,
+    )
+
+    selected = []
+    used_topics = set()
+
+    for score, post in scored:
+        post_topics = post["topics"]
+
+        if (
+            selected
+            and post_topics
+            and post_topics.issubset(used_topics)
+            and len(scored) > len(selected) + 1
+        ):
+            continue
+
+        selected.append(post)
+        used_topics.update(post_topics)
+
+        if len(selected) >= limit:
+            break
+
+    return selected
+
+
+def split_paragraphs(content: str) -> list[str]:
+    parts = re.split(r"\n\s*\n", content)
+
+    return [
+        part
+        for part in parts
+        if part.strip()
+    ]
+
+
+def insert_internal_links(
+    content: str,
+    current_keyword: str,
+    current_slug: str,
+) -> str:
+    links = select_internal_links(
+        content,
+        current_keyword,
+        current_slug,
+        limit=3,
+    )
+
+    if not links:
+        return content
+
+    paragraphs = split_paragraphs(content)
+
+    candidate_indexes = []
+
+    for index, paragraph in enumerate(paragraphs):
+        stripped = paragraph.strip()
+
+        if not stripped:
+            continue
+
+        if stripped.startswith("#"):
+            continue
+
+        if stripped.startswith("!["):
+            continue
+
+        if stripped.startswith("- "):
+            continue
+
+        if re.match(r"^\d+\.\s+", stripped):
+            continue
+
+        if len(stripped) < 120:
+            continue
+
+        candidate_indexes.append(index)
+
+    if not candidate_indexes:
+        return content
+
+    middle_indexes = [
+        index
+        for index in candidate_indexes
+        if len(paragraphs) * 0.20
+        <= index
+        <= len(paragraphs) * 0.75
+    ]
+
+    if middle_indexes:
+        candidate_indexes = middle_indexes
+
+    if len(candidate_indexes) < len(links):
+        links = links[:len(candidate_indexes)]
+
+    if not links:
+        return content
+
+    positions = []
+
+    if len(links) == 1:
+        positions = [
+            candidate_indexes[len(candidate_indexes) // 2]
+        ]
+
+    elif len(links) == 2:
+        positions = [
+            candidate_indexes[len(candidate_indexes) // 3],
+            candidate_indexes[(len(candidate_indexes) * 2) // 3],
+        ]
+
+    else:
+        positions = [
+            candidate_indexes[len(candidate_indexes) // 4],
+            candidate_indexes[len(candidate_indexes) // 2],
+            candidate_indexes[(len(candidate_indexes) * 3) // 4],
+        ]
+
+    for position, link in reversed(
+        list(zip(positions, links))
+    ):
+        anchor = link["title"].strip()
+
+        if not anchor:
+            continue
+
+        link_markdown = (
+            f"[Read more about {anchor}]"
+            f"(../{link['slug']}/)"
+        )
+
+        paragraphs.insert(
+            position + 1,
+            link_markdown,
+        )
+
+    return "\n\n".join(paragraphs)
+
+
+def extract_faq_items(
+    content: str,
+) -> list[dict[str, str]]:
+    lines = content.splitlines()
+
+    faq_items = []
+
+    current_question = None
+    current_answer = []
+
+    for line in lines:
+        stripped = line.strip()
+
+        heading_match = re.match(
+            r"^#{2,3}\s+(.+?)\s*$",
+            stripped,
+        )
+
+        if heading_match:
+            if current_question:
+                answer = "\n".join(
+                    current_answer
+                ).strip()
+
+                answer = re.sub(r"\s+", " ", answer)
+
+                if answer and len(answer) >= 40:
+                    faq_items.append(
+                        {
+                            "question": current_question,
+                            "answer": answer,
+                        }
+                    )
+
+            heading = heading_match.group(1).strip()
+
+            if heading.endswith("?"):
+                current_question = heading
+                current_answer = []
+            else:
+                current_question = None
+                current_answer = []
+
+            continue
+
+        if current_question:
+            if stripped:
+                current_answer.append(stripped)
+
+    if current_question:
+        answer = "\n".join(
+            current_answer
+        ).strip()
+
+        answer = re.sub(r"\s+", " ", answer)
+
+        if answer and len(answer) >= 40:
+            faq_items.append(
+                {
+                    "question": current_question,
+                    "answer": answer,
+                }
+            )
+
+    return faq_items[:8]
+
+
 def main() -> int:
     try:
         article = load_article()
@@ -412,6 +863,12 @@ def main() -> int:
             images,
         )
 
+        content_markdown = insert_internal_links(
+            content_markdown,
+            keyword,
+            slug,
+        )
+
         image_attribution = []
 
         for index, image in enumerate(images, start=1):
@@ -455,15 +912,19 @@ def main() -> int:
                 + "\n"
             )
 
+        faq_items = extract_faq_items(content_markdown)
+
         frontmatter = (
             "+++\n"
             f"title = {toml_string(title)}\n"
             f"date = {toml_string(publication_date)}\n"
+            f"lastmod = {toml_string(publication_date)}\n"
             f"description = {toml_string(description)}\n"
             f"image = {toml_string(first_image)}\n"
             f"images = {toml_array(image_urls)}\n"
             f"tags = {toml_array(tags)}\n"
             f"categories = {toml_array(categories)}\n"
+            f"faq = {toml_table_array(faq_items)}\n"
             "draft = false\n"
             "+++\n"
         )
@@ -498,6 +959,8 @@ def main() -> int:
 
         print("Image 1: hero")
         print("Images 2-5: inserted after first four H2 headings")
+        print("Internal links: inserted contextually")
+        print(f"FAQ items: {len(faq_items)}")
         print("Alt text: section-aware image query")
         print("Related Posts: rendered by single.html")
         print("Keyword status: published")
