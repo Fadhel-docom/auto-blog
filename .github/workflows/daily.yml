@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   generate-and-publish:
@@ -53,17 +55,6 @@ jobs:
         run: |
           python scripts/publish.py
 
-      - name: Show generated files
-        run: |
-          echo "Git status:"
-          git status --short
-          echo ""
-          echo "Posts:"
-          find content/posts -maxdepth 1 -type f -print 2>/dev/null || true
-          echo ""
-          echo "Images:"
-          find static/images -maxdepth 1 -type f -print 2>/dev/null || true
-
       - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
@@ -84,3 +75,21 @@ jobs:
       - name: Push changes
         run: |
           git push
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "latest"
+          extended: true
+
+      - name: Build Hugo site
+        run: |
+          hugo --minify
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+          force_orphan: true
