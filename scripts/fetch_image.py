@@ -5,7 +5,7 @@ import os
 import sys
 import time
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Optional
 
 import requests
 
@@ -15,33 +15,48 @@ ARTICLE_PATH = ROOT_DIR / "article.json"
 IMAGE_DIR = ROOT_DIR / "static" / "images"
 
 PEXELS_SEARCH_URL = "https://api.pexels.com/v1/search"
+
 MAX_RETRIES = 5
 REQUEST_TIMEOUT = 30
+IMAGE_COUNT = 5
 
 
 def get_required_env(name: str) -> str:
-    value = os.getenv(name, "").strip()
+    value = os.getenv(name)
 
     if not value:
         raise RuntimeError(
-            f"Required environment variable '{name}' is not set."
+            f"Required environment variable "
+            f"'{name}' is not set."
         )
 
-    return value
+    return value.strip()
 
 
 def load_article() -> Dict[str, Any]:
     if not ARTICLE_PATH.exists():
         raise FileNotFoundError(
-            f"article.json was not found: {ARTICLE_PATH}"
+            f"article.json was not found at: "
+            f"{ARTICLE_PATH}"
         )
 
     try:
-        with ARTICLE_PATH.open("r", encoding="utf-8") as file:
+        with ARTICLE_PATH.open(
+            "r",
+            encoding="utf-8",
+        ) as file:
             article = json.load(file)
+
     except json.JSONDecodeError as exc:
         raise ValueError(
-            f"Invalid article.json: {exc}"
+            f"article.json contains invalid JSON: "
+            f"{exc}"
+        ) from exc
+
+    except OSError as exc:
+        raise RuntimeError(
+            f"Could not read article.json: "
+            f"{exc}"
         ) from exc
 
     if not isinstance(article, dict):
@@ -55,25 +70,58 @@ def load_article() -> Dict[str, Any]:
 def save_article(article: Dict[str, Any]) -> None:
     temp_path = ARTICLE_PATH.with_suffix(".json.tmp")
 
-    with temp_path.open(
-        "w",
-        encoding="utf-8",
-    ) as file:
-        json.dump(
-            article,
-            file,
-            ensure_ascii=False,
-            indent=2,
-        )
-        file.write("\n")
+    try:
+        with temp_path.open(
+            "w",
+            encoding="utf-8",
+        ) as file:
+            json.dump(
+                article,
+                file,
+                ensure_ascii=False,
+                indent=2,
+            )
 
-    temp_path.replace(ARTICLE_PATH)
+        temp_path.replace(ARTICLE_PATH)
+
+    except OSError as exc:
+        raise RuntimeError(
+            f"Could not save article.json: {exc}"
+        ) from exc
+
+
+def get_status_code(exception: Exception) -> Optional[int]:
+    response = getattr(exception, "response", None)
+
+    if response is not None:
+        status_code = getattr(response, "status_code", None)
+
+        if status_code is not None:
+            return status_code
+
+    return None
+
+
+def get_retry_delay(
+    response: Optional[requests.Response],
+    attempt: int,
+) -> int:
+    if response is not None:
+        retry_after = response.headers.get("Retry-After")
+
+        if retry_after:
+            try:
+                return min(int(retry_after), 60)
+
+            except ValueError:
+                pass
+
+    return min(2 ** (attempt - 1), 30)
 
 
 def search_pexels(
     api_key: str,
     query: str,
-    page: int = 1,
 ) -> Dict[str, Any]:
     headers = {
         "Authorization": api_key,
@@ -84,84 +132,108 @@ def search_pexels(
         "query": query,
         "orientation": "landscape",
         "size": "large",
-        "per_page": 15,
-        "page": page,
+        "per_page": 10,
+        "page": 1,
     }
+
+    session = requests.Session()
 
     last_error: Optional[Exception] = None
 
     for attempt in range(1, MAX_RETRIES + 1):
         try:
-            response = requests.get(
+            response = session.get(
                 PEXELS_SEARCH_URL,
                 headers=headers,
                 params=params,
                 timeout=REQUEST_TIMEOUT,
             )
 
-            if response.status_code in {429, 500, 502, 503, 504}:
-                delay = min(2 ** (attempt - 1), 30)
-
-                retry_after = response.headers.get("Retry-After")
-                if retry_after:
-                    try:
-                        delay = min(int(retry_after), 60)
-                    except ValueError:
-                        pass
+            if response.status_code in {
+                429,
+                500,
+                502,
+                503,
+                504,
+            }:
+                delay = get_retry_delay(response, attempt)
 
                 print(
-                    f"Pexels HTTP {response.status_code}; "
-                    f"retrying in {delay}s..."
+                    f"Pexels returned HTTP "
+                    f"{response.status_code}. "
+                    f"Retry {attempt}/{MAX_RETRIES} "
+                    f"after {delay} seconds..."
                 )
+
                 time.sleep(delay)
                 continue
 
             response.raise_for_status()
-            data = response.json()
 
-            if not isinstance(data, dict):
-                raise ValueError(
-                    "Pexels response is not a JSON object."
-                )
+            try:
+                return response.json()
 
-            return data
+            except ValueError as exc:
+                raise RuntimeError(
+                    "Pexels returned invalid JSON."
+                ) from exc
 
         except requests.RequestException as exc:
             last_error = exc
 
-            if attempt >= MAX_RETRIES:
-                break
+            status_code = get_status_code(exc)
 
-            delay = min(2 ** (attempt - 1), 30)
-            print(
-                f"Pexels request failed: {exc}; "
-                f"retrying in {delay}s..."
-            )
-            time.sleep(delay)
+            if status_code not in {
+                429,
+                500,
+                502,
+                503,
+                504,
+                None,
+            }:
+                raise RuntimeError(
+                    f"Pexels API request failed "
+                    f"with HTTP {status_code}: {exc}"
+                ) from exc
 
-        except ValueError as exc:
-            last_error = exc
-            break
+            if attempt < MAX_RETRIES:
+                delay = min(2 ** (attempt - 1), 30)
+
+                print(
+                    f"Pexels request failed: {exc}. "
+                    f"Retry {attempt}/{MAX_RETRIES} "
+                    f"after {delay} seconds..."
+                )
+
+                time.sleep(delay)
 
     raise RuntimeError(
-        f"Pexels search failed after "
+        f"Pexels API failed after "
         f"{MAX_RETRIES} attempts: {last_error}"
     )
 
 
-def choose_photo(
-    photos: List[Dict[str, Any]],
-    used_ids: set,
-) -> Dict[str, Any]:
+def choose_photo(data: Dict[str, Any]) -> Dict[str, Any]:
+    photos = data.get("photos")
+
+    if not isinstance(photos, list):
+        raise ValueError(
+            "Pexels response does not contain "
+            "a valid 'photos' list."
+        )
+
+    if not photos:
+        raise ValueError(
+            "Pexels returned no photos "
+            "for the requested image query."
+        )
+
     for photo in photos:
         if not isinstance(photo, dict):
             continue
 
-        photo_id = photo.get("id")
-        if photo_id in used_ids:
-            continue
-
         src = photo.get("src")
+
         if not isinstance(src, dict):
             continue
 
@@ -171,31 +243,37 @@ def choose_photo(
             or src.get("original")
         )
 
-        if not image_url:
-            continue
-
-        return {
-            "id": photo_id,
-            "image_url": image_url,
-            "photographer": (
-                photo.get("photographer")
-                or "Unknown photographer"
-            ),
-            "photographer_url": (
-                photo.get("photographer_url") or ""
-            ),
-            "pexels_url": photo.get("url") or "",
-            "width": photo.get("width"),
-            "height": photo.get("height"),
-        }
+        if image_url:
+            return {
+                "id": photo.get("id"),
+                "image_url": image_url,
+                "photographer": (
+                    photo.get("photographer")
+                    or "Unknown photographer"
+                ),
+                "photographer_url": (
+                    photo.get("photographer_url") or ""
+                ),
+                "pexels_url": photo.get("url") or "",
+                "width": photo.get("width"),
+                "height": photo.get("height"),
+            }
 
     raise ValueError(
-        "No unused usable photo was found for this query."
+        "Pexels returned photos, but none "
+        "contained a usable image URL."
     )
 
 
-def download_image(image_url: str, destination: Path) -> None:
-    destination.parent.mkdir(parents=True, exist_ok=True)
+def download_image(
+    image_url: str,
+    destination: Path,
+) -> None:
+    destination.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
     temp_path = destination.with_suffix(".tmp")
 
     try:
@@ -207,17 +285,26 @@ def download_image(image_url: str, destination: Path) -> None:
             response.raise_for_status()
 
             content_type = (
-                response.headers.get("Content-Type", "").lower()
+                response.headers.get(
+                    "Content-Type",
+                    "",
+                ).lower()
             )
 
-            if content_type and not content_type.startswith("image/"):
+            if (
+                content_type
+                and not content_type.startswith("image/")
+            ):
                 raise RuntimeError(
-                    "Pexels returned a non-image response: "
+                    "Pexels returned a non-image "
+                    f"response with Content-Type: "
                     f"{content_type}"
                 )
 
             with temp_path.open("wb") as file:
-                for chunk in response.iter_content(chunk_size=1024 * 64):
+                for chunk in response.iter_content(
+                    chunk_size=1024 * 64
+                ):
                     if chunk:
                         file.write(chunk)
 
@@ -227,122 +314,220 @@ def download_image(image_url: str, destination: Path) -> None:
             )
 
         if temp_path.stat().st_size == 0:
-            raise RuntimeError("Downloaded image file is empty.")
+            raise RuntimeError(
+                "Downloaded image file is empty."
+            )
 
         temp_path.replace(destination)
 
-    except Exception:
+    except requests.RequestException as exc:
         if temp_path.exists():
             temp_path.unlink(missing_ok=True)
-        raise
+
+        raise RuntimeError(
+            f"Could not download image from Pexels: {exc}"
+        ) from exc
+
+    except OSError as exc:
+        if temp_path.exists():
+            temp_path.unlink(missing_ok=True)
+
+        raise RuntimeError(
+            f"Could not save downloaded image: {exc}"
+        ) from exc
+
+
+def download_all_images(
+    api_key: str,
+    slug: str,
+    image_queries: list,
+) -> list:
+    if len(image_queries) != IMAGE_COUNT:
+        raise ValueError(
+            f"Exactly {IMAGE_COUNT} image queries "
+            "are required."
+        )
+
+    IMAGE_DIR.mkdir(parents=True, exist_ok=True)
+
+    images = []
+
+    for index, query in enumerate(
+        image_queries,
+        start=1,
+    ):
+        query = str(query).strip()
+
+        if not query:
+            raise ValueError(
+                f"Image query {index} is empty."
+            )
+
+        print("")
+        print("=" * 70)
+
+        if index == 1:
+            label = "HERO"
+        else:
+            label = f"H2 #{index - 1}"
+
+        print(
+            f"Downloading image {index}/"
+            f"{IMAGE_COUNT} [{label}]"
+        )
+
+        print(f"Query: {query}")
+
+        data = search_pexels(api_key, query)
+        photo = choose_photo(data)
+
+        image_url = photo["image_url"]
+        photographer = photo["photographer"]
+        photographer_url = photo["photographer_url"]
+        pexels_url = photo["pexels_url"]
+
+        filename = f"{slug}-{index}.jpg"
+        image_path = IMAGE_DIR / filename
+
+        print(f"Selected photographer: {photographer}")
+        print(f"Image URL: {image_url}")
+        print(f"Destination: {image_path}")
+
+        download_image(image_url, image_path)
+
+        images.append(
+            {
+                "index": index,
+                "query": query,
+                "file": f"/images/{filename}",
+                "file_path": str(
+                    image_path.relative_to(ROOT_DIR)
+                ),
+                "photographer": photographer,
+                "photographer_url": photographer_url,
+                "pexels_url": pexels_url,
+                "image_source_url": image_url,
+                "image_id": photo.get("id"),
+                "width": photo.get("width"),
+                "height": photo.get("height"),
+            }
+        )
+
+    print("")
+    print("=" * 70)
+    print("All 5 images downloaded successfully.")
+    print("=" * 70)
+
+    return images
 
 
 def main() -> int:
     try:
         print("=" * 70)
-        print("Pexels image downloader — 5 images")
+        print("Pexels image downloader")
         print("=" * 70)
 
         api_key = get_required_env("PEXELS_API_KEY")
+
         article = load_article()
 
-        slug = str(article.get("slug", "")).strip()
+        slug = article.get("slug")
         image_queries = article.get("image_queries")
 
-        if not slug:
-            raise ValueError("article.json is missing 'slug'.")
+        if not isinstance(slug, str) or not slug.strip():
+            raise ValueError(
+                "article.json is missing "
+                "a valid 'slug'."
+            )
 
         if not isinstance(image_queries, list):
             raise ValueError(
-                "article.json must contain 'image_queries' as a list."
+                "article.json is missing "
+                "the 'image_queries' array."
             )
 
-        image_queries = [
-            str(query).strip()
-            for query in image_queries
-            if str(query).strip()
-        ]
-
-        if len(image_queries) != 5:
+        if len(image_queries) != IMAGE_COUNT:
             raise ValueError(
-                "article.json must contain exactly 5 image_queries."
+                f"article.json must contain exactly "
+                f"{IMAGE_COUNT} image queries."
             )
 
-        IMAGE_DIR.mkdir(parents=True, exist_ok=True)
+        slug = slug.strip()
 
-        images = []
-        used_ids = set()
+        normalized_queries = []
 
-        for index, query in enumerate(image_queries, start=1):
-            print("")
-            print(f"[{index}/5] Searching Pexels: {query}")
-
-            data = search_pexels(api_key, query)
-            photos = data.get("photos", [])
-
-            if not isinstance(photos, list):
+        for index, query in enumerate(
+            image_queries,
+            start=1,
+        ):
+            if not isinstance(query, str):
                 raise ValueError(
-                    "Pexels returned an invalid photos list."
+                    f"Image query {index} must be a string."
                 )
 
-            photo = choose_photo(photos, used_ids)
-            photo_id = photo.get("id")
+            query = query.strip()
 
-            if photo_id is not None:
-                used_ids.add(photo_id)
+            if not query:
+                raise ValueError(
+                    f"Image query {index} is empty."
+                )
 
-            image_path = IMAGE_DIR / f"{slug}-{index}.jpg"
+            if query not in normalized_queries:
+                normalized_queries.append(query)
 
-            download_image(photo["image_url"], image_path)
+        if len(normalized_queries) != IMAGE_COUNT:
+            raise ValueError(
+                "Image queries must be unique."
+            )
 
-            image_url = f"/images/{slug}-{index}.jpg"
+        images = download_all_images(
+            api_key,
+            slug,
+            normalized_queries,
+        )
 
-            image_info = {
-                "file": image_url,
-                "file_path": str(image_path.relative_to(ROOT_DIR)),
-                "query": query,
-                "photographer": photo["photographer"],
-                "photographer_url": photo["photographer_url"],
-                "pexels_url": photo["pexels_url"],
-                "pexels_id": photo["id"],
-            }
-
-            images.append(image_info)
-
-            print(f"Saved: {image_path}")
-            print(f"Photographer: {photo['photographer']}")
-
-        if len(images) != 5:
-            raise RuntimeError("Exactly 5 images were required.")
-
+        article["image_queries"] = normalized_queries
         article["images"] = images
         article["image"] = images[0]["file"]
         article["image_file"] = images[0]["file_path"]
         article["photographer"] = images[0]["photographer"]
         article["photographer_url"] = images[0]["photographer_url"]
         article["pexels_url"] = images[0]["pexels_url"]
+        article["image_source_url"] = images[0]["image_source_url"]
+        article["image_id"] = images[0]["image_id"]
 
         save_article(article)
 
         print("")
         print("=" * 70)
-        print("5 Pexels images downloaded successfully.")
-        print("=" * 70)
+        print("Image metadata saved successfully.")
+        print(f"Article JSON: {ARTICLE_PATH}")
 
-        for index, image in enumerate(images, start=1):
+        for image in images:
             print(
-                f"{index}. {image['file']} — "
-                f"{image['photographer']}"
+                f"{image['index']}. "
+                f"{image['file']} "
+                f"← {image['query']}"
             )
+
+        print("=" * 70)
 
         return 0
 
     except KeyboardInterrupt:
-        print("\nOperation cancelled.", file=sys.stderr)
+        print(
+            "\nOperation cancelled by user.",
+            file=sys.stderr,
+        )
+
         return 130
 
     except Exception as exc:
-        print(f"\nERROR: {exc}", file=sys.stderr)
+        print(
+            f"\nERROR: {exc}",
+            file=sys.stderr,
+        )
+
         return 1
 
 
