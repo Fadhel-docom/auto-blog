@@ -9,15 +9,19 @@
 
     {{ $thumbnail := "" }}
 
-    {{ with .Params.images }}
-      {{ if gt (len .) 0 }}
-        {{ $thumbnail = index . 0 }}
-      {{ end }}
+    {{ with .Params.image }}
+      {{ $thumbnail = . }}
     {{ end }}
 
     {{ if not $thumbnail }}
-      {{ with .Params.image }}
-        {{ $thumbnail = . }}
+      {{ with .Params.images }}
+        {{ if reflect.IsSlice . }}
+          {{ if gt (len .) 0 }}
+            {{ $thumbnail = index . 0 }}
+          {{ end }}
+        {{ else }}
+          {{ $thumbnail = . }}
+        {{ end }}
       {{ end }}
     {{ end }}
 
