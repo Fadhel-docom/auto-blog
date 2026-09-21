@@ -17,21 +17,100 @@
     content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}"
   >
 
-  <meta name="google-site-verification" content="tgAG8aMPl7dBqyp5e4JPtjgKdiwXLdQ967R4OVcW-eM" />
+  <meta
+    name="google-site-verification"
+    content="tgAG8aMPl7dBqyp5e4JPtjgKdiwXLdQ967R4OVcW-eM"
+  />
 
-  <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
+  <link
+    rel="stylesheet"
+    href="{{ "css/custom.css" | relURL }}"
+  >
+
+  {{ if .IsPage }}
+    {{ $authorName := .Site.Params.author | default "Auto Blog" }}
+    {{ $imageURL := "" }}
+
+    {{ with .Params.image }}
+      {{ $imageURL = . | absURL }}
+    {{ end }}
+
+    {{ $articleSchema := dict
+      "@context" "https://schema.org"
+      "@type" "BlogPosting"
+      "headline" .Title
+      "description" .Description
+      "mainEntityOfPage" (dict
+        "@type" "WebPage"
+        "@id" .Permalink
+      )
+      "author" (dict
+        "@type" "Organization"
+        "name" $authorName
+      )
+      "publisher" (dict
+        "@type" "Organization"
+        "name" .Site.Title
+        "url" .Site.BaseURL
+      )
+      "datePublished" .Date
+      "dateModified" .Lastmod
+      "url" .Permalink
+    }}
+
+    {{ if $imageURL }}
+      {{ $articleSchema = merge $articleSchema (dict
+        "image" (slice $imageURL)
+      ) }}
+    {{ end }}
+
+    <script type="application/ld+json">
+      {{ $articleSchema | jsonify | safeHTML }}
+    </script>
+
+    {{ with .Params.faq }}
+      {{ if gt (len .) 0 }}
+        {{ $faqEntities := slice }}
+
+        {{ range . }}
+          {{ $faqEntities = $faqEntities | append (dict
+            "@type" "Question"
+            "name" .question
+            "acceptedAnswer" (dict
+              "@type" "Answer"
+              "text" .answer
+            )
+          ) }}
+        {{ end }}
+
+        {{ $faqSchema := dict
+          "@context" "https://schema.org"
+          "@type" "FAQPage"
+          "mainEntity" $faqEntities
+        }}
+
+        <script type="application/ld+json">
+          {{ $faqSchema | jsonify | safeHTML }}
+        </script>
+      {{ end }}
+    {{ end }}
+  {{ end }}
 
   <script
     data-goatcounter="https://fadhel-blog.goatcounter.com/count"
     async
-    src="//gc.zgo.at/count.js"></script>
+    src="//gc.zgo.at/count.js"
+  ></script>
 </head>
 
 <body>
 
 <header class="site-header">
   <div class="site-container">
-    <a href="{{ "/" | relURL }}" class="site-title">
+    <a
+      href="{{ "/" | relURL }}"
+      class="site-title"
+    >
       {{ .Site.Title }}
     </a>
 
