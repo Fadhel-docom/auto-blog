@@ -25,6 +25,7 @@ MAX_WORDS = 2500
 def find_column(fieldnames, candidates):
     if not fieldnames:
         return None
+
     normalized = {
         str(name).strip().lower(): name
         for name in fieldnames
@@ -45,6 +46,7 @@ def load_keywords():
         raise FileNotFoundError(
             f"Keywords file not found: {KEYWORDS_PATH}"
         )
+
     with KEYWORDS_PATH.open(
         "r",
         encoding="utf-8-sig",
@@ -1044,28 +1046,39 @@ def extract_generated_fields(generated):
 
     raw_tags = generated.get("tags")
 
-    if not isinstance(raw_tags, list):
-        raise ValueError("'tags' must be a list.")
+    if isinstance(raw_tags, list):
+        tags = raw_tags
+    elif isinstance(raw_tags, str):
+        raw_tags = raw_tags.strip()
 
-    tags = []
+        if not raw_tags:
+            raise ValueError("Tags string is empty.")
 
-    for tag in raw_tags:
+        tags = [raw_tags]
+    else:
+        raise ValueError(
+            "'tags' must be a list or string."
+        )
+
+    normalized_tags = []
+
+    for tag in tags:
         if not isinstance(tag, str):
             continue
 
         tag = tag.strip()
 
-        if tag and tag not in tags:
-            tags.append(tag)
+        if tag and tag not in normalized_tags:
+            normalized_tags.append(tag)
 
-    if not tags:
+    if not normalized_tags:
         raise ValueError("Tags list is empty.")
 
     return (
         title,
         meta_description,
         content_markdown,
-        tags,
+        normalized_tags,
     )
 
 
