@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import csv
 import json
 import os
@@ -7,7 +5,7 @@ import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
@@ -17,13 +15,17 @@ IMAGE_DIR = ROOT_DIR / "static" / "images"
 KEYWORDS_PATH = ROOT_DIR / "keywords.csv"
 
 
-def load_article() -> Dict[str, Any]:
+def load_article() -> dict[str, Any]:
+    """Load and validate article.json."""
     if not ARTICLE_PATH.exists():
         raise FileNotFoundError(
-            f"article.json was not found: {ARTICLE_PATH}"
+            f"article.json not found: {ARTICLE_PATH}"
         )
 
-    with ARTICLE_PATH.open("r", encoding="utf-8") as file:
+    with ARTICLE_PATH.open(
+        "r",
+        encoding="utf-8",
+    ) as file:
         article = json.load(file)
 
     if not isinstance(article, dict):
@@ -35,10 +37,11 @@ def load_article() -> Dict[str, Any]:
 
 
 def validate_slug(slug: str) -> str:
-    slug = slug.strip().lower()
+    """Validate and normalize the article slug."""
+    slug = str(slug).strip().lower()
 
     if not slug:
-        raise ValueError("Slug cannot be empty.")
+        raise ValueError("Article slug is empty.")
 
     if not re.fullmatch(
         r"[a-z0-9]+(?:-[a-z0-9]+)*",
@@ -49,69 +52,79 @@ def validate_slug(slug: str) -> str:
     return slug
 
 
-def toml_string(value: str) -> str:
-    return json.dumps(str(value), ensure_ascii=False)
+def toml_string(value: Any) -> str:
+    """Convert a Python value to a TOML basic string."""
+    value = str(value)
+    value = value.replace("\\", "\\\\")
+    value = value.replace('"', '\\"')
+    value = value.replace("\r", "\\r")
+    value = value.replace("\n", "\\n")
+    return f'"{value}"'
 
 
-def toml_array(values: List[str]) -> str:
+def toml_array(values: list[Any]) -> str:
+    """Convert a list of values to a TOML string array."""
     return "[" + ", ".join(
         toml_string(value) for value in values
     ) + "]"
 
 
-def normalize_tags(tags: Any) -> List[str]:
-    if not isinstance(tags, list):
-        raise ValueError("Article tags must be a list.")
+def normalize_tags(tags: Any) -> list[str]:
+    """Normalize article tags."""
+    if tags is None:
+        return []
 
-    cleaned = []
+    if isinstance(tags, str):
+        tags = [tags]
+
+    if not isinstance(tags, list):
+        raise ValueError("Article 'tags' must be a list.")
+
+    normalized = []
 
     for tag in tags:
-        if not isinstance(tag, str):
-            continue
+        tag = str(tag).strip()
+        if tag:
+            normalized.append(tag)
 
-        tag = tag.strip()
-
-        if tag and tag not in cleaned:
-            cleaned.append(tag)
-
-    if not cleaned:
-        raise ValueError(
-            "Article must contain at least one tag."
-        )
-
-    return cleaned
+    return normalized
 
 
-def save_post(post_path: Path, content: str) -> None:
+def save_post(
+    post_path: Path,
+    content: str,
+) -> None:
+    """Save the generated Hugo post."""
     POSTS_DIR.mkdir(parents=True, exist_ok=True)
-
-    temp_path = post_path.with_suffix(".md.tmp")
-
-    with temp_path.open(
-        "w",
-        encoding="utf-8",
-        newline="\n",
-    ) as file:
-        file.write(content)
-
-    temp_path.replace(post_path)
+    post_path.write_text(content, encoding="utf-8")
 
 
 def find_column(
-    fieldnames: List[str],
-    target: str,
-) -> Optional[str]:
-    target = target.strip().lower()
+    fieldnames: list[str],
+    candidates: list[str],
+) -> str | None:
+    """Find a CSV column using case-insensitive matching."""
+    normalized = {
+        field.strip().lower(): field
+        for field in fieldnames
+        if field
+    }
 
-    for field in fieldnames:
-        if field.strip().lower() == target:
-            return field
+    for candidate in candidates:
+        key = candidate.strip().lower()
+        if key in normalized:
+            return normalized[key]
 
     return None
 
 
-def update_keywords_csv(keyword: str, slug: str) -> None:
+def update_keywords_csv(
+    keyword: str,
+    slug: str,
+) -> None:
+    """Mark the published keyword in keywords.csv."""
     if not KEYWORDS_PATH.exists():
+        print("keywords.csv not found; skipping keyword update.")
         return
 
     with KEYWORDS_PATH.open(
@@ -122,61 +135,59 @@ def update_keywords_csv(keyword: str, slug: str) -> None:
         reader = csv.DictReader(file)
 
         if not reader.fieldnames:
-            raise ValueError(
-                "keywords.csv has no header row."
-            )
+            print("keywords.csv has no header; skipping.")
+            return
 
-        fieldnames = reader.fieldnames
+        fieldnames = list(reader.fieldnames)
         rows = list(reader)
 
-    keyword_column = find_column(fieldnames, "Keyword")
-    status_column = find_column(fieldnames, "Status")
-    url_column = find_column(fieldnames, "URL")
-    date_column = find_column(fieldnames, "Date")
-
-    if not keyword_column or not status_column:
-        raise ValueError(
-            "keywords.csv must contain Keyword and Status columns."
-        )
-
-    site_url = os.getenv("SITE_URL", "").strip().rstrip("/")
-    relative_url = f"/posts/{slug}/"
-
-    post_url = (
-        f"{site_url}{relative_url}"
-        if site_url
-        else relative_url
+    keyword_column = find_column(
+        fieldnames,
+        ["keyword", "keywords", "topic"],
+    )
+    status_column = find_column(fieldnames, ["status"])
+    slug_column = find_column(fieldnames, ["slug"])
+    published_at_column = find_column(
+        fieldnames,
+        ["published_at", "published date", "publication_date"],
     )
 
-    current_date = datetime.now(
-        timezone.utc
-    ).date().isoformat()
+    if not keyword_column:
+        print("No keyword column found; skipping.")
+        return
 
-    matched = False
+    target_keyword = str(keyword).strip().lower()
+    updated = False
 
     for row in rows:
         row_keyword = str(
             row.get(keyword_column, "")
-        ).strip()
+        ).strip().lower()
 
-        if row_keyword.casefold() == keyword.casefold():
+        if row_keyword != target_keyword:
+            continue
+
+        if status_column:
             row[status_column] = "published"
 
-            if url_column:
-                row[url_column] = post_url
+        if slug_column:
+            row[slug_column] = slug
 
-            if date_column:
-                row[date_column] = current_date
+        if published_at_column:
+            row[published_at_column] = (
+                datetime.now(timezone.utc)
+                .replace(microsecond=0)
+                .isoformat()
+            )
 
-            matched = True
-            break
+        updated = True
+        break
 
-    if not matched:
-        raise ValueError(
-            f"Keyword '{keyword}' was not found in keywords.csv."
-        )
+    if not updated:
+        print(f"Keyword not found in keywords.csv: {keyword}")
+        return
 
-    temp_path = KEYWORDS_PATH.with_suffix(".csv.tmp")
+    temp_path = KEYWORDS_PATH.with_suffix(".tmp.csv")
 
     with temp_path.open(
         "w",
@@ -191,183 +202,97 @@ def update_keywords_csv(keyword: str, slug: str) -> None:
         writer.writerows(rows)
 
     temp_path.replace(KEYWORDS_PATH)
-
-
-def get_post_date(path: Path) -> datetime:
-    try:
-        text = path.read_text(encoding="utf-8")
-
-        match = re.search(
-            r"(?m)^date\s*=\s*[\"']([^\"']+)",
-            text,
-        )
-
-        if match:
-            value = match.group(1)
-
-            try:
-                return datetime.fromisoformat(
-                    value.replace("Z", "+00:00")
-                )
-            except ValueError:
-                pass
-
-    except OSError:
-        pass
-
-    return datetime.fromtimestamp(
-        path.stat().st_mtime,
-        tz=timezone.utc,
-    )
-
-
-def get_related_posts(current_slug: str) -> List[Dict[str, str]]:
-    if not POSTS_DIR.exists():
-        return []
-
-    posts = []
-
-    for path in POSTS_DIR.glob("*.md"):
-        if path.stem == current_slug:
-            continue
-
-        try:
-            text = path.read_text(encoding="utf-8")
-        except OSError:
-            continue
-
-        title_match = re.search(
-            r"(?m)^title\s*=\s*[\"'](.+?)[\"']\s*$",
-            text,
-        )
-
-        if not title_match:
-            title_match = re.search(
-                r"(?m)^title:\s*[\"']?(.+?)[\"']?\s*$",
-                text,
-            )
-
-        title = (
-            title_match.group(1).strip()
-            if title_match
-            else path.stem.replace("-", " ").title()
-        )
-
-        posts.append(
-            {
-                "title": title,
-                "slug": path.stem,
-                "date": get_post_date(path),
-            }
-        )
-
-    posts.sort(
-        key=lambda item: item["date"],
-        reverse=True,
-    )
-
-    return posts[:3]
-
-
-def build_related_posts_markdown(current_slug: str) -> str:
-    related = get_related_posts(current_slug)
-
-    if not related:
-        return ""
-
-    lines = [
-        "",
-        "",
-        "## Related Posts",
-        "",
-    ]
-
-    for post in related:
-        lines.append(
-            f"- [{post['title']}]"
-            f"(/posts/{post['slug']}/)"
-        )
-
-    return "\n".join(lines)
+    print(f"Updated keywords.csv: {keyword}")
 
 
 def normalize_images(
-    article: Dict[str, Any],
+    article: dict[str, Any],
     slug: str,
-) -> List[Dict[str, Any]]:
-    raw_images = article.get("images")
+) -> list[dict[str, Any]]:
+    """Validate and normalize the five downloaded images."""
+    images = article.get("images")
 
-    if not isinstance(raw_images, list):
+    if not isinstance(images, list):
         raise ValueError(
             "article.json must contain an 'images' array."
         )
 
-    if len(raw_images) != 5:
-        raise ValueError(
-            "article.json must contain exactly 5 images."
-        )
+    if len(images) != 5:
+        raise ValueError("Exactly 5 images are required.")
 
-    images = []
+    normalized = []
 
-    for index, item in enumerate(raw_images, start=1):
-        if not isinstance(item, dict):
-            raise ValueError(f"Image {index} is invalid.")
+    for index, image in enumerate(images, start=1):
+        if not isinstance(image, dict):
+            raise ValueError(
+                f"Image {index} must be an object."
+            )
 
-        image_url = str(item.get("file", "")).strip()
-
-        if not image_url:
-            image_url = f"/images/{slug}-{index}.jpg"
-
-        expected_path = IMAGE_DIR / f"{slug}-{index}.jpg"
+        expected_filename = f"{slug}-{index}.jpg"
+        expected_path = IMAGE_DIR / expected_filename
 
         if not expected_path.exists():
             raise FileNotFoundError(
-                f"Missing image {index}: {expected_path}"
+                f"Image {index} not found: {expected_path}"
             )
 
-        if expected_path.stat().st_size == 0:
+        if expected_path.stat().st_size <= 0:
             raise ValueError(
                 f"Image {index} is empty: {expected_path}"
             )
 
-        images.append({**item, "file": image_url})
+        file_url = str(image.get("file", "")).strip()
 
-    return images
+        if not file_url:
+            file_url = f"/images/{expected_filename}"
+
+        normalized_image = dict(image)
+        normalized_image["file"] = file_url
+        normalized_image["file_path"] = (
+            str(
+                image.get(
+                    "file_path",
+                    f"static/images/{expected_filename}",
+                )
+            ).strip()
+            or f"static/images/{expected_filename}"
+        )
+
+        normalized.append(normalized_image)
+
+    return normalized
 
 
 def main() -> int:
+    """Publish article.json as a Hugo post."""
     try:
-        print("=" * 70)
-        print("Hugo publisher")
-        print("=" * 70)
-
         article = load_article()
 
         keyword = str(article.get("keyword", "")).strip()
-        title = str(article.get("title", "")).strip()
-        slug = validate_slug(str(article.get("slug", "")))
-        description = str(
-            article.get("meta_description", "")
-        ).strip()
-        content_markdown = str(
-            article.get("content_markdown", "")
-        ).strip()
-
         if not keyword:
             raise ValueError(
                 "article.json is missing 'keyword'."
             )
 
+        title = str(article.get("title", "")).strip()
         if not title:
             raise ValueError(
                 "article.json is missing 'title'."
             )
 
+        slug = validate_slug(article.get("slug", ""))
+
+        description = str(
+            article.get("meta_description", "")
+        ).strip()
         if not description:
             raise ValueError(
                 "article.json is missing 'meta_description'."
             )
 
+        content_markdown = str(
+            article.get("content_markdown", "")
+        ).strip()
         if not content_markdown:
             raise ValueError(
                 "article.json is missing 'content_markdown'."
@@ -384,33 +309,29 @@ def main() -> int:
         image_urls = [image["file"] for image in images]
         first_image = image_urls[0]
 
-        related_markdown = build_related_posts_markdown(slug)
-
-        if related_markdown:
-            content_markdown = (
-                content_markdown.rstrip() + related_markdown
-            )
-
-        publication_date = datetime.now(
-            timezone.utc
-        ).isoformat()
+        publication_date = (
+            datetime.now(timezone.utc)
+            .replace(microsecond=0)
+            .isoformat()
+        )
 
         categories = [
             "Home Organization",
             "Small-Space Living",
         ]
 
+        # Add image credits to the end of the article.
+        # Related Posts are NOT added here.
+        # They are rendered by layouts/_default/single.html.
         image_attribution = []
 
         for index, image in enumerate(images, start=1):
             photographer = str(
                 image.get("photographer", "")
             ).strip()
-
             photographer_url = str(
                 image.get("photographer_url", "")
             ).strip()
-
             pexels_url = str(
                 image.get("pexels_url", "")
             ).strip()
@@ -481,13 +402,11 @@ def main() -> int:
         print(f"Images: {len(image_urls)}")
 
         for index, image_url in enumerate(
-            image_urls,
-            start=1,
+            image_urls, start=1
         ):
             print(f"  {index}. {image_url}")
 
-        related_count = len(get_related_posts(slug))
-        print(f"Related posts: {related_count}")
+        print("Related Posts: rendered by single.html")
         print("Keyword status: published")
 
         return 0
