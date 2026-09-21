@@ -7,9 +7,13 @@
 
     <p class="post-meta">
       {{ .Date.Format "January 2, 2006" }}
+
       {{ with .Params.categories }}
         · {{ delimit . ", " }}
       {{ end }}
+
+      · {{ .ReadingTime }} min read
+      · {{ .WordCount }} words
     </p>
   </header>
 
@@ -93,10 +97,10 @@
 
           {{ if $relatedImage }}
             {{ $relatedPath := strings.TrimPrefix "/" $relatedImage }}
-            <a href="{{ .RelPermalink }}" aria-label="{{ .Title }}">
+            <a href="{{ .RelPermalink }}" aria-label="Read: {{ .Title }}">
               <img
                 src="{{ $relatedPath | relURL }}"
-                alt="{{ .Title }}"
+                alt=""
                 loading="lazy"
                 decoding="async"
               >
