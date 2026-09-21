@@ -4,6 +4,7 @@
 
   <header class="post-header">
     <h1 class="post-title">{{ .Title }}</h1>
+
     <p class="post-meta">
       {{ .Date.Format "January 2, 2006" }}
       {{ with .Params.categories }}
@@ -13,6 +14,7 @@
   </header>
 
   {{ $heroImage := .Params.image }}
+
   {{ if not $heroImage }}
     {{ with .Params.images }}
       {{ if gt (len .) 0 }}
@@ -22,9 +24,14 @@
   {{ end }}
 
   {{ if $heroImage }}
-    {{ $hero := strings.TrimPrefix "/" $heroImage }}
     <figure class="post-hero">
-      <img src="{{ $hero | absURL }}" alt="{{ .Title }}" class="post-hero-image">
+      <img
+        src="{{ $heroImage | relURL }}"
+        alt="{{ .Title }}"
+        class="post-hero-image"
+        loading="eager"
+        decoding="async"
+      >
     </figure>
   {{ end }}
 
@@ -48,6 +55,7 @@
     <h2>Related Posts</h2>
 
     <div class="related-posts-grid">
+
       {{ $current := . }}
       {{ $relatedPosts := where site.RegularPages "Section" "posts" }}
       {{ $relatedPosts = where $relatedPosts "RelPermalink" "ne" $current.RelPermalink }}
@@ -55,6 +63,7 @@
       {{ range first 3 $relatedPosts.ByDate.Reverse }}
 
         {{ $relatedImage := .Params.image }}
+
         {{ if not $relatedImage }}
           {{ with .Params.images }}
             {{ if gt (len .) 0 }}
@@ -64,22 +73,37 @@
         {{ end }}
 
         <article class="related-post-card">
+
           {{ if $relatedImage }}
-            {{ $imagePath := strings.TrimPrefix "/" $relatedImage }}
-            <a href="{{ .RelPermalink }}" aria-label="{{ .Title }}">
-              <img src="{{ $imagePath | absURL }}" alt="{{ .Title }}" loading="lazy" decoding="async">
+            <a
+              href="{{ .RelPermalink }}"
+              aria-label="{{ .Title }}"
+            >
+              <img
+                src="{{ $relatedImage | relURL }}"
+                alt="{{ .Title }}"
+                loading="lazy"
+                decoding="async"
+              >
             </a>
           {{ end }}
 
           <div class="related-post-card-content">
-            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            <h3>
+              <a href="{{ .RelPermalink }}">
+                {{ .Title }}
+              </a>
+            </h3>
+
             {{ with .Description }}
               <p>{{ . | plainify | truncate 120 }}</p>
             {{ end }}
           </div>
+
         </article>
 
       {{ end }}
+
     </div>
   </section>
 
