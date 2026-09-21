@@ -1,10 +1,11 @@
 {{ define "main" }}
 
   {{ $posts := where .Site.RegularPages "Section" "posts" }}
+  {{ $sorted := sort $posts "Date" "desc" }}
 
-  {{ if $posts }}
+  {{ if $sorted }}
     <ul class="post-list">
-      {{ range $posts.ByDate.Reverse }}
+      {{ range $sorted }}
         <li class="post-list-item">
           <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
           <p class="post-meta">{{ .Date.Format "January 2, 2006" }}</p>
