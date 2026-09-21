@@ -24,9 +24,10 @@
   {{ end }}
 
   {{ if $heroImage }}
+    {{ $heroPath := strings.TrimPrefix "/" $heroImage }}
     <figure class="post-hero">
       <img
-        src="{{ $heroImage | relURL }}"
+        src="{{ $heroPath | relURL }}"
         alt="{{ .Title }}"
         class="post-hero-image"
         loading="eager"
@@ -74,12 +75,13 @@
         <article class="related-post-card">
 
           {{ if $relatedImage }}
+            {{ $relatedPath := strings.TrimPrefix "/" $relatedImage }}
             <a
               href="{{ .RelPermalink }}"
               aria-label="{{ .Title }}"
             >
               <img
-                src="{{ $relatedImage | relURL }}"
+                src="{{ $relatedPath | relURL }}"
                 alt="{{ .Title }}"
                 loading="lazy"
                 decoding="async"
