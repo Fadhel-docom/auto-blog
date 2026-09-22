@@ -6,6 +6,7 @@ import csv
 import json
 import re
 import time
+
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -50,7 +51,7 @@ def load_keywords():
     with KEYWORDS_PATH.open(
         "r",
         encoding="utf-8-sig",
-        newline=""
+        newline="",
     ) as file:
         reader = csv.DictReader(file)
         fieldnames = reader.fieldnames
@@ -79,14 +80,10 @@ def load_keywords():
     )
 
     if not keyword_col:
-        raise ValueError(
-            "Could not find keyword column."
-        )
+        raise ValueError("Could not find keyword column.")
 
     if not status_col:
-        raise ValueError(
-            "Could not find status column."
-        )
+        raise ValueError("Could not find status column.")
 
     return (
         rows,
@@ -102,14 +99,13 @@ def save_keywords(rows, fieldnames):
     with temp_path.open(
         "w",
         encoding="utf-8",
-        newline=""
+        newline="",
     ) as file:
         writer = csv.DictWriter(
             file,
             fieldnames=fieldnames,
             extrasaction="ignore",
         )
-
         writer.writeheader()
         writer.writerows(rows)
 
@@ -117,7 +113,12 @@ def save_keywords(rows, fieldnames):
 
 
 def get_first_pending_keyword():
-    rows, fieldnames, keyword_col, status_col = load_keywords()
+    (
+        rows,
+        fieldnames,
+        keyword_col,
+        status_col,
+    ) = load_keywords()
 
     for row in rows:
         keyword = str(
@@ -137,9 +138,7 @@ def get_first_pending_keyword():
                 status_col,
             )
 
-    raise RuntimeError(
-        "No pending keyword found."
-    )
+    raise RuntimeError("No pending keyword found.")
 
 
 def mark_keyword_processing(
@@ -153,9 +152,7 @@ def mark_keyword_processing(
 
     for row in rows:
         if (
-            str(
-                row.get(keyword_col, "")
-            ).strip()
+            str(row.get(keyword_col, "")).strip()
             == keyword
         ):
             row[status_col] = "processing"
@@ -163,68 +160,45 @@ def mark_keyword_processing(
             break
 
     if not found:
-        raise ValueError(
-            f"Keyword not found: {keyword}"
-        )
+        raise ValueError(f"Keyword not found: {keyword}")
 
-    save_keywords(
-        rows,
-        fieldnames,
-    )
+    save_keywords(rows, fieldnames)
 
 
 def mark_keyword_pending(keyword):
-    rows, fieldnames, keyword_col, status_col = (
-        load_keywords()
-    )
+    (
+        rows,
+        fieldnames,
+        keyword_col,
+        status_col,
+    ) = load_keywords()
 
     for row in rows:
         if (
-            str(
-                row.get(keyword_col, "")
-            ).strip()
+            str(row.get(keyword_col, "")).strip()
             == keyword
         ):
             row[status_col] = "pending"
             break
 
-    save_keywords(
-        rows,
-        fieldnames,
-    )
+    save_keywords(rows, fieldnames)
 
 
 def slugify(text):
     stop_words = {
-        "for",
-        "to",
-        "of",
-        "the",
-        "a",
-        "an",
-        "in",
-        "on",
-        "at",
-        "and",
-        "or",
-        "with",
-        "how",
-        "your",
-        "this",
-        "that",
-        "from",
+        "for", "to", "of", "the", "a", "an",
+        "in", "on", "at", "and", "or", "with",
+        "how", "your", "this", "that", "from",
         "into",
     }
 
     text = str(text).strip().lower()
-
     text = re.sub(
         r"[^\w\s-]",
         "",
         text,
         flags=re.UNICODE,
     )
-
     text = re.sub(
         r"[-\s]+",
         "-",
@@ -235,7 +209,6 @@ def slugify(text):
         return ""
 
     raw_words = text.split("-")
-
     useful_words = []
 
     for word in raw_words:
@@ -303,7 +276,11 @@ def get_exception_status_code(exc):
     response = getattr(exc, "response", None)
 
     if response is not None:
-        code = getattr(response, "status_code", None)
+        code = getattr(
+            response,
+            "status_code",
+            None,
+        )
 
         if code is not None:
             return code
@@ -329,7 +306,6 @@ def extract_json_from_response(response_text):
             text,
             flags=re.IGNORECASE,
         )
-
         text = re.sub(
             r"\s*```$",
             "",
@@ -338,7 +314,6 @@ def extract_json_from_response(response_text):
 
     try:
         return json.loads(text)
-
     except json.JSONDecodeError:
         start = text.find("{")
         end = text.rfind("}")
@@ -349,10 +324,7 @@ def extract_json_from_response(response_text):
             )
 
         try:
-            return json.loads(
-                text[start:end + 1]
-            )
-
+            return json.loads(text[start:end + 1])
         except json.JSONDecodeError as exc:
             raise ValueError(
                 f"Invalid JSON: {exc}"
@@ -363,16 +335,13 @@ def pick_specific_angle(api_key, keyword):
     client = Groq(api_key=api_key)
 
     system_prompt = """
-You are an expert editorial strategist for an English-language
-website about Home Organization & Small-Space Living.
+You are an expert editorial strategist for an English-language website about Home Organization & Small-Space Living.
 
-Your job is to turn broad SEO keywords into specific, useful,
-practical article angles.
+Your job is to turn broad SEO keywords into specific, useful, practical article angles.
 
 For the supplied keyword:
 1. Generate exactly 5 distinct article angles.
-2. Each angle must be substantially narrower and more specific
-   than the original keyword.
+2. Each angle must be substantially narrower and more specific than the original keyword.
 3. Avoid generic angles such as:
    - "best ideas"
    - "complete guide"
@@ -387,16 +356,11 @@ For the supplied keyword:
    - measurements or dimensions
    - renter-friendly limitations
    - a specific before/after problem
-5. The angle should be specific enough that two writers using
-   the same keyword would be unlikely to produce the same article.
-6. The angle must still be useful to an ordinary homeowner or
-   renter and must fit the site's Home Organization &
-   Small-Space Living niche.
-7. Do not invent statistics, studies, expert quotes, or factual
-   claims.
+5. The angle should be specific enough that two writers using the same keyword would be unlikely to produce the same article.
+6. The angle must still be useful to an ordinary homeowner or renter and must fit the site's Home Organization & Small-Space Living niche.
+7. Do not invent statistics, studies, expert quotes, or factual claims.
 
-After generating the five angles, select the SINGLE angle that
-is the most specific, concrete, useful, and actionable.
+After generating the five angles, select the SINGLE angle that is the most specific, concrete, useful, and actionable.
 
 Return ONLY valid JSON in exactly this structure:
 
@@ -413,12 +377,9 @@ Return ONLY valid JSON in exactly this structure:
 """.strip()
 
     user_prompt = f"""
-Focus keyword:
+Focus keyword: {keyword}
 
-{keyword}
-
-Generate exactly five narrow article angles for this keyword,
-then select the most specific and actionable one.
+Generate exactly five narrow article angles for this keyword, then select the most specific and actionable one.
 
 Return only the required JSON object.
 """.strip()
@@ -452,9 +413,7 @@ Return only the required JSON object.
             )
 
             if not response.choices:
-                raise ValueError(
-                    "No choices returned."
-                )
+                raise ValueError("No choices returned.")
 
             content = getattr(
                 response.choices[0].message,
@@ -463,13 +422,9 @@ Return only the required JSON object.
             )
 
             if not content:
-                raise ValueError(
-                    "Empty message."
-                )
+                raise ValueError("Empty message.")
 
-            result = extract_json_from_response(
-                content
-            )
+            result = extract_json_from_response(content)
 
             if not isinstance(result, dict):
                 raise ValueError(
@@ -499,14 +454,9 @@ Return only the required JSON object.
                     "Groq must return exactly 5 unique angles."
                 )
 
-            selected_angle = result.get(
-                "selected_angle"
-            )
+            selected_angle = result.get("selected_angle")
 
-            if not isinstance(
-                selected_angle,
-                str,
-            ):
+            if not isinstance(selected_angle, str):
                 raise ValueError(
                     "'selected_angle' must be a string."
                 )
@@ -528,31 +478,19 @@ Return only the required JSON object.
                 start=1,
             ):
                 marker = (
-                    "  <-- SELECTED"
+                    " <-- SELECTED"
                     if angle == selected_angle
                     else ""
                 )
-
-                print(
-                    f"{index}. {angle}{marker}"
-                )
+                print(f"{index}. {angle}{marker}")
 
             return selected_angle
 
         except Exception as exc:
             last_exception = exc
+            status_code = get_exception_status_code(exc)
 
-            status_code = get_exception_status_code(
-                exc
-            )
-
-            retryable = {
-                429,
-                500,
-                502,
-                503,
-                504,
-            }
+            retryable = {429, 500, 502, 503, 504}
 
             if (
                 status_code is not None
@@ -563,20 +501,13 @@ Return only the required JSON object.
             if attempt >= MAX_RETRIES:
                 break
 
-            delay = min(
-                2 ** (attempt - 1),
-                30,
-            )
+            delay = min(2 ** (attempt - 1), 30)
 
             print(
                 f"Groq angle selection failed: {exc}",
                 file=sys.stderr,
             )
-
-            print(
-                f"Retry in {delay}s..."
-            )
-
+            print(f"Retry in {delay}s...")
             time.sleep(delay)
 
     raise RuntimeError(
@@ -593,12 +524,9 @@ def generate_with_groq(
     client = Groq(api_key=api_key)
 
     system_prompt = """
-You are an expert long-form SEO content writer and practical
-home-organization editor for an English-language website about
-Home Organization & Small-Space Living.
+You are an expert long-form SEO content writer and practical home-organization editor for an English-language website about Home Organization & Small-Space Living.
 
-Your job is to create ONE genuinely useful, original article
-that solves a specific reader problem.
+Your job is to create ONE genuinely useful, original article that solves a specific reader problem.
 
 EDITORIAL DIRECTION:
 - Start from the supplied focus keyword.
@@ -610,6 +538,14 @@ LENGTH:
 - Write approximately 1500-1800 words of actual article content.
 - Never intentionally produce a short article.
 - Before returning the JSON, internally verify the article length.
+
+TITLE REQUIREMENT:
+- The article title must be concise, specific, and easy to scan.
+- Aim for 45-65 characters.
+- Never exceed 70 characters unless the exact focus keyword makes this impossible.
+- Avoid unnecessary words, filler, and long list-style phrasing.
+- Keep the main topic or benefit clear within the first 8-10 words.
+- Preserve the exact focus keyword naturally in the title.
 
 STRUCTURE:
 - Use 5-7 useful H2 headings.
@@ -623,13 +559,10 @@ STRUCTURE:
 - End with a practical conclusion and a natural CTA.
 
 HEADING FORMAT RULES (CRITICAL):
-- In all H2 and H3 headings, use ONLY ASCII characters:
-  A-Z, a-z, 0-9, spaces, and regular hyphen (-).
-- NEVER use en-dash (–), em-dash (—), or non-breaking hyphen (-).
-  Use regular hyphen (-) instead.
+- In all H2 and H3 headings, use ONLY ASCII characters: A-Z, a-z, 0-9, spaces, and regular hyphen (-).
+- NEVER use en-dash (–), em-dash (—), or non-breaking hyphen (-). Use regular hyphen (-) instead.
 - Replace "&" with the word "and" in headings.
-- Do NOT use parentheses (), brackets [], or special punctuation
-  in headings.
+- Do NOT use parentheses (), brackets [], or special punctuation in headings.
 - Use "Step 1 - Title" format (regular hyphen with spaces around it).
 - Keep headings short (under 60 characters).
 
@@ -638,8 +571,7 @@ CONTENT QUALITY:
 - Include 3-5 concrete examples relevant to real homes.
 - Include useful measurements or dimensions where appropriate.
 - Include common mistakes, trade-offs, or considerations.
-- Include approximately 3 generic product recommendations
-  without inventing brands, prices, or reviews.
+- Include approximately 3 generic product recommendations without inventing brands, prices, or reviews.
 - Avoid vague advice.
 - Avoid repetitive tips.
 
@@ -656,8 +588,7 @@ ACCURACY:
 
 IMAGES:
 - DO NOT generate image queries in this step.
-- Image queries will be generated in a separate step after
-  the complete article and its H2 sections are available.
+- Image queries will be generated in a separate step after the complete article and its H2 sections are available.
 
 OUTPUT:
 Return ONLY one valid JSON object.
@@ -673,25 +604,19 @@ Do not wrap the JSON in Markdown code fences.
 """.strip()
 
     user_prompt = f"""
-Write a complete long-form SEO article for the following
-focus keyword:
+Write a complete long-form SEO article for the following focus keyword:
 
 {keyword}
 
 SPECIFIC ARTICLE ANGLE:
 {specific_angle}
 
-Website niche:
-Home Organization & Small-Space Living
+Website niche: Home Organization & Small-Space Living
 
-The specific angle above is mandatory.
-Do NOT write a generic article about "{keyword}".
+The specific angle above is mandatory. Do NOT write a generic article about "{keyword}".
 
 The article must be approximately 1500-1800 words.
-
-Use the exact focus keyword naturally in the title and
-introduction.
-
+Use the exact focus keyword naturally in the title and introduction.
 Do not generate image queries yet.
 
 Return only the required JSON object.
@@ -726,9 +651,7 @@ Return only the required JSON object.
             )
 
             if not response.choices:
-                raise ValueError(
-                    "No choices returned."
-                )
+                raise ValueError("No choices returned.")
 
             content = getattr(
                 response.choices[0].message,
@@ -737,35 +660,20 @@ Return only the required JSON object.
             )
 
             if not content:
-                raise ValueError(
-                    "Empty message."
-                )
+                raise ValueError("Empty message.")
 
-            generated = extract_json_from_response(
-                content
-            )
+            generated = extract_json_from_response(content)
 
             if not isinstance(generated, dict):
-                raise ValueError(
-                    "Not a JSON object."
-                )
+                raise ValueError("Not a JSON object.")
 
             return generated
 
         except Exception as exc:
             last_exception = exc
+            status_code = get_exception_status_code(exc)
 
-            status_code = get_exception_status_code(
-                exc
-            )
-
-            retryable = {
-                429,
-                500,
-                502,
-                503,
-                504,
-            }
+            retryable = {429, 500, 502, 503, 504}
 
             if (
                 status_code is not None
@@ -776,20 +684,13 @@ Return only the required JSON object.
             if attempt >= MAX_RETRIES:
                 break
 
-            delay = min(
-                2 ** (attempt - 1),
-                30,
-            )
+            delay = min(2 ** (attempt - 1), 30)
 
             print(
                 f"Groq article generation failed: {exc}",
                 file=sys.stderr,
             )
-
-            print(
-                f"Retry in {delay}s..."
-            )
-
+            print(f"Retry in {delay}s...")
             time.sleep(delay)
 
     raise RuntimeError(
@@ -800,8 +701,8 @@ Return only the required JSON object.
 
 def extract_h2_sections(content):
     lines = str(content).splitlines()
-
     sections = []
+
     current_heading = None
     current_body = []
 
@@ -852,12 +753,8 @@ def extract_h2_sections(content):
                         }
                     )
 
-                current_heading = match.group(
-                    1
-                ).strip()
-
+                current_heading = match.group(1).strip()
                 current_body = []
-
                 continue
 
         if current_heading is not None:
@@ -881,9 +778,7 @@ def generate_image_queries(
     title,
     content_markdown,
 ):
-    sections = extract_h2_sections(
-        content_markdown
-    )
+    sections = extract_h2_sections(content_markdown)
 
     if len(sections) < 4:
         raise ValueError(
@@ -892,7 +787,6 @@ def generate_image_queries(
         )
 
     selected_sections = sections[:4]
-
     section_payload = []
 
     for index, section in enumerate(
@@ -900,7 +794,6 @@ def generate_image_queries(
         start=1,
     ):
         body = section["body"]
-
         body = re.sub(
             r"\n{3,}",
             "\n\n",
@@ -910,92 +803,67 @@ def generate_image_queries(
         section_payload.append(
             f"""
 SECTION {index}
-
-H2:
-{section["heading"]}
-
+H2: {section["heading"]}
 SECTION CONTENT:
 {body}
 """.strip()
         )
 
-    sections_text = "\n\n".join(
-        section_payload
-    )
+    sections_text = "\n\n".join(section_payload)
 
     system_prompt = """
-You are a professional visual content editor for an
-English-language Home Organization & Small-Space Living website.
+You are a professional visual content editor for an English-language Home Organization & Small-Space Living website.
 
-Your job is to create exactly 5 highly relevant, visually
-distinct Pexels search queries AFTER reading a completed article.
+Your job is to create exactly 5 highly relevant, visually distinct Pexels search queries AFTER reading a completed article.
 
-The five queries will be used as separate images, so visual
-diversity is mandatory. Do not create five images that show
-essentially the same room, composition, viewpoint, or type of scene.
+The five queries will be used as separate images, so visual diversity is mandatory. Do not create five images that show essentially the same room, composition, viewpoint, or type of scene.
 
 QUERY STRUCTURE:
+
 1. Query 1: HERO
    - Represents the overall article topic.
    - MUST be a WIDE-SHOT, visually appealing editorial scene.
    - Think magazine-cover or feature-article hero photography.
-   - Show the whole relevant room, space, or living situation
-     rather than a close-up detail.
+   - Show the whole relevant room, space, or living situation rather than a close-up detail.
    - Use a natural, realistic home environment with clear context.
-   - The composition should leave enough visual breathing room
-     and should work well as a blog hero image.
-   - Do NOT make the hero a close-up of a single object,
-     container, drawer, shelf, or small detail.
+   - The composition should leave enough visual breathing room and should work well as a blog hero image.
+   - Do NOT make the hero a close-up of a single object, container, drawer, shelf, or small detail.
 
 2. Queries 2-5:
    - Each represents one of the four supplied H2 sections.
    - Each must be strongly grounded in the actual section content.
-   - Each should show a concrete, photographable situation
-     rather than merely repeating the section title.
+   - Each should show a concrete, photographable situation rather than merely repeating the section title.
 
 VISUAL DIVERSITY:
 - The five queries must be VISUALLY DIVERSE.
-- Vary the room, setting, viewpoint, composition, or type of
-  organization problem whenever the article allows it.
-- Mix wide room scenes, medium-distance practical scenes,
-  and closer detail-oriented scenes where appropriate.
-- Avoid repeatedly showing the same type of white shelf,
-  storage basket, closet, or neatly arranged room.
+- Vary the room, setting, viewpoint, composition, or type of organization problem whenever the article allows it.
+- Mix wide room scenes, medium-distance practical scenes, and closer detail-oriented scenes where appropriate.
+- Avoid repeatedly showing the same type of white shelf, storage basket, closet, or neatly arranged room.
 - Avoid five nearly identical "organized home" photographs.
-- If a section concerns a specific object or technique, show
-  that object or technique in use rather than repeating a
-  generic organized-room image.
-- The hero should have the broadest visual context; the
-  section images should become more specific.
+- If a section concerns a specific object or technique, show that object or technique in use rather than repeating a generic organized-room image.
+- The hero should have the broadest visual context; the section images should become more specific.
 
 PRACTICAL VISUAL RULES:
 - Return exactly 5 unique queries.
 - Every query must be concise English.
 - Every query must be suitable for Pexels.
-- Prefer concrete visual objects, rooms, storage solutions,
-  furniture, containers, layouts, or real-life scenes.
-- Describe scenes that are realistically searchable as stock
-  photography.
+- Prefer concrete visual objects, rooms, storage solutions, furniture, containers, layouts, or real-life scenes.
+- Describe scenes that are realistically searchable as stock photography.
 - Use specific visual nouns and useful descriptive modifiers.
-- Avoid abstract concepts such as "organization tips",
-  "minimalism", "better living", or "smart storage" by themselves.
+- Avoid abstract concepts such as "organization tips", "minimalism", "better living", or "smart storage" by themselves.
 - Avoid generic queries such as "home organization".
 - Do not use photographer names.
 - Do not use quotation marks around queries.
 - Do not include instructions to Pexels or camera settings.
-- Do not mention article titles, H2 labels, or SEO keywords
-  inside the queries unless they are naturally part of the
-  visual scene.
-- The section queries must be meaningfully different from
-  one another.
+- Do not mention article titles, H2 labels, or SEO keywords inside the queries unless they are naturally part of the visual scene.
+- The section queries must be meaningfully different from one another.
 - The hero query must represent the article as a whole.
 - Do not invent a scene that is unrelated to the article.
 
 IMPORTANT:
 Query 1 is the HERO and must be a wide-shot editorial scene.
 Queries 2-5 must be section-specific and visually diverse.
-The five queries must not be simple keyword variations of
-the same photograph.
+The five queries must not be simple keyword variations of the same photograph.
 
 Return ONLY valid JSON:
 
@@ -1026,14 +894,12 @@ Generate:
 - 1 visually specific query for H2 section 3
 - 1 visually specific query for H2 section 4
 
-Make all five queries visually diverse while keeping each
-section query faithful to its actual section content.
+Make all five queries visually diverse while keeping each section query faithful to its actual section content.
 
 Return exactly 5 unique Pexels queries in the required JSON.
 """.strip()
 
     client = Groq(api_key=api_key)
-
     last_exception = None
 
     for attempt in range(1, MAX_RETRIES + 1):
@@ -1064,9 +930,7 @@ Return exactly 5 unique Pexels queries in the required JSON.
             )
 
             if not response.choices:
-                raise ValueError(
-                    "No choices returned."
-                )
+                raise ValueError("No choices returned.")
 
             content = getattr(
                 response.choices[0].message,
@@ -1079,18 +943,14 @@ Return exactly 5 unique Pexels queries in the required JSON.
                     "Empty image-query response."
                 )
 
-            result = extract_json_from_response(
-                content
-            )
+            result = extract_json_from_response(content)
 
             if not isinstance(result, dict):
                 raise ValueError(
                     "Image-query response is not a JSON object."
                 )
 
-            raw_queries = result.get(
-                "image_queries"
-            )
+            raw_queries = result.get("image_queries")
 
             if not isinstance(raw_queries, list):
                 raise ValueError(
@@ -1127,26 +987,15 @@ Return exactly 5 unique Pexels queries in the required JSON.
                 else:
                     label = f"H2 #{index - 1}"
 
-                print(
-                    f"  {index}. [{label}] {query}"
-                )
+                print(f"  {index}. [{label}] {query}")
 
             return image_queries
 
         except Exception as exc:
             last_exception = exc
+            status_code = get_exception_status_code(exc)
 
-            status_code = get_exception_status_code(
-                exc
-            )
-
-            retryable = {
-                429,
-                500,
-                502,
-                503,
-                504,
-            }
+            retryable = {429, 500, 502, 503, 504}
 
             if (
                 status_code is not None
@@ -1157,20 +1006,13 @@ Return exactly 5 unique Pexels queries in the required JSON.
             if attempt >= MAX_RETRIES:
                 break
 
-            delay = min(
-                2 ** (attempt - 1),
-                30,
-            )
+            delay = min(2 ** (attempt - 1), 30)
 
             print(
                 f"Groq image-query generation failed: {exc}",
                 file=sys.stderr,
             )
-
-            print(
-                f"Retry in {delay}s..."
-            )
-
+            print(f"Retry in {delay}s...")
             time.sleep(delay)
 
     raise RuntimeError(
@@ -1190,9 +1032,7 @@ def require_string(data, field_name):
     value = value.strip()
 
     if not value:
-        raise ValueError(
-            f"'{field_name}' is empty."
-        )
+        raise ValueError(f"'{field_name}' is empty.")
 
     return value
 
@@ -1201,35 +1041,13 @@ def extract_generated_fields(
     generated,
     keyword,
 ):
-    title = require_string(
-        generated,
-        "title",
-    )
-
+    title = require_string(generated, "title")
     meta_description = require_string(
-        generated,
-        "meta_description",
+        generated, "meta_description"
     )
-
     content_markdown = require_string(
-        generated,
-        "content_markdown",
+        generated, "content_markdown"
     )
-
-    # ---------------------------------------------------------
-    # Robust tags normalization
-    #
-    # Supported:
-    #   list       -> keep string items only
-    #   string     -> convert to one-item list
-    #   None/null  -> fallback to [keyword]
-    #   dict       -> extract its values
-    #   number     -> convert to string
-    #   bool       -> convert to string
-    #   missing    -> fallback to [keyword]
-    #
-    # Empty/invalid results also fall back to [keyword].
-    # ---------------------------------------------------------
 
     tags_missing = "tags" not in generated
     raw_tags = generated.get("tags")
@@ -1239,17 +1057,14 @@ def extract_generated_fields(
             "Tags field missing; using keyword fallback."
         )
         tags = [keyword]
-
     elif raw_tags is None:
         print(
             "Tags value is null/None; "
             "using keyword fallback."
         )
         tags = [keyword]
-
     elif isinstance(raw_tags, list):
         tags = raw_tags
-
     elif isinstance(raw_tags, str):
         stripped_tags = raw_tags.strip()
 
@@ -1261,13 +1076,10 @@ def extract_generated_fields(
                 "using keyword fallback."
             )
             tags = [keyword]
-
     elif isinstance(raw_tags, dict):
         tags = list(raw_tags.values())
-
     elif isinstance(raw_tags, (int, float, bool)):
         tags = [str(raw_tags)]
-
     else:
         print(
             "DEBUG: unsupported tags type: "
@@ -1277,7 +1089,6 @@ def extract_generated_fields(
             "DEBUG: tags value: "
             f"{str(raw_tags)[:200]}"
         )
-
         tags = [keyword]
 
     normalized_tags = []
@@ -1291,18 +1102,13 @@ def extract_generated_fields(
         if tag and tag not in normalized_tags:
             normalized_tags.append(tag)
 
-    # A dict may contain only non-string values, a list may
-    # contain only invalid/empty values, etc.
     if not normalized_tags:
         print(
             "Tags produced no usable string values; "
             "using keyword fallback."
         )
-        normalized_tags = [
-            str(keyword).strip()
-        ]
+        normalized_tags = [str(keyword).strip()]
 
-    # Final safety fallback in case keyword itself is empty.
     if not normalized_tags or not normalized_tags[0]:
         normalized_tags = ["general"]
 
@@ -1316,20 +1122,17 @@ def extract_generated_fields(
 
 def clean_markdown(content):
     content = str(content).strip()
-
     content = re.sub(
         r"^```(?:markdown|md)?\s*",
         "",
         content,
         flags=re.IGNORECASE,
     )
-
     content = re.sub(
         r"\s*```$",
         "",
         content,
     )
-
     content = re.sub(
         r"^\s*#\s+.+?\n+",
         "",
@@ -1346,12 +1149,7 @@ def count_words(text: str) -> int:
         " ",
         text,
     )
-
-    plain = re.sub(
-        r"`[^`]+`",
-        "",
-        plain,
-    )
+    plain = re.sub(r"`[^`]+`", "", plain)
 
     return len(
         re.findall(
@@ -1373,47 +1171,29 @@ def validate_generated_content(
     errors = []
 
     if not keyword:
-        errors.append(
-            "Keyword empty."
-        )
+        errors.append("Keyword empty.")
 
     if not title:
-        errors.append(
-            "Title empty."
-        )
+        errors.append("Title empty.")
 
     if not meta_description:
-        errors.append(
-            "Meta description empty."
-        )
+        errors.append("Meta description empty.")
 
     if not content_markdown:
-        errors.append(
-            "Content empty."
-        )
+        errors.append("Content empty.")
 
-    if not isinstance(
-        image_queries,
-        list,
-    ):
-        errors.append(
-            "Image queries must be a list."
-        )
-
+    if not isinstance(image_queries, list):
+        errors.append("Image queries must be a list.")
     elif len(image_queries) != 5:
         errors.append(
             "Image queries must contain exactly 5 items."
         )
 
     if keyword and keyword.lower() not in title.lower():
-        errors.append(
-            "Keyword not in title."
-        )
+        errors.append("Keyword not in title.")
 
     if keyword:
-        intro = content_markdown[
-            :1500
-        ].lower()
+        intro = content_markdown[:1500].lower()
 
         if keyword.lower() not in intro:
             errors.append(
@@ -1429,46 +1209,33 @@ def validate_generated_content(
     )
 
     if h2_count == 0:
-        errors.append(
-            "No H2 heading."
-        )
-
+        errors.append("No H2 heading.")
     elif h2_count < 5 or h2_count > 9:
         errors.append(
-            f"Expected 5-9 H2 headings, found {h2_count}."
+            f"Expected 5-9 H2 headings, "
+            f"found {h2_count}."
         )
 
-    words = count_words(
-        content_markdown
-    )
+    words = count_words(content_markdown)
 
     if words < MIN_WORDS:
-        errors.append(
-            f"Too short: {words} words."
-        )
-
+        errors.append(f"Too short: {words} words.")
     elif words > MAX_WORDS:
-        errors.append(
-            f"Too long: {words} words."
-        )
+        errors.append(f"Too long: {words} words.")
 
     if not isinstance(tags, list) or not tags:
-        errors.append(
-            "Tags empty."
-        )
+        errors.append("Tags empty.")
 
     return errors
 
 
 def save_article(article):
-    temp_path = ARTICLE_PATH.with_suffix(
-        ".json.tmp"
-    )
+    temp_path = ARTICLE_PATH.with_suffix(".json.tmp")
 
     with temp_path.open(
         "w",
         encoding="utf-8",
-        newline="\n"
+        newline="\n",
     ) as file:
         json.dump(
             article,
@@ -1476,25 +1243,19 @@ def save_article(article):
             ensure_ascii=False,
             indent=2,
         )
-
         file.write("\n")
 
-    temp_path.replace(
-        ARTICLE_PATH
-    )
+    temp_path.replace(ARTICLE_PATH)
 
 
 def main():
-    api_key = os.getenv(
-        "GROQ_API_KEY"
-    )
+    api_key = os.getenv("GROQ_API_KEY")
 
     if not api_key:
         print(
             "ERROR: GROQ_API_KEY missing.",
             file=sys.stderr,
         )
-
         return 1
 
     try:
@@ -1505,18 +1266,14 @@ def main():
             keyword_col,
             status_col,
         ) = get_first_pending_keyword()
-
     except Exception as exc:
         print(
             f"ERROR loading keywords: {exc}",
             file=sys.stderr,
         )
-
         return 1
 
-    print(
-        f"Selected keyword: {keyword}"
-    )
+    print(f"Selected keyword: {keyword}")
 
     try:
         mark_keyword_processing(
@@ -1526,17 +1283,9 @@ def main():
             keyword_col,
             status_col,
         )
-
-        print(
-            "Keyword status changed to: processing"
-        )
-
+        print("Keyword status changed to: processing")
     except Exception as exc:
-        print(
-            f"ERROR: {exc}",
-            file=sys.stderr,
-        )
-
+        print(f"ERROR: {exc}", file=sys.stderr)
         return 1
 
     try:
@@ -1567,16 +1316,11 @@ def main():
         )
 
         title = title.strip()
-
-        meta_description = (
-            meta_description.strip()
-        )
-
+        meta_description = meta_description.strip()
         content_markdown = clean_markdown(
             content_markdown
         )
 
-        # Final tag normalization safety pass.
         normalized_tags = []
 
         for tag in tags:
@@ -1592,9 +1336,7 @@ def main():
                 normalized_tags.append(tag)
 
         if not normalized_tags:
-            normalized_tags = [
-                keyword
-            ]
+            normalized_tags = [keyword]
 
         tags = normalized_tags
 
@@ -1609,14 +1351,10 @@ def main():
                 "Exactly 5 image queries are required."
             )
 
-        slug = slugify(
-            title
-        )
+        slug = slugify(title)
 
         if not slug:
-            raise ValueError(
-                "Empty slug from title."
-            )
+            raise ValueError("Empty slug from title.")
 
         errors = validate_generated_content(
             keyword,
@@ -1629,19 +1367,15 @@ def main():
 
         if errors:
             error_text = "\n".join(
-                f"- {error}"
-                for error in errors
+                f"- {error}" for error in errors
             )
-
             print(
                 f"WARNING: validation issues:\n"
                 f"{error_text}",
                 file=sys.stderr,
             )
 
-        word_count = count_words(
-            content_markdown
-        )
+        word_count = count_words(content_markdown)
 
         article = {
             "keyword": keyword,
@@ -1658,38 +1392,17 @@ def main():
             ).isoformat(),
         }
 
-        save_article(
-            article
-        )
+        save_article(article)
 
         print("")
-        print(
-            "Article generated successfully."
-        )
+        print("Article generated successfully.")
+        print(f"Keyword: {keyword}")
+        print(f"Specific angle: {specific_angle}")
+        print(f"Title: {title}")
+        print(f"Slug: {slug}")
+        print(f"Word count: {word_count}")
 
-        print(
-            f"Keyword: {keyword}"
-        )
-
-        print(
-            f"Specific angle: {specific_angle}"
-        )
-
-        print(
-            f"Title: {title}"
-        )
-
-        print(
-            f"Slug: {slug}"
-        )
-
-        print(
-            f"Word count: {word_count}"
-        )
-
-        print(
-            "Section-aware image queries:"
-        )
+        print("Section-aware image queries:")
 
         for index, query in enumerate(
             image_queries,
@@ -1700,36 +1413,21 @@ def main():
             else:
                 label = f"H2 #{index - 1}"
 
-            print(
-                f"  {index}. [{label}] {query}"
-            )
+            print(f"  {index}. [{label}] {query}")
 
-        print(
-            f"Tags: {', '.join(tags)}"
-        )
-
-        print(
-            f"Saved to: {ARTICLE_PATH}"
-        )
+        print(f"Tags: {', '.join(tags)}")
+        print(f"Saved to: {ARTICLE_PATH}")
 
         return 0
 
     except Exception as exc:
-        print(
-            f"ERROR: {exc}",
-            file=sys.stderr,
-        )
+        print(f"ERROR: {exc}", file=sys.stderr)
 
         try:
-            mark_keyword_pending(
-                keyword
-            )
-
+            mark_keyword_pending(keyword)
             print(
-                f"Keyword returned to pending: "
-                f"{keyword}"
+                f"Keyword returned to pending: {keyword}"
             )
-
         except Exception as reset_exc:
             print(
                 f"ERROR resetting keyword status: "
