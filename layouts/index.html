@@ -1,14 +1,19 @@
 {{ define "main" }}
 
-{{ $allPosts := where .Site.RegularPages "Section" "posts" }}
-{{ $posts := sort $allPosts "Date" "desc" }}
+{{ $allPosts := where site.RegularPages "Section" "posts" }}
+{{ $allPosts = $allPosts.ByDate.Reverse }}
 
-{{ $paginator := .Paginate $posts }}
+{{ $featuredPosts := first 3 $allPosts }}
+{{ $remainingPosts := after 3 $allPosts }}
+
+{{ $paginator := .Paginate $remainingPosts 12 }}
 
 <section
   class="home-hero"
   aria-labelledby="home-hero-title"
 >
+
+  <div class="home-hero-decoration" aria-hidden="true"></div>
 
   <div class="home-hero-content">
 
@@ -21,7 +26,8 @@
     </h1>
 
     <p class="home-hero-description">
-      {{ .Site.Params.description }}
+      Smart, practical ways to organize small spaces,
+      reduce clutter, and make everyday rooms easier to live in.
     </p>
 
     <form
@@ -51,6 +57,7 @@
         name="q"
         placeholder="Search organization ideas..."
         autocomplete="off"
+        enterkeyhint="search"
       >
 
       <button
@@ -65,6 +72,30 @@
 
     </form>
 
+    <div class="hero-trust-row">
+
+      <span>
+        Practical
+      </span>
+
+      <span aria-hidden="true">
+        ·
+      </span>
+
+      <span>
+        Small-space focused
+      </span>
+
+      <span aria-hidden="true">
+        ·
+      </span>
+
+      <span>
+        Step-by-step
+      </span>
+
+    </div>
+
   </div>
 
 </section>
@@ -77,9 +108,17 @@
 
   <div class="category-filter-header">
 
-    <h2>
-      Explore by room & need
-    </h2>
+    <div>
+
+      <span class="home-section-kicker">
+        Browse smarter
+      </span>
+
+      <h2>
+        Explore by room &amp; need
+      </h2>
+
+    </div>
 
     <span
       class="filter-result-count"
@@ -163,6 +202,138 @@
 </section>
 
 
+{{ if gt (len $featuredPosts) 0 }}
+
+<section
+  class="featured-section"
+  aria-labelledby="featured-title"
+>
+
+  <div class="home-section-heading">
+
+    <div>
+
+      <span class="home-section-kicker">
+        Editor's picks
+      </span>
+
+      <h2 id="featured-title">
+        Featured organization guides
+      </h2>
+
+    </div>
+
+  </div>
+
+
+  <div class="featured-grid">
+
+    {{ range $index, $post := $featuredPosts }}
+
+      {{ $thumbnail := $post.Params.image }}
+
+      {{ if not $thumbnail }}
+
+        {{ with $post.Params.images }}
+
+          {{ if reflect.IsSlice . }}
+
+            {{ if gt (len .) 0 }}
+              {{ $thumbnail = index . 0 }}
+            {{ end }}
+
+          {{ else }}
+
+            {{ $thumbnail = . }}
+
+          {{ end }}
+
+        {{ end }}
+
+      {{ end }}
+
+      <article
+        class="featured-card {{ if eq $index 0 }}featured-card-primary{{ end }}"
+      >
+
+        {{ if $thumbnail }}
+
+          {{ $thumbPath := strings.TrimPrefix "/" $thumbnail }}
+
+          <a
+            href="{{ $post.RelPermalink }}"
+            class="featured-card-image"
+            aria-label="Read {{ $post.Title }}"
+          >
+
+            <img
+              src="{{ $thumbPath | relURL }}"
+              alt="{{ $post.Title }}"
+              loading="{{ if eq $index 0 }}eager{{ else }}lazy{{ end }}"
+              decoding="async"
+            >
+
+            <span class="featured-badge">
+              Featured
+            </span>
+
+          </a>
+
+        {{ end }}
+
+        <div class="featured-card-body">
+
+          <div class="home-post-card-meta">
+
+            <time datetime="{{ $post.Date.Format "2006-01-02" }}">
+              {{ $post.Date.Format "January 2, 2006" }}
+            </time>
+
+            <span aria-hidden="true">
+              ·
+            </span>
+
+            <span>
+              {{ $post.ReadingTime }} min read
+            </span>
+
+          </div>
+
+          <h3>
+            <a href="{{ $post.RelPermalink }}">
+              {{ $post.Title }}
+            </a>
+          </h3>
+
+          {{ with $post.Description }}
+
+            <p>
+              {{ . | plainify | truncate 150 }}
+            </p>
+
+          {{ end }}
+
+          <a
+            href="{{ $post.RelPermalink }}"
+            class="home-post-card-link"
+          >
+            Read guide
+            <span aria-hidden="true">→</span>
+          </a>
+
+        </div>
+
+      </article>
+
+    {{ end }}
+
+  </div>
+
+</section>
+
+{{ end }}
+
+
 <section
   class="home-posts"
   aria-labelledby="latest-posts-title"
@@ -187,208 +358,215 @@
 
   {{ if $paginator.Pages }}
 
-  <div
-    class="posts-grid"
-    id="posts-grid"
-  >
+    <div
+      class="posts-grid"
+      id="posts-grid"
+    >
 
-    {{ range $paginator.Pages }}
+      {{ range $paginator.Pages }}
 
-      {{ $thumbnail := .Params.image }}
+        {{ $thumbnail := .Params.image }}
 
-      {{ if not $thumbnail }}
+        {{ if not $thumbnail }}
 
-        {{ with .Params.images }}
+          {{ with .Params.images }}
+
+            {{ if reflect.IsSlice . }}
+
+              {{ if gt (len .) 0 }}
+                {{ $thumbnail = index . 0 }}
+              {{ end }}
+
+            {{ else }}
+
+              {{ $thumbnail = . }}
+
+            {{ end }}
+
+          {{ end }}
+
+        {{ end }}
+
+
+        {{ $categories := .Params.categories }}
+
+        {{ $categoryText := "" }}
+
+        {{ with $categories }}
 
           {{ if reflect.IsSlice . }}
 
-            {{ if gt (len .) 0 }}
-              {{ $thumbnail = index . 0 }}
-            {{ end }}
+            {{ $categoryText = delimit . " " }}
 
           {{ else }}
 
-            {{ $thumbnail = . }}
+            {{ $categoryText = . }}
 
           {{ end }}
 
         {{ end }}
 
-      {{ end }}
 
+        <article
+          class="home-post-card"
+          data-search-title="{{ .Title | plainify | lower }}"
+          data-search-description="{{ .Description | plainify | lower }}"
+          data-search-category="{{ $categoryText | plainify | lower }}"
+          data-search-tags="{{ delimit .Params.tags " " | plainify | lower }}"
+        >
 
-      {{ $searchTitle := lower .Title }}
+          {{ if $thumbnail }}
 
-      {{ $searchDescription := lower (.Description | default "") }}
+            {{ $thumbPath := strings.TrimPrefix "/" $thumbnail }}
 
-      {{ $searchCategory := lower (delimit (.Params.categories | default (slice)) " ") }}
-
-      {{ $searchTags := lower (delimit (.Params.tags | default (slice)) " ") }}
-
-
-      <article
-        class="home-post-card"
-        data-search-title="{{ $searchTitle }}"
-        data-search-description="{{ $searchDescription }}"
-        data-search-category="{{ $searchCategory }}"
-        data-search-tags="{{ $searchTags }}"
-      >
-
-        {{ if $thumbnail }}
-
-          {{ $thumbnailPath := strings.TrimPrefix "/" $thumbnail }}
-
-          <a
-            href="{{ .RelPermalink }}"
-            class="home-post-card-image"
-            aria-label="Read {{ .Title }}"
-          >
-
-            <img
-              src="{{ $thumbnailPath | relURL }}"
-              alt="{{ .Title }}"
-              loading="lazy"
-              decoding="async"
-              onerror="this.closest('.home-post-card-image').classList.add('image-load-failed'); this.remove();"
+            <a
+              href="{{ .RelPermalink }}"
+              class="home-post-card-image"
+              aria-label="Read {{ .Title }}"
             >
 
-          </a>
+              <img
+                src="{{ $thumbPath | relURL }}"
+                alt="{{ .Title }}"
+                loading="lazy"
+                decoding="async"
+              >
 
-        {{ else }}
+            </a>
 
-          <a
-            href="{{ .RelPermalink }}"
-            class="home-post-card-image home-post-card-image-empty"
-            aria-label="Read {{ .Title }}"
-          >
-            {{ .Site.Title }}
-          </a>
+          {{ else }}
 
-        {{ end }}
+            <a
+              href="{{ .RelPermalink }}"
+              class="home-post-card-image home-post-card-image-empty"
+              aria-label="Read {{ .Title }}"
+            >
+              <span aria-hidden="true">HO</span>
+            </a>
+
+          {{ end }}
 
 
-        <div class="home-post-card-body">
+          <div class="home-post-card-body">
 
-          <div class="home-post-card-meta">
+            <div class="home-post-card-meta">
 
-            <time datetime="{{ .Date.Format "2006-01-02" }}">
-              {{ .Date.Format "January 2, 2006" }}
-            </time>
+              <time datetime="{{ .Date.Format "2006-01-02" }}">
+                {{ .Date.Format "January 2, 2006" }}
+              </time>
 
-            <span aria-hidden="true">
-              ·
-            </span>
+              <span aria-hidden="true">·</span>
 
-            <span>
-              {{ .ReadingTime }} min read
-            </span>
+              <span>
+                {{ .ReadingTime }} min read
+              </span>
+
+            </div>
+
+
+            <h3 class="home-post-card-title">
+
+              <a href="{{ .RelPermalink }}">
+                {{ .Title }}
+              </a>
+
+            </h3>
+
+
+            {{ with .Description }}
+
+              <p class="home-post-card-description">
+                {{ . | plainify | truncate 145 }}
+              </p>
+
+            {{ end }}
+
+
+            <a
+              href="{{ .RelPermalink }}"
+              class="home-post-card-link"
+            >
+              Read more
+              <span aria-hidden="true">→</span>
+            </a>
 
           </div>
 
+        </article>
 
-          <h3 class="home-post-card-title">
+      {{ end }}
 
-            <a href="{{ .RelPermalink }}">
-              {{ .Title }}
-            </a>
-
-          </h3>
+    </div>
 
 
-          {{ with .Description }}
+    <p
+      class="home-no-results"
+      id="home-no-results"
+      hidden
+    >
+      No articles match your search or selected category.
+    </p>
 
-            <p class="home-post-card-description">
-              {{ . }}
-            </p>
 
-          {{ end }}
+    {{ if gt $paginator.TotalPages 1 }}
 
+      <nav
+        class="home-pagination"
+        aria-label="Articles pagination"
+      >
+
+        {{ if $paginator.HasPrev }}
 
           <a
-            href="{{ .RelPermalink }}"
-            class="home-post-card-link"
+            href="{{ $paginator.Prev.URL }}"
+            class="pagination-link pagination-prev"
+            rel="prev"
           >
-            Read more
-            <span aria-hidden="true">
-              →
-            </span>
+            ← Newer
           </a>
 
-        </div>
-
-      </article>
-
-    {{ end }}
-
-  </div>
+        {{ end }}
 
 
-  <p
-    class="home-no-results"
-    id="home-no-results"
-    hidden
-  >
-    No articles match your search or selected category.
-  </p>
+        <span class="pagination-status">
+
+          Page
+          {{ $paginator.PageNumber }}
+          of
+          {{ $paginator.TotalPages }}
+
+        </span>
 
 
-  {{ if gt $paginator.TotalPages 1 }}
+        {{ if $paginator.HasNext }}
 
-  <nav
-    class="home-pagination"
-    aria-label="Pagination"
-  >
+          <a
+            href="{{ $paginator.Next.URL }}"
+            class="pagination-link pagination-next"
+            rel="next"
+          >
+            Older →
+          </a>
 
-    {{ if $paginator.HasPrev }}
+        {{ end }}
 
-      <a
-        class="pagination-link"
-        href="{{ $paginator.Prev.URL }}"
-      >
-        ← Newer
-      </a>
+      </nav>
 
     {{ end }}
-
-
-    <span class="pagination-status">
-
-      Page {{ $paginator.PageNumber }}
-      of
-      {{ $paginator.TotalPages }}
-
-    </span>
-
-
-    {{ if $paginator.HasNext }}
-
-      <a
-        class="pagination-link"
-        href="{{ $paginator.Next.URL }}"
-      >
-        Older →
-      </a>
-
-    {{ end }}
-
-  </nav>
-
-  {{ end }}
-
 
   {{ else }}
 
-  <div class="home-empty-state">
+    <div class="home-empty-state">
 
-    <h2>
-      No articles yet
-    </h2>
+      <h2>
+        No posts yet
+      </h2>
 
-    <p>
-      New organization guides will appear here.
-    </p>
+      <p>
+        New organization ideas will appear here soon.
+      </p>
 
-  </div>
+    </div>
 
   {{ end }}
 
@@ -400,13 +578,13 @@
   "use strict";
 
   var grid = document.getElementById("posts-grid");
-  var search = document.getElementById("post-search");
+  var searchInput = document.getElementById("post-search");
   var clearButton = document.getElementById("post-search-clear");
   var resultCount = document.getElementById("filter-result-count");
   var noResults = document.getElementById("home-no-results");
   var filters = document.querySelectorAll(".category-filter");
 
-  if (!grid || !search) {
+  if (!grid || !searchInput) {
     return;
   }
 
@@ -423,11 +601,13 @@
       .trim();
   }
 
-  function applyFilters() {
-    var query = normalize(search.value);
+  function updateResults() {
+
+    var query = normalize(searchInput.value);
     var visible = 0;
 
     cards.forEach(function (card) {
+
       var title = normalize(card.dataset.searchTitle);
       var description = normalize(card.dataset.searchDescription);
       var category = normalize(card.dataset.searchCategory);
@@ -445,25 +625,26 @@
         category.indexOf(activeCategory) !== -1 ||
         tags.indexOf(activeCategory) !== -1;
 
-      var visibleCard =
-        matchesSearch && matchesCategory;
+      var show = matchesSearch && matchesCategory;
 
-      card.hidden = !visibleCard;
+      card.hidden = !show;
 
-      if (visibleCard) {
+      if (show) {
         visible += 1;
       }
+
     });
 
-    if (
-      resultCount &&
-      (query || activeCategory !== "all")
-    ) {
-      resultCount.textContent =
-        visible +
-        (visible === 1 ? " article" : " articles");
-    } else if (resultCount) {
-      resultCount.textContent = "";
+
+    if (resultCount) {
+
+      if (query || activeCategory !== "all") {
+        resultCount.textContent =
+          visible + (visible === 1 ? " article" : " articles");
+      } else {
+        resultCount.textContent = "";
+      }
+
     }
 
     if (noResults) {
@@ -473,49 +654,55 @@
     if (clearButton) {
       clearButton.hidden = !query;
     }
+
   }
 
   filters.forEach(function (button) {
+
     button.addEventListener("click", function () {
 
-      activeCategory =
-        normalize(button.dataset.category);
+      activeCategory = normalize(
+        button.dataset.category
+      );
 
       filters.forEach(function (item) {
+
         var active = item === button;
 
-        item.classList.toggle(
-          "is-active",
-          active
-        );
-
+        item.classList.toggle("is-active", active);
         item.setAttribute(
           "aria-pressed",
           active ? "true" : "false"
         );
+
       });
 
-      applyFilters();
+      updateResults();
+
     });
+
   });
 
-  search.addEventListener(
+  searchInput.addEventListener(
     "input",
-    applyFilters
+    updateResults
   );
 
   if (clearButton) {
+
     clearButton.addEventListener(
       "click",
       function () {
-        search.value = "";
-        search.focus();
-        applyFilters();
+        searchInput.value = "";
+        searchInput.focus();
+        updateResults();
       }
     );
+
   }
 
-  applyFilters();
+  updateResults();
+
 })();
 </script>
 
