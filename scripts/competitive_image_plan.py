@@ -23,6 +23,8 @@ GROQ_MODEL = os.getenv(
     "openai/gpt-oss-120b",
 )
 
+FALLBACK_GROQ_MODEL = "llama-3.1-8b-instant"
+
 ROOM_TERMS = {
     "bathroom",
     "bedroom",
@@ -361,10 +363,7 @@ def extract_first_two_paragraphs(
         if cleaned.startswith("- "):
             continue
 
-        if re.match(
-            r"^\d+\.\s+",
-            cleaned,
-        ):
+        if re.match(r"^\d+\.\s+", cleaned):
             continue
 
         paragraphs.append(cleaned)
@@ -715,124 +714,190 @@ def generate_queries(
         sections,
     )
 
-    last_exception: Optional[Exception] = None
+    retryable_codes = {
+        429,
+        500,
+        502,
+        503,
+        504,
+    }
 
-    for attempt in range(1, MAX_RETRIES + 1):
-        try:
-            print(
-                "Generating final-content image plan "
-                f"with Groq "
-                f"(attempt {attempt}/{MAX_RETRIES})..."
-            )
+    def call_model(model: str) -> List[str]:
+        last_exception: Optional[Exception] = None
 
-            response = client.chat.completions.create(
-                model=GROQ_MODEL,
-                messages=[
-                    {
-                        "role": "system",
-                        "content": system_prompt,
+        for attempt in range(
+            1,
+            MAX_RETRIES + 1,
+        ):
+            try:
+                print(
+                    "Generating final-content image plan "
+                    f"with model={model} "
+                    f"(attempt {attempt}/{MAX_RETRIES})..."
+                )
+
+                response = client.chat.completions.create(
+                    model=model,
+                    messages=[
+                        {
+                            "role": "system",
+                            "content": system_prompt,
+                        },
+                        {
+                            "role": "user",
+                            "content": user_prompt,
+                        },
+                    ],
+                    temperature=0.35,
+                    max_tokens=1800,
+                    response_format={
+                        "type": "json_object"
                     },
-                    {
-                        "role": "user",
-                        "content": user_prompt,
-                    },
-                ],
-                temperature=0.35,
-                max_tokens=1800,
-                response_format={
-                    "type": "json_object"
-                },
-            )
-
-            if not response.choices:
-                raise ValueError(
-                    "Groq returned no choices."
                 )
 
-            content = getattr(
-                response.choices[0].message,
-                "content",
-                None,
-            )
+                if not response.choices:
+                    raise ValueError(
+                        "Groq returned no choices."
+                    )
 
-            result = extract_json_from_response(
-                content or ""
-            )
-
-            raw_queries = result.get("image_queries")
-
-            if not isinstance(raw_queries, list):
-                raise ValueError(
-                    "'image_queries' must be a list."
+                content = getattr(
+                    response.choices[0].message,
+                    "content",
+                    None,
                 )
 
-            queries = []
-
-            for query in raw_queries:
-                if not isinstance(query, str):
-                    continue
-
-                query = normalize_query(query)
-
-                if not validate_query_shape(query):
-                    continue
-
-                lower_existing = {
-                    item.lower() for item in queries
-                }
-
-                if query.lower() not in lower_existing:
-                    queries.append(query)
-
-            if len(queries) != IMAGE_COUNT:
-                raise ValueError(
-                    "Groq must return exactly "
-                    f"{IMAGE_COUNT} valid unique "
-                    "image queries."
+                result = extract_json_from_response(
+                    content or ""
                 )
 
-            return queries
+                raw_queries = result.get(
+                    "image_queries"
+                )
 
-        except Exception as exc:
-            last_exception = exc
+                if not isinstance(raw_queries, list):
+                    raise ValueError(
+                        "'image_queries' must be a list."
+                    )
 
-            status_code = get_status_code(exc)
+                queries = []
 
-            retryable = {
-                429,
-                500,
-                502,
-                503,
-                504,
-            }
+                for query in raw_queries:
+                    if not isinstance(query, str):
+                        continue
 
-            if (
-                status_code is not None
-                and status_code not in retryable
-            ):
-                break
+                    query = normalize_query(query)
 
-            if attempt >= MAX_RETRIES:
-                break
+                    if not validate_query_shape(query):
+                        continue
 
-            delay = min(2 ** (attempt - 1), 30)
+                    lower_existing = {
+                        item.lower()
+                        for item in queries
+                    }
 
-            print(
-                f"Image planning failed: {exc}",
-                file=sys.stderr,
-            )
+                    if query.lower() not in lower_existing:
+                        queries.append(query)
 
-            print(
-                f"Retrying in {delay} seconds..."
-            )
+                if len(queries) != IMAGE_COUNT:
+                    raise ValueError(
+                        "Groq must return exactly "
+                        f"{IMAGE_COUNT} valid unique "
+                        "image queries."
+                    )
 
-            time.sleep(delay)
+                print(
+                    f"Groq image planning succeeded "
+                    f"with model={model}."
+                )
 
-    raise RuntimeError(
-        "Groq image planning failed after "
-        f"{MAX_RETRIES} attempts: "
-        f"{last_exception}"
-    )
+                return queries
+
+            except Exception as exc:
+                last_exception = exc
+                status_code = get_status_code(exc)
+
+                print(
+                    f"Image planning failed "
+                    f"(model={model}, "
+                    f"attempt={attempt}/{MAX_RETRIES}, "
+                    f"status={status_code}): {exc}",
+                    file=sys.stderr,
+                )
+
+                if status_code is not None:
+                    if status_code not in retryable_codes:
+                        raise
+
+                if attempt >= MAX_RETRIES:
+                    break
+
+                delay = min(
+                    2 ** (attempt - 1),
+                    30,
+                )
+
+                print(
+                    f"Retrying model={model} "
+                    f"in {delay} seconds..."
+                )
+
+                time.sleep(delay)
+
+        raise RuntimeError(
+            "Groq image planning failed after "
+            f"{MAX_RETRIES} attempts using "
+            f"model '{model}': "
+            f"{last_exception}"
+        ) from last_exception
+
+    # ---------------------------------------------------------
+    # PRIMARY MODEL
+    # ---------------------------------------------------------
+    try:
+        return call_model(GROQ_MODEL)
+
+    except Exception as primary_exc:
+        primary_status = get_status_code(
+            primary_exc
+        )
+
+        if primary_status != 429:
+            raise
+
+        print(
+            "Primary model failed with 429."
+        )
+        print(
+            "Switching to fallback model: "
+            f"{FALLBACK_GROQ_MODEL}"
+        )
+
+    # ---------------------------------------------------------
+    # FALLBACK MODEL
+    # ---------------------------------------------------------
+    try:
+        return call_model(FALLBACK_GROQ_MODEL)
+
+    except Exception as fallback_exc:
+        print(
+            "Groq fallback failed.",
+            file=sys.stderr,
+        )
+        print(
+            f"  Model: {FALLBACK_GROQ_MODEL}",
+            file=sys.stderr,
+        )
+        print(
+            f"  Status code: "
+            f"{get_status_code(fallback_exc)}",
+            file=sys.stderr,
+        )
+        print(
+            f"  Reason: {fallback_exc}",
+            file=sys.stderr,
+        )
+
+        raise
 
 
 def build_local_fallback_queries(
