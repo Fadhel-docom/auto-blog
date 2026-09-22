@@ -3,6 +3,7 @@ import json
 import os
 import re
 import sys
+
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -14,14 +15,12 @@ POSTS_DIR = ROOT_DIR / "content" / "posts"
 IMAGE_DIR = ROOT_DIR / "static" / "images"
 KEYWORDS_PATH = ROOT_DIR / "keywords.csv"
 
-
 STOP_WORDS = {
-    "the", "and", "for", "with", "from", "that",
-    "this", "your", "you", "are", "into", "without",
-    "small", "home", "ideas", "tips", "guide",
-    "best", "ways", "how", "what", "when", "where",
-    "using", "use", "make", "get", "can", "more",
-    "room", "space",
+    "the", "and", "for", "with", "from", "that", "this",
+    "your", "you", "are", "into", "without", "small", "home",
+    "ideas", "tips", "guide", "best", "ways", "how", "what",
+    "when", "where", "using", "use", "make", "get", "can",
+    "more", "room", "space",
 }
 
 TOPIC_GROUPS = {
@@ -52,8 +51,8 @@ TOPIC_GROUPS = {
     },
     "small-space": {
         "small", "small-space", "small-apartment",
-        "studio", "tiny", "compact",
-        "space-saving", "storage",
+        "studio", "tiny", "compact", "space-saving",
+        "storage",
     },
     "decluttering": {
         "decluttering", "declutter", "minimalist",
@@ -113,6 +112,7 @@ def toml_string(value: Any) -> str:
     value = value.replace('"', '\\"')
     value = value.replace("\r", "\\r")
     value = value.replace("\n", "\\n")
+
     return f'"{value}"'
 
 
@@ -122,7 +122,9 @@ def toml_array(values: list[Any]) -> str:
     ) + "]"
 
 
-def toml_table_array(values: list[dict[str, str]]) -> str:
+def toml_table_array(
+    values: list[dict[str, str]],
+) -> str:
     if not values:
         return "[]"
 
@@ -154,12 +156,15 @@ def normalize_tags(tags: Any) -> list[str]:
         tags = [tags]
 
     if not isinstance(tags, list):
-        raise ValueError("Article 'tags' must be a list.")
+        raise ValueError(
+            "Article 'tags' must be a list."
+        )
 
     normalized = []
 
     for tag in tags:
         tag = str(tag).strip()
+
         if tag:
             normalized.append(tag)
 
@@ -183,15 +188,22 @@ def find_column(
 
     for candidate in candidates:
         key = candidate.strip().lower()
+
         if key in normalized:
             return normalized[key]
 
     return None
 
 
-def update_keywords_csv(keyword: str, slug: str) -> None:
+def update_keywords_csv(
+    keyword: str,
+    slug: str,
+) -> None:
     if not KEYWORDS_PATH.exists():
-        print("keywords.csv not found; skipping keyword update.")
+        print(
+            "keywords.csv not found; "
+            "skipping keyword update."
+        )
         return
 
     with KEYWORDS_PATH.open(
@@ -202,7 +214,10 @@ def update_keywords_csv(keyword: str, slug: str) -> None:
         reader = csv.DictReader(file)
 
         if not reader.fieldnames:
-            print("keywords.csv has no header; skipping.")
+            print(
+                "keywords.csv has no header; "
+                "skipping."
+            )
             return
 
         fieldnames = list(reader.fieldnames)
@@ -212,11 +227,21 @@ def update_keywords_csv(keyword: str, slug: str) -> None:
         fieldnames,
         ["keyword", "keywords", "topic"],
     )
-    status_column = find_column(fieldnames, ["status"])
-    slug_column = find_column(fieldnames, ["slug"])
+    status_column = find_column(
+        fieldnames,
+        ["status"],
+    )
+    slug_column = find_column(
+        fieldnames,
+        ["slug"],
+    )
     published_at_column = find_column(
         fieldnames,
-        ["published_at", "published date", "publication_date"],
+        [
+            "published_at",
+            "published date",
+            "publication_date",
+        ],
     )
 
     if not keyword_column:
@@ -252,7 +277,8 @@ def update_keywords_csv(keyword: str, slug: str) -> None:
 
     if not updated:
         print(
-            f"Keyword not found in keywords.csv: {keyword}"
+            f"Keyword not found in "
+            f"keywords.csv: {keyword}"
         )
         return
 
@@ -271,6 +297,7 @@ def update_keywords_csv(keyword: str, slug: str) -> None:
         writer.writerows(rows)
 
     temp_path.replace(KEYWORDS_PATH)
+
     print(f"Updated keywords.csv: {keyword}")
 
 
@@ -282,46 +309,61 @@ def normalize_images(
 
     if not isinstance(images, list):
         raise ValueError(
-            "article.json must contain an 'images' array."
+            "article.json must contain "
+            "an 'images' array."
         )
 
     if len(images) != 5:
         raise ValueError(
-            f"Expected exactly 5 images for publishing, "
-            f"got {len(images)}."
+            f"Expected exactly 5 images for "
+            f"publishing, got {len(images)}."
         )
 
     normalized = []
 
-    for index, image in enumerate(images, start=1):
+    for index, image in enumerate(
+        images,
+        start=1,
+    ):
         if not isinstance(image, dict):
             raise ValueError(
                 f"Image {index} must be an object."
             )
 
         expected_filename = f"{slug}-{index}.jpg"
-        expected_path = IMAGE_DIR / expected_filename
+        expected_path = (
+            IMAGE_DIR / expected_filename
+        )
 
         if not expected_path.exists():
             raise FileNotFoundError(
-                f"Image {index} not found: {expected_path}"
+                f"Image {index} not found: "
+                f"{expected_path}"
             )
 
         if expected_path.stat().st_size <= 0:
             raise ValueError(
-                f"Image {index} is empty: {expected_path}"
+                f"Image {index} is empty: "
+                f"{expected_path}"
             )
 
-        file_url = str(image.get("file", "")).strip()
+        file_url = str(
+            image.get("file", "")
+        ).strip()
 
         if not file_url:
-            file_url = f"/images/{expected_filename}"
+            file_url = (
+                f"/images/{expected_filename}"
+            )
 
-        query = str(image.get("query", "")).strip()
+        query = str(
+            image.get("query", "")
+        ).strip()
 
         if not query:
             raise ValueError(
-                f"Image {index} is missing its 'query' field."
+                f"Image {index} is missing "
+                "its 'query' field."
             )
 
         normalized_image = dict(image)
@@ -331,7 +373,8 @@ def normalize_images(
             str(
                 image.get(
                     "file_path",
-                    f"static/images/{expected_filename}",
+                    f"static/images/"
+                    f"{expected_filename}",
                 )
             ).strip()
             or f"static/images/{expected_filename}"
@@ -342,19 +385,23 @@ def normalize_images(
     return normalized
 
 
-def image_markdown(image_url: str, alt_text: str) -> str:
+def image_markdown(
+    image_url: str,
+    alt_text: str,
+) -> str:
     image_path = str(image_url).strip()
 
     if image_path.startswith("/images/"):
         image_path = image_path[len("/images/"):]
-
     elif image_path.startswith("images/"):
         image_path = image_path[len("images/"):]
-
     elif image_path.startswith("/"):
         image_path = image_path.lstrip("/")
 
-    return f"![{alt_text}](../../images/{image_path})"
+    return (
+        f"![{alt_text}]"
+        f"(../../images/{image_path})"
+    )
 
 
 def insert_images_between_h2(
@@ -363,7 +410,8 @@ def insert_images_between_h2(
 ) -> str:
     if len(images) != 5:
         raise ValueError(
-            "insert_images_between_h2 requires exactly 5 images."
+            "insert_images_between_h2 requires "
+            "exactly 5 images."
         )
 
     image_index = 1
@@ -408,7 +456,6 @@ def insert_images_between_h2(
                 continue
 
             image = images[image_index]
-
             alt_text = str(
                 image.get("query", "")
             ).strip()
@@ -471,12 +518,16 @@ def read_existing_posts(
     if not POSTS_DIR.exists():
         return posts
 
-    for post_path in sorted(POSTS_DIR.glob("*.md")):
+    for post_path in sorted(
+        POSTS_DIR.glob("*.md")
+    ):
         if post_path.stem == current_slug:
             continue
 
         try:
-            content = post_path.read_text(encoding="utf-8")
+            content = post_path.read_text(
+                encoding="utf-8"
+            )
         except OSError:
             continue
 
@@ -556,13 +607,19 @@ def score_internal_link(
     current_text: str,
     target: dict[str, Any],
 ) -> int:
-    current_keywords = normalize_keywords(current_text)
-    current_topics = detect_topic_groups(current_text)
+    current_keywords = normalize_keywords(
+        current_text
+    )
+    current_topics = detect_topic_groups(
+        current_text
+    )
 
     score = 0
 
-    shared_keywords = current_keywords.intersection(
-        target["keywords"]
+    shared_keywords = (
+        current_keywords.intersection(
+            target["keywords"]
+        )
     )
     score += len(shared_keywords) * 4
 
@@ -580,7 +637,9 @@ def select_internal_links(
     current_slug: str,
     limit: int = 3,
 ) -> list[dict[str, Any]]:
-    existing_posts = read_existing_posts(current_slug)
+    existing_posts = read_existing_posts(
+        current_slug
+    )
 
     if not existing_posts:
         return []
@@ -590,7 +649,10 @@ def select_internal_links(
     scored = []
 
     for post in existing_posts:
-        score = score_internal_link(context, post)
+        score = score_internal_link(
+            context,
+            post,
+        )
 
         if score <= 0:
             continue
@@ -598,7 +660,10 @@ def select_internal_links(
         scored.append((score, post))
 
     scored.sort(
-        key=lambda item: (item[0], item[1]["title"]),
+        key=lambda item: (
+            item[0],
+            item[1]["title"],
+        ),
         reverse=True,
     )
 
@@ -633,6 +698,18 @@ def split_paragraphs(content: str) -> list[str]:
         for part in parts
         if part.strip()
     ]
+
+
+def build_internal_link_anchor(title: str) -> str:
+    words = re.findall(
+        r"[A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*",
+        str(title),
+    )
+
+    if not words:
+        return "this related idea"
+
+    return " ".join(words[:5])
 
 
 def insert_internal_links(
@@ -683,9 +760,11 @@ def insert_internal_links(
     middle_indexes = [
         index
         for index in candidate_indexes
-        if len(paragraphs) * 0.20
-        <= index
-        <= len(paragraphs) * 0.75
+        if (
+            len(paragraphs) * 0.20
+            <= index
+            <= len(paragraphs) * 0.75
+        )
     ]
 
     if middle_indexes:
@@ -701,12 +780,15 @@ def insert_internal_links(
         if not target_slug:
             continue
 
-        target_path = POSTS_DIR / f"{target_slug}.md"
+        target_path = (
+            POSTS_DIR / f"{target_slug}.md"
+        )
 
         if not target_path.exists():
             print(
                 "Skipping internal link; "
-                f"target post not found: {target_path}"
+                f"target post not found: "
+                f"{target_path}"
             )
             continue
 
@@ -734,38 +816,52 @@ def insert_internal_links(
 
     if len(links) == 1:
         positions = [
-            candidate_indexes[len(candidate_indexes) // 2]
+            candidate_indexes[
+                len(candidate_indexes) // 2
+            ]
         ]
-
     elif len(links) == 2:
         positions = [
-            candidate_indexes[len(candidate_indexes) // 3],
-            candidate_indexes[(len(candidate_indexes) * 2) // 3],
+            candidate_indexes[
+                len(candidate_indexes) // 3
+            ],
+            candidate_indexes[
+                (len(candidate_indexes) * 2) // 3
+            ],
         ]
-
     else:
         positions = [
-            candidate_indexes[len(candidate_indexes) // 4],
-            candidate_indexes[len(candidate_indexes) // 2],
-            candidate_indexes[(len(candidate_indexes) * 3) // 4],
+            candidate_indexes[
+                len(candidate_indexes) // 4
+            ],
+            candidate_indexes[
+                len(candidate_indexes) // 2
+            ],
+            candidate_indexes[
+                (len(candidate_indexes) * 3) // 4
+            ],
         ]
 
     for position, link in reversed(
         list(zip(positions, links))
     ):
-        anchor = link["title"]
+        anchor = build_internal_link_anchor(
+            link.get("title", "")
+        )
 
         if not anchor:
             continue
 
         target_slug = link["slug"]
-
-        target_path = POSTS_DIR / f"{target_slug}.md"
+        target_path = (
+            POSTS_DIR / f"{target_slug}.md"
+        )
 
         if not target_path.exists():
             print(
-                "Skipping internal link during insertion; "
-                f"target post disappeared: {target_path}"
+                "Skipping internal link during "
+                f"insertion; target post "
+                f"disappeared: {target_path}"
             )
             continue
 
@@ -786,7 +882,6 @@ def extract_faq_items(
     content: str,
 ) -> list[dict[str, str]]:
     lines = content.splitlines()
-
     faq_items = []
 
     current_question = None
@@ -805,13 +900,18 @@ def extract_faq_items(
                 answer = "\n".join(
                     current_answer
                 ).strip()
-
-                answer = re.sub(r"\s+", " ", answer)
+                answer = re.sub(
+                    r"\s+",
+                    " ",
+                    answer,
+                )
 
                 if answer and len(answer) >= 40:
                     faq_items.append(
                         {
-                            "question": current_question,
+                            "question": (
+                                current_question
+                            ),
                             "answer": answer,
                         }
                     )
@@ -832,10 +932,7 @@ def extract_faq_items(
                 current_answer.append(stripped)
 
     if current_question:
-        answer = "\n".join(
-            current_answer
-        ).strip()
-
+        answer = "\n".join(current_answer).strip()
         answer = re.sub(r"\s+", " ", answer)
 
         if answer and len(answer) >= 40:
@@ -853,45 +950,63 @@ def main() -> int:
     try:
         article = load_article()
 
-        keyword = str(article.get("keyword", "")).strip()
+        keyword = str(
+            article.get("keyword", "")
+        ).strip()
+
         if not keyword:
             raise ValueError(
                 "article.json is missing 'keyword'."
             )
 
-        title = str(article.get("title", "")).strip()
+        title = str(
+            article.get("title", "")
+        ).strip()
+
         if not title:
             raise ValueError(
                 "article.json is missing 'title'."
             )
 
-        slug = validate_slug(article.get("slug", ""))
+        slug = validate_slug(
+            article.get("slug", "")
+        )
 
         description = str(
             article.get("meta_description", "")
         ).strip()
+
         if not description:
             raise ValueError(
-                "article.json is missing 'meta_description'."
+                "article.json is missing "
+                "'meta_description'."
             )
 
         content_markdown = str(
             article.get("content_markdown", "")
         ).strip()
+
         if not content_markdown:
             raise ValueError(
-                "article.json is missing 'content_markdown'."
+                "article.json is missing "
+                "'content_markdown'."
             )
 
-        tags = normalize_tags(article.get("tags", []))
+        tags = normalize_tags(
+            article.get("tags", [])
+        )
+
         images = normalize_images(article, slug)
 
         if len(images) != 5:
             raise ValueError(
-                "Exactly 5 images are required before publishing."
+                "Exactly 5 images are required "
+                "before publishing."
             )
 
-        image_urls = [image["file"] for image in images]
+        image_urls = [
+            image["file"] for image in images
+        ]
         first_image = image_urls[0]
 
         publication_date = (
@@ -918,13 +1033,20 @@ def main() -> int:
 
         image_attribution = []
 
-        for index, image in enumerate(images, start=1):
+        for index, image in enumerate(
+            images,
+            start=1,
+        ):
             photographer = str(
                 image.get("photographer", "")
             ).strip()
+
             photographer_url = str(
-                image.get("photographer_url", "")
+                image.get(
+                    "photographer_url", ""
+                )
             ).strip()
+
             pexels_url = str(
                 image.get("pexels_url", "")
             ).strip()
@@ -938,15 +1060,19 @@ def main() -> int:
                     )
                 else:
                     attribution = (
-                        f"Photo {index}: {photographer}"
+                        f"Photo {index}: "
+                        f"{photographer}"
                     )
 
                 if pexels_url:
                     attribution += (
-                        f" via [Pexels]({pexels_url})"
+                        f" via [Pexels]"
+                        f"({pexels_url})"
                     )
 
-                image_attribution.append(attribution)
+                image_attribution.append(
+                    attribution
+                )
 
         if image_attribution:
             content_markdown += (
@@ -959,7 +1085,9 @@ def main() -> int:
                 + "\n"
             )
 
-        faq_items = extract_faq_items(content_markdown)
+        faq_items = extract_faq_items(
+            content_markdown
+        )
 
         frontmatter = (
             "+++\n"
@@ -984,8 +1112,8 @@ def main() -> int:
         )
 
         post_path = POSTS_DIR / f"{slug}.md"
-
         save_post(post_path, post_content)
+
         update_keywords_csv(keyword, slug)
 
         print("")
@@ -1005,8 +1133,14 @@ def main() -> int:
             print(f"  {index}. {image_url}")
 
         print("Image 1: hero")
-        print("Images 2-5: inserted after first four H2 headings")
-        print("Internal links: inserted contextually (with validation)")
+        print(
+            "Images 2-5: inserted after first "
+            "four H2 headings"
+        )
+        print(
+            "Internal links: inserted "
+            "contextually (with validation)"
+        )
         print(f"FAQ items: {len(faq_items)}")
         print("Alt text: section-aware image query")
         print("Related Posts: rendered by single.html")
@@ -1022,7 +1156,10 @@ def main() -> int:
         return 130
 
     except Exception as exc:
-        print(f"\nERROR: {exc}", file=sys.stderr)
+        print(
+            f"\nERROR: {exc}",
+            file=sys.stderr,
+        )
         return 1
 
 
