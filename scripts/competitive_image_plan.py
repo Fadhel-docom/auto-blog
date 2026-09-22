@@ -1,18 +1,101 @@
 #!/usr/bin/env python3
 
 import json
+import os
 import re
 import sys
+import time
 
 from pathlib import Path
 from typing import Any, Dict, List, Optional
+
+from groq import Groq
 
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 ARTICLE_PATH = ROOT_DIR / "article.json"
 
 IMAGE_COUNT = 10
-MAX_HEADING_QUERY_WORDS = 4
+MAX_RETRIES = 5
+
+GROQ_MODEL = os.getenv(
+    "GROQ_MODEL",
+    "openai/gpt-oss-120b",
+)
+
+ROOM_TERMS = {
+    "bathroom",
+    "bedroom",
+    "kitchen",
+    "pantry",
+    "closet",
+    "entryway",
+    "hallway",
+    "foyer",
+    "living room",
+    "home office",
+    "office",
+    "laundry room",
+    "garage",
+    "nursery",
+    "dining room",
+    "apartment",
+    "studio",
+    "small space",
+}
+
+VISUAL_OBJECT_TERMS = {
+    "cabinet",
+    "drawer",
+    "shelf",
+    "shelves",
+    "bin",
+    "bins",
+    "basket",
+    "baskets",
+    "rack",
+    "rod",
+    "hooks",
+    "hook",
+    "tray",
+    "container",
+    "containers",
+    "organizer",
+    "organizers",
+    "shelving",
+    "vanity",
+    "sink",
+    "counter",
+    "countertop",
+    "closet",
+    "wardrobe",
+    "dresser",
+    "shoe rack",
+    "pegboard",
+    "cart",
+    "trolley",
+    "bench",
+}
+
+STORAGE_TERMS = {
+    "storage",
+    "organization",
+    "organizing",
+    "organized",
+    "decluttering",
+    "space saving",
+    "pull out",
+    "pull-out",
+    "vertical storage",
+    "hidden storage",
+    "under sink",
+    "under-sink",
+    "drawer storage",
+    "cabinet storage",
+    "wall storage",
+    "door storage",
+    "stacked storage",
+}
 
 
 def load_article() -> Dict[str, Any]:
@@ -79,19 +162,73 @@ def clean_text(value: Any) -> str:
         return ""
 
     value = value.replace("\r", " ")
-    value = re.sub(
-        r"\s+",
-        " ",
-        value,
-    )
+    value = re.sub(r"\s+", " ", value)
 
     return value.strip()
 
 
-def extract_h2_headings(
+def extract_json_from_response(
+    response_text: str,
+) -> Dict[str, Any]:
+    if not isinstance(response_text, str):
+        raise ValueError(
+            "Groq response is not a string."
+        )
+
+    text = response_text.strip()
+
+    if not text:
+        raise ValueError(
+            "Groq returned an empty response."
+        )
+
+    if text.startswith("```"):
+        text = re.sub(
+            r"^```(?:json)?\s*",
+            "",
+            text,
+            flags=re.IGNORECASE,
+        )
+        text = re.sub(
+            r"\s*```$",
+            "",
+            text,
+        ).strip()
+
+    try:
+        result = json.loads(text)
+    except json.JSONDecodeError:
+        start = text.find("{")
+        end = text.rfind("}")
+
+        if start == -1 or end == -1 or end <= start:
+            raise ValueError(
+                "Groq response does not contain "
+                "a valid JSON object."
+            )
+
+        try:
+            result = json.loads(text[start:end + 1])
+        except json.JSONDecodeError as exc:
+            raise ValueError(
+                f"Groq returned invalid JSON: {exc}"
+            ) from exc
+
+    if not isinstance(result, dict):
+        raise ValueError(
+            "Groq response must be a JSON object."
+        )
+
+    return result
+
+
+def extract_sections(
     content: str,
-) -> List[str]:
-    headings: List[str] = []
+) -> List[Dict[str, str]]:
+    sections: List[Dict[str, str]] = []
+
+    current_heading: Optional[str] = None
+    current_lines: List[str] = []
 
     in_fenced_code_block = False
     fence_marker: Optional[str] = None
@@ -113,16 +250,20 @@ def extract_h2_headings(
 
             elif (
                 fence_marker
-                and stripped.startswith(
-                    fence_marker
-                )
+                and stripped.startswith(fence_marker)
             ):
                 in_fenced_code_block = False
                 fence_marker = None
 
+            if current_heading is not None:
+                current_lines.append(line)
+
             continue
 
         if in_fenced_code_block:
+            if current_heading is not None:
+                current_lines.append(line)
+
             continue
 
         match = re.match(
@@ -130,17 +271,37 @@ def extract_h2_headings(
             line,
         )
 
-        if not match:
+        if match:
+            if current_heading is not None:
+                sections.append(
+                    {
+                        "heading": current_heading,
+                        "body": "\n".join(
+                            current_lines
+                        ).strip(),
+                    }
+                )
+
+            current_heading = clean_text(
+                match.group(1)
+            )
+            current_lines = []
             continue
 
-        heading = clean_text(
-            match.group(1)
+        if current_heading is not None:
+            current_lines.append(line)
+
+    if current_heading is not None:
+        sections.append(
+            {
+                "heading": current_heading,
+                "body": "\n".join(
+                    current_lines
+                ).strip(),
+            }
         )
 
-        if heading:
-            headings.append(heading)
-
-    return headings
+    return sections
 
 
 def remove_markdown(text: str) -> str:
@@ -160,376 +321,617 @@ def remove_markdown(text: str) -> str:
         text,
     )
     text = re.sub(
-        r"#{1,6}[ \t]+",
+        r"^#{1,6}[ \t]+",
+        "",
+        text,
+        flags=re.MULTILINE,
+    )
+    text = re.sub(
+        r"[*_~>]+",
         " ",
         text,
     )
     text = re.sub(
-        r"[*_~]+",
+        r"\s+",
         " ",
         text,
     )
 
-    return clean_text(text)
+    return text.strip()
 
 
-def extract_useful_terms(
-    content: str,
+def extract_first_two_paragraphs(
+    body: str,
 ) -> List[str]:
-    stop_words = {
-        "the", "and", "for", "with", "from",
-        "that", "this", "your", "you", "are",
-        "into", "without", "small", "home",
-        "ideas", "tips", "guide", "best", "ways",
-        "how", "what", "when", "where", "using",
-        "use", "make", "get", "can", "more",
-        "room", "space", "before", "after",
-        "about", "their", "there", "these",
-        "those", "than", "then", "also", "just",
-        "yourself", "each", "every", "some",
-        "very", "have", "has", "will", "should",
-        "could", "would", "other", "which",
-        "while", "only", "through", "because",
-        "made",
-    }
+    plain = remove_markdown(body)
+
+    raw_parts = re.split(
+        r"\n\s*\n",
+        body,
+    )
+
+    paragraphs: List[str] = []
+
+    for part in raw_parts:
+        cleaned = remove_markdown(part)
+
+        if len(cleaned) < 35:
+            continue
+
+        if cleaned.startswith("- "):
+            continue
+
+        if re.match(
+            r"^\d+\.\s+",
+            cleaned,
+        ):
+            continue
+
+        paragraphs.append(cleaned)
+
+        if len(paragraphs) >= 2:
+            break
+
+    if not paragraphs and plain:
+        paragraphs = [plain[:600]]
+
+    return paragraphs[:2]
+
+
+def extract_visual_nouns(
+    text: str,
+) -> List[str]:
+    normalized = text.lower()
+
+    terms: List[str] = []
+
+    all_terms = (
+        ROOM_TERMS
+        | VISUAL_OBJECT_TERMS
+        | STORAGE_TERMS
+    )
+
+    for term in sorted(
+        all_terms,
+        key=len,
+        reverse=True,
+    ):
+        if term.lower() in normalized:
+            if term not in terms:
+                terms.append(term)
 
     words = re.findall(
-        r"[A-Za-z][A-Za-z'-]{2,}",
-        content,
+        r"\b[a-z][a-z-]{3,}\b",
+        normalized,
     )
 
-    result = []
+    stop_words = {
+        "about",
+        "after",
+        "again",
+        "also",
+        "because",
+        "before",
+        "being",
+        "between",
+        "could",
+        "every",
+        "first",
+        "from",
+        "have",
+        "into",
+        "more",
+        "other",
+        "should",
+        "their",
+        "these",
+        "those",
+        "through",
+        "using",
+        "where",
+        "which",
+        "while",
+        "would",
+        "your",
+    }
 
     for word in words:
-        normalized = word.lower()
-
-        if normalized in stop_words:
+        if word in stop_words:
             continue
 
-        if normalized in result:
+        if word in terms:
             continue
 
-        result.append(normalized)
+        if (
+            word.endswith("ing")
+            and word not in {
+                "organizing",
+                "decluttering",
+            }
+        ):
+            continue
 
-    return result
+        if word not in terms:
+            terms.append(word)
+
+        if len(terms) >= 14:
+            break
+
+    return terms[:14]
 
 
-def normalize_query(value: str) -> str:
-    value = clean_text(value)
-    value = value.replace(
-        "&",
-        "and",
-    )
-    value = re.sub(
+def build_section_payload(
+    sections: List[Dict[str, str]],
+) -> str:
+    payload = []
+
+    for index, section in enumerate(
+        sections,
+        start=1,
+    ):
+        paragraphs = extract_first_two_paragraphs(
+            section["body"]
+        )
+
+        context = " ".join(paragraphs)
+
+        nouns = extract_visual_nouns(
+            " ".join(
+                [
+                    section["heading"],
+                    context,
+                ]
+            )
+        )
+
+        payload.append(
+            "\n".join(
+                [
+                    f"SECTION {index}",
+                    f"H2: {section['heading']}",
+                    "FIRST TWO PARAGRAPHS:",
+                    context,
+                    "VISUAL NOUNS:",
+                    ", ".join(nouns),
+                ]
+            )
+        )
+
+    return "\n\n".join(payload)
+
+
+def normalize_query(query: str) -> str:
+    query = clean_text(query)
+
+    query = query.replace("&", "and")
+
+    query = re.sub(
         r"[^A-Za-z0-9,\- ]+",
         " ",
-        value,
+        query,
     )
-    value = re.sub(
+
+    query = re.sub(
         r"\s+",
         " ",
-        value,
+        query,
     )
 
-    return value.strip()
+    return query.strip()
 
 
-def shorten_heading(
-    heading: str,
-    maximum_words: int = MAX_HEADING_QUERY_WORDS,
-) -> str:
-    words = heading.split()
+def validate_query_shape(query: str) -> bool:
+    words = query.split()
 
-    if len(words) <= maximum_words:
-        return heading
+    if len(words) < 4:
+        return False
 
-    return " ".join(
-        words[:maximum_words]
-    )
+    if len(words) > 14:
+        return False
+
+    return True
 
 
-def compact_keyword(
-    keyword: str,
-) -> str:
-    words = [
-        word
-        for word in keyword.split()
-        if word.strip()
-    ]
-
-    if len(words) <= 3:
-        return keyword
-
-    return " ".join(words[:3])
-
-
-def build_query_from_heading(
-    heading: str,
-    keyword: str,
-    index: int,
-) -> str:
-    heading_clean = shorten_heading(
-        clean_text(heading)
-    )
-    keyword_clean = compact_keyword(
-        clean_text(keyword)
-    )
-
-    if index == 1:
-        parts = [
-            keyword_clean,
-            "organized home interior",
-        ]
-    elif heading_clean:
-        parts = [
-            heading_clean,
-            keyword_clean,
-            "home interior",
-        ]
-    else:
-        parts = [
-            keyword_clean,
-            "home organization",
-            "interior",
-        ]
-
-    query = " ".join(
-        part for part in parts if part
-    )
-
-    return normalize_query(query)
-
-
-def build_fallback_queries(
-    article: Dict[str, Any],
-) -> List[str]:
-    keyword = clean_text(
-        article.get(
-            "keyword",
-            "",
-        )
-    )
-
-    title = clean_text(
-        article.get(
-            "title",
-            "",
-        )
-    )
-
-    content = remove_markdown(
-        clean_text(
-            article.get(
-                "content_markdown",
-                "",
-            )
-        )
-    )
-
-    terms = extract_useful_terms(
-        " ".join(
-            [
-                title,
-                keyword,
-                content,
-            ]
-        )
-    )
-
-    fallback_templates = [
-        "modern home organization interior",
-        "organized storage shelves home",
-        "small space storage interior",
-        "stylish home storage ideas",
-        "decluttered organized room",
-        "practical storage solution interior",
-        "minimal organized home",
-        "functional storage furniture",
-        "space saving organization",
-        "clean modern organized room",
-    ]
-
-    queries = []
-
-    compact_keyword_value = (
-        compact_keyword(keyword)
-    )
-
-    if compact_keyword_value:
-        queries.append(
-            normalize_query(
-                f"{compact_keyword_value} "
-                f"modern interior"
-            )
-        )
-
-    for term in terms:
-        if len(queries) >= IMAGE_COUNT:
-            break
-
-        if term in {
-            "organization",
-            "organized",
-            "storage",
-            "interior",
-            "home",
-            "room",
-        }:
-            continue
-
-        query = normalize_query(
-            f"{term} "
-            f"home organization interior"
-        )
-
-        if query:
-            queries.append(query)
-
-    for template in fallback_templates:
-        if len(queries) >= IMAGE_COUNT:
-            break
-
-        queries.append(
-            normalize_query(template)
-        )
-
-    return queries
-
-
-def make_unique(
-    queries: List[str],
-) -> List[str]:
+def make_unique(queries: List[str]) -> List[str]:
     result = []
     seen = set()
 
     for query in queries:
-        normalized = normalize_query(
-            query
-        )
+        query = normalize_query(query)
 
-        if not normalized:
+        if not query:
             continue
 
-        key = normalized.lower()
+        key = query.lower()
 
         if key in seen:
             continue
 
         seen.add(key)
-        result.append(normalized)
+        result.append(query)
 
     return result
 
 
-def build_image_queries(
+def get_status_code(exception: Exception) -> Optional[int]:
+    response = getattr(
+        exception,
+        "response",
+        None,
+    )
+
+    if response is not None:
+        status_code = getattr(
+            response,
+            "status_code",
+            None,
+        )
+
+        if status_code is not None:
+            return status_code
+
+    return getattr(
+        exception,
+        "status_code",
+        None,
+    )
+
+
+def build_prompts(
     article: Dict[str, Any],
+    sections: List[Dict[str, str]],
+) -> tuple:
+    title = clean_text(article.get("title", ""))
+    keyword = clean_text(article.get("keyword", ""))
+
+    section_payload = build_section_payload(sections)
+
+    system_prompt = """
+You are a professional visual content editor for an
+English-language Home Organization & Small-Space Living website.
+
+Create exactly 10 highly specific Pexels search queries from
+the FINAL article after editorial content upgrading.
+
+The article has already been written. Do not infer image topics
+from headings alone.
+
+QUERY STRUCTURE:
+Every query should follow this conceptual structure:
+
+[room/context] + [specific object] +
+[specific storage solution] + [visual scene]
+
+Examples:
+- bathroom under sink pull out cabinet storage bins
+- bedroom under bed rolling storage containers organized
+- kitchen pantry cabinet tiered shelf spice storage
+
+BAD:
+- Planning Pull-Out Bin System home interior
+- bathroom organization interior
+- modern home storage
+- organized home
+
+For every section query:
+1. Read the H2.
+2. Read the first two paragraphs.
+3. Identify the concrete objects and storage technique.
+4. Identify the room or physical context.
+5. Describe a realistic photographable scene.
+6. Use concrete nouns rather than abstract SEO language.
+
+IMAGE PLAN:
+- Query 1 is the HERO.
+- Queries 2-10 correspond to the first 9 useful H2
+  sections in order.
+- If there are fewer than 9 H2 sections, use the remaining
+  strongest sections without duplicating a query.
+- If there are more than 9 H2 sections, use the first 9
+  substantive sections.
+- Never create a query from an H2 heading alone.
+
+HERO:
+- Wide editorial room scene.
+- Represents the overall article topic.
+- Must contain enough context to understand the room.
+- Avoid close-up single objects.
+
+SECTION IMAGES:
+- Specific to the section.
+- Show the actual storage object or technique.
+- Prefer realistic homes over abstract product photography.
+- Do not use generic "organized home" scenes when a concrete
+  object is available.
+
+STYLE:
+- concise English
+- 5-14 words
+- no quotation marks
+- no photographer names
+- no camera instructions
+- no SEO commentary
+- no article title inside queries
+- no H2 labels inside queries
+- no duplicate queries
+- no generic filler words such as "beautiful", "amazing",
+  "best", or "perfect"
+
+Return ONLY valid JSON:
+
+{
+  "image_queries": [
+    "hero query",
+    "section query 1",
+    "section query 2",
+    "section query 3",
+    "section query 4",
+    "section query 5",
+    "section query 6",
+    "section query 7",
+    "section query 8",
+    "section query 9"
+  ]
+}
+""".strip()
+
+    user_prompt = f"""
+ARTICLE TITLE:
+{title}
+
+FOCUS KEYWORD:
+{keyword}
+
+FINAL ARTICLE SECTIONS:
+{section_payload}
+
+Generate exactly 10 Pexels queries.
+
+Query 1:
+A wide hero scene representing the whole article.
+
+Queries 2-10:
+One query for each of the first nine substantive sections.
+
+Every query must be based on actual visual information in the
+section content. Use concrete objects, rooms, storage systems,
+and photographable scenes.
+
+Return only the JSON object.
+""".strip()
+
+    return system_prompt, user_prompt
+
+
+def generate_queries(
+    api_key: str,
+    article: Dict[str, Any],
+    sections: List[Dict[str, str]],
 ) -> List[str]:
-    content = article.get(
-        "content_markdown",
-        "",
+    client = Groq(api_key=api_key)
+
+    system_prompt, user_prompt = build_prompts(
+        article,
+        sections,
     )
 
-    if not isinstance(content, str):
-        raise ValueError(
-            "article.json field "
-            "'content_markdown' "
-            "must be a string."
-        )
+    last_exception: Optional[Exception] = None
 
-    if not content.strip():
-        raise ValueError(
-            "article.json contains empty "
-            "content_markdown."
-        )
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            print(
+                "Generating final-content image plan "
+                f"with Groq "
+                f"(attempt {attempt}/{MAX_RETRIES})..."
+            )
 
+            response = client.chat.completions.create(
+                model=GROQ_MODEL,
+                messages=[
+                    {
+                        "role": "system",
+                        "content": system_prompt,
+                    },
+                    {
+                        "role": "user",
+                        "content": user_prompt,
+                    },
+                ],
+                temperature=0.35,
+                max_tokens=1800,
+                response_format={
+                    "type": "json_object"
+                },
+            )
+
+            if not response.choices:
+                raise ValueError(
+                    "Groq returned no choices."
+                )
+
+            content = getattr(
+                response.choices[0].message,
+                "content",
+                None,
+            )
+
+            result = extract_json_from_response(
+                content or ""
+            )
+
+            raw_queries = result.get("image_queries")
+
+            if not isinstance(raw_queries, list):
+                raise ValueError(
+                    "'image_queries' must be a list."
+                )
+
+            queries = []
+
+            for query in raw_queries:
+                if not isinstance(query, str):
+                    continue
+
+                query = normalize_query(query)
+
+                if not validate_query_shape(query):
+                    continue
+
+                lower_existing = {
+                    item.lower() for item in queries
+                }
+
+                if query.lower() not in lower_existing:
+                    queries.append(query)
+
+            if len(queries) != IMAGE_COUNT:
+                raise ValueError(
+                    "Groq must return exactly "
+                    f"{IMAGE_COUNT} valid unique "
+                    "image queries."
+                )
+
+            return queries
+
+        except Exception as exc:
+            last_exception = exc
+
+            status_code = get_status_code(exc)
+
+            retryable = {
+                429,
+                500,
+                502,
+                503,
+                504,
+            }
+
+            if (
+                status_code is not None
+                and status_code not in retryable
+            ):
+                break
+
+            if attempt >= MAX_RETRIES:
+                break
+
+            delay = min(2 ** (attempt - 1), 30)
+
+            print(
+                f"Image planning failed: {exc}",
+                file=sys.stderr,
+            )
+
+            print(
+                f"Retrying in {delay} seconds..."
+            )
+
+            time.sleep(delay)
+
+    raise RuntimeError(
+        "Groq image planning failed after "
+        f"{MAX_RETRIES} attempts: "
+        f"{last_exception}"
+    )
+
+
+def build_local_fallback_queries(
+    article: Dict[str, Any],
+    sections: List[Dict[str, str]],
+) -> List[str]:
     keyword = clean_text(
-        article.get(
-            "keyword",
-            "",
+        article.get("keyword", "")
+    ).lower()
+
+    candidates = []
+
+    for section in sections:
+        body = " ".join(
+            extract_first_two_paragraphs(
+                section["body"]
+            )
         )
+
+        source = " ".join(
+            [
+                section["heading"],
+                body,
+            ]
+        )
+
+        source_lower = source.lower()
+
+        rooms = [
+            term
+            for term in ROOM_TERMS
+            if term in source_lower
+        ]
+
+        objects = [
+            term
+            for term in VISUAL_OBJECT_TERMS
+            if term in source_lower
+        ]
+
+        storage = [
+            term
+            for term in STORAGE_TERMS
+            if term in source_lower
+        ]
+
+        room = rooms[0] if rooms else keyword
+
+        obj = (
+            objects[0]
+            if objects
+            else "storage cabinet"
+        )
+
+        solution = (
+            storage[0]
+            if storage
+            else "organized storage"
+        )
+
+        candidates.append(
+            normalize_query(
+                f"{room} {obj} "
+                f"{solution} organized interior"
+            )
+        )
+
+    candidates.insert(
+        0,
+        normalize_query(
+            f"{keyword} organized home "
+            f"storage interior wide shot"
+        ),
     )
 
-    headings = extract_h2_headings(
-        content
+    candidates = make_unique(candidates)
+
+    generic_fallbacks = [
+        "bathroom cabinet storage organized interior",
+        "bedroom closet storage bins organized interior",
+        "kitchen cabinet storage containers organized",
+        "small apartment storage furniture organized",
+        "entryway storage cabinet organized interior",
+        "home office drawer storage organized workspace",
+        "laundry room cabinet storage organized interior",
+        "under sink cabinet storage organized bathroom",
+        "small space vertical storage organized room",
+    ]
+
+    candidates = make_unique(
+        candidates + generic_fallbacks
     )
 
-    queries = []
-
-    for index, heading in enumerate(
-        headings,
-        start=1,
-    ):
-        if len(queries) >= IMAGE_COUNT:
-            break
-
-        query = build_query_from_heading(
-            heading,
-            keyword,
-            index,
-        )
-
-        if query:
-            queries.append(query)
-
-    queries = make_unique(queries)
-
-    if len(queries) < IMAGE_COUNT:
-        fallback_queries = (
-            build_fallback_queries(article)
-        )
-
-        queries = make_unique(
-            queries + fallback_queries
-        )
-
-    if len(queries) < IMAGE_COUNT:
+    if len(candidates) < IMAGE_COUNT:
         raise ValueError(
-            "Could not generate exactly "
-            f"{IMAGE_COUNT} unique image "
-            "queries. "
-            f"Generated {len(queries)}."
+            "Could not build 10 unique fallback queries."
         )
 
-    return queries[:IMAGE_COUNT]
-
-
-def validate_queries(
-    queries: List[str],
-) -> None:
-    if len(queries) != IMAGE_COUNT:
-        raise ValueError(
-            f"Expected exactly {IMAGE_COUNT} "
-            f"image queries, got "
-            f"{len(queries)}."
-        )
-
-    normalized = []
-
-    for index, query in enumerate(
-        queries,
-        start=1,
-    ):
-        if not isinstance(query, str):
-            raise ValueError(
-                f"Image query #{index} "
-                "must be a string."
-            )
-
-        query = normalize_query(query)
-
-        if not query:
-            raise ValueError(
-                f"Image query #{index} "
-                "is empty."
-            )
-
-        if query.lower() in normalized:
-            raise ValueError(
-                f"Image query #{index} "
-                "is duplicated."
-            )
-
-        normalized.append(query.lower())
+    return candidates[:IMAGE_COUNT]
 
 
 def main() -> int:
@@ -538,37 +940,33 @@ def main() -> int:
     print("=" * 70)
 
     try:
+        api_key = os.getenv("GROQ_API_KEY")
+
+        if not api_key:
+            raise RuntimeError(
+                "GROQ_API_KEY is not set."
+            )
+
         article = load_article()
 
         title = clean_text(
-            article.get(
-                "title",
-                "",
-            )
+            article.get("title", "")
         )
 
         keyword = clean_text(
-            article.get(
-                "keyword",
-                "",
-            )
+            article.get("keyword", "")
         )
 
-        content = article.get(
-            "content_markdown",
-            "",
-        )
+        content = article.get("content_markdown", "")
 
         if not title:
             raise ValueError(
-                "article.json is missing "
-                "'title'."
+                "article.json is missing 'title'."
             )
 
         if not keyword:
             raise ValueError(
-                "article.json is missing "
-                "'keyword'."
+                "article.json is missing 'keyword'."
             )
 
         if (
@@ -576,39 +974,78 @@ def main() -> int:
             or not content.strip()
         ):
             raise ValueError(
-                "article.json is missing "
-                "valid 'content_markdown'."
+                "article.json is missing valid "
+                "'content_markdown'."
             )
 
-        headings = extract_h2_headings(
-            content
-        )
+        sections = extract_sections(content)
 
-        print(
-            f"Article title: {title}"
-        )
-        print(
-            f"Focus keyword: {keyword}"
-        )
-        print(
-            f"H2 headings detected: "
-            f"{len(headings)}"
-        )
+        if len(sections) < 4:
+            raise ValueError(
+                "The final article contains fewer "
+                "than 4 H2 sections."
+            )
 
-        queries = build_image_queries(
-            article
-        )
+        print(f"Article title: {title}")
+        print(f"Focus keyword: {keyword}")
+        print(f"Final H2 sections: {len(sections)}")
 
-        validate_queries(queries)
+        for index, section in enumerate(
+            sections,
+            start=1,
+        ):
+            paragraphs = extract_first_two_paragraphs(
+                section["body"]
+            )
 
-        article["image_queries"] = (
-            queries
-        )
+            print(
+                f"  H2 #{index}: {section['heading']}"
+            )
+
+            if paragraphs:
+                print(
+                    "    Visual context: "
+                    + paragraphs[0][:180]
+                )
+
+        try:
+            queries = generate_queries(
+                api_key,
+                article,
+                sections,
+            )
+        except Exception as groq_exc:
+            print(
+                "WARNING: Groq image planning failed.",
+                file=sys.stderr,
+            )
+            print(
+                f"Reason: {groq_exc}",
+                file=sys.stderr,
+            )
+            print(
+                "Using content-derived local fallback."
+            )
+
+            queries = build_local_fallback_queries(
+                article,
+                sections,
+            )
+
+        queries = make_unique(queries)
+
+        if len(queries) != IMAGE_COUNT:
+            raise ValueError(
+                "Exactly 10 unique image queries "
+                "are required."
+            )
+
+        article["image_queries"] = queries
 
         save_article(article)
 
         print("")
-        print("Generated image queries:")
+        print("FINAL IMAGE QUERIES:")
 
         for index, query in enumerate(
             queries,
@@ -619,19 +1056,18 @@ def main() -> int:
             else:
                 label = f"IMAGE {index}"
 
-            print(f"{label}: {query}")
+            print(
+                f"{index:02d}. [{label}] {query}"
+            )
 
         print("")
         print(
-            f"Saved {len(queries)} "
-            "image queries "
+            f"Saved {len(queries)} queries "
             f"to {ARTICLE_PATH}"
         )
-
         print("=" * 70)
         print(
-            "COMPETITIVE IMAGE PLAN "
-            "COMPLETE"
+            "COMPETITIVE IMAGE PLAN COMPLETE"
         )
         print("=" * 70)
 
@@ -639,23 +1075,15 @@ def main() -> int:
 
     except KeyboardInterrupt:
         print(
-            "",
-            file=sys.stderr,
-        )
-        print(
             "Operation cancelled.",
             file=sys.stderr,
         )
         return 130
 
     except Exception as exc:
+        print("", file=sys.stderr)
         print(
-            "",
-            file=sys.stderr,
-        )
-        print(
-            "COMPETITIVE IMAGE PLAN "
-            "FAILED",
+            "COMPETITIVE IMAGE PLAN FAILED",
             file=sys.stderr,
         )
         print(
