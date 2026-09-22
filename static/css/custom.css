@@ -184,6 +184,7 @@ h6 {
 }
 
 .site-header-inner {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -259,6 +260,10 @@ h6 {
   flex: 0 0 auto;
 }
 
+.site-nav.is-open {
+  display: flex;
+}
+
 .site-nav-link {
   display: inline-flex;
   align-items: center;
@@ -277,7 +282,7 @@ h6 {
   background: var(--accent-light);
 }
 
-.site-menu-toggle {
+.nav-toggle {
   display: none;
   width: 40px;
   height: 40px;
@@ -287,36 +292,34 @@ h6 {
   background: transparent;
   color: var(--text);
   cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex: 0 0 40px;
 }
 
-.site-menu-icon,
-.site-menu-icon::before,
-.site-menu-icon::after {
+.nav-toggle span {
   display: block;
   width: 18px;
   height: 2px;
   background: currentColor;
   border-radius: 1px;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
-.site-menu-icon {
-  position: relative;
-  margin: 0 auto;
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
 }
 
-.site-menu-icon::before,
-.site-menu-icon::after {
-  content: "";
-  position: absolute;
-  left: 0;
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
 }
 
-.site-menu-icon::before {
-  top: -6px;
-}
-
-.site-menu-icon::after {
-  top: 6px;
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 
@@ -859,7 +862,84 @@ h6 {
 
 
 /* =========================================
-   POST LIST (Categories, Taxonomies)
+   TAXONOMY PAGE (Categories)
+   ========================================= */
+
+.taxonomy-page {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.taxonomy-page .page-header {
+  margin-bottom: 32px;
+}
+
+.taxonomy-page h1 {
+  margin: 8px 0 10px;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+}
+
+.taxonomy-page p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.taxonomy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.taxonomy-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-elevated);
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.taxonomy-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+.taxonomy-card strong {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.taxonomy-page .empty-state {
+  padding: 60px 20px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--muted);
+  text-align: center;
+}
+
+
+/* =========================================
+   POST LIST (Taxonomy Term pages)
    ========================================= */
 
 .post-list {
@@ -1181,8 +1261,7 @@ h6 {
 
 
 /* =========================================
-   MOBILE — Main breakpoint (max 780px)
-   THE HEADER FIX
+   MOBILE (max 780px)
    ========================================= */
 
 @media (max-width: 780px) {
@@ -1235,15 +1314,10 @@ h6 {
     display: none;
   }
 
-  /* Show hamburger on mobile */
-  .site-menu-toggle {
+  .nav-toggle {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 40px;
   }
 
-  /* Hide nav by default on mobile */
   .site-nav {
     display: none;
     position: absolute;
@@ -1260,7 +1334,6 @@ h6 {
     z-index: 99;
   }
 
-  /* Show nav when .is-open */
   .site-nav.is-open {
     display: flex;
   }
@@ -1273,11 +1346,6 @@ h6 {
     justify-content: flex-start;
   }
 
-  .site-header-inner {
-    position: relative;
-  }
-
-  /* Typography adjustments */
   .site-main {
     padding: 32px 0 48px;
   }
