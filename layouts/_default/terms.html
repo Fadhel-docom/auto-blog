@@ -1,0 +1,24 @@
+{{ define "main" }}
+<section class="taxonomy-page">
+  <header class="page-header">
+    <span class="home-section-kicker">Browse the site</span>
+    <h1>{{ .Title }}</h1>
+    <p>Explore articles by topic.</p>
+  </header>
+
+  {{ $terms := .Data.Terms.Alphabetical }}
+
+  {{ if gt (len $terms) 0 }}
+    <div class="taxonomy-grid">
+      {{ range $terms }}
+        <a class="taxonomy-card" href="{{ .Page.RelPermalink }}">
+          <span>{{ .Page.Title }}</span>
+          <strong>{{ .Count }}</strong>
+        </a>
+      {{ end }}
+    </div>
+  {{ else }}
+    <p class="empty-state">No categories yet.</p>
+  {{ end }}
+</section>
+{{ end }}
