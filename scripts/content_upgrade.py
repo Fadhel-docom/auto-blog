@@ -80,12 +80,14 @@ def save_article(article: Dict[str, Any]) -> None:
             file.write("\n")
 
         temp_path.replace(ARTICLE_PATH)
+
     except OSError as exc:
         if temp_path.exists():
             try:
                 temp_path.unlink()
             except OSError:
                 pass
+
         raise RuntimeError(
             f"Could not save article.json: {exc}"
         ) from exc
@@ -99,7 +101,8 @@ def get_required_string(
 
     if not isinstance(value, str):
         raise ValueError(
-            f"article.json field '{field_name}' must be a string."
+            f"article.json field '{field_name}' "
+            "must be a string."
         )
 
     value = value.strip()
@@ -147,6 +150,7 @@ def extract_h2_headings(content: str) -> List[str]:
         return []
 
     headings = []
+
     in_fenced_code_block = False
     fence_marker: Optional[str] = None
 
@@ -159,16 +163,19 @@ def extract_h2_headings(content: str) -> List[str]:
         ):
             if not in_fenced_code_block:
                 in_fenced_code_block = True
+
                 if stripped.startswith("```"):
                     fence_marker = "```"
                 else:
                     fence_marker = "~~~"
+
             elif (
                 fence_marker
                 and stripped.startswith(fence_marker)
             ):
                 in_fenced_code_block = False
                 fence_marker = None
+
             continue
 
         if in_fenced_code_block:
@@ -190,9 +197,7 @@ def extract_h2_headings(content: str) -> List[str]:
 
 def is_article_sufficient(content: str) -> bool:
     words = count_words(content)
-    h2_count = len(
-        extract_h2_headings(content)
-    )
+    h2_count = len(extract_h2_headings(content))
 
     return (
         MIN_ACCEPTABLE_WORDS <= words <= MAX_WORDS
@@ -257,6 +262,14 @@ def clean_markdown(content: str) -> str:
         "",
         content,
         count=1,
+    )
+
+    # Remove any leaked "Tags: [...]" JSON line that
+    # the model sometimes appends to content_markdown.
+    content = re.sub(
+        r"(?mi)^[ \t]*Tags:[ \t]*\[[^\r\n]*\][ \t]*\r?\n?",
+        "",
+        content,
     )
 
     return content.strip()
@@ -352,6 +365,14 @@ H2 REQUIREMENT:
 - Every H2 must contain useful, distinct information.
 - Do not create empty or extremely short H2 sections.
 - Do not use an H1 inside content_markdown.
+
+TITLE REQUIREMENT:
+- The article title must be concise, specific, and easy to scan.
+- Aim for 45-65 characters.
+- Never exceed 70 characters unless the exact focus keyword makes this impossible.
+- Avoid unnecessary words, filler, and long list-style phrasing.
+- Keep the main topic or benefit clear within the first 8-10 words.
+- Preserve the exact focus keyword naturally in the title.
 
 ARTICLE STRUCTURE:
 - Begin with a concise introduction.
@@ -546,6 +567,9 @@ The final version must:
 18. Do not create image Markdown.
 19. Do not mention this editing process.
 20. Do not mention AI.
+21. Keep the article title concise and specific.
+22. Aim for 45-65 characters and never exceed 70 characters unless the exact focus keyword makes this impossible.
+23. Avoid unnecessary words, filler, and long list-style titles.
 
 Return ONLY the JSON object requested by the system prompt.
 """.strip()
@@ -1336,7 +1360,8 @@ def main() -> int:
         except Exception as repair_exc:
             print("")
             print(
-                "WARNING: repaired article also failed validation:",
+                "WARNING: repaired article also failed "
+                "validation:",
                 file=sys.stderr,
             )
             print(
