@@ -1,0 +1,110 @@
+/* =========================================
+   READING PROGRESS BAR
+   ========================================= */
+
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--accent);
+  z-index: 9999;
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+
+
+/* =========================================
+   BACK TO TOP BUTTON
+   ========================================= */
+
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  z-index: 200;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px);
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.back-to-top[hidden] {
+  display: none;
+}
+
+
+/* =========================================
+   FOCUS STATES (A11Y)
+   ========================================= */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+
+/* =========================================
+   IMAGE FALLBACKS
+   ========================================= */
+
+.image-load-failed {
+  display: none !important;
+}
+
+
+/* =========================================
+   MOBILE TWEAKS
+   ========================================= */
+
+@media (max-width: 780px) {
+
+  .back-to-top {
+    width: 42px;
+    height: 42px;
+    bottom: 16px;
+    right: 16px;
+    font-size: 1.15rem;
+  }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .reading-progress {
+    transition: none;
+  }
+
+  .back-to-top {
+    transition: none;
+  }
+
+}
