@@ -1,3 +1,5 @@
+{{ $homeURL := site.Home.RelPermalink }}
+
 <header class="site-header">
 
   <div class="site-container">
@@ -5,7 +7,7 @@
     <div class="site-header-inner">
 
       <a
-        href="{{ "/" | relURL }}"
+        href="{{ $homeURL }}"
         class="site-brand"
         aria-label="{{ .Site.Title }} home"
       >
@@ -86,28 +88,28 @@
       >
 
         <a
-          href="{{ "/" | relURL }}"
+          href="{{ $homeURL }}"
           class="site-nav-link"
         >
           Home
         </a>
 
         <a
-          href="{{ "/categories/" | relURL }}"
+          href="{{ printf "%scategories/" $homeURL }}"
           class="site-nav-link"
         >
           Categories
         </a>
 
         <a
-          href="{{ "/about/" | relURL }}"
+          href="{{ printf "%sabout/" $homeURL }}"
           class="site-nav-link"
         >
           About
         </a>
 
         <a
-          href="{{ "/#site-search" | relURL }}"
+          href="{{ printf "%s#site-search" $homeURL }}"
           class="site-nav-link"
         >
           Search
