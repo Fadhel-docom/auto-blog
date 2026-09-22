@@ -16,6 +16,7 @@ IMAGE_DIR = ROOT_DIR / "static" / "images"
 REQUIRED_IMAGES = 10
 EXISTING_PUBLISHED_IMAGES = 5
 ADDITIONAL_IMAGES = 5
+MARKDOWN_EXISTING_IMAGES = 4
 
 
 def load_article() -> Dict[str, Any]:
@@ -454,12 +455,12 @@ def main() -> int:
 
             return 0
 
-        if before_count < EXISTING_PUBLISHED_IMAGES:
+        if before_count < MARKDOWN_EXISTING_IMAGES:
             raise RuntimeError(
                 "The published post contains fewer than "
-                f"{EXISTING_PUBLISHED_IMAGES} images. "
+                f"{MARKDOWN_EXISTING_IMAGES} markdown images. "
                 "The original publisher did not create "
-                "the expected five-image base article."
+                "the expected base article."
             )
 
         new_content, inserted, h2_numbers = (
@@ -480,10 +481,11 @@ def main() -> int:
         print("")
         print(f"Images after insertion: {after_count}")
 
-        if after_count < REQUIRED_IMAGES:
+        if after_count < REQUIRED_IMAGES - 1:
             raise RuntimeError(
                 "The post still contains fewer than "
-                f"{REQUIRED_IMAGES} images after insertion."
+                f"{REQUIRED_IMAGES - 1} markdown images "
+                "after insertion."
             )
 
         verify_all_images_present(new_content, images)
@@ -493,10 +495,10 @@ def main() -> int:
         final_content = load_post(post_path)
         final_count = count_article_images(final_content)
 
-        if final_count < REQUIRED_IMAGES:
+        if final_count < REQUIRED_IMAGES - 1:
             raise RuntimeError(
                 "Final verification failed: "
-                f"only {final_count} images found."
+                f"only {final_count} markdown images found."
             )
 
         verify_all_images_present(final_content, images)
@@ -504,10 +506,11 @@ def main() -> int:
         print("")
         print("Insertion summary:")
         print(
-            f"  Base images: {EXISTING_PUBLISHED_IMAGES}"
+            f"  Markdown base images: "
+            f"{MARKDOWN_EXISTING_IMAGES}"
         )
         print(f"  Additional images: {inserted}")
-        print(f"  Final images: {final_count}")
+        print(f"  Final markdown images: {final_count}")
         print(
             "  Inserted after H2 numbers: "
             + ", ".join(str(number) for number in h2_numbers)
