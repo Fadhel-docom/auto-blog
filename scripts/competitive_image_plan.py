@@ -23,7 +23,7 @@ GROQ_MODEL = os.getenv(
     "openai/gpt-oss-120b",
 )
 
-FALLBACK_GROQ_MODEL = "llama-3.3-70b-versatile"
+FALLBACK_GROQ_MODEL = "openai/gpt-oss-20b"
 
 ROOM_TERMS = {
     "bathroom",
@@ -850,9 +850,6 @@ def generate_queries(
             f"{last_exception}"
         ) from last_exception
 
-    # ---------------------------------------------------------
-    # PRIMARY MODEL
-    # ---------------------------------------------------------
     try:
         return call_model(GROQ_MODEL)
 
@@ -872,9 +869,6 @@ def generate_queries(
             f"{FALLBACK_GROQ_MODEL}"
         )
 
-    # ---------------------------------------------------------
-    # FALLBACK MODEL
-    # ---------------------------------------------------------
     try:
         return call_model(FALLBACK_GROQ_MODEL)
 
