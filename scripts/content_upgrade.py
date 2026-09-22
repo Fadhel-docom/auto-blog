@@ -344,11 +344,11 @@ LENGTH REQUIREMENT:
 - Do NOT exceed 2400 words.
 
 H2 REQUIREMENT:
-- The final article must contain AT LEAST 10 H2 headings.
-- Aim for EXACTLY 10 H2 headings.
-- You may use 11 H2 headings only if strictly needed.
+- The final article must contain EXACTLY 10 H2 headings whenever possible.
+- 10 H2 headings is the required target.
+- 11 H2 headings are allowed only if absolutely necessary.
 - Do NOT use fewer than 10 H2 headings.
-- Do NOT use more than 11 H2 headings.
+- NEVER use more than 11 H2 headings.
 - Every H2 must contain useful, distinct information.
 - Do not create empty or extremely short H2 sections.
 - Do not use an H1 inside content_markdown.
