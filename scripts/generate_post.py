@@ -20,15 +20,17 @@ ARTICLE_PATH = ROOT_DIR / "article.json"
 GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 FALLBACK_GROQ_MODEL = "openai/gpt-oss-20b"
 MAX_RETRIES = 5
-MIN_WORDS = 1500
+MIN_WORDS = 1400
 MAX_WORDS = 2400
 MIN_H2 = 10
 MAX_H2 = 11
-MAX_GENERATION_ATTEMPTS = 3
+MAX_GENERATION_ATTEMPTS = 2
 
 MAX_TITLE_LENGTH = 70
-MAX_META_LENGTH = 160
+MAX_META_LENGTH = 158
 MIN_META_LENGTH = 130
+
+MAX_OUTPUT_TOKENS = 8192
 
 
 def find_column(fieldnames, candidates):
@@ -357,25 +359,25 @@ def extract_json_from_response(response_text):
 
 def pick_specific_angle(api_key, keyword):
     system_prompt = """
-You are an expert editorial strategist for an English-language website about Home Organization & Small-Space Living.
+You are an editorial strategist for a Home Organization website.
 
-Generate exactly 5 narrow article angles, then select the most specific, concrete, and actionable.
+Generate exactly 5 narrow article angles. Then select the most specific.
 
-Avoid generic angles. Prefer: specific room, specific problem, specific type of small home, specific constraint, measurements, renter limits, or before/after problem.
+Prefer: specific room, specific problem, specific constraint, measurements, renter limits.
 
 Return ONLY valid JSON:
 {
-  "angles": ["angle 1", "angle 2", "angle 3", "angle 4", "angle 5"],
-  "selected_angle": "the most specific angle"
+  "angles": ["a1", "a2", "a3", "a4", "a5"],
+  "selected_angle": "the most specific"
 }
 """.strip()
 
     user_prompt = f"""
-Focus keyword: {keyword}
+Keyword: {keyword}
 
-Generate 5 narrow angles and pick the most specific.
+Generate 5 narrow angles + pick the best.
 
-Return only JSON.
+Return JSON only.
 """.strip()
 
     print("Selecting article angle with Groq...")
@@ -438,102 +440,91 @@ Return only JSON.
     return selected_angle
 
 
-def generate_with_groq(
-    api_key,
-    keyword,
-    specific_angle,
-    extra_strict=False,
-    attempt_number=1,
-):
-    strict_note = ""
+def generate_with_groq(api_key, keyword, specific_angle, attempt_number=1):
+    retry_note = ""
 
-    if extra_strict or attempt_number >= 2:
-        strict_note = f"""
+    if attempt_number >= 2:
+        retry_note = """
 
-CRITICAL RETRY INSTRUCTION (Attempt {attempt_number}):
-The previous attempt FAILED because the article was too short.
-You MUST write AT LEAST 2000 words this time.
-Expand EVERY section with:
-- concrete measurements (inches, cm, ft)
-- specific examples (real home situations)
-- step-by-step detail
-- common mistakes and how to avoid them
-Do NOT summarize. Do NOT stop early. Keep writing until you reach 2000+ words.
+CRITICAL: Previous attempt was too short.
+This time you MUST reach 1700+ words.
+Write 10 sections with 170-200 words each.
+Each section MUST have multiple paragraphs.
+Do NOT stop early.
 """
 
     system_prompt = f"""
-You are an expert long-form SEO content writer for a Home Organization & Small-Space Living website.
+You are an expert home-organization writer.
 
-Create ONE genuinely useful, original article.
+Write one complete article. Follow ALL rules below.
 
-LENGTH (MANDATORY - NON-NEGOTIABLE):
-- Write EXACTLY 2000-2200 words.
-- ABSOLUTE MINIMUM: 1900 words.
-- Count words as you write. If you finish before 1900 words, KEEP WRITING.
-- Add more subsections, examples, measurements.
-- NEVER stop early. NEVER summarize.
+WORD COUNT (MOST IMPORTANT):
+- Target: 1600-1800 words.
+- Minimum: 1500 words.
+- Write 10 H2 sections. EACH section MUST be 150-200 words.
+- Total across 10 sections: 1500-2000 words.
+- If any section is under 150 words, expand it with concrete detail.
+- DO NOT write short sections.
 
-TITLE (MANDATORY):
-- Must be between 45 and 68 characters (COUNT CHARACTERS).
+TITLE:
+- 45-68 characters (count them).
 - Must contain the exact focus keyword.
-- No list-style titles. No filler words.
+- No list-style titles.
 
-META DESCRIPTION (MANDATORY):
-- Must be between 140 and 158 characters (COUNT CHARACTERS).
-- One or two short sentences.
+META DESCRIPTION:
+- 140-158 characters (count them).
 
-STRUCTURE (MANDATORY):
-- EXACTLY 10 H2 headings (11 maximum).
-- Short paragraphs (2-4 sentences).
+STRUCTURE:
+- EXACTLY 10 H2 headings starting with "## ".
+- Short paragraphs (2-3 sentences each).
 - Numbered steps where useful.
-- End with a practical conclusion.
 
 HEADING RULES:
-- ASCII only. No em-dash, en-dash, or non-breaking hyphen.
+- ASCII only: A-Z, a-z, 0-9, spaces, hyphen.
+- No em-dash, en-dash, non-breaking hyphen.
 - Replace "&" with "and".
 - Format: "Step 1 - Title".
 
 CONTENT:
-- 5+ concrete examples.
-- Measurements in every relevant section.
+- Concrete measurements in every section.
+- Real home examples.
 - Common mistakes.
 - ~3 generic product recommendations.
 
 SEO:
-- Exact focus keyword in title.
-- Exact focus keyword within first 100 words.
+- Focus keyword in title.
+- Focus keyword within first 100 words.
 
-ACCURACY:
-- No invented statistics, studies, quotes, citations.
+NO:
+- Statistics, studies, quotes, citations.
+- Image queries, image markdown.
+- Placeholders.
 
-IMAGES:
-- Do NOT generate image queries or image markdown.
+OUTPUT: Return ONLY valid JSON:
 
-OUTPUT:
-Return ONLY valid JSON:
 {{
   "title": "string",
   "meta_description": "string",
   "content_markdown": "string",
-  "tags": ["string", "string"]
+  "tags": ["tag1", "tag2", "tag3"]
 }}
+
 Do not wrap in code fences.
-""".strip() + strict_note
+""".strip() + retry_note
 
     user_prompt = f"""
 Focus keyword: {keyword}
 
-SPECIFIC ARTICLE ANGLE:
+SPECIFIC ANGLE:
 {specific_angle}
 
-MANDATORY RULES:
-- Article MUST be 2000-2200 words (ABSOLUTE MIN 1900).
-- EXACTLY 10 H2 headings.
-- Title 45-68 characters WITH exact focus keyword.
-- Meta description 140-158 characters.
-- Focus keyword in first 100 words.
+Write the article now.
+- 10 H2 sections, each 150-200 words.
+- Total 1600-1800 words minimum.
+- Title 45-68 chars with keyword.
+- Meta 140-158 chars.
 
-Return only the required JSON object.
+Return only the JSON object.
 """.strip()
 
     response = call_groq_with_fallback(
@@ -543,7 +534,7 @@ Return only the required JSON object.
             {"role": "user", "content": user_prompt},
         ],
         temperature=0.7,
-        max_tokens=16000,
+        max_tokens=MAX_OUTPUT_TOKENS,
         response_format={"type": "json_object"},
     )
 
@@ -616,62 +607,42 @@ def generate_image_queries(api_key, title, content_markdown):
     sections = extract_h2_sections(content_markdown)
 
     if len(sections) < 4:
-        raise ValueError(
-            "At least 4 H2 sections are required."
-        )
+        raise ValueError("At least 4 H2 sections are required.")
 
     selected_sections = sections[:4]
     section_payload = []
 
     for index, section in enumerate(selected_sections, start=1):
-        body = re.sub(r"\n{3,}", "\n\n", section["body"]).strip()
+        body = re.sub(r"\n{3,}", "\n\n", section["body"]).strip()[:500]
 
         section_payload.append(
-            f"""
-SECTION {index}
-H2: {section["heading"]}
-CONTENT:
-{body}
-""".strip()
+            f"SECTION {index}\n"
+            f"H2: {section['heading']}\n"
+            f"CONTENT: {body}\n"
         )
 
-    sections_text = "\n\n".join(section_payload)
+    sections_text = "\n".join(section_payload)
 
     system_prompt = """
 You are a visual content editor for a Home Organization website.
 
 Create exactly 5 Pexels search queries.
 
-Query 1 (HERO): wide editorial shot representing whole article.
-Queries 2-5: one per H2 section, grounded in real section content.
-
-VISUAL DIVERSITY: avoid 5 identical organized-room photos.
+Query 1: HERO - wide editorial shot of whole room.
+Queries 2-5: one per H2 section.
 
 RULES:
-- Exactly 5 unique queries.
-- Concise English. 5-14 words.
-- Concrete visual nouns (rooms, objects, storage).
-- No photographer names. No SEO keywords.
+- 5 unique queries, 5-14 words each.
+- Concrete visual nouns (rooms, objects).
+- No photographer names, no SEO keywords.
 
 Return ONLY valid JSON:
 {
-  "image_queries": [
-    "hero query",
-    "section 1 query",
-    "section 2 query",
-    "section 3 query",
-    "section 4 query"
-  ]
+  "image_queries": ["q1", "q2", "q3", "q4", "q5"]
 }
 """.strip()
 
-    user_prompt = f"""
-TITLE: {title}
-
-{sections_text}
-
-Return exactly 5 unique Pexels queries as JSON.
-""".strip()
+    user_prompt = f"TITLE: {title}\n\n{sections_text}\n\nReturn JSON with 5 queries."
 
     response = call_groq_with_fallback(
         api_key=api_key,
@@ -788,21 +759,16 @@ def clean_markdown(content):
     return content.strip()
 
 
-def shorten_title(title: str, keyword: str) -> str:
+def shorten_title(title, keyword):
     title = title.strip()
 
     if len(title) <= MAX_TITLE_LENGTH:
         return title
 
-    # Try to cut at natural break
     trimmed = title[:MAX_TITLE_LENGTH].rstrip()
-
-    # Remove trailing punctuation
     trimmed = re.sub(r"[\s:;\-,]+$", "", trimmed)
 
-    # Ensure keyword still present (case-insensitive)
     if keyword and keyword.lower() not in trimmed.lower():
-        # Try to preserve keyword by truncating differently
         kw = keyword.strip()
         if len(kw) + 20 <= MAX_TITLE_LENGTH:
             trimmed = kw.title() + " - Small Space Guide"
@@ -810,22 +776,20 @@ def shorten_title(title: str, keyword: str) -> str:
     return trimmed
 
 
-def shorten_meta(meta: str) -> str:
+def shorten_meta(meta):
     meta = meta.strip()
 
     if len(meta) <= MAX_META_LENGTH:
         return meta
 
-    # Cut at word boundary near 155 chars
     trimmed = meta[:MAX_META_LENGTH].rstrip()
-
-    # Find last sentence boundary
     last_period = trimmed.rfind(". ")
+
     if last_period > MIN_META_LENGTH:
         return trimmed[:last_period + 1].strip()
 
-    # Cut at last space
     last_space = trimmed.rfind(" ")
+
     if last_space > MIN_META_LENGTH:
         trimmed = trimmed[:last_space]
 
@@ -837,37 +801,32 @@ def shorten_meta(meta: str) -> str:
     return trimmed
 
 
-def count_words(text: str) -> int:
+def count_words(text):
     plain = re.sub(r"[!\[\]()]+", " ", text)
     plain = re.sub(r"`[^`]+`", "", plain)
 
-    return len(
-        re.findall(r"\b[\w'-]+\b", plain, flags=re.UNICODE)
-    )
+    return len(re.findall(r"\b[\w'-]+\b", plain, flags=re.UNICODE))
 
 
-def count_h2(content: str) -> int:
-    return len(
-        re.findall(r"^\s*##\s+\S+", content, re.MULTILINE)
-    )
+def count_h2(content):
+    return len(re.findall(r"^\s*##\s+\S+", content, re.MULTILINE))
 
 
 def generate_article_with_retry(api_key, keyword, specific_angle):
     last_result = None
 
     for attempt in range(1, MAX_GENERATION_ATTEMPTS + 1):
-        extra_strict = attempt > 1
-
         print("")
-        print(f"=== Generation attempt "
-              f"{attempt}/{MAX_GENERATION_ATTEMPTS} "
-              f"(strict={extra_strict}) ===")
+        print(f"=== Generation attempt {attempt}/{MAX_GENERATION_ATTEMPTS} ===")
 
-        generated = generate_with_groq(
-            api_key, keyword, specific_angle,
-            extra_strict=extra_strict,
-            attempt_number=attempt,
-        )
+        try:
+            generated = generate_with_groq(
+                api_key, keyword, specific_angle,
+                attempt_number=attempt,
+            )
+        except Exception as exc:
+            print(f"Attempt {attempt} error: {exc}", file=sys.stderr)
+            continue
 
         (title, meta_description, content_markdown, tags) = (
             extract_generated_fields(generated, keyword)
@@ -877,9 +836,8 @@ def generate_article_with_retry(api_key, keyword, specific_angle):
         meta_description = meta_description.strip()
         content_markdown = clean_markdown(content_markdown)
 
-        # Post-process: enforce limits
-        original_title_len = len(title)
-        original_meta_len = len(meta_description)
+        orig_title = len(title)
+        orig_meta = len(meta_description)
 
         title = shorten_title(title, keyword)
         meta_description = shorten_meta(meta_description)
@@ -887,34 +845,25 @@ def generate_article_with_retry(api_key, keyword, specific_angle):
         words = count_words(content_markdown)
         h2_count = count_h2(content_markdown)
 
-        print(f"Attempt {attempt} produced: "
-              f"{words} words, {h2_count} H2")
-        print(f"  Title: {original_title_len} chars "
-              f"-> {len(title)} chars")
-        print(f"  Meta: {original_meta_len} chars "
-              f"-> {len(meta_description)} chars")
+        print(f"Attempt {attempt}: {words} words, {h2_count} H2")
+        print(f"  Title: {orig_title} -> {len(title)} chars")
+        print(f"  Meta: {orig_meta} -> {len(meta_description)} chars")
 
-        last_result = (
-            title, meta_description, content_markdown,
-            tags, words, h2_count,
-        )
+        last_result = (title, meta_description, content_markdown,
+                       tags, words, h2_count)
 
         if (words >= MIN_WORDS
                 and MIN_H2 <= h2_count <= MAX_H2):
             print(f"Attempt {attempt} accepted.")
             return last_result
 
-        print(f"Attempt {attempt} rejected: "
-              f"needs >= {MIN_WORDS} words and "
-              f"{MIN_H2}-{MAX_H2} H2")
+        print(f"Attempt {attempt} rejected: needs {MIN_WORDS}+ words, {MIN_H2}-{MAX_H2} H2")
 
         if attempt < MAX_GENERATION_ATTEMPTS:
-            delay = 3
-            print(f"Retrying in {delay}s...")
-            time.sleep(delay)
+            time.sleep(3)
 
     if last_result is None:
-        raise RuntimeError("No generation attempt produced output.")
+        raise RuntimeError("All generation attempts failed.")
 
     print("WARNING: using last attempt.")
     return last_result
@@ -996,13 +945,12 @@ def main():
         print("")
         print("Article generated successfully.")
         print(f"Keyword: {keyword}")
-        print(f"Specific angle: {specific_angle}")
         print(f"Title: {title}")
         print(f"Slug: {slug}")
         print(f"Word count: {word_count}")
         print(f"H2 count: {h2_count}")
-        print(f"Title length: {len(title)} chars")
-        print(f"Meta length: {len(meta_description)} chars")
+        print(f"Title length: {len(title)}")
+        print(f"Meta length: {len(meta_description)}")
 
         print("Section-aware image queries:")
         for index, query in enumerate(image_queries, start=1):
@@ -1021,10 +969,7 @@ def main():
             mark_keyword_pending(keyword)
             print(f"Keyword returned to pending: {keyword}")
         except Exception as reset_exc:
-            print(
-                f"ERROR resetting keyword status: {reset_exc}",
-                file=sys.stderr,
-            )
+            print(f"ERROR resetting: {reset_exc}", file=sys.stderr)
 
         return 1
 
