@@ -99,9 +99,9 @@ def validate_slug(slug: str) -> str:
     ):
         raise ValueError(f"Invalid slug: {slug}")
 
-    if len(slug) > 50:
+    if len(slug) > 60:
         raise ValueError(
-            "Article slug exceeds the 50-character limit."
+            "Article slug exceeds the 60-character limit."
         )
 
     return slug
@@ -286,7 +286,10 @@ def normalize_images(
         )
 
     if len(images) != 5:
-        raise ValueError("Exactly 5 images are required.")
+        raise ValueError(
+            f"Expected exactly 5 images for publishing, "
+            f"got {len(images)}."
+        )
 
     normalized = []
 
@@ -688,10 +691,6 @@ def insert_internal_links(
     if middle_indexes:
         candidate_indexes = middle_indexes
 
-    # --------------------------------------------------------
-    # VERIFY TARGET POSTS EXIST BEFORE INSERTION
-    # --------------------------------------------------------
-
     valid_links = []
 
     for link in links:
@@ -866,4 +865,166 @@ def main() -> int:
                 "article.json is missing 'title'."
             )
 
-        slug = va
+        slug = validate_slug(article.get("slug", ""))
+
+        description = str(
+            article.get("meta_description", "")
+        ).strip()
+        if not description:
+            raise ValueError(
+                "article.json is missing 'meta_description'."
+            )
+
+        content_markdown = str(
+            article.get("content_markdown", "")
+        ).strip()
+        if not content_markdown:
+            raise ValueError(
+                "article.json is missing 'content_markdown'."
+            )
+
+        tags = normalize_tags(article.get("tags", []))
+        images = normalize_images(article, slug)
+
+        if len(images) != 5:
+            raise ValueError(
+                "Exactly 5 images are required before publishing."
+            )
+
+        image_urls = [image["file"] for image in images]
+        first_image = image_urls[0]
+
+        publication_date = (
+            datetime.now(timezone.utc)
+            .replace(microsecond=0)
+            .isoformat()
+        )
+
+        categories = [
+            "Home Organization",
+            "Small-Space Living",
+        ]
+
+        content_markdown = insert_images_between_h2(
+            content_markdown,
+            images,
+        )
+
+        content_markdown = insert_internal_links(
+            content_markdown,
+            keyword,
+            slug,
+        )
+
+        image_attribution = []
+
+        for index, image in enumerate(images, start=1):
+            photographer = str(
+                image.get("photographer", "")
+            ).strip()
+            photographer_url = str(
+                image.get("photographer_url", "")
+            ).strip()
+            pexels_url = str(
+                image.get("pexels_url", "")
+            ).strip()
+
+            if photographer:
+                if photographer_url:
+                    attribution = (
+                        f"Photo {index}: "
+                        f"[{photographer}]"
+                        f"({photographer_url})"
+                    )
+                else:
+                    attribution = (
+                        f"Photo {index}: {photographer}"
+                    )
+
+                if pexels_url:
+                    attribution += (
+                        f" via [Pexels]({pexels_url})"
+                    )
+
+                image_attribution.append(attribution)
+
+        if image_attribution:
+            content_markdown += (
+                "\n\n---\n\n"
+                "### Image Credits\n\n"
+                + "\n".join(
+                    f"- {item}"
+                    for item in image_attribution
+                )
+                + "\n"
+            )
+
+        faq_items = extract_faq_items(content_markdown)
+
+        frontmatter = (
+            "+++\n"
+            f"title = {toml_string(title)}\n"
+            f"date = {toml_string(publication_date)}\n"
+            f"lastmod = {toml_string(publication_date)}\n"
+            f"description = {toml_string(description)}\n"
+            f"image = {toml_string(first_image)}\n"
+            f"images = {toml_array(image_urls)}\n"
+            f"tags = {toml_array(tags)}\n"
+            f"categories = {toml_array(categories)}\n"
+            f"faq = {toml_table_array(faq_items)}\n"
+            "draft = false\n"
+            "+++\n"
+        )
+
+        post_content = (
+            frontmatter
+            + "\n"
+            + content_markdown.strip()
+            + "\n"
+        )
+
+        post_path = POSTS_DIR / f"{slug}.md"
+
+        save_post(post_path, post_content)
+        update_keywords_csv(keyword, slug)
+
+        print("")
+        print("=" * 70)
+        print("Article published successfully.")
+        print("=" * 70)
+        print(f"Keyword: {keyword}")
+        print(f"Title: {title}")
+        print(f"Slug: {slug}")
+        print(f"Post: {post_path}")
+        print(f"Images: {len(image_urls)}")
+
+        for index, image_url in enumerate(
+            image_urls,
+            start=1,
+        ):
+            print(f"  {index}. {image_url}")
+
+        print("Image 1: hero")
+        print("Images 2-5: inserted after first four H2 headings")
+        print("Internal links: inserted contextually (with validation)")
+        print(f"FAQ items: {len(faq_items)}")
+        print("Alt text: section-aware image query")
+        print("Related Posts: rendered by single.html")
+        print("Keyword status: published")
+
+        return 0
+
+    except KeyboardInterrupt:
+        print(
+            "\nOperation cancelled.",
+            file=sys.stderr,
+        )
+        return 130
+
+    except Exception as exc:
+        print(f"\nERROR: {exc}", file=sys.stderr)
+        return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
