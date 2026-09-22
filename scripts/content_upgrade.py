@@ -21,7 +21,7 @@ GROQ_MODEL = os.getenv(
 
 MAX_RETRIES = 5
 
-MIN_WORDS = 1800
+MIN_WORDS = 1500
 MAX_WORDS = 2400
 
 MIN_H2 = 10
@@ -326,11 +326,15 @@ substantially improving the article's usefulness,
 depth, organization, and readability.
 
 LENGTH REQUIREMENT:
-- The final article must contain between 1800 and 2400
+- The final article must contain between 1500 and 2400
   actual words.
-- Do not intentionally produce fewer than 1800 words.
-- Do not exceed 2400 words.
-- Aim for approximately 2100 words.
+- Aim for approximately 2000 words.
+- You MUST produce at least 1800 words.
+- If you finish before 1800 words, continue writing more
+  detailed sections.
+- Do NOT summarize.
+- Do NOT stop early.
+- Do NOT exceed 2400 words.
 
 H2 REQUIREMENT:
 - The final article must contain exactly 10 H2 headings.
@@ -482,21 +486,26 @@ its original search intent and specific topic.
 
 The final version must:
 
-1. Contain 1800-2400 actual words.
-2. Contain exactly 10 H2 headings.
-3. Keep the exact focus keyword naturally in the title
+1. Contain between 1500 and 2400 actual words.
+2. Aim for approximately 2000 words.
+3. You MUST produce at least 1800 words.
+4. If you finish before 1800 words, continue writing
+   more detailed sections.
+5. Do NOT summarize.
+6. Contain exactly 10 H2 headings.
+7. Keep the exact focus keyword naturally in the title
    and introduction.
-4. Preserve useful concrete information from the original.
-5. Add depth where the original is too short or shallow.
-6. Remove repetitive or low-value passages.
-7. Improve transitions between sections.
-8. Make every H2 section materially useful.
-9. Avoid invented facts, statistics, studies, citations,
-   quotes, prices, or unsupported claims.
-10. Do not create image queries.
-11. Do not create image Markdown.
-12. Do not mention this editing process.
-13. Do not mention AI.
+8. Preserve useful concrete information from the original.
+9. Add depth where the original is too short or shallow.
+10. Remove repetitive or low-value passages.
+11. Improve transitions between sections.
+12. Make every H2 section materially useful.
+13. Avoid invented facts, statistics, studies, citations,
+    quotes, prices, or unsupported claims.
+14. Do not create image queries.
+15. Do not create image Markdown.
+16. Do not mention this editing process.
+17. Do not mention AI.
 
 Return ONLY the JSON object requested by the system prompt.
 """.strip()
