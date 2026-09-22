@@ -24,7 +24,11 @@ MIN_WORDS = 1500
 MAX_WORDS = 2400
 MIN_H2 = 10
 MAX_H2 = 11
-MAX_GENERATION_ATTEMPTS = 2
+MAX_GENERATION_ATTEMPTS = 3
+
+MAX_TITLE_LENGTH = 70
+MAX_META_LENGTH = 160
+MIN_META_LENGTH = 130
 
 
 def find_column(fieldnames, candidates):
@@ -39,7 +43,6 @@ def find_column(fieldnames, candidates):
 
     for candidate in candidates:
         key = str(candidate).strip().lower()
-
         if key in normalized:
             return normalized[key]
 
@@ -69,13 +72,8 @@ def load_keywords():
 
     keyword_col = find_column(
         fieldnames,
-        [
-            "keyword",
-            "keywords",
-            "focus_keyword",
-            "focus keyword",
-            "query",
-        ],
+        ["keyword", "keywords", "focus_keyword",
+         "focus keyword", "query"],
     )
 
     status_col = find_column(
@@ -89,12 +87,7 @@ def load_keywords():
     if not status_col:
         raise ValueError("Could not find status column.")
 
-    return (
-        rows,
-        fieldnames,
-        keyword_col,
-        status_col,
-    )
+    return (rows, fieldnames, keyword_col, status_col)
 
 
 def save_keywords(rows, fieldnames):
@@ -117,48 +110,23 @@ def save_keywords(rows, fieldnames):
 
 
 def get_first_pending_keyword():
-    (
-        rows,
-        fieldnames,
-        keyword_col,
-        status_col,
-    ) = load_keywords()
+    (rows, fieldnames, keyword_col, status_col) = load_keywords()
 
     for row in rows:
-        keyword = str(
-            row.get(keyword_col, "")
-        ).strip()
-
-        status = str(
-            row.get(status_col, "")
-        ).strip().lower()
+        keyword = str(row.get(keyword_col, "")).strip()
+        status = str(row.get(status_col, "")).strip().lower()
 
         if keyword and status == "pending":
-            return (
-                keyword,
-                rows,
-                fieldnames,
-                keyword_col,
-                status_col,
-            )
+            return (keyword, rows, fieldnames, keyword_col, status_col)
 
     raise RuntimeError("No pending keyword found.")
 
 
-def mark_keyword_processing(
-    keyword,
-    rows,
-    fieldnames,
-    keyword_col,
-    status_col,
-):
+def mark_keyword_processing(keyword, rows, fieldnames, keyword_col, status_col):
     found = False
 
     for row in rows:
-        if (
-            str(row.get(keyword_col, "")).strip()
-            == keyword
-        ):
+        if str(row.get(keyword_col, "")).strip() == keyword:
             row[status_col] = "processing"
             found = True
             break
@@ -170,18 +138,10 @@ def mark_keyword_processing(
 
 
 def mark_keyword_pending(keyword):
-    (
-        rows,
-        fieldnames,
-        keyword_col,
-        status_col,
-    ) = load_keywords()
+    (rows, fieldnames, keyword_col, status_col) = load_keywords()
 
     for row in rows:
-        if (
-            str(row.get(keyword_col, "")).strip()
-            == keyword
-        ):
+        if str(row.get(keyword_col, "")).strip() == keyword:
             row[status_col] = "pending"
             break
 
@@ -190,71 +150,41 @@ def mark_keyword_pending(keyword):
 
 def slugify(text):
     stop_words = {
-        "for", "to", "of", "the", "a", "an",
-        "in", "on", "at", "and", "or", "with",
-        "how", "your", "this", "that", "from",
-        "into",
+        "for", "to", "of", "the", "a", "an", "in", "on",
+        "at", "and", "or", "with", "how", "your", "this",
+        "that", "from", "into",
     }
 
     text = str(text).strip().lower()
-    text = re.sub(
-        r"[^\w\s-]",
-        "",
-        text,
-        flags=re.UNICODE,
-    )
-    text = re.sub(
-        r"[-\s]+",
-        "-",
-        text,
-    ).strip("-")
+    text = re.sub(r"[^\w\s-]", "", text, flags=re.UNICODE)
+    text = re.sub(r"[-\s]+", "-", text).strip("-")
 
     if not text:
         return ""
 
     raw_words = text.split("-")
-    useful_words = []
-
-    for word in raw_words:
-        if not word:
-            continue
-
-        if word in stop_words:
-            continue
-
-        useful_words.append(word)
+    useful_words = [
+        w for w in raw_words
+        if w and w not in stop_words
+    ]
 
     if not useful_words:
         useful_words = raw_words[:6]
 
-    selected_words = []
-
-    for word in useful_words[:3]:
-        selected_words.append(word)
-
-    number_index = None
+    selected_words = useful_words[:3]
 
     for index, word in enumerate(useful_words):
         if re.search(r"\d", word):
-            number_index = index
+            for w in useful_words[index:index + 4]:
+                if w not in selected_words:
+                    selected_words.append(w)
             break
-
-    if number_index is not None:
-        measurement_words = useful_words[
-            number_index:number_index + 4
-        ]
-
-        for word in measurement_words:
-            if word not in selected_words:
-                selected_words.append(word)
 
     for word in useful_words:
         if word in selected_words:
             continue
 
-        candidate_words = selected_words + [word]
-        candidate = "-".join(candidate_words)
-
+        candidate = "-".join(selected_words + [word])
         if len(candidate) > 50:
             break
 
@@ -269,9 +199,7 @@ def slugify(text):
         slug = slug[:50].rstrip("-")
 
     if not slug:
-        slug = "-".join(
-            text.split("-")[:6]
-        ).strip("-")
+        slug = "-".join(text.split("-")[:6]).strip("-")
 
     return slug
 
@@ -280,18 +208,11 @@ def get_exception_status_code(exc):
     response = getattr(exc, "response", None)
 
     if response is not None:
-        code = getattr(
-            response,
-            "status_code",
-            None,
-        )
-
+        code = getattr(response, "status_code", None)
         if code is not None:
             return code
 
-    code = getattr(exc, "status_code", None)
-
-    return code
+    return getattr(exc, "status_code", None)
 
 
 def call_groq_with_fallback(
@@ -304,15 +225,7 @@ def call_groq_with_fallback(
     fallback_model=FALLBACK_GROQ_MODEL,
 ):
     client = Groq(api_key=api_key)
-
-    retryable_codes = {
-        429,
-        500,
-        502,
-        503,
-        504,
-    }
-
+    retryable_codes = {429, 500, 502, 503, 504}
     last_exception = None
 
     for attempt in range(1, MAX_RETRIES + 1):
@@ -330,10 +243,7 @@ def call_groq_with_fallback(
                 response_format=response_format,
             )
 
-            print(
-                f"Groq succeeded with model={primary_model}."
-            )
-
+            print(f"Groq succeeded with model={primary_model}.")
             return response
 
         except Exception as exc:
@@ -349,36 +259,22 @@ def call_groq_with_fallback(
             )
 
             if status_code == 429:
-                print(
-                    "Primary model failed with 429."
-                )
-                print(
-                    "Switching to fallback model: "
-                    f"{fallback_model}"
-                )
+                print("Primary model failed with 429.")
+                print(f"Switching to fallback model: {fallback_model}")
                 break
 
-            if (
-                status_code is not None
-                and status_code not in retryable_codes
-            ):
+            if (status_code is not None
+                    and status_code not in retryable_codes):
                 raise
 
             if attempt >= MAX_RETRIES:
                 raise RuntimeError(
-                    "Primary Groq model failed after "
-                    f"{MAX_RETRIES} attempts: "
-                    f"{last_exception}"
+                    f"Primary Groq model failed after "
+                    f"{MAX_RETRIES} attempts: {last_exception}"
                 ) from last_exception
 
-            delay = min(
-                2 ** (attempt - 1),
-                30,
-            )
-
-            print(
-                f"Retrying primary model in {delay}s..."
-            )
+            delay = min(2 ** (attempt - 1), 30)
+            print(f"Retrying primary model in {delay}s...")
             time.sleep(delay)
 
     fallback_exception = None
@@ -398,11 +294,7 @@ def call_groq_with_fallback(
                 response_format=response_format,
             )
 
-            print(
-                "Groq fallback succeeded with "
-                f"model={fallback_model}."
-            )
-
+            print(f"Groq fallback succeeded with model={fallback_model}.")
             return response
 
         except Exception as exc:
@@ -417,29 +309,20 @@ def call_groq_with_fallback(
                 file=sys.stderr,
             )
 
-            if (
-                status_code is not None
-                and status_code not in retryable_codes
-            ):
+            if (status_code is not None
+                    and status_code not in retryable_codes):
                 raise
 
             if attempt >= MAX_RETRIES:
                 break
 
-            delay = min(
-                2 ** (attempt - 1),
-                30,
-            )
-
-            print(
-                f"Retrying fallback in {delay}s..."
-            )
+            delay = min(2 ** (attempt - 1), 30)
+            print(f"Retrying fallback in {delay}s...")
             time.sleep(delay)
 
     raise RuntimeError(
-        "Groq fallback failed after "
-        f"{MAX_RETRIES} attempts using "
-        f"model '{fallback_model}': "
+        f"Groq fallback failed after {MAX_RETRIES} "
+        f"attempts using model '{fallback_model}': "
         f"{fallback_exception}"
     ) from fallback_exception
 
@@ -454,17 +337,8 @@ def extract_json_from_response(response_text):
         raise ValueError("Empty response.")
 
     if text.startswith("```"):
-        text = re.sub(
-            r"^```(?:json)?\s*",
-            "",
-            text,
-            flags=re.IGNORECASE,
-        )
-        text = re.sub(
-            r"\s*```$",
-            "",
-            text,
-        ).strip()
+        text = re.sub(r"^```(?:json)?\s*", "", text, flags=re.IGNORECASE)
+        text = re.sub(r"\s*```$", "", text).strip()
 
     try:
         return json.loads(text)
@@ -473,37 +347,23 @@ def extract_json_from_response(response_text):
         end = text.rfind("}")
 
         if start == -1 or end == -1 or end <= start:
-            raise ValueError(
-                "No JSON object found."
-            )
+            raise ValueError("No JSON object found.")
 
         try:
             return json.loads(text[start:end + 1])
         except json.JSONDecodeError as exc:
-            raise ValueError(
-                f"Invalid JSON: {exc}"
-            ) from exc
+            raise ValueError(f"Invalid JSON: {exc}") from exc
 
 
 def pick_specific_angle(api_key, keyword):
     system_prompt = """
 You are an expert editorial strategist for an English-language website about Home Organization & Small-Space Living.
 
-Your job is to turn broad SEO keywords into specific, useful, practical article angles.
+Generate exactly 5 narrow article angles, then select the most specific, concrete, and actionable.
 
-For the supplied keyword:
-1. Generate exactly 5 distinct article angles.
-2. Each angle must be substantially narrower and more specific than the original keyword.
-3. Avoid generic angles such as "best ideas", "complete guide", "tips and tricks" unless narrowed to a clearly defined situation.
-4. Prefer angles based on: a specific room, a specific storage problem, a specific type of small home, a specific constraint, a specific household situation, measurements, renter-friendly limitations, or a specific before/after problem.
-5. The angle should be specific enough that two writers using the same keyword would be unlikely to produce the same article.
-6. The angle must still be useful and fit the Home Organization & Small-Space Living niche.
-7. Do not invent statistics, studies, expert quotes, or factual claims.
+Avoid generic angles. Prefer: specific room, specific problem, specific type of small home, specific constraint, measurements, renter limits, or before/after problem.
 
-After generating the five angles, select the SINGLE angle that is the most specific, concrete, useful, and actionable.
-
-Return ONLY valid JSON in exactly this structure:
-
+Return ONLY valid JSON:
 {
   "angles": ["angle 1", "angle 2", "angle 3", "angle 4", "angle 5"],
   "selected_angle": "the most specific angle"
@@ -513,9 +373,9 @@ Return ONLY valid JSON in exactly this structure:
     user_prompt = f"""
 Focus keyword: {keyword}
 
-Generate exactly five narrow article angles for this keyword, then select the most specific and actionable one.
+Generate 5 narrow angles and pick the most specific.
 
-Return only the required JSON object.
+Return only JSON.
 """.strip()
 
     print("Selecting article angle with Groq...")
@@ -534,11 +394,7 @@ Return only the required JSON object.
     if not response.choices:
         raise ValueError("No choices returned.")
 
-    content = getattr(
-        response.choices[0].message,
-        "content",
-        None,
-    )
+    content = getattr(response.choices[0].message, "content", None)
 
     if not content:
         raise ValueError("Empty message.")
@@ -546,56 +402,37 @@ Return only the required JSON object.
     result = extract_json_from_response(content)
 
     if not isinstance(result, dict):
-        raise ValueError(
-            "Angle response is not a JSON object."
-        )
+        raise ValueError("Angle response is not a JSON object.")
 
     raw_angles = result.get("angles")
-
     if not isinstance(raw_angles, list):
         raise ValueError("'angles' must be a list.")
 
     angles = []
-
     for angle in raw_angles:
         if not isinstance(angle, str):
             continue
-
         angle = angle.strip()
-
         if angle and angle not in angles:
             angles.append(angle)
 
     if len(angles) != 5:
-        raise ValueError(
-            "Groq must return exactly 5 unique angles."
-        )
+        raise ValueError("Groq must return exactly 5 unique angles.")
 
     selected_angle = result.get("selected_angle")
-
     if not isinstance(selected_angle, str):
-        raise ValueError(
-            "'selected_angle' must be a string."
-        )
+        raise ValueError("'selected_angle' must be a string.")
 
     selected_angle = selected_angle.strip()
-
     if not selected_angle:
-        raise ValueError(
-            "'selected_angle' is empty."
-        )
+        raise ValueError("'selected_angle' is empty.")
 
     if selected_angle not in angles:
         selected_angle = angles[0]
 
     print("Generated 5 article angles:")
-
     for index, angle in enumerate(angles, start=1):
-        marker = (
-            " <-- SELECTED"
-            if angle == selected_angle
-            else ""
-        )
+        marker = " <-- SELECTED" if angle == selected_angle else ""
         print(f"{index}. {angle}{marker}")
 
     return selected_angle
@@ -606,117 +443,95 @@ def generate_with_groq(
     keyword,
     specific_angle,
     extra_strict=False,
+    attempt_number=1,
 ):
     strict_note = ""
 
-    if extra_strict:
-        strict_note = (
-            "\n\nIMPORTANT - RETRY: The previous attempt "
-            "produced an article that was too short. "
-            "You MUST write at least 1900 words this time. "
-            "Expand every section with concrete examples, "
-            "measurements, and step-by-step details. "
-            "Do not summarize. Do not stop early.\n"
-        )
+    if extra_strict or attempt_number >= 2:
+        strict_note = f"""
 
-    system_prompt = """
-You are an expert long-form SEO content writer and practical home-organization editor for an English-language website about Home Organization & Small-Space Living.
+CRITICAL RETRY INSTRUCTION (Attempt {attempt_number}):
+The previous attempt FAILED because the article was too short.
+You MUST write AT LEAST 2000 words this time.
+Expand EVERY section with:
+- concrete measurements (inches, cm, ft)
+- specific examples (real home situations)
+- step-by-step detail
+- common mistakes and how to avoid them
+Do NOT summarize. Do NOT stop early. Keep writing until you reach 2000+ words.
+"""
 
-Your job is to create ONE genuinely useful, original article that solves a specific reader problem.
+    system_prompt = f"""
+You are an expert long-form SEO content writer for a Home Organization & Small-Space Living website.
 
-EDITORIAL DIRECTION:
-- Start from the supplied focus keyword.
-- Build the entire article around the supplied specific angle.
-- The specific angle is the central subject of the article.
-- Do not broaden the article into a generic guide.
+Create ONE genuinely useful, original article.
 
-LENGTH (MANDATORY):
-- Write EXACTLY 1900-2100 words of actual article content.
-- You MUST produce at least 1900 words.
-- DO NOT stop writing before 1900 words.
-- If you feel you are finishing early, add more detailed sections, more examples, more measurements, more step-by-step detail.
-- After writing, count the words internally. If below 1900, keep writing.
-- Do NOT exceed 2400 words.
+LENGTH (MANDATORY - NON-NEGOTIABLE):
+- Write EXACTLY 2000-2200 words.
+- ABSOLUTE MINIMUM: 1900 words.
+- Count words as you write. If you finish before 1900 words, KEEP WRITING.
+- Add more subsections, examples, measurements.
+- NEVER stop early. NEVER summarize.
 
-TITLE REQUIREMENT:
-- The article title must be concise, specific, and easy to scan.
-- Aim for 45-65 characters.
-- Never exceed 70 characters unless the exact focus keyword makes this impossible.
-- Preserve the exact focus keyword naturally in the title.
+TITLE (MANDATORY):
+- Must be between 45 and 68 characters (COUNT CHARACTERS).
+- Must contain the exact focus keyword.
+- No list-style titles. No filler words.
+
+META DESCRIPTION (MANDATORY):
+- Must be between 140 and 158 characters (COUNT CHARACTERS).
+- One or two short sentences.
 
 STRUCTURE (MANDATORY):
-- Use EXACTLY 10 H2 headings.
-- 11 H2 headings are allowed only if absolutely necessary.
-- NEVER use fewer than 10 H2 headings.
-- NEVER use more than 11 H2 headings.
-- Use H3 headings when they genuinely improve organization.
-- Do not use an H1 inside content_markdown.
-- Use short paragraphs (2-4 sentences).
-- Use numbered steps for processes.
-- Use bullet lists for scanability.
+- EXACTLY 10 H2 headings (11 maximum).
+- Short paragraphs (2-4 sentences).
+- Numbered steps where useful.
 - End with a practical conclusion.
 
-HEADING FORMAT RULES:
-- Use ONLY ASCII characters in H2 and H3.
-- Use A-Z, a-z, 0-9, spaces, and regular hyphen (-).
-- NEVER use en-dash, em-dash, or non-breaking hyphen.
+HEADING RULES:
+- ASCII only. No em-dash, en-dash, or non-breaking hyphen.
 - Replace "&" with "and".
-- Do not use parentheses, brackets, or special punctuation in headings.
-- Use "Step 1 - Title" format.
+- Format: "Step 1 - Title".
 
-CONTENT QUALITY:
-- Give concrete, practical advice.
-- Include 5+ concrete examples relevant to real homes.
-- Include useful measurements or dimensions in every relevant section.
-- Include common mistakes, trade-offs, or considerations.
-- Include approximately 3 generic product recommendations.
-- Avoid vague advice. Avoid repetitive tips.
+CONTENT:
+- 5+ concrete examples.
+- Measurements in every relevant section.
+- Common mistakes.
+- ~3 generic product recommendations.
 
 SEO:
-- The exact focus keyword must appear in the title.
-- The exact focus keyword MUST appear naturally within the FIRST 100 WORDS of the article.
-- Do not keyword-stuff.
-- The meta description MUST be between 140 and 160 characters (count carefully).
+- Exact focus keyword in title.
+- Exact focus keyword within first 100 words.
 
 ACCURACY:
-- Do not invent statistics, studies, quotes, or citations.
-- Do not use placeholders.
-- Do not mention AI generation.
+- No invented statistics, studies, quotes, citations.
 
 IMAGES:
-- DO NOT generate image queries or image markdown.
+- Do NOT generate image queries or image markdown.
 
 OUTPUT:
-Return ONLY one valid JSON object:
-
-{
+Return ONLY valid JSON:
+{{
   "title": "string",
   "meta_description": "string",
   "content_markdown": "string",
   "tags": ["string", "string"]
-}
-
-Do not wrap in Markdown code fences.
+}}
+Do not wrap in code fences.
 """.strip() + strict_note
 
     user_prompt = f"""
-Write a complete long-form SEO article for the following focus keyword:
-
-{keyword}
+Focus keyword: {keyword}
 
 SPECIFIC ARTICLE ANGLE:
 {specific_angle}
 
-Website niche: Home Organization & Small-Space Living
-
-MANDATORY:
-- The specific angle above is the central subject.
-- Do NOT write a generic article about "{keyword}".
-- The article MUST be at least 1900 words.
-- The article MUST contain EXACTLY 10 H2 headings (11 max).
-- The exact focus keyword MUST appear in the title.
-- The exact focus keyword MUST appear in the first 100 words.
-- Meta description MUST be 140-160 characters.
+MANDATORY RULES:
+- Article MUST be 2000-2200 words (ABSOLUTE MIN 1900).
+- EXACTLY 10 H2 headings.
+- Title 45-68 characters WITH exact focus keyword.
+- Meta description 140-158 characters.
+- Focus keyword in first 100 words.
 
 Return only the required JSON object.
 """.strip()
@@ -728,18 +543,14 @@ Return only the required JSON object.
             {"role": "user", "content": user_prompt},
         ],
         temperature=0.7,
-        max_tokens=14000,
+        max_tokens=16000,
         response_format={"type": "json_object"},
     )
 
     if not response.choices:
         raise ValueError("No choices returned.")
 
-    content = getattr(
-        response.choices[0].message,
-        "content",
-        None,
-    )
+    content = getattr(response.choices[0].message, "content", None)
 
     if not content:
         raise ValueError("Empty message.")
@@ -755,56 +566,35 @@ Return only the required JSON object.
 def extract_h2_sections(content):
     lines = str(content).splitlines()
     sections = []
-
     current_heading = None
     current_body = []
-
     in_fenced_code_block = False
     fence_marker = None
 
     for line in lines:
         stripped = line.strip()
 
-        if (
-            stripped.startswith("```")
-            or stripped.startswith("~~~")
-        ):
+        if stripped.startswith("```") or stripped.startswith("~~~"):
             if not in_fenced_code_block:
                 in_fenced_code_block = True
-
-                if stripped.startswith("```"):
-                    fence_marker = "```"
-                else:
-                    fence_marker = "~~~"
-
-            elif (
-                fence_marker
-                and stripped.startswith(fence_marker)
-            ):
+                fence_marker = "```" if stripped.startswith("```") else "~~~"
+            elif fence_marker and stripped.startswith(fence_marker):
                 in_fenced_code_block = False
                 fence_marker = None
 
             if current_heading is not None:
                 current_body.append(line)
-
             continue
 
         if not in_fenced_code_block:
-            match = re.match(
-                r"^\s*##[ \t]+([^#].*?)\s*$",
-                line,
-            )
+            match = re.match(r"^\s*##[ \t]+([^#].*?)\s*$", line)
 
             if match:
                 if current_heading is not None:
-                    sections.append(
-                        {
-                            "heading": current_heading,
-                            "body": "\n".join(
-                                current_body
-                            ).strip(),
-                        }
-                    )
+                    sections.append({
+                        "heading": current_heading,
+                        "body": "\n".join(current_body).strip(),
+                    })
 
                 current_heading = match.group(1).strip()
                 current_body = []
@@ -814,50 +604,33 @@ def extract_h2_sections(content):
             current_body.append(line)
 
     if current_heading is not None:
-        sections.append(
-            {
-                "heading": current_heading,
-                "body": "\n".join(
-                    current_body
-                ).strip(),
-            }
-        )
+        sections.append({
+            "heading": current_heading,
+            "body": "\n".join(current_body).strip(),
+        })
 
     return sections
 
 
-def generate_image_queries(
-    api_key,
-    title,
-    content_markdown,
-):
+def generate_image_queries(api_key, title, content_markdown):
     sections = extract_h2_sections(content_markdown)
 
     if len(sections) < 4:
         raise ValueError(
-            "At least 4 H2 sections are required "
-            "to generate 5 image queries."
+            "At least 4 H2 sections are required."
         )
 
     selected_sections = sections[:4]
     section_payload = []
 
-    for index, section in enumerate(
-        selected_sections,
-        start=1,
-    ):
-        body = section["body"]
-        body = re.sub(
-            r"\n{3,}",
-            "\n\n",
-            body,
-        ).strip()
+    for index, section in enumerate(selected_sections, start=1):
+        body = re.sub(r"\n{3,}", "\n\n", section["body"]).strip()
 
         section_payload.append(
             f"""
 SECTION {index}
 H2: {section["heading"]}
-SECTION CONTENT:
+CONTENT:
 {body}
 """.strip()
         )
@@ -865,58 +638,39 @@ SECTION CONTENT:
     sections_text = "\n\n".join(section_payload)
 
     system_prompt = """
-You are a professional visual content editor for an English-language Home Organization & Small-Space Living website.
+You are a visual content editor for a Home Organization website.
 
-Your job is to create exactly 5 highly relevant, visually distinct Pexels search queries AFTER reading a completed article.
+Create exactly 5 Pexels search queries.
 
-QUERY STRUCTURE:
+Query 1 (HERO): wide editorial shot representing whole article.
+Queries 2-5: one per H2 section, grounded in real section content.
 
-1. Query 1: HERO
-   - Wide-shot editorial scene representing the whole article.
-   - Show the whole room/space, not a close-up.
-   - Realistic home environment with clear context.
+VISUAL DIVERSITY: avoid 5 identical organized-room photos.
 
-2. Queries 2-5:
-   - Each represents one of the four supplied H2 sections.
-   - Strongly grounded in the actual section content.
-   - Show concrete photographable situations.
-
-VISUAL DIVERSITY:
-- The 5 queries must be VISUALLY DIVERSE.
-- Avoid 5 nearly identical "organized home" photos.
-
-PRACTICAL RULES:
-- Return exactly 5 unique queries.
+RULES:
+- Exactly 5 unique queries.
 - Concise English. 5-14 words.
-- Concrete visual nouns (rooms, objects, storage solutions).
-- No photographer names. No quotation marks.
-- No camera settings. No SEO keywords.
-- Prefer realistic searchable stock photo scenes.
+- Concrete visual nouns (rooms, objects, storage).
+- No photographer names. No SEO keywords.
 
 Return ONLY valid JSON:
-
 {
   "image_queries": [
-    "wide-shot hero query",
-    "H2 section 1 query",
-    "H2 section 2 query",
-    "H2 section 3 query",
-    "H2 section 4 query"
+    "hero query",
+    "section 1 query",
+    "section 2 query",
+    "section 3 query",
+    "section 4 query"
   ]
 }
 """.strip()
 
     user_prompt = f"""
-ARTICLE TITLE:
-{title}
-
-The complete article has been written already.
+TITLE: {title}
 
 {sections_text}
 
-Generate 1 wide-shot hero + 4 section-specific queries.
-
-Return exactly 5 unique Pexels queries in the required JSON.
+Return exactly 5 unique Pexels queries as JSON.
 """.strip()
 
     response = call_groq_with_fallback(
@@ -933,59 +687,37 @@ Return exactly 5 unique Pexels queries in the required JSON.
     if not response.choices:
         raise ValueError("No choices returned.")
 
-    content = getattr(
-        response.choices[0].message,
-        "content",
-        None,
-    )
+    content = getattr(response.choices[0].message, "content", None)
 
     if not content:
-        raise ValueError(
-            "Empty image-query response."
-        )
+        raise ValueError("Empty image-query response.")
 
     result = extract_json_from_response(content)
 
     if not isinstance(result, dict):
-        raise ValueError(
-            "Image-query response is not a JSON object."
-        )
+        raise ValueError("Image-query response is not a JSON object.")
 
     raw_queries = result.get("image_queries")
 
     if not isinstance(raw_queries, list):
-        raise ValueError(
-            "'image_queries' must be a list."
-        )
+        raise ValueError("'image_queries' must be a list.")
 
     image_queries = []
-
     for query in raw_queries:
         if not isinstance(query, str):
             continue
-
         query = query.strip()
-
         if query and query not in image_queries:
             image_queries.append(query)
 
     if len(image_queries) != 5:
         raise ValueError(
-            "Groq must return exactly 5 unique "
-            "image queries."
+            "Groq must return exactly 5 unique image queries."
         )
 
     print("Generated 5 section-aware image queries:")
-
-    for index, query in enumerate(
-        image_queries,
-        start=1,
-    ):
-        if index == 1:
-            label = "HERO"
-        else:
-            label = f"H2 #{index - 1}"
-
+    for index, query in enumerate(image_queries, start=1):
+        label = "HERO" if index == 1 else f"H2 #{index - 1}"
         print(f"  {index}. [{label}] {query}")
 
     return image_queries
@@ -995,9 +727,7 @@ def require_string(data, field_name):
     value = data.get(field_name)
 
     if not isinstance(value, str):
-        raise ValueError(
-            f"'{field_name}' must be a string."
-        )
+        raise ValueError(f"'{field_name}' must be a string.")
 
     value = value.strip()
 
@@ -1009,12 +739,8 @@ def require_string(data, field_name):
 
 def extract_generated_fields(generated, keyword):
     title = require_string(generated, "title")
-    meta_description = require_string(
-        generated, "meta_description"
-    )
-    content_markdown = require_string(
-        generated, "content_markdown"
-    )
+    meta_description = require_string(generated, "meta_description")
+    content_markdown = require_string(generated, "content_markdown")
 
     raw_tags = generated.get("tags")
 
@@ -1033,53 +759,82 @@ def extract_generated_fields(generated, keyword):
         tags = [keyword]
 
     normalized_tags = []
-
     for tag in tags:
         if not isinstance(tag, str):
             continue
-
         tag = tag.strip()
-
         if tag and tag not in normalized_tags:
             normalized_tags.append(tag)
 
     if not normalized_tags:
         normalized_tags = [keyword]
 
-    return (
-        title,
-        meta_description,
-        content_markdown,
-        normalized_tags,
-    )
+    return (title, meta_description, content_markdown, normalized_tags)
 
 
 def clean_markdown(content):
     content = str(content).strip()
     content = re.sub(
-        r"^```(?:markdown|md)?\s*",
-        "",
-        content,
-        flags=re.IGNORECASE,
+        r"^```(?:markdown|md)?\s*", "",
+        content, flags=re.IGNORECASE,
     )
-    content = re.sub(
-        r"\s*```$",
-        "",
-        content,
-    )
-    content = re.sub(
-        r"^\s*#\s+.+?\n+",
-        "",
-        content,
-        count=1,
-    )
+    content = re.sub(r"\s*```$", "", content)
+    content = re.sub(r"^\s*#\s+.+?\n+", "", content, count=1)
     content = re.sub(
         r"(?mi)^[ \t]*Tags:[ \t]*\[[^\r\n]*\][ \t]*\r?\n?",
-        "",
-        content,
+        "", content,
     )
 
     return content.strip()
+
+
+def shorten_title(title: str, keyword: str) -> str:
+    title = title.strip()
+
+    if len(title) <= MAX_TITLE_LENGTH:
+        return title
+
+    # Try to cut at natural break
+    trimmed = title[:MAX_TITLE_LENGTH].rstrip()
+
+    # Remove trailing punctuation
+    trimmed = re.sub(r"[\s:;\-,]+$", "", trimmed)
+
+    # Ensure keyword still present (case-insensitive)
+    if keyword and keyword.lower() not in trimmed.lower():
+        # Try to preserve keyword by truncating differently
+        kw = keyword.strip()
+        if len(kw) + 20 <= MAX_TITLE_LENGTH:
+            trimmed = kw.title() + " - Small Space Guide"
+
+    return trimmed
+
+
+def shorten_meta(meta: str) -> str:
+    meta = meta.strip()
+
+    if len(meta) <= MAX_META_LENGTH:
+        return meta
+
+    # Cut at word boundary near 155 chars
+    trimmed = meta[:MAX_META_LENGTH].rstrip()
+
+    # Find last sentence boundary
+    last_period = trimmed.rfind(". ")
+    if last_period > MIN_META_LENGTH:
+        return trimmed[:last_period + 1].strip()
+
+    # Cut at last space
+    last_space = trimmed.rfind(" ")
+    if last_space > MIN_META_LENGTH:
+        trimmed = trimmed[:last_space]
+
+    trimmed = re.sub(r"[\s,;:\-]+$", "", trimmed)
+
+    if not trimmed.endswith((".", "!", "?")):
+        trimmed += "."
+
+    return trimmed
 
 
 def count_words(text: str) -> int:
@@ -1087,126 +842,89 @@ def count_words(text: str) -> int:
     plain = re.sub(r"`[^`]+`", "", plain)
 
     return len(
-        re.findall(
-            r"\b[\w'-]+\b",
-            plain,
-            flags=re.UNICODE,
-        )
+        re.findall(r"\b[\w'-]+\b", plain, flags=re.UNICODE)
     )
 
 
 def count_h2(content: str) -> int:
     return len(
-        re.findall(
-            r"^\s*##\s+\S+",
-            content,
-            re.MULTILINE,
-        )
+        re.findall(r"^\s*##\s+\S+", content, re.MULTILINE)
     )
 
 
-def generate_article_with_retry(
-    api_key,
-    keyword,
-    specific_angle,
-):
+def generate_article_with_retry(api_key, keyword, specific_angle):
     last_result = None
 
     for attempt in range(1, MAX_GENERATION_ATTEMPTS + 1):
         extra_strict = attempt > 1
 
         print("")
-        print(
-            f"=== Generation attempt "
-            f"{attempt}/{MAX_GENERATION_ATTEMPTS} "
-            f"(strict={extra_strict}) ==="
-        )
+        print(f"=== Generation attempt "
+              f"{attempt}/{MAX_GENERATION_ATTEMPTS} "
+              f"(strict={extra_strict}) ===")
 
         generated = generate_with_groq(
-            api_key,
-            keyword,
-            specific_angle,
+            api_key, keyword, specific_angle,
             extra_strict=extra_strict,
+            attempt_number=attempt,
         )
 
-        (
-            title,
-            meta_description,
-            content_markdown,
-            tags,
-        ) = extract_generated_fields(generated, keyword)
+        (title, meta_description, content_markdown, tags) = (
+            extract_generated_fields(generated, keyword)
+        )
 
         title = title.strip()
         meta_description = meta_description.strip()
         content_markdown = clean_markdown(content_markdown)
 
+        # Post-process: enforce limits
+        original_title_len = len(title)
+        original_meta_len = len(meta_description)
+
+        title = shorten_title(title, keyword)
+        meta_description = shorten_meta(meta_description)
+
         words = count_words(content_markdown)
         h2_count = count_h2(content_markdown)
 
-        print(
-            f"Attempt {attempt} produced: "
-            f"{words} words, {h2_count} H2"
-        )
+        print(f"Attempt {attempt} produced: "
+              f"{words} words, {h2_count} H2")
+        print(f"  Title: {original_title_len} chars "
+              f"-> {len(title)} chars")
+        print(f"  Meta: {original_meta_len} chars "
+              f"-> {len(meta_description)} chars")
 
         last_result = (
-            title,
-            meta_description,
-            content_markdown,
-            tags,
-            words,
-            h2_count,
+            title, meta_description, content_markdown,
+            tags, words, h2_count,
         )
 
-        if (
-            words >= MIN_WORDS
-            and MIN_H2 <= h2_count <= MAX_H2
-        ):
-            print(
-                f"Attempt {attempt} accepted: "
-                f"{words} words, {h2_count} H2"
-            )
+        if (words >= MIN_WORDS
+                and MIN_H2 <= h2_count <= MAX_H2):
+            print(f"Attempt {attempt} accepted.")
             return last_result
 
-        print(
-            f"Attempt {attempt} rejected: "
-            f"needs >= {MIN_WORDS} words and "
-            f"{MIN_H2}-{MAX_H2} H2"
-        )
+        print(f"Attempt {attempt} rejected: "
+              f"needs >= {MIN_WORDS} words and "
+              f"{MIN_H2}-{MAX_H2} H2")
 
         if attempt < MAX_GENERATION_ATTEMPTS:
             delay = 3
-            print(
-                f"Retrying generation in "
-                f"{delay}s..."
-            )
+            print(f"Retrying in {delay}s...")
             time.sleep(delay)
 
     if last_result is None:
-        raise RuntimeError(
-            "No generation attempt produced output."
-        )
+        raise RuntimeError("No generation attempt produced output.")
 
-    print(
-        "WARNING: using last attempt despite "
-        "not meeting thresholds."
-    )
+    print("WARNING: using last attempt.")
     return last_result
 
 
 def save_article(article):
     temp_path = ARTICLE_PATH.with_suffix(".json.tmp")
 
-    with temp_path.open(
-        "w",
-        encoding="utf-8",
-        newline="\n",
-    ) as file:
-        json.dump(
-            article,
-            file,
-            ensure_ascii=False,
-            indent=2,
-        )
+    with temp_path.open("w", encoding="utf-8", newline="\n") as file:
+        json.dump(article, file, ensure_ascii=False, indent=2)
         file.write("\n")
 
     temp_path.replace(ARTICLE_PATH)
@@ -1216,36 +934,22 @@ def main():
     api_key = os.getenv("GROQ_API_KEY")
 
     if not api_key:
-        print(
-            "ERROR: GROQ_API_KEY missing.",
-            file=sys.stderr,
-        )
+        print("ERROR: GROQ_API_KEY missing.", file=sys.stderr)
         return 1
 
     try:
-        (
-            keyword,
-            rows,
-            fieldnames,
-            keyword_col,
-            status_col,
-        ) = get_first_pending_keyword()
-    except Exception as exc:
-        print(
-            f"ERROR loading keywords: {exc}",
-            file=sys.stderr,
+        (keyword, rows, fieldnames, keyword_col, status_col) = (
+            get_first_pending_keyword()
         )
+    except Exception as exc:
+        print(f"ERROR loading keywords: {exc}", file=sys.stderr)
         return 1
 
     print(f"Selected keyword: {keyword}")
 
     try:
         mark_keyword_processing(
-            keyword,
-            rows,
-            fieldnames,
-            keyword_col,
-            status_col,
+            keyword, rows, fieldnames, keyword_col, status_col
         )
         print("Keyword status changed to: processing")
     except Exception as exc:
@@ -1253,39 +957,20 @@ def main():
         return 1
 
     try:
-        specific_angle = pick_specific_angle(
-            api_key,
-            keyword,
-        )
+        specific_angle = pick_specific_angle(api_key, keyword)
+        print(f"Selected specific angle: {specific_angle}")
 
-        print(
-            f"Selected specific angle: "
-            f"{specific_angle}"
-        )
-
-        (
-            title,
-            meta_description,
-            content_markdown,
-            tags,
-            word_count,
-            h2_count,
-        ) = generate_article_with_retry(
-            api_key,
-            keyword,
-            specific_angle,
+        (title, meta_description, content_markdown, tags,
+         word_count, h2_count) = generate_article_with_retry(
+            api_key, keyword, specific_angle,
         )
 
         image_queries = generate_image_queries(
-            api_key,
-            title,
-            content_markdown,
+            api_key, title, content_markdown,
         )
 
         if len(image_queries) != 5:
-            raise ValueError(
-                "Exactly 5 image queries are required."
-            )
+            raise ValueError("Exactly 5 image queries are required.")
 
         slug = slugify(title)
 
@@ -1303,9 +988,7 @@ def main():
             "tags": tags,
             "word_count": word_count,
             "h2_count": h2_count,
-            "generated_at": datetime.now(
-                timezone.utc
-            ).isoformat(),
+            "generated_at": datetime.now(timezone.utc).isoformat(),
         }
 
         save_article(article)
@@ -1318,18 +1001,12 @@ def main():
         print(f"Slug: {slug}")
         print(f"Word count: {word_count}")
         print(f"H2 count: {h2_count}")
+        print(f"Title length: {len(title)} chars")
+        print(f"Meta length: {len(meta_description)} chars")
 
         print("Section-aware image queries:")
-
-        for index, query in enumerate(
-            image_queries,
-            start=1,
-        ):
-            if index == 1:
-                label = "HERO"
-            else:
-                label = f"H2 #{index - 1}"
-
+        for index, query in enumerate(image_queries, start=1):
+            label = "HERO" if index == 1 else f"H2 #{index - 1}"
             print(f"  {index}. [{label}] {query}")
 
         print(f"Tags: {', '.join(tags)}")
@@ -1342,13 +1019,10 @@ def main():
 
         try:
             mark_keyword_pending(keyword)
-            print(
-                f"Keyword returned to pending: {keyword}"
-            )
+            print(f"Keyword returned to pending: {keyword}")
         except Exception as reset_exc:
             print(
-                f"ERROR resetting keyword status: "
-                f"{reset_exc}",
+                f"ERROR resetting keyword status: {reset_exc}",
                 file=sys.stderr,
             )
 
