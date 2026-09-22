@@ -312,9 +312,6 @@ def call_groq_with_fallback(
 
     last_exception = None
 
-    # ---------------------------------------------------------
-    # PRIMARY MODEL
-    # ---------------------------------------------------------
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             print(
@@ -348,8 +345,6 @@ def call_groq_with_fallback(
                 file=sys.stderr,
             )
 
-            # 429 is special: do NOT wait and do NOT retry
-            # the primary model. Switch immediately.
             if status_code == 429:
                 print(
                     "Primary model failed with 429."
@@ -360,7 +355,6 @@ def call_groq_with_fallback(
                 )
                 break
 
-            # Non-retryable errors such as 400, 401, 403.
             if (
                 status_code is not None
                 and status_code not in retryable_codes
@@ -384,9 +378,6 @@ def call_groq_with_fallback(
             )
             time.sleep(delay)
 
-    # ---------------------------------------------------------
-    # FALLBACK MODEL
-    # ---------------------------------------------------------
     fallback_exception = None
 
     for attempt in range(1, MAX_RETRIES + 1):
@@ -701,9 +692,9 @@ STRUCTURE:
 
 HEADING FORMAT RULES (CRITICAL):
 - In all H2 and H3 headings, use ONLY ASCII characters: A-Z, a-z, 0-9, spaces, and regular hyphen (-).
-- NEVER use en-dash (–), em-dash (—), or non-breaking hyphen (-). Use regular hyphen (-) instead.
+- NEVER use en-dash, em-dash, or non-breaking hyphen. Use regular hyphen (-) instead.
 - Replace "&" with the word "and" in headings.
-- Do NOT use parentheses (), brackets [], or special punctuation in headings.
+- Do NOT use parentheses, brackets, or special punctuation in headings.
 - Use "Step 1 - Title" format (regular hyphen with spaces around it).
 - Keep headings short (under 60 characters).
 
