@@ -1,15 +1,22 @@
 {{ define "main" }}
 
+{{/* Capitalize first letter of title */}}
+{{ $title := .Title }}
+{{ if $title }}
+  {{ $first := substr $title 0 1 | upper }}
+  {{ $rest := substr $title 1 }}
+  {{ $title = printf "%s%s" $first $rest }}
+{{ end }}
+
 <article class="post-single">
 
   {{ partial "breadcrumb.html" . }}
 
   <header class="post-header">
-    <h1 class="post-title">{{ .Title }}</h1>
+    <h1 class="post-title">{{ $title }}</h1>
 
     {{ partial "post-meta.html" . }}
   </header>
-
 
   {{/* -------------------------------------------------------
        HERO IMAGE
@@ -36,7 +43,7 @@
     <figure class="post-hero">
       <img
         src="{{ $heroPath | relURL }}"
-        alt="{{ .Title }}"
+        alt="{{ $title }}"
         class="post-hero-image"
         loading="eager"
         decoding="async"
@@ -47,12 +54,10 @@
 
   {{ end }}
 
-
   {{/* -------------------------------------------------------
        TABLE OF CONTENTS
        Image Credits and legacy Image Attribution are
-       metadata rather than content sections, so remove
-       both from the generated TOC.
+       metadata rather than content sections.
        ------------------------------------------------------- */}}
 
   {{ if .TableOfContents }}
@@ -71,24 +76,14 @@
       $toc
     }}
 
-    <nav
-      class="toc"
-      aria-label="Table of Contents"
-    >
-
+    <nav class="toc" aria-label="Table of Contents">
       <details open>
-        <summary>
-          Table of Contents
-        </summary>
-
+        <summary>Table of Contents</summary>
         {{ $toc | safeHTML }}
-
       </details>
-
     </nav>
 
   {{ end }}
-
 
   {{/* -------------------------------------------------------
        ARTICLE CONTENT
@@ -98,23 +93,20 @@
 
     {{ $rawContent := .RawContent }}
 
-    {{/*
-      Remove the old "Related Posts" section.
-
-      Remove legacy "Image Attribution" sections too.
-      IMPORTANT:
-      - Image Credits is intentionally NOT removed.
-      - The first replacement handles a legacy section
-        followed by a horizontal rule.
-      - The second handles a legacy section followed by
-        another H2 heading.
-      - The third handles a legacy section at EOF.
-    */}}
+    {{/* Remove legacy Related Posts block */}}
 
     {{ $cleanContent := replaceRE
+      `(?ms)^##[ \t]+Related Posts[ \t]*\r?\n.*?\r?\n---`
+      "---"
+      $rawContent
+    }}
+
+    {{/* Remove legacy Image Attribution sections */}}
+
+    {{ $cleanContent = replaceRE
       `(?ms)^##[ \t]+Image Attribution[ \t]*\r?\n.*?\r?\n(^---[ \t]*$)`
       "$1"
-      $rawContent
+      $cleanContent
     }}
 
     {{ $cleanContent = replaceRE
@@ -129,16 +121,25 @@
       $cleanContent
     }}
 
+    {{/* Defensive: remove leaked Tags JSON */}}
+
     {{ $cleanContent = replaceRE
-      `(?ms)^##[ \t]+Related Posts[ \t]*\r?\n.*?\r?\n---`
-      "---"
+      `(?mi)^[ \t]*Tags:[ \t]*\[[^\r\n]*\][ \t]*\r?\n?`
+      ""
+      $cleanContent
+    }}
+
+    {{/* Defensive: remove leaked Photo by lines */}}
+
+    {{ $cleanContent = replaceRE
+      `(?mi)^[ \t]*Photo by [^\r\n]*?(?:via Pexels)?[ \t]*\r?\n?`
+      ""
       $cleanContent
     }}
 
     {{ .RenderString $cleanContent }}
 
   </div>
-
 
   {{/* -------------------------------------------------------
        TAGS
@@ -151,17 +152,12 @@
       <strong>Tags:</strong>
 
       {{ range .Params.tags }}
-
-        <span class="post-tag">
-          {{ . }}
-        </span>
-
+        <span class="post-tag">{{ . }}</span>
       {{ end }}
 
     </div>
 
   {{ end }}
-
 
   {{/* -------------------------------------------------------
        AUTHOR
@@ -169,26 +165,19 @@
 
   {{ partial "author-box.html" . }}
 
-
   {{/* -------------------------------------------------------
        RELATED POSTS
        ------------------------------------------------------- */}}
 
   <section class="related-posts">
 
-    <h2>
-      Related Posts
-    </h2>
+    <h2>Related Posts</h2>
 
     <div class="related-posts-grid">
 
       {{ $current := . }}
 
-      {{ $relatedPosts := where
-        site.RegularPages
-        "Section"
-        "posts"
-      }}
+      {{ $relatedPosts := where site.RegularPages "Section" "posts" }}
 
       {{ $relatedPosts = where
         $relatedPosts
@@ -197,48 +186,32 @@
         $current.RelPermalink
       }}
 
-
       {{ range first 3 $relatedPosts.ByDate.Reverse }}
 
         {{ $relatedImage := .Params.image }}
 
         {{ if not $relatedImage }}
-
           {{ with .Params.images }}
-
             {{ if reflect.IsSlice . }}
-
               {{ if gt (len .) 0 }}
-
                 {{ $relatedImage = index . 0 }}
-
               {{ end }}
-
             {{ else }}
-
               {{ $relatedImage = . }}
-
             {{ end }}
-
           {{ end }}
-
         {{ end }}
-
 
         <article class="related-post-card">
 
           {{ if $relatedImage }}
 
-            {{ $relatedPath := strings.TrimPrefix
-              "/"
-              $relatedImage
-            }}
+            {{ $relatedPath := strings.TrimPrefix "/" $relatedImage }}
 
             <a
               href="{{ .RelPermalink }}"
               aria-label="Read: {{ .Title }}"
             >
-
               <img
                 src="{{ $relatedPath | relURL }}"
                 alt=""
@@ -246,26 +219,18 @@
                 decoding="async"
                 onerror="this.closest('a').classList.add('image-load-failed'); this.remove();"
               >
-
             </a>
 
           {{ end }}
 
-
           <div class="related-post-card-content">
 
             <h3>
-              <a href="{{ .RelPermalink }}">
-                {{ .Title }}
-              </a>
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
             </h3>
 
             {{ with .Description }}
-
-              <p>
-                {{ . | plainify | truncate 120 }}
-              </p>
-
+              <p>{{ . | plainify | truncate 120 }}</p>
             {{ end }}
 
           </div>
