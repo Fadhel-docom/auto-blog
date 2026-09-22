@@ -10,6 +10,11 @@
     {{ partial "post-meta.html" . }}
   </header>
 
+
+  {{/* -------------------------------------------------------
+       HERO IMAGE
+       ------------------------------------------------------- */}}
+
   {{ $heroImage := .Params.image }}
 
   {{ if not $heroImage }}
@@ -25,90 +30,218 @@
   {{ end }}
 
   {{ if $heroImage }}
+
     {{ $heroPath := strings.TrimPrefix "/" $heroImage }}
+
     <figure class="post-hero">
+
       <img
         src="{{ $heroPath | relURL }}"
         alt="{{ .Title }}"
         class="post-hero-image"
         loading="eager"
         decoding="async"
+        fetchpriority="high"
+        onerror="this.closest('figure').classList.add('image-load-failed'); this.remove();"
       >
+
     </figure>
+
   {{ end }}
+
+
+  {{/* -------------------------------------------------------
+       TABLE OF CONTENTS
+
+       Image Credits is metadata rather than a content section,
+       so remove its H2 entry from the generated TOC.
+       ------------------------------------------------------- */}}
 
   {{ if .TableOfContents }}
-    <nav class="toc" aria-label="Table of Contents">
+
+    {{ $toc := .TableOfContents }}
+
+    {{ $toc = replaceRE
+      `(?is)<li>\s*<a[^>]+href="#image-credits"[^>]*>.*?</a>\s*</li>`
+      ""
+      $toc
+    }}
+
+    <nav
+      class="toc"
+      aria-label="Table of Contents"
+    >
+
       <details open>
-        <summary>Table of Contents</summary>
-        {{ .TableOfContents }}
+
+        <summary>
+          Table of Contents
+        </summary>
+
+        {{ $toc | safeHTML }}
+
       </details>
+
     </nav>
+
   {{ end }}
+
+
+  {{/* -------------------------------------------------------
+       ARTICLE CONTENT
+       ------------------------------------------------------- */}}
 
   <div class="post-content">
+
     {{ $rawContent := .RawContent }}
-    {{ $cleanContent := replaceRE `(?ms)^##[ \t]+Related Posts[ \t]*\r?\n.*?\r?\n---` "---" $rawContent }}
+
+    {{/*
+      Keep the existing Related Posts cleanup.
+      Image Credits are intentionally retained in the
+      rendered article; only their TOC entry is removed.
+    */}}
+
+    {{ $cleanContent := replaceRE
+      `(?ms)^##[ \t]+Related Posts[ \t]*\r?\n.*?\r?\n---`
+      "---"
+      $rawContent
+    }}
+
     {{ .RenderString $cleanContent }}
+
   </div>
 
+
+  {{/* -------------------------------------------------------
+       TAGS
+       ------------------------------------------------------- */}}
+
   {{ if .Params.tags }}
+
     <div class="post-tags">
+
       <strong>Tags:</strong>
+
       {{ range .Params.tags }}
-        <span class="post-tag">{{ . }}</span>
+
+        <span class="post-tag">
+          {{ . }}
+        </span>
+
       {{ end }}
+
     </div>
+
   {{ end }}
+
+
+  {{/* -------------------------------------------------------
+       AUTHOR
+       ------------------------------------------------------- */}}
 
   {{ partial "author-box.html" . }}
 
+
+  {{/* -------------------------------------------------------
+       RELATED POSTS
+       ------------------------------------------------------- */}}
+
   <section class="related-posts">
-    <h2>Related Posts</h2>
+
+    <h2>
+      Related Posts
+    </h2>
 
     <div class="related-posts-grid">
 
       {{ $current := . }}
-      {{ $relatedPosts := where site.RegularPages "Section" "posts" }}
-      {{ $relatedPosts = where $relatedPosts "RelPermalink" "ne" $current.RelPermalink }}
+
+      {{ $relatedPosts := where
+        site.RegularPages
+        "Section"
+        "posts"
+      }}
+
+      {{ $relatedPosts = where
+        $relatedPosts
+        "RelPermalink"
+        "ne"
+        $current.RelPermalink
+      }}
+
 
       {{ range first 3 $relatedPosts.ByDate.Reverse }}
 
         {{ $relatedImage := .Params.image }}
 
         {{ if not $relatedImage }}
+
           {{ with .Params.images }}
+
             {{ if reflect.IsSlice . }}
+
               {{ if gt (len .) 0 }}
+
                 {{ $relatedImage = index . 0 }}
+
               {{ end }}
+
             {{ else }}
+
               {{ $relatedImage = . }}
+
             {{ end }}
+
           {{ end }}
+
         {{ end }}
+
 
         <article class="related-post-card">
 
           {{ if $relatedImage }}
-            {{ $relatedPath := strings.TrimPrefix "/" $relatedImage }}
-            <a href="{{ .RelPermalink }}" aria-label="Read: {{ .Title }}">
+
+            {{ $relatedPath := strings.TrimPrefix
+              "/"
+              $relatedImage
+            }}
+
+            <a
+              href="{{ .RelPermalink }}"
+              aria-label="Read: {{ .Title }}"
+            >
+
               <img
                 src="{{ $relatedPath | relURL }}"
                 alt=""
                 loading="lazy"
                 decoding="async"
+                onerror="this.closest('a').classList.add('image-load-failed'); this.remove();"
               >
+
             </a>
+
           {{ end }}
 
+
           <div class="related-post-card-content">
+
             <h3>
-              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+
+              <a href="{{ .RelPermalink }}">
+                {{ .Title }}
+              </a>
+
             </h3>
+
             {{ with .Description }}
-              <p>{{ . | plainify | truncate 120 }}</p>
+
+              <p>
+                {{ . | plainify | truncate 120 }}
+              </p>
+
             {{ end }}
+
           </div>
 
         </article>
@@ -116,6 +249,7 @@
       {{ end }}
 
     </div>
+
   </section>
 
 </article>
