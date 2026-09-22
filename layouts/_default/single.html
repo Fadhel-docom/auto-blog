@@ -107,6 +107,33 @@
       $rawContent
     }}
 
+    {{/*
+      Defensive cleanup:
+      Some generated content may accidentally contain a raw
+      Tags: [...] line. Tags are already stored in frontmatter
+      and rendered separately below.
+    */}}
+
+    {{ $cleanContent = replaceRE
+      `(?mi)^[ \t]*Tags:[ \t]*\[[^\r\n]*\][ \t]*\r?\n?`
+      ""
+      $cleanContent
+    }}
+
+    {{/*
+      Defensive cleanup for a photographer attribution that
+      accidentally leaks into the article body.
+
+      Legitimate Image Credits are preserved because their
+      lines begin with "- Photo N:" rather than "Photo by".
+    */}}
+
+    {{ $cleanContent = replaceRE
+      `(?mi)^[ \t]*Photo by [^\r\n]*?(?:via Pexels)?[ \t]*\r?\n?`
+      ""
+      $cleanContent
+    }}
+
     {{ .RenderString $cleanContent }}
 
   </div>
