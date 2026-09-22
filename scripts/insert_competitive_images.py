@@ -3,6 +3,7 @@
 import json
 import re
 import sys
+
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -149,39 +150,27 @@ def normalize_image_path(
 ) -> str:
     file_value = str(file_value).strip()
 
-    if file_value.startswith("/images/"):
-        filename = file_value[len("/images/"):]
+    while (
+        file_value.startswith("../")
+        or file_value.startswith("./")
+        or file_value.startswith("/")
+    ):
+        if file_value.startswith("../"):
+            file_value = file_value[3:]
+        elif file_value.startswith("./"):
+            file_value = file_value[2:]
+        else:
+            file_value = file_value[1:]
 
-    elif file_value.startswith("images/"):
-        filename = file_value[len("images/"):]
+    if file_value.startswith("images/"):
+        file_value = file_value[len("images/"):]
 
-    else:
-        filename = file_value.lstrip("/")
-
-        if filename.startswith("images/"):
-            filename = filename[len("images/"):]
-
-    return filename.strip()
+    return file_value.strip()
 
 
 def extract_frontmatter(
     content: str,
 ) -> str:
-    """
-    Extract Hugo frontmatter from either:
-
-    TOML:
-        +++
-        image = "/images/example.jpg"
-        +++
-
-    YAML:
-        ---
-        image: "/images/example.jpg"
-        ---
-
-    TOML is checked first, then YAML.
-    """
     if not isinstance(content, str):
         return ""
 
@@ -209,15 +198,6 @@ def extract_frontmatter(
 def detect_frontmatter_format(
     content: str,
 ) -> Optional[str]:
-    """
-    Return:
-
-        'toml'
-        'yaml'
-        None
-
-    based on the opening frontmatter delimiter.
-    """
     if not isinstance(content, str):
         return None
 
@@ -239,35 +219,11 @@ def detect_frontmatter_format(
 def extract_hero_image_path(
     content: str,
 ) -> Optional[str]:
-    """
-    Extract the singular Hugo frontmatter image field
-    from either TOML or YAML frontmatter.
-
-    Supported TOML examples:
-
-        image = "/images/example.jpg"
-        image = '/images/example.jpg'
-
-    Supported YAML examples:
-
-        image: "/images/example.jpg"
-        image: '/images/example.jpg'
-        image: /images/example.jpg
-
-    The frontmatter image is counted as one published
-    image.
-
-    The images = [...] / images: [...] metadata field is
-    intentionally NOT counted as rendered images.
-    """
     frontmatter = extract_frontmatter(content)
 
     if not frontmatter:
         return None
 
-    # --------------------------------------------------
-    # TOML
-    # --------------------------------------------------
     toml_match = re.search(
         r'^\s*image\s*=\s*["\']((?:\\.|[^"\'])*)["\']\s*$',
         frontmatter,
@@ -280,9 +236,6 @@ def extract_hero_image_path(
         if value:
             return normalize_image_path(value)
 
-    # --------------------------------------------------
-    # YAML quoted value
-    # --------------------------------------------------
     yaml_quoted_match = re.search(
         r'^\s*image\s*:\s*["\']([^"\']*)["\']\s*(?:#.*)?$',
         frontmatter,
@@ -295,9 +248,6 @@ def extract_hero_image_path(
         if value:
             return normalize_image_path(value)
 
-    # --------------------------------------------------
-    # YAML unquoted value
-    # --------------------------------------------------
     yaml_unquoted_match = re.search(
         r'^\s*image\s*:\s*([^\s#]+)\s*(?:#.*)?$',
         frontmatter,
@@ -315,18 +265,7 @@ def extract_hero_image_path(
 
 def get_existing_image_paths(
     content: str,
-) -> set[str]:
-    """
-    Return all actual image filenames referenced by the
-    published post.
-
-    This includes:
-    - Markdown images in the article body.
-    - The singular Hugo frontmatter hero image.
-
-    The frontmatter images = [...] / images: [...]
-    metadata field is NOT counted as a rendered image.
-    """
+) -> set:
     paths = set()
 
     for path in extract_image_paths(content):
@@ -346,13 +285,6 @@ def get_existing_image_paths(
 def count_article_images(
     content: str,
 ) -> int:
-    """
-    Count actual published images.
-
-    A hero image in frontmatter counts as one image.
-    If that same image is also referenced in Markdown,
-    it is counted only once.
-    """
     return len(
         get_existing_image_paths(content)
     )
@@ -498,19 +430,6 @@ def insert_additional_images(
     content: str,
     images: List[Dict[str, Any]],
 ) -> tuple:
-    """
-    Insert images 6-10 after H2 #6-10.
-
-    Duplicate detection is based on the actual image
-    paths already present in the article, including the
-    Hugo frontmatter hero image.
-
-    The returned 'inserted' value represents only images
-    that were physically added to the article.
-
-    If an image is already present, it is skipped and is
-    NOT counted as newly inserted.
-    """
     if len(images) != REQUIRED_IMAGES:
         raise ValueError(
             f"Expected {REQUIRED_IMAGES} images."
@@ -671,14 +590,6 @@ def verify_image_delta(
     after_count: int,
     inserted_count: int,
 ) -> None:
-    """
-    Verify the fundamental insertion invariant:
-
-        Images before + newly inserted = Images after
-
-    'inserted_count' must represent only images that were
-    physically added, not images skipped as duplicates.
-    """
     expected_after = (
         before_count + inserted_count
     )
@@ -697,16 +608,6 @@ def verify_additional_images_present(
     content: str,
     images: List[Dict[str, Any]],
 ) -> None:
-    """
-    Verify that the five competitive images 6-10 are
-    present somewhere in the published post.
-
-    Images 1-5 are intentionally NOT required to appear
-    as Markdown images here because:
-    - Image 1 may be the Hugo frontmatter hero image.
-    - Images 1-5 may have been handled by publish.py.
-    - This script is responsible for adding images 6-10.
-    """
     if len(images) != REQUIRED_IMAGES:
         raise ValueError(
             f"Expected {REQUIRED_IMAGES} images."
@@ -751,21 +652,6 @@ def verify_expected_base_images(
     content: str,
     images: List[Dict[str, Any]],
 ) -> None:
-    """
-    Verify the existing base-image state.
-
-    The expected base images are images 1-5.
-
-    Image 1 is allowed to exist in frontmatter as the
-    hero image.
-
-    Images 2-5 are normally Markdown images created by
-    publish.py.
-
-    This check does not require a particular representation;
-    it only verifies that the expected image files are
-    actually referenced by the published post.
-    """
     if len(images) != REQUIRED_IMAGES:
         raise ValueError(
             f"Expected {REQUIRED_IMAGES} images."
