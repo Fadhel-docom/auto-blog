@@ -13,6 +13,7 @@ ARTICLE_PATH = ROOT_DIR / "article.json"
 POSTS_DIR = ROOT_DIR / "content" / "posts"
 IMAGE_DIR = ROOT_DIR / "static" / "images"
 
+
 REQUIRED_IMAGES = 10
 EXISTING_PUBLISHED_IMAGES = 5
 ADDITIONAL_IMAGES = 5
@@ -204,9 +205,7 @@ def validate_images(
 
         filename = normalize_image_path(file_value)
 
-        expected_filename = (
-            f"{article['slug']}-{index}.jpg"
-        )
+        expected_filename = f"{article['slug']}-{index}.jpg"
 
         if filename != expected_filename:
             raise ValueError(
@@ -253,14 +252,19 @@ def insert_additional_images(
     content: str,
     images: List[Dict[str, Any]],
 ) -> tuple:
+    """
+    Insert images 6-10 after H2 #6-10.
+
+    Duplicate detection is based on the actual image
+    paths already present in the article content.
+    """
+
     if len(images) != REQUIRED_IMAGES:
         raise ValueError(
             f"Expected {REQUIRED_IMAGES} images."
         )
 
-    additional_images = images[
-        EXISTING_PUBLISHED_IMAGES:
-    ]
+    additional_images = images[EXISTING_PUBLISHED_IMAGES:]
 
     if len(additional_images) != ADDITIONAL_IMAGES:
         raise ValueError(
@@ -268,14 +272,11 @@ def insert_additional_images(
             "additional images."
         )
 
-    existing_image_markdown = []
-
-    for image in additional_images:
-        existing_image_markdown.append(
-            build_markdown_image(image)
-        )
-
-    existing_image_set = set(existing_image_markdown)
+    # Build duplicate set from ACTUAL POST CONTENT
+    existing_image_paths = set(
+        normalize_image_path(path)
+        for path in extract_image_paths(content)
+    )
 
     lines = content.splitlines()
 
@@ -323,14 +324,14 @@ def insert_additional_images(
 
         h2_count += 1
 
+        if h2_count < EXISTING_PUBLISHED_IMAGES + 1:
+            continue
+
         target_index = (
             h2_count
             - EXISTING_PUBLISHED_IMAGES
             - 1
         )
-
-        if h2_count < EXISTING_PUBLISHED_IMAGES + 1:
-            continue
 
         if (
             target_index < 0
@@ -340,9 +341,18 @@ def insert_additional_images(
 
         image = additional_images[target_index]
 
+        filename = normalize_image_path(image.get("file", ""))
+
+        if not filename:
+            raise ValueError(
+                f"Image "
+                f"{EXISTING_PUBLISHED_IMAGES + target_index + 1} "
+                "has an empty filename."
+            )
+
         image_markdown = build_markdown_image(image)
 
-        if image_markdown in existing_image_set:
+        if filename in existing_image_paths:
             print(
                 f"Image "
                 f"{EXISTING_PUBLISHED_IMAGES + target_index + 1} "
@@ -361,7 +371,7 @@ def insert_additional_images(
         inserted += 1
         inserted_h2_numbers.append(h2_count)
 
-        existing_image_set.add(image_markdown)
+        existing_image_paths.add(filename)
 
         print(
             f"Inserted image "
