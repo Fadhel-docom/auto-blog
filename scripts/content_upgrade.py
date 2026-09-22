@@ -264,8 +264,6 @@ def clean_markdown(content: str) -> str:
         count=1,
     )
 
-    # Remove any leaked "Tags: [...]" JSON line that
-    # the model sometimes appends to content_markdown.
     content = re.sub(
         r"(?mi)^[ \t]*Tags:[ \t]*\[[^\r\n]*\][ \t]*\r?\n?",
         "",
@@ -704,15 +702,20 @@ def generate_upgrade_with_model(
                 file=sys.stderr,
             )
 
-            if status_code == 413:
-                print(
-                    "  Reason: request exceeded the model "
-                    "token/request limit."
-                )
+            if status_code in (413, 429):
+                if status_code == 413:
+                    print(
+                        "  Reason: request exceeded the "
+                        "model token/request limit."
+                    )
+                else:
+                    print(
+                        "  Reason: primary model rate "
+                        "limit reached."
+                    )
                 raise
 
             retryable_codes = {
-                429,
                 500,
                 502,
                 503,
@@ -868,15 +871,22 @@ def generate_upgrade(
             file=sys.stderr,
         )
 
-        if primary_status == 413:
+        if primary_status in (413, 429):
             print("")
+
+            if primary_status == 413:
+                print(
+                    "413 detected: request is too large "
+                    "for the primary model."
+                )
+            else:
+                print(
+                    "Primary model failed with 429."
+                )
+
             print(
-                "413 detected: request is too large "
-                "for the primary model."
-            )
-            print(
-                "Switching to fallback model:"
-                f" {FALLBACK_GROQ_MODEL}"
+                "Switching to fallback model: "
+                f"{FALLBACK_GROQ_MODEL}"
             )
 
             try:
@@ -919,10 +929,10 @@ def generate_upgrade(
                     file=sys.stderr,
                 )
 
-                if fallback_status == 413:
+                if fallback_status in (413, 429):
                     print(
-                        "Fallback model also rejected the "
-                        "request with 413."
+                        "Fallback model also rejected "
+                        "the request."
                     )
                     print(
                         "Content upgrade will be skipped."
@@ -933,7 +943,8 @@ def generate_upgrade(
                     return None
 
         print(
-            "Content upgrade failed for a non-413 reason."
+            "Content upgrade failed after "
+            "primary-model fallback handling."
         )
         print(
             "The original article will be preserved."
