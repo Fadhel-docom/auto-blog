@@ -20,8 +20,8 @@ ARTICLE_PATH = ROOT_DIR / "article.json"
 GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 FALLBACK_GROQ_MODEL = "llama-3.1-8b-instant"
 MAX_RETRIES = 5
-MIN_WORDS = 1000
-MAX_WORDS = 2500
+MIN_WORDS = 1500
+MAX_WORDS = 2400
 
 
 def find_column(fieldnames, candidates):
@@ -671,9 +671,11 @@ EDITORIAL DIRECTION:
 - Do not broaden the article into a generic guide.
 
 LENGTH:
-- Write approximately 1500-1800 words of actual article content.
-- Never intentionally produce a short article.
+- Write EXACTLY 1800-2100 words of actual article content.
+- You MUST produce at least 1800 words.
+- Aim for approximately 2000 words.
 - Before returning the JSON, internally verify the article length.
+- If the article is below 1800 words, continue writing more detailed sections.
 
 TITLE REQUIREMENT:
 - The article title must be concise, specific, and easy to scan.
@@ -684,7 +686,10 @@ TITLE REQUIREMENT:
 - Preserve the exact focus keyword naturally in the title.
 
 STRUCTURE:
-- Use 5-7 useful H2 headings.
+- Use EXACTLY 10 H2 headings.
+- 11 H2 headings are allowed only if absolutely necessary.
+- NEVER use fewer than 10 H2 headings.
+- NEVER use more than 11 H2 headings.
 - Use H3 headings only when they genuinely improve organization.
 - Do not use an H1 heading inside content_markdown.
 - Use short paragraphs, generally 2-4 sentences.
@@ -751,7 +756,13 @@ Website niche: Home Organization & Small-Space Living
 
 The specific angle above is mandatory. Do NOT write a generic article about "{keyword}".
 
-The article must be approximately 1500-1800 words.
+The article must be 1800-2100 words.
+You MUST produce at least 1800 words and should aim for approximately 2000 words.
+
+The article must contain EXACTLY 10 H2 headings (11 only if absolutely necessary).
+NEVER use fewer than 10 H2 headings.
+NEVER use more than 11 H2 headings.
+
 Use the exact focus keyword naturally in the title and introduction.
 Do not generate image queries yet.
 
@@ -1284,9 +1295,9 @@ def validate_generated_content(
 
     if h2_count == 0:
         errors.append("No H2 heading.")
-    elif h2_count < 5 or h2_count > 9:
+    elif h2_count < 10 or h2_count > 11:
         errors.append(
-            f"Expected 5-9 H2 headings, "
+            f"Expected 10-11 H2 headings, "
             f"found {h2_count}."
         )
 
