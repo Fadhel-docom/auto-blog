@@ -8,12 +8,7 @@
 
 {{ $paginator := .Paginate $remainingPosts 12 }}
 
-<section
-  class="home-hero"
-  aria-labelledby="home-hero-title"
->
-
-  <div class="home-hero-decoration" aria-hidden="true"></div>
+<section class="home-hero" aria-labelledby="home-hero-title">
 
   <div class="home-hero-content">
 
@@ -22,7 +17,7 @@
     </span>
 
     <h1 id="home-hero-title">
-      Home Organization Ideas
+      {{ .Site.Title }}
     </h1>
 
     <p class="home-hero-description">
@@ -37,19 +32,11 @@
       onsubmit="return false;"
     >
 
-      <label
-        class="sr-only"
-        for="post-search"
-      >
+      <label class="sr-only" for="post-search">
         Search articles
       </label>
 
-      <span
-        class="home-search-icon"
-        aria-hidden="true"
-      >
-        ⌕
-      </span>
+      <span class="home-search-icon" aria-hidden="true">⌕</span>
 
       <input
         id="post-search"
@@ -73,27 +60,11 @@
     </form>
 
     <div class="hero-trust-row">
-
-      <span>
-        Practical
-      </span>
-
-      <span aria-hidden="true">
-        ·
-      </span>
-
-      <span>
-        Small-space focused
-      </span>
-
-      <span aria-hidden="true">
-        ·
-      </span>
-
-      <span>
-        Step-by-step
-      </span>
-
+      <span>Practical</span>
+      <span aria-hidden="true">·</span>
+      <span>Small-space focused</span>
+      <span aria-hidden="true">·</span>
+      <span>Step-by-step</span>
     </div>
 
   </div>
@@ -109,15 +80,8 @@
   <div class="category-filter-header">
 
     <div>
-
-      <span class="home-section-kicker">
-        Browse smarter
-      </span>
-
-      <h2>
-        Explore by room &amp; need
-      </h2>
-
+      <span class="home-section-kicker">Browse smarter</span>
+      <h2>Explore by room &amp; need</h2>
     </div>
 
     <span
@@ -126,7 +90,6 @@
     ></span>
 
   </div>
-
 
   <div
     class="category-filters"
@@ -212,19 +175,11 @@
   <div class="home-section-heading">
 
     <div>
-
-      <span class="home-section-kicker">
-        Editor's picks
-      </span>
-
-      <h2 id="featured-title">
-        Featured organization guides
-      </h2>
-
+      <span class="home-section-kicker">Editor's picks</span>
+      <h2 id="featured-title">Featured organization guides</h2>
     </div>
 
   </div>
-
 
   <div class="featured-grid">
 
@@ -273,9 +228,7 @@
               decoding="async"
             >
 
-            <span class="featured-badge">
-              Featured
-            </span>
+            <span class="featured-badge">Featured</span>
 
           </a>
 
@@ -284,19 +237,11 @@
         <div class="featured-card-body">
 
           <div class="home-post-card-meta">
-
             <time datetime="{{ $post.Date.Format "2006-01-02" }}">
               {{ $post.Date.Format "January 2, 2006" }}
             </time>
-
-            <span aria-hidden="true">
-              ·
-            </span>
-
-            <span>
-              {{ $post.ReadingTime }} min read
-            </span>
-
+            <span aria-hidden="true">·</span>
+            <span>{{ $post.ReadingTime }} min read</span>
           </div>
 
           <h3>
@@ -306,19 +251,14 @@
           </h3>
 
           {{ with $post.Description }}
-
-            <p>
-              {{ . | plainify | truncate 150 }}
-            </p>
-
+            <p>{{ . | plainify | truncate 150 }}</p>
           {{ end }}
 
           <a
             href="{{ $post.RelPermalink }}"
             class="home-post-card-link"
           >
-            Read guide
-            <span aria-hidden="true">→</span>
+            Read guide <span aria-hidden="true">→</span>
           </a>
 
         </div>
@@ -342,26 +282,15 @@
   <div class="home-section-heading">
 
     <div>
-
-      <span class="home-section-kicker">
-        Fresh ideas
-      </span>
-
-      <h2 id="latest-posts-title">
-        Latest organization guides
-      </h2>
-
+      <span class="home-section-kicker">Fresh ideas</span>
+      <h2 id="latest-posts-title">Latest organization guides</h2>
     </div>
 
   </div>
 
-
   {{ if $paginator.Pages }}
 
-    <div
-      class="posts-grid"
-      id="posts-grid"
-    >
+    <div class="posts-grid" id="posts-grid">
 
       {{ range $paginator.Pages }}
 
@@ -387,25 +316,16 @@
 
         {{ end }}
 
-
         {{ $categories := .Params.categories }}
-
         {{ $categoryText := "" }}
 
         {{ with $categories }}
-
           {{ if reflect.IsSlice . }}
-
             {{ $categoryText = delimit . " " }}
-
           {{ else }}
-
             {{ $categoryText = . }}
-
           {{ end }}
-
         {{ end }}
-
 
         <article
           class="home-post-card"
@@ -446,48 +366,31 @@
 
           {{ end }}
 
-
           <div class="home-post-card-body">
 
             <div class="home-post-card-meta">
-
               <time datetime="{{ .Date.Format "2006-01-02" }}">
                 {{ .Date.Format "January 2, 2006" }}
               </time>
-
               <span aria-hidden="true">·</span>
-
-              <span>
-                {{ .ReadingTime }} min read
-              </span>
-
+              <span>{{ .ReadingTime }} min read</span>
             </div>
 
-
             <h3 class="home-post-card-title">
-
-              <a href="{{ .RelPermalink }}">
-                {{ .Title }}
-              </a>
-
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
             </h3>
 
-
             {{ with .Description }}
-
               <p class="home-post-card-description">
                 {{ . | plainify | truncate 145 }}
               </p>
-
             {{ end }}
-
 
             <a
               href="{{ .RelPermalink }}"
               class="home-post-card-link"
             >
-              Read more
-              <span aria-hidden="true">→</span>
+              Read more <span aria-hidden="true">→</span>
             </a>
 
           </div>
@@ -498,7 +401,6 @@
 
     </div>
 
-
     <p
       class="home-no-results"
       id="home-no-results"
@@ -506,7 +408,6 @@
     >
       No articles match your search or selected category.
     </p>
-
 
     {{ if gt $paginator.TotalPages 1 }}
 
@@ -516,7 +417,6 @@
       >
 
         {{ if $paginator.HasPrev }}
-
           <a
             href="{{ $paginator.Prev.URL }}"
             class="pagination-link pagination-prev"
@@ -524,22 +424,13 @@
           >
             ← Newer
           </a>
-
         {{ end }}
 
-
         <span class="pagination-status">
-
-          Page
-          {{ $paginator.PageNumber }}
-          of
-          {{ $paginator.TotalPages }}
-
+          Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}
         </span>
 
-
         {{ if $paginator.HasNext }}
-
           <a
             href="{{ $paginator.Next.URL }}"
             class="pagination-link pagination-next"
@@ -547,7 +438,6 @@
           >
             Older →
           </a>
-
         {{ end }}
 
       </nav>
@@ -557,15 +447,8 @@
   {{ else }}
 
     <div class="home-empty-state">
-
-      <h2>
-        No posts yet
-      </h2>
-
-      <p>
-        New organization ideas will appear here soon.
-      </p>
-
+      <h2>No posts yet</h2>
+      <p>New organization ideas will appear here soon.</p>
     </div>
 
   {{ end }}
@@ -635,16 +518,13 @@
 
     });
 
-
     if (resultCount) {
-
       if (query || activeCategory !== "all") {
         resultCount.textContent =
           visible + (visible === 1 ? " article" : " articles");
       } else {
         resultCount.textContent = "";
       }
-
     }
 
     if (noResults) {
@@ -658,47 +538,32 @@
   }
 
   filters.forEach(function (button) {
-
     button.addEventListener("click", function () {
 
-      activeCategory = normalize(
-        button.dataset.category
-      );
+      activeCategory = normalize(button.dataset.category);
 
       filters.forEach(function (item) {
-
         var active = item === button;
-
         item.classList.toggle("is-active", active);
         item.setAttribute(
           "aria-pressed",
           active ? "true" : "false"
         );
-
       });
 
       updateResults();
 
     });
-
   });
 
-  searchInput.addEventListener(
-    "input",
-    updateResults
-  );
+  searchInput.addEventListener("input", updateResults);
 
   if (clearButton) {
-
-    clearButton.addEventListener(
-      "click",
-      function () {
-        searchInput.value = "";
-        searchInput.focus();
-        updateResults();
-      }
-    );
-
+    clearButton.addEventListener("click", function () {
+      searchInput.value = "";
+      searchInput.focus();
+      updateResults();
+    });
   }
 
   updateResults();
