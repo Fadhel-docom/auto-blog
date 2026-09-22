@@ -8,8 +8,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
   generate-and-publish:
@@ -21,23 +19,21 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: scripts/requirements.txt
 
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-
-          if [ -f scripts/requirements.txt ]; then
-            python -m pip install -r scripts/requirements.txt
-          fi
+          python -m pip install -r scripts/requirements.txt
 
       - name: Configure Python path
         run: |
           echo "PYTHONPATH=$GITHUB_WORKSPACE/scripts:$GITHUB_WORKSPACE" >> "$GITHUB_ENV"
-          python -c "import sys; print('PYTHONPATH configured')"
 
       - name: Generate article
         env:
@@ -46,7 +42,7 @@ jobs:
         run: |
           python scripts/generate_post.py
 
-      - name: Upgrade article depth
+      - name: Upgrade article content
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           GROQ_MODEL: "openai/gpt-oss-120b"
@@ -57,7 +53,7 @@ jobs:
         run: |
           python scripts/competitive_image_plan.py
 
-      - name: Download competitive images
+      - name: Fetch competitive images
         env:
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: |
@@ -67,110 +63,36 @@ jobs:
         run: |
           python scripts/competitive_seo_check.py
 
-      - name: Publish Hugo article content
+      - name: Publish Hugo post
         env:
           SITE_URL: ${{ secrets.SITE_URL }}
         run: |
           python scripts/competitive_publish.py
 
-      - name: Insert remaining competitive images
+      - name: Insert competitive images
         run: |
           python scripts/insert_competitive_images.py
 
-      - name: Verify generated article
+      - name: Final competitive SEO check
         run: |
-          python - <<'PY'
-          import json
-          import sys
-          from pathlib import Path
+          python scripts/competitive_seo_check.py
 
-          root = Path.cwd()
-          article_path = root / "article.json"
-
-          if not article_path.exists():
-              print("ERROR: article.json is missing.")
-              sys.exit(1)
-
-          with article_path.open("r", encoding="utf-8") as file:
-              article = json.load(file)
-
-          slug = article.get("slug")
-
-          if not isinstance(slug, str) or not slug.strip():
-              print("ERROR: Article slug is missing.")
-              sys.exit(1)
-
-          post_path = root / "content" / "posts" / f"{slug}.md"
-
-          if not post_path.exists():
-              print(f"ERROR: Published post does not exist: {post_path}")
-              sys.exit(1)
-
-          content = post_path.read_text(encoding="utf-8")
-          image_count = content.count("![")
-          article_images = article.get("images")
-
-          print(f"Slug: {slug}")
-          print(f"Post: {post_path}")
-          print(f"Markdown image count: {image_count}")
-          print(
-              "article.json image count: "
-              f"{len(article_images) if isinstance(article_images, list) else 0}"
-          )
-
-          if not isinstance(article_images, list):
-              print("ERROR: article.json images is not a list.")
-              sys.exit(1)
-
-          if len(article_images) != 10:
-              print("ERROR: article.json must contain exactly 10 images.")
-              sys.exit(1)
-
-          if image_count < 10:
-              print("ERROR: Published Markdown contains fewer than 10 images.")
-              sys.exit(1)
-
-          print("Final article verification passed.")
-          PY
-
-      - name: Configure Git
+      - name: Install Hugo 0.128.0 Extended
+        env:
+          HUGO_VERSION: "0.128.0"
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-      - name: Commit generated content
-        run: |
-          git add article.json
-          git add keywords.csv
-          git add content/posts/
-          git add static/images/
-
-          if git diff --cached --quiet; then
-            echo "No generated changes detected."
-            exit 0
-          fi
-
-          git commit -m "Add daily competitive blog post"
-
-      - name: Push changes
-        run: |
-          git push
-
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: "0.128.0"
-          extended: true
-
-      - name: Verify Hugo version
-        run: |
+          wget -O "${{ runner.temp }}/hugo.deb" \
+            "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
+          sudo dpkg -i "${{ runner.temp }}/hugo.deb"
           hugo version
 
-      - name: Build Hugo
+      - name: Build Hugo site
+        env:
+          HUGO_ENVIRONMENT: production
         run: |
-          hugo --gc --minify --baseURL "https://fadhel-docom.github.io/auto-blog/"
+          hugo --gc --minify --baseURL "${{ secrets.SITE_URL }}/"
 
-      - name: Verify Hugo build
+      - name: Verify Hugo output
         run: |
           if [ ! -d public ]; then
             echo "ERROR: Hugo did not create public/"
@@ -184,10 +106,29 @@ jobs:
 
           echo "Hugo build verified successfully."
 
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit source changes
+        run: |
+          git add article.json
+          git add keywords.csv
+          git add content/posts/
+          git add static/images/
+
+          if git diff --cached --quiet; then
+            echo "No source changes to commit."
+          else
+            git commit -m "Add daily blog post"
+            git push
+          fi
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./public
-          force_orphan: true
+          commit_message: "Deploy daily Hugo site"
