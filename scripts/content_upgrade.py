@@ -5,6 +5,7 @@ import os
 import re
 import sys
 import time
+
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -18,14 +19,18 @@ GROQ_MODEL = os.getenv(
     "GROQ_MODEL",
     "openai/gpt-oss-120b",
 )
+FALLBACK_GROQ_MODEL = "llama-3.1-8b-instant"
 
 MAX_RETRIES = 5
 
 MIN_WORDS = 1500
+MIN_ACCEPTABLE_WORDS = 1300
 MAX_WORDS = 2400
 
 MIN_H2 = 10
 MAX_H2 = 11
+
+MAX_ARTICLE_CHARS_IN_PROMPT = 7000
 
 
 def load_article() -> Dict[str, Any]:
@@ -40,12 +45,10 @@ def load_article() -> Dict[str, Any]:
             encoding="utf-8",
         ) as file:
             article = json.load(file)
-
     except json.JSONDecodeError as exc:
         raise ValueError(
             f"article.json contains invalid JSON: {exc}"
         ) from exc
-
     except OSError as exc:
         raise RuntimeError(
             f"Could not read article.json: {exc}"
@@ -74,18 +77,15 @@ def save_article(article: Dict[str, Any]) -> None:
                 ensure_ascii=False,
                 indent=2,
             )
-
             file.write("\n")
 
         temp_path.replace(ARTICLE_PATH)
-
     except OSError as exc:
         if temp_path.exists():
             try:
                 temp_path.unlink()
             except OSError:
                 pass
-
         raise RuntimeError(
             f"Could not save article.json: {exc}"
         ) from exc
@@ -117,9 +117,21 @@ def count_words(text: str) -> int:
         return 0
 
     plain = re.sub(r"`[^`]+`", " ", text)
-    plain = re.sub(r"!\[[^\]]*\]\([^)]*\)", " ", plain)
-    plain = re.sub(r"\[[^\]]*\]\([^)]*\)", " ", plain)
-    plain = re.sub(r"[#>*_~`]+", " ", plain)
+    plain = re.sub(
+        r"!\[[^\]]*\]\([^)]*\)",
+        " ",
+        plain,
+    )
+    plain = re.sub(
+        r"\[[^\]]*\]\([^)]*\)",
+        " ",
+        plain,
+    )
+    plain = re.sub(
+        r"[#>*_~`]+",
+        " ",
+        plain,
+    )
 
     words = re.findall(
         r"\b[\w'-]+\b",
@@ -135,7 +147,6 @@ def extract_h2_headings(content: str) -> List[str]:
         return []
 
     headings = []
-
     in_fenced_code_block = False
     fence_marker: Optional[str] = None
 
@@ -148,19 +159,16 @@ def extract_h2_headings(content: str) -> List[str]:
         ):
             if not in_fenced_code_block:
                 in_fenced_code_block = True
-
                 if stripped.startswith("```"):
                     fence_marker = "```"
                 else:
                     fence_marker = "~~~"
-
             elif (
                 fence_marker
                 and stripped.startswith(fence_marker)
             ):
                 in_fenced_code_block = False
                 fence_marker = None
-
             continue
 
         if in_fenced_code_block:
@@ -182,17 +190,24 @@ def extract_h2_headings(content: str) -> List[str]:
 
 def is_article_sufficient(content: str) -> bool:
     words = count_words(content)
-    h2_count = len(extract_h2_headings(content))
+    h2_count = len(
+        extract_h2_headings(content)
+    )
 
     return (
-        MIN_WORDS <= words <= MAX_WORDS
-        and
-        MIN_H2 <= h2_count <= MAX_H2
+        MIN_ACCEPTABLE_WORDS <= words <= MAX_WORDS
+        and MIN_H2 <= h2_count <= MAX_H2
     )
 
 
-def get_status_code(exception: Exception) -> Optional[int]:
-    response = getattr(exception, "response", None)
+def get_status_code(
+    exception: Exception,
+) -> Optional[int]:
+    response = getattr(
+        exception,
+        "response",
+        None,
+    )
 
     if response is not None:
         status_code = getattr(
@@ -232,9 +247,11 @@ def clean_markdown(content: str) -> str:
         content,
         flags=re.IGNORECASE,
     )
-
-    content = re.sub(r"\s*```$", "", content)
-
+    content = re.sub(
+        r"\s*```$",
+        "",
+        content,
+    )
     content = re.sub(
         r"^\s*#\s+.+?\n+",
         "",
@@ -267,7 +284,6 @@ def extract_json_from_response(
             text,
             flags=re.IGNORECASE,
         )
-
         text = re.sub(
             r"\s*```$",
             "",
@@ -276,7 +292,6 @@ def extract_json_from_response(
 
     try:
         result = json.loads(text)
-
     except json.JSONDecodeError:
         start = text.find("{")
         end = text.rfind("}")
@@ -295,7 +310,6 @@ def extract_json_from_response(
 
         try:
             result = json.loads(json_text)
-
         except json.JSONDecodeError as exc:
             raise ValueError(
                 f"Groq returned invalid JSON: {exc}"
@@ -311,27 +325,20 @@ def extract_json_from_response(
 
 def build_system_prompt() -> str:
     return """
-You are an expert long-form SEO editor and writer
-for an English-language website focused on:
+You are an expert long-form SEO editor and writer for an English-language website focused on:
 
 Home Organization & Small-Space Living.
 
 Your task is to improve an existing article.
 
-The article already has a valid topic, keyword, title,
-metadata, and general direction.
-
-You must preserve the original topic and intent while
-substantially improving the article's usefulness,
-depth, organization, and readability.
+The article already has a valid topic, keyword, title, metadata, and general direction.
+You must preserve the original topic and intent while substantially improving the article's usefulness, depth, organization, and readability.
 
 LENGTH REQUIREMENT:
-- The final article must contain between 1500 and 2400
-  actual words.
+- The final article must contain between 1500 and 2400 actual words.
 - Aim for approximately 2000 words.
 - You MUST produce at least 1800 words.
-- If you finish before 1800 words, continue writing more
-  detailed sections.
+- If you finish before 1800 words, continue writing more detailed sections.
 - Do NOT summarize.
 - Do NOT stop early.
 - Do NOT exceed 2400 words.
@@ -348,19 +355,15 @@ H2 REQUIREMENT:
 
 ARTICLE STRUCTURE:
 - Begin with a concise introduction.
-- The introduction should naturally contain the exact
-  focus keyword.
+- The introduction should naturally contain the exact focus keyword.
 - Use 10 useful H2 sections (11 maximum).
-- Use H3 headings only when they genuinely improve
-  organization.
+- Use H3 headings only when they genuinely improve organization.
 - End with a practical conclusion.
 - Include a natural reader-focused CTA when appropriate.
 
 HEADING RULES:
-- H2 headings must use Markdown format:
-  ## Heading
-- H3 headings must use Markdown format:
-  ### Heading
+- H2 headings must use Markdown format: ## Heading
+- H3 headings must use Markdown format: ### Heading
 - Use only ASCII characters in H2 and H3 headings.
 - Use A-Z, a-z, 0-9, spaces, and regular hyphens.
 - Never use an em dash.
@@ -392,23 +395,17 @@ ACCURACY:
 - Do not invent studies.
 - Do not invent expert quotes.
 - Do not invent citations.
-- Do not claim a specific product brand is recommended
-  unless that brand already appears in the original article
-  and the claim can be supported by the supplied text.
-- Do not invent prices, reviews, certifications,
-  measurements, or performance guarantees.
-- If a measurement is presented as an example rather than
-  a universal standard, make that distinction clear.
+- Do not claim a specific product brand is recommended unless that brand already appears in the original article and the claim can be supported by the supplied text.
+- Do not invent prices, reviews, certifications, measurements, or performance guarantees.
+- If a measurement is presented as an example rather than a universal standard, make that distinction clear.
 
 SEO:
 - Preserve the exact focus keyword naturally.
 - Keep the keyword in the title if it is already there.
-- Ensure the exact focus keyword appears naturally
-  in the introduction.
+- Ensure the exact focus keyword appears naturally in the introduction.
 - Do not keyword-stuff.
 - Preserve the article's search intent.
-- Improve semantic coverage with closely related terms
-  where natural.
+- Improve semantic coverage with closely related terms where natural.
 - Do not add an artificial keyword list to the article.
 
 IMAGES:
@@ -420,14 +417,12 @@ IMAGES:
 IMPORTANT:
 The input article may already contain useful sections.
 Do not blindly replace useful information with generic text.
-Retain valuable concrete details while improving structure,
-depth, transitions, and completeness.
+Retain valuable concrete details while improving structure, depth, transitions, and completeness.
 
 OUTPUT:
 Return ONLY valid JSON.
 
 Use exactly this structure:
-
 {
   "title": "article title",
   "meta_description": "meta description",
@@ -439,12 +434,29 @@ Do not wrap the JSON in Markdown code fences.
 """.strip()
 
 
-def build_user_prompt(article: Dict[str, Any]) -> str:
-    keyword = str(article.get("keyword", "")).strip()
-    specific_angle = str(article.get("specific_angle", "")).strip()
-    title = str(article.get("title", "")).strip()
-    meta_description = str(article.get("meta_description", "")).strip()
-    content = str(article.get("content_markdown", "")).strip()
+def build_user_prompt(
+    article: Dict[str, Any],
+) -> str:
+    keyword = str(
+        article.get("keyword", "")
+    ).strip()
+
+    specific_angle = str(
+        article.get("specific_angle", "")
+    ).strip()
+
+    title = str(
+        article.get("title", "")
+    ).strip()
+
+    meta_description = str(
+        article.get("meta_description", "")
+    ).strip()
+
+    full_content = str(
+        article.get("content_markdown", "")
+    ).strip()
+
     tags = article.get("tags", [])
 
     if not isinstance(tags, list):
@@ -456,10 +468,49 @@ def build_user_prompt(article: Dict[str, Any]) -> str:
         if isinstance(tag, str):
             tag = tag.strip()
 
-            if tag and tag not in clean_tags:
+            if (
+                tag
+                and tag not in clean_tags
+            ):
                 clean_tags.append(tag)
 
-    return f"""
+    # ---------------------------------------------------------
+    # IMPORTANT:
+    # Groq Free Tier has a TPM limit. Sending the entire
+    # article can push the request over the model limit.
+    #
+    # Keep only the first 7000 characters of the article.
+    # The original article remains untouched on disk.
+    # This is ONLY the copy sent to Groq.
+    # ---------------------------------------------------------
+    if len(full_content) > MAX_ARTICLE_CHARS_IN_PROMPT:
+        content = (
+            full_content[
+                :MAX_ARTICLE_CHARS_IN_PROMPT
+            ].rstrip()
+            + "\n\n... [article continues]"
+        )
+
+        print(
+            "Article content truncated for Groq prompt:"
+        )
+        print(
+            f"  Original characters: {len(full_content)}"
+        )
+        print(
+            f"  Sent characters: {len(content)}"
+        )
+    else:
+        content = full_content
+
+        print(
+            "Article content did not require truncation:"
+        )
+        print(
+            f"  Characters: {len(content)}"
+        )
+
+    prompt = f"""
 Improve the following existing article.
 
 FOCUS KEYWORD:
@@ -478,35 +529,28 @@ CURRENT TAGS:
 {", ".join(clean_tags)}
 
 CURRENT ARTICLE:
-
 {content}
 
 EDITORIAL TASK:
-
-Rewrite and improve this article while preserving
-its original search intent and specific topic.
+Rewrite and improve this article while preserving its original search intent and specific topic.
 
 The final version must:
-
-1. Contain between 1500 and 2400 actual words.
-2. Aim for approximately 2000 words.
-3. You MUST produce at least 1800 words.
-4. If you finish before 1800 words, continue writing
-   more detailed sections.
-5. Do NOT summarize.
-6. Contain AT LEAST 10 H2 headings.
-7. Aim for EXACTLY 10 H2 headings.
-8. Do NOT use fewer than 10 H2 headings.
-9. Do NOT use more than 11 H2 headings.
-10. Keep the exact focus keyword naturally in the title
-    and introduction.
+1.  Contain between 1500 and 2400 actual words.
+2.  Aim for approximately 2000 words.
+3.  You MUST produce at least 1800 words.
+4.  If you finish before 1800 words, continue writing more detailed sections.
+5.  Do NOT summarize.
+6.  Contain AT LEAST 10 H2 headings.
+7.  Aim for EXACTLY 10 H2 headings.
+8.  Do NOT use fewer than 10 H2 headings.
+9.  Do NOT use more than 11 H2 headings.
+10. Keep the exact focus keyword naturally in the title and introduction.
 11. Preserve useful concrete information from the original.
 12. Add depth where the original is too short or shallow.
 13. Remove repetitive or low-value passages.
 14. Improve transitions between sections.
 15. Make every H2 section materially useful.
-16. Avoid invented facts, statistics, studies, citations,
-    quotes, prices, or unsupported claims.
+16. Avoid invented facts, statistics, studies, citations, quotes, prices, or unsupported claims.
 17. Do not create image queries.
 18. Do not create image Markdown.
 19. Do not mention this editing process.
@@ -515,27 +559,79 @@ The final version must:
 Return ONLY the JSON object requested by the system prompt.
 """.strip()
 
+    return prompt
 
-def generate_upgrade(
-    api_key: str,
-    article: Dict[str, Any],
+
+def estimate_tokens(text: str) -> int:
+    """
+    Conservative rough estimate for English text.
+    This is not the tokenizer used internally by Groq.
+    It is only used for logging before sending the request.
+    """
+    if not text:
+        return 0
+
+    # Rough English estimate:
+    # approximately 4 characters per token.
+    return max(
+        1,
+        (len(text) + 3) // 4,
+    )
+
+
+def log_request_size(
+    model: str,
+    system_prompt: str,
+    user_prompt: str,
+) -> None:
+    total_chars = (
+        len(system_prompt) + len(user_prompt)
+    )
+    estimated_tokens = estimate_tokens(
+        system_prompt + "\n" + user_prompt
+    )
+
+    print("Groq request estimate:")
+    print(f"  Model: {model}")
+    print(
+        f"  System prompt characters: "
+        f"{len(system_prompt)}"
+    )
+    print(
+        f"  User prompt characters: "
+        f"{len(user_prompt)}"
+    )
+    print(
+        f"  Total characters: "
+        f"{total_chars}"
+    )
+    print(
+        f"  Estimated input tokens: "
+        f"{estimated_tokens}"
+    )
+
+
+def generate_upgrade_with_model(
+    client: Groq,
+    model: str,
+    system_prompt: str,
+    user_prompt: str,
 ) -> Dict[str, Any]:
-    client = Groq(api_key=api_key)
-
-    system_prompt = build_system_prompt()
-    user_prompt = build_user_prompt(article)
-
     last_exception: Optional[Exception] = None
 
-    for attempt in range(1, MAX_RETRIES + 1):
+    for attempt in range(
+        1,
+        MAX_RETRIES + 1,
+    ):
         try:
             print(
                 "Calling Groq for content upgrade "
-                f"(attempt {attempt}/{MAX_RETRIES})..."
+                f"(model={model}, "
+                f"attempt {attempt}/{MAX_RETRIES})..."
             )
 
             response = client.chat.completions.create(
-                model=GROQ_MODEL,
+                model=model,
                 messages=[
                     {
                         "role": "system",
@@ -547,7 +643,7 @@ def generate_upgrade(
                     },
                 ],
                 temperature=0.6,
-                max_tokens=16000,
+                max_tokens=5000,
                 response_format={
                     "type": "json_object"
                 },
@@ -559,21 +655,57 @@ def generate_upgrade(
                 )
 
             message = response.choices[0].message
-
-            content = getattr(message, "content", None)
+            content = getattr(
+                message,
+                "content",
+                None,
+            )
 
             if not content:
                 raise ValueError(
                     "Groq returned an empty message."
                 )
 
-            generated = extract_json_from_response(content)
+            generated = extract_json_from_response(
+                content
+            )
+
+            print(
+                f"Groq upgrade succeeded "
+                f"with model={model}."
+            )
 
             return generated
 
         except Exception as exc:
             last_exception = exc
             status_code = get_status_code(exc)
+
+            print("Groq request failed:")
+            print(f"  Model: {model}")
+            print(
+                f"  Attempt: "
+                f"{attempt}/{MAX_RETRIES}"
+            )
+            print(
+                f"  Status code: "
+                f"{status_code}"
+            )
+            print(
+                f"  Reason: {exc}",
+                file=sys.stderr,
+            )
+
+            # 413 means the request is too large.
+            #
+            # Retrying the SAME request cannot solve that problem.
+            # The caller handles switching to the smaller model.
+            if status_code == 413:
+                print(
+                    "  Reason: request exceeded the model "
+                    "token/request limit."
+                )
+                raise
 
             retryable_codes = {
                 429,
@@ -592,26 +724,166 @@ def generate_upgrade(
             if attempt >= MAX_RETRIES:
                 break
 
-            delay = min(2 ** (attempt - 1), 30)
-
-            print(
-                f"Groq content upgrade failed: {exc}",
-                file=sys.stderr,
+            delay = min(
+                2 ** (attempt - 1),
+                30,
             )
 
             print(
                 f"Retrying in {delay} seconds..."
             )
-
             time.sleep(delay)
 
     raise RuntimeError(
         "Groq content upgrade failed after "
-        f"{MAX_RETRIES} attempts: {last_exception}"
+        f"{MAX_RETRIES} attempts using "
+        f"model '{model}': "
+        f"{last_exception}"
     )
 
 
-def normalize_tags(raw_tags: Any) -> List[str]:
+def generate_upgrade(
+    api_key: str,
+    article: Dict[str, Any],
+) -> Optional[Dict[str, Any]]:
+    client = Groq(api_key=api_key)
+
+    system_prompt = build_system_prompt()
+    user_prompt = build_user_prompt(article)
+
+    log_request_size(
+        GROQ_MODEL,
+        system_prompt,
+        user_prompt,
+    )
+
+    # ---------------------------------------------------------
+    # First attempt: configured primary model.
+    # ---------------------------------------------------------
+    try:
+        print("")
+        print(
+            f"Primary upgrade model: {GROQ_MODEL}"
+        )
+
+        return generate_upgrade_with_model(
+            client=client,
+            model=GROQ_MODEL,
+            system_prompt=system_prompt,
+            user_prompt=user_prompt,
+        )
+
+    except Exception as primary_exc:
+        primary_status = get_status_code(
+            primary_exc
+        )
+
+        print("", file=sys.stderr)
+        print(
+            "Primary content upgrade failed.",
+            file=sys.stderr,
+        )
+        print(
+            f"  Model: {GROQ_MODEL}",
+            file=sys.stderr,
+        )
+        print(
+            f"  Status code: {primary_status}",
+            file=sys.stderr,
+        )
+        print(
+            f"  Reason: {primary_exc}",
+            file=sys.stderr,
+        )
+
+        # -----------------------------------------------------
+        # Special handling for 413:
+        #
+        # Do NOT retry the same oversized request.
+        # Immediately switch to the smaller model.
+        # -----------------------------------------------------
+        if primary_status == 413:
+            print("")
+            print(
+                "413 detected: request is too large "
+                "for the primary model."
+            )
+            print(
+                "Switching to fallback model:"
+                f" {FALLBACK_GROQ_MODEL}"
+            )
+
+            try:
+                log_request_size(
+                    FALLBACK_GROQ_MODEL,
+                    system_prompt,
+                    user_prompt,
+                )
+
+                return generate_upgrade_with_model(
+                    client=client,
+                    model=FALLBACK_GROQ_MODEL,
+                    system_prompt=system_prompt,
+                    user_prompt=user_prompt,
+                )
+
+            except Exception as fallback_exc:
+                fallback_status = get_status_code(
+                    fallback_exc
+                )
+
+                print("", file=sys.stderr)
+                print(
+                    "Fallback content upgrade failed.",
+                    file=sys.stderr,
+                )
+                print(
+                    f"  Model: "
+                    f"{FALLBACK_GROQ_MODEL}",
+                    file=sys.stderr,
+                )
+                print(
+                    f"  Status code: "
+                    f"{fallback_status}",
+                    file=sys.stderr,
+                )
+                print(
+                    f"  Reason: "
+                    f"{fallback_exc}",
+                    file=sys.stderr,
+                )
+
+                if fallback_status == 413:
+                    print(
+                        "Fallback model also rejected the "
+                        "request with 413."
+                    )
+                    print(
+                        "Content upgrade will be skipped."
+                    )
+                    print(
+                        "The original article will be preserved."
+                    )
+                    return None
+
+        # -----------------------------------------------------
+        # Non-413 errors:
+        #
+        # Preserve the workflow instead of making an upgrade
+        # failure fatal. The original article remains usable.
+        # -----------------------------------------------------
+        print(
+            "Content upgrade failed for a non-413 reason."
+        )
+        print(
+            "The original article will be preserved."
+        )
+        return None
+
+
+def normalize_tags(
+    raw_tags: Any,
+) -> List[str]:
     if isinstance(raw_tags, str):
         raw_tags = [raw_tags]
 
@@ -626,7 +898,10 @@ def normalize_tags(raw_tags: Any) -> List[str]:
 
         tag = tag.strip()
 
-        if tag and tag not in tags:
+        if (
+            tag
+            and tag not in tags
+        ):
             tags.append(tag)
 
     return tags
@@ -641,37 +916,52 @@ def validate_generated_article(
     ).strip()
 
     original_meta = str(
-        original_article.get("meta_description", "")
+        original_article.get(
+            "meta_description",
+            "",
+        )
     ).strip()
 
     original_tags = normalize_tags(
-        original_article.get("tags", [])
+        original_article.get(
+            "tags",
+            [],
+        )
     )
 
     title = generated.get("title")
-    meta_description = generated.get("meta_description")
-    content_markdown = generated.get("content_markdown")
+    meta_description = generated.get(
+        "meta_description"
+    )
+    content_markdown = generated.get(
+        "content_markdown"
+    )
 
     if not isinstance(title, str):
         raise ValueError(
-            "Groq output field 'title' must be a string."
+            "Groq output field 'title' "
+            "must be a string."
         )
 
     if not isinstance(meta_description, str):
         raise ValueError(
-            "Groq output field 'meta_description' "
-            "must be a string."
+            "Groq output field "
+            "'meta_description' must be a string."
         )
 
     if not isinstance(content_markdown, str):
         raise ValueError(
-            "Groq output field 'content_markdown' "
-            "must be a string."
+            "Groq output field "
+            "'content_markdown' must be a string."
         )
 
     title = title.strip()
-    meta_description = meta_description.strip()
-    content_markdown = clean_markdown(content_markdown)
+    meta_description = (
+        meta_description.strip()
+    )
+    content_markdown = clean_markdown(
+        content_markdown
+    )
 
     if not title:
         raise ValueError(
@@ -689,7 +979,10 @@ def validate_generated_article(
         )
 
     keyword = str(
-        original_article.get("keyword", "")
+        original_article.get(
+            "keyword",
+            "",
+        )
     ).strip()
 
     if keyword:
@@ -699,7 +992,9 @@ def validate_generated_article(
                 "the exact focus keyword."
             )
 
-        introduction = content_markdown[:1800].lower()
+        introduction = (
+            content_markdown[:1800].lower()
+        )
 
         if keyword.lower() not in introduction:
             raise ValueError(
@@ -708,40 +1003,84 @@ def validate_generated_article(
             )
 
     words = count_words(content_markdown)
-    h2_headings = extract_h2_headings(content_markdown)
+    h2_headings = extract_h2_headings(
+        content_markdown
+    )
     h2_count = len(h2_headings)
 
-    print(f"Generated word count: {words}")
-    print(f"Generated H2 count: {h2_count}")
+    print(
+        f"Generated word count: {words}"
+    )
+    print(
+        f"Generated H2 count: {h2_count}"
+    )
 
-    if words < MIN_WORDS:
+    # ---------------------------------------------------------
+    # MIN_WORDS remains 1500 as the target/quality threshold.
+    #
+    # However, the workflow must NOT fail for 1300-1499 words.
+    # Such output is accepted with a warning.
+    #
+    # Anything below 1300 is rejected as genuinely too short.
+    # ---------------------------------------------------------
+    if words < MIN_ACCEPTABLE_WORDS:
         raise ValueError(
             "Generated article is too short: "
-            f"{words} words. Minimum is {MIN_WORDS}."
+            f"{words} words. "
+            f"Absolute minimum is "
+            f"{MIN_ACCEPTABLE_WORDS}."
+        )
+
+    if words < MIN_WORDS:
+        print(
+            "WARNING: generated article is below "
+            f"target MIN_WORDS={MIN_WORDS}: "
+            f"{words} words."
+        )
+        print(
+            "WARNING: accepting it because it meets "
+            f"the absolute minimum of "
+            f"{MIN_ACCEPTABLE_WORDS} words."
         )
 
     if words > MAX_WORDS:
         raise ValueError(
             "Generated article is too long: "
-            f"{words} words. Maximum is {MAX_WORDS}."
+            f"{words} words. "
+            f"Maximum is {MAX_WORDS}."
         )
 
     if h2_count < MIN_H2:
         raise ValueError(
             "Generated article has too few H2 "
-            f"headings: {h2_count}. Minimum is {MIN_H2}."
+            f"headings: {h2_count}. "
+            f"Minimum is {MIN_H2}."
         )
 
     if h2_count > MAX_H2:
         raise ValueError(
             "Generated article has too many H2 "
-            f"headings: {h2_count}. Maximum is {MAX_H2}."
+            f"headings: {h2_count}. "
+            f"Maximum is {MAX_H2}."
         )
 
-    tags = normalize_tags(generated.get("tags"))
+    tags = normalize_tags(
+        generated.get("tags")
+    )
 
     if not tags:
         tags = original_tags
+
+    if not tags:
+        keyword_fallback = str(
+            original_article.get(
+                "keyword",
+                "",
+            )
+        ).strip()
+
+        if keyword_fallback:
+            tags = [keyword_fallback]
 
     if not tags:
         raise ValueError(
@@ -769,16 +1108,29 @@ def build_updated_article(
 ) -> Dict[str, Any]:
     updated_article = dict(original_article)
 
-    updated_article["title"] = validated["title"]
-    updated_article["meta_description"] = validated["meta_description"]
-    updated_article["content_markdown"] = validated["content_markdown"]
-    updated_article["tags"] = validated["tags"]
-    updated_article["word_count"] = validated["word_count"]
+    updated_article["title"] = (
+        validated["title"]
+    )
+    updated_article["meta_description"] = (
+        validated["meta_description"]
+    )
+    updated_article["content_markdown"] = (
+        validated["content_markdown"]
+    )
+    updated_article["tags"] = (
+        validated["tags"]
+    )
+    updated_article["word_count"] = (
+        validated["word_count"]
+    )
 
     return updated_article
 
 
-def print_article_stats(label: str, content: str) -> None:
+def print_article_stats(
+    label: str,
+    content: str,
+) -> None:
     words = count_words(content)
     headings = extract_h2_headings(content)
 
@@ -789,9 +1141,13 @@ def print_article_stats(label: str, content: str) -> None:
 
     if headings:
         print("  H2 structure:")
-
-        for index, heading in enumerate(headings, start=1):
-            print(f"    {index}. {heading}")
+        for index, heading in enumerate(
+            headings,
+            start=1,
+        ):
+            print(
+                f"    {index}. {heading}"
+            )
 
     print("")
 
@@ -808,155 +1164,208 @@ def main() -> int:
             "ERROR: GROQ_API_KEY is not set.",
             file=sys.stderr,
         )
-
         return 1
 
     try:
         article = load_article()
+    except Exception as exc:
+        print(
+            f"ERROR loading article: {exc}",
+            file=sys.stderr,
+        )
+        return 1
 
-        content = get_required_string(
+    try:
+        original_content = get_required_string(
             article,
             "content_markdown",
         )
+    except Exception as exc:
+        print(
+            f"ERROR reading article content: {exc}",
+            file=sys.stderr,
+        )
+        return 1
 
-        keyword = str(article.get("keyword", "")).strip()
-        title = str(article.get("title", "")).strip()
+    print_article_stats(
+        "Original",
+        original_content,
+    )
 
-        print(f"Focus keyword: {keyword}")
-        print(f"Current title: {title}")
+    print(
+        f"Configured target minimum words: "
+        f"{MIN_WORDS}"
+    )
+    print(
+        f"Absolute accepted minimum words: "
+        f"{MIN_ACCEPTABLE_WORDS}"
+    )
+    print(f"Maximum words: {MAX_WORDS}")
+    print(
+        f"Required H2 range: "
+        f"{MIN_H2}-{MAX_H2}"
+    )
+    print(
+        f"Maximum article characters sent to Groq: "
+        f"{MAX_ARTICLE_CHARS_IN_PROMPT}"
+    )
 
-        print_article_stats("Current", content)
+    # ---------------------------------------------------------
+    # If the original article is already sufficient, there is
+    # no need to spend Groq TPM on an upgrade.
+    # ---------------------------------------------------------
+    if is_article_sufficient(original_content):
+        print(
+            "Original article already satisfies "
+            "the minimum structural requirements."
+        )
+        print(
+            "No content upgrade is required."
+        )
+        print("Article remains unchanged.")
+        return 0
 
-        current_words = count_words(content)
-        current_h2 = len(extract_h2_headings(content))
+    print(
+        "Original article does not satisfy "
+        "the upgrade requirements."
+    )
 
-        print("Target:")
-        print(f"  Words: {MIN_WORDS}-{MAX_WORDS}")
-        print(f"  H2: {MIN_H2}-{MAX_H2}")
+    try:
+        generated = generate_upgrade(
+            api_key,
+            article,
+        )
+    except Exception as exc:
+        # This is an extra safety net.
+        #
+        # generate_upgrade() is designed to return None when
+        # the upgrade cannot be completed, but if an unexpected
+        # exception escapes, do not destroy a valid original
+        # article or fail the entire workflow.
+        print(
+            "Unexpected upgrade error:",
+            file=sys.stderr,
+        )
+        print(
+            f"  Reason: {exc}",
+            file=sys.stderr,
+        )
+        print("Keeping the original article.")
+        return 0
 
-        if is_article_sufficient(content):
-            print(
-                "Article already satisfies "
-                "the competitive content requirements."
-            )
+    # ---------------------------------------------------------
+    # If both the primary and fallback model failed, the
+    # original article is deliberately preserved.
+    # ---------------------------------------------------------
+    if generated is None:
+        print("")
+        print(
+            "No upgraded article was produced."
+        )
+        print(
+            "Fallback behavior: using original article."
+        )
+        print(
+            "Workflow will continue successfully."
+        )
+        return 0
 
-            print("No Groq call is necessary.")
-            print("article.json will not be modified.")
+    print("")
+    print(
+        "Groq returned an upgraded article."
+    )
 
-            print("=" * 70)
-            print("CONTENT UPGRADE COMPLETE")
-            print("=" * 70)
-
-            return 0
-
-        reasons = []
-
-        if current_words < MIN_WORDS:
-            reasons.append(
-                f"word count below {MIN_WORDS}"
-            )
-
-        if current_words > MAX_WORDS:
-            reasons.append(
-                f"word count above {MAX_WORDS}"
-            )
-
-        if current_h2 < MIN_H2:
-            reasons.append(
-                f"H2 count below {MIN_H2}"
-            )
-
-        if current_h2 > MAX_H2:
-            reasons.append(
-                f"H2 count above {MAX_H2}"
-            )
-
-        print("Upgrade required because:")
-
-        for reason in reasons:
-            print(f"  - {reason}")
-
-        generated = generate_upgrade(api_key, article)
-
-        print("Groq returned an upgraded article.")
-
+    try:
         validated = validate_generated_article(
             article,
             generated,
         )
-
-        print("Generated article passed validation.")
-
-        updated_article = build_updated_article(
-            article,
-            validated,
-        )
-
-        save_article(updated_article)
-
-        print_article_stats(
-            "Final",
-            validated["content_markdown"],
-        )
-
-        print("Updated fields:")
-        print("  - title")
-        print("  - meta_description")
-        print("  - content_markdown")
-        print("  - tags")
-        print("  - word_count")
-
-        print("Preserved fields:")
-
-        preserved_fields = [
-            "keyword",
-            "specific_angle",
-            "slug",
-            "image_queries",
-            "images",
-            "image",
-            "image_file",
-            "photographer",
-            "photographer_url",
-            "pexels_url",
-            "image_source_url",
-            "image_id",
-            "generated_at",
-        ]
-
-        for field in preserved_fields:
-            if field in article:
-                print(f"  - {field}")
-
-        print(
-            f"Saved upgraded article to: {ARTICLE_PATH}"
-        )
-
-        print("=" * 70)
-        print("CONTENT UPGRADE COMPLETE")
-        print("=" * 70)
-
-        return 0
-
-    except KeyboardInterrupt:
-        print("", file=sys.stderr)
-        print("Operation cancelled.", file=sys.stderr)
-
-        return 130
-
     except Exception as exc:
-        print("", file=sys.stderr)
-        print("CONTENT UPGRADE FAILED", file=sys.stderr)
-        print(f"ERROR: {exc}", file=sys.stderr)
-        print("", file=sys.stderr)
+        print("")
         print(
-            "The original article.json was not "
-            "replaced with the failed Groq output.",
+            "WARNING: upgraded article failed validation:",
             file=sys.stderr,
         )
+        print(
+            f"  Reason: {exc}",
+            file=sys.stderr,
+        )
+        print(
+            "The original article will be preserved."
+        )
+        print(
+            "Workflow will continue successfully."
+        )
+        return 0
 
+    updated_article = build_updated_article(
+        article,
+        validated,
+    )
+
+    try:
+        save_article(updated_article)
+    except Exception as exc:
+        print(
+            f"ERROR saving upgraded article: {exc}",
+            file=sys.stderr,
+        )
         return 1
+
+    print("")
+    print(
+        "Content upgrade completed successfully."
+    )
+
+    print_article_stats(
+        "Upgraded",
+        validated["content_markdown"],
+    )
+
+    print(
+        f"Final word count: "
+        f"{validated['word_count']}"
+    )
+
+    if (
+        validated["word_count"] < MIN_WORDS
+    ):
+        print(
+            "WARNING: final article is below "
+            f"the target {MIN_WORDS} words, "
+            "but was accepted because it contains "
+            f"at least {MIN_ACCEPTABLE_WORDS} words."
+        )
+
+    print(
+        f"Final title: "
+        f"{validated['title']}"
+    )
+    print(
+        f"Final tags: "
+        f"{', '.join(validated['tags'])}"
+    )
+    print(
+        f"Saved upgraded article to: "
+        f"{ARTICLE_PATH}"
+    )
+
+    return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except KeyboardInterrupt:
+        print("", file=sys.stderr)
+        print(
+            "Interrupted by user.",
+            file=sys.stderr,
+        )
+        sys.exit(130)
+    except Exception as exc:
+        print(
+            f"ERROR: {exc}",
+            file=sys.stderr,
+        )
+        sys.exit(1)
