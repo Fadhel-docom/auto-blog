@@ -687,7 +687,6 @@ h6 {
 
 /* =========================================
    POST LIST - COMPATIBILITY
-   Used by /posts/ list pages.
    ========================================= */
 
 .post-list {
@@ -1049,16 +1048,19 @@ h6 {
 @media (max-width: 780px) {
 
   .site-header {
-    padding: 13px 0;
+    padding: 12px 0;
   }
 
   .site-header-inner {
-    align-items: flex-start;
-    gap: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
   }
 
   .site-brand {
     flex: 1 1 auto;
+    min-width: 0;
   }
 
   .site-description {
@@ -1066,14 +1068,19 @@ h6 {
   }
 
   .site-nav {
-    flex-wrap: wrap;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
     gap: 2px;
+    flex-shrink: 0;
   }
 
   .site-nav-link {
     min-height: 34px;
-    padding: 5px 7px;
-    font-size: 0.78rem;
+    padding: 5px 6px;
+    font-size: 0.76rem;
+    white-space: nowrap;
   }
 
 }
