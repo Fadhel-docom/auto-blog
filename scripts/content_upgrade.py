@@ -25,7 +25,7 @@ MIN_WORDS = 1500
 MAX_WORDS = 2400
 
 MIN_H2 = 10
-MAX_H2 = 10
+MAX_H2 = 11
 
 
 def load_article() -> Dict[str, Any]:
@@ -337,9 +337,11 @@ LENGTH REQUIREMENT:
 - Do NOT exceed 2400 words.
 
 H2 REQUIREMENT:
-- The final article must contain exactly 10 H2 headings.
-- Do not use fewer than 10 H2 headings.
-- Do not use more than 10 H2 headings.
+- The final article must contain AT LEAST 10 H2 headings.
+- Aim for EXACTLY 10 H2 headings.
+- You may use 11 H2 headings only if strictly needed.
+- Do NOT use fewer than 10 H2 headings.
+- Do NOT use more than 11 H2 headings.
 - Every H2 must contain useful, distinct information.
 - Do not create empty or extremely short H2 sections.
 - Do not use an H1 inside content_markdown.
@@ -348,7 +350,7 @@ ARTICLE STRUCTURE:
 - Begin with a concise introduction.
 - The introduction should naturally contain the exact
   focus keyword.
-- Use exactly 10 useful H2 sections.
+- Use 10 useful H2 sections (11 maximum).
 - Use H3 headings only when they genuinely improve
   organization.
 - End with a practical conclusion.
@@ -492,20 +494,23 @@ The final version must:
 4. If you finish before 1800 words, continue writing
    more detailed sections.
 5. Do NOT summarize.
-6. Contain exactly 10 H2 headings.
-7. Keep the exact focus keyword naturally in the title
-   and introduction.
-8. Preserve useful concrete information from the original.
-9. Add depth where the original is too short or shallow.
-10. Remove repetitive or low-value passages.
-11. Improve transitions between sections.
-12. Make every H2 section materially useful.
-13. Avoid invented facts, statistics, studies, citations,
+6. Contain AT LEAST 10 H2 headings.
+7. Aim for EXACTLY 10 H2 headings.
+8. Do NOT use fewer than 10 H2 headings.
+9. Do NOT use more than 11 H2 headings.
+10. Keep the exact focus keyword naturally in the title
+    and introduction.
+11. Preserve useful concrete information from the original.
+12. Add depth where the original is too short or shallow.
+13. Remove repetitive or low-value passages.
+14. Improve transitions between sections.
+15. Make every H2 section materially useful.
+16. Avoid invented facts, statistics, studies, citations,
     quotes, prices, or unsupported claims.
-14. Do not create image queries.
-15. Do not create image Markdown.
-16. Do not mention this editing process.
-17. Do not mention AI.
+17. Do not create image queries.
+18. Do not create image Markdown.
+19. Do not mention this editing process.
+20. Do not mention AI.
 
 Return ONLY the JSON object requested by the system prompt.
 """.strip()
