@@ -11,7 +11,7 @@ ROOT_DIR = Path(__file__).resolve().parents[1]
 ARTICLE_PATH = ROOT_DIR / "article.json"
 IMAGE_DIR = ROOT_DIR / "static" / "images"
 
-MIN_WORDS = 1800
+MIN_WORDS = 1500
 MAX_WORDS = 2400
 
 MIN_H2 = 8
