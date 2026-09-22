@@ -1,8 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="{{ .Site.Language.Lang }}">
+
 <head>
+
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
 
   <title>
     {{ if .IsHome }}
@@ -12,63 +20,298 @@
     {{ end }}
   </title>
 
+
   <meta
     name="description"
     content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}"
   >
+
 
   <meta
     name="google-site-verification"
     content="tgAG8aMPl7dBqyp5e4JPtjgKdiwXLdQ967R4OVcW-eM"
   />
 
+
+  <!-- Favicon -->
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="{{ "favicon.svg" | relURL }}"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="{{ "favicon.svg" | relURL }}"
+  >
+
+
+  <!-- Canonical -->
+
+  <link
+    rel="canonical"
+    href="{{ .Permalink }}"
+  >
+
+
+  <!-- Open Graph -->
+
+  {{ $ogTitle := .Title }}
+
+  {{ if .IsHome }}
+    {{ $ogTitle = .Site.Title }}
+  {{ end }}
+
+
+  {{ $ogDescription := .Description }}
+
+  {{ if not $ogDescription }}
+    {{ $ogDescription = .Site.Params.description }}
+  {{ end }}
+
+
+  {{ $ogImage := "" }}
+
+  {{ if .Params.image }}
+
+    {{ $ogImage = .Params.image | absURL }}
+
+  {{ else }}
+
+    {{ $ogImage = "favicon.svg" | absURL }}
+
+  {{ end }}
+
+
+  <meta
+    property="og:title"
+    content="{{ $ogTitle }}"
+  >
+
+  <meta
+    property="og:description"
+    content="{{ $ogDescription }}"
+  >
+
+  <meta
+    property="og:type"
+    content="{{ if .IsPage }}article{{ else }}website{{ end }}"
+  >
+
+  <meta
+    property="og:url"
+    content="{{ .Permalink }}"
+  >
+
+  <meta
+    property="og:site_name"
+    content="{{ .Site.Title }}"
+  >
+
+  <meta
+    property="og:image"
+    content="{{ $ogImage }}"
+  >
+
+
+  <!-- Styles -->
+
   <link
     rel="stylesheet"
     href="{{ "css/custom.css" | relURL }}"
   >
 
-  <link
-    rel="stylesheet"
-    href="{{ "css/competitive.css" | relURL }}"
-  >
+
+  {{ if .IsPage }}
+
+    {{ $authorName := .Site.Params.author | default "Auto Blog" }}
+
+    {{ $imageURL := "" }}
+
+
+    {{ with .Params.image }}
+
+      {{ $imageURL = . | absURL }}
+
+    {{ end }}
+
+
+    {{ $articleSchema := dict
+
+      "@context"
+      "https://schema.org"
+
+      "@type"
+      "BlogPosting"
+
+      "headline"
+      .Title
+
+      "description"
+      .Description
+
+      "mainEntityOfPage"
+      (dict
+        "@type"
+        "WebPage"
+
+        "@id"
+        .Permalink
+      )
+
+      "author"
+      (dict
+        "@type"
+        "Organization"
+
+        "name"
+        $authorName
+      )
+
+      "publisher"
+      (dict
+        "@type"
+        "Organization"
+
+        "name"
+        .Site.Title
+
+        "url"
+        .Site.BaseURL
+      )
+
+      "datePublished"
+      .Date
+
+      "dateModified"
+      .Lastmod
+
+      "url"
+      .Permalink
+
+    }}
+
+
+    {{ if $imageURL }}
+
+      {{ $articleSchema = merge
+        $articleSchema
+        (dict
+          "image"
+          (slice $imageURL)
+        )
+      }}
+
+    {{ end }}
+
+
+    <script type="application/ld+json">
+      {{ $articleSchema | jsonify | safeHTML }}
+    </script>
+
+
+    {{ with .Params.faq }}
+
+      {{ if gt (len .) 0 }}
+
+        {{ $faqEntities := slice }}
+
+
+        {{ range . }}
+
+          {{ $faqEntities = $faqEntities | append
+            (dict
+
+              "@type"
+              "Question"
+
+              "name"
+              .question
+
+              "acceptedAnswer"
+              (dict
+
+                "@type"
+                "Answer"
+
+                "text"
+                .answer
+
+              )
+
+            )
+          }}
+
+        {{ end }}
+
+
+        {{ $faqSchema := dict
+
+          "@context"
+          "https://schema.org"
+
+          "@type"
+          "FAQPage"
+
+          "mainEntity"
+          $faqEntities
+
+        }}
+
+
+        <script type="application/ld+json">
+          {{ $faqSchema | jsonify | safeHTML }}
+        </script>
+
+      {{ end }}
+
+    {{ end }}
+
+  {{ end }}
+
+
+  <!-- GoatCounter -->
 
   <script
     data-goatcounter="https://fadhel-blog.goatcounter.com/count"
     async
     src="//gc.zgo.at/count.js"
   ></script>
+
 </head>
+
 
 <body>
 
-<header class="site-header">
-  <div class="site-container">
-    <a
-      href="{{ "/" | relURL }}"
-      class="site-title"
-    >
-      {{ .Site.Title }}
-    </a>
 
-    <p class="site-description">
-      {{ .Site.Params.description }}
-    </p>
-  </div>
-</header>
+  {{ partial "header.html" . }}
 
-<main class="site-main">
-  <div class="site-container">
-    {{ block "main" . }}{{ end }}
-  </div>
-</main>
 
-<footer class="site-footer">
-  <div class="site-container">
-    <p>
-      &copy; {{ now.Year }} {{ .Site.Title }}
-    </p>
-  </div>
-</footer>
+  <main class="site-main">
+
+    <div class="site-container">
+
+      {{ block "main" . }}{{ end }}
+
+    </div>
+
+  </main>
+
+
+  <footer class="site-footer">
+
+    <div class="site-container">
+
+      <p>
+        &copy; {{ now.Year }} {{ .Site.Title }}
+      </p>
+
+    </div>
+
+  </footer>
+
 
 </body>
+
 </html>
