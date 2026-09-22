@@ -3,6 +3,7 @@
 import json
 import re
 import sys
+
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -11,6 +12,7 @@ ROOT_DIR = Path(__file__).resolve().parents[1]
 ARTICLE_PATH = ROOT_DIR / "article.json"
 
 IMAGE_COUNT = 10
+MAX_HEADING_QUERY_WORDS = 4
 
 
 def load_article() -> Dict[str, Any]:
@@ -25,12 +27,10 @@ def load_article() -> Dict[str, Any]:
             encoding="utf-8",
         ) as file:
             article = json.load(file)
-
     except json.JSONDecodeError as exc:
         raise ValueError(
             f"article.json contains invalid JSON: {exc}"
         ) from exc
-
     except OSError as exc:
         raise RuntimeError(
             f"Could not read article.json: {exc}"
@@ -58,7 +58,6 @@ def save_article(article: Dict[str, Any]) -> None:
                 ensure_ascii=False,
                 indent=2,
             )
-
             file.write("\n")
 
         temp_path.replace(ARTICLE_PATH)
@@ -80,7 +79,6 @@ def clean_text(value: Any) -> str:
         return ""
 
     value = value.replace("\r", " ")
-
     value = re.sub(
         r"\s+",
         " ",
@@ -90,7 +88,9 @@ def clean_text(value: Any) -> str:
     return value.strip()
 
 
-def extract_h2_headings(content: str) -> List[str]:
+def extract_h2_headings(
+    content: str,
+) -> List[str]:
     headings: List[str] = []
 
     in_fenced_code_block = False
@@ -113,7 +113,9 @@ def extract_h2_headings(content: str) -> List[str]:
 
             elif (
                 fence_marker
-                and stripped.startswith(fence_marker)
+                and stripped.startswith(
+                    fence_marker
+                )
             ):
                 in_fenced_code_block = False
                 fence_marker = None
@@ -131,7 +133,9 @@ def extract_h2_headings(content: str) -> List[str]:
         if not match:
             continue
 
-        heading = clean_text(match.group(1))
+        heading = clean_text(
+            match.group(1)
+        )
 
         if heading:
             headings.append(heading)
@@ -145,25 +149,21 @@ def remove_markdown(text: str) -> str:
         " ",
         text,
     )
-
     text = re.sub(
         r"\[[^\]]*\]\([^)]*\)",
         " ",
         text,
     )
-
     text = re.sub(
         r"`[^`]+`",
         " ",
         text,
     )
-
     text = re.sub(
         r"#{1,6}[ \t]+",
         " ",
         text,
     )
-
     text = re.sub(
         r"[*_~]+",
         " ",
@@ -173,19 +173,24 @@ def remove_markdown(text: str) -> str:
     return clean_text(text)
 
 
-def extract_useful_terms(content: str) -> List[str]:
+def extract_useful_terms(
+    content: str,
+) -> List[str]:
     stop_words = {
-        "the", "and", "for", "with", "from", "that",
-        "this", "your", "you", "are", "into", "without",
-        "small", "home", "ideas", "tips", "guide",
-        "best", "ways", "how", "what", "when", "where",
-        "using", "use", "make", "get", "can", "more",
-        "room", "space", "before", "after", "about",
-        "their", "there", "these", "those", "than",
-        "then", "also", "just", "yourself", "each",
-        "every", "some", "very", "have", "has", "will",
-        "should", "could", "would", "other", "which",
-        "while", "only", "through", "because", "made",
+        "the", "and", "for", "with", "from",
+        "that", "this", "your", "you", "are",
+        "into", "without", "small", "home",
+        "ideas", "tips", "guide", "best", "ways",
+        "how", "what", "when", "where", "using",
+        "use", "make", "get", "can", "more",
+        "room", "space", "before", "after",
+        "about", "their", "there", "these",
+        "those", "than", "then", "also", "just",
+        "yourself", "each", "every", "some",
+        "very", "have", "has", "will", "should",
+        "could", "would", "other", "which",
+        "while", "only", "through", "because",
+        "made",
     }
 
     words = re.findall(
@@ -211,15 +216,15 @@ def extract_useful_terms(content: str) -> List[str]:
 
 def normalize_query(value: str) -> str:
     value = clean_text(value)
-
-    value = value.replace("&", "and")
-
+    value = value.replace(
+        "&",
+        "and",
+    )
     value = re.sub(
         r"[^A-Za-z0-9,\- ]+",
         " ",
         value,
     )
-
     value = re.sub(
         r"\s+",
         " ",
@@ -231,14 +236,31 @@ def normalize_query(value: str) -> str:
 
 def shorten_heading(
     heading: str,
-    maximum_words: int = 7,
+    maximum_words: int = MAX_HEADING_QUERY_WORDS,
 ) -> str:
     words = heading.split()
 
     if len(words) <= maximum_words:
         return heading
 
-    return " ".join(words[:maximum_words])
+    return " ".join(
+        words[:maximum_words]
+    )
+
+
+def compact_keyword(
+    keyword: str,
+) -> str:
+    words = [
+        word
+        for word in keyword.split()
+        if word.strip()
+    ]
+
+    if len(words) <= 3:
+        return keyword
+
+    return " ".join(words[:3])
 
 
 def build_query_from_heading(
@@ -246,23 +268,24 @@ def build_query_from_heading(
     keyword: str,
     index: int,
 ) -> str:
-    heading_clean = shorten_heading(clean_text(heading))
-    keyword_clean = clean_text(keyword)
+    heading_clean = shorten_heading(
+        clean_text(heading)
+    )
+    keyword_clean = compact_keyword(
+        clean_text(keyword)
+    )
 
     if index == 1:
         parts = [
             keyword_clean,
             "organized home interior",
-            "modern storage",
         ]
-
     elif heading_clean:
         parts = [
             heading_clean,
             keyword_clean,
             "home interior",
         ]
-
     else:
         parts = [
             keyword_clean,
@@ -280,14 +303,37 @@ def build_query_from_heading(
 def build_fallback_queries(
     article: Dict[str, Any],
 ) -> List[str]:
-    keyword = clean_text(article.get("keyword", ""))
-    title = clean_text(article.get("title", ""))
+    keyword = clean_text(
+        article.get(
+            "keyword",
+            "",
+        )
+    )
+
+    title = clean_text(
+        article.get(
+            "title",
+            "",
+        )
+    )
+
     content = remove_markdown(
-        clean_text(article.get("content_markdown", ""))
+        clean_text(
+            article.get(
+                "content_markdown",
+                "",
+            )
+        )
     )
 
     terms = extract_useful_terms(
-        " ".join([title, keyword, content])
+        " ".join(
+            [
+                title,
+                keyword,
+                content,
+            ]
+        )
     )
 
     fallback_templates = [
@@ -305,10 +351,15 @@ def build_fallback_queries(
 
     queries = []
 
-    if keyword:
+    compact_keyword_value = (
+        compact_keyword(keyword)
+    )
+
+    if compact_keyword_value:
         queries.append(
             normalize_query(
-                f"{keyword} modern interior"
+                f"{compact_keyword_value} "
+                f"modern interior"
             )
         )
 
@@ -317,13 +368,18 @@ def build_fallback_queries(
             break
 
         if term in {
-            "organization", "organized", "storage",
-            "interior", "home", "room",
+            "organization",
+            "organized",
+            "storage",
+            "interior",
+            "home",
+            "room",
         }:
             continue
 
         query = normalize_query(
-            f"{term} home organization interior"
+            f"{term} "
+            f"home organization interior"
         )
 
         if query:
@@ -333,17 +389,23 @@ def build_fallback_queries(
         if len(queries) >= IMAGE_COUNT:
             break
 
-        queries.append(normalize_query(template))
+        queries.append(
+            normalize_query(template)
+        )
 
     return queries
 
 
-def make_unique(queries: List[str]) -> List[str]:
+def make_unique(
+    queries: List[str],
+) -> List[str]:
     result = []
     seen = set()
 
     for query in queries:
-        normalized = normalize_query(query)
+        normalized = normalize_query(
+            query
+        )
 
         if not normalized:
             continue
@@ -362,25 +424,41 @@ def make_unique(queries: List[str]) -> List[str]:
 def build_image_queries(
     article: Dict[str, Any],
 ) -> List[str]:
-    content = article.get("content_markdown", "")
+    content = article.get(
+        "content_markdown",
+        "",
+    )
 
     if not isinstance(content, str):
         raise ValueError(
-            "article.json field 'content_markdown' "
+            "article.json field "
+            "'content_markdown' "
             "must be a string."
         )
 
     if not content.strip():
         raise ValueError(
-            "article.json contains empty content_markdown."
+            "article.json contains empty "
+            "content_markdown."
         )
 
-    keyword = clean_text(article.get("keyword", ""))
-    headings = extract_h2_headings(content)
+    keyword = clean_text(
+        article.get(
+            "keyword",
+            "",
+        )
+    )
+
+    headings = extract_h2_headings(
+        content
+    )
 
     queries = []
 
-    for index, heading in enumerate(headings, start=1):
+    for index, heading in enumerate(
+        headings,
+        start=1,
+    ):
         if len(queries) >= IMAGE_COUNT:
             break
 
@@ -396,44 +474,59 @@ def build_image_queries(
     queries = make_unique(queries)
 
     if len(queries) < IMAGE_COUNT:
-        fallback_queries = build_fallback_queries(article)
-        queries = make_unique(queries + fallback_queries)
+        fallback_queries = (
+            build_fallback_queries(article)
+        )
+
+        queries = make_unique(
+            queries + fallback_queries
+        )
 
     if len(queries) < IMAGE_COUNT:
         raise ValueError(
             "Could not generate exactly "
-            f"{IMAGE_COUNT} unique image queries. "
+            f"{IMAGE_COUNT} unique image "
+            "queries. "
             f"Generated {len(queries)}."
         )
 
     return queries[:IMAGE_COUNT]
 
 
-def validate_queries(queries: List[str]) -> None:
+def validate_queries(
+    queries: List[str],
+) -> None:
     if len(queries) != IMAGE_COUNT:
         raise ValueError(
             f"Expected exactly {IMAGE_COUNT} "
-            f"image queries, got {len(queries)}."
+            f"image queries, got "
+            f"{len(queries)}."
         )
 
     normalized = []
 
-    for index, query in enumerate(queries, start=1):
+    for index, query in enumerate(
+        queries,
+        start=1,
+    ):
         if not isinstance(query, str):
             raise ValueError(
-                f"Image query #{index} must be a string."
+                f"Image query #{index} "
+                "must be a string."
             )
 
         query = normalize_query(query)
 
         if not query:
             raise ValueError(
-                f"Image query #{index} is empty."
+                f"Image query #{index} "
+                "is empty."
             )
 
         if query.lower() in normalized:
             raise ValueError(
-                f"Image query #{index} is duplicated."
+                f"Image query #{index} "
+                "is duplicated."
             )
 
         normalized.append(query.lower())
@@ -447,42 +540,80 @@ def main() -> int:
     try:
         article = load_article()
 
-        title = clean_text(article.get("title", ""))
-        keyword = clean_text(article.get("keyword", ""))
-        content = article.get("content_markdown", "")
+        title = clean_text(
+            article.get(
+                "title",
+                "",
+            )
+        )
+
+        keyword = clean_text(
+            article.get(
+                "keyword",
+                "",
+            )
+        )
+
+        content = article.get(
+            "content_markdown",
+            "",
+        )
 
         if not title:
             raise ValueError(
-                "article.json is missing 'title'."
+                "article.json is missing "
+                "'title'."
             )
 
         if not keyword:
             raise ValueError(
-                "article.json is missing 'keyword'."
+                "article.json is missing "
+                "'keyword'."
             )
 
-        if not isinstance(content, str) or not content.strip():
+        if (
+            not isinstance(content, str)
+            or not content.strip()
+        ):
             raise ValueError(
                 "article.json is missing "
                 "valid 'content_markdown'."
             )
 
-        headings = extract_h2_headings(content)
+        headings = extract_h2_headings(
+            content
+        )
 
-        print(f"Article title: {title}")
-        print(f"Focus keyword: {keyword}")
-        print(f"H2 headings detected: {len(headings)}")
+        print(
+            f"Article title: {title}"
+        )
+        print(
+            f"Focus keyword: {keyword}"
+        )
+        print(
+            f"H2 headings detected: "
+            f"{len(headings)}"
+        )
 
-        queries = build_image_queries(article)
+        queries = build_image_queries(
+            article
+        )
+
         validate_queries(queries)
 
-        article["image_queries"] = queries
+        article["image_queries"] = (
+            queries
+        )
+
         save_article(article)
 
         print("")
         print("Generated image queries:")
 
-        for index, query in enumerate(queries, start=1):
+        for index, query in enumerate(
+            queries,
+            start=1,
+        ):
             if index == 1:
                 label = "HERO"
             else:
@@ -492,25 +623,45 @@ def main() -> int:
 
         print("")
         print(
-            f"Saved {len(queries)} image queries "
+            f"Saved {len(queries)} "
+            "image queries "
             f"to {ARTICLE_PATH}"
         )
 
         print("=" * 70)
-        print("COMPETITIVE IMAGE PLAN COMPLETE")
+        print(
+            "COMPETITIVE IMAGE PLAN "
+            "COMPLETE"
+        )
         print("=" * 70)
 
         return 0
 
     except KeyboardInterrupt:
-        print("", file=sys.stderr)
-        print("Operation cancelled.", file=sys.stderr)
+        print(
+            "",
+            file=sys.stderr,
+        )
+        print(
+            "Operation cancelled.",
+            file=sys.stderr,
+        )
         return 130
 
     except Exception as exc:
-        print("", file=sys.stderr)
-        print("COMPETITIVE IMAGE PLAN FAILED", file=sys.stderr)
-        print(f"ERROR: {exc}", file=sys.stderr)
+        print(
+            "",
+            file=sys.stderr,
+        )
+        print(
+            "COMPETITIVE IMAGE PLAN "
+            "FAILED",
+            file=sys.stderr,
+        )
+        print(
+            f"ERROR: {exc}",
+            file=sys.stderr,
+        )
         return 1
 
 
