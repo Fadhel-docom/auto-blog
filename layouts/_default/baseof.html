@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="{{ .Site.Language.Lang }}">
 
 <head>
@@ -7,12 +8,24 @@
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
   >
 
   <meta
     name="theme-color"
     content="#ffffff"
+    media="(prefers-color-scheme: light)"
+  >
+
+  <meta
+    name="theme-color"
+    content="#131315"
+    media="(prefers-color-scheme: dark)"
+  >
+
+  <meta
+    name="color-scheme"
+    content="light dark"
   >
 
   <title>
@@ -23,32 +36,15 @@
     {{ end }}
   </title>
 
-  {{ $description := .Description | default .Site.Params.description }}
-
   <meta
     name="description"
-    content="{{ $description }}"
-  >
-
-  <meta
-    name="author"
-    content="{{ .Site.Params.author | default .Site.Title }}"
-  >
-
-  <meta
-    name="robots"
-    content="index,follow,max-image-preview:large"
+    content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}"
   >
 
   <meta
     name="google-site-verification"
     content="tgAG8aMPl7dBqyp5e4JPtjgKdiwXLdQ967R4OVcW-eM"
-  >
-
-  <link
-    rel="canonical"
-    href="{{ .Permalink }}"
-  >
+  />
 
   <link
     rel="icon"
@@ -61,19 +57,28 @@
     href="{{ "favicon.svg" | relURL }}"
   >
 
+  <link
+    rel="canonical"
+    href="{{ .Permalink }}"
+  >
+
   {{ $ogTitle := .Title }}
 
   {{ if .IsHome }}
     {{ $ogTitle = .Site.Title }}
   {{ end }}
 
+  {{ $ogDescription := .Description }}
+
+  {{ if not $ogDescription }}
+    {{ $ogDescription = .Site.Params.description }}
+  {{ end }}
+
   {{ $ogImage := "" }}
 
   {{ if .Params.image }}
 
-    {{ $ogImagePath := strings.TrimPrefix "/" .Params.image }}
-
-    {{ $ogImage = $ogImagePath | absURL }}
+    {{ $ogImage = .Params.image | absURL }}
 
   {{ else }}
 
@@ -81,70 +86,20 @@
 
   {{ end }}
 
-  <meta
-    property="og:title"
-    content="{{ $ogTitle }}"
-  >
+  <meta property="og:title" content="{{ $ogTitle }}">
 
-  <meta
-    property="og:description"
-    content="{{ $description }}"
-  >
+  <meta property="og:description" content="{{ $ogDescription }}">
 
   <meta
     property="og:type"
     content="{{ if .IsPage }}article{{ else }}website{{ end }}"
   >
 
-  <meta
-    property="og:url"
-    content="{{ .Permalink }}"
-  >
+  <meta property="og:url" content="{{ .Permalink }}">
 
-  <meta
-    property="og:site_name"
-    content="{{ .Site.Title }}"
-  >
+  <meta property="og:site_name" content="{{ .Site.Title }}">
 
-  <meta
-    property="og:locale"
-    content="en_US"
-  >
-
-  <meta
-    property="og:image"
-    content="{{ $ogImage }}"
-  >
-
-  <meta
-    property="og:image:alt"
-    content="{{ $ogTitle }}"
-  >
-
-  <meta
-    name="twitter:card"
-    content="summary_large_image"
-  >
-
-  <meta
-    name="twitter:title"
-    content="{{ $ogTitle }}"
-  >
-
-  <meta
-    name="twitter:description"
-    content="{{ $description }}"
-  >
-
-  <meta
-    name="twitter:image"
-    content="{{ $ogImage }}"
-  >
-
-  <meta
-    name="twitter:image:alt"
-    content="{{ $ogTitle }}"
-  >
+  <meta property="og:image" content="{{ $ogImage }}">
 
   <link
     rel="stylesheet"
@@ -165,13 +120,11 @@
 
     {{ $authorName := .Site.Params.author | default "Auto Blog" }}
 
-    {{ $articleImageURL := "" }}
+    {{ $imageURL := "" }}
 
     {{ with .Params.image }}
 
-      {{ $imagePath := strings.TrimPrefix "/" . }}
-
-      {{ $articleImageURL = $imagePath | absURL }}
+      {{ $imageURL = . | absURL }}
 
     {{ end }}
 
@@ -179,7 +132,7 @@
       "@context" "https://schema.org"
       "@type" "BlogPosting"
       "headline" .Title
-      "description" $description
+      "description" .Description
       "mainEntityOfPage" (dict
         "@type" "WebPage"
         "@id" .Permalink
@@ -193,22 +146,16 @@
         "name" .Site.Title
         "url" .Site.BaseURL
       )
-      "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
-      "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+      "datePublished" .Date
+      "dateModified" .Lastmod
       "url" .Permalink
     }}
 
-    {{ if $articleImageURL }}
-
-      {{ $imageObject := dict
-        "@type" "ImageObject"
-        "url" $articleImageURL
-        "caption" .Title
-      }}
+    {{ if $imageURL }}
 
       {{ $articleSchema = merge
         $articleSchema
-        (dict "image" $imageObject)
+        (dict "image" (slice $imageURL))
       }}
 
     {{ end }}
@@ -262,18 +209,19 @@
 
 </head>
 
-
 <body>
 
-  <div
-    class="reading-progress"
-    id="reading-progress"
-    aria-hidden="true"
-  ></div>
+  <a class="skip-link" href="#main-content">
+    Skip to content
+  </a>
 
   {{ partial "header.html" . }}
 
-  <main class="site-main">
+  <main
+    id="main-content"
+    class="site-main"
+    tabindex="-1"
+  >
 
     <div class="site-container">
 
@@ -287,52 +235,13 @@
 
     <div class="site-container">
 
-      <div class="footer-inner">
-
-        <p>
-          &copy; {{ now.Year }} {{ .Site.Title }}
-        </p>
-
-        <nav
-          class="footer-nav"
-          aria-label="Footer navigation"
-        >
-
-          <a href="{{ site.Home.RelPermalink }}">
-            Home
-          </a>
-
-          <a href="{{ printf "%scategories/" site.Home.RelPermalink }}">
-            Categories
-          </a>
-
-          <a href="{{ printf "%sabout/" site.Home.RelPermalink }}">
-            About
-          </a>
-
-          <a href="{{ printf "%scontact/" site.Home.RelPermalink }}">
-            Contact
-          </a>
-
-        </nav>
-
-      </div>
+      <p>
+        &copy; {{ now.Year }} {{ .Site.Title }}
+      </p>
 
     </div>
 
   </footer>
-
-  <button
-    type="button"
-    class="back-to-top"
-    id="back-to-top"
-    aria-label="Back to top"
-    hidden
-  >
-    ↑
-  </button>
-
-  <script src="{{ "js/site.js" | relURL }}" defer></script>
 
 </body>
 
