@@ -1,0 +1,57 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 48 48"
+  fill="none"
+>
+  <title>Home Organization Ideas</title>
+
+  <path
+    d="M8 22.5 24 8l16 14.5"
+    stroke="#1D1D1F"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <path
+    d="M12 20v19h24V20"
+    stroke="#1D1D1F"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <path
+    d="M18 39V27h12v12"
+    stroke="#1D1D1F"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <path
+    d="M15 24h6M27 24h6"
+    stroke="#1D1D1F"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+
+  <rect
+    x="16"
+    y="15"
+    width="5"
+    height="5"
+    rx="1"
+    fill="#E60023"
+  />
+
+  <rect
+    x="27"
+    y="15"
+    width="5"
+    height="5"
+    rx="1"
+    fill="#E60023"
+  />
+
+</svg>
