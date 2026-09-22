@@ -145,7 +145,10 @@ def get_first_pending_keyword():
         status = str(row.get(status_col, "")).strip().lower()
 
         if keyword and status == "pending":
-            return (keyword, rows, fieldnames, keyword_col, status_col)
+            return (
+                keyword, rows, fieldnames,
+                keyword_col, status_col,
+            )
 
     raise RuntimeError("No pending keyword found.")
 
@@ -275,7 +278,9 @@ def get_finish_reason(response):
     try:
         if not response.choices:
             return None
-        return getattr(response.choices[0], "finish_reason", None)
+        return getattr(
+            response.choices[0], "finish_reason", None,
+        )
     except Exception:
         return None
 
@@ -315,7 +320,9 @@ def log_response_metadata(
     completion_tokens = None
 
     if usage is not None:
-        completion_tokens = getattr(usage, "completion_tokens", None)
+        completion_tokens = getattr(
+            usage, "completion_tokens", None,
+        )
 
     print(
         f"{label}: "
@@ -347,7 +354,11 @@ JSON OUTPUT RULES - FOLLOW EXACTLY:
 
 
 def build_json_system_prompt(base_prompt):
-    return (base_prompt.strip() + "\n\n" + JSON_RULES).strip()
+    return (
+        base_prompt.strip()
+        + "\n\n"
+        + JSON_RULES
+    ).strip()
 
 
 def strip_code_fences(text):
@@ -359,7 +370,10 @@ def strip_code_fences(text):
         return ""
 
     text = re.sub(
-        r"^\s*```(?:json)?\s*", "", text, flags=re.IGNORECASE,
+        r"^\s*```(?:json)?\s*",
+        "",
+        text,
+        flags=re.IGNORECASE,
     )
     text = re.sub(r"\s*```\s*$", "", text)
 
@@ -448,7 +462,8 @@ def extract_json_safe(text, finish_reason=None):
     except TruncatedJSONError:
         if finish_reason == "length":
             raise TruncatedJSONError(
-                "Groq returned finish_reason=length and JSON truncated."
+                "Groq returned finish_reason=length "
+                "and JSON truncated."
             )
     except ValueError:
         pass
@@ -466,7 +481,8 @@ def extract_json_safe(text, finish_reason=None):
     except TruncatedJSONError as exc:
         if finish_reason == "length":
             raise TruncatedJSONError(
-                "Groq finish_reason=length, JSON truncated after repair."
+                "Groq finish_reason=length, "
+                "JSON truncated after repair."
             ) from exc
 
     preview = original[:500]
@@ -476,6 +492,7 @@ def extract_json_safe(text, finish_reason=None):
 
 
 extract_json_from_response = extract_json_safe
+
 
 def groq_request(
     client, model, messages, temperature, max_tokens, use_json_mode,
@@ -525,7 +542,9 @@ def call_model_with_retries(
                 use_json_mode=use_json_mode,
             )
 
-            log_response_metadata(response, requested_model=model, label=label)
+            log_response_metadata(
+                response, requested_model=model, label=label,
+            )
             return response
 
         except Exception as exc:
@@ -533,13 +552,15 @@ def call_model_with_retries(
             status_code = get_exception_status_code(exc)
 
             print(
-                f"{label} failed: status={status_code}, error={exc}",
+                f"{label} failed: "
+                f"status={status_code}, error={exc}",
                 file=sys.stderr,
             )
 
             if use_json_mode and is_json_validation_error(exc):
                 raise GroqJSONError(
-                    "Groq JSON mode failed with json_validate_failed."
+                    "Groq JSON mode failed with "
+                    "json_validate_failed."
                 ) from exc
 
             if status_code == 400 and not use_json_mode:
@@ -548,8 +569,10 @@ def call_model_with_retries(
             if status_code == 429:
                 raise
 
-            if (status_code is not None
-                    and status_code not in retryable_codes):
+            if (
+                status_code is not None
+                and status_code not in retryable_codes
+            ):
                 raise
 
             if attempt >= MAX_RETRIES:
@@ -594,7 +617,7 @@ def local_outline_fallback(keyword, specific_angle):
     meta = meta[:MAX_META_LENGTH]
 
     headings = [
-        "Assess the Space and Set a Clear Goal",
+        f"Assess Your Space for {keyword}",
         "Measure the Area Before Buying Anything",
         "Create Zones for the Items You Use Most",
         "Use Vertical Space Without Making Clutter",
@@ -616,78 +639,97 @@ def local_outline_fallback(keyword, specific_angle):
     }
 
 
-def local_section_fallback(title, heading, section_number):
-    templates = [
-        (
-            "Start this part of the project by defining exactly what "
-            "the area needs to hold. For a practical home, measure the "
-            "available width, depth, and height before moving anything. "
-            "A useful starting point is to leave about 5 to 8 centimeters "
-            "of working clearance around frequently used items. Group "
-            "similar belongings together and keep the most-used group "
-            "within easy reach. For example, if the area is about 90 "
-            "centimeters wide, divide it into two or three clear zones "
-            "rather than filling every centimeter. This makes the system "
-            "easier to understand and easier to maintain. One common "
-            "mistake is organizing items by appearance alone. Instead, "
-            "organize according to how often each item is used and where "
-            "the item is naturally needed. Keep a small amount of empty "
-            "space so new items do not immediately create another pile."
-        ),
-        (
-            "Before changing this area, take measurements and identify "
-            "the physical limits of the space. A shelf that is 60 "
-            "centimeters wide may look generous, but doors, handles, "
-            "pipes, or trim can reduce usable space by several "
-            "centimeters. Leave roughly 2 to 5 centimeters of clearance "
-            "where doors or drawers need to move. Use the measurements "
-            "to decide what belongs in the area and what should live "
-            "somewhere else. A simple container can work well when it "
-            "is sized to the shelf instead of being chosen first and "
-            "forced into place later. Another useful rule is to keep "
-            "heavy objects lower and light objects higher. This reduces "
-            "awkward handling and makes the arrangement safer. Avoid "
-            "buying several matching containers before testing the "
-            "layout. A small trial with one container or one shelf can "
-            "reveal whether the system actually fits the household "
-            "routine."
-        ),
-        (
-            "Divide the area into clear zones so every category has a "
-            "predictable home. For example, a 120 centimeter run could "
-            "contain a 40 centimeter daily-use zone, a 40 centimeter "
-            "reserve zone, and a 40 centimeter occasional zone. The "
-            "exact measurements should follow the available space "
-            "rather than a fixed formula. Keep items used every day "
-            "between waist and shoulder height whenever possible. Items "
-            "used once a week can move slightly farther away, while "
-            "seasonal belongings can use higher or deeper storage. "
-            "Labels can help when several categories look similar, but "
-            "they should remain short and easy to read. Do not create "
-            "more categories than the space can support. A system with "
-            "three obvious zones is often easier to maintain than one "
-            "with ten tiny categories that require constant sorting."
-        ),
-    ]
+def local_section_fallback(
+    title, heading, section_number, keyword,
+):
+    keyword_phrase = (
+        keyword.strip() if keyword else "this home project"
+    )
 
-    body = templates[(section_number - 1) % len(templates)]
-
-    paragraphs = [
-        body,
-        (
-            f"For this section, apply the idea directly to "
-            f"\"{heading}\". Start with the smallest workable change "
-            f"and observe how the space behaves for several days. "
-            f"If an item repeatedly ends up outside its assigned zone, "
-            f"that is useful feedback rather than a failure. Move the "
-            f"zone closer to where the item is actually used, or make "
-            f"the container easier to access. The goal is a system "
-            f"that reduces decisions, not one that simply looks tidy "
-            f"immediately after organizing."
+    opening_keyword_paragraphs = {
+        1: (
+            f"Looking at {keyword_phrase} from a practical angle, "
+            f"the first decision is to understand exactly what the "
+            f"space needs to hold before buying anything. Measure "
+            f"the available width, depth, and height with a tape "
+            f"measure. A useful starting point is to leave about "
+            f"5 to 8 centimeters of working clearance around items "
+            f"you use every day. Group similar belongings together "
+            f"and keep the most-used group within easy reach. For "
+            f"example, if the area is about 90 centimeters wide, "
+            f"divide it into two or three clear zones rather than "
+            f"filling every centimeter. This approach to "
+            f"{keyword_phrase} makes the system easier to "
+            f"understand and easier to maintain. One common "
+            f"mistake is organizing items by appearance alone. "
+            f"Instead, organize according to how often each item "
+            f"is used and where the item is naturally needed."
         ),
-    ]
+        2: (
+            f"When approaching {keyword_phrase}, measurements "
+            f"come first. A shelf that is 60 centimeters wide may "
+            f"look generous, but doors, handles, pipes, or trim "
+            f"can reduce usable space by several centimeters. "
+            f"Leave roughly 2 to 5 centimeters of clearance where "
+            f"doors or drawers need to move. Use the measurements "
+            f"to decide what belongs in the area and what should "
+            f"live somewhere else. A simple container works well "
+            f"when it is sized to the shelf instead of being "
+            f"chosen first. Another useful rule for "
+            f"{keyword_phrase} is to keep heavy objects lower "
+            f"and light objects higher. This reduces awkward "
+            f"handling and makes the arrangement safer. Avoid "
+            f"buying several matching containers before testing "
+            f"the layout with one."
+        ),
+        3: (
+            f"Divide the area into clear zones so every category "
+            f"has a predictable home. For {keyword_phrase}, a "
+            f"120 centimeter run could contain a 40 centimeter "
+            f"daily-use zone, a 40 centimeter reserve zone, and a "
+            f"40 centimeter occasional zone. The exact "
+            f"measurements should follow the available space "
+            f"rather than a fixed formula. Keep items used every "
+            f"day between waist and shoulder height whenever "
+            f"possible. Labels help when several categories look "
+            f"similar, but they should remain short and easy to "
+            f"read. A system with three obvious zones is often "
+            f"easier to maintain than one with ten tiny "
+            f"categories."
+        ),
+    }
 
-    return "\n\n".join(paragraphs)
+    default_template = (
+        f"Applying {keyword_phrase} to this section means "
+        f"focusing on the smallest workable change first. "
+        f"Observe how the space behaves for several days. "
+        f"If an item repeatedly ends up outside its assigned "
+        f"zone, that is useful feedback rather than a failure. "
+        f"Move the zone closer to where the item is actually "
+        f"used, or make the container easier to access. "
+        f"The goal of {keyword_phrase} is a system that "
+        f"reduces decisions, not one that only looks tidy "
+        f"immediately after organizing. Keep the number of "
+        f"categories small so the system stays easy to follow "
+        f"during busy weeks. Re-check the arrangement every "
+        f"few months and adjust for seasonal changes."
+    )
+
+    opening = opening_keyword_paragraphs.get(
+        section_number,
+        default_template,
+    )
+
+    second_paragraph = (
+        f"Focus this part of {keyword_phrase} on \"{heading}\". "
+        f"Start with one small adjustment and watch how the "
+        f"space behaves for several days. If something is not "
+        f"working, adjust the placement rather than adding more "
+        f"containers. The goal is a simple, repeatable routine "
+        f"that stays organized without daily effort."
+    )
+
+    return "\n\n".join([opening, second_paragraph])
 
 
 def local_image_query_fallback(title, content_markdown):
@@ -742,7 +784,8 @@ def call_json_with_four_layers(
                 use_json_mode=True,
                 label=(
                     f"{operation_name} "
-                    f"Layer {'1' if model_index == 0 else '3'} "
+                    f"Layer "
+                    f"{'1' if model_index == 0 else '3'} "
                     f"{model_label}"
                 ),
             )
@@ -750,14 +793,20 @@ def call_json_with_four_layers(
             content = get_response_content(response)
             finish_reason = get_finish_reason(response)
 
-            result = extract_json_safe(content, finish_reason=finish_reason)
+            result = extract_json_safe(
+                content, finish_reason=finish_reason,
+            )
 
             print(f"{operation_name}: JSON layer succeeded.")
 
             return (
                 result,
                 get_response_model(response, model),
-                ("primary-json" if model_index == 0 else "fallback-json"),
+                (
+                    "primary-json"
+                    if model_index == 0
+                    else "fallback-json"
+                ),
             )
 
         except Exception as exc:
@@ -782,7 +831,8 @@ def call_json_with_four_layers(
                 use_json_mode=False,
                 label=(
                     f"{operation_name} "
-                    f"Layer {'2' if model_index == 0 else '4'} "
+                    f"Layer "
+                    f"{'2' if model_index == 0 else '4'} "
                     f"{model_label}"
                 ),
             )
@@ -790,14 +840,23 @@ def call_json_with_four_layers(
             content = get_response_content(response)
             finish_reason = get_finish_reason(response)
 
-            result = extract_json_safe(content, finish_reason=finish_reason)
+            result = extract_json_safe(
+                content, finish_reason=finish_reason,
+            )
 
-            print(f"{operation_name}: plain-text JSON layer succeeded.")
+            print(
+                f"{operation_name}: "
+                "plain-text JSON layer succeeded."
+            )
 
             return (
                 result,
                 get_response_model(response, model),
-                ("primary-plain" if model_index == 0 else "fallback-plain"),
+                (
+                    "primary-plain"
+                    if model_index == 0
+                    else "fallback-plain"
+                ),
             )
 
         except Exception as exc:
@@ -817,14 +876,17 @@ def call_json_with_four_layers(
         result = local_fallback_factory()
 
         if not isinstance(result, dict):
-            raise ValueError("Local fallback did not return a dict.")
+            raise ValueError(
+                "Local fallback did not return a dict."
+            )
 
         return (result, "local-fallback", "local")
 
     except Exception as exc:
         raise RuntimeError(
-            f"{operation_name} failed on all four Groq layers "
-            f"and local fallback. Last Groq error: {last_exception}; "
+            f"{operation_name} failed on all four Groq "
+            f"layers and local fallback. "
+            f"Last Groq error: {last_exception}; "
             f"local error: {exc}"
         ) from exc
 
@@ -896,7 +958,9 @@ Select one of the five angles as selected_angle.
     angles = result.get("angles")
 
     if not isinstance(angles, list):
-        raise ValueError("Angle response must contain an angles list.")
+        raise ValueError(
+            "Angle response must contain an angles list."
+        )
 
     angles = [
         str(angle).strip()
@@ -912,7 +976,8 @@ Select one of the five angles as selected_angle.
 
     if len(unique_angles) < 5:
         raise ValueError(
-            "Angle generator returned fewer than 5 unique angles."
+            "Angle generator returned fewer than "
+            "5 unique angles."
         )
 
     angles = unique_angles[:5]
@@ -932,7 +997,11 @@ Select one of the five angles as selected_angle.
     print("Generated angles:")
 
     for index, angle in enumerate(angles, start=1):
-        marker = " <-- SELECTED" if angle == selected_angle else ""
+        marker = (
+            " <-- SELECTED"
+            if angle == selected_angle
+            else ""
+        )
         print(f"{index}. {angle}{marker}")
 
     return selected_angle
@@ -948,6 +1017,7 @@ def clean_heading(heading):
     heading = heading.strip(" \t#")
 
     return heading
+
 
 def build_article_messages(keyword, specific_angle):
     system_prompt = """
@@ -1024,32 +1094,45 @@ def validate_outline(outline, keyword, actual_model):
 
     if keyword.lower() not in title.lower():
         raise ValueError(
-            "Outline title does not contain the exact focus keyword."
+            "Outline title does not contain the "
+            "exact focus keyword."
         )
 
     meta_description = outline.get("meta_description")
     if not isinstance(meta_description, str):
-        raise ValueError("Outline meta_description must be a string.")
+        raise ValueError(
+            "Outline meta_description must be a string."
+        )
 
     meta_description = meta_description.strip()
     if not meta_description:
-        raise ValueError("Outline meta_description is empty.")
+        raise ValueError(
+            "Outline meta_description is empty."
+        )
 
     tags = outline.get("tags")
     if not isinstance(tags, list):
         raise ValueError("Outline tags must be a list.")
 
-    tags = [str(tag).strip() for tag in tags if str(tag).strip()]
+    tags = [
+        str(tag).strip()
+        for tag in tags
+        if str(tag).strip()
+    ]
 
     if len(tags) != 3:
-        raise ValueError("Outline must contain exactly 3 tags.")
+        raise ValueError(
+            "Outline must contain exactly 3 tags."
+        )
 
     if len({tag.lower() for tag in tags}) != 3:
         raise ValueError("Outline tags must be unique.")
 
     h2_headings = outline.get("h2_headings")
     if not isinstance(h2_headings, list):
-        raise ValueError("Outline h2_headings must be a list.")
+        raise ValueError(
+            "Outline h2_headings must be a list."
+        )
 
     cleaned_headings = []
 
@@ -1070,7 +1153,9 @@ def validate_outline(outline, keyword, actual_model):
     normalized = [h.lower() for h in cleaned_headings]
 
     if len(set(normalized)) != len(normalized):
-        raise ValueError("Outline contains duplicate H2 headings.")
+        raise ValueError(
+            "Outline contains duplicate H2 headings."
+        )
 
     return {
         "title": title,
@@ -1111,14 +1196,17 @@ def generate_outline(api_key, keyword, specific_angle):
     print(f"Title: {outline['title']}")
     print(f"H2 count: {len(outline['h2_headings'])}")
 
-    for index, heading in enumerate(outline["h2_headings"], start=1):
+    for index, heading in enumerate(
+        outline["h2_headings"], start=1,
+    ):
         print(f"  {index}. {heading}")
 
     return outline
 
 
 def generate_section(
-    api_key, title, h2_heading, section_number, total_sections=10,
+    api_key, title, h2_heading, section_number,
+    keyword, total_sections=10,
 ):
     system_prompt = """
 You are writing ONE section of a Home Organization article.
@@ -1163,7 +1251,8 @@ Return Markdown text only.
 """.strip()
 
     print(
-        f"Generating section {section_number}/{total_sections}: {h2_heading}"
+        f"Generating section {section_number}/"
+        f"{total_sections}: {h2_heading}"
     )
 
     client = Groq(api_key=api_key)
@@ -1181,13 +1270,22 @@ Return Markdown text only.
                 client=client,
                 model=model,
                 messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt},
+                    {
+                        "role": "system",
+                        "content": system_prompt,
+                    },
+                    {
+                        "role": "user",
+                        "content": user_prompt,
+                    },
                 ],
                 temperature=ARTICLE_TEMPERATURE,
                 max_tokens=SECTION_MAX_TOKENS,
                 use_json_mode=False,
-                label=f"SECTION {section_number} {model_label}",
+                label=(
+                    f"SECTION {section_number} "
+                    f"{model_label}"
+                ),
             )
 
             content = get_response_content(response)
@@ -1195,7 +1293,9 @@ Return Markdown text only.
             content = clean_section_text(content)
             words = count_words(content)
 
-            actual_model = get_response_model(response, model)
+            actual_model = get_response_model(
+                response, model,
+            )
 
             print(
                 f"Section {section_number}: "
@@ -1205,19 +1305,25 @@ Return Markdown text only.
             )
 
             if finish_reason == "length":
-                raise ValueError(f"Section {section_number} truncated.")
+                raise ValueError(
+                    f"Section {section_number} truncated."
+                )
 
             if not content:
-                raise ValueError(f"Section {section_number} empty.")
+                raise ValueError(
+                    f"Section {section_number} empty."
+                )
 
             if words < 100:
                 raise ValueError(
-                    f"Section {section_number} too short: {words} words."
+                    f"Section {section_number} too short: "
+                    f"{words} words."
                 )
 
             if re.search(r"(?m)^\s*##\s+", content):
                 raise ValueError(
-                    f"Section {section_number} contains an H2 heading."
+                    f"Section {section_number} contains "
+                    "an H2 heading."
                 )
 
             return content
@@ -1225,12 +1331,14 @@ Return Markdown text only.
         except Exception as exc:
             last_error = exc
             print(
-                f"Section {section_number} with {model} failed: {exc}",
+                f"Section {section_number} with {model} "
+                f"failed: {exc}",
                 file=sys.stderr,
             )
 
     print(
-        f"Section {section_number}: Groq unavailable. Using local fallback.",
+        f"Section {section_number}: Groq unavailable. "
+        "Using local fallback.",
         file=sys.stderr,
     )
 
@@ -1238,18 +1346,22 @@ Return Markdown text only.
         title=title,
         heading=h2_heading,
         section_number=section_number,
+        keyword=keyword,
     )
 
     if count_words(content) < 100:
         raise RuntimeError(
-            f"Local fallback for section {section_number} too short. "
+            f"Local fallback for section "
+            f"{section_number} too short. "
             f"Last Groq error: {last_error}"
         )
 
     return content
 
 
-def generate_all_sections(api_key, title, h2_headings):
+def generate_all_sections(
+    api_key, title, h2_headings, keyword,
+):
     sections = []
     failed_section_indexes = []
 
@@ -1257,16 +1369,21 @@ def generate_all_sections(api_key, title, h2_headings):
         success = False
         last_error = None
 
-        for section_attempt in range(1, MAX_SECTION_RETRIES + 2):
+        for section_attempt in range(
+            1, MAX_SECTION_RETRIES + 2,
+        ):
             try:
                 if section_attempt == 2:
-                    print(f"Retrying section {index}: {heading}")
+                    print(
+                        f"Retrying section {index}: {heading}"
+                    )
 
                 section = generate_section(
                     api_key=api_key,
                     title=title,
                     h2_heading=heading,
                     section_number=index,
+                    keyword=keyword,
                     total_sections=len(h2_headings),
                 )
 
@@ -1277,7 +1394,8 @@ def generate_all_sections(api_key, title, h2_headings):
             except Exception as exc:
                 last_error = exc
                 print(
-                    f"Section {index} attempt {section_attempt} failed: {exc}",
+                    f"Section {index} attempt "
+                    f"{section_attempt} failed: {exc}",
                     file=sys.stderr,
                 )
 
@@ -1288,7 +1406,8 @@ def generate_all_sections(api_key, title, h2_headings):
             failed_section_indexes.append(index)
             print(
                 f"Section {index} failed after "
-                f"{MAX_SECTION_RETRIES + 1} attempts: {last_error}",
+                f"{MAX_SECTION_RETRIES + 1} attempts: "
+                f"{last_error}",
                 file=sys.stderr,
             )
 
@@ -1297,22 +1416,29 @@ def generate_all_sections(api_key, title, h2_headings):
                 >= MAX_FAILED_SECTIONS_BEFORE_PIPELINE_RESTART
             ):
                 raise RuntimeError(
-                    "Two or more sections failed. Pipeline must restart. "
-                    f"Failed sections: {failed_section_indexes}"
+                    "Two or more sections failed. "
+                    "Pipeline must restart. "
+                    f"Failed sections: "
+                    f"{failed_section_indexes}"
                 )
 
             sections.append(None)
 
     if failed_section_indexes:
         raise RuntimeError(
-            f"One or more sections failed: {failed_section_indexes}"
+            f"One or more sections failed: "
+            f"{failed_section_indexes}"
         )
 
     if len(sections) != len(h2_headings):
-        raise RuntimeError("Section count does not match H2 count.")
+        raise RuntimeError(
+            "Section count does not match H2 count."
+        )
 
     if any(section is None for section in sections):
-        raise RuntimeError("At least one section is missing.")
+        raise RuntimeError(
+            "At least one section is missing."
+        )
 
     return sections
 
@@ -1321,11 +1447,17 @@ def clean_section_text(content):
     content = str(content).strip()
 
     content = re.sub(
-        r"^```(?:markdown|md)?\s*", "", content, flags=re.IGNORECASE,
+        r"^```(?:markdown|md)?\s*",
+        "",
+        content,
+        flags=re.IGNORECASE,
     )
     content = re.sub(r"\s*```$", "", content)
     content = re.sub(
-        r"^\s*##[ \t]+[^\n]+\n+", "", content, count=1,
+        r"^\s*##[ \t]+[^\n]+\n+",
+        "",
+        content,
+        count=1,
     )
     content = re.sub(r"\n{3,}", "\n\n", content)
 
@@ -1336,13 +1468,23 @@ def clean_markdown(content):
     content = str(content).strip()
 
     content = re.sub(
-        r"^```(?:markdown|md)?\s*", "", content, flags=re.IGNORECASE,
+        r"^```(?:markdown|md)?\s*",
+        "",
+        content,
+        flags=re.IGNORECASE,
     )
     content = re.sub(r"\s*```$", "", content)
-    content = re.sub(r"^\s*#\s+.+?\n+", "", content, count=1)
+    content = re.sub(
+        r"^\s*#\s+.+?\n+",
+        "",
+        content,
+        count=1,
+    )
 
     content = re.sub(
-        r"(?mi)^[ \t]*Tags:[ \t]*\[[^\r\n]*\][ \t]*\r?\n?",
+        r"(?mi)^[ \t]*Tags:"
+        r"[ \t]*\[[^\r\n]*\]"
+        r"[ \t]*\r?\n?",
         "",
         content,
     )
@@ -1358,13 +1500,21 @@ def count_words(text):
     plain = re.sub(r"\[[^\]]*\]\([^)]*\)", "", plain)
 
     return len(
-        re.findall(r"\b[\w'-]+\b", plain, flags=re.UNICODE)
+        re.findall(
+            r"\b[\w'-]+\b",
+            plain,
+            flags=re.UNICODE,
+        )
     )
 
 
 def count_h2(content):
     return len(
-        re.findall(r"^\s*##\s+\S+", str(content), re.MULTILINE)
+        re.findall(
+            r"^\s*##\s+\S+",
+            str(content),
+            re.MULTILINE,
+        )
     )
 
 
@@ -1379,11 +1529,21 @@ def extract_h2_sections(content):
     for line in lines:
         stripped = line.strip()
 
-        if stripped.startswith("```") or stripped.startswith("~~~"):
+        if (
+            stripped.startswith("```")
+            or stripped.startswith("~~~")
+        ):
             if not in_fenced_code_block:
                 in_fenced_code_block = True
-                fence_marker = "```" if stripped.startswith("```") else "~~~"
-            elif fence_marker and stripped.startswith(fence_marker):
+                fence_marker = (
+                    "```"
+                    if stripped.startswith("```")
+                    else "~~~"
+                )
+            elif (
+                fence_marker
+                and stripped.startswith(fence_marker)
+            ):
                 in_fenced_code_block = False
                 fence_marker = None
 
@@ -1392,16 +1552,23 @@ def extract_h2_sections(content):
             continue
 
         if not in_fenced_code_block:
-            match = re.match(r"^\s*##[ \t]+([^#].*?)\s*$", line)
+            match = re.match(
+                r"^\s*##[ \t]+([^#].*?)\s*$",
+                line,
+            )
 
             if match:
                 if current_heading is not None:
                     sections.append({
                         "heading": current_heading,
-                        "body": "\n".join(current_body).strip(),
+                        "body": "\n".join(
+                            current_body
+                        ).strip(),
                     })
 
-                current_heading = match.group(1).strip()
+                current_heading = (
+                    match.group(1).strip()
+                )
                 current_body = []
                 continue
 
@@ -1418,21 +1585,30 @@ def extract_h2_sections(content):
 
 
 def assemble_article(
-    title, meta_description, tags, h2_headings, sections,
+    title, meta_description, tags,
+    h2_headings, sections,
 ):
     if len(h2_headings) != REQUIRED_SECTION_COUNT:
-        raise ValueError("Assembly requires exactly 10 H2 headings.")
+        raise ValueError(
+            "Assembly requires exactly 10 H2 headings."
+        )
 
     if len(sections) != REQUIRED_SECTION_COUNT:
-        raise ValueError("Assembly requires exactly 10 sections.")
+        raise ValueError(
+            "Assembly requires exactly 10 sections."
+        )
 
     parts = []
 
     for heading, section in zip(h2_headings, sections):
         if not section:
-            raise ValueError(f"Missing section for H2: {heading}")
+            raise ValueError(
+                f"Missing section for H2: {heading}"
+            )
 
-        parts.append(f"## {heading}\n\n{section.strip()}")
+        parts.append(
+            f"## {heading}\n\n{section.strip()}"
+        )
 
     content_markdown = "\n\n".join(parts).strip()
     content_markdown = clean_markdown(content_markdown)
@@ -1447,17 +1623,21 @@ def assemble_article(
 
     if h2_count != REQUIRED_SECTION_COUNT:
         raise ValueError(
-            f"Assembly: expected {REQUIRED_SECTION_COUNT} H2, got {h2_count}."
+            f"Assembly: expected "
+            f"{REQUIRED_SECTION_COUNT} H2, "
+            f"got {h2_count}."
         )
 
     if words < MIN_ACCEPTABLE_WORDS:
         raise ValueError(
-            f"Assembly: {words} words below minimum {MIN_ACCEPTABLE_WORDS}."
+            f"Assembly: {words} words below "
+            f"minimum {MIN_ACCEPTABLE_WORDS}."
         )
 
     if words > MAX_WORDS:
         raise ValueError(
-            f"Assembly: {words} words exceeds maximum {MAX_WORDS}."
+            f"Assembly: {words} words exceeds "
+            f"maximum {MAX_WORDS}."
         )
 
     return (content_markdown, words, h2_count)
@@ -1472,7 +1652,10 @@ def shorten_title(title, keyword):
     trimmed = title[:MAX_TITLE_LENGTH].rstrip()
     trimmed = re.sub(r"[\s:;\-,]+$", "", trimmed)
 
-    if keyword and keyword.lower() not in trimmed.lower():
+    if (
+        keyword
+        and keyword.lower() not in trimmed.lower()
+    ):
         candidate = f"{keyword} - Small Space Guide"
         if len(candidate) <= MAX_TITLE_LENGTH:
             trimmed = candidate
@@ -1519,19 +1702,27 @@ def shorten_meta(meta):
     return result[:MAX_META_LENGTH].strip()
 
 
-def generate_image_queries(api_key, title, content_markdown):
+def generate_image_queries(
+    api_key, title, content_markdown,
+):
     sections = extract_h2_sections(content_markdown)
 
     if len(sections) < 4:
         raise ValueError(
-            "At least four H2 sections are required for image queries."
+            "At least four H2 sections are required "
+            "for image queries."
         )
 
     selected_sections = sections[:4]
     section_payload = []
 
-    for index, section in enumerate(selected_sections, start=1):
-        body = re.sub(r"\n{3,}", "\n\n", section["body"]).strip()[:500]
+    for index, section in enumerate(
+        selected_sections, start=1,
+    ):
+        body = re.sub(
+            r"\n{3,}", "\n\n", section["body"],
+        ).strip()[:500]
+
         section_payload.append(
             f"SECTION {index}\n"
             f"H2: {section['heading']}\n"
@@ -1543,10 +1734,12 @@ def generate_image_queries(api_key, title, content_markdown):
     base_prompt = """
 You are a visual content editor for a Home Organization website.
 
-Create exactly 5 highly relevant and visually distinct Pexels queries.
+Create exactly 5 highly relevant and visually distinct
+Pexels queries.
 
 QUERY 1: Hero image for the whole article.
-QUERIES 2-5: One image query for each of the first four H2 sections.
+QUERIES 2-5: One image query for each of the first four
+H2 sections.
 
 RULES:
 - Exactly 5 unique queries.
@@ -1608,19 +1801,27 @@ The JSON object must contain exactly:
             image_queries.append(query)
 
     if len(image_queries) != 5:
-        raise ValueError("Exactly 5 unique image queries required.")
+        raise ValueError(
+            "Exactly 5 unique image queries required."
+        )
 
     print(f"Image-query model: {actual_model}")
     print(f"Image-query strategy: {layer}")
 
-    for index, query in enumerate(image_queries, start=1):
-        label = "HERO" if index == 1 else f"H2 #{index - 1}"
+    for index, query in enumerate(
+        image_queries, start=1,
+    ):
+        label = (
+            "HERO" if index == 1 else f"H2 #{index - 1}"
+        )
         print(f"  {index}. [{label}] {query}")
 
     return image_queries
 
 
-def generate_article_pipeline(api_key, keyword, specific_angle):
+def generate_article_pipeline(
+    api_key, keyword, specific_angle,
+):
     outline = generate_outline(
         api_key=api_key,
         keyword=keyword,
@@ -1639,9 +1840,14 @@ def generate_article_pipeline(api_key, keyword, specific_angle):
         api_key=api_key,
         title=title,
         h2_headings=h2_headings,
+        keyword=keyword,
     )
 
-    (content_markdown, word_count, h2_count) = assemble_article(
+    (
+        content_markdown,
+        word_count,
+        h2_count,
+    ) = assemble_article(
         title=title,
         meta_description=meta_description,
         tags=tags,
@@ -1649,24 +1855,49 @@ def generate_article_pipeline(api_key, keyword, specific_angle):
         sections=sections,
     )
 
+    # CRITICAL: keyword must appear in the assembled content
+    if keyword.lower() not in content_markdown.lower():
+        first_h2_match = re.search(
+            r"^(##[^\n]+\n\n)",
+            content_markdown,
+            re.MULTILINE,
+        )
+
+        if first_h2_match:
+            insertion_point = first_h2_match.end()
+            injection = (
+                f"These {keyword} strategies are designed "
+                f"for real homes with limited space. "
+            )
+            content_markdown = (
+                content_markdown[:insertion_point]
+                + injection
+                + content_markdown[insertion_point:]
+            )
+            print("Keyword injected into content.")
+
     title = shorten_title(title, keyword)
     meta_description = shorten_meta(meta_description)
 
     if keyword.lower() not in title.lower():
-        raise ValueError("Final title missing focus keyword.")
+        raise ValueError(
+            "Final title missing focus keyword."
+        )
 
     final_word_count = count_words(content_markdown)
     final_h2_count = count_h2(content_markdown)
 
     if final_word_count < MIN_ACCEPTABLE_WORDS:
         raise ValueError(
-            f"Final article too short: {final_word_count} words."
+            f"Final article too short: "
+            f"{final_word_count} words."
         )
 
     if final_h2_count != REQUIRED_SECTION_COUNT:
         raise ValueError(
             f"Final article must contain exactly "
-            f"{REQUIRED_SECTION_COUNT} H2; got {final_h2_count}."
+            f"{REQUIRED_SECTION_COUNT} H2; "
+            f"got {final_h2_count}."
         )
 
     return {
@@ -1683,8 +1914,13 @@ def generate_article_pipeline(api_key, keyword, specific_angle):
 def save_article(article):
     temp_path = ARTICLE_PATH.with_suffix(".json.tmp")
 
-    with temp_path.open("w", encoding="utf-8", newline="\n") as file:
-        json.dump(article, file, ensure_ascii=False, indent=2)
+    with temp_path.open(
+        "w", encoding="utf-8", newline="\n",
+    ) as file:
+        json.dump(
+            article, file,
+            ensure_ascii=False, indent=2,
+        )
         file.write("\n")
 
     temp_path.replace(ARTICLE_PATH)
@@ -1694,15 +1930,22 @@ def main():
     api_key = os.getenv("GROQ_API_KEY")
 
     if not api_key:
-        print("ERROR: GROQ_API_KEY is missing.", file=sys.stderr)
+        print(
+            "ERROR: GROQ_API_KEY is missing.",
+            file=sys.stderr,
+        )
         return 1
 
     try:
-        (keyword, rows, fieldnames, keyword_col, status_col) = (
-            get_first_pending_keyword()
-        )
+        (
+            keyword, rows, fieldnames,
+            keyword_col, status_col,
+        ) = get_first_pending_keyword()
     except Exception as exc:
-        print(f"ERROR loading keywords: {exc}", file=sys.stderr)
+        print(
+            f"ERROR loading keywords: {exc}",
+            file=sys.stderr,
+        )
         return 1
 
     print("")
@@ -1715,47 +1958,72 @@ def main():
 
     try:
         mark_keyword_processing(
-            keyword, rows, fieldnames, keyword_col, status_col,
+            keyword, rows, fieldnames,
+            keyword_col, status_col,
         )
         print("Keyword status: processing")
     except Exception as exc:
-        print(f"ERROR changing keyword status: {exc}", file=sys.stderr)
+        print(
+            f"ERROR changing keyword status: {exc}",
+            file=sys.stderr,
+        )
         return 1
 
     try:
-        specific_angle = pick_specific_angle(api_key, keyword)
+        specific_angle = pick_specific_angle(
+            api_key, keyword,
+        )
         print(f"Specific angle: {specific_angle}")
 
         pipeline_result = None
         last_pipeline_error = None
 
-        for pipeline_attempt in range(1, MAX_PIPELINE_ATTEMPTS + 1):
+        for pipeline_attempt in range(
+            1, MAX_PIPELINE_ATTEMPTS + 1,
+        ):
             print("")
-            print("================================================")
+            print(
+                "================================================"
+            )
             print(
                 f"PIPELINE ATTEMPT "
-                f"{pipeline_attempt}/{MAX_PIPELINE_ATTEMPTS}"
+                f"{pipeline_attempt}/"
+                f"{MAX_PIPELINE_ATTEMPTS}"
             )
-            print("================================================")
+            print(
+                "================================================"
+            )
 
             try:
-                pipeline_result = generate_article_pipeline(
-                    api_key=api_key,
-                    keyword=keyword,
-                    specific_angle=specific_angle,
+                pipeline_result = (
+                    generate_article_pipeline(
+                        api_key=api_key,
+                        keyword=keyword,
+                        specific_angle=specific_angle,
+                    )
                 )
-                print(f"Pipeline attempt {pipeline_attempt} succeeded.")
+                print(
+                    f"Pipeline attempt "
+                    f"{pipeline_attempt} succeeded."
+                )
                 break
 
             except Exception as exc:
                 last_pipeline_error = exc
                 print(
-                    f"Pipeline attempt {pipeline_attempt} failed: {exc}",
+                    f"Pipeline attempt "
+                    f"{pipeline_attempt} failed: {exc}",
                     file=sys.stderr,
                 )
 
-                if pipeline_attempt < MAX_PIPELINE_ATTEMPTS:
-                    print("Restarting pipeline from Phase 1...")
+                if (
+                    pipeline_attempt
+                    < MAX_PIPELINE_ATTEMPTS
+                ):
+                    print(
+                        "Restarting pipeline from "
+                        "Phase 1..."
+                    )
                     time.sleep(3)
 
         if pipeline_result is None:
@@ -1765,9 +2033,13 @@ def main():
             )
 
         title = pipeline_result["title"]
-        meta_description = pipeline_result["meta_description"]
+        meta_description = (
+            pipeline_result["meta_description"]
+        )
         tags = pipeline_result["tags"]
-        content_markdown = pipeline_result["content_markdown"]
+        content_markdown = (
+            pipeline_result["content_markdown"]
+        )
         h2_headings = pipeline_result["h2_headings"]
 
         image_queries = generate_image_queries(
@@ -1778,20 +2050,26 @@ def main():
 
         if len(image_queries) != 5:
             raise ValueError(
-                "Image-query generation did not return exactly 5 queries."
+                "Image-query generation did not "
+                "return exactly 5 queries."
             )
 
         slug = slugify(title)
 
         if not slug:
-            raise ValueError("Could not generate a valid slug.")
+            raise ValueError(
+                "Could not generate a valid slug."
+            )
 
-        final_word_count = count_words(content_markdown)
+        final_word_count = count_words(
+            content_markdown
+        )
         final_h2_count = count_h2(content_markdown)
 
         if final_word_count < MIN_WORDS:
             print(
-                f"WARNING: below preferred {MIN_WORDS}-word target: "
+                f"WARNING: below preferred "
+                f"{MIN_WORDS}-word target: "
                 f"{final_word_count} words."
             )
 
@@ -1803,7 +2081,8 @@ def main():
 
         if final_word_count > MAX_WORDS:
             raise ValueError(
-                f"Final article exceeds {MAX_WORDS} words."
+                f"Final article exceeds "
+                f"{MAX_WORDS} words."
             )
 
         if final_h2_count != REQUIRED_SECTION_COUNT:
@@ -1824,22 +2103,30 @@ def main():
             "h2_headings": h2_headings,
             "word_count": final_word_count,
             "h2_count": final_h2_count,
-            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "generated_at": datetime.now(
+                timezone.utc
+            ).isoformat(),
         }
 
         save_article(article)
 
         print("")
-        print("================================================")
+        print(
+            "================================================"
+        )
         print("ARTICLE GENERATED SUCCESSFULLY")
-        print("================================================")
+        print(
+            "================================================"
+        )
         print(f"Keyword: {keyword}")
         print(f"Title: {title}")
         print(f"Slug: {slug}")
         print(f"Words: {final_word_count}")
         print(f"H2: {final_h2_count}")
         print(f"Title length: {len(title)}")
-        print(f"Meta length: {len(meta_description)}")
+        print(
+            f"Meta length: {len(meta_description)}"
+        )
         print(f"Tags: {', '.join(tags)}")
         print(f"Saved: {ARTICLE_PATH}")
 
@@ -1847,17 +2134,30 @@ def main():
 
     except Exception as exc:
         print("")
-        print("================================================", file=sys.stderr)
-        print("ARTICLE GENERATION FAILED", file=sys.stderr)
-        print("================================================", file=sys.stderr)
+        print(
+            "================================================",
+            file=sys.stderr,
+        )
+        print(
+            "ARTICLE GENERATION FAILED",
+            file=sys.stderr,
+        )
+        print(
+            "================================================",
+            file=sys.stderr,
+        )
         print(f"Error: {exc}", file=sys.stderr)
 
         try:
             mark_keyword_pending(keyword)
-            print(f"Keyword returned to pending: {keyword}")
+            print(
+                f"Keyword returned to pending: "
+                f"{keyword}"
+            )
         except Exception as reset_exc:
             print(
-                f"ERROR resetting keyword status: {reset_exc}",
+                f"ERROR resetting keyword status: "
+                f"{reset_exc}",
                 file=sys.stderr,
             )
 
