@@ -263,9 +263,21 @@ def build_markdown_image(image: Dict[str, Any]) -> str:
             "Image has an empty file path."
         )
 
-    alt_text = str(
+    query = str(
         image.get("query", "") or ""
     ).strip()
+
+    if query:
+        alt_words = re.findall(
+            r"\S+",
+            query,
+        )
+
+        alt_text = " ".join(
+            alt_words[:8]
+        )
+    else:
+        alt_text = "Home organization image"
 
     if not alt_text:
         alt_text = "Home organization image"
