@@ -19,30 +19,25 @@ ARTICLE_PATH = ROOT_DIR / "article.json"
 
 GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 FALLBACK_GROQ_MODEL = "openai/gpt-oss-20b"
-
 MAX_RETRIES = 5
+ARTICLE_TEMPERATURE = 0.5
+
+OUTLINE_MAX_TOKENS = 800
+SECTION_MAX_TOKENS = 700
+IMAGE_QUERY_MAX_TOKENS = 1200
 
 MIN_WORDS = 1500
 MIN_ACCEPTABLE_WORDS = 1300
 MAX_WORDS = 2400
-
 MIN_H2 = 10
-MAX_H2 = 11
-
-MAX_GENERATION_ATTEMPTS = 2
-
-MAX_TITLE_LENGTH = 70
+MAX_H2 = 10
+REQUIRED_SECTION_COUNT = 10
+MAX_SECTION_RETRIES = 1
+MAX_FAILED_SECTIONS_BEFORE_PIPELINE_RESTART = 2
+MAX_PIPELINE_ATTEMPTS = 2
+MAX_TITLE_LENGTH = 68
+MIN_META_LENGTH = 140
 MAX_META_LENGTH = 158
-MIN_META_LENGTH = 130
-
-MAX_OUTPUT_TOKENS = 10000
-SHORT_ARTICLE_RETRY_TOKENS = 6000
-
-VERY_SHORT_WORDS = 500
-SHORT_WORDS_UPPER_BOUND = 1500
-FALLBACK_MIN_WORDS_CHECK = 1400
-
-ARTICLE_TEMPERATURE = 0.5
 
 
 class TruncatedJSONError(ValueError):
@@ -74,7 +69,9 @@ def load_keywords():
         )
 
     with KEYWORDS_PATH.open(
-        "r", encoding="utf-8-sig", newline="",
+        "r",
+        encoding="utf-8-sig",
+        newline="",
     ) as file:
         reader = csv.DictReader(file)
         fieldnames = reader.fieldnames
@@ -93,14 +90,19 @@ def load_keywords():
     )
 
     status_col = find_column(
-        fieldnames, ["status", "state"],
+        fieldnames,
+        ["status", "state"],
     )
 
     if not keyword_col:
-        raise ValueError("Could not find keyword column.")
+        raise ValueError(
+            "Could not find keyword column in keywords.csv."
+        )
 
     if not status_col:
-        raise ValueError("Could not find status column.")
+        raise ValueError(
+            "Could not find status column in keywords.csv."
+        )
 
     return (rows, fieldnames, keyword_col, status_col)
 
@@ -109,10 +111,13 @@ def save_keywords(rows, fieldnames):
     temp_path = KEYWORDS_PATH.with_suffix(".csv.tmp")
 
     with temp_path.open(
-        "w", encoding="utf-8", newline="",
+        "w",
+        encoding="utf-8",
+        newline="",
     ) as file:
         writer = csv.DictWriter(
-            file, fieldnames=fieldnames,
+            file,
+            fieldnames=fieldnames,
             extrasaction="ignore",
         )
         writer.writeheader()
@@ -134,7 +139,9 @@ def get_first_pending_keyword():
     raise RuntimeError("No pending keyword found.")
 
 
-def mark_keyword_processing(keyword, rows, fieldnames, keyword_col, status_col):
+def mark_keyword_processing(
+    keyword, rows, fieldnames, keyword_col, status_col,
+):
     found = False
 
     for row in rows:
@@ -238,15 +245,15 @@ def get_finish_reason(response):
 
 def get_response_content(response):
     if not response.choices:
-        raise ValueError("No choices returned.")
+        raise ValueError("No choices returned by Groq.")
 
     content = getattr(response.choices[0].message, "content", None)
 
     if not content:
-        raise ValueError("Empty message content.")
+        raise ValueError("Groq returned empty message content.")
 
     if not isinstance(content, str):
-        raise ValueError("Response content is not a string.")
+        raise ValueError("Groq response content is not a string.")
 
     return content
 
@@ -280,33 +287,36 @@ def call_groq_with_fallback(
     messages,
     temperature,
     max_tokens,
-    response_format,
+    response_format=None,
     primary_model=GROQ_MODEL,
     fallback_model=FALLBACK_GROQ_MODEL,
 ):
     client = Groq(api_key=api_key)
     retryable_codes = {429, 500, 502, 503, 504}
+    primary_failed_with_429 = False
     last_exception = None
 
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             print(
-                f"Calling Groq with model={primary_model} "
+                f"Groq primary: {primary_model} "
                 f"(attempt {attempt}/{MAX_RETRIES}, "
-                f"max_tokens={max_tokens}, "
-                f"temperature={temperature})..."
+                f"max_tokens={max_tokens})"
             )
 
-            response = client.chat.completions.create(
-                model=primary_model,
-                messages=messages,
-                temperature=temperature,
-                max_tokens=max_tokens,
-                response_format=response_format,
-            )
+            kwargs = {
+                "model": primary_model,
+                "messages": messages,
+                "temperature": temperature,
+                "max_tokens": max_tokens,
+            }
+
+            if response_format is not None:
+                kwargs["response_format"] = response_format
+
+            response = client.chat.completions.create(**kwargs)
 
             log_response_metadata(response, requested_model=primary_model)
-            print(f"Groq succeeded with model={primary_model}.")
 
             return (response, get_response_model(response, primary_model))
 
@@ -315,18 +325,16 @@ def call_groq_with_fallback(
             status_code = get_exception_status_code(exc)
 
             print(
-                "Groq request failed "
-                f"(model={primary_model}, "
-                f"attempt={attempt}/{MAX_RETRIES}, "
-                f"status={status_code}): {exc}",
+                "Primary Groq request failed: "
+                f"status={status_code}, error={exc}",
                 file=sys.stderr,
             )
 
             if status_code == 429:
-                print("Primary model failed with 429.")
+                primary_failed_with_429 = True
                 print(
-                    "Switching immediately to "
-                    f"fallback model: {fallback_model}"
+                    "Primary model returned 429. "
+                    "Switching to fallback model."
                 )
                 break
 
@@ -335,10 +343,11 @@ def call_groq_with_fallback(
                 raise
 
             if attempt >= MAX_RETRIES:
-                raise RuntimeError(
-                    f"Primary Groq model failed after "
-                    f"{MAX_RETRIES} attempts: {last_exception}"
-                ) from last_exception
+                print(
+                    "Primary model exhausted retries. "
+                    "Switching to fallback."
+                )
+                break
 
             delay = min(2 ** (attempt - 1), 30)
             print(f"Retrying primary model in {delay}s...")
@@ -346,26 +355,33 @@ def call_groq_with_fallback(
 
     fallback_exception = None
 
+    if primary_failed_with_429:
+        print(
+            "Using fallback immediately because "
+            "primary returned 429."
+        )
+
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             print(
-                f"Generating with fallback "
-                f"model={fallback_model} "
+                f"Groq fallback: {fallback_model} "
                 f"(attempt {attempt}/{MAX_RETRIES}, "
-                f"max_tokens={max_tokens}, "
-                f"temperature={temperature})..."
+                f"max_tokens={max_tokens})"
             )
 
-            response = client.chat.completions.create(
-                model=fallback_model,
-                messages=messages,
-                temperature=temperature,
-                max_tokens=max_tokens,
-                response_format=response_format,
-            )
+            kwargs = {
+                "model": fallback_model,
+                "messages": messages,
+                "temperature": temperature,
+                "max_tokens": max_tokens,
+            }
+
+            if response_format is not None:
+                kwargs["response_format"] = response_format
+
+            response = client.chat.completions.create(**kwargs)
 
             log_response_metadata(response, requested_model=fallback_model)
-            print(f"Groq fallback succeeded with model={fallback_model}.")
 
             return (response, get_response_model(response, fallback_model))
 
@@ -374,10 +390,8 @@ def call_groq_with_fallback(
             status_code = get_exception_status_code(exc)
 
             print(
-                "Groq fallback failed "
-                f"(model={fallback_model}, "
-                f"attempt={attempt}/{MAX_RETRIES}, "
-                f"status={status_code}): {exc}",
+                "Fallback Groq request failed: "
+                f"status={status_code}, error={exc}",
                 file=sys.stderr,
             )
 
@@ -393,10 +407,10 @@ def call_groq_with_fallback(
             time.sleep(delay)
 
     raise RuntimeError(
-        f"Groq fallback failed after {MAX_RETRIES} "
-        f"attempts using model '{fallback_model}': "
-        f"{fallback_exception}"
-    ) from fallback_exception
+        "Both Groq models failed. "
+        f"Primary error: {last_exception}; "
+        f"Fallback error: {fallback_exception}"
+    )
 
 
 def strip_code_fences(text):
@@ -417,7 +431,7 @@ def extract_balanced_json_object(text):
 
     start = text.find("{")
     if start == -1:
-        raise ValueError("No JSON object start found.")
+        raise ValueError("No JSON object found.")
 
     depth = 0
     in_string = False
@@ -443,32 +457,24 @@ def extract_balanced_json_object(text):
 
         if char == "{":
             depth += 1
-            continue
-
-        if char == "}":
+        elif char == "}":
             depth -= 1
             if depth == 0:
                 return text[start:index + 1]
 
-    raise TruncatedJSONError(
-        "JSON object appears truncated: no balanced closing brace found."
-    )
+    raise TruncatedJSONError("JSON object is incomplete.")
 
 
 def extract_json_from_response(response_text, finish_reason=None):
-    if not isinstance(response_text, str):
-        raise ValueError("Response is not a string.")
+    text = strip_code_fences(response_text)
 
-    text = response_text.strip()
     if not text:
-        raise ValueError("Empty response.")
-
-    text = strip_code_fences(text)
+        raise ValueError("Empty model response.")
 
     try:
         result = json.loads(text)
         if not isinstance(result, dict):
-            raise ValueError("JSON response is not an object.")
+            raise ValueError("JSON response must be an object.")
         return result
     except json.JSONDecodeError:
         pass
@@ -478,52 +484,23 @@ def extract_json_from_response(response_text, finish_reason=None):
         result = json.loads(balanced)
 
         if not isinstance(result, dict):
-            raise ValueError("Recovered JSON is not an object.")
+            raise ValueError("Recovered JSON must be an object.")
 
-        print(
-            "JSON recovery succeeded: "
-            "a valid balanced JSON object was found."
-        )
         return result
 
     except TruncatedJSONError as exc:
         if finish_reason == "length":
             raise TruncatedJSONError(
-                "Groq reported finish_reason=length and "
-                "the JSON object is incomplete."
+                "Groq returned finish_reason=length and JSON is truncated."
             ) from exc
         raise
-
-    except json.JSONDecodeError as exc:
-        if finish_reason == "length":
-            raise TruncatedJSONError(
-                "Groq reported finish_reason=length and "
-                "the JSON could not be parsed."
-            ) from exc
-        raise ValueError(f"Invalid JSON: {exc}") from exc
-
-
-def validate_article_json_structure(generated):
-    if not isinstance(generated, dict):
-        raise ValueError("Generated article is not a JSON object.")
-
-    required_fields = ("title", "meta_description", "content_markdown")
-    missing = [f for f in required_fields if f not in generated]
-
-    if missing:
-        raise ValueError(
-            "Generated JSON is missing required fields: "
-            + ", ".join(missing)
-        )
-
-    return True
 
 
 def pick_specific_angle(api_key, keyword):
     system_prompt = """
 You are an editorial strategist for a Home Organization website.
 
-Generate exactly 5 narrow article angles. Then select the most specific.
+Generate exactly 5 narrow article angles for the keyword, then select the most specific and useful one.
 
 Prefer:
 - a specific room
@@ -533,27 +510,19 @@ Prefer:
 - renter limitations
 - a concrete before/after situation
 
-Return ONLY valid JSON.
-
-Return the JSON object in ONE line.
-Do not put unnecessary newlines inside JSON strings.
+Return ONLY valid JSON. Return the JSON in ONE line.
 
 {
-  "angles": ["a1", "a2", "a3", "a4", "a5"],
-  "selected_angle": "the most specific"
+  "angles": ["angle 1", "angle 2", "angle 3", "angle 4", "angle 5"],
+  "selected_angle": "selected angle"
 }
 """.strip()
 
     user_prompt = f"""
-Keyword: {keyword}
+Focus keyword: {keyword}
 
-Generate exactly five narrow angles and select the most specific,
-concrete, useful, actionable one.
-
-Return only the JSON object in ONE line.
+Return exactly 5 unique narrow angles and select the most specific one.
 """.strip()
-
-    print("Selecting article angle with Groq...")
 
     response, actual_model = call_groq_with_fallback(
         api_key=api_key,
@@ -561,8 +530,8 @@ Return only the JSON object in ONE line.
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
         ],
-        temperature=0.6,
-        max_tokens=2000,
+        temperature=0.5,
+        max_tokens=800,
         response_format={"type": "json_object"},
     )
 
@@ -571,386 +540,528 @@ Return only the JSON object in ONE line.
 
     result = extract_json_from_response(content, finish_reason=finish_reason)
 
-    if not isinstance(result, dict):
-        raise ValueError("Angle response is not a JSON object.")
+    angles = result.get("angles")
+    selected_angle = result.get("selected_angle")
 
-    raw_angles = result.get("angles")
-    if not isinstance(raw_angles, list):
-        raise ValueError("'angles' must be a list.")
+    if not isinstance(angles, list):
+        raise ValueError("Angle response must contain an angles list.")
 
-    angles = []
-    for angle in raw_angles:
-        if not isinstance(angle, str):
-            continue
-        angle = angle.strip()
-        if angle and angle not in angles:
-            angles.append(angle)
+    angles = [str(a).strip() for a in angles if str(a).strip()]
 
     if len(angles) != 5:
-        raise ValueError("Groq must return exactly 5 unique angles.")
+        raise ValueError("Angle generator must return exactly 5 angles.")
 
-    selected_angle = result.get("selected_angle")
     if not isinstance(selected_angle, str):
-        raise ValueError("'selected_angle' must be a string.")
+        raise ValueError("selected_angle must be a string.")
 
     selected_angle = selected_angle.strip()
-    if not selected_angle:
-        raise ValueError("'selected_angle' is empty.")
 
     if selected_angle not in angles:
         selected_angle = angles[0]
 
     print(f"Angle model: {actual_model}")
-    print("Generated 5 article angles:")
-
-    for index, angle in enumerate(angles, start=1):
-        marker = " <-- SELECTED" if angle == selected_angle else ""
-        print(f"{index}. {angle}{marker}")
+    print(f"Selected angle: {selected_angle}")
 
     return selected_angle
 
 
-def build_article_messages(
-    keyword, specific_angle,
-    attempt_number=1, short_retry=False,
-):
-    retry_note = ""
+def clean_heading(heading):
+    heading = str(heading).strip()
+    heading = re.sub(r"^\s*#+\s*", "", heading)
+    heading = heading.replace("—", "-")
+    heading = heading.replace("–", "-")
+    heading = heading.replace("&", "and")
+    heading = re.sub(r"\s+", " ", heading).strip()
+    heading = heading.strip(" \t#")
 
-    if attempt_number >= 2:
-        retry_note += """
-CRITICAL RETRY:
-The previous article did not satisfy the minimum requirements.
+    return heading
 
-This attempt MUST produce a genuinely complete article.
-Do not stop early.
-Do not summarize.
-Do not compress sections.
 
-Write all 10 H2 sections completely.
-Each H2 section should contain substantial practical detail.
-""".strip()
+def generate_outline(api_key, keyword, specific_angle):
+    system_prompt = """
+You are an expert editorial planner for a Home Organization website.
 
-    if short_retry:
-        retry_note += """
+Create the complete outline for ONE practical article.
 
-CRITICAL LENGTH RECOVERY:
-The previous GPT-OSS 120B response was too short.
+The article must be specific, useful, realistic, and focused on the supplied keyword and article angle.
 
-Produce the COMPLETE article this time.
-The article must contain at least 1500 actual article words.
-Use 10 H2 sections.
-Aim for approximately 1600-1800 words.
-Do not stop after the introduction.
-Do not return a partial article.
-""".strip()
+Return ONLY this JSON object:
 
-    system_prompt = f"""
-You are an expert home-organization writer.
+{
+  "title": "...",
+  "meta_description": "...",
+  "tags": ["...", "...", "..."],
+  "h2_headings": [
+    "...", "...", "...", "...", "...",
+    "...", "...", "...", "...", "..."
+  ]
+}
 
-Write ONE complete, practical, original article for an
-English-language Home Organization and Small-Space Living website.
-
-The supplied specific angle is mandatory.
-
-WORD COUNT:
-- Target: 1600-1800 actual article words.
-- Minimum: 1500 actual article words.
-- Maximum: 2400 actual article words.
-- Write EXACTLY 10 H2 sections.
-- Aim for roughly 150-190 words per H2 section.
-- Every section must contain useful practical information.
-- Do not intentionally write a short article.
-- Do not summarize the article.
-- Do not stop early.
-
-STRUCTURE:
-- Exactly 10 H2 headings starting with "## ".
-- Short paragraphs, normally 2-4 sentences.
-- Use numbered steps where useful.
-- Use bullet lists where they improve readability.
-- End with a practical conclusion and natural CTA.
-
-HEADING RULES:
-- ASCII only.
-- Use A-Z, a-z, 0-9, spaces, and regular hyphen.
-- Never use em-dash.
-- Never use en-dash.
-- Never use non-breaking hyphen.
-- Replace "&" with "and".
-- No parentheses in headings.
-- No brackets in headings.
-- Keep headings concise.
-- "Step 1 - Title" is allowed.
-
-CONTENT:
-- Give concrete, practical advice.
-- Include realistic measurements or dimensions where useful.
-- Include real-home examples.
-- Include common mistakes and trade-offs.
-- Include approximately 3 generic product recommendations.
-- Never invent brands, prices, reviews, statistics, studies, expert quotes, or citations.
-- Do not use placeholders.
-- Do not mention AI generation.
-- Do not generate image queries.
-- Do not include image markdown.
-
-SEO:
-- Exact focus keyword must appear naturally in title.
-- Exact focus keyword must appear naturally in the introduction.
-- Do not keyword stuff.
-- Meta description should be approximately 140-158 characters.
+HARD RULES:
 
 TITLE:
-- 45-68 characters when possible.
 - Must contain the exact focus keyword.
+- Maximum 68 characters.
 - Clear and specific.
-- Avoid generic list-style phrasing.
+- No clickbait.
 
-OUTPUT:
-Return ONLY one valid JSON object.
+META DESCRIPTION:
+- 140-158 characters.
+- Natural English.
+- Useful and descriptive.
+- No keyword stuffing.
 
-Required shape:
+TAGS:
+- Exactly 3 tags.
+- Short and relevant.
+- No duplicate tags.
 
-{{
-  "title": "string",
-  "meta_description": "string",
-  "content_markdown": "string",
-  "tags": ["tag1", "tag2", "tag3"]
-}}
+H2 HEADINGS:
+- Exactly 10 headings.
+- All headings must be unique.
+- Each heading describes one concrete section.
+- Logical progression.
+- No generic "Conclusion" heading.
+- ASCII punctuation only.
+- No em dash or en dash.
+- Normal hyphens only.
 
-IMPORTANT JSON RULE:
-Return the complete JSON object in ONE LINE.
-Do NOT insert unnecessary newlines inside JSON string values.
-Escape JSON quotation marks correctly.
-Do not wrap the JSON in Markdown code fences.
-
-{retry_note}
+Return the JSON in ONE LINE.
+Do not use Markdown code fences.
 """.strip()
 
     user_prompt = f"""
-Focus keyword:
+FOCUS KEYWORD:
 {keyword}
 
 SPECIFIC ARTICLE ANGLE:
 {specific_angle}
 
-Write the complete article now.
-
-Hard requirements:
-- 1500+ actual article words.
-- 10 H2 sections.
-- 1600-1800 words is the preferred target.
-- Exact keyword in title.
-- Exact keyword naturally in introduction.
-- Complete JSON object.
-- JSON in ONE line.
-- No image queries.
-- No Markdown code fence.
+Plan the article now. The ten H2 headings should make it possible to write approximately 150-200 useful words per section.
 """.strip()
 
-    return [
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": user_prompt},
-    ]
+    print("")
+    print("=== PHASE 1: OUTLINE ===")
 
+    response, actual_model = call_groq_with_fallback(
+        api_key=api_key,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ],
+        temperature=0.4,
+        max_tokens=OUTLINE_MAX_TOKENS,
+        response_format={"type": "json_object"},
+    )
 
-def parse_article_response(response, actual_model):
     content = get_response_content(response)
     finish_reason = get_finish_reason(response)
 
     print(
-        f"Article response metadata: "
+        f"Outline response: "
         f"model={actual_model}, finish_reason={finish_reason}"
     )
 
-    if finish_reason == "length":
-        print("WARNING: finish_reason=length. Model may be truncated.")
+    outline = extract_json_from_response(content, finish_reason=finish_reason)
 
-    generated = extract_json_from_response(
-        content, finish_reason=finish_reason,
-    )
+    title = outline.get("title")
+    if not isinstance(title, str):
+        raise ValueError("Outline title must be a string.")
 
-    validate_article_json_structure(generated)
+    title = title.strip()
+    if not title:
+        raise ValueError("Outline title is empty.")
 
-    return (generated, content, finish_reason)
+    if keyword.lower() not in title.lower():
+        raise ValueError(
+            "Outline title does not contain the exact focus keyword."
+        )
+
+    meta_description = outline.get("meta_description")
+    if not isinstance(meta_description, str):
+        raise ValueError("Outline meta_description must be a string.")
+
+    meta_description = meta_description.strip()
+    if not meta_description:
+        raise ValueError("Outline meta_description is empty.")
+
+    tags = outline.get("tags")
+    if not isinstance(tags, list):
+        raise ValueError("Outline tags must be a list.")
+
+    tags = [str(t).strip() for t in tags if str(t).strip()]
+
+    if len(tags) != 3:
+        raise ValueError("Outline must contain exactly 3 tags.")
+
+    h2_headings = outline.get("h2_headings")
+    if not isinstance(h2_headings, list):
+        raise ValueError("Outline h2_headings must be a list.")
+
+    cleaned_headings = []
+
+    for heading in h2_headings:
+        if not isinstance(heading, str):
+            continue
+        heading = clean_heading(heading)
+        if heading:
+            cleaned_headings.append(heading)
+
+    if len(cleaned_headings) != REQUIRED_SECTION_COUNT:
+        raise ValueError(
+            "Outline must contain exactly "
+            f"{REQUIRED_SECTION_COUNT} H2 headings. "
+            f"Got {len(cleaned_headings)}."
+        )
+
+    normalized = [h.lower() for h in cleaned_headings]
+
+    if len(set(normalized)) != len(normalized):
+        raise ValueError("Outline contains duplicate H2 headings.")
+
+    outline = {
+        "title": title,
+        "meta_description": meta_description,
+        "tags": tags,
+        "h2_headings": cleaned_headings,
+    }
+
+    print(f"Outline model: {actual_model}")
+    print(f"Title: {title}")
+    print(f"H2 count: {len(cleaned_headings)}")
+
+    for index, heading in enumerate(cleaned_headings, start=1):
+        print(f"  {index}. {heading}")
+
+    return outline
 
 
-def call_article_generation(api_key, keyword, specific_angle, attempt_number=1):
-    messages = build_article_messages(
-        keyword=keyword,
-        specific_angle=specific_angle,
-        attempt_number=attempt_number,
-        short_retry=False,
+def generate_section(
+    api_key, title, h2_heading, section_number, total_sections=10,
+):
+    system_prompt = """
+You are writing ONE section of a Home Organization article.
+
+Your job is to write only the body of this one section.
+
+Do NOT write the H2 heading.
+Do NOT write a conclusion.
+Do NOT mention other sections.
+Do NOT summarize the article.
+Do NOT mention that you are an AI.
+Do NOT output JSON.
+Do NOT use a Markdown code fence.
+
+Write approximately 150-200 words.
+
+Use:
+- concrete details
+- realistic measurements
+- practical examples
+- useful organization techniques
+- specific actions
+- realistic small-space constraints
+
+The section must stand on its own while fitting naturally inside the larger article.
+
+Return Markdown prose only.
+""".strip()
+
+    user_prompt = f"""
+ARTICLE TITLE:
+{title}
+
+SECTION: {section_number} of {total_sections}
+
+THIS SECTION'S H2 HEADING:
+{h2_heading}
+
+Write approximately 150-200 words for this section.
+
+Use concrete details, measurements, and examples.
+
+Do not write a conclusion.
+Do not mention other sections.
+Do not repeat the H2 heading.
+
+Return Markdown text only.
+""".strip()
+
+    print(
+        f"Generating section {section_number}/"
+        f"{total_sections}: {h2_heading}"
     )
 
     response, actual_model = call_groq_with_fallback(
         api_key=api_key,
-        messages=messages,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ],
         temperature=ARTICLE_TEMPERATURE,
-        max_tokens=MAX_OUTPUT_TOKENS,
-        response_format={"type": "json_object"},
+        max_tokens=SECTION_MAX_TOKENS,
+        response_format=None,
     )
 
-    try:
-        (generated, raw_content, finish_reason) = parse_article_response(
-            response, actual_model,
-        )
-    except TruncatedJSONError as exc:
-        print("Article JSON is truncated.")
-        print(f"Reason: {exc}")
-
-        if actual_model == GROQ_MODEL:
-            retry_messages = build_article_messages(
-                keyword=keyword,
-                specific_angle=specific_angle,
-                attempt_number=attempt_number + 1,
-                short_retry=True,
-            )
-
-            print("Retrying GPT-OSS 120B because JSON was truncated...")
-
-            response, actual_model = call_groq_with_fallback(
-                api_key=api_key,
-                messages=retry_messages,
-                temperature=ARTICLE_TEMPERATURE,
-                max_tokens=MAX_OUTPUT_TOKENS,
-                response_format={"type": "json_object"},
-            )
-
-            (generated, raw_content, finish_reason) = parse_article_response(
-                response, actual_model,
-            )
-        else:
-            raise
-
-    (_title, _meta, content_markdown, _tags) = extract_generated_fields(
-        generated, keyword,
-    )
-    content_markdown = clean_markdown(content_markdown)
-    words = count_words(content_markdown)
+    content = get_response_content(response)
+    finish_reason = get_finish_reason(response)
+    content = clean_section_text(content)
+    words = count_words(content)
 
     print(
-        f"Smart Groq article result: "
+        f"Section {section_number}: "
         f"model={actual_model}, "
         f"finish_reason={finish_reason}, "
         f"words={words}"
     )
 
-    if actual_model == GROQ_MODEL:
-        if words < VERY_SHORT_WORDS:
-            print(f"GPT-OSS 120B produced only {words} words.")
-            print("This is below the 500-word threshold.")
+    if finish_reason == "length":
+        raise ValueError(
+            f"Section {section_number} was truncated."
+        )
 
-            retry_messages = build_article_messages(
-                keyword=keyword,
-                specific_angle=specific_angle,
-                attempt_number=attempt_number + 1,
-                short_retry=True,
-            )
+    if not content:
+        raise ValueError(f"Section {section_number} is empty.")
 
-            print(f"Retrying GPT-OSS 120B with max_tokens={MAX_OUTPUT_TOKENS}...")
+    if words < 100:
+        raise ValueError(
+            f"Section {section_number} is too short: {words} words."
+        )
 
-            response, retry_model = call_groq_with_fallback(
-                api_key=api_key,
-                messages=retry_messages,
-                temperature=ARTICLE_TEMPERATURE,
-                max_tokens=MAX_OUTPUT_TOKENS,
-                response_format={"type": "json_object"},
-            )
+    if re.search(r"(?m)^\s*##\s+", content):
+        raise ValueError(
+            f"Section {section_number} unexpectedly contains an H2 heading."
+        )
 
-            (generated, raw_content, finish_reason) = parse_article_response(
-                response, retry_model,
-            )
-            return generated, retry_model, finish_reason
+    return content
 
-        if VERY_SHORT_WORDS <= words < SHORT_WORDS_UPPER_BOUND:
-            print(f"GPT-OSS 120B produced {words} words.")
-            print("This is in the 500-1499 range.")
 
-            retry_messages = build_article_messages(
-                keyword=keyword,
-                specific_angle=specific_angle,
-                attempt_number=attempt_number + 1,
-                short_retry=True,
-            )
+def clean_section_text(content):
+    content = str(content).strip()
+    content = re.sub(
+        r"^```(?:markdown|md)?\s*", "", content, flags=re.IGNORECASE,
+    )
+    content = re.sub(r"\s*```$", "", content)
+    content = re.sub(
+        r"^\s*##[ \t]+[^\n]+\n+", "", content, count=1,
+    )
+    content = re.sub(r"\n{3,}", "\n\n", content)
 
-            print(f"Retrying GPT-OSS 120B with max_tokens={SHORT_ARTICLE_RETRY_TOKENS}...")
+    return content.strip()
 
-            response, retry_model = call_groq_with_fallback(
-                api_key=api_key,
-                messages=retry_messages,
-                temperature=ARTICLE_TEMPERATURE,
-                max_tokens=SHORT_ARTICLE_RETRY_TOKENS,
-                response_format={"type": "json_object"},
-            )
 
-            (generated, raw_content, finish_reason) = parse_article_response(
-                response, retry_model,
-            )
-            return generated, retry_model, finish_reason
+def generate_all_sections(api_key, title, h2_headings):
+    sections = []
+    failed_section_indexes = []
 
-        if finish_reason == "length":
-            print("GPT-OSS 120B returned finish_reason=length.")
+    for index, heading in enumerate(h2_headings, start=1):
+        success = False
+        last_error = None
 
-            retry_messages = build_article_messages(
-                keyword=keyword,
-                specific_angle=specific_angle,
-                attempt_number=attempt_number + 1,
-                short_retry=True,
-            )
+        for section_attempt in range(1, MAX_SECTION_RETRIES + 2):
+            try:
+                if section_attempt == 2:
+                    print(
+                        f"Retrying section {index} once: {heading}"
+                    )
 
-            print("Retrying because finish_reason=length...")
-
-            response, retry_model = call_groq_with_fallback(
-                api_key=api_key,
-                messages=retry_messages,
-                temperature=ARTICLE_TEMPERATURE,
-                max_tokens=MAX_OUTPUT_TOKENS,
-                response_format={"type": "json_object"},
-            )
-
-            (generated, raw_content, finish_reason) = parse_article_response(
-                response, retry_model,
-            )
-            return generated, retry_model, finish_reason
-
-    if actual_model == FALLBACK_GROQ_MODEL:
-        if words < FALLBACK_MIN_WORDS_CHECK:
-            print(f"WARNING: fallback 20B produced only {words} words.")
-            print("Performing manual JSON/truncation validation...")
-
-            if finish_reason == "length":
-                raise TruncatedJSONError(
-                    f"Fallback GPT-OSS 20B returned finish_reason=length "
-                    f"and produced only {words} words."
+                section = generate_section(
+                    api_key=api_key,
+                    title=title,
+                    h2_heading=heading,
+                    section_number=index,
+                    total_sections=len(h2_headings),
                 )
 
-            print("Fallback JSON is structurally valid.")
+                sections.append(section)
+                success = True
+                break
+
+            except Exception as exc:
+                last_error = exc
+                print(
+                    f"Section {index} attempt "
+                    f"{section_attempt} failed: {exc}",
+                    file=sys.stderr,
+                )
+
+                if section_attempt <= MAX_SECTION_RETRIES:
+                    time.sleep(2)
+
+        if not success:
+            failed_section_indexes.append(index)
             print(
-                f"Article is below {MIN_WORDS}-word target. "
-                "Normal generation retry will attempt again."
+                f"Section {index} failed after "
+                f"{MAX_SECTION_RETRIES + 1} attempts: {last_error}",
+                file=sys.stderr,
             )
 
-    return (generated, actual_model, finish_reason)
+            if (len(failed_section_indexes)
+                    >= MAX_FAILED_SECTIONS_BEFORE_PIPELINE_RESTART):
+                raise RuntimeError(
+                    "Two sections failed. Pipeline must restart. "
+                    f"Failed sections: {failed_section_indexes}"
+                )
+
+            sections.append(None)
+
+    if failed_section_indexes:
+        raise RuntimeError(
+            f"One or more sections failed: {failed_section_indexes}"
+        )
+
+    if len(sections) != len(h2_headings):
+        raise RuntimeError("Section count does not match H2 count.")
+
+    if any(s is None for s in sections):
+        raise RuntimeError("At least one section is missing.")
+
+    return sections
 
 
-def generate_with_groq(api_key, keyword, specific_angle, attempt_number=1):
-    generated, actual_model, finish_reason = call_article_generation(
-        api_key=api_key,
-        keyword=keyword,
-        specific_angle=specific_angle,
-        attempt_number=attempt_number,
+def clean_markdown(content):
+    content = str(content).strip()
+    content = re.sub(
+        r"^```(?:markdown|md)?\s*", "", content, flags=re.IGNORECASE,
+    )
+    content = re.sub(r"\s*```$", "", content)
+    content = re.sub(r"^\s*#\s+.+?\n+", "", content, count=1)
+    content = re.sub(
+        r"(?mi)^[ \t]*Tags:[ \t]*\[[^\r\n]*\][ \t]*\r?\n?",
+        "",
+        content,
+    )
+    content = re.sub(r"\n{3,}", "\n\n", content)
+
+    return content.strip()
+
+
+def assemble_article(
+    title, meta_description, tags, h2_headings, sections,
+):
+    if len(h2_headings) != REQUIRED_SECTION_COUNT:
+        raise ValueError("Assembly requires exactly 10 H2 headings.")
+
+    if len(sections) != REQUIRED_SECTION_COUNT:
+        raise ValueError("Assembly requires exactly 10 sections.")
+
+    parts = []
+
+    for heading, section in zip(h2_headings, sections):
+        if not section:
+            raise ValueError(f"Missing section for H2: {heading}")
+
+        parts.append(
+            f"## {heading}\n\n{section.strip()}"
+        )
+
+    content_markdown = "\n\n".join(parts).strip()
+    content_markdown = clean_markdown(content_markdown)
+
+    words = count_words(content_markdown)
+    h2_count = count_h2(content_markdown)
+
+    print("")
+    print("=== PHASE 3: ASSEMBLY ===")
+    print(f"Assembled word count: {words}")
+    print(f"Assembled H2 count: {h2_count}")
+
+    if h2_count != REQUIRED_SECTION_COUNT:
+        raise ValueError(
+            "Assembly validation failed: expected exactly "
+            f"{REQUIRED_SECTION_COUNT} H2, got {h2_count}."
+        )
+
+    if words < MIN_ACCEPTABLE_WORDS:
+        raise ValueError(
+            "Assembly validation failed: "
+            f"{words} words below acceptable minimum "
+            f"of {MIN_ACCEPTABLE_WORDS}."
+        )
+
+    if words > MAX_WORDS:
+        raise ValueError(
+            f"Assembly validation failed: {words} words exceeds "
+            f"maximum of {MAX_WORDS}."
+        )
+
+    return (content_markdown, words, h2_count)
+
+
+def shorten_title(title, keyword):
+    title = str(title).strip()
+
+    if len(title) <= MAX_TITLE_LENGTH:
+        return title
+
+    trimmed = title[:MAX_TITLE_LENGTH].rstrip()
+    trimmed = re.sub(r"[\s:;\-,]+$", "", trimmed)
+
+    if keyword and keyword.lower() not in trimmed.lower():
+        candidate = f"{keyword} - Small Space Guide"
+
+        if len(candidate) <= MAX_TITLE_LENGTH:
+            trimmed = candidate
+
+    return trimmed
+
+
+def shorten_meta(meta):
+    meta = str(meta).strip()
+
+    if MIN_META_LENGTH <= len(meta) <= MAX_META_LENGTH:
+        return meta
+
+    if len(meta) > MAX_META_LENGTH:
+        trimmed = meta[:MAX_META_LENGTH].rstrip()
+        last_period = trimmed.rfind(". ")
+
+        if last_period >= MIN_META_LENGTH:
+            trimmed = trimmed[:last_period + 1].strip()
+        else:
+            last_space = trimmed.rfind(" ")
+
+            if last_space >= MIN_META_LENGTH:
+                trimmed = trimmed[:last_space].rstrip()
+
+        if not trimmed.endswith((".", "!", "?")):
+            trimmed += "."
+
+        return trimmed[:MAX_META_LENGTH].strip()
+
+    additions = [
+        " Practical ideas for everyday homes.",
+        " Simple ideas for a more organized home.",
+    ]
+
+    result = meta
+
+    for addition in additions:
+        if len(result) >= MIN_META_LENGTH:
+            break
+
+        candidate = result.rstrip(".") + addition
+
+        if len(candidate) <= MAX_META_LENGTH:
+            result = candidate
+
+    return result[:MAX_META_LENGTH].strip()
+
+
+def count_words(text):
+    plain = re.sub(r"`[^`]+`", "", str(text))
+    plain = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", plain)
+    plain = re.sub(r"\[[^\]]*\]\([^)]*\)", "", plain)
+
+    return len(
+        re.findall(r"\b[\w'-]+\b", plain, flags=re.UNICODE)
     )
 
-    validate_article_json_structure(generated)
 
-    print(
-        f"Article generation completed: "
-        f"model={actual_model}, "
-        f"finish_reason={finish_reason}"
+def count_h2(content):
+    return len(
+        re.findall(r"^\s*##\s+\S+", str(content), re.MULTILINE)
     )
-
-    return generated
 
 
 def extract_h2_sections(content):
@@ -1006,13 +1117,17 @@ def generate_image_queries(api_key, title, content_markdown):
     sections = extract_h2_sections(content_markdown)
 
     if len(sections) < 4:
-        raise ValueError("At least 4 H2 sections are required.")
+        raise ValueError(
+            "At least four H2 sections are required "
+            "for image-query generation."
+        )
 
     selected_sections = sections[:4]
     section_payload = []
 
     for index, section in enumerate(selected_sections, start=1):
-        body = re.sub(r"\n{3,}", "\n\n", section["body"]).strip()[:500]
+        body = re.sub(r"\n{3,}", "\n\n", section["body"]).strip()
+        body = body[:500]
         section_payload.append(
             f"SECTION {index}\n"
             f"H2: {section['heading']}\n"
@@ -1026,30 +1141,36 @@ You are a visual content editor for a Home Organization website.
 
 Create exactly 5 highly relevant and visually distinct Pexels search queries.
 
-Query 1: HERO - wide editorial shot of whole room.
-Queries 2-5: one per H2 section.
+QUERY 1: Hero image for the whole article. Wide editorial photo of the relevant room.
+
+QUERIES 2-5: One image query for each of the first four H2 sections.
 
 RULES:
 - Exactly 5 unique queries.
 - 5-14 words per query.
 - Concrete visual nouns.
+- Describe photographable scenes.
 - No photographer names.
 - No generic SEO keyword stuffing.
+- No duplicate scenes.
+- No image URLs.
+- No Markdown.
 
-Return ONLY valid JSON.
-
-Return JSON in ONE line.
+Return ONLY valid JSON. Return in ONE LINE.
 
 {
-  "image_queries": ["q1", "q2", "q3", "q4", "q5"]
+  "image_queries": ["query 1", "query 2", "query 3", "query 4", "query 5"]
 }
 """.strip()
 
     user_prompt = (
-        f"TITLE: {title}\n\n"
+        f"ARTICLE TITLE:\n{title}\n\n"
         f"{sections_text}\n\n"
-        "Return JSON with exactly 5 unique queries in ONE line."
+        "Return exactly 5 unique queries."
     )
+
+    print("")
+    print("=== IMAGE QUERIES ===")
 
     response, actual_model = call_groq_with_fallback(
         api_key=api_key,
@@ -1058,7 +1179,7 @@ Return JSON in ONE line.
             {"role": "user", "content": user_prompt},
         ],
         temperature=0.4,
-        max_tokens=1200,
+        max_tokens=IMAGE_QUERY_MAX_TOKENS,
         response_format={"type": "json_object"},
     )
 
@@ -1067,14 +1188,13 @@ Return JSON in ONE line.
 
     result = extract_json_from_response(content, finish_reason=finish_reason)
 
-    if not isinstance(result, dict):
-        raise ValueError("Image-query response is not a JSON object.")
-
     raw_queries = result.get("image_queries")
+
     if not isinstance(raw_queries, list):
-        raise ValueError("'image_queries' must be a list.")
+        raise ValueError("image_queries must be a list.")
 
     image_queries = []
+
     for query in raw_queries:
         if not isinstance(query, str):
             continue
@@ -1083,224 +1203,17 @@ Return JSON in ONE line.
             image_queries.append(query)
 
     if len(image_queries) != 5:
-        raise ValueError("Groq must return exactly 5 unique image queries.")
+        raise ValueError(
+            "Exactly 5 unique image queries are required."
+        )
 
     print(f"Image-query model: {actual_model}")
-    print("Generated 5 section-aware image queries:")
 
     for index, query in enumerate(image_queries, start=1):
         label = "HERO" if index == 1 else f"H2 #{index - 1}"
         print(f"  {index}. [{label}] {query}")
 
     return image_queries
-
-
-def require_string(data, field_name):
-    value = data.get(field_name)
-
-    if not isinstance(value, str):
-        raise ValueError(f"'{field_name}' must be a string.")
-
-    value = value.strip()
-    if not value:
-        raise ValueError(f"'{field_name}' is empty.")
-
-    return value
-
-
-def extract_generated_fields(generated, keyword):
-    validate_article_json_structure(generated)
-
-    title = require_string(generated, "title")
-    meta_description = require_string(generated, "meta_description")
-    content_markdown = require_string(generated, "content_markdown")
-
-    raw_tags = generated.get("tags")
-
-    if raw_tags is None:
-        tags = [keyword]
-    elif isinstance(raw_tags, list):
-        tags = raw_tags
-    elif isinstance(raw_tags, str):
-        stripped = raw_tags.strip()
-        tags = [stripped] if stripped else [keyword]
-    elif isinstance(raw_tags, dict):
-        tags = list(raw_tags.values())
-    elif isinstance(raw_tags, (int, float, bool)):
-        tags = [str(raw_tags)]
-    else:
-        tags = [keyword]
-
-    normalized_tags = []
-    for tag in tags:
-        if not isinstance(tag, str):
-            continue
-        tag = tag.strip()
-        if tag and tag not in normalized_tags:
-            normalized_tags.append(tag)
-
-    if not normalized_tags:
-        normalized_tags = [keyword]
-
-    return (title, meta_description, content_markdown, normalized_tags)
-
-
-def clean_markdown(content):
-    content = str(content).strip()
-    content = re.sub(
-        r"^```(?:markdown|md)?\s*", "", content, flags=re.IGNORECASE,
-    )
-    content = re.sub(r"\s*```$", "", content)
-    content = re.sub(r"^\s*#\s+.+?\n+", "", content, count=1)
-    content = re.sub(
-        r"(?mi)^[ \t]*Tags:[ \t]*\[[^\r\n]*\][ \t]*\r?\n?",
-        "", content,
-    )
-    return content.strip()
-
-
-def shorten_title(title, keyword):
-    title = title.strip()
-
-    if len(title) <= MAX_TITLE_LENGTH:
-        return title
-
-    trimmed = title[:MAX_TITLE_LENGTH].rstrip()
-    trimmed = re.sub(r"[\s:;\-,]+$", "", trimmed)
-
-    if keyword and keyword.lower() not in trimmed.lower():
-        kw = keyword.strip()
-        if len(kw) + 20 <= MAX_TITLE_LENGTH:
-            trimmed = kw.title() + " - Small Space Guide"
-
-    return trimmed
-
-
-def shorten_meta(meta):
-    meta = meta.strip()
-
-    if len(meta) <= MAX_META_LENGTH:
-        return meta
-
-    trimmed = meta[:MAX_META_LENGTH].rstrip()
-    last_period = trimmed.rfind(". ")
-
-    if last_period > MIN_META_LENGTH:
-        return trimmed[:last_period + 1].strip()
-
-    last_space = trimmed.rfind(" ")
-
-    if last_space > MIN_META_LENGTH:
-        trimmed = trimmed[:last_space]
-
-    trimmed = re.sub(r"[\s,;:\-]+$", "", trimmed)
-
-    if not trimmed.endswith((".", "!", "?")):
-        trimmed += "."
-
-    return trimmed
-
-
-def count_words(text):
-    plain = re.sub(r"[!\[\]()]+", " ", text)
-    plain = re.sub(r"`[^`]+`", "", plain)
-    return len(re.findall(r"\b[\w'-]+\b", plain, flags=re.UNICODE))
-
-
-def count_h2(content):
-    return len(re.findall(r"^\s*##\s+\S+", content, re.MULTILINE))
-
-
-def generate_article_with_retry(api_key, keyword, specific_angle):
-    last_result = None
-
-    for attempt in range(1, MAX_GENERATION_ATTEMPTS + 1):
-        print("")
-        print(f"=== Generation attempt {attempt}/{MAX_GENERATION_ATTEMPTS} ===")
-
-        try:
-            generated = generate_with_groq(
-                api_key, keyword, specific_angle,
-                attempt_number=attempt,
-            )
-        except Exception as exc:
-            print(f"Attempt {attempt} error: {exc}", file=sys.stderr)
-
-            if attempt < MAX_GENERATION_ATTEMPTS:
-                print("Waiting 3 seconds before next article attempt...")
-                time.sleep(3)
-            continue
-
-        try:
-            (title, meta_description, content_markdown, tags) = (
-                extract_generated_fields(generated, keyword)
-            )
-        except Exception as exc:
-            print(f"Generated JSON validation failed: {exc}", file=sys.stderr)
-            if attempt < MAX_GENERATION_ATTEMPTS:
-                time.sleep(3)
-            continue
-
-        title = title.strip()
-        meta_description = meta_description.strip()
-        content_markdown = clean_markdown(content_markdown)
-
-        original_title_length = len(title)
-        original_meta_length = len(meta_description)
-
-        title = shorten_title(title, keyword)
-        meta_description = shorten_meta(meta_description)
-
-        words = count_words(content_markdown)
-        h2_count = count_h2(content_markdown)
-
-        print(f"Attempt {attempt}: {words} words, {h2_count} H2")
-        print(f"  Title: {original_title_length} -> {len(title)} chars")
-        print(f"  Meta: {original_meta_length} -> {len(meta_description)} chars")
-
-        last_result = (title, meta_description, content_markdown, tags, words, h2_count)
-
-        if words >= MIN_WORDS and MIN_H2 <= h2_count <= MAX_H2:
-            print(f"Attempt {attempt} accepted.")
-            return last_result
-
-        print(
-            f"Attempt {attempt} rejected: "
-            f"needs {MIN_WORDS}+ words and {MIN_H2}-{MAX_H2} H2."
-        )
-
-        if MIN_ACCEPTABLE_WORDS <= words < MIN_WORDS:
-            print(
-                f"Article is above the acceptable floor "
-                f"({MIN_ACCEPTABLE_WORDS}) but below target."
-            )
-
-        if words < MIN_ACCEPTABLE_WORDS:
-            print(f"Article is below the acceptable floor ({MIN_ACCEPTABLE_WORDS}).")
-
-        if attempt < MAX_GENERATION_ATTEMPTS:
-            print("Retrying complete article generation...")
-            time.sleep(3)
-
-    if last_result is None:
-        raise RuntimeError("All article generation attempts failed.")
-
-    (title, meta_description, content_markdown, tags, words, h2_count) = last_result
-
-    if words < MIN_ACCEPTABLE_WORDS:
-        raise RuntimeError(
-            f"All generation attempts produced articles below "
-            f"the acceptable minimum of {MIN_ACCEPTABLE_WORDS} words. "
-            f"Last result had {words} words."
-        )
-
-    print(
-        "WARNING: using last structurally acceptable attempt "
-        f"even though it did not reach the preferred "
-        f"{MIN_WORDS}-word target."
-    )
-
-    return last_result
 
 
 def save_article(article):
@@ -1313,11 +1226,74 @@ def save_article(article):
     temp_path.replace(ARTICLE_PATH)
 
 
+def generate_article_pipeline(api_key, keyword, specific_angle):
+    outline = generate_outline(
+        api_key=api_key,
+        keyword=keyword,
+        specific_angle=specific_angle,
+    )
+
+    title = outline["title"]
+    meta_description = outline["meta_description"]
+    tags = outline["tags"]
+    h2_headings = outline["h2_headings"]
+
+    print("")
+    print("=== PHASE 2: SECTIONS ===")
+
+    sections = generate_all_sections(
+        api_key=api_key,
+        title=title,
+        h2_headings=h2_headings,
+    )
+
+    (content_markdown, word_count, h2_count) = assemble_article(
+        title=title,
+        meta_description=meta_description,
+        tags=tags,
+        h2_headings=h2_headings,
+        sections=sections,
+    )
+
+    title = shorten_title(title, keyword)
+    meta_description = shorten_meta(meta_description)
+
+    if keyword.lower() not in title.lower():
+        raise ValueError(
+            "Final title does not contain the focus keyword."
+        )
+
+    final_word_count = count_words(content_markdown)
+    final_h2_count = count_h2(content_markdown)
+
+    if final_word_count < MIN_ACCEPTABLE_WORDS:
+        raise ValueError(
+            f"Final article is too short: {final_word_count} words."
+        )
+
+    if final_h2_count != REQUIRED_SECTION_COUNT:
+        raise ValueError(
+            "Final article must contain exactly "
+            f"{REQUIRED_SECTION_COUNT} H2 headings; "
+            f"got {final_h2_count}."
+        )
+
+    return {
+        "title": title,
+        "meta_description": meta_description,
+        "tags": tags,
+        "content_markdown": content_markdown,
+        "word_count": final_word_count,
+        "h2_count": final_h2_count,
+        "h2_headings": h2_headings,
+    }
+
+
 def main():
     api_key = os.getenv("GROQ_API_KEY")
 
     if not api_key:
-        print("ERROR: GROQ_API_KEY missing.", file=sys.stderr)
+        print("ERROR: GROQ_API_KEY is missing.", file=sys.stderr)
         return 1
 
     try:
@@ -1328,37 +1304,122 @@ def main():
         print(f"ERROR loading keywords: {exc}", file=sys.stderr)
         return 1
 
-    print(f"Selected keyword: {keyword}")
+    print("")
+    print("================================================")
+    print("AUTO BLOG - SECTIONED ARTICLE GENERATION")
+    print("================================================")
+    print(f"Keyword: {keyword}")
+    print(f"Primary model: {GROQ_MODEL}")
+    print(f"Fallback model: {FALLBACK_GROQ_MODEL}")
 
     try:
         mark_keyword_processing(
             keyword, rows, fieldnames, keyword_col, status_col,
         )
-        print("Keyword status changed to: processing")
+        print("Keyword status: processing")
     except Exception as exc:
-        print(f"ERROR: {exc}", file=sys.stderr)
+        print(f"ERROR changing keyword status: {exc}", file=sys.stderr)
         return 1
 
     try:
         specific_angle = pick_specific_angle(api_key, keyword)
-        print(f"Selected specific angle: {specific_angle}")
+        print(f"Specific angle: {specific_angle}")
 
-        (title, meta_description, content_markdown, tags,
-         word_count, h2_count) = generate_article_with_retry(
-            api_key, keyword, specific_angle,
-        )
+        pipeline_result = None
+        last_pipeline_error = None
+
+        for pipeline_attempt in range(1, MAX_PIPELINE_ATTEMPTS + 1):
+            print("")
+            print("================================================")
+            print(
+                f"PIPELINE ATTEMPT "
+                f"{pipeline_attempt}/{MAX_PIPELINE_ATTEMPTS}"
+            )
+            print("================================================")
+
+            try:
+                pipeline_result = generate_article_pipeline(
+                    api_key=api_key,
+                    keyword=keyword,
+                    specific_angle=specific_angle,
+                )
+                print(
+                    f"Pipeline attempt {pipeline_attempt} succeeded."
+                )
+                break
+
+            except Exception as exc:
+                last_pipeline_error = exc
+                print(
+                    f"Pipeline attempt {pipeline_attempt} failed: "
+                    f"{exc}",
+                    file=sys.stderr,
+                )
+
+                if pipeline_attempt < MAX_PIPELINE_ATTEMPTS:
+                    print(
+                        "Restarting the entire article "
+                        "pipeline from Phase 1..."
+                    )
+                    time.sleep(3)
+
+        if pipeline_result is None:
+            raise RuntimeError(
+                "All complete pipeline attempts failed. "
+                f"Last error: {last_pipeline_error}"
+            )
+
+        title = pipeline_result["title"]
+        meta_description = pipeline_result["meta_description"]
+        tags = pipeline_result["tags"]
+        content_markdown = pipeline_result["content_markdown"]
+        word_count = pipeline_result["word_count"]
+        h2_count = pipeline_result["h2_count"]
+        h2_headings = pipeline_result["h2_headings"]
 
         image_queries = generate_image_queries(
-            api_key, title, content_markdown,
+            api_key=api_key,
+            title=title,
+            content_markdown=content_markdown,
         )
 
         if len(image_queries) != 5:
-            raise ValueError("Exactly 5 image queries are required.")
+            raise ValueError(
+                "Image-query generation did not return exactly 5 queries."
+            )
 
         slug = slugify(title)
 
         if not slug:
-            raise ValueError("Empty slug from title.")
+            raise ValueError("Could not generate a valid slug.")
+
+        final_word_count = count_words(content_markdown)
+        final_h2_count = count_h2(content_markdown)
+
+        if final_word_count < MIN_WORDS:
+            print(
+                "WARNING: final article is below the "
+                f"preferred {MIN_WORDS}-word target: "
+                f"{final_word_count} words."
+            )
+
+        if final_word_count < MIN_ACCEPTABLE_WORDS:
+            raise ValueError(
+                "Final article is below the hard acceptable "
+                f"minimum of {MIN_ACCEPTABLE_WORDS} words."
+            )
+
+        if final_word_count > MAX_WORDS:
+            raise ValueError(
+                f"Final article exceeds maximum "
+                f"{MAX_WORDS} words: {final_word_count}."
+            )
+
+        if final_h2_count != REQUIRED_SECTION_COUNT:
+            raise ValueError(
+                "Final article must have exactly "
+                f"{REQUIRED_SECTION_COUNT} H2 headings."
+            )
 
         article = {
             "keyword": keyword,
@@ -1369,41 +1430,46 @@ def main():
             "content_markdown": content_markdown,
             "image_queries": image_queries,
             "tags": tags,
-            "word_count": word_count,
-            "h2_count": h2_count,
+            "h2_headings": h2_headings,
+            "word_count": final_word_count,
+            "h2_count": final_h2_count,
             "generated_at": datetime.now(timezone.utc).isoformat(),
         }
 
         save_article(article)
 
         print("")
-        print("Article generated successfully.")
+        print("================================================")
+        print("ARTICLE GENERATED SUCCESSFULLY")
+        print("================================================")
         print(f"Keyword: {keyword}")
         print(f"Title: {title}")
         print(f"Slug: {slug}")
-        print(f"Word count: {word_count}")
-        print(f"H2 count: {h2_count}")
+        print(f"Words: {final_word_count}")
+        print(f"H2: {final_h2_count}")
         print(f"Title length: {len(title)}")
         print(f"Meta length: {len(meta_description)}")
-
-        print("Section-aware image queries:")
-        for index, query in enumerate(image_queries, start=1):
-            label = "HERO" if index == 1 else f"H2 #{index - 1}"
-            print(f"  {index}. [{label}] {query}")
-
         print(f"Tags: {', '.join(tags)}")
-        print(f"Saved to: {ARTICLE_PATH}")
+        print("Image queries: 5")
+        print(f"Saved: {ARTICLE_PATH}")
 
         return 0
 
     except Exception as exc:
-        print(f"ERROR: {exc}", file=sys.stderr)
+        print("", file=sys.stderr)
+        print("================================================", file=sys.stderr)
+        print("ARTICLE GENERATION FAILED", file=sys.stderr)
+        print("================================================", file=sys.stderr)
+        print(f"Error: {exc}", file=sys.stderr)
 
         try:
             mark_keyword_pending(keyword)
             print(f"Keyword returned to pending: {keyword}")
         except Exception as reset_exc:
-            print(f"ERROR resetting: {reset_exc}", file=sys.stderr)
+            print(
+                f"ERROR resetting keyword status: {reset_exc}",
+                file=sys.stderr,
+            )
 
         return 1
 
