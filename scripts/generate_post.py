@@ -18,7 +18,7 @@ KEYWORDS_PATH = ROOT_DIR / "keywords.csv"
 ARTICLE_PATH = ROOT_DIR / "article.json"
 
 GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
-FALLBACK_GROQ_MODEL = "llama-3.1-8b-instant"
+FALLBACK_GROQ_MODEL = "llama-3.3-70b-versatile"
 MAX_RETRIES = 5
 MIN_WORDS = 1500
 MAX_WORDS = 2400
