@@ -474,15 +474,6 @@ def build_user_prompt(
             ):
                 clean_tags.append(tag)
 
-    # ---------------------------------------------------------
-    # IMPORTANT:
-    # Groq Free Tier has a TPM limit. Sending the entire
-    # article can push the request over the model limit.
-    #
-    # Keep only the first 7000 characters of the article.
-    # The original article remains untouched on disk.
-    # This is ONLY the copy sent to Groq.
-    # ---------------------------------------------------------
     if len(full_content) > MAX_ARTICLE_CHARS_IN_PROMPT:
         content = (
             full_content[
@@ -540,10 +531,10 @@ The final version must:
 3.  You MUST produce at least 1800 words.
 4.  If you finish before 1800 words, continue writing more detailed sections.
 5.  Do NOT summarize.
-6.  Contain AT LEAST 10 H2 headings.
-7.  Aim for EXACTLY 10 H2 headings.
-8.  Do NOT use fewer than 10 H2 headings.
-9.  Do NOT use more than 11 H2 headings.
+6.  Contain EXACTLY 10 H2 headings.
+7.  Do NOT use 9 H2 headings.
+8.  Do NOT use 11 H2 headings unless absolutely necessary.
+9.  NEVER use more than 11 H2 headings.
 10. Keep the exact focus keyword naturally in the title and introduction.
 11. Preserve useful concrete information from the original.
 12. Add depth where the original is too short or shallow.
@@ -563,16 +554,9 @@ Return ONLY the JSON object requested by the system prompt.
 
 
 def estimate_tokens(text: str) -> int:
-    """
-    Conservative rough estimate for English text.
-    This is not the tokenizer used internally by Groq.
-    It is only used for logging before sending the request.
-    """
     if not text:
         return 0
 
-    # Rough English estimate:
-    # approximately 4 characters per token.
     return max(
         1,
         (len(text) + 3) // 4,
@@ -696,10 +680,6 @@ def generate_upgrade_with_model(
                 file=sys.stderr,
             )
 
-            # 413 means the request is too large.
-            #
-            # Retrying the SAME request cannot solve that problem.
-            # The caller handles switching to the smaller model.
             if status_code == 413:
                 print(
                     "  Reason: request exceeded the model "
@@ -742,6 +722,77 @@ def generate_upgrade_with_model(
     )
 
 
+def generate_upgrade_repair(
+    client: Groq,
+    model: str,
+    original_generated: Dict[str, Any],
+    validation_error: str,
+) -> Dict[str, Any]:
+    repair_system_prompt = """
+You are a strict final SEO editor.
+
+You received an article that was already successfully generated, but it failed one structural validation rule.
+
+Repair ONLY the structural problem described below.
+
+NON-NEGOTIABLE REQUIREMENTS:
+- Preserve the article topic and search intent.
+- Preserve useful information and existing depth.
+- Keep the final article between 1500 and 2400 actual words.
+- Aim for approximately 1900-2100 words.
+- The final article MUST contain exactly 10 H2 headings.
+- Never produce more than 11 H2 headings.
+- Do not remove useful article content merely to satisfy the heading count.
+- If there are too many H2 headings, merge logically related sections or demote a secondary section to H3 while preserving its content.
+- Do not invent facts, statistics, studies, citations, prices, or quotes.
+- Preserve the exact focus keyword in the title and introduction.
+- Return ONLY valid JSON using exactly:
+
+{
+  "title": "article title",
+  "meta_description": "meta description",
+  "content_markdown": "complete repaired article",
+  "tags": ["tag 1", "tag 2"]
+}
+""".strip()
+
+    generated_json = json.dumps(
+        original_generated,
+        ensure_ascii=False,
+    )
+
+    repair_user_prompt = f"""
+The generated article failed validation.
+
+VALIDATION ERROR:
+{validation_error}
+
+Repair the article now.
+
+The most important structural target is:
+EXACTLY 10 H2 headings.
+
+Do not shorten the article below 1500 words.
+
+CURRENT GENERATED ARTICLE:
+{generated_json}
+
+Return ONLY the repaired JSON object.
+""".strip()
+
+    print(
+        "Retrying Groq content upgrade because "
+        "the generated article failed validation..."
+    )
+
+    return generate_upgrade_with_model(
+        client=client,
+        model=model,
+        system_prompt=repair_system_prompt,
+        user_prompt=repair_user_prompt,
+    )
+
+
 def generate_upgrade(
     api_key: str,
     article: Dict[str, Any],
@@ -757,9 +808,6 @@ def generate_upgrade(
         user_prompt,
     )
 
-    # ---------------------------------------------------------
-    # First attempt: configured primary model.
-    # ---------------------------------------------------------
     try:
         print("")
         print(
@@ -796,12 +844,6 @@ def generate_upgrade(
             file=sys.stderr,
         )
 
-        # -----------------------------------------------------
-        # Special handling for 413:
-        #
-        # Do NOT retry the same oversized request.
-        # Immediately switch to the smaller model.
-        # -----------------------------------------------------
         if primary_status == 413:
             print("")
             print(
@@ -866,12 +908,6 @@ def generate_upgrade(
                     )
                     return None
 
-        # -----------------------------------------------------
-        # Non-413 errors:
-        #
-        # Preserve the workflow instead of making an upgrade
-        # failure fatal. The original article remains usable.
-        # -----------------------------------------------------
         print(
             "Content upgrade failed for a non-413 reason."
         )
@@ -1015,14 +1051,6 @@ def validate_generated_article(
         f"Generated H2 count: {h2_count}"
     )
 
-    # ---------------------------------------------------------
-    # MIN_WORDS remains 1500 as the target/quality threshold.
-    #
-    # However, the workflow must NOT fail for 1300-1499 words.
-    # Such output is accepted with a warning.
-    #
-    # Anything below 1300 is rejected as genuinely too short.
-    # ---------------------------------------------------------
     if words < MIN_ACCEPTABLE_WORDS:
         raise ValueError(
             "Generated article is too short: "
@@ -1210,10 +1238,6 @@ def main() -> int:
         f"{MAX_ARTICLE_CHARS_IN_PROMPT}"
     )
 
-    # ---------------------------------------------------------
-    # If the original article is already sufficient, there is
-    # no need to spend Groq TPM on an upgrade.
-    # ---------------------------------------------------------
     if is_article_sufficient(original_content):
         print(
             "Original article already satisfies "
@@ -1236,12 +1260,6 @@ def main() -> int:
             article,
         )
     except Exception as exc:
-        # This is an extra safety net.
-        #
-        # generate_upgrade() is designed to return None when
-        # the upgrade cannot be completed, but if an unexpected
-        # exception escapes, do not destroy a valid original
-        # article or fail the entire workflow.
         print(
             "Unexpected upgrade error:",
             file=sys.stderr,
@@ -1253,10 +1271,6 @@ def main() -> int:
         print("Keeping the original article.")
         return 0
 
-    # ---------------------------------------------------------
-    # If both the primary and fallback model failed, the
-    # original article is deliberately preserved.
-    # ---------------------------------------------------------
     if generated is None:
         print("")
         print(
@@ -1275,28 +1289,67 @@ def main() -> int:
         "Groq returned an upgraded article."
     )
 
+    validated = None
+    validation_error = None
+
     try:
         validated = validate_generated_article(
             article,
             generated,
         )
     except Exception as exc:
+        validation_error = str(exc)
+
+    if validated is None:
         print("")
         print(
             "WARNING: upgraded article failed validation:",
             file=sys.stderr,
         )
         print(
-            f"  Reason: {exc}",
+            f"  Reason: {validation_error}",
             file=sys.stderr,
         )
-        print(
-            "The original article will be preserved."
-        )
-        print(
-            "Workflow will continue successfully."
-        )
-        return 0
+
+        try:
+            repaired = generate_upgrade_repair(
+                client=Groq(api_key=api_key),
+                model=GROQ_MODEL,
+                original_generated=generated,
+                validation_error=validation_error,
+            )
+
+            print("")
+            print(
+                "Groq returned a repaired upgraded article."
+            )
+
+            validated = validate_generated_article(
+                article,
+                repaired,
+            )
+
+            print(
+                "Repaired article passed validation."
+            )
+
+        except Exception as repair_exc:
+            print("")
+            print(
+                "WARNING: repaired article also failed validation:",
+                file=sys.stderr,
+            )
+            print(
+                f"  Reason: {repair_exc}",
+                file=sys.stderr,
+            )
+            print(
+                "The original article will be preserved."
+            )
+            print(
+                "Workflow will continue successfully."
+            )
+            return 0
 
     updated_article = build_updated_article(
         article,
