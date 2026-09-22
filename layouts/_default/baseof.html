@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.Language.Lang }}">
+
 <head>
+
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="theme-color"
+    content="#ffffff"
+  >
 
   <title>
     {{ if .IsHome }}
@@ -12,14 +23,31 @@
     {{ end }}
   </title>
 
+  {{ $description := .Description | default .Site.Params.description }}
+
   <meta
     name="description"
-    content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}"
+    content="{{ $description }}"
+  >
+
+  <meta
+    name="author"
+    content="{{ .Site.Params.author | default .Site.Title }}"
+  >
+
+  <meta
+    name="robots"
+    content="index,follow,max-image-preview:large"
   >
 
   <meta
     name="google-site-verification"
     content="tgAG8aMPl7dBqyp5e4JPtjgKdiwXLdQ967R4OVcW-eM"
+  >
+
+  <link
+    rel="canonical"
+    href="{{ .Permalink }}"
   >
 
   <link
@@ -33,9 +61,89 @@
     href="{{ "favicon.svg" | relURL }}"
   >
 
-  <link
-    rel="canonical"
-    href="{{ .Permalink }}"
+  {{ $ogTitle := .Title }}
+
+  {{ if .IsHome }}
+    {{ $ogTitle = .Site.Title }}
+  {{ end }}
+
+  {{ $ogImage := "" }}
+
+  {{ if .Params.image }}
+
+    {{ $ogImagePath := strings.TrimPrefix "/" .Params.image }}
+
+    {{ $ogImage = $ogImagePath | absURL }}
+
+  {{ else }}
+
+    {{ $ogImage = "favicon.svg" | absURL }}
+
+  {{ end }}
+
+  <meta
+    property="og:title"
+    content="{{ $ogTitle }}"
+  >
+
+  <meta
+    property="og:description"
+    content="{{ $description }}"
+  >
+
+  <meta
+    property="og:type"
+    content="{{ if .IsPage }}article{{ else }}website{{ end }}"
+  >
+
+  <meta
+    property="og:url"
+    content="{{ .Permalink }}"
+  >
+
+  <meta
+    property="og:site_name"
+    content="{{ .Site.Title }}"
+  >
+
+  <meta
+    property="og:locale"
+    content="en_US"
+  >
+
+  <meta
+    property="og:image"
+    content="{{ $ogImage }}"
+  >
+
+  <meta
+    property="og:image:alt"
+    content="{{ $ogTitle }}"
+  >
+
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
+
+  <meta
+    name="twitter:title"
+    content="{{ $ogTitle }}"
+  >
+
+  <meta
+    name="twitter:description"
+    content="{{ $description }}"
+  >
+
+  <meta
+    name="twitter:image"
+    content="{{ $ogImage }}"
+  >
+
+  <meta
+    name="twitter:image:alt"
+    content="{{ $ogTitle }}"
   >
 
   <link
@@ -48,54 +156,102 @@
     href="{{ "css/competitive.css" | relURL }}"
   >
 
-  {{ if .IsPage }}
-  <meta property="og:type" content="{{ if eq .Section "posts" }}article{{ else }}website{{ end }}">
-  {{ else }}
-  <meta property="og:type" content="website">
-  {{ end }}
-
-  <meta property="og:title" content="{{ .Title }}">
-  <meta
-    property="og:description"
-    content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}"
+  <link
+    rel="stylesheet"
+    href="{{ "css/enhancements.css" | relURL }}"
   >
-  <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:site_name" content="{{ .Site.Title }}">
-
-  {{ with .Params.image }}
-  <meta property="og:image" content="{{ . | absURL }}">
-  {{ end }}
 
   {{ if .IsPage }}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "{{ if eq .Section "posts" }}BlogPosting{{ else }}WebPage{{ end }}",
-    "author": {
-      "@type": "Organization",
-      "name": "{{ .Site.Params.author }}"
-    },
-    "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
-    "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
-    "description": {{ .Description | jsonify }},
-    "headline": {{ .Title | jsonify }},
-    "mainEntityOfPage": {
-      "@id": "{{ .Permalink }}",
-      "@type": "WebPage"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "{{ .Site.Title }}",
-      "url": "{{ .Site.BaseURL }}"
-    },
-    "url": "{{ .Permalink }}"
-    {{ with .Params.image }},
-    "image": [
-      "{{ . | absURL }}"
-    ]
+
+    {{ $authorName := .Site.Params.author | default "Auto Blog" }}
+
+    {{ $articleImageURL := "" }}
+
+    {{ with .Params.image }}
+
+      {{ $imagePath := strings.TrimPrefix "/" . }}
+
+      {{ $articleImageURL = $imagePath | absURL }}
+
     {{ end }}
-  }
-  </script>
+
+    {{ $articleSchema := dict
+      "@context" "https://schema.org"
+      "@type" "BlogPosting"
+      "headline" .Title
+      "description" $description
+      "mainEntityOfPage" (dict
+        "@type" "WebPage"
+        "@id" .Permalink
+      )
+      "author" (dict
+        "@type" "Organization"
+        "name" $authorName
+      )
+      "publisher" (dict
+        "@type" "Organization"
+        "name" .Site.Title
+        "url" .Site.BaseURL
+      )
+      "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
+      "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+      "url" .Permalink
+    }}
+
+    {{ if $articleImageURL }}
+
+      {{ $imageObject := dict
+        "@type" "ImageObject"
+        "url" $articleImageURL
+        "caption" .Title
+      }}
+
+      {{ $articleSchema = merge
+        $articleSchema
+        (dict "image" $imageObject)
+      }}
+
+    {{ end }}
+
+    <script type="application/ld+json">
+      {{ $articleSchema | jsonify | safeHTML }}
+    </script>
+
+    {{ with .Params.faq }}
+
+      {{ if gt (len .) 0 }}
+
+        {{ $faqEntities := slice }}
+
+        {{ range . }}
+
+          {{ $faqEntities = $faqEntities | append
+            (dict
+              "@type" "Question"
+              "name" .question
+              "acceptedAnswer" (dict
+                "@type" "Answer"
+                "text" .answer
+              )
+            )
+          }}
+
+        {{ end }}
+
+        {{ $faqSchema := dict
+          "@context" "https://schema.org"
+          "@type" "FAQPage"
+          "mainEntity" $faqEntities
+        }}
+
+        <script type="application/ld+json">
+          {{ $faqSchema | jsonify | safeHTML }}
+        </script>
+
+      {{ end }}
+
+    {{ end }}
+
   {{ end }}
 
   <script
@@ -103,25 +259,81 @@
     async
     src="//gc.zgo.at/count.js"
   ></script>
+
 </head>
 
+
 <body>
+
+  <div
+    class="reading-progress"
+    id="reading-progress"
+    aria-hidden="true"
+  ></div>
 
   {{ partial "header.html" . }}
 
   <main class="site-main">
+
     <div class="site-container">
+
       {{ block "main" . }}{{ end }}
+
     </div>
+
   </main>
 
   <footer class="site-footer">
+
     <div class="site-container">
-      <p>
-        &copy; {{ now.Year }} {{ .Site.Title }}
-      </p>
+
+      <div class="footer-inner">
+
+        <p>
+          &copy; {{ now.Year }} {{ .Site.Title }}
+        </p>
+
+        <nav
+          class="footer-nav"
+          aria-label="Footer navigation"
+        >
+
+          <a href="{{ site.Home.RelPermalink }}">
+            Home
+          </a>
+
+          <a href="{{ printf "%scategories/" site.Home.RelPermalink }}">
+            Categories
+          </a>
+
+          <a href="{{ printf "%sabout/" site.Home.RelPermalink }}">
+            About
+          </a>
+
+          <a href="{{ printf "%scontact/" site.Home.RelPermalink }}">
+            Contact
+          </a>
+
+        </nav>
+
+      </div>
+
     </div>
+
   </footer>
 
+  <button
+    type="button"
+    class="back-to-top"
+    id="back-to-top"
+    aria-label="Back to top"
+    hidden
+  >
+    ↑
+  </button>
+
+  <script src="{{ "js/site.js" | relURL }}" defer></script>
+
 </body>
+
 </html>
