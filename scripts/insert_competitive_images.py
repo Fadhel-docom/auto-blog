@@ -38,6 +38,11 @@ def load_article() -> Dict[str, Any]:
             f"article.json contains invalid JSON: {exc}"
         ) from exc
 
+    except OSError as exc:
+        raise RuntimeError(
+            f"Could not read article.json: {exc}"
+        ) from exc
+
     if not isinstance(article, dict):
         raise ValueError(
             "article.json must contain a JSON object."
@@ -79,7 +84,9 @@ def load_post(post_path: Path) -> str:
         )
 
     try:
-        content = post_path.read_text(encoding="utf-8")
+        content = post_path.read_text(
+            encoding="utf-8"
+        )
 
     except OSError as exc:
         raise RuntimeError(
@@ -94,11 +101,20 @@ def load_post(post_path: Path) -> str:
     return content
 
 
-def save_post(post_path: Path, content: str) -> None:
-    temp_path = post_path.with_suffix(".md.competitive.tmp")
+def save_post(
+    post_path: Path,
+    content: str,
+) -> None:
+    temp_path = post_path.with_suffix(
+        ".md.competitive.tmp"
+    )
 
     try:
-        temp_path.write_text(content, encoding="utf-8")
+        temp_path.write_text(
+            content,
+            encoding="utf-8",
+        )
+
         temp_path.replace(post_path)
 
     except OSError as exc:
@@ -113,7 +129,9 @@ def save_post(post_path: Path, content: str) -> None:
         ) from exc
 
 
-def extract_image_paths(content: str) -> List[str]:
+def extract_image_paths(
+    content: str,
+) -> List[str]:
     matches = re.findall(
         r"!\[[^\]]*\]\(([^)\s]+)",
         content,
@@ -126,7 +144,9 @@ def extract_image_paths(content: str) -> List[str]:
     ]
 
 
-def normalize_image_path(file_value: str) -> str:
+def normalize_image_path(
+    file_value: str,
+) -> str:
     file_value = str(file_value).strip()
 
     if file_value.startswith("/images/"):
@@ -144,7 +164,203 @@ def normalize_image_path(file_value: str) -> str:
     return filename.strip()
 
 
-def build_markdown_image(image: Dict[str, Any]) -> str:
+def extract_frontmatter(
+    content: str,
+) -> str:
+    """
+    Extract Hugo frontmatter from either:
+
+    TOML:
+        +++
+        image = "/images/example.jpg"
+        +++
+
+    YAML:
+        ---
+        image: "/images/example.jpg"
+        ---
+
+    TOML is checked first, then YAML.
+    """
+    if not isinstance(content, str):
+        return ""
+
+    toml_match = re.match(
+        r"^\+\+\+\s*\n(.*?)\n\+\+\+\s*(?:\n|$)",
+        content,
+        flags=re.DOTALL,
+    )
+
+    if toml_match:
+        return toml_match.group(1)
+
+    yaml_match = re.match(
+        r"^---\s*\n(.*?)\n---\s*(?:\n|$)",
+        content,
+        flags=re.DOTALL,
+    )
+
+    if yaml_match:
+        return yaml_match.group(1)
+
+    return ""
+
+
+def detect_frontmatter_format(
+    content: str,
+) -> Optional[str]:
+    """
+    Return:
+
+        'toml'
+        'yaml'
+        None
+
+    based on the opening frontmatter delimiter.
+    """
+    if not isinstance(content, str):
+        return None
+
+    if re.match(
+        r"^\+\+\+\s*\n",
+        content,
+    ):
+        return "toml"
+
+    if re.match(
+        r"^---\s*\n",
+        content,
+    ):
+        return "yaml"
+
+    return None
+
+
+def extract_hero_image_path(
+    content: str,
+) -> Optional[str]:
+    """
+    Extract the singular Hugo frontmatter image field
+    from either TOML or YAML frontmatter.
+
+    Supported TOML examples:
+
+        image = "/images/example.jpg"
+        image = '/images/example.jpg'
+
+    Supported YAML examples:
+
+        image: "/images/example.jpg"
+        image: '/images/example.jpg'
+        image: /images/example.jpg
+
+    The frontmatter image is counted as one published
+    image.
+
+    The images = [...] / images: [...] metadata field is
+    intentionally NOT counted as rendered images.
+    """
+    frontmatter = extract_frontmatter(content)
+
+    if not frontmatter:
+        return None
+
+    # --------------------------------------------------
+    # TOML
+    # --------------------------------------------------
+    toml_match = re.search(
+        r'^\s*image\s*=\s*["\']((?:\\.|[^"\'])*)["\']\s*$',
+        frontmatter,
+        flags=re.MULTILINE,
+    )
+
+    if toml_match:
+        value = toml_match.group(1).strip()
+
+        if value:
+            return normalize_image_path(value)
+
+    # --------------------------------------------------
+    # YAML quoted value
+    # --------------------------------------------------
+    yaml_quoted_match = re.search(
+        r'^\s*image\s*:\s*["\']([^"\']*)["\']\s*(?:#.*)?$',
+        frontmatter,
+        flags=re.MULTILINE,
+    )
+
+    if yaml_quoted_match:
+        value = yaml_quoted_match.group(1).strip()
+
+        if value:
+            return normalize_image_path(value)
+
+    # --------------------------------------------------
+    # YAML unquoted value
+    # --------------------------------------------------
+    yaml_unquoted_match = re.search(
+        r'^\s*image\s*:\s*([^\s#]+)\s*(?:#.*)?$',
+        frontmatter,
+        flags=re.MULTILINE,
+    )
+
+    if yaml_unquoted_match:
+        value = yaml_unquoted_match.group(1).strip()
+
+        if value:
+            return normalize_image_path(value)
+
+    return None
+
+
+def get_existing_image_paths(
+    content: str,
+) -> set[str]:
+    """
+    Return all actual image filenames referenced by the
+    published post.
+
+    This includes:
+    - Markdown images in the article body.
+    - The singular Hugo frontmatter hero image.
+
+    The frontmatter images = [...] / images: [...]
+    metadata field is NOT counted as a rendered image.
+    """
+    paths = set()
+
+    for path in extract_image_paths(content):
+        normalized = normalize_image_path(path)
+
+        if normalized:
+            paths.add(normalized)
+
+    hero_path = extract_hero_image_path(content)
+
+    if hero_path:
+        paths.add(hero_path)
+
+    return paths
+
+
+def count_article_images(
+    content: str,
+) -> int:
+    """
+    Count actual published images.
+
+    A hero image in frontmatter counts as one image.
+    If that same image is also referenced in Markdown,
+    it is counted only once.
+    """
+    return len(
+        get_existing_image_paths(content)
+    )
+
+
+def build_markdown_image(
+    image: Dict[str, Any],
+) -> str:
     file_value = image.get("file", "")
 
     if not isinstance(file_value, str):
@@ -152,7 +368,9 @@ def build_markdown_image(image: Dict[str, Any]) -> str:
             "Image file must be a string."
         )
 
-    filename = normalize_image_path(file_value)
+    filename = normalize_image_path(
+        file_value
+    )
 
     if not filename:
         raise ValueError(
@@ -169,7 +387,10 @@ def build_markdown_image(image: Dict[str, Any]) -> str:
     if not alt_text:
         alt_text = "Home organization image"
 
-    return f"![{alt_text}](../../images/{filename})"
+    return (
+        f"![{alt_text}]"
+        f"(../../images/{filename})"
+    )
 
 
 def validate_images(
@@ -190,22 +411,35 @@ def validate_images(
 
     validated = []
 
-    for index, image in enumerate(images, start=1):
+    for index, image in enumerate(
+        images,
+        start=1,
+    ):
         if not isinstance(image, dict):
             raise ValueError(
                 f"Image #{index} must be an object."
             )
 
-        file_value = image.get("file", "")
+        file_value = image.get(
+            "file",
+            "",
+        )
 
-        if not isinstance(file_value, str) or not file_value.strip():
+        if (
+            not isinstance(file_value, str)
+            or not file_value.strip()
+        ):
             raise ValueError(
                 f"Image #{index} has no valid file."
             )
 
-        filename = normalize_image_path(file_value)
+        filename = normalize_image_path(
+            file_value
+        )
 
-        expected_filename = f"{article['slug']}-{index}.jpg"
+        expected_filename = (
+            f"{article['slug']}-{index}.jpg"
+        )
 
         if filename != expected_filename:
             raise ValueError(
@@ -214,7 +448,9 @@ def validate_images(
                 f"got '{filename}'."
             )
 
-        image_path = IMAGE_DIR / expected_filename
+        image_path = (
+            IMAGE_DIR / expected_filename
+        )
 
         if not image_path.exists():
             raise FileNotFoundError(
@@ -224,14 +460,22 @@ def validate_images(
 
         if image_path.stat().st_size <= 0:
             raise ValueError(
-                f"Image #{index} is empty: {image_path}"
+                f"Image #{index} is empty: "
+                f"{image_path}"
             )
 
-        query = image.get("query", "")
+        query = image.get(
+            "query",
+            "",
+        )
 
-        if not isinstance(query, str) or not query.strip():
+        if (
+            not isinstance(query, str)
+            or not query.strip()
+        ):
             raise ValueError(
-                f"Image #{index} has no query/alt text."
+                f"Image #{index} has no "
+                "query/alt text."
             )
 
         validated.append(image)
@@ -239,7 +483,9 @@ def validate_images(
     return validated
 
 
-def is_h2_line(line: str) -> bool:
+def is_h2_line(
+    line: str,
+) -> bool:
     return bool(
         re.match(
             r"^\s*##[ \t]+[^#].*$",
@@ -256,15 +502,23 @@ def insert_additional_images(
     Insert images 6-10 after H2 #6-10.
 
     Duplicate detection is based on the actual image
-    paths already present in the article content.
-    """
+    paths already present in the article, including the
+    Hugo frontmatter hero image.
 
+    The returned 'inserted' value represents only images
+    that were physically added to the article.
+
+    If an image is already present, it is skipped and is
+    NOT counted as newly inserted.
+    """
     if len(images) != REQUIRED_IMAGES:
         raise ValueError(
             f"Expected {REQUIRED_IMAGES} images."
         )
 
-    additional_images = images[EXISTING_PUBLISHED_IMAGES:]
+    additional_images = images[
+        EXISTING_PUBLISHED_IMAGES:
+    ]
 
     if len(additional_images) != ADDITIONAL_IMAGES:
         raise ValueError(
@@ -272,10 +526,8 @@ def insert_additional_images(
             "additional images."
         )
 
-    # Build duplicate set from ACTUAL POST CONTENT
-    existing_image_paths = set(
-        normalize_image_path(path)
-        for path in extract_image_paths(content)
+    existing_image_paths = (
+        get_existing_image_paths(content)
     )
 
     lines = content.splitlines()
@@ -287,6 +539,7 @@ def insert_additional_images(
 
     h2_count = 0
     inserted = 0
+    processed_targets = 0
     inserted_h2_numbers: List[int] = []
 
     for line in lines:
@@ -324,7 +577,10 @@ def insert_additional_images(
 
         h2_count += 1
 
-        if h2_count < EXISTING_PUBLISHED_IMAGES + 1:
+        if (
+            h2_count
+            < EXISTING_PUBLISHED_IMAGES + 1
+        ):
             continue
 
         target_index = (
@@ -339,29 +595,41 @@ def insert_additional_images(
         ):
             continue
 
+        processed_targets += 1
+
         image = additional_images[target_index]
 
-        filename = normalize_image_path(image.get("file", ""))
+        image_number = (
+            EXISTING_PUBLISHED_IMAGES
+            + target_index
+            + 1
+        )
+
+        filename = normalize_image_path(
+            image.get("file", "")
+        )
 
         if not filename:
             raise ValueError(
-                f"Image "
-                f"{EXISTING_PUBLISHED_IMAGES + target_index + 1} "
+                f"Image {image_number} "
                 "has an empty filename."
             )
 
-        image_markdown = build_markdown_image(image)
+        image_markdown = build_markdown_image(
+            image
+        )
 
         if filename in existing_image_paths:
             print(
-                f"Image "
-                f"{EXISTING_PUBLISHED_IMAGES + target_index + 1} "
-                "already exists in the post; "
+                f"Image {image_number} already "
+                "exists in the post; "
                 "skipping duplicate."
             )
 
-            inserted += 1
-            inserted_h2_numbers.append(h2_count)
+            inserted_h2_numbers.append(
+                h2_count
+            )
+
             continue
 
         output.append("")
@@ -369,14 +637,26 @@ def insert_additional_images(
         output.append("")
 
         inserted += 1
-        inserted_h2_numbers.append(h2_count)
 
-        existing_image_paths.add(filename)
+        inserted_h2_numbers.append(
+            h2_count
+        )
+
+        existing_image_paths.add(
+            filename
+        )
 
         print(
-            f"Inserted image "
-            f"{EXISTING_PUBLISHED_IMAGES + target_index + 1} "
+            f"Inserted image {image_number} "
             f"after H2 #{h2_count}."
+        )
+
+    if processed_targets < ADDITIONAL_IMAGES:
+        print(
+            "WARNING: only "
+            f"{processed_targets}/"
+            f"{ADDITIONAL_IMAGES} target "
+            "image positions were found."
         )
 
     return (
@@ -386,39 +666,192 @@ def insert_additional_images(
     )
 
 
-def count_article_images(content: str) -> int:
-    return len(extract_image_paths(content))
+def verify_image_delta(
+    before_count: int,
+    after_count: int,
+    inserted_count: int,
+) -> None:
+    """
+    Verify the fundamental insertion invariant:
+
+        Images before + newly inserted = Images after
+
+    'inserted_count' must represent only images that were
+    physically added, not images skipped as duplicates.
+    """
+    expected_after = (
+        before_count + inserted_count
+    )
+
+    if after_count != expected_after:
+        raise RuntimeError(
+            "Image count verification failed: "
+            f"before={before_count}, "
+            f"newly_inserted={inserted_count}, "
+            f"expected_after={expected_after}, "
+            f"actual_after={after_count}."
+        )
 
 
-def verify_all_images_present(
+def verify_additional_images_present(
     content: str,
     images: List[Dict[str, Any]],
 ) -> None:
-    image_markdown_values = []
+    """
+    Verify that the five competitive images 6-10 are
+    present somewhere in the published post.
 
-    for image in images:
-        image_markdown_values.append(
-            build_markdown_image(image)
+    Images 1-5 are intentionally NOT required to appear
+    as Markdown images here because:
+    - Image 1 may be the Hugo frontmatter hero image.
+    - Images 1-5 may have been handled by publish.py.
+    - This script is responsible for adding images 6-10.
+    """
+    if len(images) != REQUIRED_IMAGES:
+        raise ValueError(
+            f"Expected {REQUIRED_IMAGES} images."
         )
+
+    existing_image_paths = (
+        get_existing_image_paths(content)
+    )
 
     missing = []
 
-    for index, image_markdown in enumerate(
-        image_markdown_values,
-        start=1,
+    for index in range(
+        EXISTING_PUBLISHED_IMAGES + 1,
+        REQUIRED_IMAGES + 1,
     ):
-        if image_markdown not in content:
+        image = images[index - 1]
+
+        filename = normalize_image_path(
+            image.get("file", "")
+        )
+
+        if not filename:
+            missing.append(index)
+            continue
+
+        if filename not in existing_image_paths:
             missing.append(index)
 
     if missing:
         missing_text = ", ".join(
-            str(index) for index in missing
+            str(index)
+            for index in missing
         )
 
         raise RuntimeError(
             "The published post is missing "
-            f"image(s): {missing_text}"
+            f"additional image(s): {missing_text}"
         )
+
+
+def verify_expected_base_images(
+    content: str,
+    images: List[Dict[str, Any]],
+) -> None:
+    """
+    Verify the existing base-image state.
+
+    The expected base images are images 1-5.
+
+    Image 1 is allowed to exist in frontmatter as the
+    hero image.
+
+    Images 2-5 are normally Markdown images created by
+    publish.py.
+
+    This check does not require a particular representation;
+    it only verifies that the expected image files are
+    actually referenced by the published post.
+    """
+    if len(images) != REQUIRED_IMAGES:
+        raise ValueError(
+            f"Expected {REQUIRED_IMAGES} images."
+        )
+
+    existing_image_paths = (
+        get_existing_image_paths(content)
+    )
+
+    missing = []
+
+    for index in range(
+        1,
+        EXISTING_PUBLISHED_IMAGES + 1,
+    ):
+        image = images[index - 1]
+
+        filename = normalize_image_path(
+            image.get("file", "")
+        )
+
+        if not filename:
+            missing.append(index)
+            continue
+
+        if filename not in existing_image_paths:
+            missing.append(index)
+
+    if missing:
+        missing_text = ", ".join(
+            str(index)
+            for index in missing
+        )
+
+        raise RuntimeError(
+            "The published post is missing "
+            f"base image(s): {missing_text}"
+        )
+
+
+def print_image_state(
+    label: str,
+    content: str,
+) -> None:
+    image_paths = sorted(
+        get_existing_image_paths(content)
+    )
+
+    print("")
+    print(f"{label} image state:")
+    print(f"  Total images: {len(image_paths)}")
+
+    hero_path = extract_hero_image_path(
+        content
+    )
+
+    if hero_path:
+        print(
+            f"  Hero image: {hero_path}"
+        )
+    else:
+        print("  Hero image: none")
+
+    markdown_paths = [
+        normalize_image_path(path)
+        for path in extract_image_paths(content)
+        if normalize_image_path(path)
+    ]
+
+    print(
+        f"  Markdown image references: "
+        f"{len(markdown_paths)}"
+    )
+
+    if image_paths:
+        print("  Image files:")
+
+        for index, path in enumerate(
+            image_paths,
+            start=1,
+        ):
+            print(
+                f"    {index}. {path}"
+            )
+
+    print("")
 
 
 def main() -> int:
@@ -429,21 +862,73 @@ def main() -> int:
     try:
         article = load_article()
 
-        slug = get_required_string(article, "slug")
+        slug = get_required_string(
+            article,
+            "slug",
+        )
 
-        images = validate_images(article)
+        images = validate_images(
+            article
+        )
 
         post_path = get_post_path(slug)
 
-        content = load_post(post_path)
+        content = load_post(
+            post_path
+        )
 
-        before_count = count_article_images(content)
+        frontmatter_format = (
+            detect_frontmatter_format(
+                content
+            )
+        )
 
-        print(f"Post: {post_path}")
-        print(f"Images before insertion: {before_count}")
+        if frontmatter_format:
+            print(
+                "Frontmatter format detected: "
+                f"{frontmatter_format.upper()}"
+            )
+        else:
+            print(
+                "Frontmatter format detected: "
+                "none"
+            )
+
+        before_count = count_article_images(
+            content
+        )
+
+        print(
+            f"Post: {post_path}"
+        )
+
+        print(
+            f"Images before insertion: "
+            f"{before_count}"
+        )
+
         print(
             f"Images available in article.json: "
             f"{len(images)}"
+        )
+
+        hero_path = extract_hero_image_path(
+            content
+        )
+
+        if hero_path:
+            print(
+                f"Hero image in frontmatter: "
+                f"{hero_path}"
+            )
+        else:
+            print(
+                "Hero image in frontmatter: none"
+            )
+
+        print_image_state(
+            "Before",
+            content,
         )
 
         if before_count >= REQUIRED_IMAGES:
@@ -452,103 +937,222 @@ def main() -> int:
                 f"{REQUIRED_IMAGES} images."
             )
 
-            verify_all_images_present(content, images)
+            verify_expected_base_images(
+                content,
+                images,
+            )
+
+            verify_additional_images_present(
+                content,
+                images,
+            )
 
             print(
-                "All 10 competitive images are "
-                "already present."
+                "All required image files are already "
+                "present; no insertion is required."
             )
 
             print("=" * 70)
-            print("INSERT COMPETITIVE IMAGES COMPLETE")
+            print(
+                "INSERT COMPETITIVE IMAGES COMPLETE"
+            )
             print("=" * 70)
 
             return 0
 
         if before_count < MARKDOWN_EXISTING_IMAGES:
             raise RuntimeError(
-                "The published post contains fewer than "
-                f"{MARKDOWN_EXISTING_IMAGES} markdown images. "
-                "The original publisher did not create "
-                "the expected base article."
+                "The published post contains fewer "
+                "than "
+                f"{MARKDOWN_EXISTING_IMAGES} "
+                "total images. "
+                "The original publisher did not "
+                "create the expected base article."
             )
 
-        new_content, inserted, h2_numbers = (
-            insert_additional_images(content, images)
+        print(
+            "Existing image count is below the "
+            f"{REQUIRED_IMAGES}-image target."
         )
 
-        if inserted != ADDITIONAL_IMAGES:
-            raise RuntimeError(
-                "Could not insert all five additional "
-                f"images. Inserted {inserted}/"
-                f"{ADDITIONAL_IMAGES}. "
-                f"Detected H2 count: "
-                f"{len(h2_numbers)} target positions."
-            )
+        print(
+            "Adding competitive images 6-10 "
+            "after H2 #6 through H2 #10."
+        )
 
-        after_count = count_article_images(new_content)
+        new_content, inserted, h2_numbers = (
+            insert_additional_images(
+                content,
+                images,
+            )
+        )
+
+        after_count = count_article_images(
+            new_content
+        )
 
         print("")
-        print(f"Images after insertion: {after_count}")
+        print(
+            f"Images before insertion: "
+            f"{before_count}"
+        )
 
-        if after_count < REQUIRED_IMAGES - 1:
-            raise RuntimeError(
-                "The post still contains fewer than "
-                f"{REQUIRED_IMAGES - 1} markdown images "
-                "after insertion."
-            )
+        print(
+            f"Newly inserted images: "
+            f"{inserted}"
+        )
 
-        verify_all_images_present(new_content, images)
+        print(
+            f"Images after insertion: "
+            f"{after_count}"
+        )
 
-        save_post(post_path, new_content)
+        verify_image_delta(
+            before_count,
+            after_count,
+            inserted,
+        )
 
-        final_content = load_post(post_path)
-        final_count = count_article_images(final_content)
+        verify_expected_base_images(
+            new_content,
+            images,
+        )
 
-        if final_count < REQUIRED_IMAGES - 1:
-            raise RuntimeError(
-                "Final verification failed: "
-                f"only {final_count} markdown images found."
-            )
+        verify_additional_images_present(
+            new_content,
+            images,
+        )
 
-        verify_all_images_present(final_content, images)
+        print(
+            "Pre-save verification passed."
+        )
+
+        save_post(
+            post_path,
+            new_content,
+        )
+
+        final_content = load_post(
+            post_path
+        )
+
+        final_count = count_article_images(
+            final_content
+        )
+
+        print("")
+        print(
+            f"Final images after save: "
+            f"{final_count}"
+        )
+
+        verify_image_delta(
+            before_count,
+            final_count,
+            inserted,
+        )
+
+        verify_expected_base_images(
+            final_content,
+            images,
+        )
+
+        verify_additional_images_present(
+            final_content,
+            images,
+        )
+
+        print_image_state(
+            "Final",
+            final_content,
+        )
 
         print("")
         print("Insertion summary:")
+
         print(
-            f"  Markdown base images: "
-            f"{MARKDOWN_EXISTING_IMAGES}"
+            f"  Images before: "
+            f"{before_count}"
         )
-        print(f"  Additional images: {inserted}")
-        print(f"  Final markdown images: {final_count}")
+
         print(
-            "  Inserted after H2 numbers: "
-            + ", ".join(str(number) for number in h2_numbers)
+            f"  Newly inserted: "
+            f"{inserted}"
+        )
+
+        print(
+            f"  Images after: "
+            f"{after_count}"
+        )
+
+        print(
+            "  Expected equation: "
+            f"{before_count} + "
+            f"{inserted} = "
+            f"{before_count + inserted}"
+        )
+
+        print(
+            "  Inserted/processed H2 numbers: "
+            + ", ".join(
+                str(number)
+                for number in h2_numbers
+            )
         )
 
         print("")
+
         print(
-            "All 10 competitive images are present "
-            "in the published Markdown article."
+            "Competitive images 6-10 are present "
+            "in the published article."
+        )
+
+        print(
+            "Image verification passed."
         )
 
         print("=" * 70)
-        print("INSERT COMPETITIVE IMAGES COMPLETE")
+        print(
+            "INSERT COMPETITIVE IMAGES COMPLETE"
+        )
         print("=" * 70)
 
         return 0
 
     except KeyboardInterrupt:
-        print("", file=sys.stderr)
-        print("Operation cancelled.", file=sys.stderr)
+        print(
+            "",
+            file=sys.stderr,
+        )
+
+        print(
+            "Operation cancelled.",
+            file=sys.stderr,
+        )
+
         return 130
 
     except Exception as exc:
-        print("", file=sys.stderr)
-        print("INSERT COMPETITIVE IMAGES FAILED", file=sys.stderr)
-        print(f"ERROR: {exc}", file=sys.stderr)
+        print(
+            "",
+            file=sys.stderr,
+        )
+
+        print(
+            "INSERT COMPETITIVE IMAGES FAILED",
+            file=sys.stderr,
+        )
+
+        print(
+            f"ERROR: {exc}",
+            file=sys.stderr,
+        )
+
         return 1
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(
+        main()
+    )
+```1
