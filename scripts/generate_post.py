@@ -18,6 +18,7 @@ KEYWORDS_PATH = ROOT_DIR / "keywords.csv"
 ARTICLE_PATH = ROOT_DIR / "article.json"
 
 GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
+FALLBACK_GROQ_MODEL = "llama-3.1-8b-instant"
 MAX_RETRIES = 5
 MIN_WORDS = 1000
 MAX_WORDS = 2500
@@ -290,6 +291,165 @@ def get_exception_status_code(exc):
     return code
 
 
+def call_groq_with_fallback(
+    api_key,
+    messages,
+    temperature,
+    max_tokens,
+    response_format,
+    primary_model=GROQ_MODEL,
+    fallback_model=FALLBACK_GROQ_MODEL,
+):
+    client = Groq(api_key=api_key)
+
+    retryable_codes = {
+        429,
+        500,
+        502,
+        503,
+        504,
+    }
+
+    last_exception = None
+
+    # ---------------------------------------------------------
+    # PRIMARY MODEL
+    # ---------------------------------------------------------
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            print(
+                f"Calling Groq with model={primary_model} "
+                f"(attempt {attempt}/{MAX_RETRIES})..."
+            )
+
+            response = client.chat.completions.create(
+                model=primary_model,
+                messages=messages,
+                temperature=temperature,
+                max_tokens=max_tokens,
+                response_format=response_format,
+            )
+
+            print(
+                f"Groq succeeded with model={primary_model}."
+            )
+
+            return response
+
+        except Exception as exc:
+            last_exception = exc
+            status_code = get_exception_status_code(exc)
+
+            print(
+                f"Groq request failed "
+                f"(model={primary_model}, "
+                f"attempt={attempt}/{MAX_RETRIES}, "
+                f"status={status_code}): {exc}",
+                file=sys.stderr,
+            )
+
+            # 429 is special: do NOT wait and do NOT retry
+            # the primary model. Switch immediately.
+            if status_code == 429:
+                print(
+                    "Primary model failed with 429."
+                )
+                print(
+                    "Switching to fallback model: "
+                    f"{fallback_model}"
+                )
+                break
+
+            # Non-retryable errors such as 400, 401, 403.
+            if (
+                status_code is not None
+                and status_code not in retryable_codes
+            ):
+                raise
+
+            if attempt >= MAX_RETRIES:
+                raise RuntimeError(
+                    "Primary Groq model failed after "
+                    f"{MAX_RETRIES} attempts: "
+                    f"{last_exception}"
+                ) from last_exception
+
+            delay = min(
+                2 ** (attempt - 1),
+                30,
+            )
+
+            print(
+                f"Retrying primary model in {delay}s..."
+            )
+            time.sleep(delay)
+
+    # ---------------------------------------------------------
+    # FALLBACK MODEL
+    # ---------------------------------------------------------
+    fallback_exception = None
+
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            print(
+                f"Generating with fallback "
+                f"(attempt {attempt}/{MAX_RETRIES})..."
+            )
+
+            response = client.chat.completions.create(
+                model=fallback_model,
+                messages=messages,
+                temperature=temperature,
+                max_tokens=max_tokens,
+                response_format=response_format,
+            )
+
+            print(
+                "Groq fallback succeeded with "
+                f"model={fallback_model}."
+            )
+
+            return response
+
+        except Exception as exc:
+            fallback_exception = exc
+            status_code = get_exception_status_code(exc)
+
+            print(
+                f"Groq fallback failed "
+                f"(model={fallback_model}, "
+                f"attempt={attempt}/{MAX_RETRIES}, "
+                f"status={status_code}): {exc}",
+                file=sys.stderr,
+            )
+
+            if (
+                status_code is not None
+                and status_code not in retryable_codes
+            ):
+                raise
+
+            if attempt >= MAX_RETRIES:
+                break
+
+            delay = min(
+                2 ** (attempt - 1),
+                30,
+            )
+
+            print(
+                f"Retrying fallback in {delay}s..."
+            )
+            time.sleep(delay)
+
+    raise RuntimeError(
+        "Groq fallback failed after "
+        f"{MAX_RETRIES} attempts using "
+        f"model '{fallback_model}': "
+        f"{fallback_exception}"
+    ) from fallback_exception
+
+
 def extract_json_from_response(response_text):
     if not isinstance(response_text, str):
         raise ValueError("Response is not a string.")
@@ -332,8 +492,6 @@ def extract_json_from_response(response_text):
 
 
 def pick_specific_angle(api_key, keyword):
-    client = Groq(api_key=api_key)
-
     system_prompt = """
 You are an expert editorial strategist for an English-language website about Home Organization & Small-Space Living.
 
@@ -384,136 +542,116 @@ Generate exactly five narrow article angles for this keyword, then select the mo
 Return only the required JSON object.
 """.strip()
 
-    last_exception = None
-
-    for attempt in range(1, MAX_RETRIES + 1):
-        try:
-            print(
-                f"Selecting article angle with Groq "
-                f"(attempt {attempt}/{MAX_RETRIES})..."
-            )
-
-            response = client.chat.completions.create(
-                model=GROQ_MODEL,
-                messages=[
-                    {
-                        "role": "system",
-                        "content": system_prompt,
-                    },
-                    {
-                        "role": "user",
-                        "content": user_prompt,
-                    },
-                ],
-                temperature=0.6,
-                max_tokens=2000,
-                response_format={
-                    "type": "json_object"
-                },
-            )
-
-            if not response.choices:
-                raise ValueError("No choices returned.")
-
-            content = getattr(
-                response.choices[0].message,
-                "content",
-                None,
-            )
-
-            if not content:
-                raise ValueError("Empty message.")
-
-            result = extract_json_from_response(content)
-
-            if not isinstance(result, dict):
-                raise ValueError(
-                    "Angle response is not a JSON object."
-                )
-
-            raw_angles = result.get("angles")
-
-            if not isinstance(raw_angles, list):
-                raise ValueError(
-                    "'angles' must be a list."
-                )
-
-            angles = []
-
-            for angle in raw_angles:
-                if not isinstance(angle, str):
-                    continue
-
-                angle = angle.strip()
-
-                if angle and angle not in angles:
-                    angles.append(angle)
-
-            if len(angles) != 5:
-                raise ValueError(
-                    "Groq must return exactly 5 unique angles."
-                )
-
-            selected_angle = result.get("selected_angle")
-
-            if not isinstance(selected_angle, str):
-                raise ValueError(
-                    "'selected_angle' must be a string."
-                )
-
-            selected_angle = selected_angle.strip()
-
-            if not selected_angle:
-                raise ValueError(
-                    "'selected_angle' is empty."
-                )
-
-            if selected_angle not in angles:
-                selected_angle = angles[0]
-
-            print("Generated 5 article angles:")
-
-            for index, angle in enumerate(
-                angles,
-                start=1,
-            ):
-                marker = (
-                    " <-- SELECTED"
-                    if angle == selected_angle
-                    else ""
-                )
-                print(f"{index}. {angle}{marker}")
-
-            return selected_angle
-
-        except Exception as exc:
-            last_exception = exc
-            status_code = get_exception_status_code(exc)
-
-            retryable = {429, 500, 502, 503, 504}
-
-            if (
-                status_code is not None
-                and status_code not in retryable
-            ):
-                break
-
-            if attempt >= MAX_RETRIES:
-                break
-
-            delay = min(2 ** (attempt - 1), 30)
-
-            print(
-                f"Groq angle selection failed: {exc}",
-                file=sys.stderr,
-            )
-            print(f"Retry in {delay}s...")
-            time.sleep(delay)
-
-    raise RuntimeError(
-        "Groq angle selection failed after "
-        f"{MAX_RETRIES} attempts: {last_exception}"
+    print(
+        "Selecting article angle with Groq..."
     )
+
+    response = call_groq_with_fallback(
+        api_key=api_key,
+        messages=[
+            {
+                "role": "system",
+                "content": system_prompt,
+            },
+            {
+                "role": "user",
+                "content": user_prompt,
+            },
+        ],
+        temperature=0.6,
+        max_tokens=2000,
+        response_format={
+            "type": "json_object"
+        },
+    )
+
+    if not response.choices:
+        raise ValueError(
+            "No choices returned."
+        )
+
+    content = getattr(
+        response.choices[0].message,
+        "content",
+        None,
+    )
+
+    if not content:
+        raise ValueError(
+            "Empty message."
+        )
+
+    result = extract_json_from_response(
+        content
+    )
+
+    if not isinstance(result, dict):
+        raise ValueError(
+            "Angle response is not a JSON object."
+        )
+
+    raw_angles = result.get("angles")
+
+    if not isinstance(raw_angles, list):
+        raise ValueError(
+            "'angles' must be a list."
+        )
+
+    angles = []
+
+    for angle in raw_angles:
+        if not isinstance(angle, str):
+            continue
+
+        angle = angle.strip()
+
+        if angle and angle not in angles:
+            angles.append(angle)
+
+    if len(angles) != 5:
+        raise ValueError(
+            "Groq must return exactly 5 unique angles."
+        )
+
+    selected_angle = result.get(
+        "selected_angle"
+    )
+
+    if not isinstance(
+        selected_angle,
+        str,
+    ):
+        raise ValueError(
+            "'selected_angle' must be a string."
+        )
+
+    selected_angle = selected_angle.strip()
+
+    if not selected_angle:
+        raise ValueError(
+            "'selected_angle' is empty."
+        )
+
+    if selected_angle not in angles:
+        selected_angle = angles[0]
+
+    print("Generated 5 article angles:")
+
+    for index, angle in enumerate(
+        angles,
+        start=1,
+    ):
+        marker = (
+            " <-- SELECTED"
+            if angle == selected_angle
+            else ""
+        )
+
+        print(
+            f"{index}. {angle}{marker}"
+        )
+
+    return selected_angle
 
 
 def generate_with_groq(
@@ -521,8 +659,6 @@ def generate_with_groq(
     keyword,
     specific_angle,
 ):
-    client = Groq(api_key=api_key)
-
     system_prompt = """
 You are an expert long-form SEO content writer and practical home-organization editor for an English-language website about Home Organization & Small-Space Living.
 
@@ -622,81 +758,51 @@ Do not generate image queries yet.
 Return only the required JSON object.
 """.strip()
 
-    last_exception = None
-
-    for attempt in range(1, MAX_RETRIES + 1):
-        try:
-            print(
-                f"Calling Groq for article "
-                f"(attempt {attempt}/{MAX_RETRIES})..."
-            )
-
-            response = client.chat.completions.create(
-                model=GROQ_MODEL,
-                messages=[
-                    {
-                        "role": "system",
-                        "content": system_prompt,
-                    },
-                    {
-                        "role": "user",
-                        "content": user_prompt,
-                    },
-                ],
-                temperature=0.7,
-                max_tokens=12000,
-                response_format={
-                    "type": "json_object"
-                },
-            )
-
-            if not response.choices:
-                raise ValueError("No choices returned.")
-
-            content = getattr(
-                response.choices[0].message,
-                "content",
-                None,
-            )
-
-            if not content:
-                raise ValueError("Empty message.")
-
-            generated = extract_json_from_response(content)
-
-            if not isinstance(generated, dict):
-                raise ValueError("Not a JSON object.")
-
-            return generated
-
-        except Exception as exc:
-            last_exception = exc
-            status_code = get_exception_status_code(exc)
-
-            retryable = {429, 500, 502, 503, 504}
-
-            if (
-                status_code is not None
-                and status_code not in retryable
-            ):
-                break
-
-            if attempt >= MAX_RETRIES:
-                break
-
-            delay = min(2 ** (attempt - 1), 30)
-
-            print(
-                f"Groq article generation failed: {exc}",
-                file=sys.stderr,
-            )
-            print(f"Retry in {delay}s...")
-            time.sleep(delay)
-
-    raise RuntimeError(
-        f"Groq article generation failed after "
-        f"{MAX_RETRIES} attempts: {last_exception}"
+    response = call_groq_with_fallback(
+        api_key=api_key,
+        messages=[
+            {
+                "role": "system",
+                "content": system_prompt,
+            },
+            {
+                "role": "user",
+                "content": user_prompt,
+            },
+        ],
+        temperature=0.7,
+        max_tokens=12000,
+        response_format={
+            "type": "json_object"
+        },
     )
+
+    if not response.choices:
+        raise ValueError(
+            "No choices returned."
+        )
+
+    content = getattr(
+        response.choices[0].message,
+        "content",
+        None,
+    )
+
+    if not content:
+        raise ValueError(
+            "Empty message."
+        )
+
+    generated = extract_json_from_response(
+        content
+    )
+
+    if not isinstance(generated, dict):
+        raise ValueError(
+            "Not a JSON object."
+        )
+
+    return generated
 
 
 def extract_h2_sections(content):
@@ -899,126 +1005,94 @@ Make all five queries visually diverse while keeping each section query faithful
 Return exactly 5 unique Pexels queries in the required JSON.
 """.strip()
 
-    client = Groq(api_key=api_key)
-    last_exception = None
-
-    for attempt in range(1, MAX_RETRIES + 1):
-        try:
-            print(
-                f"Generating section-aware image queries "
-                f"with Groq "
-                f"(attempt {attempt}/{MAX_RETRIES})..."
-            )
-
-            response = client.chat.completions.create(
-                model=GROQ_MODEL,
-                messages=[
-                    {
-                        "role": "system",
-                        "content": system_prompt,
-                    },
-                    {
-                        "role": "user",
-                        "content": user_prompt,
-                    },
-                ],
-                temperature=0.4,
-                max_tokens=1200,
-                response_format={
-                    "type": "json_object"
-                },
-            )
-
-            if not response.choices:
-                raise ValueError("No choices returned.")
-
-            content = getattr(
-                response.choices[0].message,
-                "content",
-                None,
-            )
-
-            if not content:
-                raise ValueError(
-                    "Empty image-query response."
-                )
-
-            result = extract_json_from_response(content)
-
-            if not isinstance(result, dict):
-                raise ValueError(
-                    "Image-query response is not a JSON object."
-                )
-
-            raw_queries = result.get("image_queries")
-
-            if not isinstance(raw_queries, list):
-                raise ValueError(
-                    "'image_queries' must be a list."
-                )
-
-            image_queries = []
-
-            for query in raw_queries:
-                if not isinstance(query, str):
-                    continue
-
-                query = query.strip()
-
-                if query and query not in image_queries:
-                    image_queries.append(query)
-
-            if len(image_queries) != 5:
-                raise ValueError(
-                    "Groq must return exactly 5 unique "
-                    "image queries."
-                )
-
-            print(
-                "Generated 5 section-aware image queries:"
-            )
-
-            for index, query in enumerate(
-                image_queries,
-                start=1,
-            ):
-                if index == 1:
-                    label = "HERO"
-                else:
-                    label = f"H2 #{index - 1}"
-
-                print(f"  {index}. [{label}] {query}")
-
-            return image_queries
-
-        except Exception as exc:
-            last_exception = exc
-            status_code = get_exception_status_code(exc)
-
-            retryable = {429, 500, 502, 503, 504}
-
-            if (
-                status_code is not None
-                and status_code not in retryable
-            ):
-                break
-
-            if attempt >= MAX_RETRIES:
-                break
-
-            delay = min(2 ** (attempt - 1), 30)
-
-            print(
-                f"Groq image-query generation failed: {exc}",
-                file=sys.stderr,
-            )
-            print(f"Retry in {delay}s...")
-            time.sleep(delay)
-
-    raise RuntimeError(
-        "Groq image-query generation failed after "
-        f"{MAX_RETRIES} attempts: {last_exception}"
+    response = call_groq_with_fallback(
+        api_key=api_key,
+        messages=[
+            {
+                "role": "system",
+                "content": system_prompt,
+            },
+            {
+                "role": "user",
+                "content": user_prompt,
+            },
+        ],
+        temperature=0.4,
+        max_tokens=1200,
+        response_format={
+            "type": "json_object"
+        },
     )
+
+    if not response.choices:
+        raise ValueError(
+            "No choices returned."
+        )
+
+    content = getattr(
+        response.choices[0].message,
+        "content",
+        None,
+    )
+
+    if not content:
+        raise ValueError(
+            "Empty image-query response."
+        )
+
+    result = extract_json_from_response(
+        content
+    )
+
+    if not isinstance(result, dict):
+        raise ValueError(
+            "Image-query response is not a JSON object."
+        )
+
+    raw_queries = result.get(
+        "image_queries"
+    )
+
+    if not isinstance(raw_queries, list):
+        raise ValueError(
+            "'image_queries' must be a list."
+        )
+
+    image_queries = []
+
+    for query in raw_queries:
+        if not isinstance(query, str):
+            continue
+
+        query = query.strip()
+
+        if query and query not in image_queries:
+            image_queries.append(query)
+
+    if len(image_queries) != 5:
+        raise ValueError(
+            "Groq must return exactly 5 unique "
+            "image queries."
+        )
+
+    print(
+        "Generated 5 section-aware image queries:"
+    )
+
+    for index, query in enumerate(
+        image_queries,
+        start=1,
+    ):
+        if index == 1:
+            label = "HERO"
+        else:
+            label = f"H2 #{index - 1}"
+
+        print(
+            f"  {index}. [{label}] {query}"
+        )
+
+    return image_queries
 
 
 def require_string(data, field_name):
