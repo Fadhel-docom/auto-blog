@@ -3,30 +3,59 @@
 import json
 import math
 import os
+import re
 import shutil
 import sys
 import time
 
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Set
 
 import requests
 
+
+# ============================================================================
+# Configuration
+# ============================================================================
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 ARTICLE_PATH = ROOT_DIR / "article.json"
 IMAGE_DIR = ROOT_DIR / "static" / "images"
 
 PEXELS_SEARCH_URL = "https://api.pexels.com/v1/search"
+GROQ_CHAT_URL = (
+    "https://api.groq.com/openai/v1/chat/completions"
+)
 
 IMAGE_COUNT = 10
 MAX_PAGES = 3
-PER_PAGE = 10
+PER_PAGE = 15
 
+MIN_WIDTH = 1200
+MIN_ASPECT_RATIO = 1.3
+MAX_ASPECT_RATIO = 1.9
 TARGET_ASPECT_RATIO = 1.5
 
 MAX_RETRIES = 3
 REQUEST_TIMEOUT = 30
+
+MAX_ALLOWED_FAILED_IMAGES = 3
+
+JPEG_MAGIC_BYTES = b"\xff\xd8\xff"
+MIN_IMAGE_SIZE_BYTES = 1024
+
+ENABLE_GROQ_VALIDATION = (
+    os.getenv(
+        "ENABLE_GROQ_IMAGE_VALIDATION",
+        "false",
+    ).lower()
+    == "true"
+)
+
+GROQ_MODEL = os.getenv(
+    "GROQ_MODEL",
+    "openai/gpt-oss-120b",
+).strip()
 
 RETRYABLE_STATUS_CODES = {
     429,
@@ -36,16 +65,118 @@ RETRYABLE_STATUS_CODES = {
     504,
 }
 
-MAX_ALLOWED_FAILED_IMAGES = 3
 
-JPEG_MAGIC_BYTES = b"\xff\xd8\xff"
-MIN_IMAGE_SIZE_BYTES = 1024
+# ============================================================================
+# Semantic dictionaries
+# ============================================================================
+
+HOME_ORGANIZATION_WHITELIST = {
+    "home", "house", "interior", "organization",
+    "organizing", "organized", "storage", "organizer",
+    "organizers", "declutter", "decluttering",
+    "tidy", "tidying", "kitchen", "kitchens",
+    "bathroom", "bathrooms", "bedroom", "bedrooms",
+    "closet", "closets", "wardrobe", "pantry",
+    "pantries", "laundry", "laundries", "entryway",
+    "entry", "hall", "hallway", "mudroom", "garage",
+    "cabinet", "cabinets", "cupboard", "cupboards",
+    "shelf", "shelves", "shelving", "drawer",
+    "drawers", "rack", "racks", "bin", "bins",
+    "basket", "baskets", "box", "boxes",
+    "container", "containers", "organizer",
+    "organizers", "hook", "hooks", "rod", "rods",
+    "rail", "rails", "sink", "counter",
+    "countertop", "vanity", "linen", "towel",
+    "towels", "spice", "spices", "jar", "jars",
+    "desk", "office", "workspace", "study",
+    "nursery", "playroom", "dresser", "nightstand",
+    "bookshelf", "bookcase", "smallspace", "small",
+    "apartment", "room", "space",
+}
+
+STRICT_BLACKLIST = {
+    "car", "cars", "automobile", "automobiles",
+    "vehicle", "vehicles", "engine", "engines",
+    "motor", "motors", "mechanic", "mechanics",
+    "motorcycle", "motorcycles", "bike", "bikes",
+    "bicycle", "bicycles", "truck", "trucks",
+    "racecar", "racing", "food", "meal", "meals",
+    "restaurant", "restaurants", "pizza", "burger",
+    "burgers", "recipe", "recipes", "cooking",
+    "cook", "dish", "dishes", "fruit",
+    "vegetable", "vegetables", "portrait",
+    "portraits", "face", "faces", "selfie",
+    "selfies", "person", "people", "man", "men",
+    "woman", "women", "boy", "boys", "girl",
+    "girls", "baby", "babies", "model", "models",
+    "animal", "animals", "cat", "cats", "dog",
+    "dogs", "horse", "horses", "bird", "birds",
+    "wildlife", "flower", "flowers", "plant",
+    "plants", "garden", "gardening", "forest",
+    "mountain", "mountains", "beach", "ocean",
+    "sea", "lake", "river", "landscape", "nature",
+    "sunset", "sunrise", "wedding", "party",
+    "concert", "fashion", "sports", "football",
+    "basketball", "soccer", "tennis", "hospital",
+    "doctor", "medicine", "medical", "laboratory",
+}
+
+WEAK_WHITELIST_WORDS = {
+    "home", "house", "room", "space", "small",
+    "interior", "organization", "organized",
+}
+
+
+# ============================================================================
+# Generic helpers
+# ============================================================================
+
+def normalize_text(value: Any) -> str:
+    if not isinstance(value, str):
+        return ""
+
+    value = value.lower()
+    value = value.replace("-", " ")
+    value = value.replace("_", " ")
+
+    return " ".join(value.split())
+
+
+def tokenize(value: Any) -> Set[str]:
+    text = normalize_text(value)
+
+    return set(
+        re.findall(
+            r"[a-z0-9]+",
+            text,
+        )
+    )
+
+
+def normalize_query(query: Any) -> str:
+    if not isinstance(query, str):
+        return ""
+
+    return " ".join(query.strip().split())
+
+
+def get_required_env(name: str) -> str:
+    value = os.getenv(name)
+
+    if not value:
+        raise RuntimeError(
+            f"Required environment variable "
+            f"'{name}' is not set."
+        )
+
+    return value.strip()
 
 
 def load_article() -> Dict[str, Any]:
     if not ARTICLE_PATH.exists():
         raise FileNotFoundError(
-            f"article.json was not found at: {ARTICLE_PATH}"
+            f"article.json was not found at: "
+            f"{ARTICLE_PATH}"
         )
 
     try:
@@ -56,7 +187,8 @@ def load_article() -> Dict[str, Any]:
             article = json.load(file)
     except json.JSONDecodeError as exc:
         raise ValueError(
-            f"article.json contains invalid JSON: {exc}"
+            f"article.json contains invalid JSON: "
+            f"{exc}"
         ) from exc
     except OSError as exc:
         raise RuntimeError(
@@ -90,31 +222,19 @@ def save_article(article: Dict[str, Any]) -> None:
         temp_path.replace(ARTICLE_PATH)
 
     except OSError as exc:
-        if temp_path.exists():
-            try:
-                temp_path.unlink()
-            except OSError:
-                pass
+        temp_path.unlink(missing_ok=True)
 
         raise RuntimeError(
             f"Could not save article.json: {exc}"
         ) from exc
 
 
-def get_required_env(name: str) -> str:
-    value = os.getenv(name)
-
-    if not value:
-        raise RuntimeError(
-            f"Required environment variable "
-            f"'{name}' is not set."
-        )
-
-    return value.strip()
-
-
 def get_status_code(exception: Exception) -> Optional[int]:
-    response = getattr(exception, "response", None)
+    response = getattr(
+        exception,
+        "response",
+        None,
+    )
 
     if response is not None:
         return getattr(
@@ -146,6 +266,10 @@ def retry_delay(
     return min(2 ** (attempt - 1), 8)
 
 
+# ============================================================================
+# Pexels search
+# ============================================================================
+
 def search_pexels(
     api_key: str,
     query: str,
@@ -164,13 +288,11 @@ def search_pexels(
         "page": page,
     }
 
-    session = requests.Session()
-
-    last_exception = None
+    last_exception: Optional[Exception] = None
 
     for attempt in range(1, MAX_RETRIES + 1):
         try:
-            response = session.get(
+            response = requests.get(
                 PEXELS_SEARCH_URL,
                 headers=headers,
                 params=params,
@@ -178,29 +300,22 @@ def search_pexels(
             )
 
             if response.status_code == 403:
-                raise requests.HTTPError(
-                    "Pexels returned HTTP 403.",
-                    response=response,
+                raise RuntimeError(
+                    "Pexels returned HTTP 403."
                 )
 
-            if (
-                response.status_code
-                in RETRYABLE_STATUS_CODES
-            ):
+            if response.status_code in RETRYABLE_STATUS_CODES:
                 if attempt < MAX_RETRIES:
                     delay = retry_delay(
                         response,
                         attempt,
                     )
-
                     print(
-                        f"Pexels HTTP "
+                        f"  Pexels HTTP "
                         f"{response.status_code}; "
-                        f"retry {attempt}/"
-                        f"{MAX_RETRIES} "
+                        f"retry {attempt}/{MAX_RETRIES} "
                         f"after {delay}s..."
                     )
-
                     time.sleep(delay)
                     continue
 
@@ -209,8 +324,8 @@ def search_pexels(
             data = response.json()
 
             if not isinstance(data, dict):
-                raise ValueError(
-                    "Pexels response is not an object."
+                raise RuntimeError(
+                    "Pexels response is not a JSON object."
                 )
 
             return data
@@ -220,34 +335,34 @@ def search_pexels(
 
             if attempt < MAX_RETRIES:
                 delay = min(2 ** (attempt - 1), 8)
+                print(
+                    f"  Pexels timeout; "
+                    f"retry {attempt}/{MAX_RETRIES} "
+                    f"after {delay}s..."
+                )
                 time.sleep(delay)
                 continue
-
-            raise RuntimeError(
-                "Pexels request timed out."
-            ) from exc
 
         except requests.ConnectionError as exc:
             last_exception = exc
 
             if attempt < MAX_RETRIES:
                 delay = min(2 ** (attempt - 1), 8)
+                print(
+                    f"  Pexels connection error; "
+                    f"retry {attempt}/{MAX_RETRIES} "
+                    f"after {delay}s..."
+                )
                 time.sleep(delay)
                 continue
 
-            raise RuntimeError(
-                "Pexels connection failed."
-            ) from exc
-
         except requests.RequestException as exc:
             last_exception = exc
-
             status = get_status_code(exc)
 
             if status == 403:
                 raise RuntimeError(
-                    "Pexels API request failed "
-                    "with HTTP 403."
+                    "Pexels API request failed with HTTP 403."
                 ) from exc
 
             if (
@@ -255,47 +370,65 @@ def search_pexels(
                 and attempt < MAX_RETRIES
             ):
                 delay = min(2 ** (attempt - 1), 8)
+                print(
+                    f"  Pexels request error; "
+                    f"retry {attempt}/{MAX_RETRIES} "
+                    f"after {delay}s..."
+                )
                 time.sleep(delay)
                 continue
 
-            raise RuntimeError(
-                f"Pexels API request failed: {exc}"
-            ) from exc
+        except ValueError as exc:
+            last_exception = exc
+            break
+
+        except RuntimeError:
+            raise
 
     raise RuntimeError(
-        f"Pexels API failed: {last_exception}"
+        f"Pexels API failed after "
+        f"{MAX_RETRIES} attempts: "
+        f"{last_exception}"
     )
 
 
-def normalize_query(query: Any) -> str:
-    if not isinstance(query, str):
-        return ""
-
-    return " ".join(query.strip().split())
-
+# ============================================================================
+# Query fallback
+# ============================================================================
 
 def build_fallback_queries(query: str) -> List[str]:
-    words = query.split()
+    words = [
+        word
+        for word in normalize_query(query).split()
+    ]
 
-    fallbacks = []
+    result: List[str] = []
+
+    if len(words) >= 6:
+        result.append(" ".join(words[:6]))
 
     if len(words) >= 4:
-        fallbacks.append(" ".join(words[:6]))
+        result.append(" ".join(words[:4]))
 
     if len(words) >= 2:
-        fallbacks.append(" ".join(words[:4]))
+        result.append(" ".join(words[:2]))
 
-    fallbacks.extend(
+    result.extend(
         [
-            "organized home storage interior",
-            "small space storage organized room",
+            "kitchen storage organization",
+            "bathroom storage organization",
+            "closet storage organization",
+            "pantry storage organization",
+            "cabinet storage organization",
+            "drawer storage organization",
+            "organized home storage",
         ]
     )
 
-    result = []
     seen = set()
+    unique = []
 
-    for item in fallbacks:
+    for item in result:
         item = normalize_query(item)
 
         if not item:
@@ -307,10 +440,14 @@ def build_fallback_queries(query: str) -> List[str]:
             continue
 
         seen.add(key)
-        result.append(item)
+        unique.append(item)
 
-    return result
+    return unique
 
+
+# ============================================================================
+# Candidate extraction
+# ============================================================================
 
 def candidate_from_photo(
     photo: Dict[str, Any],
@@ -320,9 +457,10 @@ def candidate_from_photo(
     if not isinstance(src, dict):
         return None
 
+    # large is intentionally preferred over large2x.
     image_url = (
-        src.get("large2x")
-        or src.get("large")
+        src.get("large")
+        or src.get("large2x")
         or src.get("original")
     )
 
@@ -334,40 +472,178 @@ def candidate_from_photo(
     if photo_id is None:
         return None
 
-    width = int(photo.get("width") or 0)
-    height = int(photo.get("height") or 0)
+    try:
+        width = int(photo.get("width") or 0)
+        height = int(photo.get("height") or 0)
+    except (TypeError, ValueError):
+        return None
 
     if width <= 0 or height <= 0:
         return None
 
     aspect_ratio = width / height
 
+    alt = str(photo.get("alt") or "").strip()
+    pexels_url = str(photo.get("url") or "").strip()
     photographer = str(
-        photo.get("photographer", "") or ""
+        photo.get("photographer") or ""
     ).strip()
+    photographer_url = str(
+        photo.get("photographer_url") or ""
+    ).strip()
+
+    searchable_text = " ".join(
+        [
+            alt,
+            pexels_url,
+            str(src.get("large") or ""),
+            str(src.get("large2x") or ""),
+            str(src.get("original") or ""),
+        ]
+    )
 
     return {
         "id": photo_id,
         "image_url": image_url,
         "photographer": photographer,
-        "photographer_url": str(
-            photo.get("photographer_url", "") or ""
-        ).strip(),
-        "pexels_url": str(
-            photo.get("url", "") or ""
-        ).strip(),
+        "photographer_url": photographer_url,
+        "pexels_url": pexels_url,
+        "alt": alt,
+        "searchable_text": normalize_text(searchable_text),
         "width": width,
         "height": height,
         "aspect_ratio": aspect_ratio,
     }
 
 
+# ============================================================================
+# Semantic validation
+# ============================================================================
+
+def is_query_match(
+    query: str,
+    candidate: Dict[str, Any],
+) -> bool:
+    query_tokens = tokenize(query)
+
+    meaningful_query_tokens = {
+        token
+        for token in query_tokens
+        if token not in WEAK_WHITELIST_WORDS
+        and len(token) >= 3
+    }
+
+    if not meaningful_query_tokens:
+        return False
+
+    candidate_tokens = tokenize(
+        candidate.get("searchable_text", "")
+    )
+
+    direct_matches = (
+        meaningful_query_tokens & candidate_tokens
+    )
+
+    return bool(direct_matches)
+
+
+def is_dimension_ok(
+    candidate: Dict[str, Any],
+) -> bool:
+    width = int(candidate.get("width", 0) or 0)
+    height = int(candidate.get("height", 0) or 0)
+    ratio = float(
+        candidate.get("aspect_ratio", 0) or 0
+    )
+
+    if width < MIN_WIDTH:
+        return False
+
+    if height <= 0:
+        return False
+
+    if ratio < MIN_ASPECT_RATIO:
+        return False
+
+    if ratio > MAX_ASPECT_RATIO:
+        return False
+
+    # Explicit split/composite protection.
+    if ratio > 2.0:
+        return False
+
+    return True
+
+
+def blacklist_matches(
+    query: str,
+    candidate: Dict[str, Any],
+) -> Set[str]:
+    query_tokens = tokenize(query)
+
+    candidate_tokens = tokenize(
+        candidate.get("searchable_text", "")
+    )
+
+    allowed_blacklist_terms = (
+        query_tokens & STRICT_BLACKLIST
+    )
+
+    return {
+        word
+        for word in (candidate_tokens & STRICT_BLACKLIST)
+        if word not in allowed_blacklist_terms
+    }
+
+
+def whitelist_matches(
+    candidate: Dict[str, Any],
+) -> Set[str]:
+    candidate_tokens = tokenize(
+        candidate.get("searchable_text", "")
+    )
+
+    return (
+        candidate_tokens
+        & HOME_ORGANIZATION_WHITELIST
+    )
+
+
+def is_content_acceptable(
+    candidate: Dict[str, Any],
+    query: str,
+) -> bool:
+    blacklist = blacklist_matches(query, candidate)
+
+    if blacklist:
+        return False
+
+    if is_query_match(query, candidate):
+        return True
+
+    matches = whitelist_matches(candidate)
+
+    meaningful_matches = {
+        word
+        for word in matches
+        if word not in WEAK_WHITELIST_WORDS
+    }
+
+    return len(meaningful_matches) >= 2
+
+
+# ============================================================================
+# Candidate collection
+# ============================================================================
+
 def collect_candidates(
     api_key: str,
     query: str,
 ) -> List[Dict[str, Any]]:
-    candidates = []
-    seen_ids = set()
+    print(f'  Searching original query: "{query}"')
+
+    candidates: List[Dict[str, Any]] = []
+    seen_ids: Set[Any] = set()
 
     queries = [query]
 
@@ -375,128 +651,222 @@ def collect_candidates(
         if fallback.lower() != query.lower():
             queries.append(fallback)
 
-    for query_index, current_query in enumerate(queries):
-        try:
-            for page in range(1, MAX_PAGES + 1):
-                print(
-                    f"  Searching page {page}/"
-                    f"{MAX_PAGES}: "
-                    f'"{current_query}"'
-                )
+    dimension_count = 0
+    semantic_count = 0
+    blacklist_count = 0
 
+    for query_index, current_query in enumerate(queries):
+        if query_index > 0:
+            print(
+                f'  Trying fallback query: '
+                f'"{current_query}"'
+            )
+
+        for page in range(1, MAX_PAGES + 1):
+            print(
+                f"  Searching page "
+                f"{page}/{MAX_PAGES}..."
+            )
+
+            try:
                 data = search_pexels(
                     api_key,
                     current_query,
                     page,
                 )
+            except RuntimeError as exc:
+                print(
+                    f"  WARNING: search failed: "
+                    f"{exc}",
+                    file=sys.stderr,
+                )
+                break
 
-                photos = data.get("photos", [])
+            photos = data.get("photos", [])
 
-                if not isinstance(photos, list):
-                    continue
+            if not isinstance(photos, list):
+                continue
 
-                for photo in photos:
-                    if not isinstance(photo, dict):
-                        continue
-
-                    candidate = candidate_from_photo(
-                        photo
-                    )
-
-                    if candidate is None:
-                        continue
-
-                    photo_id = candidate["id"]
-
-                    if photo_id in seen_ids:
-                        continue
-
-                    seen_ids.add(photo_id)
-                    candidate["matched_query"] = (
-                        current_query
-                    )
-                    candidate["page"] = page
-                    candidates.append(candidate)
-
-        except RuntimeError as exc:
             print(
-                f"  Search failed for "
-                f'"{current_query}": {exc}',
-                file=sys.stderr,
+                f"  Candidates found: {len(photos)}"
             )
 
-            if query_index == 0:
-                print(
-                    "  Trying fallback queries..."
+            for photo in photos:
+                if not isinstance(photo, dict):
+                    continue
+
+                candidate = candidate_from_photo(photo)
+
+                if candidate is None:
+                    continue
+
+                photo_id = candidate["id"]
+
+                if photo_id in seen_ids:
+                    continue
+
+                seen_ids.add(photo_id)
+
+                if not is_dimension_ok(candidate):
+                    print(
+                        f"  Rejected candidate "
+                        f"#{photo_id}: "
+                        f"aspect/dimensions "
+                        f"{candidate['width']}x"
+                        f"{candidate['height']} "
+                        f"ratio="
+                        f"{candidate['aspect_ratio']:.2f}"
+                    )
+                    continue
+
+                dimension_count += 1
+
+                blacklist = blacklist_matches(
+                    current_query,
+                    candidate,
                 )
 
-            continue
+                if blacklist:
+                    word = sorted(blacklist)[0]
+                    blacklist_count += 1
+                    print(
+                        f"  Rejected candidate "
+                        f"#{photo_id}: "
+                        f'blacklist "{word}"'
+                    )
+                    continue
 
-        if candidates:
-            break
+                query_match = is_query_match(
+                    current_query,
+                    candidate,
+                )
+                home_matches = whitelist_matches(
+                    candidate
+                )
+                meaningful_home_matches = {
+                    word
+                    for word in home_matches
+                    if word not in WEAK_WHITELIST_WORDS
+                }
+
+                if not (
+                    query_match
+                    or len(meaningful_home_matches) >= 2
+                ):
+                    print(
+                        f"  Rejected candidate "
+                        f"#{photo_id}: "
+                        "no semantic match"
+                    )
+                    continue
+
+                semantic_count += 1
+
+                candidate["matched_query"] = current_query
+                candidate["page"] = page
+                candidate["query_match"] = query_match
+                candidate["whitelist_matches"] = sorted(
+                    meaningful_home_matches
+                )
+                candidate["blacklist_matches"] = []
+
+                candidates.append(candidate)
+
+            if (
+                query_index == 0
+                and len(candidates) >= 5
+            ):
+                break
+
+    print(
+        f"  After dimension filter: "
+        f"{dimension_count}"
+    )
+    print(
+        f"  After semantic filter: "
+        f"{semantic_count}"
+    )
+    print(
+        f"  After blacklist filter: "
+        f"{semantic_count}"
+    )
+    print(
+        f"  Final candidates: "
+        f"{len(candidates)}"
+    )
 
     return candidates
 
 
-def candidate_score(
+# ============================================================================
+# Candidate scoring
+# ============================================================================
+
+def score_candidate(
     candidate: Dict[str, Any],
-    used_photographers: set,
+    used_photographers: Set[str],
 ) -> float:
-    aspect_ratio = float(
+    ratio = float(
         candidate.get("aspect_ratio", 0) or 0
     )
-
     width = int(candidate.get("width", 0) or 0)
     height = int(candidate.get("height", 0) or 0)
-
     area = max(1, width * height)
 
-    aspect_difference = abs(
-        aspect_ratio - TARGET_ASPECT_RATIO
+    ratio_difference = abs(
+        ratio - TARGET_ASPECT_RATIO
     )
-
     aspect_score = max(
         0.0,
-        40.0 - (aspect_difference * 35.0),
+        35.0 - (ratio_difference * 35.0),
+    )
+
+    resolution_score = min(
+        20.0,
+        math.log10(area) * 2.0,
+    )
+
+    query_score = (
+        25.0
+        if candidate.get("query_match")
+        else 12.0
     )
 
     photographer = str(
         candidate.get("photographer", "")
     ).strip()
-
     photographer_score = (
-        25.0
+        15.0
         if photographer
         and photographer not in used_photographers
         else 0.0
     )
 
-    area_score = min(
-        20.0,
-        math.log10(area) * 2.2,
-    )
-
     page = int(candidate.get("page", 3) or 3)
-
-    page_score = max(0.0, 4.0 - page)
+    page_score = max(0.0, 5.0 - page)
 
     return (
         aspect_score
+        + resolution_score
+        + query_score
         + photographer_score
-        + area_score
         + page_score
     )
 
 
 def choose_best_candidate(
     candidates: List[Dict[str, Any]],
-    used_photo_ids: set,
-    used_photographers: set,
+    used_ids: Set[Any],
+    used_photographers: Set[str],
 ) -> Optional[Dict[str, Any]]:
-    filtered = []
+    filtered: List[Dict[str, Any]] = []
 
     for candidate in candidates:
-        if candidate["id"] in used_photo_ids:
+        if candidate["id"] in used_ids:
+            print(
+                f"  Rejected candidate "
+                f"#{candidate['id']}: already used"
+            )
             continue
 
         filtered.append(candidate)
@@ -514,14 +884,17 @@ def choose_best_candidate(
     if unique_photographers:
         filtered = unique_photographers
 
+    for candidate in filtered:
+        candidate["validation_score"] = score_candidate(
+            candidate,
+            used_photographers,
+        )
+
     filtered.sort(
-        key=lambda candidate: (
-            candidate_score(
-                candidate,
-                used_photographers,
-            ),
-            candidate.get("width", 0)
-            * candidate.get("height", 0),
+        key=lambda item: (
+            item["validation_score"],
+            item.get("width", 0)
+            * item.get("height", 0),
         ),
         reverse=True,
     )
@@ -529,18 +902,224 @@ def choose_best_candidate(
     return filtered[0]
 
 
-def validate_jpeg_file(image_path: Path) -> None:
-    if not image_path.exists():
+# ============================================================================
+# H2 extraction
+# ============================================================================
+
+def extract_h2_headings(
+    article: Dict[str, Any],
+) -> List[str]:
+    possible_content = []
+
+    for key in (
+        "content",
+        "content_markdown",
+        "body",
+        "markdown",
+    ):
+        value = article.get(key)
+
+        if isinstance(value, str):
+            possible_content.append(value)
+
+    headings: List[str] = []
+
+    for content in possible_content:
+        in_code_block = False
+
+        for line in content.splitlines():
+            stripped = line.strip()
+
+            if stripped.startswith("```"):
+                in_code_block = not in_code_block
+                continue
+
+            if in_code_block:
+                continue
+
+            match = re.match(
+                r"^##\s+(.+?)\s*$",
+                line,
+            )
+
+            if match:
+                heading = match.group(1).strip()
+
+                if heading:
+                    headings.append(heading)
+
+        if headings:
+            break
+
+    return headings
+
+
+def get_h2_for_image(
+    article: Dict[str, Any],
+    index: int,
+) -> str:
+    headings = extract_h2_headings(article)
+
+    if not headings:
+        return ""
+
+    if index == 1:
+        return str(
+            article.get(
+                "title",
+                headings[0],
+            )
+            or headings[0]
+        ).strip()
+
+    heading_index = index - 2
+
+    if 0 <= heading_index < len(headings):
+        return headings[heading_index]
+
+    return headings[-1]
+
+
+# ============================================================================
+# Optional Groq validation
+# ============================================================================
+
+def groq_validate_image(
+    api_key: str,
+    candidate: Dict[str, Any],
+    h2_heading: str,
+) -> bool:
+    if not ENABLE_GROQ_VALIDATION:
+        return True
+
+    if not api_key:
+        print(
+            "  Groq validation requested but "
+            "GROQ_API_KEY is missing."
+        )
+        return False
+
+    alt = str(
+        candidate.get("alt", "")
+    ).strip()
+
+    matched_query = str(
+        candidate.get("matched_query", "")
+    ).strip()
+
+    prompt = f"""You are a strict image relevance validator.
+
+Article section: {h2_heading}
+Search query: {matched_query}
+Pexels image description: {alt}
+
+Determine whether this image is clearly relevant to the article section and suitable for a Home Organization article.
+
+Reject:
+- cars
+- engines
+- vehicles
+- unrelated people
+- portraits
+- food
+- animals
+- nature
+- unrelated interiors
+- generic unrelated stock photos
+
+Accept only when the image clearly matches the subject.
+
+Reply with exactly: YES or NO
+""".strip()
+
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+    }
+
+    payload = {
+        "model": GROQ_MODEL,
+        "temperature": 0,
+        "max_tokens": 5,
+        "messages": [
+            {
+                "role": "system",
+                "content": (
+                    "Return exactly YES or NO. "
+                    "Be conservative."
+                ),
+            },
+            {
+                "role": "user",
+                "content": prompt,
+            },
+        ],
+    }
+
+    try:
+        response = requests.post(
+            GROQ_CHAT_URL,
+            headers=headers,
+            json=payload,
+            timeout=REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+
+        data = response.json()
+        choices = data.get("choices", [])
+
+        if not choices:
+            print(
+                "  Groq validation: NO "
+                "(no response)"
+            )
+            return False
+
+        content = str(
+            choices[0]
+            .get("message", {})
+            .get("content", "")
+        ).strip().upper()
+
+        if content == "YES":
+            print(
+                f'  Groq validation: YES '
+                f'(matches "{h2_heading}")'
+            )
+            return True
+
+        print(
+            f"  Groq validation: NO "
+            f"(response={content!r})"
+        )
+        return False
+
+    except Exception as exc:
+        print(
+            f"  Groq validation ERROR: {exc}"
+        )
+        return False
+
+
+# ============================================================================
+# JPEG validation
+# ============================================================================
+
+def validate_jpeg_file(path: Path) -> None:
+    if not path.exists():
         raise RuntimeError(
             "Image file was not created."
         )
 
-    if image_path.stat().st_size <= MIN_IMAGE_SIZE_BYTES:
+    size = path.stat().st_size
+
+    if size <= MIN_IMAGE_SIZE_BYTES:
         raise RuntimeError(
-            "Image file is too small."
+            f"Image file is too small: "
+            f"{size} bytes."
         )
 
-    with image_path.open("rb") as file:
+    with path.open("rb") as file:
         magic = file.read(3)
 
     if magic != JPEG_MAGIC_BYTES:
@@ -550,7 +1129,7 @@ def validate_jpeg_file(image_path: Path) -> None:
 
 
 def download_image(
-    image_url: str,
+    url: str,
     destination: Path,
 ) -> None:
     destination.parent.mkdir(
@@ -562,7 +1141,7 @@ def download_image(
 
     try:
         with requests.get(
-            image_url,
+            url,
             stream=True,
             timeout=REQUEST_TIMEOUT,
         ) as response:
@@ -580,12 +1159,12 @@ def download_image(
             ):
                 raise RuntimeError(
                     "Pexels returned a non-image "
-                    "response."
+                    f"Content-Type: {content_type}"
                 )
 
             with temp_path.open("wb") as file:
                 for chunk in response.iter_content(
-                    chunk_size=1024 * 64
+                    chunk_size=64 * 1024
                 ):
                     if chunk:
                         file.write(chunk)
@@ -598,6 +1177,10 @@ def download_image(
         temp_path.unlink(missing_ok=True)
         raise
 
+
+# ============================================================================
+# Reuse fallback
+# ============================================================================
 
 def copy_reused_image(
     source: Path,
@@ -631,7 +1214,8 @@ def create_reused_image(
     return {
         "index": index,
         "query": (
-            "reuse:" + str(source_image["query"])
+            "reuse:"
+            + str(source_image.get("query", ""))
         ),
         "file": f"/images/{destination.name}",
         "file_path": str(
@@ -652,12 +1236,30 @@ def create_reused_image(
         "image_id": source_image.get("image_id"),
         "width": source_image.get("width"),
         "height": source_image.get("height"),
+        "aspect_ratio": source_image.get(
+            "aspect_ratio"
+        ),
         "reused": True,
+        "validation_score": float(
+            source_image.get(
+                "validation_score", 0
+            )
+            or 0
+        ),
+        "groq_validated": bool(
+            source_image.get(
+                "groq_validated", False
+            )
+        ),
         "reuse_source_index": source_image.get(
             "index"
         ),
     }
 
+
+# ============================================================================
+# Main image pipeline
+# ============================================================================
 
 def fetch_all_images(
     api_key: str,
@@ -666,18 +1268,19 @@ def fetch_all_images(
 ) -> List[Dict[str, Any]]:
     if len(queries) != IMAGE_COUNT:
         raise ValueError(
-            f"Exactly {IMAGE_COUNT} image "
-            "queries are required."
+            f"Exactly {IMAGE_COUNT} image queries "
+            "are required."
         )
 
-    IMAGE_DIR.mkdir(
-        parents=True,
-        exist_ok=True,
-    )
+    IMAGE_DIR.mkdir(parents=True, exist_ok=True)
 
-    images = []
-    used_photo_ids = set()
-    used_photographers = set()
+    groq_api_key = os.getenv(
+        "GROQ_API_KEY", ""
+    ).strip()
+
+    images: List[Dict[str, Any]] = []
+    used_ids: Set[Any] = set()
+    used_photographers: Set[str] = set()
 
     failed_images = 0
 
@@ -688,11 +1291,13 @@ def fetch_all_images(
         print("")
         print("=" * 70)
         print(f"IMAGE {index}/{IMAGE_COUNT}")
-        print(f"Query: {query}")
-        print(
-            "Collecting candidates from "
-            "pages 1, 2 and 3 before selection..."
-        )
+        print(f'Query: "{query}"')
+
+        article = load_article()
+        h2_heading = get_h2_for_image(article, index)
+
+        if h2_heading:
+            print(f"Section: {h2_heading}")
 
         filename = f"{slug}-{index}.jpg"
         destination = IMAGE_DIR / filename
@@ -703,55 +1308,105 @@ def fetch_all_images(
                 query,
             )
 
-            print(
-                f"Candidates collected: "
-                f"{len(candidates)}"
-            )
-
             candidate = choose_best_candidate(
                 candidates,
-                used_photo_ids,
+                used_ids,
                 used_photographers,
             )
 
             if candidate is None:
                 raise RuntimeError(
-                    "No usable unique candidate."
+                    "No acceptable unique image "
+                    "candidate was found."
                 )
 
-            print("Selected candidate:")
+            candidates.sort(
+                key=lambda item: (
+                    score_candidate(
+                        item,
+                        used_photographers,
+                    ),
+                ),
+                reverse=True,
+            )
+
+            selected = None
+
+            for ranked_candidate in candidates:
+                if ranked_candidate["id"] in used_ids:
+                    continue
+
+                if ENABLE_GROQ_VALIDATION:
+                    if not groq_validate_image(
+                        groq_api_key,
+                        ranked_candidate,
+                        h2_heading,
+                    ):
+                        print(
+                            f"  Rejected candidate "
+                            f"#{ranked_candidate['id']} "
+                            "by Groq."
+                        )
+                        continue
+
+                    ranked_candidate[
+                        "groq_validated"
+                    ] = True
+                else:
+                    ranked_candidate[
+                        "groq_validated"
+                    ] = False
+
+                selected = ranked_candidate
+                break
+
+            if selected is None:
+                raise RuntimeError(
+                    "All semantically valid candidates "
+                    "were rejected by Groq."
+                )
+
+            candidate = selected
+
+            validation_score = score_candidate(
+                candidate,
+                used_photographers,
+            )
+
             print(
-                f"  Photographer: "
-                f"{candidate['photographer']}"
+                f"Selected: Photo ID "
+                f"{candidate['id']} "
+                f"(photographer "
+                f"{candidate['photographer']}, "
+                f"{candidate['aspect_ratio']:.2f} "
+                f"ratio, page "
+                f"{candidate['page']})"
             )
             print(
-                f"  Photo ID: {candidate['id']}"
+                f"Validation score: "
+                f"{validation_score:.2f}"
             )
             print(
-                f"  Page: {candidate['page']}"
+                f"Image dimensions: "
+                f"{candidate['width']}x"
+                f"{candidate['height']}"
             )
-            print(
-                f"  Aspect ratio: "
-                f"{candidate['aspect_ratio']:.3f}"
-            )
-            print(
-                f"  Area: {candidate['width']}"
-                f"x{candidate['height']}"
-            )
-            print(
-                f"  Score: "
-                f"{candidate_score(candidate, used_photographers):.2f}"
-            )
+
+            if candidate.get("alt"):
+                print(f"Alt: {candidate['alt']}")
 
             download_image(
                 candidate["image_url"],
                 destination,
             )
+            print("Downloaded successfully.")
 
             photo_id = candidate["id"]
-            photographer = candidate["photographer"]
+            photographer = candidate.get(
+                "photographer", ""
+            )
 
-            used_photo_ids.add(photo_id)
+            used_ids.add(photo_id)
 
             if photographer:
                 used_photographers.add(photographer)
@@ -767,15 +1422,15 @@ def fetch_all_images(
                         )
                     ),
                     "photographer": photographer,
-                    "photographer_url": candidate[
-                        "photographer_url"
-                    ],
-                    "pexels_url": candidate[
-                        "pexels_url"
-                    ],
-                    "image_source_url": candidate[
-                        "image_url"
-                    ],
+                    "photographer_url": candidate.get(
+                        "photographer_url", ""
+                    ),
+                    "pexels_url": candidate.get(
+                        "pexels_url", ""
+                    ),
+                    "image_source_url": candidate.get(
+                        "image_url", ""
+                    ),
                     "image_id": photo_id,
                     "width": candidate["width"],
                     "height": candidate["height"],
@@ -783,6 +1438,14 @@ def fetch_all_images(
                         "aspect_ratio"
                     ],
                     "reused": False,
+                    "validation_score": round(
+                        validation_score, 2
+                    ),
+                    "groq_validated": bool(
+                        candidate.get(
+                            "groq_validated", False
+                        )
+                    ),
                 }
             )
 
@@ -816,12 +1479,13 @@ def fetch_all_images(
                     print(
                         f"WARNING: image {index} "
                         "was reused from a "
-                        "successful image."
+                        "previous successful image."
                     )
 
                 except Exception as reuse_exc:
                     print(
-                        f"Reuse failed: {reuse_exc}",
+                        f"ERROR: reuse failed: "
+                        f"{reuse_exc}",
                         file=sys.stderr,
                     )
 
@@ -837,8 +1501,19 @@ def fetch_all_images(
             f"produced {len(images)}."
         )
 
+    if failed_images:
+        print("")
+        print(
+            f"WARNING: {failed_images} image(s) "
+            "required controlled fallback/reuse."
+        )
+
     return images
 
+
+# ============================================================================
+# Entry point
+# ============================================================================
 
 def main() -> int:
     print("=" * 70)
@@ -872,29 +1547,50 @@ def main() -> int:
                 "image queries."
             )
 
-        queries = []
+        queries: List[str] = []
+        seen_queries: Set[str] = set()
 
-        for index, query in enumerate(
+        for index, raw_query in enumerate(
             raw_queries,
             start=1,
         ):
-            query = normalize_query(query)
+            query = normalize_query(raw_query)
 
             if not query:
                 raise ValueError(
-                    f"Image query #{index} "
-                    "is empty."
+                    f"Image query #{index} is empty."
                 )
 
-            if query.lower() in {
-                item.lower() for item in queries
-            }:
+            key = query.lower()
+
+            if key in seen_queries:
                 raise ValueError(
                     f"Image query #{index} "
                     "is duplicated."
                 )
 
+            seen_queries.add(key)
             queries.append(query)
+
+        print(f"Images requested: {IMAGE_COUNT}")
+        print(f"Pages per query: {MAX_PAGES}")
+        print(f"Results per page: {PER_PAGE}")
+        print(f"Minimum width: {MIN_WIDTH}px")
+        print(
+            f"Aspect ratio: "
+            f"{MIN_ASPECT_RATIO:.2f} - "
+            f"{MAX_ASPECT_RATIO:.2f}"
+        )
+        print("Semantic whitelist: ENABLED")
+        print("Strict blacklist: ENABLED")
+        print(
+            "Groq validation: "
+            + (
+                "ENABLED"
+                if ENABLE_GROQ_VALIDATION
+                else "DISABLED"
+            )
+        )
 
         images = fetch_all_images(
             api_key,
@@ -905,47 +1601,41 @@ def main() -> int:
         article["image_queries"] = queries
         article["images"] = images
 
-        first = images[0]
+        hero = images[0]
 
-        article["image"] = first["file"]
-        article["image_file"] = first["file_path"]
-        article["photographer"] = first["photographer"]
-        article["photographer_url"] = first[
+        article["image"] = hero["file"]
+        article["image_file"] = hero["file_path"]
+        article["photographer"] = hero["photographer"]
+        article["photographer_url"] = hero[
             "photographer_url"
         ]
-        article["pexels_url"] = first["pexels_url"]
-        article["image_source_url"] = first[
+        article["pexels_url"] = hero["pexels_url"]
+        article["image_source_url"] = hero[
             "image_source_url"
         ]
-        article["image_id"] = first["image_id"]
+        article["image_id"] = hero["image_id"]
+        article["image_alt"] = hero.get("alt", "")
 
         save_article(article)
 
         print("")
-        print(
-            "Competitive image metadata saved."
-        )
+        print("=" * 70)
+        print("COMPETITIVE PEXELS FETCH COMPLETE")
         print(f"Images saved: {len(images)}")
+        print("=" * 70)
 
         for image in images:
-            reused = (
+            marker = (
                 " [REUSED]"
                 if image.get("reused")
                 else ""
             )
-
             print(
                 f"{image['index']}. "
                 f"{image['file']} "
                 f"<- {image['query']}"
-                f"{reused}"
+                f"{marker}"
             )
-
-        print("=" * 70)
-        print(
-            "COMPETITIVE PEXELS FETCH COMPLETE"
-        )
-        print("=" * 70)
 
         return 0
 
