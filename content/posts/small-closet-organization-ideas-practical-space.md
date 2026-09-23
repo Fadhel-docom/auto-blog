@@ -85,7 +85,6 @@ Add a small, 8‑inch‑deep hook rack near the door for keys, umbrellas, or gym
 
 ## Handle Awkward Corners and Narrow Areas
 
-![closet drawer storage organized interior](../../images/small-closet-organization-ideas-practical-space-7.jpg)
 
 
 When a closet’s geometry throws a curve at you, the first step is to treat the corner as a mini‑storage zone. Measure the angle: a 45‑degree corner is common in many closets, giving you a 12‑inch “tunnel” that can hold a slim shoe rack or a stack of folded sweaters. Use a shallow, adjustable shoe rack that slides into the corner; the rack’s legs should be no wider than 10 inches to avoid blocking the door.  
@@ -96,7 +95,6 @@ A common mistake is over‑stuffing these areas with bulky items, which forces t
 
 ## Build a Simple Routine That Stays Organized
 
-![closet shelf organizing organized interior](../../images/small-closet-organization-ideas-practical-space-8.jpg)
 
 
 Start by setting a weekly “closet check” on the first Sunday of every month. Allocate 15 minutes and use a small 3‑inch wide clipboard to jot down items that need replacing or reorganizing. When you pull out a jacket, decide immediately if it belongs on the hanger or should be folded and placed in the 12‑inch high drawer below the shelf. If you notice a pile of socks, use a 4‑inch wide mesh bag to keep them together and slide it into the 8‑inch deep shoe rack.
@@ -107,7 +105,6 @@ Common mistakes include over‑crowding the top shelf with seasonal gear. Instea
 
 ## Avoid Common Storage Mistakes
 
-![closet rack organization organized interior](../../images/small-closet-organization-ideas-practical-space-9.jpg)
 
 
 One of the biggest pitfalls in small closet organization is overloading the space with items that no longer fit your needs. A common mistake is keeping every pair of shoes in a 3‑inch deep shoe rack, which quickly turns the closet into a cluttered maze. Instead, rotate seasonal shoes into a 12‑inch high storage bin on the floor, freeing up the rack for everyday wear. 
@@ -118,7 +115,6 @@ People often forget to label storage boxes, leading to wasted time searching for
 
 ## Create a Maintenance Plan That Takes Minutes
 
-![closet shelves organized storage organized interior](../../images/small-closet-organization-ideas-practical-space-10.jpg)
 
 
 Keep your closet tidy with a quick, repeatable routine that fits into a 5‑minute daily window and a 15‑minute weekly touch‑up. Start each day by spending 30 seconds pulling out any items that have drifted off the shelves or hanging rods—this prevents a pile‑up that will take hours to clear later. Use a 2‑inch wide, 48‑inch‑high hanging rod for shirts and a 3‑inch wide shelf at 48 inches from the floor for shoes; this standardizes the space and makes it easier to spot misplaced items.
@@ -137,7 +133,3 @@ Common mistakes: letting laundry piles accumulate on the floor, ignoring the 12�
 - Photo 4: [American  Cleaning Institute](https://www.pexels.com/@american-cleaning-institute-2155509001) via [Pexels](https://www.pexels.com/photo/organized-kitchen-cabinet-with-wicker-baskets-33784616/)
 - Photo 5: [Max Vakhtbovych](https://www.pexels.com/@artbovich) via [Pexels](https://www.pexels.com/photo/empty-dressing-room-11701120/)
 - Photo 6: [cottonbro studio](https://www.pexels.com/@cottonbro) via [Pexels](https://www.pexels.com/photo/framed-vintage-photos-hanging-in-a-wall-6923497/)
-- Photo 7: [ASR Design Studio](https://www.pexels.com/@asr-design-studio-623558661) via [Pexels](https://www.pexels.com/photo/house-kitchen-interior-design-18109909/)
-- Photo 8: [RDNE Stock project](https://www.pexels.com/@rdne) via [Pexels](https://www.pexels.com/photo/dry-goods-in-glass-containers-on-a-shelf-8580727/)
-- Photo 9: [Ivan S](https://www.pexels.com/@ivan-s) via [Pexels](https://www.pexels.com/photo/clothes-hanger-on-black-steel-rack-7671162/)
-- Photo 10: [Get Lost Mike](https://www.pexels.com/@michaelgaultphotos) via [Pexels](https://www.pexels.com/photo/empty-white-wardrobe-10258630/)
