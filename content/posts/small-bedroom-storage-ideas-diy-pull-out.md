@@ -64,7 +64,7 @@ For a small bedroom, **side‑mount ball bearing slides** are the most space‑e
 
 You don’t need a carpenter’s workshop to craft sturdy drawers. Follow these numbered steps and you’ll have a pair of drawers ready in a weekend.
 
-[Read more about Bathroom Organization Maximizing Under Sink](../bathroom-organization-maximizing-24-inch-deep-cabi/)
+[Read more about Bathroom Organization Maximizing Under Sink](../bathroom-organization-maximizing-under-sink-storage-in-a-24-inch-deep-cabinet-with-pull-out-bins-and-tension-rods/)
 
 1. **Cut the box panels** – Use ¾" plywood for strength. Cut two side pieces (height = under‑bed clearance, length = 58"), a front and back piece (width = 58" – 2×side thickness, height = clearance), and a bottom panel (width = 58" – 2×side thickness, depth = 58").
 2. **Assemble the box** – Apply wood glue to the edges, then reinforce with 1¼" pocket hole screws. The bottom panel slides into a groove cut ½" deep along the inner edges of the sides.
@@ -88,7 +88,7 @@ Drawers are great for items you need often, but rolling bins give you the freedo
 
 Rolling bins are especially useful for seasonal items—swap them out when the weather changes without disturbing the drawer arrangement.
 
-[Read more about Bedroom Organization Step by Step](../bedroom-organization-stepbystep-48inch-clearance/)
+[Read more about Bedroom Organization Step by Step](../bedroom-organization-stepbystep-underbed-storage-makeover-for-a-studio-apartment-with-48inch-clearance/)
 
 ---
 
@@ -115,7 +115,7 @@ These small tweaks turn a purely utilitarian solution into a design feature that
 
 Seeing the concept in action helps you decide which configuration fits your lifestyle. Below are three realistic scenarios, each using the same queen‑size bed and 10×10 footprint.
 
-[Read more about Small Space Organization Transforming a](../small-space-organization-transforming-a-3ft-wide-hallway-int/)
+[Read more about Small Space Organization Transforming a](../small-space-organization-transforming-a-3ft-wide-hallway-into-functional-coat-and-shoe-storage/)
 
 ### Example 1 – Minimalist Student Dorm
 - **Clearance**: Bed raised 2" with risers, giving 4" drawer height.
