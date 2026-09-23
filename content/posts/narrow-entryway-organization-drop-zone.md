@@ -60,7 +60,7 @@ Keep frequently used items at an easy-to-reach height. Put occasional items high
 
 If you rent, choose solutions that match your lease and the manufacturer's installation requirements. Adhesive hooks, removable systems, and freestanding options can sometimes reduce permanent changes, but every product has its own weight limits and surface requirements.
 
-For more renter-friendly ideas, see our guide to [renter-friendly closet organization](../renter-friendly-closet-organization-using-adhesive/).
+For more renter-friendly ideas, see our guide to [renter-friendly closet organization](../renter-friendly-closet-organization-using-adhesive-hooks-and-tension-rods/).
 
 ![Modern hallway with wall storage and shoe rack](https://images.pexels.com/photos/7061417/pexels-photo-7061417.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
@@ -106,7 +106,7 @@ If the answer is no, consider moving it to a closet, bedroom, utility area, or a
 
 Reserve storage should support the entryway, not compete with it. Seasonal accessories, backup supplies, special-event shoes, and rarely used bags usually do not need prime entrance real estate.
 
-If your home has very little storage overall, our [small-apartment storage ideas](../small-apartment-storage-ideas-practical-space/) can help you look for capacity in other rooms before adding more to the entrance.
+If your home has very little storage overall, our [small-apartment storage ideas](../small-apartment-storage-ideas-a-practical-small-space-guide/) can help you look for capacity in other rooms before adding more to the entrance.
 
 ## Build a Reset That Takes About 15 Minutes
 
