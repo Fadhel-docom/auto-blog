@@ -3,6 +3,7 @@ name: Daily Auto Blog
 on:
   schedule:
     - cron: "0 6 * * *"
+
   workflow_dispatch:
 
 permissions:
@@ -43,12 +44,20 @@ jobs:
         run: |
           python scripts/generate_post.py
 
+      - name: Normalize article slug
+        run: |
+          python scripts/normalize_slug.py
+
       - name: Upgrade article content
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           GROQ_MODEL: "openai/gpt-oss-120b"
         run: |
           python scripts/content_upgrade.py
+
+      - name: Normalize article slug after upgrade
+        run: |
+          python scripts/normalize_slug.py
 
       - name: Create competitive image plan
         env:
