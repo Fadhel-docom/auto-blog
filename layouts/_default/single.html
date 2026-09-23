@@ -137,7 +137,16 @@
       $cleanContent
     }}
 
-    {{ .RenderString $cleanContent }}
+    {{ $renderedContent := .RenderString $cleanContent }}
+
+    {{/* Normalize article image paths for the GitHub Pages subpath. */}}
+    {{ $renderedContent = replaceRE
+      `src="(?:../)+images/`
+      `src="/auto-blog/images/`
+      $renderedContent
+    }}
+
+    {{ $renderedContent | safeHTML }}
 
   </div>
 
