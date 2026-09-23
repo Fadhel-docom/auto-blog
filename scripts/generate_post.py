@@ -2151,6 +2151,7 @@ def main():
             pipeline_result["content_markdown"]
         )
         h2_headings = pipeline_result["h2_headings"]
+        faq = pipeline_result["faq"]
 
         image_queries = generate_image_queries(
             api_key=api_key,
@@ -2211,6 +2212,7 @@ def main():
             "image_queries": image_queries,
             "tags": tags,
             "h2_headings": h2_headings,
+            "faq": faq,
             "word_count": final_word_count,
             "h2_count": final_h2_count,
             "generated_at": datetime.now(
