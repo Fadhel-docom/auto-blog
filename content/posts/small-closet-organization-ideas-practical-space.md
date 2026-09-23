@@ -3,8 +3,8 @@ title = "small closet organization ideas - A Practical Small Space Guide"
 date = "2026-09-22T23:46:03+00:00"
 lastmod = "2026-09-22T23:46:03+00:00"
 description = "Practical small closet organization ideas ideas with simple measurements, storage zones, and realistic steps for a more organized home. Designed for everyday"
-image = "/images/small-closet-organization-ideas-practical-space-1.jpg"
-images = ["/images/small-closet-organization-ideas-practical-space-1.jpg", "/images/small-closet-organization-ideas-practical-space-2.jpg", "/images/small-closet-organization-ideas-practical-space-3.jpg", "/images/small-closet-organization-ideas-practical-space-4.jpg", "/images/small-closet-organization-ideas-practical-space-5.jpg"]
+image = "https://images.pexels.com/photos/6580394/pexels-photo-6580394.jpeg?cs=srgb&dl=pexels-artbovich-6580394.jpg&fm=jpg"
+images = ["https://images.pexels.com/photos/6580394/pexels-photo-6580394.jpeg?cs=srgb&dl=pexels-artbovich-6580394.jpg&fm=jpg", "/images/small-closet-organization-ideas-practical-space-2.jpg", "/images/small-closet-organization-ideas-practical-space-3.jpg", "/images/small-closet-organization-ideas-practical-space-4.jpg", "/images/small-closet-organization-ideas-practical-space-5.jpg"]
 tags = ["small closet organization ideas", "home organization", "small spaces"]
 categories = ["Bedroom"]
 faq = []
@@ -127,7 +127,7 @@ Common mistakes: letting laundry piles accumulate on the floor, ignoring the 12â
 
 ## Image Credits
 
-- Photo 1: [Max Vakhtbovych](https://www.pexels.com/@artbovich) via [Pexels](https://www.pexels.com/photo/empty-dressing-room-11701120/)
+- Photo 1: [Max Vakhtbovych](https://www.pexels.com/@artbovich) via [Pexels](https://www.pexels.com/photo/modern-wardrobe-storage-6580394/)
 - Photo 2: [Curtis Adams](https://www.pexels.com/@curtis-adams-1694007) via [Pexels](https://www.pexels.com/photo/spacious-minimalist-walk-in-closet-design-36777580/)
 - Photo 3: [Keegan Checks](https://www.pexels.com/@keeganjchecks) via [Pexels](https://www.pexels.com/photo/brown-woven-basket-on-brown-wooden-cabinet-10117739/)
 - Photo 4: [American  Cleaning Institute](https://www.pexels.com/@american-cleaning-institute-2155509001) via [Pexels](https://www.pexels.com/photo/organized-kitchen-cabinet-with-wicker-baskets-33784616/)
