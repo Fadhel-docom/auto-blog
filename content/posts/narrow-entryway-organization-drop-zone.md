@@ -24,8 +24,6 @@ The solution is not to squeeze more furniture into the hallway. It is to give th
 
 The goal of this guide is straightforward: create a small drop zone, move storage upward, define the shoe footprint, and make the reset easy enough to repeat every day.
 
-![Minimal organized entryway with hooks and storage](https://images.pexels.com/photos/6487941/pexels-photo-6487941.jpeg?auto=compress&cs=tinysrgb&w=1600)
-
 ## Measure the Passage Before Buying Storage
 
 Start with a tape measure. Record the usable width of the passage, the available wall width, the distance from the door to the first obstacle, and the height you can safely use.
