@@ -587,9 +587,15 @@ def read_existing_posts(
             ]
         )
 
+        post_slug = re.sub(
+            r"[^a-z0-9]+",
+            "-",
+            title.lower(),
+        ).strip("-")
+
         posts.append(
             {
-                "slug": post_path.stem,
+                "slug": post_slug,
                 "title": title,
                 "keywords": normalize_keywords(
                     metadata_text
