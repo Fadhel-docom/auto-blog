@@ -48,7 +48,7 @@ Focus this part of small apartment storage ideas on "Create Zones for the Items 
 
 Use a 6‑foot wall to mount a 3‑foot tall, 12‑inch wide floating shelf at 48 inches from the floor. Load it with a single stack of books and a clear acrylic box for keys—keep the top clear to avoid a “shelf‑top” clutter zone. For shoes, install a 4‑inch high shoe rack that fits between the floor and the shelf, so sneakers stay off the floor but are still visible. A 36‑inch ladder shelf works well for pantry items; place the ladder at a 30‑inch height to keep it out of the way yet accessible.  
 
-[Read more about Bathroom Organization Maximizing Under Sink](../bathroom-organization-maximizing-24-inch-deep-cabi/)
+[Read more about Bathroom Organization Maximizing Under Sink](../bathroom-organization-maximizing-under-sink-storage-in-a-24-inch-deep-cabinet-with-pull-out-bins-and-tension-rods/)
 
 Add a pegboard on a spare wall: drill holes every 6 inches, attach hooks for coats, and hang a magnetic spice rack to keep the kitchen countertop clear. Use a slim, 8‑inch deep hanging file organizer for mail—attach it at 36 inches to keep it out of the eye line.  
 
@@ -62,7 +62,7 @@ Choose clear plastic or glass containers for items you’ll need to see quickly�
 
 Avoid the common mistake of buying oversized containers that overhang shelves or fit awkwardly in corners. Instead, opt for modular systems that can be nested or stacked. Label each bin with a waterproof marker or adhesive label; this simple step saves you from digging through a dozen unlabeled boxes.  
 
-[Read more about Small Bedroom Storage Ideas DIY](../small-bedroom-storage-ideas-diy-pull-out/)
+[Read more about Small Bedroom Storage Ideas DIY](../small-bedroom-storage-ideas-diy-pull-out-drawers-and-rolling-bins-under-a-queen-bed/)
 
 Finally, keep a small set of “quick‑access” containers—perhaps a 3‑inch‑wide, 3‑inch‑deep drawer organizer for keys, remotes, and small tools—so you never have to rummage through a larger box for everyday items.
 
@@ -84,7 +84,7 @@ Common mistakes include stacking items on top of each other in high cabinets, wh
 
 Applying small apartment storage ideas to this section means focusing on the smallest workable change first. Observe how the space behaves for several days. If an item repeatedly ends up outside its assigned zone, that is useful feedback rather than a failure. Move the zone closer to where the item is actually used, or make the container easier to access. The goal of small apartment storage ideas is a system that reduces decisions, not one that only looks tidy immediately after organizing. Keep the number of categories small so the system stays easy to follow during busy weeks. Re-check the arrangement every few months and adjust for seasonal changes.
 
-[Read more about Small Space Organization Transforming a](../small-space-organization-transforming-a-3ft-wide-hallway-int/)
+[Read more about Small Space Organization Transforming a](../small-space-organization-transforming-a-3ft-wide-hallway-into-functional-coat-and-shoe-storage/)
 
 Focus this part of small apartment storage ideas on "Handle Awkward Corners and Narrow Areas". Start with one small adjustment and watch how the space behaves for several days. If something is not working, adjust the placement rather than adding more containers. The goal is a simple, repeatable routine that stays organized without daily effort.
 
