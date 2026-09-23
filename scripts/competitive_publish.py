@@ -13,7 +13,7 @@ SCRIPTS_DIR = ROOT_DIR / "scripts"
 ARTICLE_PATH = ROOT_DIR / "article.json"
 POSTS_DIR = ROOT_DIR / "content" / "posts"
 
-REQUIRED_IMAGES = 10
+REQUIRED_IMAGES = 6
 PUBLISH_IMAGES = 5
 
 
