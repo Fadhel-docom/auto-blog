@@ -939,7 +939,7 @@ h6 {
 
 
 /* =========================================
-   POST LIST (Taxonomy Term pages)
+   POST LIST
    ========================================= */
 
 .post-list {
@@ -1232,10 +1232,84 @@ h6 {
 .site-footer {
   border-top: 1px solid var(--border);
   margin-top: 80px;
-  padding: 32px 0;
+  padding: 48px 0 32px;
   color: var(--muted);
   font-size: 0.85rem;
-  text-align: center;
+  background: var(--surface);
+}
+
+.site-footer-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 40px;
+  align-items: start;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.site-footer-brand {
+  max-width: 480px;
+}
+
+.site-footer-title {
+  display: inline-block;
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.site-footer-title:hover {
+  color: var(--accent);
+}
+
+.site-footer-description {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  max-width: 420px;
+}
+
+.site-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  justify-content: flex-end;
+}
+
+.site-footer-nav a {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-footer-nav a:hover {
+  color: var(--accent);
+}
+
+.site-footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-top: 24px;
+  font-size: 0.82rem;
+}
+
+.site-footer-bottom p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.site-footer-bottom p:last-child {
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 
@@ -1454,6 +1528,32 @@ h6 {
   .related-posts {
     margin-top: 52px;
     padding-top: 32px;
+  }
+
+  .site-footer {
+    padding: 40px 0 28px;
+  }
+
+  .site-footer-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-bottom: 24px;
+  }
+
+  .site-footer-brand {
+    max-width: 100%;
+  }
+
+  .site-footer-nav {
+    justify-content: flex-start;
+    gap: 10px 20px;
+  }
+
+  .site-footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding-top: 20px;
   }
 
 }
