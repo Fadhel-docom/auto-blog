@@ -46,7 +46,7 @@ Start by measuring the interior of your closet. A typical reach‑in is about 24
 
 **Accessory zone** – Install a row of 1‑inch‑wide hooks or a magnetic strip at eye level (about 48 inches) for belts, scarves, and jewelry.  
 
-[Read more about Bathroom Organization Maximizing Under Sink](../bathroom-organization-maximizing-24-inch-deep-cabi/)
+[Read more about Bathroom Organization Maximizing Under Sink](../bathroom-organization-maximizing-under-sink-storage-in-a-24-inch-deep-cabinet-with-pull-out-bins-and-tension-rods/)
 
 A common mistake is overloading one zone and leaving the others empty, which forces you to dig through piles each day. Keep each zone balanced, and revisit the layout after a month to fine‑tune placement based on actual usage.
 
@@ -64,7 +64,7 @@ When you’re picking containers, start by measuring the closet’s exact dimens
 
 A common mistake is buying generic “universal” bins that are too tall or too wide. They can press against the doorframe or stack too high, making the closet feel cramped. Instead, choose containers that match the closet’s depth. A 10‑inch‑deep bin will sit flush against the back wall, freeing up space for other items.  
 
-[Read more about Small Space Organization Transforming a](../small-space-organization-transforming-a-3ft-wide-hallway-int/)
+[Read more about Small Space Organization Transforming a](../small-space-organization-transforming-a-3ft-wide-hallway-into-functional-coat-and-shoe-storage/)
 
 Use lightweight, clear plastic for items you pull out often—this lets you see contents at a glance. For seasonal gear, opt for fabric baskets that can be folded flat when not in use. Label each bin with a waterproof marker or a small tag; this saves time and prevents misplacing items.  
 
@@ -79,7 +79,7 @@ Keep the most-used items—like a favorite jacket, a pair of shoes, or a daily t
 
 Use clear, labeled bins on a 10‑inch‑high shelf so you can spot items instantly. Avoid the common mistake of stuffing everything into the topmost shelf—items placed too high become a chore to retrieve and can lead to accidental drops. Instead, group similar items together: place all winter coats on the top shelf, summer tees on the middle, and everyday accessories on the bottom.  
 
-[Read more about Small Bedroom Storage Ideas DIY](../small-bedroom-storage-ideas-diy-pull-out/)
+[Read more about Small Bedroom Storage Ideas DIY](../small-bedroom-storage-ideas-diy-pull-out-drawers-and-rolling-bins-under-a-queen-bed/)
 
 Add a small, 8‑inch‑deep hook rack near the door for keys, umbrellas, or gym bags. This keeps high‑frequency items visible and within easy reach, reducing the time spent rummaging and preserving the tidy feel of your closet.
 
