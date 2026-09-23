@@ -622,11 +622,11 @@ For every section query:
 
 IMAGE PLAN:
 - Query 1 is the HERO.
-- Queries 2-10 correspond to the first 9 useful H2
+- Queries 2-6 correspond to the first 5 useful H2
   sections in order.
-- If there are fewer than 9 H2 sections, use the remaining
+- If there are fewer than 5 H2 sections, use the remaining
   strongest sections without duplicating a query.
-- If there are more than 9 H2 sections, use the first 9
+- If there are more than 5 H2 sections, use the first 5
   substantive sections.
 - Never create a query from an H2 heading alone.
 
