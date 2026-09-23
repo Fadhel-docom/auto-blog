@@ -1,0 +1,81 @@
+name: Auto Repair
+
+on:
+  workflow_run:
+    workflows:
+      - "Daily Auto Blog"
+    types:
+      - completed
+
+  workflow_dispatch:
+    inputs:
+      failed_run_id:
+        description: "Failed Daily Auto Blog run ID"
+        required: true
+        type: string
+
+permissions:
+  actions: write
+  contents: write
+  issues: write
+
+concurrency:
+  group: auto-repair
+  cancel-in-progress: false
+
+jobs:
+  repair:
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'failure'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install repair dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install requests
+
+      - name: Determine failed run
+        id: run
+        env:
+          EVENT_RUN_ID: ${{ github.event.workflow_run.id }}
+          INPUT_RUN_ID: ${{ inputs.failed_run_id }}
+        run: |
+          if [ -n "$INPUT_RUN_ID" ]; then
+            echo "run_id=$INPUT_RUN_ID" >> "$GITHUB_OUTPUT"
+          else
+            echo "run_id=$EVENT_RUN_ID" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run auto repair
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          FAILED_RUN_ID: ${{ steps.run.outputs.run_id }}
+          DAILY_WORKFLOW: daily.yml
+          RATE_LIMIT_WAIT_SECONDS: "90"
+        run: |
+          python scripts/auto_repair.py
+
+      - name: Commit repair logs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add logs/
+          if git diff --cached --quiet; then
+            echo "No repair log changes."
+          else
+            git commit -m "Auto repair: record recovery attempt"
+            git push
+          fi
