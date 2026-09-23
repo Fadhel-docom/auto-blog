@@ -24,7 +24,7 @@ The solution is not to squeeze more furniture into the hallway. It is to give th
 
 The goal of this guide is straightforward: create a small drop zone, move storage upward, define the shoe footprint, and make the reset easy enough to repeat every day.
 
-![A simple narrow-entryway map](../../images/narrow-entryway-organization-1.svg)
+![Minimal organized entryway with hooks and storage](https://images.pexels.com/photos/6487941/pexels-photo-6487941.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
 ## Measure the Passage Before Buying Storage
 
@@ -50,7 +50,7 @@ The station can be a narrow shelf, a small wall-mounted surface, a tray, or even
 
 The important part is not the furniture. It is the rule: daily items have a visible, predictable destination.
 
-![The three-zone drop zone](../../images/narrow-entryway-organization-2.svg)
+![Bright entryway with storage bench and wicker basket](https://images.pexels.com/photos/9457270/pexels-photo-9457270.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
 ## Use the Wall Before Using More Floor Space
 
@@ -64,7 +64,7 @@ If you rent, choose solutions that match your lease and the manufacturer's insta
 
 For more renter-friendly ideas, see our guide to [renter-friendly closet organization](../renter-friendly-closet-organization-using-adhesive/).
 
-![Use vertical space first](../../images/narrow-entryway-organization-3.svg)
+![Modern hallway with wall storage and shoe rack](https://images.pexels.com/photos/7061417/pexels-photo-7061417.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
 ## Give Shoes a Defined Footprint
 
@@ -76,7 +76,7 @@ A useful seasonal approach is to keep the pairs you currently wear most often at
 
 If several people share the entrance, assign each person a small, visible zone. Clear limits make it easier to notice when the system is full.
 
-![Give shoes a defined footprint](../../images/narrow-entryway-organization-4.svg)
+![Organized entryway with shoes and storage rack](https://images.pexels.com/photos/7620863/pexels-photo-7620863.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
 ## Make Bags and Coats Easy to Put Away
 
@@ -122,7 +122,7 @@ Try a simple reset:
 
 You do not have to perform this routine at a fixed time. Use the moment that naturally fits your household, such as before bed or after the evening rush.
 
-![A 15-minute reset](../../images/narrow-entryway-organization-5.svg)
+![Sleek hallway with mirror, coat rack and bench](https://images.pexels.com/photos/19980247/pexels-photo-19980247.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
 The objective is not perfection. The objective is to prevent a five-minute mess from becoming a one-hour weekend project.
 
