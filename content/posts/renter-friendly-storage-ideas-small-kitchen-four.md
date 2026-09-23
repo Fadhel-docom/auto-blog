@@ -119,7 +119,6 @@ Install two tension rods vertically inside a corner cabinet and hang small baske
 
 ## Common Pitfalls and How to Avoid Them
 
-![corner pull-out tray on kitchen floor sliding out](../../images/renter-friendly-storage-ideas-small-kitchen-four-7.jpg)
 
 
 Even the best **storage ideas** can backfire if you overlook a few simple details.
@@ -136,7 +135,6 @@ Even the best **storage ideas** can backfire if you overlook a few simple detail
 
 ## Budget‑Friendly Product Picks
 
-![rolling kitchen cart with lightweight dishes positioned 12](../../images/renter-friendly-storage-ideas-small-kitchen-four-8.jpg)
 
 
 All of the following items are widely available at home‑goods stores, big‑box retailers, or online marketplaces. They require no drilling and can be removed without damage.
@@ -158,7 +156,6 @@ These selections balance cost, durability, and ease of removal, making them idea
 
 ## Maintenance Tips for a Rental Kitchen
 
-![budget-friendly kitchen organizers including tension rod, shelf dividers](../../images/renter-friendly-storage-ideas-small-kitchen-four-9.jpg)
 
 
 Keeping your temporary storage system functional and lease‑friendly requires a bit of upkeep.
@@ -175,7 +172,6 @@ A little routine maintenance extends the life of your organizers and keeps the k
 
 ## Final Thoughts and Next Steps
 
-![person cleaning rolling kitchen cart and adjusting adhesive](../../images/renter-friendly-storage-ideas-small-kitchen-four-10.jpg)
 
 
 A kitchen with only four cabinets doesn’t have to feel cramped, even in a rental. By **maximizing interior cabinet space**, **adding portable organizers**, and **leveraging wall and door areas with non‑permanent solutions**, you can create a functional, organized kitchen that looks larger than it is. Remember to measure first, choose renter‑friendly hardware, and avoid overloading any single element. With these **storage ideas**, you’ll enjoy a tidy cooking space today and a hassle‑free move tomorrow.
@@ -192,7 +188,3 @@ Ready to start? Grab a tape measure, list your must‑have items, and pick one o
 - Photo 4: [Valeria Boltneva](https://www.pexels.com/@valeriya) via [Pexels](https://www.pexels.com/photo/a-shelf-with-dishes-and-glasses-on-it-27305347/)
 - Photo 5: [https://kaboompics.com/](https://www.pexels.com/@karola-g) via [Pexels](https://www.pexels.com/photo/a-woman-in-a-kitchen-5237908/)
 - Photo 6: [Hoài  Nam](https://www.pexels.com/@hoinommm) via [Pexels](https://www.pexels.com/photo/mugs-on-wooden-wall-25651554/)
-- Photo 7: [khezez  | خزاز](https://www.pexels.com/@khezez) via [Pexels](https://www.pexels.com/photo/peach-cobbler-on-a-tray-26621631/)
-- Photo 8: [Jimmy Liao](https://www.pexels.com/@jimmy-liao-3615017) via [Pexels](https://www.pexels.com/photo/kitchen-tools-on-kitchen-counter-15479498/)
-- Photo 9: [Keegan Checks](https://www.pexels.com/@keeganjchecks) via [Pexels](https://www.pexels.com/photo/interior-design-of-room-10117733/)
-- Photo 10: [Anastasia  Shuraeva](https://www.pexels.com/@anastasia-shuraeva) via [Pexels](https://www.pexels.com/photo/person-getting-water-from-a-faucet-5495066/)
