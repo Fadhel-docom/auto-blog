@@ -38,6 +38,8 @@ MIN_H2 = 10
 MAX_H2 = 10
 REQUIRED_SECTION_COUNT = 10
 
+FAQ_MIN_ITEMS = 4
+FAQ_MAX_ITEMS = 6
 MAX_SECTION_RETRIES = 1
 MAX_FAILED_SECTIONS_BEFORE_PIPELINE_RESTART = 2
 MAX_PIPELINE_ATTEMPTS = 2
@@ -1443,6 +1445,111 @@ def generate_all_sections(
     return sections
 
 
+
+def local_faq_fallback(keyword, title):
+    topic = keyword.strip() or "this space"
+    return [
+        {"question": f"How should I start organizing {topic}?",
+         "answer": "Start by measuring the space, grouping items by use, and choosing one small zone to organize first. Test the layout before buying several containers."},
+        {"question": f"What should I measure before organizing {topic}?",
+         "answer": "Measure width, depth, height, door or drawer clearance, and fixed obstacles such as pipes, trim, or handles. Record usable measurements rather than room size alone."},
+        {"question": f"How many storage zones should I create for {topic}?",
+         "answer": "Three broad zones are a practical starting point: daily-use items, reserve supplies, and occasional items. Adjust the number to the space instead of forcing a fixed layout."},
+        {"question": f"How can I keep {topic} organized after the first cleanup?",
+         "answer": "Give frequently used items a predictable home and use a short reset routine. If something repeatedly lands outside its zone, move the zone instead of adding more storage."},
+        {"question": f"Should I buy containers before organizing {topic}?",
+         "answer": "Usually no. Measure and test the layout first, then buy containers that fit the actual shelves, drawers, or floor area. This reduces wasted space and unnecessary purchases."},
+    ]
+
+
+def build_faq_messages(keyword, title):
+    base_prompt = """
+You are an editorial FAQ writer for a Home Organization website.
+
+Create 4-6 useful FAQ questions and concise answers for one practical article.
+Questions should reflect real reader intent and common search questions, without claiming access to proprietary search data.
+
+Rules:
+- Exactly 4-6 items.
+- Every question must end with a question mark.
+- Answers must be 40-110 words and directly answer the question.
+- No hype, no keyword stuffing, no invented statistics.
+- Do not repeat the article title as a question.
+
+Return exactly:
+{
+  "faq": [
+    {"question": "Question?", "answer": "Answer."}
+  ]
+}
+""".strip()
+    system_prompt = build_json_system_prompt(base_prompt)
+    user_prompt = f"FOCUS KEYWORD:\n{keyword}\n\nARTICLE TITLE:\n{title}\n\nCreate the FAQ now."
+    return [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt},
+    ]
+
+
+def validate_faq(result):
+    if not isinstance(result, dict):
+        raise ValueError("FAQ response must be a JSON object.")
+    items = result.get("faq")
+    if not isinstance(items, list):
+        raise ValueError("FAQ response must contain a faq list.")
+
+    cleaned = []
+    seen = set()
+
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        question = str(item.get("question", "")).strip()
+        answer = str(item.get("answer", "")).strip()
+        if not question or not answer or not question.endswith("?"):
+            continue
+        if len(answer.split()) < 40 or len(answer.split()) > 110:
+            continue
+        key = question.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        cleaned.append({"question": question, "answer": answer})
+
+    if not FAQ_MIN_ITEMS <= len(cleaned) <= FAQ_MAX_ITEMS:
+        raise ValueError(f"FAQ must contain {FAQ_MIN_ITEMS}-{FAQ_MAX_ITEMS} valid items; got {len(cleaned)}.")
+    return cleaned
+
+
+def generate_faq(api_key, keyword, title):
+    messages = build_faq_messages(keyword, title)
+    result, actual_model, layer = call_json_with_four_layers(
+        api_key=api_key,
+        messages=messages,
+        temperature=0.4,
+        max_tokens=1200,
+        local_fallback_factory=lambda: {"faq": local_faq_fallback(keyword, title)},
+        operation_name="FAQ",
+    )
+    try:
+        faq = validate_faq(result)
+    except Exception:
+        faq = local_faq_fallback(keyword, title)
+    print(f"FAQ model: {actual_model}")
+    print(f"FAQ strategy: {layer}")
+    print(f"FAQ items: {len(faq)}")
+    return faq
+
+
+def append_faq(content_markdown, faq):
+    if not FAQ_MIN_ITEMS <= len(faq) <= FAQ_MAX_ITEMS:
+        raise ValueError("append_faq received an invalid FAQ count.")
+    parts = [content_markdown.strip(), "## Frequently Asked Questions"]
+    for item in faq:
+        parts.append(f"### {item['question'].strip()}\n\n{item['answer'].strip()}")
+    return "\n\n".join(parts).strip()
+
+
 def clean_section_text(content):
     content = str(content).strip()
 
@@ -1854,6 +1961,9 @@ def generate_article_pipeline(
         h2_headings=h2_headings,
         sections=sections,
     )
+
+    faq = generate_faq(api_key=api_key, keyword=keyword, title=title)
+    content_markdown = append_faq(content_markdown, faq)
 
     # CRITICAL: keyword must appear in the assembled content
     if keyword.lower() not in content_markdown.lower():
