@@ -3,8 +3,8 @@ title = "Narrow Entryway Organization: Build a Drop Zone That Stays Tidy"
 date = "2026-09-23T12:00:00+00:00"
 lastmod = "2026-09-23T12:00:00+00:00"
 description = "A practical plan for organizing a narrow entryway with a simple drop zone, vertical storage, defined shoe space, and a 15-minute reset routine."
-image = "/images/narrow-entryway-organization-1.svg"
-images = ["/images/narrow-entryway-organization-1.svg", "/images/narrow-entryway-organization-2.svg", "/images/narrow-entryway-organization-3.svg", "/images/narrow-entryway-organization-4.svg", "/images/narrow-entryway-organization-5.svg"]
+image = "https://images.pexels.com/photos/6487941/pexels-photo-6487941.jpeg?auto=compress&cs=tinysrgb&w=1600"
+images = ["https://images.pexels.com/photos/6487941/pexels-photo-6487941.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/9457270/pexels-photo-9457270.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/7061417/pexels-photo-7061417.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/7620863/pexels-photo-7620863.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/19980247/pexels-photo-19980247.jpeg?auto=compress&cs=tinysrgb&w=1600"]
 tags = ["entryway organization", "small space organization", "drop zone", "decluttering"]
 categories = ["Small Space", "Entryway"]
 faq = [
