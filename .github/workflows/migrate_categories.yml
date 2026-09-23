@@ -1,0 +1,63 @@
+name: Migrate Categories
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: migrate-categories
+  cancel-in-progress: false
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Dry-run preview
+        run: |
+          python scripts/fix_post_categories.py --all --dry-run
+
+      - name: Apply category migration
+        run: |
+          python scripts/fix_post_categories.py --all
+
+      - name: Commit changes
+        run: |
+          git add content/posts/
+          if git diff --cached --quiet; then
+            echo "No changes needed — all posts already canonical."
+          else
+            git commit -m "Migrate: normalize post categories to canonical set"
+            git push
+          fi
+
+      - name: Summary
+        run: |
+          echo "=========================================="
+          echo "MIGRATION COMPLETE"
+          echo "=========================================="
+          echo "All posts now use canonical categories:"
+          echo "  Kitchen"
+          echo "  Bathroom"
+          echo "  Bedroom"
+          echo "  Small Space"
+          echo "  Decluttering"
+          echo "  Rental"
+          echo "=========================================="
