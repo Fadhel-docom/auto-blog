@@ -1,45 +1,140 @@
+# ============================================================
+# Base
+# ============================================================
+
 baseURL = "https://fadhel-docom.github.io/auto-blog/"
 languageCode = "en-us"
 title = "Home Organization Ideas"
-
 enableRobotsTXT = true
 enableGitInfo = false
+timeZone = "UTC"
+defaultContentLanguage = "en"
+hasCJKLanguage = false
 
-[pagination]
-  pagerSize = 12
-
-[permalinks]
-  posts = "/posts/:slug/"
+# ============================================================
+# Author / Brand
+# ============================================================
 
 [params]
   description = "Practical home organization and small-space living ideas."
   author = "Auto Blog"
+  brand = "Home Organization Ideas"
+  tagline = "Practical spaces. Better everyday living."
   keywords = [
     "home organization",
     "small space organization",
     "small apartment organization",
     "kitchen organization",
+    "bathroom organization",
     "bedroom organization",
     "storage ideas",
-    "decluttering"
+    "decluttering",
+    "renter friendly organization",
+    "DIY storage"
   ]
 
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = false
-  [markup.tableOfContents]
-    startLevel = 2
-    endLevel = 3
-    ordered = false
+  # Optional social + SEO defaults
+  pinterest = "homeorganizationideas0164"
+  tumblr = "homeorganizationideas.tumblr.com"
+  goatcounter = "https://fadhel-blog.goatcounter.com/count"
 
-[outputs]
-  home = ["HTML", "RSS"]
+# ============================================================
+# Pagination
+# ============================================================
+
+[pagination]
+  pagerSize = 12
+
+# ============================================================
+# Permalinks
+# ============================================================
+
+[permalinks]
+  posts = "/posts/:slug/"
+
+# ============================================================
+# Taxonomies
+# ============================================================
 
 [taxonomies]
   category = "categories"
   tag = "tags"
 
+# ============================================================
+# Markup
+# ============================================================
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = false
+      hardWraps = false
+      xhtml = false
+
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+    ordered = false
+
+  [markup.highlight]
+    noClasses = false
+
+# ============================================================
+# Outputs
+# ============================================================
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+# ============================================================
+# Sitemap
+# ============================================================
+
 [sitemap]
   changeFreq = "daily"
   priority = 0.5
+  filename = "sitemap.xml"
+
+# ============================================================
+# Related content (for related posts)
+# ============================================================
+
+[related]
+  threshold = 20
+  includeNewer = true
+  toLower = true
+
+  [[related.indices]]
+    name = "tags"
+    weight = 100
+
+  [[related.indices]]
+    name = "categories"
+    weight = 80
+
+  [[related.indices]]
+    name = "date"
+    weight = 10
+
+# ============================================================
+# Build options
+# ============================================================
+
+[build]
+  writeStats = false
+
+[build.buildStats]
+  enable = false
+
+[server]
+  [[server.headers]]
+    for = "/**"
+    [server.headers.values]
+      Cache-Control = "no-store"
+
+[frontmatter]
+  date = ["date", "publishDate", "lastmod"]
+  lastmod = ["lastmod", "date", "publishDate"]
+  publishDate = ["publishDate", "date"]
+  expiryDate = ["expiryDate"]
