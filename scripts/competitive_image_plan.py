@@ -589,7 +589,7 @@ def build_prompts(
 You are a professional visual content editor for an
 English-language Home Organization & Small-Space Living website.
 
-Create exactly 10 highly specific Pexels search queries from
+Create exactly 6 highly specific Pexels search queries from
 the FINAL article after editorial content upgrading.
 
 The article has already been written. Do not infer image topics
