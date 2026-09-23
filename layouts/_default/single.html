@@ -218,7 +218,10 @@
 
           {{ if $relatedImage }}
 
-            {{ $relatedPath := strings.TrimPrefix "/" $relatedImage }}
+            {{ $relatedPath := $relatedImage }}
+            {{ if not (or (strings.HasPrefix $relatedImage "http://") (strings.HasPrefix $relatedImage "https://")) }}
+              {{ $relatedPath = strings.TrimPrefix "/" $relatedImage | relURL }}
+            {{ end }}
 
             <a
               href="{{ .RelPermalink }}"
