@@ -42,7 +42,7 @@ GROQ_CHAT_URL = (
     "https://api.groq.com/openai/v1/chat/completions"
 )
 
-IMAGE_COUNT = 10
+IMAGE_COUNT = 6
 MAX_PAGES = 3
 PER_PAGE = 15
 
