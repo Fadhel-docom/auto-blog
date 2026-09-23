@@ -61,7 +61,7 @@ A lightweight, freestanding tiered shelf (think a small plastic rack) can sit in
 
 When built‑in storage falls short, bring in movable pieces that sit on the floor or countertop. These items can be packed up and taken with you when the lease ends.
 
-[Read more about Bathroom Organization Maximizing Under Sink](../bathroom-organization-maximizing-24-inch-deep-cabi/)
+[Read more about Bathroom Organization Maximizing Under Sink](../bathroom-organization-maximizing-under-sink-storage-in-a-24-inch-deep-cabinet-with-pull-out-bins-and-tension-rods/)
 
 #### Rolling Kitchen Cart
 - **Dimensions:** Roughly 24" wide, 15" deep, and 30" high.
@@ -82,7 +82,7 @@ If your backsplash is stainless steel, a magnetic strip adheres without screws. 
 
 Walls and cabinet doors offer vertical real‑estate that can be tapped without drilling. The key is to use adhesive‑based or tension‑based hardware.
 
-[Read more about Renter Friendly Kitchen Organization Magnetic](../renterfriendly-kitchen-organization-magnetic-spice/)
+[Read more about Renter Friendly Kitchen Organization Magnetic](../renterfriendly-kitchen-organization-magnetic-spice-rack-solutions-that-require-no-drilling/)
 
 ### Command‑Style Hook Strips
 - **Load capacity:** 2‑5 lb per hook, perfect for mugs, measuring spoons, or a small pot rack.
@@ -104,7 +104,7 @@ Clamps attach to the top of upper cabinets and extend a few inches forward. Use 
 
 Corners are the most under‑utilised spots in a kitchen. With a couple of renter‑safe tricks you can turn them into accessible storage zones.
 
-[Read more about Renter Friendly Closet Organization Using](../renter-friendly-closet-organization-using-adhesive/)
+[Read more about Renter Friendly Closet Organization Using](../renter-friendly-closet-organization-using-adhesive-hooks-and-tension-rods/)
 
 #### No‑Drill Corner Pull‑Out Tray
 Some hardware stores sell a low‑profile tray on small wheels that slides out of a lower‑cabinet corner. It rests on the floor and lets you pull out baking pans, cutting boards, or a stack of plates without digging.
