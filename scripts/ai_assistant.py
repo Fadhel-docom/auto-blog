@@ -18,15 +18,18 @@ HEALTH_PATH = LOG_DIR / "health.json"
 UI_REPORT_PATH = LOG_DIR / "ui_report.json"
 UI_SUGGESTIONS_PATH = LOG_DIR / "ui_suggestions.json"
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "").strip()
-OPENAI_MODEL = os.getenv(
-    "OPENAI_MODEL",
-    "gpt-4o-mini",
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "").strip()
+
+GROQ_MODEL = os.getenv(
+    "GROQ_AI_MODEL",
+    "openai/gpt-oss-20b",
 ).strip()
 
-OPENAI_URL = "https://api.openai.com/v1/chat/completions"
+GROQ_URL = (
+    "https://api.groq.com/openai/v1/chat/completions"
+)
 
-TIMEOUT = 60
+TIMEOUT = 90
 MAX_CONTEXT_CHARS = 45000
 
 
@@ -55,6 +58,9 @@ def load_json(path: Path) -> Any:
 
 def collect_logs() -> dict[str, Any]:
     result = {}
+
+    if not LOG_DIR.exists():
+        return result
 
     for path in sorted(LOG_DIR.glob("*.json")):
         if path.name in {
@@ -102,9 +108,11 @@ def build_context() -> dict[str, Any]:
 
 def system_prompt() -> str:
     return """
-You are the maintenance analyst for an automated Hugo home-organization website.
+You are the maintenance analyst for an automated Hugo
+home-organization website.
 
-Your task is NOT to rewrite the entire website and NOT to make speculative changes.
+Your task is NOT to rewrite the entire website and NOT to
+make speculative changes.
 
 Analyze the supplied health, UI, and pipeline evidence.
 
@@ -121,13 +129,16 @@ Identify:
 
 Rules:
 
-- Never invent a file that is not evidenced by the context unless clearly marked as a proposed file.
+- Never invent a file that is not evidenced by the context
+  unless clearly marked as a proposed file.
 - Prefer small deterministic fixes.
 - Never expose secrets.
 - Never modify credentials.
 - Never recommend deleting content merely because it is old.
 - Do not recommend broad redesigns without evidence.
-- Treat HTTP 404, missing schema, missing metadata, broken links, failed builds, and stale pipeline state as higher priority than cosmetic improvements.
+- Treat HTTP 404, missing schema, missing metadata, broken
+  links, failed builds, and stale pipeline state as higher
+  priority than cosmetic improvements.
 - Separate confirmed facts from hypotheses.
 - A recommendation must include a reason.
 - If evidence is insufficient, say so.
@@ -156,17 +167,18 @@ Each issue should contain:
 """.strip()
 
 
-def call_openai(
+def call_groq(
     context: dict[str, Any],
 ) -> dict[str, Any]:
-    if not OPENAI_API_KEY:
+    if not GROQ_API_KEY:
         raise RuntimeError(
-            "OPENAI_API_KEY is not configured."
+            "GROQ_API_KEY is not configured."
         )
 
     payload = {
-        "model": OPENAI_MODEL,
+        "model": GROQ_MODEL,
         "temperature": 0.1,
+        "max_tokens": 4000,
         "messages": [
             {
                 "role": "system",
@@ -191,11 +203,9 @@ def call_openai(
     }
 
     response = requests.post(
-        OPENAI_URL,
+        GROQ_URL,
         headers={
-            "Authorization": (
-                f"Bearer {OPENAI_API_KEY}"
-            ),
+            "Authorization": f"Bearer {GROQ_API_KEY}",
             "Content-Type": "application/json",
         },
         json=payload,
@@ -204,7 +214,7 @@ def call_openai(
 
     if not response.ok:
         raise RuntimeError(
-            f"OpenAI API failed: "
+            f"Groq API failed: "
             f"{response.status_code} "
             f"{response.text[:1000]}"
         )
@@ -214,7 +224,7 @@ def call_openai(
 
     if not choices:
         raise RuntimeError(
-            "OpenAI returned no choices."
+            "Groq returned no choices."
         )
 
     content = (
@@ -225,14 +235,14 @@ def call_openai(
 
     if not content:
         raise RuntimeError(
-            "OpenAI returned empty content."
+            "Groq returned empty content."
         )
 
     try:
         result = json.loads(content)
     except json.JSONDecodeError as exc:
         raise RuntimeError(
-            "OpenAI returned invalid JSON."
+            "Groq returned invalid JSON."
         ) from exc
 
     if not isinstance(result, dict):
@@ -257,7 +267,8 @@ def save_suggestion(
 
     payload = {
         "timestamp": now(),
-        "model": OPENAI_MODEL,
+        "model": GROQ_MODEL,
+        "provider": "groq",
         "result": result,
     }
 
@@ -288,7 +299,7 @@ def main() -> int:
     context = build_context()
 
     try:
-        result = call_openai(context)
+        result = call_groq(context)
         path = save_suggestion(result)
 
         print(
@@ -312,7 +323,8 @@ def main() -> int:
             json.dumps(
                 {
                     "timestamp": now(),
-                    "model": OPENAI_MODEL,
+                    "model": GROQ_MODEL,
+                    "provider": "groq",
                     "error": str(exc),
                 },
                 indent=2,
