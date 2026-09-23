@@ -6,11 +6,10 @@ description = "Practical small apartment storage ideas ideas with simple measure
 image = "/images/small-apartment-storage-ideas-practical-space-1.jpg"
 images = ["/images/small-apartment-storage-ideas-practical-space-1.jpg", "/images/small-apartment-storage-ideas-practical-space-2.jpg", "/images/small-apartment-storage-ideas-practical-space-3.jpg", "/images/small-apartment-storage-ideas-practical-space-4.jpg", "/images/small-apartment-storage-ideas-practical-space-5.jpg"]
 tags = ["small apartment storage ideas", "home organization", "small spaces"]
-categories = ["Home Organization", "Small-Space Living"]
+categories = ["Small Space"]
 faq = []
 draft = false
 +++
-
 ## Assess Your Space for small apartment storage ideas
 
 ![bedroom rack storage organized interior](../../images/small-apartment-storage-ideas-practical-space-2.jpg)

@@ -6,11 +6,10 @@ description = "Practical small bathroom organization ideas ideas with simple mea
 image = "/images/small-bathroom-organization-ideas-practical-space-1.jpg"
 images = ["/images/small-bathroom-organization-ideas-practical-space-1.jpg", "/images/small-bathroom-organization-ideas-practical-space-2.jpg", "/images/small-bathroom-organization-ideas-practical-space-3.jpg", "/images/small-bathroom-organization-ideas-practical-space-4.jpg", "/images/small-bathroom-organization-ideas-practical-space-5.jpg"]
 tags = ["small bathroom organization ideas", "home organization", "small spaces"]
-categories = ["Home Organization", "Small-Space Living"]
+categories = ["Bathroom"]
 faq = []
 draft = false
 +++
-
 ## Assess Your Space for small bathroom organization ideas
 
 ![small bathroom with tape measure and slim wall shelf installed](../../images/small-bathroom-organization-ideas-practical-space-2.jpg)

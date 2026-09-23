@@ -5,10 +5,9 @@ description = "Learn step‑by‑step how to maximize storage in a 350‑sq‑ft
 image = "/images/small-apartment-organization-maximizing-storage-in-a-350sqft-1.jpg"
 images = ["/images/small-apartment-organization-maximizing-storage-in-a-350sqft-1.jpg", "/images/small-apartment-organization-maximizing-storage-in-a-350sqft-2.jpg", "/images/small-apartment-organization-maximizing-storage-in-a-350sqft-3.jpg", "/images/small-apartment-organization-maximizing-storage-in-a-350sqft-4.jpg", "/images/small-apartment-organization-maximizing-storage-in-a-350sqft-5.jpg"]
 tags = ["small apartment organization", "studio storage", "space saving"]
-categories = ["Home Organization", "Small-Space Living"]
+categories = ["Bedroom"]
 draft = false
 +++
-
 ## Assessing Your Space and Identifying Storage Gaps
 
 ![Article image 2: Ketut Subiyanto](../../images/small-apartment-organization-maximizing-storage-in-a-350sqft-2.jpg)

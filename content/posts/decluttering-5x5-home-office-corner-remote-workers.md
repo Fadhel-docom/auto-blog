@@ -6,11 +6,10 @@ description = "Learn step‑by‑step how to declutter a 5'x5' home office corne
 image = "/images/decluttering-5x5-home-office-corner-remote-workers-1.jpg"
 images = ["/images/decluttering-5x5-home-office-corner-remote-workers-1.jpg", "/images/decluttering-5x5-home-office-corner-remote-workers-2.jpg", "/images/decluttering-5x5-home-office-corner-remote-workers-3.jpg", "/images/decluttering-5x5-home-office-corner-remote-workers-4.jpg", "/images/decluttering-5x5-home-office-corner-remote-workers-5.jpg"]
 tags = ["decluttering", "home office", "small space"]
-categories = ["Home Organization", "Small-Space Living"]
+categories = ["Decluttering"]
 faq = []
 draft = false
 +++
-
 ## Why a 5x5 Corner Is Critical for Remote Work
 
 ![studio corner workspace with laptop on small desk and ergonomic chair](../../images/decluttering-5x5-home-office-corner-remote-workers-2.jpg)

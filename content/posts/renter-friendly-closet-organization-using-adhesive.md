@@ -6,11 +6,10 @@ description = "Transform a rental closet without damage using only adhesive hook
 image = "/images/renter-friendly-closet-organization-using-adhesive-1.jpg"
 images = ["/images/renter-friendly-closet-organization-using-adhesive-1.jpg", "/images/renter-friendly-closet-organization-using-adhesive-2.jpg", "/images/renter-friendly-closet-organization-using-adhesive-3.jpg", "/images/renter-friendly-closet-organization-using-adhesive-4.jpg", "/images/renter-friendly-closet-organization-using-adhesive-5.jpg"]
 tags = ["closet organization", "renter friendly", "small space living"]
-categories = ["Home Organization", "Small-Space Living"]
+categories = ["Rental"]
 faq = []
 draft = false
 +++
-
 ## Assess Your Space and Set Goals
 
 ![person measuring closet interior with a tape measure and sketching a floor plan on paper inside a small bedroom closet](../../images/renter-friendly-closet-organization-using-adhesive-2.jpg)

@@ -6,11 +6,10 @@ description = "Transform a studio bedroom with only 48‑inches of clearance usi
 image = "/images/bedroom-organization-stepbystep-48inch-clearance-1.jpg"
 images = ["/images/bedroom-organization-stepbystep-48inch-clearance-1.jpg", "/images/bedroom-organization-stepbystep-48inch-clearance-2.jpg", "/images/bedroom-organization-stepbystep-48inch-clearance-3.jpg", "/images/bedroom-organization-stepbystep-48inch-clearance-4.jpg", "/images/bedroom-organization-stepbystep-48inch-clearance-5.jpg"]
 tags = ["bedroom organization", "small space storage", "under-bed solutions"]
-categories = ["Home Organization", "Small-Space Living"]
+categories = ["Bedroom"]
 faq = []
 draft = false
 +++
-
 ## Understanding the Constraints of a 48‑Inch Clearance
 
 ![hand holding a measuring tape next to a bed headboard showing a 48‑inch clearance measurement in a small studio bedroom](../../images/bedroom-organization-stepbystep-48inch-clearance-2.jpg)

@@ -5,10 +5,9 @@ description = "Learn how to turn a narrow 3‑ft hallway into practical coat and
 image = "/images/small-space-organization-transforming-a-3ft-wide-hallway-int-1.jpg"
 images = ["/images/small-space-organization-transforming-a-3ft-wide-hallway-int-1.jpg", "/images/small-space-organization-transforming-a-3ft-wide-hallway-int-2.jpg", "/images/small-space-organization-transforming-a-3ft-wide-hallway-int-3.jpg", "/images/small-space-organization-transforming-a-3ft-wide-hallway-int-4.jpg", "/images/small-space-organization-transforming-a-3ft-wide-hallway-int-5.jpg"]
 tags = ["small space organization", "hallway storage", "home organization"]
-categories = ["Home Organization", "Small-Space Living"]
+categories = ["Small Space"]
 draft = false
 +++
-
 ## Assessing the Hallway's Limitations and Opportunities
 
 A **3 ft wide hallway** is one of the tightest passages most urban dwellers encounter. It offers just enough room for a foot traffic lane, but the vertical space is often under‑utilized. Before you buy any organizer, take a quick inventory:

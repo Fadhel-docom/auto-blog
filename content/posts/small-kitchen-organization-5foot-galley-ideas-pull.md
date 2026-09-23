@@ -6,11 +6,10 @@ description = "Learn how to design, build, and install a pull‑out spice rack f
 image = "/images/small-kitchen-organization-5foot-galley-ideas-pull-1.jpg"
 images = ["/images/small-kitchen-organization-5foot-galley-ideas-pull-1.jpg", "/images/small-kitchen-organization-5foot-galley-ideas-pull-2.jpg", "/images/small-kitchen-organization-5foot-galley-ideas-pull-3.jpg", "/images/small-kitchen-organization-5foot-galley-ideas-pull-4.jpg", "/images/small-kitchen-organization-5foot-galley-ideas-pull-5.jpg"]
 tags = ["small kitchen organization", "pull out spice rack", "galley kitchen"]
-categories = ["Home Organization", "Small-Space Living"]
+categories = ["Kitchen"]
 faq = []
 draft = false
 +++
-
 ## Why a Pull‑Out Spice Rack Is Perfect for a 5‑Foot Galley
 
 ![galley kitchen base cabinet open showing pull-out spice rack with jars](../../images/small-kitchen-organization-5foot-galley-ideas-pull-2.jpg)

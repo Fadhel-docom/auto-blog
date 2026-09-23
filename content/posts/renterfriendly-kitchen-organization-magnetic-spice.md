@@ -5,10 +5,9 @@ description = "Discover renter-friendly kitchen organization with magnetic spice
 image = "/images/renterfriendly-kitchen-organization-magnetic-spice-1.jpg"
 images = ["/images/renterfriendly-kitchen-organization-magnetic-spice-1.jpg", "/images/renterfriendly-kitchen-organization-magnetic-spice-2.jpg", "/images/renterfriendly-kitchen-organization-magnetic-spice-3.jpg", "/images/renterfriendly-kitchen-organization-magnetic-spice-4.jpg", "/images/renterfriendly-kitchen-organization-magnetic-spice-5.jpg"]
 tags = ["kitchen organization", "renter tips", "magnetic spice rack"]
-categories = ["Home Organization", "Small-Space Living"]
+categories = ["Rental"]
 draft = false
 +++
-
 ## Why Magnetic Spice Racks Are Ideal for Renters
 
 ![renter attaching magnetic spice rack to fridge door, no drilling visible](../../images/renterfriendly-kitchen-organization-magnetic-spice-2.jpg)

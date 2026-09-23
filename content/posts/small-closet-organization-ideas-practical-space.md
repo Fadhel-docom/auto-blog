@@ -6,11 +6,10 @@ description = "Practical small closet organization ideas ideas with simple measu
 image = "/images/small-closet-organization-ideas-practical-space-1.jpg"
 images = ["/images/small-closet-organization-ideas-practical-space-1.jpg", "/images/small-closet-organization-ideas-practical-space-2.jpg", "/images/small-closet-organization-ideas-practical-space-3.jpg", "/images/small-closet-organization-ideas-practical-space-4.jpg", "/images/small-closet-organization-ideas-practical-space-5.jpg"]
 tags = ["small closet organization ideas", "home organization", "small spaces"]
-categories = ["Home Organization", "Small-Space Living"]
+categories = ["Bedroom"]
 faq = []
 draft = false
 +++
-
 ## Assess Your Space for small closet organization ideas
 
 ![closet shelves organization organized interior](../../images/small-closet-organization-ideas-practical-space-2.jpg)

@@ -6,11 +6,10 @@ description = "Learn step‑by‑step how to turn a 24‑inch deep under‑sink 
 image = "/images/bathroom-organization-maximizing-24-inch-deep-cabi-1.jpg"
 images = ["/images/bathroom-organization-maximizing-24-inch-deep-cabi-1.jpg", "/images/bathroom-organization-maximizing-24-inch-deep-cabi-2.jpg", "/images/bathroom-organization-maximizing-24-inch-deep-cabi-3.jpg", "/images/bathroom-organization-maximizing-24-inch-deep-cabi-4.jpg", "/images/bathroom-organization-maximizing-24-inch-deep-cabi-5.jpg"]
 tags = ["bathroom organization", "small space storage", "under sink solutions"]
-categories = ["Home Organization", "Small-Space Living"]
+categories = ["Kitchen"]
 faq = []
 draft = false
 +++
-
 ## Understanding the Under‑Sink Space
 
 ![Planning Your Pull Out Bin bathroom organization home interior](../../images/bathroom-organization-maximizing-24-inch-deep-cabi-2.jpg)

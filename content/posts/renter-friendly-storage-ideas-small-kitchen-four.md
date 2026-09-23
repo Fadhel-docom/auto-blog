@@ -6,11 +6,10 @@ description = "Discover renter‑friendly storage ideas for a tiny kitchen with 
 image = "/images/renter-friendly-storage-ideas-small-kitchen-four-1.jpg"
 images = ["/images/renter-friendly-storage-ideas-small-kitchen-four-1.jpg", "/images/renter-friendly-storage-ideas-small-kitchen-four-2.jpg", "/images/renter-friendly-storage-ideas-small-kitchen-four-3.jpg", "/images/renter-friendly-storage-ideas-small-kitchen-four-4.jpg", "/images/renter-friendly-storage-ideas-small-kitchen-four-5.jpg"]
 tags = ["storage ideas", "small kitchen", "renter-friendly"]
-categories = ["Home Organization", "Small-Space Living"]
+categories = ["Rental"]
 faq = []
 draft = false
 +++
-
 ## Introduction
 
 ![small rental kitchen with four cabinets, countertop displaying pots and spice jars](../../images/renter-friendly-storage-ideas-small-kitchen-four-2.jpg)
