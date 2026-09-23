@@ -1,0 +1,54 @@
+{{ define "main" }}
+
+<section class="error-page" aria-labelledby="error-title">
+
+  <div class="error-page-inner">
+
+    <span class="home-section-kicker">Page not found</span>
+
+    <p class="error-code" aria-hidden="true">404</p>
+
+    <h1 id="error-title">
+      This space needs reorganizing.
+    </h1>
+
+    <p class="error-description">
+      The page you're looking for may have moved, been removed, or never existed.
+      Let's get you back to something useful.
+    </p>
+
+    <div class="error-actions">
+      <a
+        class="button button-primary"
+        href="{{ site.Home.RelPermalink }}"
+      >
+        Back to home
+      </a>
+
+      <a
+        class="button button-secondary"
+        href="{{ "categories/" | relURL }}"
+      >
+        Browse categories
+      </a>
+    </div>
+
+    <div class="error-links">
+
+      <a href="{{ "about/" | relURL }}">
+        About the site
+      </a>
+
+      <span aria-hidden="true">·</span>
+
+      <a href="{{ "contact/" | relURL }}">
+        Contact
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+{{ end }}
