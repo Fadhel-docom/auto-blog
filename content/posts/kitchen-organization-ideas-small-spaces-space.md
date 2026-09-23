@@ -48,7 +48,7 @@ The cleaning zone should have a slim, 15‑inch wide caddy under the sink for di
 
 Install a row of floating shelves 12‑16 inches deep at about 48‑inches high, then add a second tier 12‑inches above it. The upper shelf can hold rarely‑used serving platters, while the lower one becomes a “grab‑and‑go” zone for everyday dishes. Use clear acrylic bins that are no deeper than the shelf depth; label each with a simple icon to keep the visual field tidy.  
 
-[Read more about Bathroom Organization Maximizing Under Sink](../bathroom-organization-maximizing-24-inch-deep-cabi/)
+[Read more about Bathroom Organization Maximizing Under Sink](../bathroom-organization-maximizing-under-sink-storage-in-a-24-inch-deep-cabinet-with-pull-out-bins-and-tension-rods/)
 
 A magnetic knife strip mounted 6 inches below the upper cabinet line frees drawer space and keeps blades visible. Pair it with a stainless‑steel spice rack that snaps onto the same strip, grouping seasonings by cuisine.  
 
@@ -60,7 +60,7 @@ Common mistakes: loading shelves to the brim, which creates a “wall of stuff�
 
 Pick containers that fit the dimensions of your cabinets, drawers, and pantry shelves before you buy. A 12‑inch deep pantry shelf can comfortably hold a 10‑inch square bin; anything larger will force the door to sag or the items to spill. For a standard 24‑inch base cabinet drawer, stackable acrylic trays that are 22 × 12 × 2 inches let you separate spices, packets, and small tools without wasting space.
 
-[Read more about Bedroom Organization Step by Step](../bedroom-organization-stepbystep-48inch-clearance/)
+[Read more about Bedroom Organization Step by Step](../bedroom-organization-stepbystep-underbed-storage-makeover-for-a-studio-apartment-with-48inch-clearance/)
 
 **Practical steps**
 
@@ -87,7 +87,7 @@ Turn the inside of cabinet doors into mini‑storage by adding a 1‑inch‑thic
 
 **Common mistakes:** tucking heavy pots on the top shelf forces you to climb, and over‑loading a drawer with mismatched items makes the whole system collapse. Instead, limit each drawer to one category (e.g., baking tools) and use dividers no wider than 3 inches to keep everything orderly.
 
-[Read more about Renter Friendly Kitchen Organization Magnetic](../renterfriendly-kitchen-organization-magnetic-spice/)
+[Read more about Renter Friendly Kitchen Organization Magnetic](../renterfriendly-kitchen-organization-magnetic-spice-rack-solutions-that-require-no-drilling/)
 
 ## Handle Awkward Corners and Narrow Areas
 
