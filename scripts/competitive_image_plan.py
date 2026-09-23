@@ -684,13 +684,13 @@ FOCUS KEYWORD:
 FINAL ARTICLE SECTIONS:
 {section_payload}
 
-Generate exactly 10 Pexels queries.
+Generate exactly 6 Pexels queries.
 
 Query 1:
 A wide hero scene representing the whole article.
 
-Queries 2-10:
-One query for each of the first nine substantive sections.
+Queries 2-6:
+One query for each of the first five substantive sections.
 
 Every query must be based on actual visual information in the
 section content. Use concrete objects, rooms, storage systems,
