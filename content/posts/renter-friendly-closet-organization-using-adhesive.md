@@ -59,7 +59,7 @@ Combining hooks and tension rods lets you carve out functional zones without per
 - Mark the existing built‑in rod (if any) and any shelves.
 - Indicate where you will place each hook and rod.
 
-[Read more about Bedroom Organization: Step‑by‑Step Under‑Bed Storage Makeover for a Studio Apartment with 48‑Inch Clearance](../bedroom-organization-stepbystep-48inch-clearance/)
+[Read more about Bedroom Organization: Step‑by‑Step Under‑Bed Storage Makeover for a Studio Apartment with 48‑Inch Clearance](../bedroom-organization-stepbystep-underbed-storage-makeover-for-a-studio-apartment-with-48inch-clearance/)
 
 **Step 2 - Prioritize High‑Use Items**
 - Keep everyday clothing within arm’s reach (about 18‑24 inches from the floor).
@@ -69,7 +69,7 @@ Combining hooks and tension rods lets you carve out functional zones without per
 - Start with the highest hooks (for scarves, hats) and work downward.
 - Press each hook firmly for at least 30 seconds to ensure a strong bond.
 
-[Read more about Renter‑Friendly Kitchen Organization: Magnetic Spice Rack Solutions That Require No Drilling](../renterfriendly-kitchen-organization-magnetic-spice/)
+[Read more about Renter‑Friendly Kitchen Organization: Magnetic Spice Rack Solutions That Require No Drilling](../renterfriendly-kitchen-organization-magnetic-spice-rack-solutions-that-require-no-drilling/)
 
 **Step 4 - Add Tension Rods**
 - Begin with the lowest rod (shoe shelf) and move upward.
@@ -78,7 +78,7 @@ Combining hooks and tension rods lets you carve out functional zones without per
 **Step 5 - Fine‑Tune the Layout**
 - Hang a few items, step back, and adjust hook positions if needed. Small shifts of 1‑2 inches can dramatically improve accessibility.
 
-[Read more about Small Space Organization: Transforming a 3‑ft Wide Hallway into Functional Coat and Shoe Storage](../small-space-organization-transforming-a-3ft-wide-hallway-int/)
+[Read more about Small Space Organization: Transforming a 3‑ft Wide Hallway into Functional Coat and Shoe Storage](../small-space-organization-transforming-a-3ft-wide-hallway-into-functional-coat-and-shoe-storage/)
 
 ### Real‑World Example
 A one‑bedroom apartment’s 48‑inch wide closet was transformed into three zones:
