@@ -1,62 +1,63 @@
-+++
-title = "Privacy"
-description = "Privacy information for visitors to Home Organization Ideas."
+---
+title = "Terms of Use"
+description = "Terms of use for Home Organization Ideas — content license, disclaimers, and limitations."
 date = 2026-09-23
 lastmod = 2026-09-23
 draft = false
-+++
+type = "page"
+---
 
-## Privacy at Home Organization Ideas
+## Terms of Use
 
-Home Organization Ideas is a lightweight content website focused on practical home organization and small-space living.
+By accessing Home Organization Ideas (the "Site"), you agree to these Terms of Use. If you do not agree, please do not use the Site.
 
-We aim to collect as little information as reasonably possible.
+## Content and license
 
-## Website analytics
+All articles, text, layouts, and original graphics are the property of Home Organization Ideas, unless otherwise noted.
 
-We use GoatCounter to understand how people use the website.
+You may:
 
-Analytics can help us understand information such as:
+- Read, share links to, and quote short excerpts with attribution
+- Print articles for personal, non-commercial use
 
-- Which pages are visited
-- How visitors arrive at the site
-- Which content receives attention
-- Basic usage and performance patterns
+You may not:
 
-This information is used to improve the website and its content.
+- Republish full articles without written permission
+- Use our content for AI training datasets without permission
+- Remove or alter attribution
 
-We do not use analytics to ask visitors for personal information.
+Third-party images (e.g., from Pexels) are used under their own licenses and credited accordingly.
 
-## Search and website functionality
+## Accuracy and no professional advice
 
-The site's article search is designed to work in the visitor's browser. Search queries are used to filter available articles and are not intended to create a personal profile.
+Our guides are provided for general informational purposes only. They are **not** professional advice (legal, medical, construction, electrical, or otherwise).
 
-## Third-party services
+Measurements, product recommendations, and techniques are examples and may not fit every home, material, or situation. Always verify before drilling, mounting, or modifying anything.
 
-The website may link to or use services operated by third parties, including services used for:
+## Affiliate disclosure
 
-- Website hosting
-- Analytics
-- Images and image attribution
-- Social distribution
-- External resources
+Some articles may include affiliate links. If you purchase through these links, we may earn a small commission at no extra cost to you. We only recommend products relevant to the topic.
 
-Those services may have their own privacy policies and terms.
+## Advertising
 
-When you leave Home Organization Ideas and visit another website, that website's own policies apply.
+The Site may display third-party advertising. We are not responsible for the content of those ads.
+
+## Limitation of liability
+
+To the maximum extent permitted by law, Home Organization Ideas is not liable for any damages arising from:
+
+- Use or inability to use the Site
+- Reliance on information published on the Site
+- Products, services, or websites linked from the Site
 
 ## External links
 
-Some articles may contain links to external websites or resources.
+The Site contains links to external websites. We are not responsible for their content, availability, or policies.
 
-We do not control the privacy practices or content of external websites.
+## Changes to these terms
 
-## Changes to this page
-
-This privacy information may be updated when the website's technology or services change.
-
-The date at the top of this page indicates when this page was last updated.
+We may update these Terms at any time. Continued use of the Site after changes constitutes acceptance of the new terms.
 
 ## Contact
 
-If you have a privacy-related question or notice something that should be corrected, please visit our [Contact page](/auto-blog/contact/).
+Questions about these Terms? Use our [Contact page](/auto-blog/contact/).
