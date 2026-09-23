@@ -14,9 +14,9 @@ ARTICLE_PATH = ROOT_DIR / "article.json"
 POSTS_DIR = ROOT_DIR / "content" / "posts"
 IMAGE_DIR = ROOT_DIR / "static" / "images"
 
-REQUIRED_IMAGES = 10
-EXISTING_PUBLISHED_IMAGES = 5
-ADDITIONAL_IMAGES = 5
+REQUIRED_IMAGES = 6
+EXISTING_PUBLISHED_IMAGES = 6
+ADDITIONAL_IMAGES = 0
 MARKDOWN_EXISTING_IMAGES = 4
 
 
@@ -720,7 +720,7 @@ def main() -> int:
 
         if before_count >= REQUIRED_IMAGES:
             print(
-                "Post already contains 10 or "
+                "Post already contains 6 or "
                 "more images."
             )
 
