@@ -110,7 +110,6 @@ These small tweaks turn a purely utilitarian solution into a design feature that
 
 ## Real World Examples - Three Small Bedroom Setups
 
-![small bedroom storage ideas rod organized storage organized](../../images/small-bedroom-storage-ideas-diy-pull-out-7.jpg)
 
 
 Seeing the concept in action helps you decide which configuration fits your lifestyle. Below are three realistic scenarios, each using the same queen‑size bed and 10×10 footprint.
@@ -141,7 +140,6 @@ Each setup demonstrates how the same core system can be customized for different
 
 ## Common Mistakes and How to Avoid Them
 
-![bedroom drawer storage organized interior](../../images/small-bedroom-storage-ideas-diy-pull-out-8.jpg)
 
 
 Even a simple DIY project can stumble if you overlook a few details. Below are the most frequent errors and corrective tips.
@@ -158,7 +156,6 @@ By anticipating these pitfalls, your DIY under‑bed storage will stay functiona
 
 ## Budget Friendly Product Recommendations
 
-![bathroom cabinet storage organized interior](../../images/small-bedroom-storage-ideas-diy-pull-out-9.jpg)
 
 
 You don’t need high‑end brands to build a reliable system. Here are three generic product categories that are widely available at hardware stores or online marketplaces:
@@ -173,7 +170,6 @@ These items typically cost under $20 each, keeping the total project budget unde
 
 ## Maintaining Your DIY Under Bed System
 
-![bedroom closet storage bins organized interior](../../images/small-bedroom-storage-ideas-diy-pull-out-10.jpg)
 
 
 A storage solution is only as good as its upkeep. Follow this simple maintenance routine to keep everything sliding smoothly:
@@ -207,7 +203,3 @@ Ready to start? Gather your measurements, pick up a few pieces of hardware, and 
 - Photo 4: [Curtis Adams](https://www.pexels.com/@curtis-adams-1694007) via [Pexels](https://www.pexels.com/photo/modern-bathroom-with-shower-and-shelving-36777570/)
 - Photo 5: [Keegan Checks](https://www.pexels.com/@keeganjchecks) via [Pexels](https://www.pexels.com/photo/brown-woven-basket-on-brown-wooden-cabinet-10117739/)
 - Photo 6: [murod lens](https://www.pexels.com/@murod-lens-1082996343) via [Pexels](https://www.pexels.com/photo/modern-bedroom-workspace-with-wooden-accents-37831449/)
-- Photo 7: [RDNE Stock project](https://www.pexels.com/@rdne) via [Pexels](https://www.pexels.com/photo/clear-glass-jars-on-white-wooden-shelf-8580793/)
-- Photo 8: [cottonbro studio](https://www.pexels.com/@cottonbro) via [Pexels](https://www.pexels.com/photo/close-up-of-brown-drawers-6333743/)
-- Photo 9: [American  Cleaning Institute](https://www.pexels.com/@american-cleaning-institute-2155509001) via [Pexels](https://www.pexels.com/photo/organized-kitchen-cabinet-with-wicker-baskets-33784616/)
-- Photo 10: [鑲家居創意設計](https://www.pexels.com/@3613915) via [Pexels](https://www.pexels.com/photo/bedroom-with-glass-cabinets-5404925/)
