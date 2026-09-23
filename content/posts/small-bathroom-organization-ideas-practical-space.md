@@ -3,8 +3,8 @@ title = "small bathroom organization ideas - A Practical Small Space Guide"
 date = "2026-09-22T22:39:35+00:00"
 lastmod = "2026-09-22T22:39:35+00:00"
 description = "Practical small bathroom organization ideas ideas with simple measurements, storage zones, and realistic steps for a more organized home. Designed for everyda"
-image = "/images/small-bathroom-organization-ideas-practical-space-1.jpg"
-images = ["/images/small-bathroom-organization-ideas-practical-space-1.jpg", "/images/small-bathroom-organization-ideas-practical-space-2.jpg", "/images/small-bathroom-organization-ideas-practical-space-3.jpg", "/images/small-bathroom-organization-ideas-practical-space-4.jpg", "/images/small-bathroom-organization-ideas-practical-space-5.jpg"]
+image = "https://images.pexels.com/photos/19866402/pexels-photo-19866402.jpeg?cs=srgb&dl=pexels-lisa-anna-901356985-19866402.jpg&fm=jpg"
+images = ["https://images.pexels.com/photos/19866402/pexels-photo-19866402.jpeg?cs=srgb&dl=pexels-lisa-anna-901356985-19866402.jpg&fm=jpg", "/images/small-bathroom-organization-ideas-practical-space-2.jpg", "/images/small-bathroom-organization-ideas-practical-space-3.jpg", "/images/small-bathroom-organization-ideas-practical-space-4.jpg", "/images/small-bathroom-organization-ideas-practical-space-5.jpg"]
 tags = ["small bathroom organization ideas", "home organization", "small spaces"]
 categories = ["Bathroom"]
 faq = []
@@ -129,7 +129,7 @@ Finally, avoid “one‑size‑fits‑all” containers. A 10‑liter bucket may
 
 ## Image Credits
 
-- Photo 1: [Max Vakhtbovych](https://www.pexels.com/@artbovich) via [Pexels](https://www.pexels.com/photo/empty-dressing-room-11701120/)
+- Photo 1: [Lisa Anna](https://www.pexels.com/@lisa-anna-901356985) via [Pexels](https://www.pexels.com/photo/sink-in-a-bathroom-19866402/)
 - Photo 2: [Curtis Adams](https://www.pexels.com/@curtis-adams-1694007) via [Pexels](https://www.pexels.com/photo/modern-bathroom-with-shower-and-shelving-36777570/)
 - Photo 3: [Keegan Checks](https://www.pexels.com/@keeganjchecks) via [Pexels](https://www.pexels.com/photo/brown-woven-basket-on-brown-wooden-cabinet-10117739/)
 - Photo 4: [Alexander F Ungerer](https://www.pexels.com/@alexander-f-ungerer-157458816) via [Pexels](https://www.pexels.com/photo/table-and-sink-in-bathroom-19467972/)
