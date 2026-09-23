@@ -44,7 +44,7 @@
   <meta
     name="google-site-verification"
     content="tgAG8aMPl7dBqyp5e4JPtjgKdiwXLdQ967R4OVcW-eM"
-  />
+  >
 
   <link
     rel="icon"
@@ -100,6 +100,14 @@
   <meta property="og:site_name" content="{{ .Site.Title }}">
 
   <meta property="og:image" content="{{ $ogImage }}">
+
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="twitter:title" content="{{ $ogTitle }}">
+
+  <meta name="twitter:description" content="{{ $ogDescription }}">
+
+  <meta name="twitter:image" content="{{ $ogImage }}">
 
   <link
     rel="stylesheet"
@@ -242,6 +250,8 @@
     </div>
 
   </footer>
+
+  <script src="{{ "js/site.js" | relURL }}" defer></script>
 
 </body>
 
