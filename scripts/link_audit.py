@@ -34,7 +34,7 @@ class LinkExtractor(HTMLParser):
 
 def normalize_target(link: str, current_file: Path) -> Path | None:
     link = link.split("#", 1)[0].split("?", 1)[0].strip()
-    if not link or link.startswith(SKIP_SCHEMES):
+    if not link or link.startswith(SKIP_SCHEMES) or link.startswith("//"):
         return None
 
     path = unquote(urlparse(link).path)
@@ -46,7 +46,11 @@ def normalize_target(link: str, current_file: Path) -> Path | None:
         path = "/" + str((rel_dir / path).as_posix())
 
     path = path.lstrip("/") or "index.html"
-    candidate = PUBLIC_DIR / path
+    candidate = (PUBLIC_DIR / path).resolve()
+    try:
+        candidate.relative_to(PUBLIC_DIR.resolve())
+    except ValueError:
+        return None
 
     if candidate.is_dir():
         return candidate / "index.html"
