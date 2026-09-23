@@ -3,8 +3,8 @@ title = "small apartment storage ideas - A Practical Small Space Guide"
 date = "2026-09-22T23:10:01+00:00"
 lastmod = "2026-09-22T23:10:01+00:00"
 description = "Practical small apartment storage ideas ideas with simple measurements, storage zones, and realistic steps for a more organized home. Designed for everyday sp"
-image = "/images/small-apartment-storage-ideas-practical-space-1.jpg"
-images = ["/images/small-apartment-storage-ideas-practical-space-1.jpg", "/images/small-apartment-storage-ideas-practical-space-2.jpg", "/images/small-apartment-storage-ideas-practical-space-3.jpg", "/images/small-apartment-storage-ideas-practical-space-4.jpg", "/images/small-apartment-storage-ideas-practical-space-5.jpg"]
+image = "https://images.pexels.com/photos/18470969/pexels-photo-18470969.jpeg?cs=srgb&dl=pexels-alan-antony-279974862-18470969.jpg&fm=jpg"
+images = ["https://images.pexels.com/photos/18470969/pexels-photo-18470969.jpeg?cs=srgb&dl=pexels-alan-antony-279974862-18470969.jpg&fm=jpg", "/images/small-apartment-storage-ideas-practical-space-2.jpg", "/images/small-apartment-storage-ideas-practical-space-3.jpg", "/images/small-apartment-storage-ideas-practical-space-4.jpg", "/images/small-apartment-storage-ideas-practical-space-5.jpg"]
 tags = ["small apartment storage ideas", "home organization", "small spaces"]
 categories = ["Small Space"]
 faq = []
@@ -133,7 +133,7 @@ Common mistakes that derail a maintenance plan are letting the “quick” tasks
 
 ## Image Credits
 
-- Photo 1: [Max Vakhtbovych](https://www.pexels.com/@artbovich) via [Pexels](https://www.pexels.com/photo/empty-dressing-room-11701120/)
+- Photo 1: [Alan Antony](https://www.pexels.com/@alan-antony-279974862) via [Pexels](https://www.pexels.com/photo/small-living-room-in-the-apartment-18470969/)
 - Photo 2: [Curtis Adams](https://www.pexels.com/@curtis-adams-1694007) via [Pexels](https://www.pexels.com/photo/modern-bathroom-with-shower-and-shelving-36777570/)
 - Photo 3: [American  Cleaning Institute](https://www.pexels.com/@american-cleaning-institute-2155509001) via [Pexels](https://www.pexels.com/photo/organized-kitchen-cabinet-with-wicker-baskets-33784616/)
 - Photo 4: [Jaycee300s](https://www.pexels.com/@jaycee300s-3059779) via [Pexels](https://www.pexels.com/photo/laundry-basket-in-bathroom-18071805/)
