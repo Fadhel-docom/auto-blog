@@ -1095,7 +1095,7 @@ def main() -> int:
 
         if len(queries) != IMAGE_COUNT:
             raise ValueError(
-                "Exactly 10 unique image queries "
+                "Exactly 6 unique image queries "
                 "are required."
             )
 
