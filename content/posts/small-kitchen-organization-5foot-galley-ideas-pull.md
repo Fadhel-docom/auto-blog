@@ -114,7 +114,6 @@ With measurements, hardware, and materials in hand, you can assemble the rack.
 
 ## Finishing Details: Paint, Labels, and Extras
 
-![hands installing rubber gasket and magnetic strip on](../../images/small-kitchen-organization-5foot-galley-ideas-pull-7.jpg)
 
 
 A polished look makes the rack feel like a built‑in feature rather than a DIY add‑on.
@@ -127,7 +126,6 @@ A polished look makes the rack feel like a built‑in feature rather than a DIY 
 
 ## Ongoing Maintenance and Organization Tips
 
-![painted pull out spice rack with labeled jars](../../images/small-kitchen-organization-5foot-galley-ideas-pull-8.jpg)
 
 
 A pull‑out rack stays useful only if you keep it tidy and functional.
@@ -141,7 +139,6 @@ A pull‑out rack stays useful only if you keep it tidy and functional.
 
 ## Common Pitfalls and How to Avoid Them
 
-![person cleaning and reorganizing pull out spice rack](../../images/small-kitchen-organization-5foot-galley-ideas-pull-9.jpg)
 
 
 | Pitfall | Why It Matters | Solution |
@@ -156,7 +153,6 @@ A pull‑out rack stays useful only if you keep it tidy and functional.
 
 ## Real‑World Example: From Planning to Finished Rack
 
-![pull out spice rack missing back panel with](../../images/small-kitchen-organization-5foot-galley-ideas-pull-10.jpg)
 
 
 **Studio Apartment – 5‑ft Galley**
@@ -192,7 +188,3 @@ A pull‑out spice rack is one of the most rewarding **small kitchen organizatio
 - Photo 4: [hi room](https://www.pexels.com/@hiroom) via [Pexels](https://www.pexels.com/photo/interior-design-of-kitchen-17158659/)
 - Photo 5: [taha balta](https://www.pexels.com/@taha-balta-3031128) via [Pexels](https://www.pexels.com/photo/close-up-of-herbs-in-a-glass-jar-4834332/)
 - Photo 6: [Bilguun Gantumur](https://www.pexels.com/@bilguun-gantumur-2162568235) via [Pexels](https://www.pexels.com/photo/elegant-white-plates-on-kitchen-dish-rack-38310827/)
-- Photo 7: [Sergey  Meshkov](https://www.pexels.com/@19x14) via [Pexels](https://www.pexels.com/photo/arms-over-car-livery-8478199/)
-- Photo 8: [umberto dez](https://www.pexels.com/@umberto-dez-6691815) via [Pexels](https://www.pexels.com/photo/row-of-spice-jars-on-wooden-shelf-34942955/)
-- Photo 9: [cottonbro studio](https://www.pexels.com/@cottonbro) via [Pexels](https://www.pexels.com/photo/person-standing-in-white-long-sleeve-shirt-on-kitchen-counter-7418382/)
-- Photo 10: [Claudio Olivares Medina](https://www.pexels.com/@quiltro) via [Pexels](https://www.pexels.com/photo/glass-jars-with-herbs-sitting-on-shelf-4044070/)
