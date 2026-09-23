@@ -83,7 +83,6 @@ Common mistakes: hanging shelves too high (above 60 in) forces you to stretch,
 
 ## Handle Awkward Corners and Narrow Areas
 
-![small bathroom sink area floating shelf with clear](../../images/small-bathroom-organization-ideas-practical-space-7.jpg)
 
 
 A narrow 30‑inch‑wide bathroom can feel cramped when corners become dead space. Start by installing a 12‑by‑12‑inch corner shelf with built‑in brackets; it fits snugly between two walls and gives a home for toothbrushes, a small plant, or a decorative jar of cotton swabs. For deeper corners, a floating “L‑shaped” shelf that extends 8 inches from each wall maximizes surface area without protruding into the shower zone.  
@@ -94,7 +93,6 @@ Common mistakes include cramming a bulky corner cabinet that blocks the door swi
 
 ## Build a Simple Routine That Stays Organized
 
-![small bathroom corner shelf 12 inch holding toothbrushes](../../images/small-bathroom-organization-ideas-practical-space-8.jpg)
 
 
 Spend just two minutes after each shower to reset the space. Keep a small, magnetic strip on the back of the medicine cabinet door and snap a tiny towel bar onto it; hang the hand‑towel flat so it dries quickly and doesn’t become a soggy mess. When the towel feels damp—usually after three uses—swap it for a fresh one from the rack, then toss the wet one into the laundry basket.  
@@ -105,7 +103,6 @@ Every month, pull the vanity drawer, empty it onto the floor, and sort items int
 
 ## Avoid Common Storage Mistakes
 
-![small bathroom medicine cabinet door magnetic strip with](../../images/small-bathroom-organization-ideas-practical-space-9.jpg)
 
 
 One of the quickest ways to lose precious square footage is to let storage items dominate the floor. A common mistake is using deep, 12‑inch‑wide baskets for toiletries; they sit half‑filled and create a “mountain” that makes the room feel cramped. Instead, opt for shallow trays no deeper than 4 inches and line the back wall of the vanity.  
@@ -118,7 +115,6 @@ Finally, avoid “one‑size‑fits‑all” containers. A 10‑liter bucket may
 
 ## Create a Maintenance Plan That Takes Minutes
 
-![small bathroom vanity back wall shallow tray with](../../images/small-bathroom-organization-ideas-practical-space-10.jpg)
 
 
 - **Set a 5‑minute nightly reset.** Keep a slim, 12‑inch wall‑mounted caddy by the vanity stocked with a microfiber cloth, a spray bottle of all‑purpose cleaner, and a small trash bag. When the timer goes off, spend 30 seconds wiping the sink rim, 30 seconds clearing any hair from the drain, and 1 minute sweeping the 3‑ft × 5‑ft floor with a handheld broom. The remaining minutes are for putting stray items (toothbrushes, razors) back in their designated slots.
@@ -139,7 +135,3 @@ Finally, avoid “one‑size‑fits‑all” containers. A 10‑liter bucket may
 - Photo 4: [Alexander F Ungerer](https://www.pexels.com/@alexander-f-ungerer-157458816) via [Pexels](https://www.pexels.com/photo/table-and-sink-in-bathroom-19467972/)
 - Photo 5: [hi room](https://www.pexels.com/@hiroom) via [Pexels](https://www.pexels.com/photo/bathroom-in-a-hotel-17158642/)
 - Photo 6: [Mikhail Nilov](https://www.pexels.com/@mikhail-nilov) via [Pexels](https://www.pexels.com/photo/cosmetic-product-over-wooden-table-6932924/)
-- Photo 7: [AJ  Ahamad](https://www.pexels.com/@aj-ahamad-767001191) via [Pexels](https://www.pexels.com/photo/modern-minimalist-bathroom-vanity-setup-33636639/)
-- Photo 8: [Aaron Crowe](https://www.pexels.com/@aaron-crowe-3149159) via [Pexels](https://www.pexels.com/photo/hygiene-essentials-on-white-countertop-in-bathroom-4753920/)
-- Photo 9: [ASR Design Studio](https://www.pexels.com/@asr-design-studio-623558661) via [Pexels](https://www.pexels.com/photo/house-kitchen-interior-design-18109909/)
-- Photo 10: [Christa Grover](https://www.pexels.com/@christa-grover-977018) via [Pexels](https://www.pexels.com/photo/oval-mirror-near-toilet-bowl-1910472/)
