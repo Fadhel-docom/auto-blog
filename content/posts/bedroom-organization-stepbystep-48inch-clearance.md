@@ -56,7 +56,7 @@ Select a combination that respects the 48‑inch limit while matching the items 
 
 A clean, empty base gives you a true sense of the volume you have to work with and prevents hidden obstacles from ruining your installation.
 
-[Read more about Small Apartment Organization: Maximizing Storage in a 350‑sq‑ft Studio with No Built‑In Closet](../small-apartment-organization-maximizing-storage-in-a-350sqft/)
+[Read more about Small Apartment Organization: Maximizing Storage in a 350‑sq‑ft Studio with No Built‑In Closet](../small-apartment-organization-maximizing-storage-in-a-350-sq-ft-studio-with-no-built-in-closet/)
 
 ---
 
@@ -73,7 +73,7 @@ Many studio bedrooms use a simple platform bed, but a **low‑profile frame** ca
 
 If you prefer a no‑DIY route, look for **pre‑made low‑profile platform kits** that advertise a total height of 10‑12 in, leaving you with 36‑38 in of clearance for storage.
 
-[Read more about Small Space Organization: Transforming a 3‑ft Wide Hallway into Functional Coat and Shoe Storage](../small-space-organization-transforming-a-3ft-wide-hallway-int/)
+[Read more about Small Space Organization: Transforming a 3‑ft Wide Hallway into Functional Coat and Shoe Storage](../small-space-organization-transforming-a-3-ft-wide-hallway-into-functional-coat-and-shoe-storage/)
 
 ---
 
@@ -89,7 +89,7 @@ Sliding mechanisms are the heart of an efficient under‑bed system. Choose betw
 
 For **rolling bins**, simply place them on the floor and use non‑slip pads underneath. If you need extra stability, add a thin **plywood sheet** (½‑in thick) across the platform and slide the bins onto it.
 
-[Read more about Renter‑Friendly Kitchen Organization: Magnetic Spice Rack Solutions That Require No Drilling](../renterfriendly-kitchen-organization-magnetic-spice/)
+[Read more about Renter‑Friendly Kitchen Organization: Magnetic Spice Rack Solutions That Require No Drilling](../renter-friendly-kitchen-organization-magnetic-spice-rack-solutions-that-require-no-drilling/)
 
 ---
 
