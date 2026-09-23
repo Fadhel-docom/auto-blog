@@ -1007,7 +1007,7 @@ def main() -> int:
 
         if len(images) != 5:
             raise ValueError(
-                "Exactly 5 images are required "
+                "Exactly 6 images are required "
                 "before publishing."
             )
 
