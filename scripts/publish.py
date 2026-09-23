@@ -408,10 +408,10 @@ def insert_images_between_h2(
     content: str,
     images: list[dict[str, Any]],
 ) -> str:
-    if len(images) != 5:
+    if len(images) != 6:
         raise ValueError(
             "insert_images_between_h2 requires "
-            "exactly 5 images."
+            "exactly 6 images."
         )
 
     image_index = 1
