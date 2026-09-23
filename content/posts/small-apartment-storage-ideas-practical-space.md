@@ -79,7 +79,6 @@ Common mistakes include stacking items on top of each other in high cabinets, wh
 
 ## Handle Awkward Corners and Narrow Areas
 
-![bathroom rack organized storage organized interior](../../images/small-apartment-storage-ideas-practical-space-7.jpg)
 
 
 Applying small apartment storage ideas to this section means focusing on the smallest workable change first. Observe how the space behaves for several days. If an item repeatedly ends up outside its assigned zone, that is useful feedback rather than a failure. Move the zone closer to where the item is actually used, or make the container easier to access. The goal of small apartment storage ideas is a system that reduces decisions, not one that only looks tidy immediately after organizing. Keep the number of categories small so the system stays easy to follow during busy weeks. Re-check the arrangement every few months and adjust for seasonal changes.
@@ -90,7 +89,6 @@ Focus this part of small apartment storage ideas on "Handle Awkward Corners and 
 
 ## Build a Simple Routine That Stays Organized
 
-![kitchen basket organized organized interior](../../images/small-apartment-storage-ideas-practical-space-8.jpg)
 
 
 Start with a **5‑minute “Morning Sweep.”**  
@@ -111,7 +109,6 @@ Stick to these short, regular actions, and your apartment will stay organized wi
 
 ## Avoid Common Storage Mistakes
 
-![hallway rack storage organized interior](../../images/small-apartment-storage-ideas-practical-space-9.jpg)
 
 
 When you’re packing a small apartment, the first mistake is treating the space like a blank canvas and then filling it without a plan. Measure every doorway, closet, and window frame before buying furniture or storage units. A 3‑foot‑high wardrobe that seems perfect on paper can’t swing open if your door is only 2.5 feet tall, leaving you stuck with a half‑filled closet and a broken door.
@@ -124,7 +121,6 @@ Finally, avoid stacking items on top of each other. Use stackable, clear bins an
 
 ## Create a Maintenance Plan That Takes Minutes
 
-![kitchen rack storage organized interior](../../images/small-apartment-storage-ideas-practical-space-10.jpg)
 
 
 Spend just 5 minutes each day clearing surfaces: wipe the kitchen counter, put the mail in a small 6‑inch bin, and fold the laundry basket back into its 12‑inch cubby. A 15‑minute “mid‑week refresh” can include vacuuming the 6‑ft² living‑room rug, straightening the 3‑ft bookshelf, and checking the pantry for expired items. Once a month, set aside 30 minutes for a deeper sweep: dust the 8‑ft high ceiling fan, organize the 10‑inch tall shoe rack, and swap out winter coats for spring jackets in a 4‑ft storage cabinet.  
@@ -143,7 +139,3 @@ Common mistakes that derail a maintenance plan are letting the “quick” tasks
 - Photo 4: [Jaycee300s](https://www.pexels.com/@jaycee300s-3059779) via [Pexels](https://www.pexels.com/photo/laundry-basket-in-bathroom-18071805/)
 - Photo 5: [cottonbro studio](https://www.pexels.com/@cottonbro) via [Pexels](https://www.pexels.com/photo/close-up-of-brown-drawers-6333743/)
 - Photo 6: [RDNE Stock project](https://www.pexels.com/@rdne) via [Pexels](https://www.pexels.com/photo/clear-glass-jars-on-white-wooden-shelf-8580793/)
-- Photo 7: [Bilguun Gantumur](https://www.pexels.com/@bilguun-gantumur-2162568235) via [Pexels](https://www.pexels.com/photo/modern-kitchen-drawer-with-utensils-and-marble-counter-38311093/)
-- Photo 8: [Magda Ehlers](https://www.pexels.com/@magda-ehlers-pexels) via [Pexels](https://www.pexels.com/photo/rustic-kitchen-with-straw-roof-and-wicker-baskets-35285470/)
-- Photo 9: [Adrien Olichon](https://www.pexels.com/@adrien-olichon-1257089) via [Pexels](https://www.pexels.com/photo/industrial-warehouse-storage-racks-and-shelving-36126272/)
-- Photo 10: [ASR Design Studio](https://www.pexels.com/@asr-design-studio-623558661) via [Pexels](https://www.pexels.com/photo/house-kitchen-interior-design-18109909/)
