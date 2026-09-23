@@ -1544,9 +1544,9 @@ def generate_faq(api_key, keyword, title):
 def append_faq(content_markdown, faq):
     if not FAQ_MIN_ITEMS <= len(faq) <= FAQ_MAX_ITEMS:
         raise ValueError("append_faq received an invalid FAQ count.")
-    parts = [content_markdown.strip(), "## Frequently Asked Questions"]
+    parts = [content_markdown.strip(), "### Frequently Asked Questions"]
     for item in faq:
-        parts.append(f"### {item['question'].strip()}\n\n{item['answer'].strip()}")
+        parts.append(f"**{item['question'].strip()}**\n\n{item['answer'].strip()}")
     return "\n\n".join(parts).strip()
 
 
