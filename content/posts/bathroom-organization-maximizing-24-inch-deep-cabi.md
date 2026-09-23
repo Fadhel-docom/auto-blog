@@ -96,7 +96,6 @@ If you encounter resistance, apply a light coat of silicone spray to the rails (
 
 ## Adding and Securing the Tension Rod
 
-![Adding and Securing the bathroom organization home interior](../../images/bathroom-organization-maximizing-24-inch-deep-cabi-7.jpg)
 
 
 With the bin installed, the tension rod can now be positioned safely.
@@ -111,7 +110,6 @@ The tension rod is now ready to hold vertical items while leaving the pull‑out
 
 ## Arranging Everyday Items for Maximum Efficiency
 
-![Arranging Everyday Items for bathroom organization home interior](../../images/bathroom-organization-maximizing-24-inch-deep-cabi-8.jpg)
 
 
 The true benefit of this system appears when you restock the cabinet. Follow the zone‑based strategy to keep the most useful items within arm’s reach and the rarely used items out of the way.
@@ -138,7 +136,6 @@ The true benefit of this system appears when you restock the cabinet. Follow the
 
 ## Ongoing Maintenance and Troubleshooting Tips
 
-![Ongoing Maintenance and Troubleshooting bathroom organization home interior](../../images/bathroom-organization-maximizing-24-inch-deep-cabi-9.jpg)
 
 
 Even the best‑planned system benefits from regular check‑ups. Incorporate these habits into your weekly cleaning routine:
@@ -153,7 +150,6 @@ By staying proactive, the system will remain functional and look tidy for years.
 
 ## Final Checklist and Next Steps
 
-![Final Checklist and Next bathroom organization home interior](../../images/bathroom-organization-maximizing-24-inch-deep-cabi-10.jpg)
 
 
 Before you call the project complete, run through this concise checklist:
