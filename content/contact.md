@@ -1,12 +1,13 @@
-+++
+---
 title = "Contact"
 description = "Contact Home Organization Ideas with questions, suggestions, corrections, or feedback about our organization guides."
 date = 2026-09-23
 lastmod = 2026-09-23
 draft = false
-+++
+type = "page"
+---
 
-## We would love to hear from you
+## We'd love to hear from you
 
 Have a question about an organization idea? Found something that needs correcting? Have a suggestion for a future guide?
 
@@ -14,23 +15,25 @@ We welcome useful feedback.
 
 ## What you can contact us about
 
-You can get in touch about:
-
 - Questions about our guides
 - Corrections or factual updates
 - Suggestions for future topics
-- Small-space organization problems you would like us to cover
+- Small-space organization problems you'd like us to cover
 - Renter-friendly organization ideas
-- Feedback about the website
+- Website feedback
 - Collaboration and content-related inquiries
 
-## Contact
+## How to reach us
 
-Because Home Organization Ideas is hosted as a lightweight independent publication on GitHub Pages, the most reliable public contact channel at this stage is our project's GitHub repository.
+Home Organization Ideas is an independent publication hosted on GitHub Pages. The most reliable public contact channel at this stage is our GitHub repository:
 
-[Open the Home Organization Ideas project on GitHub](https://github.com/Fadhel-docom/auto-blog)
+**[→ Open our project on GitHub](https://github.com/Fadhel-docom/auto-blog/issues/new)**
 
-For a correction or issue with the website, you can use the repository's issue system so the problem can be clearly described and tracked.
+For corrections, please include:
+
+1. The article URL
+2. What you found (with a screenshot if possible)
+3. The correction you'd suggest
 
 ## Corrections and accuracy
 
