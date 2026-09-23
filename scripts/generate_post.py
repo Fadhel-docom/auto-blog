@@ -2018,6 +2018,7 @@ def generate_article_pipeline(
         "word_count": final_word_count,
         "h2_count": final_h2_count,
         "h2_headings": h2_headings,
+        "faq": faq,
     }
 
 
