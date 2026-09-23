@@ -1,0 +1,56 @@
+name: Health Monitor
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+  issues: write
+
+concurrency:
+  group: health-monitor
+  cancel-in-progress: false
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install requests
+
+      - name: Run health monitor
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          SITE_URL: "https://fadhel-docom.github.io/auto-blog/"
+        run: |
+          python scripts/health_monitor.py
+
+      - name: Commit health report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add logs/health.json
+          if git diff --cached --quiet; then
+            echo "No health report changes."
+          else
+            git commit -m "Health monitor: update health report"
+            git push
+          fi
