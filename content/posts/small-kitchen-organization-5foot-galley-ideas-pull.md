@@ -40,7 +40,7 @@ Accurate measurements are the foundation of a successful build. A typical studio
 
 The slide mechanism determines how smoothly the rack operates and how much weight it can support. For a galley cabinet, you need a slim, full‑extension system that can handle the combined weight of jars, labels, and occasional bulk items.
 
-[Read more about Bathroom Organization Maximizing Under Sink](../bathroom-organization-maximizing-24-inch-deep-cabi/)
+[Read more about Bathroom Organization Maximizing Under Sink](../bathroom-organization-maximizing-under-sink-storage-in-a-24-inch-deep-cabinet-with-pull-out-bins-and-tension-rods/)
 
 - **Full‑extension ball‑bearing slides** – extend the entire rack, exposing every tier at once.
 - **Side‑mount vs. bottom‑mount** – side‑mount slides attach to the cabinet sides and the rack back, making them easier to retrofit on existing cabinets.
@@ -51,7 +51,7 @@ The slide mechanism determines how smoothly the rack operates and how much weigh
 2. Optional soft‑close side‑mount kit for quieter operation.
 3. Adjustable mounting brackets to accommodate slight wall irregularities.
 
-[Read more about Renter Friendly Kitchen Organization Magnetic](../renterfriendly-kitchen-organization-magnetic-spice/)
+[Read more about Renter Friendly Kitchen Organization Magnetic](../renterfriendly-kitchen-organization-magnetic-spice-rack-solutions-that-require-no-drilling/)
 
 ---
 
@@ -108,7 +108,7 @@ With measurements, hardware, and materials in hand, you can assemble the rack.
 - Apply a thin rubber gasket to the bottom of the rack to dampen vibration.
 - Install a small magnetic strip on the side panel for metal spice tins.
 
-[Read more about Bedroom Organization Step by Step](../bedroom-organization-stepbystep-48inch-clearance/)
+[Read more about Bedroom Organization Step by Step](../bedroom-organization-stepbystep-underbed-storage-makeover-for-a-studio-apartment-with-48inch-clearance/)
 
 ---
 
