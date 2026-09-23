@@ -78,7 +78,7 @@
 
   {{ if .Params.image }}
 
-    {{ $ogImage = .Params.image | strings.TrimPrefix "/" | relURL | absURL }}
+    {{ $ogImage = strings.TrimPrefix .Params.image "/" | relURL | absURL }}
 
   {{ else }}
 
@@ -159,7 +159,7 @@
 
     {{ with .Params.image }}
 
-      {{ $imageURL = . | strings.TrimPrefix "/" | relURL | absURL }}
+      {{ $imageURL = strings.TrimPrefix . "/" | relURL | absURL }}
 
     {{ end }}
 
