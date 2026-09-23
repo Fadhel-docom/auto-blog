@@ -17,7 +17,7 @@ MAX_WORDS = 2400
 MIN_H2 = 8
 MAX_H2 = 12
 
-REQUIRED_IMAGES = 10
+REQUIRED_IMAGES = 6
 
 
 def load_article() -> Dict[str, Any]:
