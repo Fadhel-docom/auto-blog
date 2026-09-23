@@ -86,6 +86,10 @@ jobs:
         run: |
           python scripts/insert_competitive_images.py
 
+      - name: Normalize post categories
+        run: |
+          python scripts/fix_post_categories.py
+
       - name: Final competitive SEO check
         run: |
           python scripts/competitive_seo_check.py
