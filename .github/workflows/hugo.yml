@@ -81,7 +81,7 @@ jobs:
               if not link or not title:
                   raise SystemExit("RSS validation failed: every item needs title and link")
               enclosure = item.find("enclosure")
-              media = item.find("media:content", ns)
+              media = item.find("{http://search.yahoo.com/mrss/}content")
               if enclosure is None and media is None:
                   raise SystemExit(f"RSS validation failed: item has no image media: {title}")
               if urlparse(link).netloc != urlparse("https://fadhel-docom.github.io").netloc:
