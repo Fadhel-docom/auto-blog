@@ -340,7 +340,10 @@
 
           {{ if $thumbnail }}
 
-            {{ $thumbPath := strings.TrimPrefix "/" $thumbnail }}
+            {{ $thumbPath := $thumbnail }}
+            {{ if not (or (strings.HasPrefix $thumbnail "http://") (strings.HasPrefix $thumbnail "https://")) }}
+              {{ $thumbPath = strings.TrimPrefix "/" $thumbnail | relURL }}
+            {{ end }}
 
             <a
               href="{{ .RelPermalink }}"
