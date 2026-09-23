@@ -171,6 +171,39 @@ def normalize_tags(tags: Any) -> list[str]:
     return normalized
 
 
+
+def normalize_faq(value):
+    if not isinstance(value, list):
+        return []
+
+    normalized = []
+    seen = set()
+
+    for item in value:
+        if not isinstance(item, dict):
+            continue
+
+        question = str(item.get("question", "")).strip()
+        answer = re.sub(r"\s+", " ", str(item.get("answer", "")).strip())
+
+        if not question or not answer or not question.endswith("?"):
+            continue
+
+        if len(answer.split()) < 40 or len(answer.split()) > 110:
+            continue
+
+        key = question.lower()
+        if key in seen:
+            continue
+
+        seen.add(key)
+        normalized.append({
+            "question": question,
+            "answer": answer,
+        })
+
+    return normalized[:6]
+
 def save_post(post_path: Path, content: str) -> None:
     POSTS_DIR.mkdir(parents=True, exist_ok=True)
     post_path.write_text(content, encoding="utf-8")
@@ -1092,9 +1125,14 @@ def main() -> int:
                 + "\n"
             )
 
-        faq_items = extract_faq_items(
-            content_markdown
+        faq_items = normalize_faq(
+            article.get("faq", [])
         )
+
+        if len(faq_items) < 4:
+            faq_items = extract_faq_items(
+                content_markdown
+            )
 
         frontmatter = (
             "+++\n"
