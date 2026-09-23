@@ -588,10 +588,11 @@ def read_existing_posts(
         )
 
         post_slug = re.sub(
-            r"[^a-z0-9]+",
+            r"[^\w]+",
             "-",
             title.lower(),
-        ).strip("-")
+            flags=re.UNICODE,
+        ).strip("-").replace("_", "-")
 
         posts.append(
             {
