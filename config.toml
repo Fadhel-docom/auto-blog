@@ -33,36 +33,19 @@ hasCJKLanguage = false
     "DIY storage"
   ]
 
-  # Optional social + SEO defaults
   pinterest = "homeorganizationideas0164"
   tumblr = "homeorganizationideas.tumblr.com"
   goatcounter = "https://fadhel-blog.goatcounter.com/count"
 
-# ============================================================
-# Pagination
-# ============================================================
-
 [pagination]
   pagerSize = 12
-
-# ============================================================
-# Permalinks
-# ============================================================
 
 [permalinks]
   posts = "/posts/:slug/"
 
-# ============================================================
-# Taxonomies
-# ============================================================
-
 [taxonomies]
   category = "categories"
   tag = "tags"
-
-# ============================================================
-# Markup
-# ============================================================
 
 [markup]
   [markup.goldmark]
@@ -79,26 +62,14 @@ hasCJKLanguage = false
   [markup.highlight]
     noClasses = false
 
-# ============================================================
-# Outputs
-# ============================================================
-
 [outputs]
   home = ["HTML", "RSS"]
   section = ["HTML", "RSS"]
-
-# ============================================================
-# Sitemap
-# ============================================================
 
 [sitemap]
   changeFreq = "daily"
   priority = 0.5
   filename = "sitemap.xml"
-
-# ============================================================
-# Related content (for related posts)
-# ============================================================
 
 [related]
   threshold = 20
@@ -116,10 +87,6 @@ hasCJKLanguage = false
   [[related.indices]]
     name = "date"
     weight = 10
-
-# ============================================================
-# Build options
-# ============================================================
 
 [build]
   writeStats = false
