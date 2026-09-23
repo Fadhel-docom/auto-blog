@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
+import hashlib
 import json
 import os
-import shutil
 import sys
 import time
 
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Set
 
 import requests
 
@@ -31,10 +31,9 @@ RETRYABLE_STATUS_CODES = {
     504,
 }
 
-MAX_ALLOWED_FAILED_IMAGES = 3
-
 JPEG_MAGIC_BYTES = b"\xff\xd8\xff"
 MIN_IMAGE_SIZE_BYTES = 1024
+HASH_CHUNK_SIZE = 1024 * 64
 
 
 def get_required_env(name: str) -> str:
@@ -62,11 +61,13 @@ def load_article() -> Dict[str, Any]:
             encoding="utf-8",
         ) as file:
             article = json.load(file)
+
     except json.JSONDecodeError as exc:
         raise ValueError(
             f"article.json contains invalid JSON: "
             f"{exc}"
         ) from exc
+
     except OSError as exc:
         raise RuntimeError(
             f"Could not read article.json: "
@@ -82,7 +83,9 @@ def load_article() -> Dict[str, Any]:
 
 
 def save_article(article: Dict[str, Any]) -> None:
-    temp_path = ARTICLE_PATH.with_suffix(".json.tmp")
+    temp_path = ARTICLE_PATH.with_suffix(
+        ".json.tmp"
+    )
 
     try:
         with temp_path.open(
@@ -228,6 +231,7 @@ def search_pexels(
 
             try:
                 return response.json()
+
             except ValueError as exc:
                 raise RuntimeError(
                     "Pexels returned invalid JSON."
@@ -304,7 +308,7 @@ def search_pexels(
                 f"Pexels API failed after "
                 f"{MAX_RETRIES} attempts: "
                 f"{last_error}"
-            )
+            ) from exc
 
     raise RuntimeError(
         f"Pexels API failed after "
@@ -315,9 +319,9 @@ def search_pexels(
 
 def choose_photo(
     data: Dict[str, Any],
-    used_photo_ids: set,
-    used_photographers: set,
-) -> Optional[Dict[str, Any]]:
+    used_photo_ids: Set[Any],
+    used_photographers: Set[str],
+) -> list:
     photos = data.get("photos")
 
     if not isinstance(photos, list):
@@ -325,9 +329,6 @@ def choose_photo(
             "Pexels response does not contain "
             "a valid 'photos' list."
         )
-
-    if not photos:
-        return None
 
     candidates = []
 
@@ -350,13 +351,14 @@ def choose_photo(
             continue
 
         photo_id = photo.get("id")
+
+        if photo_id in used_photo_ids:
+            continue
+
         photographer = (
             photo.get("photographer")
             or "Unknown photographer"
         )
-
-        if photo_id in used_photo_ids:
-            continue
 
         width = photo.get("width") or 0
         height = photo.get("height") or 0
@@ -386,19 +388,17 @@ def choose_photo(
         )
 
     if not candidates:
-        return None
+        return []
 
-    unique_photographer_candidates = [
+    unique_photographers = [
         candidate
         for candidate in candidates
         if candidate["photographer"]
         not in used_photographers
     ]
 
-    if unique_photographer_candidates:
-        candidates = (
-            unique_photographer_candidates
-        )
+    if unique_photographers:
+        candidates = unique_photographers
 
     candidates.sort(
         key=lambda item: (
@@ -408,19 +408,93 @@ def choose_photo(
         reverse=True,
     )
 
-    return candidates[0]
+    return candidates
+
+
+def validate_jpeg_file(
+    image_path: Path,
+) -> None:
+    if not image_path.exists():
+        raise RuntimeError(
+            "Image file was not created."
+        )
+
+    file_size = image_path.stat().st_size
+
+    if file_size <= MIN_IMAGE_SIZE_BYTES:
+        raise RuntimeError(
+            f"Image file is too small: "
+            f"{file_size} bytes."
+        )
+
+    with image_path.open("rb") as file:
+        magic = file.read(3)
+
+    if magic != JPEG_MAGIC_BYTES:
+        raise RuntimeError(
+            "Downloaded file is not a valid JPEG "
+            "(missing FF D8 FF magic bytes)."
+        )
+
+
+def calculate_sha256(
+    image_path: Path,
+) -> str:
+    digest = hashlib.sha256()
+
+    with image_path.open("rb") as file:
+        while True:
+            chunk = file.read(HASH_CHUNK_SIZE)
+
+            if not chunk:
+                break
+
+            digest.update(chunk)
+
+    return digest.hexdigest()
+
+
+def collect_existing_image_hashes() -> Set[str]:
+    hashes: Set[str] = set()
+
+    if not IMAGE_DIR.exists():
+        return hashes
+
+    for image_path in IMAGE_DIR.glob("*.jpg"):
+        try:
+            validate_jpeg_file(image_path)
+            image_hash = calculate_sha256(
+                image_path
+            )
+            hashes.add(image_hash)
+
+        except (OSError, RuntimeError) as exc:
+            print(
+                f"WARNING: could not hash existing "
+                f"image {image_path}: {exc}"
+            )
+
+    print(
+        f"Existing image hashes loaded: "
+        f"{len(hashes)}"
+    )
+
+    return hashes
 
 
 def download_image(
     image_url: str,
     destination: Path,
-) -> None:
+    existing_hashes: Set[str],
+) -> str:
     destination.parent.mkdir(
         parents=True,
         exist_ok=True,
     )
 
-    temp_path = destination.with_suffix(".tmp")
+    temp_path = destination.with_suffix(
+        ".tmp"
+    )
 
     try:
         with requests.get(
@@ -451,18 +525,39 @@ def download_image(
 
             with temp_path.open("wb") as file:
                 for chunk in response.iter_content(
-                    chunk_size=1024 * 64
+                    chunk_size=HASH_CHUNK_SIZE
                 ):
                     if chunk:
                         file.write(chunk)
 
         validate_jpeg_file(temp_path)
+
+        image_hash = calculate_sha256(
+            temp_path
+        )
+
+        if image_hash in existing_hashes:
+            print(
+                "DUPLICATE IMAGE DETECTED: "
+                f"{image_hash}"
+            )
+
+            temp_path.unlink(
+                missing_ok=True
+            )
+
+            return ""
+
         temp_path.replace(destination)
+
         validate_jpeg_file(destination)
 
+        return image_hash
+
     except requests.RequestException as exc:
-        if temp_path.exists():
-            temp_path.unlink(missing_ok=True)
+        temp_path.unlink(
+            missing_ok=True
+        )
 
         raise RuntimeError(
             f"Could not download image from Pexels: "
@@ -470,39 +565,14 @@ def download_image(
         ) from exc
 
     except OSError as exc:
-        if temp_path.exists():
-            temp_path.unlink(missing_ok=True)
+        temp_path.unlink(
+            missing_ok=True
+        )
 
         raise RuntimeError(
             f"Could not save downloaded image: "
             f"{exc}"
         ) from exc
-
-
-def validate_jpeg_file(
-    image_path: Path,
-) -> None:
-    if not image_path.exists():
-        raise RuntimeError(
-            "Image file was not created."
-        )
-
-    file_size = image_path.stat().st_size
-
-    if file_size <= MIN_IMAGE_SIZE_BYTES:
-        raise RuntimeError(
-            f"Image file is too small: "
-            f"{file_size} bytes."
-        )
-
-    with image_path.open("rb") as file:
-        magic = file.read(3)
-
-    if magic != JPEG_MAGIC_BYTES:
-        raise RuntimeError(
-            "Downloaded file is not a valid JPEG "
-            "(missing FF D8 FF magic bytes)."
-        )
 
 
 def build_fallback_queries(
@@ -516,18 +586,27 @@ def build_fallback_queries(
 
     fallbacks = []
 
-    first_four = " ".join(words[:4]).strip()
+    first_four = " ".join(
+        words[:4]
+    ).strip()
 
     if first_four:
         fallbacks.append(first_four)
 
-    first_two = " ".join(words[:2]).strip()
+    first_two = " ".join(
+        words[:2]
+    ).strip()
 
     if first_two:
         fallbacks.append(first_two)
 
-    fallbacks.append("bathroom organization")
-    fallbacks.append("organized home interior")
+    fallbacks.append(
+        "home organization interior"
+    )
+
+    fallbacks.append(
+        "organized small space"
+    )
 
     result = []
     seen = set()
@@ -549,12 +628,9 @@ def build_fallback_queries(
     return result
 
 
-def search_with_fallbacks(
-    api_key: str,
+def search_queries(
     original_query: str,
-    used_photo_ids: set,
-    used_photographers: set,
-) -> Optional[Dict[str, Any]]:
+) -> list:
     fallback_queries = build_fallback_queries(
         original_query
     )
@@ -568,17 +644,29 @@ def search_with_fallbacks(
         ):
             all_queries.append(fallback)
 
+    return all_queries
+
+
+def find_unique_photo(
+    api_key: str,
+    original_query: str,
+    used_photo_ids: Set[Any],
+    used_photographers: Set[str],
+    existing_hashes: Set[str],
+    destination: Path,
+) -> Optional[Dict[str, Any]]:
+    queries = search_queries(
+        original_query
+    )
+
     for query_index, query in enumerate(
-        all_queries
+        queries
     ):
         is_original = query_index == 0
 
         if not is_original:
             print(
-                f'HTTP 403 for query: '
-                f'"{original_query}", '
-                f'trying fallback query: '
-                f'"{query}"'
+                f'Trying fallback query: "{query}"'
             )
 
         for page in range(
@@ -591,6 +679,7 @@ def search_with_fallbacks(
                     query,
                     page=page,
                 )
+
             except RuntimeError as exc:
                 message = str(exc)
 
@@ -602,118 +691,98 @@ def search_with_fallbacks(
 
                 raise
 
-            photo = choose_photo(
+            candidates = choose_photo(
                 data,
                 used_photo_ids,
                 used_photographers,
             )
 
-            if photo is not None:
-                if not is_original:
-                    print(
-                        f'Fallback query succeeded: '
-                        f'"{query}"'
+            if not candidates:
+                print(
+                    f"No unused Pexels images "
+                    f"on page {page} for query: "
+                    f"{query}"
+                )
+                continue
+
+            for photo in candidates:
+                photo_id = photo.get("id")
+
+                print(
+                    f"Testing Pexels image ID: "
+                    f"{photo_id}"
+                )
+
+                try:
+                    image_hash = download_image(
+                        photo["image_url"],
+                        destination,
+                        existing_hashes,
                     )
 
-                return photo
+                except Exception as exc:
+                    print(
+                        f"WARNING: download failed "
+                        f"for image {photo_id}: "
+                        f"{exc}"
+                    )
+
+                    if photo_id is not None:
+                        used_photo_ids.add(
+                            photo_id
+                        )
+
+                    continue
+
+                if not image_hash:
+                    print(
+                        f"Rejected duplicate image "
+                        f"ID: {photo_id}"
+                    )
+
+                    if photo_id is not None:
+                        used_photo_ids.add(
+                            photo_id
+                        )
+
+                    continue
+
+                if photo_id is not None:
+                    used_photo_ids.add(
+                        photo_id
+                    )
+
+                photographer = (
+                    photo["photographer"]
+                )
+
+                if photographer:
+                    used_photographers.add(
+                        photographer
+                    )
+
+                existing_hashes.add(
+                    image_hash
+                )
+
+                return {
+                    "photo": photo,
+                    "image_hash": image_hash,
+                }
 
             print(
-                f"No unused Pexels image found on "
-                f"page {page} for query: {query}"
+                f"All candidates on page {page} "
+                f"were rejected or failed."
             )
 
     return None
-
-
-def copy_reused_image(
-    source_path: Path,
-    destination: Path,
-) -> None:
-    destination.parent.mkdir(
-        parents=True,
-        exist_ok=True,
-    )
-
-    shutil.copyfile(
-        source_path,
-        destination,
-    )
-
-    validate_jpeg_file(destination)
-
-
-def create_reused_image(
-    successful_image: Dict[str, Any],
-    destination: Path,
-    failed_index: int,
-) -> Dict[str, Any]:
-    source_path = ROOT_DIR / (
-        successful_image["file_path"]
-    )
-
-    if not source_path.exists():
-        raise RuntimeError(
-            "Could not reuse previous image because "
-            f"source file does not exist: "
-            f"{source_path}"
-        )
-
-    copy_reused_image(
-        source_path,
-        destination,
-    )
-
-    print(
-        f"Reusing image "
-        f"{successful_image['index']} "
-        f"for failed image {failed_index}."
-    )
-    print(
-        f"Reuse source: "
-        f"{successful_image['file']}"
-    )
-    print(
-        f"Reuse destination: "
-        f"{destination}"
-    )
-
-    return {
-        "index": failed_index,
-        "query": (
-            f"reuse:{successful_image['query']}"
-        ),
-        "file": (
-            f"/images/{destination.name}"
-        ),
-        "file_path": str(
-            destination.relative_to(ROOT_DIR)
-        ),
-        "photographer": (
-            successful_image["photographer"]
-        ),
-        "photographer_url": (
-            successful_image["photographer_url"]
-        ),
-        "pexels_url": (
-            successful_image["pexels_url"]
-        ),
-        "image_source_url": (
-            successful_image["image_source_url"]
-        ),
-        "image_id": successful_image["image_id"],
-        "width": successful_image.get("width"),
-        "height": successful_image.get("height"),
-        "reused": True,
-        "reuse_source_index": (
-            successful_image["index"]
-        ),
-    }
 
 
 def download_all_images(
     api_key: str,
     slug: str,
     image_queries: list,
+    existing_hashes: Set[str],
 ) -> list:
     if len(image_queries) != IMAGE_COUNT:
         raise ValueError(
@@ -727,10 +796,8 @@ def download_all_images(
     )
 
     images = []
-    used_photo_ids = set()
-    used_photographers = set()
-
-    failed_images = 0
+    used_photo_ids: Set[Any] = set()
+    used_photographers: Set[str] = set()
 
     for index, query in enumerate(
         image_queries,
@@ -746,10 +813,11 @@ def download_all_images(
         print("")
         print("=" * 70)
 
-        if index == 1:
-            label = "HERO"
-        else:
-            label = f"H2 #{index - 1}"
+        label = (
+            "HERO"
+            if index == 1
+            else f"H2 #{index - 1}"
+        )
 
         print(
             f"Downloading image {index}/"
@@ -760,158 +828,85 @@ def download_all_images(
         filename = f"{slug}-{index}.jpg"
         image_path = IMAGE_DIR / filename
 
-        photo = None
-
-        try:
-            photo = search_with_fallbacks(
-                api_key,
-                query,
-                used_photo_ids,
-                used_photographers,
-            )
-        except Exception as exc:
-            print(
-                f"WARNING: image {index} search "
-                f"failed: {exc}"
-            )
-
-        if photo is not None:
-            image_url = photo["image_url"]
-            photographer = photo["photographer"]
-            photographer_url = (
-                photo["photographer_url"]
-            )
-            pexels_url = photo["pexels_url"]
-            photo_id = photo.get("id")
-
-            print(
-                f"Selected photographer: "
-                f"{photographer}"
-            )
-            print(
-                f"Selected image ID: "
-                f"{photo_id}"
-            )
-            print(f"Image URL: {image_url}")
-            print(f"Destination: {image_path}")
-
-            try:
-                download_image(
-                    image_url,
-                    image_path,
-                )
-            except Exception as exc:
-                print(
-                    f"WARNING: image {index} "
-                    f"download failed: {exc}"
-                )
-                photo = None
-
-        if photo is not None:
-            if photo_id is not None:
-                used_photo_ids.add(photo_id)
-
-            if photographer:
-                used_photographers.add(
-                    photographer
-                )
-
-            images.append(
-                {
-                    "index": index,
-                    "query": query,
-                    "file": (
-                        f"/images/{filename}"
-                    ),
-                    "file_path": str(
-                        image_path.relative_to(
-                            ROOT_DIR
-                        )
-                    ),
-                    "photographer": photographer,
-                    "photographer_url": (
-                        photographer_url
-                    ),
-                    "pexels_url": pexels_url,
-                    "image_source_url": (
-                        image_url
-                    ),
-                    "image_id": photo_id,
-                    "width": photo.get("width"),
-                    "height": photo.get("height"),
-                    "reused": False,
-                }
-            )
-            continue
-
-        failed_images += 1
-
-        print(
-            f"All fallback queries failed "
-            f"for image #{index}"
+        result = find_unique_photo(
+            api_key,
+            query,
+            used_photo_ids,
+            used_photographers,
+            existing_hashes,
+            image_path,
         )
 
-        if not images:
-            print(
-                "No successful image is available "
-                "for reuse."
-            )
-        elif (
-            failed_images
-            <= MAX_ALLOWED_FAILED_IMAGES
-        ):
-            reuse_source = images[
-                (failed_images - 1) % len(images)
-            ]
-
-            try:
-                reused = create_reused_image(
-                    reuse_source,
-                    image_path,
-                    index,
-                )
-
-                images.append(reused)
-
-                print(
-                    f"WARNING: image {index} "
-                    f"was created by reusing a "
-                    f"successful previous image."
-                )
-            except Exception as exc:
-                print(
-                    f"ERROR: reuse failed for "
-                    f"image {index}: {exc}"
-                )
-
-        if failed_images >= 4:
+        if result is None:
             raise RuntimeError(
-                f"{failed_images} images failed. "
-                "At least 4 image failures are "
-                "considered fatal."
+                f"Could not find a unique Pexels "
+                f"image for image #{index}: "
+                f"{query}"
             )
 
-    if failed_images == 0:
-        print("")
-        print("=" * 70)
+        photo = result["photo"]
+        image_hash = result["image_hash"]
+
         print(
-            f"All {IMAGE_COUNT} images downloaded "
-            "successfully."
-        )
-        print("=" * 70)
-    elif failed_images <= 3:
-        print("")
-        print("=" * 70)
-        print(
-            f"WARNING: {failed_images} image(s) "
-            "failed and were handled with "
-            "fallback/reuse."
+            f"Selected photographer: "
+            f"{photo['photographer']}"
         )
         print(
-            f"Usable images: {len(images)}/"
-            f"{IMAGE_COUNT}"
+            f"Selected image ID: "
+            f"{photo.get('id')}"
         )
-        print("=" * 70)
+        print(
+            f"SHA-256: {image_hash}"
+        )
+        print(
+            f"Destination: {image_path}"
+        )
+
+        images.append(
+            {
+                "index": index,
+                "query": query,
+                "file": (
+                    f"/images/{filename}"
+                ),
+                "file_path": str(
+                    image_path.relative_to(
+                        ROOT_DIR
+                    )
+                ),
+                "photographer": (
+                    photo["photographer"]
+                ),
+                "photographer_url": (
+                    photo["photographer_url"]
+                ),
+                "pexels_url": (
+                    photo["pexels_url"]
+                ),
+                "image_source_url": (
+                    photo["image_url"]
+                ),
+                "image_id": photo.get("id"),
+                "width": photo.get("width"),
+                "height": photo.get("height"),
+                "sha256": image_hash,
+                "reused": False,
+            }
+        )
+
+    print("")
+    print("=" * 70)
+    print(
+        f"All {IMAGE_COUNT} images downloaded "
+        "successfully."
+    )
+    print(
+        "No image reuse is permitted."
+    )
+    print(
+        "Duplicate image hashes are rejected."
+    )
+    print("=" * 70)
 
     if len(images) != IMAGE_COUNT:
         raise RuntimeError(
@@ -927,6 +922,7 @@ def main() -> int:
     try:
         print("=" * 70)
         print("Pexels image downloader")
+        print("Duplicate protection enabled")
         print("=" * 70)
 
         api_key = get_required_env(
@@ -1002,36 +998,53 @@ def main() -> int:
                 "Image queries must be unique."
             )
 
+        existing_hashes = (
+            collect_existing_image_hashes()
+        )
+
         images = download_all_images(
             api_key,
             slug,
             normalized_queries,
+            existing_hashes,
         )
 
         article["image_queries"] = (
             normalized_queries
         )
+
         article["images"] = images
+
         article["image"] = (
             images[0]["file"]
         )
+
         article["image_file"] = (
             images[0]["file_path"]
         )
+
         article["photographer"] = (
             images[0]["photographer"]
         )
+
         article["photographer_url"] = (
             images[0]["photographer_url"]
         )
+
         article["pexels_url"] = (
             images[0]["pexels_url"]
         )
+
         article["image_source_url"] = (
             images[0]["image_source_url"]
         )
+
         article["image_id"] = (
             images[0]["image_id"]
+        )
+
+        article["image_sha256"] = (
+            images[0]["sha256"]
         )
 
         save_article(article)
@@ -1047,64 +1060,27 @@ def main() -> int:
         print("")
 
         for image in images:
-            reuse_marker = ""
-
-            if image.get("reused"):
-                reuse_marker = " [REUSED]"
-
             print(
                 f"{image['index']}. "
                 f"{image['file']} "
                 f"← {image['query']}"
-                f"{reuse_marker}"
             )
 
         print("=" * 70)
         print("FINAL IMAGE FETCH SUMMARY")
         print("=" * 70)
-
-        successful_count = (
-            IMAGE_COUNT
-            - sum(
-                1
-                for image in images
-                if image.get("reused")
-            )
-        )
-
-        reused_count = sum(
-            1
-            for image in images
-            if image.get("reused")
-        )
-
         print(
             f"Requested images: {IMAGE_COUNT}"
         )
         print(
-            f"Successful Pexels images: "
-            f"{successful_count}"
+            f"Unique Pexels images: {len(images)}"
         )
         print(
-            f"Reused images: {reused_count}"
+            "Reused images: 0"
         )
         print(
-            f"Total usable images: "
-            f"{len(images)}"
+            "Duplicate protection: ENABLED"
         )
-
-        if reused_count:
-            print(
-                "WARNING: Some images were "
-                "reused because Pexels queries "
-                "failed."
-            )
-        else:
-            print(
-                "STATUS: All requested images "
-                "were fetched from Pexels."
-            )
-
         print("=" * 70)
 
         return 0
