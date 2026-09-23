@@ -86,28 +86,55 @@
 
   {{ end }}
 
-  <meta property="og:title" content="{{ $ogTitle }}">
+  <meta
+    property="og:title"
+    content="{{ $ogTitle }}"
+  >
 
-  <meta property="og:description" content="{{ $ogDescription }}">
+  <meta
+    property="og:description"
+    content="{{ $ogDescription }}"
+  >
 
   <meta
     property="og:type"
     content="{{ if .IsPage }}article{{ else }}website{{ end }}"
   >
 
-  <meta property="og:url" content="{{ .Permalink }}">
+  <meta
+    property="og:url"
+    content="{{ .Permalink }}"
+  >
 
-  <meta property="og:site_name" content="{{ .Site.Title }}">
+  <meta
+    property="og:site_name"
+    content="{{ .Site.Title }}"
+  >
 
-  <meta property="og:image" content="{{ $ogImage }}">
+  <meta
+    property="og:image"
+    content="{{ $ogImage }}"
+  >
 
-  <meta name="twitter:card" content="summary_large_image">
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
 
-  <meta name="twitter:title" content="{{ $ogTitle }}">
+  <meta
+    name="twitter:title"
+    content="{{ $ogTitle }}"
+  >
 
-  <meta name="twitter:description" content="{{ $ogDescription }}">
+  <meta
+    name="twitter:description"
+    content="{{ $ogDescription }}"
+  >
 
-  <meta name="twitter:image" content="{{ $ogImage }}">
+  <meta
+    name="twitter:image"
+    content="{{ $ogImage }}"
+  >
 
   <link
     rel="stylesheet"
@@ -219,7 +246,10 @@
 
 <body>
 
-  <a class="skip-link" href="#main-content">
+  <a
+    class="skip-link"
+    href="#main-content"
+  >
     Skip to content
   </a>
 
@@ -243,15 +273,76 @@
 
     <div class="site-container">
 
-      <p>
-        &copy; {{ now.Year }} {{ .Site.Title }}
-      </p>
+      <div class="site-footer-inner">
+
+        <div class="site-footer-brand">
+
+          <a
+            class="site-footer-title"
+            href="{{ site.Home.RelPermalink }}"
+          >
+            {{ .Site.Title }}
+          </a>
+
+          <p class="site-footer-description">
+            {{ .Site.Params.description }}
+          </p>
+
+        </div>
+
+        <nav
+          class="site-footer-nav"
+          aria-label="Footer navigation"
+        >
+
+          <a href="{{ site.Home.RelPermalink }}">
+            Home
+          </a>
+
+          <a href="{{ "categories/" | relURL }}">
+            Categories
+          </a>
+
+          <a href="{{ "about/" | relURL }}">
+            About
+          </a>
+
+          <a href="{{ "editorial-policy/" | relURL }}">
+            Editorial Policy
+          </a>
+
+          <a href="{{ "privacy/" | relURL }}">
+            Privacy
+          </a>
+
+          <a href="{{ "contact/" | relURL }}">
+            Contact
+          </a>
+
+        </nav>
+
+      </div>
+
+      <div class="site-footer-bottom">
+
+        <p>
+          &copy; {{ now.Year }} {{ .Site.Title }}
+        </p>
+
+        <p>
+          Practical spaces. Better everyday living.
+        </p>
+
+      </div>
 
     </div>
 
   </footer>
 
-  <script src="{{ "js/site.js" | relURL }}" defer></script>
+  <script
+    src="{{ "js/site.js" | relURL }}"
+    defer
+  ></script>
 
 </body>
 
