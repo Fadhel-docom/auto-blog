@@ -3,6 +3,8 @@
 import json
 import os
 import re
+import sys
+import traceback
 
 from datetime import datetime, timezone
 from pathlib import Path
@@ -117,6 +119,14 @@ def check_home() -> dict[str, Any]:
 
     featured = "featured" in text.lower()
 
+    title_text = None
+
+    try:
+        if page.title:
+            title_text = page.title.get_text(strip=True)
+    except Exception:
+        title_text = None
+
     return {
         "url": SITE_URL,
         "status": response.status_code,
@@ -127,10 +137,7 @@ def check_home() -> dict[str, Any]:
         "nav_links": len(nav_links),
         "article_cards": len(cards),
         "missing_text": missing_text,
-        "title": (
-            page.title.get_text(strip=True)
-            if page.title else None
-        ),
+        "title": title_text,
         "viewport": bool(
             page.select_one('meta[name="viewport"]')
         ),
@@ -146,6 +153,10 @@ def extract_article_urls(
 
     for anchor in page.select("a[href]"):
         href = anchor.get("href", "")
+
+        if not href:
+            continue
+
         absolute = urljoin(SITE_URL, href)
 
         if "/posts/" not in absolute:
@@ -169,11 +180,15 @@ def check_json_ld(
     for script in scripts:
         raw = script.string or script.get_text()
 
+        if not raw:
+            continue
+
         try:
             data = json.loads(raw)
 
             if isinstance(data, list):
-                parsed.extend(data)
+                for item in data:
+                    parsed.append(item)
             else:
                 parsed.append(data)
 
@@ -183,21 +198,32 @@ def check_json_ld(
     types = []
 
     for item in parsed:
-        if isinstance(item, dict):
-            value = item.get("@type")
+        if not isinstance(item, dict):
+            continue
 
-            if isinstance(value, list):
-                types.extend(value)
-            elif value:
-                types.append(str(value))
+        value = item.get("@type")
+
+        if isinstance(value, list):
+            types.extend(
+                str(v) for v in value
+            )
+        elif value:
+            types.append(str(value))
+
+    valid_blocks = 0
+
+    for item in parsed:
+        if not isinstance(item, dict):
+            continue
+
+        if item.get("_invalid_json"):
+            continue
+
+        valid_blocks += 1
 
     return {
         "present": bool(scripts),
-        "valid_blocks": sum(
-            1 for item in parsed
-            if not item.get("_invalid_json")
-            if isinstance(item, dict)
-        ),
+        "valid_blocks": valid_blocks,
         "types": sorted(set(types)),
         "has_article": any(
             value.lower() in {"article", "blogposting"}
@@ -207,106 +233,116 @@ def check_json_ld(
 
 
 def check_article(url: str) -> dict[str, Any]:
-    response = fetch(url)
-    page = soup(response.text)
-    text = page.get_text(" ", strip=True)
+    try:
+        response = fetch(url)
+        page = soup(response.text)
+        text = page.get_text(" ", strip=True)
 
-    title = page.find("h1")
+        title = page.find("h1")
 
-    meta_description = page.find(
-        "meta",
-        attrs={
-            "name": re.compile("^description$", re.I),
-        },
-    )
+        meta_description = page.find(
+            "meta",
+            attrs={
+                "name": re.compile("^description$", re.I),
+            },
+        )
 
-    canonical = page.find(
-        "link",
-        attrs={
-            "rel": lambda value: (
-                value and "canonical" in value
+        canonical = page.find(
+            "link",
+            attrs={
+                "rel": lambda value: (
+                    value and "canonical" in value
+                ),
+            },
+        )
+
+        images = page.select("main img, article img")
+
+        tags = page.select(
+            ".tags a, [class*='tag' i] a"
+        )
+
+        related = page.select(
+            ".related, [class*='related' i]"
+        )
+
+        h2_count = len(page.select("h2"))
+
+        image_credit = (
+            "image credits" in text.lower()
+            or "image attribution" in text.lower()
+        )
+
+        title_text = ""
+
+        if title:
+            title_text = title.get_text(" ", strip=True)
+
+        capitalized = bool(
+            title_text
+            and title_text[0].isupper()
+        )
+
+        schema = check_json_ld(page)
+
+        required_failures = []
+
+        if not title:
+            required_failures.append("title")
+
+        if not meta_description:
+            required_failures.append("description")
+
+        if not images:
+            required_failures.append("image")
+
+        if not tags:
+            required_failures.append("tags")
+
+        if not schema["present"]:
+            required_failures.append("schema")
+
+        if not image_credit:
+            required_failures.append("image credits")
+
+        if not related:
+            required_failures.append("related")
+
+        if h2_count < GOLDEN["article"]["minimum_h2"]:
+            required_failures.append("h2 structure")
+
+        return {
+            "url": url,
+            "status": response.status_code,
+            "title": title_text,
+            "title_capitalized": capitalized,
+            "meta_description": (
+                meta_description.get(
+                    "content", ""
+                ).strip()
+                if meta_description else None
             ),
-        },
-    )
+            "canonical": (
+                canonical.get("href", "")
+                if canonical else None
+            ),
+            "images": len(images),
+            "tags": len(tags),
+            "h2_count": h2_count,
+            "image_credits": image_credit,
+            "related": bool(related),
+            "schema": schema,
+            "required_failures": required_failures,
+            "html_length": len(response.text),
+        }
 
-    images = page.select("main img, article img")
-
-    tags = page.select(
-        ".tags a, [class*='tag' i] a"
-    )
-
-    related = page.select(
-        ".related, [class*='related' i]"
-    )
-
-    h2_count = len(page.select("h2"))
-
-    image_credit = (
-        "image credits" in text.lower()
-        or "image attribution" in text.lower()
-    )
-
-    title_text = (
-        title.get_text(" ", strip=True)
-        if title else ""
-    )
-
-    capitalized = bool(
-        title_text and title_text[0].isupper()
-    )
-
-    schema = check_json_ld(page)
-
-    required_failures = []
-
-    if not title:
-        required_failures.append("title")
-
-    if not meta_description:
-        required_failures.append("description")
-
-    if not images:
-        required_failures.append("image")
-
-    if not tags:
-        required_failures.append("tags")
-
-    if not schema["present"]:
-        required_failures.append("schema")
-
-    if not image_credit:
-        required_failures.append("image credits")
-
-    if not related:
-        required_failures.append("related")
-
-    if h2_count < GOLDEN["article"]["minimum_h2"]:
-        required_failures.append("h2 structure")
-
-    return {
-        "url": url,
-        "status": response.status_code,
-        "title": title_text,
-        "title_capitalized": capitalized,
-        "meta_description": (
-            meta_description.get(
-                "content", ""
-            ).strip()
-            if meta_description else None
-        ),
-        "canonical": (
-            canonical.get("href", "")
-            if canonical else None
-        ),
-        "images": len(images),
-        "tags": len(tags),
-        "h2_count": h2_count,
-        "image_credits": image_credit,
-        "related": bool(related),
-        "schema": schema,
-        "required_failures": required_failures,
-        "html_length": len(response.text),
-    }
+    except Exception as exc:
+        return {
+            "url": url,
+            "error": str(exc),
+            "traceback": traceback.format_exc(),
+            "required_failures": ["fetch_error"],
+        }
 
 
 def responsive_checks(
@@ -360,63 +396,80 @@ def generate_suggestions(
 ) -> list[dict[str, Any]]:
     suggestions = []
 
-    home = report["home"]
+    home = report.get("home", {})
 
-    if not home["viewport"]:
+    if not home.get("viewport"):
         suggestions.append({
             "priority": "high",
             "area": "mobile",
             "suggestion": "Add a responsive viewport meta tag.",
         })
 
-    if not home["search"]:
+    if not home.get("search"):
         suggestions.append({
             "priority": "high",
             "area": "search",
-            "suggestion": "Ensure the search control is present and usable.",
+            "suggestion": (
+                "Ensure the search control "
+                "is present and usable."
+            ),
         })
 
-    if not home["hero"]:
+    if not home.get("hero"):
         suggestions.append({
             "priority": "medium",
             "area": "hero",
-            "suggestion": "Restore a clearly identifiable hero section.",
+            "suggestion": (
+                "Restore a clearly identifiable "
+                "hero section."
+            ),
         })
 
-    if home["article_cards"] < 6:
+    if home.get("article_cards", 0) < 6:
         suggestions.append({
             "priority": "medium",
             "area": "grid",
-            "suggestion": "Ensure the homepage grid exposes enough article cards.",
+            "suggestion": (
+                "Ensure the homepage grid exposes "
+                "enough article cards."
+            ),
         })
 
-    for article in report["articles"]:
-        for failure in article["required_failures"]:
+    for article in report.get("articles", []):
+        for failure in article.get(
+            "required_failures", []
+        ):
             suggestions.append({
                 "priority": (
-                    "high" if failure in {
+                    "high"
+                    if failure in {
                         "title",
                         "description",
                         "schema",
-                    } else "medium"
+                    }
+                    else "medium"
                 ),
                 "area": failure,
-                "url": article["url"],
+                "url": article.get("url"),
                 "suggestion": (
-                    f"Fix article-level {failure} consistency."
+                    f"Fix article-level "
+                    f"{failure} consistency."
                 ),
             })
 
-    responsive = report["responsive"]
+    responsive = report.get("responsive", {})
 
     if (
-        not responsive["inline_media_queries"]
-        and not responsive["stylesheet_count"]
+        not responsive.get("inline_media_queries")
+        and not responsive.get("stylesheet_count")
     ):
         suggestions.append({
             "priority": "high",
             "area": "responsive",
-            "suggestion": "Add or restore responsive CSS for mobile layouts.",
+            "suggestion": (
+                "Add or restore responsive CSS "
+                "for mobile layouts."
+            ),
         })
 
     return suggestions
@@ -440,33 +493,43 @@ def main() -> int:
 
         if not response.ok:
             raise RuntimeError(
-                f"Homepage returned {response.status_code}"
+                f"Homepage returned "
+                f"{response.status_code}"
             )
 
         home_html = response.text
 
         report["home"] = check_home()
 
-        article_urls = extract_article_urls(home_html)
+        article_urls = extract_article_urls(
+            home_html
+        )
 
         report["articles"] = [
-            check_article(url) for url in article_urls
+            check_article(url)
+            for url in article_urls
         ]
 
-        report["responsive"] = responsive_checks(home_html)
+        report["responsive"] = responsive_checks(
+            home_html
+        )
 
         suggestions = generate_suggestions(report)
 
         failures = []
+
         failures.extend(
             report["home"].get("missing_text", [])
         )
 
         for article in report["articles"]:
-            failures.extend(article["required_failures"])
+            failures.extend(
+                article.get("required_failures", [])
+            )
 
         report["status"] = (
-            "healthy" if not failures
+            "healthy"
+            if not failures
             else "needs_attention"
         )
 
@@ -506,6 +569,7 @@ def main() -> int:
     except Exception as exc:
         report["status"] = "error"
         report["error"] = str(exc)
+        report["traceback"] = traceback.format_exc()
 
         REPORT_PATH.write_text(
             json.dumps(
@@ -514,6 +578,15 @@ def main() -> int:
                 ensure_ascii=False,
             ),
             encoding="utf-8",
+        )
+
+        print(
+            "UI checker failed:",
+            file=sys.stderr,
+        )
+        print(
+            traceback.format_exc(),
+            file=sys.stderr,
         )
 
         return 1
