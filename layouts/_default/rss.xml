@@ -1,0 +1,37 @@
+{{- $pages := where .Pages "Kind" "page" -}}
+{{- $pages = $pages.ByDate.Reverse -}}
+{{- $pages = first 20 $pages -}}
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>{{ .Title | htmlEscape }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>{{ .Site.Params.description | htmlEscape }}</description>
+    <language>{{ .Site.LanguageCode }}</language>
+    <generator>Hugo</generator>
+    <atom:link href="{{ .Permalink }}" rel="self" type="application/rss+xml" />
+    {{- range $pages }}
+    <item>
+      <title>{{ .Title | htmlEscape }}</title>
+      <link>{{ .Permalink }}</link>
+      <guid isPermaLink="true">{{ .Permalink }}</guid>
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
+      <description>{{ .Description | htmlEscape }}</description>
+      {{- with .Params.image }}
+      {{- $image := . | absURL }}
+      <media:content url="{{ $image }}" medium="image" />
+      <enclosure url="{{ $image }}" type="image/jpeg" length="0" />
+      {{- end }}
+      <content:encoded><![CDATA[
+        {{- with .Params.image }}
+        <p><img src="{{ . | absURL }}" alt="{{ $.Title | htmlEscape }}" /></p>
+        {{- end }}
+        {{ .Content | safeHTML }}
+      ]]></content:encoded>
+    </item>
+    {{- end }}
+  </channel>
+</rss>
