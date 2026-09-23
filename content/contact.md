@@ -1,11 +1,11 @@
----
++++
 title = "Contact"
 description = "Contact Home Organization Ideas with questions, suggestions, corrections, or feedback about our organization guides."
 date = 2026-09-23
 lastmod = 2026-09-23
 draft = false
 type = "page"
----
++++
 
 ## We'd love to hear from you
 
