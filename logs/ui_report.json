@@ -1,0 +1,174 @@
+{
+  "timestamp": "2026-09-23T00:39:07+00:00",
+  "site": "https://fadhel-docom.github.io/auto-blog/",
+  "golden": {
+    "home": {
+      "required_text": [
+        "Home Organization Ideas",
+        "Explore by room",
+        "Featured organization guides",
+        "Latest organization guides"
+      ],
+      "required_controls": [
+        "search"
+      ],
+      "minimum_article_cards": 6
+    },
+    "article": {
+      "required": [
+        "title",
+        "description",
+        "image",
+        "tags",
+        "schema",
+        "image credits",
+        "related"
+      ],
+      "minimum_h2": 3
+    }
+  },
+  "home": {
+    "url": "https://fadhel-docom.github.io/auto-blog/",
+    "status": 200,
+    "hero": true,
+    "search": true,
+    "grid": true,
+    "featured": true,
+    "nav_links": 5,
+    "article_cards": 15,
+    "missing_text": [],
+    "title": "Home Organization Ideas",
+    "viewport": true,
+    "html_length": 30628
+  },
+  "articles": [
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-closet-organization-ideas-a-practical-small-space-guide/",
+      "status": 200,
+      "title": "Small closet organization ideas - A Practical Small Space Guide",
+      "title_capitalized": true,
+      "meta_description": "Practical small closet organization ideas ideas with simple measurements, storage zones, and realistic steps for a more organized home. Designed for everyday",
+      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/small-closet-organization-ideas-a-practical-small-space-guide/",
+      "images": 13,
+      "tags": 0,
+      "h2_count": 13,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 0,
+        "types": [],
+        "has_article": false
+      },
+      "required_failures": [
+        "tags"
+      ],
+      "html_length": 26059
+    },
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-apartment-storage-ideas-a-practical-small-space-guide/",
+      "status": 200,
+      "title": "Small apartment storage ideas - A Practical Small Space Guide",
+      "title_capitalized": true,
+      "meta_description": "Practical small apartment storage ideas ideas with simple measurements, storage zones, and realistic steps for a more organized home. Designed for everyday sp",
+      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/small-apartment-storage-ideas-a-practical-small-space-guide/",
+      "images": 13,
+      "tags": 0,
+      "h2_count": 13,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 0,
+        "types": [],
+        "has_article": false
+      },
+      "required_failures": [
+        "tags"
+      ],
+      "html_length": 25812
+    },
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bathroom-organization-ideas-a-practical-small-space-guide/",
+      "status": 200,
+      "title": "Small bathroom organization ideas - A Practical Small Space Guide",
+      "title_capitalized": true,
+      "meta_description": "Practical small bathroom organization ideas ideas with simple measurements, storage zones, and realistic steps for a more organized home. Designed for everyda",
+      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/small-bathroom-organization-ideas-a-practical-small-space-guide/",
+      "images": 13,
+      "tags": 0,
+      "h2_count": 13,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 0,
+        "types": [],
+        "has_article": false
+      },
+      "required_failures": [
+        "tags"
+      ],
+      "html_length": 27057
+    },
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-storage-ideas-diy-pull-out-drawers-and-rolling-bins-under-a-queen-bed/",
+      "status": 200,
+      "title": "Small Bedroom Storage Ideas: DIY Pull-Out Drawers and Rolling Bins Under a Queen Bed",
+      "title_capitalized": true,
+      "meta_description": "Transform the under‑bed space of a 10×10 bedroom with DIY pull‑out drawers and rolling bins. Step‑by‑step plans, real examples, and budget tips.",
+      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-storage-ideas-diy-pull-out-drawers-and-rolling-bins-under-a-queen-bed/",
+      "images": 13,
+      "tags": 0,
+      "h2_count": 14,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 0,
+        "types": [],
+        "has_article": false
+      },
+      "required_failures": [
+        "tags"
+      ],
+      "html_length": 28182
+    },
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-kitchen-organization-ideas-pull-out-spice-rack-for-5ft-galley/",
+      "status": 200,
+      "title": "Small Kitchen Organization Ideas: Pull Out Spice Rack for 5‑ft Galley",
+      "title_capitalized": true,
+      "meta_description": "Learn how to design, build, and install a pull‑out spice rack for a 5‑ft galley kitchen in a studio apartment. Step‑by‑step instructions, material tips, and maintenance advice for smarter small kitchen organization.",
+      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/small-kitchen-organization-ideas-pull-out-spice-rack-for-5ft-galley/",
+      "images": 13,
+      "tags": 0,
+      "h2_count": 14,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 0,
+        "types": [],
+        "has_article": false
+      },
+      "required_failures": [
+        "tags"
+      ],
+      "html_length": 26153
+    }
+  ],
+  "responsive": {
+    "inline_media_queries": false,
+    "responsive_units": false,
+    "overflow_x_hidden": false,
+    "stylesheet_count": 3,
+    "stylesheet_urls": [
+      "https://fadhel-docom.github.io/auto-blog/css/custom.css",
+      "https://fadhel-docom.github.io/auto-blog/css/competitive.css",
+      "https://fadhel-docom.github.io/auto-blog/css/enhancements.css"
+    ]
+  },
+  "status": "needs_attention",
+  "failure_count": 5
+}
