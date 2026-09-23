@@ -163,3 +163,13 @@ Keep the drop zone focused on daily-use items such as keys, a bag, mail that nee
 ### How can I keep an entryway organized long term?
 
 Use a short reset routine, return each item to a defined location, and remove things that repeatedly accumulate without being used.
+
+---
+
+## Photo Sources
+
+- [Pexels — Interior of hallway with hangers near door](https://www.pexels.com/photo/interior-of-hallway-with-hangers-near-door-6487941/)
+- [Pexels — Storage bench with wicker basket](https://www.pexels.com/photo/storage-bench-with-wicker-basket-against-a-staircase-wall-9457270/)
+- [Pexels — Hallway with wooden cabinet and shoe rack](https://www.pexels.com/photo/corridor-furnished-with-wooden-cabinet-and-shelf-above-shoe-rack-7061417/)
+- [Pexels — Entryway rack with shoes and bags](https://www.pexels.com/photo/brown-shopping-bags-on-metal-rack-7620863/)
+- [Pexels — Mirror, coat rack and bench](https://www.pexels.com/photo/mirror-on-bench-by-wall-19980247/)
