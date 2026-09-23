@@ -56,7 +56,7 @@ When floor area is at a premium, each piece must earn multiple points. The goal 
 
 A tangled mess of cords can make even the most thoughtfully designed corner feel chaotic. Good cable management not only looks better; it also reduces wear on cords and prevents accidental unplugging during important video meetings.
 
-[Read more about Bedroom Organization: Step‑by‑Step Under‑Bed Storage Makeover for a Studio Apartment with 48‑Inch Clearance](../bedroom-organization-step-by-step-under-bed-storage-makeover-for-a-studio-apartment-with-48-inch-clearance/)
+[Read more about Bedroom Organization: Step‑by‑Step Under‑Bed Storage Makeover for a Studio Apartment with 48‑Inch Clearance](../bedroom-organization-stepbystep-underbed-storage-makeover-for-a-studio-apartment-with-48inch-clearance/)
 
 1. **Group cables by function** – use reusable Velcro straps (30‑piece kits work well) to bundle power cords, USB cables, and HDMI lines separately.
 2. **Create a cable pathway** – attach adhesive cable clips every 12 inches along the wall, guiding cords upward and behind the desk. This keeps the floor clear and makes future re‑routing simple.
@@ -104,7 +104,7 @@ Good lighting is essential for video calls and reduces eye strain, yet a floor l
 
 A one‑time purge will not keep the corner tidy forever. Small, repeatable habits are the secret to sustainable decluttering.
 
-[Read more about Small Space Organization: Transforming a 3‑ft Wide Hallway into Functional Coat and Shoe Storage](../small-space-organization-transforming-a-3-ft-wide-hallway-into-functional-coat-and-shoe-storage/)
+[Read more about Small Space Organization: Transforming a 3‑ft Wide Hallway into Functional Coat and Shoe Storage](../small-space-organization-transforming-a-3ft-wide-hallway-into-functional-coat-and-shoe-storage/)
 
 1. **End‑of‑day reset (2 minutes)** – before you leave the desk, return pens, sticky notes, and chargers to their designated spots. Close the laptop, fold the desk if it’s a wall‑mount, and roll the cart back under.
 2. **Weekly surface audit (5 minutes)** – each Friday, glance over the floating shelves and pegboard. Remove anything that looks out of place, dust surfaces, and straighten items.
