@@ -91,7 +91,6 @@ Turn the inside of cabinet doors into mini‑storage by adding a 1‑inch‑thic
 
 ## Handle Awkward Corners and Narrow Areas
 
-![pantry bin storage organized interior](../../images/kitchen-organization-ideas-small-spaces-space-7.jpg)
 
 
 A corner that’s only 12 in. deep can feel like a dead zone, but a 15‑inch lazy‑Susan turntable slides out on a low‑friction bearing and lets you reach every jar without digging. If the cabinet is shallower, install a pull‑out corner shelf that folds flat when not in use; a 10‑in. wide, 8‑in. deep shelf fits most 24‑in. base cabinets and creates a mini “L” that holds spices, canned beans, or a small cutting board.
@@ -102,7 +101,6 @@ A common mistake is stuffing bulky appliances into these tight spots, which bloc
 
 ## Build a Simple Routine That Stays Organized
 
-![kitchen organization ideas for small spaces organizer organized](../../images/kitchen-organization-ideas-small-spaces-space-8.jpg)
 
 
 - **Set a 5‑minute “reset” after every meal** – As soon as you finish cooking, spend no more than 300 seconds clearing the workspace. Put pots and pans in the dishwasher or drying rack, wipe the stovetop with a microfiber cloth, and return any stray utensils to the drawer organizer (the one with 12‑inch compartments works well for spatulas, whisks, and tongs).  
@@ -117,7 +115,6 @@ By sticking to these short, repeatable actions, the kitchen stays functional wit
 
 ## Avoid Common Storage Mistakes
 
-![kitchen storage cabinet organized organized interior](../../images/kitchen-organization-ideas-small-spaces-space-9.jpg)
 
 
 - **Over‑filling cabinets** – A common mistake is cramming every inch of a 12‑inch‑deep cabinet. Instead, leave at least 1‑2 inches of clearance on the back wall so you can see the bottom of each shelf. Use tiered shelf risers (usually 4‑inches high) to create two levels for plates, keeping the top layer visible and the bottom for less‑used items.  
@@ -132,7 +129,6 @@ By sticking to these short, repeatable actions, the kitchen stays functional wit
 
 ## Create a Maintenance Plan That Takes Minutes
 
-![kitchen organization ideas for small spaces bin storage](../../images/kitchen-organization-ideas-small-spaces-space-10.jpg)
 
 
 A quick, repeatable routine keeps a tiny kitchen from slipping back into chaos. Start each night with a **5‑minute reset**: wipe the stovetop, load the dishwasher, and put away any items left on the counter. Keep a small basket (about 12 × 12 in) by the sink for stray utensils; empty it into drawers before bed so nothing piles up.
@@ -153,7 +149,3 @@ Common mistakes include: letting the trash can overflow (it should be emptied be
 - Photo 4: [Keegan Checks](https://www.pexels.com/@keeganjchecks) via [Pexels](https://www.pexels.com/photo/interior-design-of-room-10117733/)
 - Photo 5: [Jonathan Borba](https://www.pexels.com/@jonathanborba) via [Pexels](https://www.pexels.com/photo/cozy-modern-kitchen-in-espirito-santo-brazil-30628753/)
 - Photo 6: [ASR Design Studio](https://www.pexels.com/@asr-design-studio-623558661) via [Pexels](https://www.pexels.com/photo/house-kitchen-interior-design-18109909/)
-- Photo 7: [RDNE Stock project](https://www.pexels.com/@rdne) via [Pexels](https://www.pexels.com/photo/dry-goods-in-glass-containers-on-a-shelf-8580727/)
-- Photo 8: [American  Cleaning Institute](https://www.pexels.com/@american-cleaning-institute-2155509001) via [Pexels](https://www.pexels.com/photo/organized-kitchen-cabinet-with-wicker-baskets-33784616/)
-- Photo 9: [Dmitry Zvolskiy](https://www.pexels.com/@zvolskiy) via [Pexels](https://www.pexels.com/photo/glass-jars-on-wooden-surface-2062425/)
-- Photo 10: [cottonbro studio](https://www.pexels.com/@cottonbro) via [Pexels](https://www.pexels.com/photo/framed-vintage-photos-hanging-in-a-wall-6923497/)
