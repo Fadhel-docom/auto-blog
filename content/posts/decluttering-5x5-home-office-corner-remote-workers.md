@@ -99,7 +99,6 @@ Good lighting is essential for video calls and reduces eye strain, yet a floor l
 
 ## Step 6: Create a Simple Daily and Weekly Maintenance Routine
 
-![corner desk with sleek adjustable LED lamp and laptop](../../images/decluttering-5x5-home-office-corner-remote-workers-7.jpg)
 
 
 A one‑time purge will not keep the corner tidy forever. Small, repeatable habits are the secret to sustainable decluttering.
@@ -117,7 +116,6 @@ A one‑time purge will not keep the corner tidy forever. Small, repeatable habi
 
 ## Common Pitfalls and How to Avoid Them
 
-![tidy studio corner desk featuring daily planner tray and organized supplies](../../images/decluttering-5x5-home-office-corner-remote-workers-8.jpg)
 
 
 Even with a solid plan, it’s easy to slip back into habits that undo your hard work. Below are the most frequent errors remote workers make in a studio corner, paired with practical fixes.
@@ -135,7 +133,6 @@ By anticipating these pitfalls, you can design a corner that stays functional, a
 
 ## Bonus Tips: Digital Declutter and Personal Touches
 
-![cluttered studio corner with paper stack and tangled cords](../../images/decluttering-5x5-home-office-corner-remote-workers-9.jpg)
 
 
 Physical decluttering is only half the battle. A cluttered desktop, overflowing email inbox, and chaotic file system can undermine the calm you’ve created.
@@ -156,7 +153,6 @@ These subtle additions keep the corner inspiring without re‑introducing visual
 
 ## Practical Conclusion and Action Plan
 
-![studio desk laptop screen displaying five clean icons and small plant](../../images/decluttering-5x5-home-office-corner-remote-workers-10.jpg)
 
 
 Decluttering a 5'x5' home office corner in a studio apartment is entirely achievable when you follow a systematic approach:
@@ -188,7 +184,3 @@ Ready to reclaim your corner? Start small, stay consistent, and enjoy the calm t
 - Photo 4: [Tina Simakova](https://www.pexels.com/@tinasimakova) via [Pexels](https://www.pexels.com/photo/minimalist-home-office-desk-setup-with-natural-light-37365487/)
 - Photo 5: [Josh Sorenson](https://www.pexels.com/@joshsorenson) via [Pexels](https://www.pexels.com/photo/a-standing-desk-with-a-computer-7899239/)
 - Photo 6: [Serena Koi](https://www.pexels.com/@serenakoi) via [Pexels](https://www.pexels.com/photo/interior-design-of-a-living-room-5673447/)
-- Photo 7: [Andre Purwadi](https://www.pexels.com/@andrepuji) via [Pexels](https://www.pexels.com/photo/black-desk-lamp-and-a-laptop-on-a-white-table-4500890/)
-- Photo 8: [RDNE Stock project](https://www.pexels.com/@rdne) via [Pexels](https://www.pexels.com/photo/a-desk-calendar-with-notes-and-post-its-on-orange-desk-7845451/)
-- Photo 9: [HONG SON](https://www.pexels.com/@hson) via [Pexels](https://www.pexels.com/photo/a-stack-of-newspapers-sitting-on-top-of-a-wooden-crate-27794812/)
-- Photo 10: [DS stories](https://www.pexels.com/@ds-stories) via [Pexels](https://www.pexels.com/photo/leafy-plant-beside-a-laptop-6991865/)
