@@ -82,10 +82,6 @@ jobs:
         run: |
           python scripts/competitive_publish.py
 
-      - name: Insert competitive images
-        run: |
-          python scripts/insert_competitive_images.py
-
       - name: Normalize post categories
         run: |
           python scripts/fix_post_categories.py
