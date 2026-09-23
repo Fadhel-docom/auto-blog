@@ -587,12 +587,12 @@ def read_existing_posts(
             ]
         )
 
+        normalized_title = title.lower().replace("\u2011", "")
         post_slug = re.sub(
-            r"[^\w]+",
+            r"[^a-z0-9]+",
             "-",
-            title.lower(),
-            flags=re.UNICODE,
-        ).strip("-").replace("_", "-")
+            normalized_title,
+        ).strip("-")
 
         posts.append(
             {
