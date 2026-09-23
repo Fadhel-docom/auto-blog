@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Home Organization Ideas editorial avatar</title>
+  <desc id="desc">A simple house and shelf mark representing practical home organization.</desc>
+  <rect width="160" height="160" rx="36" fill="#243238"/>
+  <path d="M35 74 80 38l45 36v48a10 10 0 0 1-10 10H45a10 10 0 0 1-10-10Z" fill="none" stroke="#fff" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M55 86h50M55 105h50M55 124h50" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+  <path d="M80 86v38" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="80" cy="62" r="5" fill="#fff"/>
+</svg>
