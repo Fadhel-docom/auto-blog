@@ -1,46 +1,109 @@
+# =========================================
+# Hugo build output
+# =========================================
+
+public/
+resources/
+.hugo_build.lock
+
+# =========================================
+# Node / NPM
+# =========================================
+
+node_modules/
+package-lock.json
+yarn.lock
+.npm/
+.pnpm-store/
+
+# =========================================
 # Python
+# =========================================
+
 __pycache__/
 *.py[cod]
-
-# Virtual environments
-.venv/
+*$py.class
+*.so
+.Python
+env/
 venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
-# Secrets
+# =========================================
+# Environment variables
+# =========================================
+
 .env
-.env.*
-*.env
-secrets.env
+.env.local
+.env.*.local
 
-# Hugo generated
-/public/
-/resources/_gen/
+# =========================================
+# IDE / Editors
+# =========================================
 
-# Temporary
-/tmp/
-tmp/
-temp/
-*.tmp
-
-# Generated files that should NOT be committed
-generated_article.json
-
-# Downloaded images
-downloaded_image.*
-
-# OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
 Thumbs.db
 desktop.ini
 
-# IDE
-.vscode/
-.idea/
+# =========================================
+# OS
+# =========================================
 
-# Python cache
-.pytest_cache/
-.mypy_cache/
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 
-# Logs
+# =========================================
+# Temporary files
+# =========================================
+
+*.tmp
+*.temp
+*.bak
 *.log
-logs/
+*.cache
+*~
+.#*
+
+# =========================================
+# GitHub Actions artifacts
+# =========================================
+
+github-pages/
+.vercel/
+.netlify/
+
+# =========================================
+# IMPORTANT: logs/ is NOT ignored
+# =========================================
+# The autonomous maintenance system
+# (auto_repair, health_monitor, ui_checker,
+# ai_assistant) commits files under logs/.
+# Do NOT add logs/ or logs to this file.
