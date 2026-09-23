@@ -1005,7 +1005,7 @@ def main() -> int:
 
         images = normalize_images(article, slug)
 
-        if len(images) != 5:
+        if len(images) != 6:
             raise ValueError(
                 "Exactly 6 images are required "
                 "before publishing."
