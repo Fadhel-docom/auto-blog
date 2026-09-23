@@ -1,58 +1,62 @@
 +++
-title = "Privacy Policy"
-date = 2026-09-20
+title = "Privacy"
+description = "Privacy information for visitors to Home Organization Ideas."
+date = 2026-09-23
+lastmod = 2026-09-23
 draft = false
 +++
 
-## Privacy Policy
+## Privacy at Home Organization Ideas
 
-Last updated: September 20, 2026
+Home Organization Ideas is a lightweight content website focused on practical home organization and small-space living.
 
-This Privacy Policy explains how Home Organization Ideas ("we", "us", or "our") handles information when you visit our website.
+We aim to collect as little information as reasonably possible.
 
-## Information we collect
+## Website analytics
 
-We do not require you to create an account to read our articles.
+We use GoatCounter to understand how people use the website.
 
-We may collect limited, non-personal information automatically, including:
+Analytics can help us understand information such as:
 
-- pages visited
-- approximate geographic location (country level)
-- browser type
-- referring source
+- Which pages are visited
+- How visitors arrive at the site
+- Which content receives attention
+- Basic usage and performance patterns
 
-This information is collected by our analytics provider (GoatCounter) for the purpose of understanding which articles are useful.
+This information is used to improve the website and its content.
 
-## Cookies
+We do not use analytics to ask visitors for personal information.
 
-This website does not use advertising cookies.
+## Search and website functionality
 
-Basic analytics may use minimal technical data, but no personally identifying information is stored.
-
-If we display advertising in the future, third-party vendors (such as Google AdSense or similar) may use cookies to serve ads based on your prior visits to this or other websites. We will update this policy when advertising is enabled.
+The site's article search is designed to work in the visitor's browser. Search queries are used to filter available articles and are not intended to create a personal profile.
 
 ## Third-party services
 
-We use:
+The website may link to or use services operated by third parties, including services used for:
 
-- **GitHub Pages** to host this website
-- **GoatCounter** for privacy-friendly analytics
-- **Pexels** for images used in articles
+- Website hosting
+- Analytics
+- Images and image attribution
+- Social distribution
+- External resources
 
-These services have their own privacy policies. We do not control the data they collect.
+Those services may have their own privacy policies and terms.
 
-## Your rights
+When you leave Home Organization Ideas and visit another website, that website's own policies apply.
 
-You may contact us to request information about data related to your visit. Since we do not collect personal information directly, in most cases we will not have personal data about you.
+## External links
 
-## Children's privacy
+Some articles may contain links to external websites or resources.
 
-This website is not directed to children under 13. We do not knowingly collect information from children.
+We do not control the privacy practices or content of external websites.
 
-## Changes to this policy
+## Changes to this page
 
-We may update this policy occasionally. Updates will be reflected by the "Last updated" date at the top of this page.
+This privacy information may be updated when the website's technology or services change.
+
+The date at the top of this page indicates when this page was last updated.
 
 ## Contact
 
-For privacy-related questions, please use the contact page.
+If you have a privacy-related question or notice something that should be corrected, please visit our [Contact page](/auto-blog/contact/).
