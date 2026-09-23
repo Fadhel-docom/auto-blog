@@ -5,6 +5,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: migrate-categories
@@ -38,26 +40,58 @@ jobs:
         run: |
           python scripts/fix_post_categories.py --all
 
-      - name: Commit changes
+      - name: Commit migration changes
         run: |
           git add content/posts/
           if git diff --cached --quiet; then
-            echo "No changes needed — all posts already canonical."
+            echo "No migration changes needed."
           else
             git commit -m "Migrate: normalize post categories to canonical set"
             git push
           fi
 
+      - name: Install Hugo 0.128.0 Extended
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.128.0"
+          extended: true
+
+      - name: Build Hugo site
+        run: |
+          hugo --gc --minify
+
+      - name: Verify Hugo output
+        run: |
+          if [ ! -d public ]; then
+            echo "ERROR: Hugo did not create public/"
+            exit 1
+          fi
+          if [ ! -f public/index.html ]; then
+            echo "ERROR: public/index.html is missing"
+            exit 1
+          fi
+          echo "Hugo build verified."
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./public
+          force_orphan: true
+
       - name: Summary
         run: |
           echo "=========================================="
-          echo "MIGRATION COMPLETE"
+          echo "MIGRATION + DEPLOY COMPLETE"
           echo "=========================================="
-          echo "All posts now use canonical categories:"
+          echo "Categories now canonical:"
           echo "  Kitchen"
           echo "  Bathroom"
           echo "  Bedroom"
           echo "  Small Space"
           echo "  Decluttering"
           echo "  Rental"
+          echo ""
+          echo "Live site updated: gh-pages"
           echo "=========================================="
