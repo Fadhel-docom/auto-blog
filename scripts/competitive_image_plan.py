@@ -987,7 +987,7 @@ def build_local_fallback_queries(
 
     if len(candidates) < IMAGE_COUNT:
         raise ValueError(
-            "Could not build 10 unique fallback queries."
+            "Could not build six unique fallback queries."
         )
 
     return candidates[:IMAGE_COUNT]
