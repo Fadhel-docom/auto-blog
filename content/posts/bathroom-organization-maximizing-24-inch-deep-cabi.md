@@ -54,7 +54,7 @@ Pull‑out bins are the workhorse of any under‑sink makeover because they slid
 
 A tension rod is a simple, cost‑effective way to create a hanging zone inside the cabinet. It works like a miniature clothes‑line, supporting spray bottles, rolled towels, or a slim cleaning caddy without any permanent modifications.
 
-[Read more about Bedroom Organization: Step‑by‑Step Under‑Bed Storage Makeover for a Studio Apartment with 48‑Inch Clearance](../bedroom-organization-step-by-step-under-bed-storage-makeover-for-a-studio-apartment-with-48-inch-clearance/)
+[Read more about Bedroom Organization: Step‑by‑Step Under‑Bed Storage Makeover for a Studio Apartment with 48‑Inch Clearance](../bedroom-organization-stepbystep-underbed-storage-makeover-for-a-studio-apartment-with-48inch-clearance/)
 
 **Why a tension rod works so well:**
 
@@ -82,7 +82,7 @@ Having these reference lines ensures that the bin and rod will coexist without i
 
 The installation process varies slightly by product, but the general workflow is consistent. Below is a numbered guide that works for most metal‑frame or plastic‑slide bins.
 
-[Read more about Small Space Organization: Transforming a 3‑ft Wide Hallway into Functional Coat and Shoe Storage](../small-space-organization-transforming-a-3-ft-wide-hallway-into-functional-coat-and-shoe-storage/)
+[Read more about Small Space Organization: Transforming a 3‑ft Wide Hallway into Functional Coat and Shoe Storage](../small-space-organization-transforming-a-3ft-wide-hallway-into-functional-coat-and-shoe-storage/)
 
 1. **Attach the rail brackets** – Most bins come with L‑shaped brackets that snap into the side walls of the cabinet. Align the brackets with the interior walls and press until you hear a click.
 2. **Insert the bin** – Slide the bin onto the rails, pulling it fully out to test the glide. If the bin feels tight, loosen the brackets a fraction and try again.
