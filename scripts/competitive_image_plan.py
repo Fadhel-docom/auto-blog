@@ -665,11 +665,7 @@ Return ONLY valid JSON:
     "section query 2",
     "section query 3",
     "section query 4",
-    "section query 5",
-    "section query 6",
-    "section query 7",
-    "section query 8",
-    "section query 9"
+    "section query 5"
   ]
 }
 """.strip()
