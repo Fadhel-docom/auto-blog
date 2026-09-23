@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-23T00:39:07+00:00",
+  "timestamp": "2026-09-23T12:15:56+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -34,14 +34,37 @@
     "search": true,
     "grid": true,
     "featured": true,
-    "nav_links": 5,
+    "nav_links": 12,
     "article_cards": 15,
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 30628
+    "html_length": 31526
   },
   "articles": [
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/kitchen-organization-ideas-for-small-spaces-small-space-guide/",
+      "status": 200,
+      "title": "Kitchen organization ideas for small spaces - Small Space Guide",
+      "title_capitalized": true,
+      "meta_description": "Practical kitchen organization ideas for small spaces ideas with simple measurements, storage zones, and realistic steps for a more organized home.",
+      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/kitchen-organization-ideas-for-small-spaces-small-space-guide/",
+      "images": 13,
+      "tags": 0,
+      "h2_count": 13,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 0,
+        "types": [],
+        "has_article": false
+      },
+      "required_failures": [
+        "tags"
+      ],
+      "html_length": 28606
+    },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-closet-organization-ideas-a-practical-small-space-guide/",
       "status": 200,
@@ -63,7 +86,7 @@
       "required_failures": [
         "tags"
       ],
-      "html_length": 26059
+      "html_length": 27120
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-apartment-storage-ideas-a-practical-small-space-guide/",
@@ -86,7 +109,7 @@
       "required_failures": [
         "tags"
       ],
-      "html_length": 25812
+      "html_length": 26878
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bathroom-organization-ideas-a-practical-small-space-guide/",
@@ -109,7 +132,7 @@
       "required_failures": [
         "tags"
       ],
-      "html_length": 27057
+      "html_length": 28125
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-storage-ideas-diy-pull-out-drawers-and-rolling-bins-under-a-queen-bed/",
@@ -132,30 +155,7 @@
       "required_failures": [
         "tags"
       ],
-      "html_length": 28182
-    },
-    {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-kitchen-organization-ideas-pull-out-spice-rack-for-5ft-galley/",
-      "status": 200,
-      "title": "Small Kitchen Organization Ideas: Pull Out Spice Rack for 5‑ft Galley",
-      "title_capitalized": true,
-      "meta_description": "Learn how to design, build, and install a pull‑out spice rack for a 5‑ft galley kitchen in a studio apartment. Step‑by‑step instructions, material tips, and maintenance advice for smarter small kitchen organization.",
-      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/small-kitchen-organization-ideas-pull-out-spice-rack-for-5ft-galley/",
-      "images": 13,
-      "tags": 0,
-      "h2_count": 14,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 0,
-        "types": [],
-        "has_article": false
-      },
-      "required_failures": [
-        "tags"
-      ],
-      "html_length": 26153
+      "html_length": 29314
     }
   ],
   "responsive": {
