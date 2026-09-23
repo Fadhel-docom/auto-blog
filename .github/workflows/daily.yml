@@ -110,10 +110,12 @@ jobs:
             echo "ERROR: Hugo did not create public/"
             exit 1
           fi
+
           if [ ! -f public/index.html ]; then
             echo "ERROR: public/index.html is missing"
             exit 1
           fi
+
           echo "Hugo build verified."
 
       - name: Configure Git
@@ -124,15 +126,19 @@ jobs:
       - name: Commit source changes
         run: |
           git add article.json
+
           if [ -f keywords.csv ]; then
             git add keywords.csv
           fi
+
           git add content/posts/
           git add static/images/
+          git add data/
+
           if git diff --cached --quiet; then
             echo "No source changes detected."
           else
-            git commit -m "Add daily blog post"
+            git commit -m "Add daily blog post and update image tracker"
             git push
           fi
 
