@@ -6,30 +6,6 @@
   {{ $first := substr $title 0 1 | upper }}
   {{ $rest := substr $title 1 }}
   {{ $title = printf "%s%s" $first $rest }}
-
-{{ with .Params.faq }}
-  {{ $faqEntities := slice }}
-  {{ range . }}
-    {{ $faqEntities = $faqEntities | append (dict
-      "@type" "Question"
-      "name" .question
-      "acceptedAnswer" (dict
-        "@type" "Answer"
-        "text" .answer
-      )
-    ) }}
-  {{ end }}
-  <script type="application/ld+json">
-    {{ dict
-      "@context" "https://schema.org"
-      "@type" "FAQPage"
-      "mainEntity" $faqEntities
-      | jsonify
-      | safeJS
-    }}
-  </script>
-{{ end }}
-
 {{ end }}
 
 <article class="post-single">
@@ -283,5 +259,29 @@
   </section>
 
 </article>
+
+
+{{ with .Params.faq }}
+  {{ $faqEntities := slice }}
+  {{ range . }}
+    {{ $faqEntities = $faqEntities | append (dict
+      "@type" "Question"
+      "name" .question
+      "acceptedAnswer" (dict
+        "@type" "Answer"
+        "text" .answer
+      )
+    ) }}
+  {{ end }}
+  <script type="application/ld+json">
+    {{ dict
+      "@context" "https://schema.org"
+      "@type" "FAQPage"
+      "mainEntity" $faqEntities
+      | jsonify
+      | safeJS
+    }}
+  </script>
+{{ end }}
 
 {{ end }}
