@@ -15,7 +15,7 @@ from groq import Groq
 ROOT_DIR = Path(__file__).resolve().parents[1]
 ARTICLE_PATH = ROOT_DIR / "article.json"
 
-IMAGE_COUNT = 10
+IMAGE_COUNT = 6
 MAX_RETRIES = 5
 
 GROQ_MODEL = os.getenv(
