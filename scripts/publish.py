@@ -315,7 +315,7 @@ def normalize_images(
 
     if len(images) != 6:
         raise ValueError(
-            f"Expected exactly 5 images for "
+            f"Expected exactly 6 images for "
             f"publishing, got {len(images)}."
         )
 
