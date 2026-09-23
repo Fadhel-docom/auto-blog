@@ -1,36 +1,54 @@
 +++
 title = "Contact"
-date = 2026-09-20
+description = "Contact Home Organization Ideas with questions, suggestions, corrections, or feedback about our organization guides."
+date = 2026-09-23
+lastmod = 2026-09-23
 draft = false
 +++
 
-## Get in touch
+## We would love to hear from you
 
-We welcome questions, feedback, corrections, and partnership inquiries.
+Have a question about an organization idea? Found something that needs correcting? Have a suggestion for a future guide?
 
-## Email
+We welcome useful feedback.
 
-For general questions:
+## What you can contact us about
 
-**contact@fadhel-docom.github.io**
+You can get in touch about:
 
-(Note: this is a placeholder email. To receive real messages, you will need a real contact address.)
+- Questions about our guides
+- Corrections or factual updates
+- Suggestions for future topics
+- Small-space organization problems you would like us to cover
+- Renter-friendly organization ideas
+- Feedback about the website
+- Collaboration and content-related inquiries
 
-## Response time
+## Contact
 
-We aim to respond within a few business days.
+Because Home Organization Ideas is hosted as a lightweight independent publication on GitHub Pages, the most reliable public contact channel at this stage is our project's GitHub repository.
 
-## What we can help with
+[Open the Home Organization Ideas project on GitHub](https://github.com/Fadhel-docom/auto-blog)
 
-- Questions about articles
-- Corrections or factual feedback
-- Requests for specific topics
-- Media or collaboration inquiries
+For a correction or issue with the website, you can use the repository's issue system so the problem can be clearly described and tracked.
 
-## What we cannot help with
+## Corrections and accuracy
 
-- Personal home organization consultations
-- Product recommendations for specific brands
-- Emergency or time-sensitive requests
+We care about useful, accurate information.
 
-Thank you for reaching out.
+If you notice an incorrect measurement, misleading statement, broken link, outdated recommendation, or other factual problem in one of our guides, please tell us what you found and include the article URL when possible.
+
+We will review the information and update the article when a correction is appropriate.
+
+## A simple promise
+
+We aim to make every guide:
+
+- Practical
+- Clear
+- Specific
+- Useful in real homes
+- Honest about limitations
+- Free from exaggerated promises
+
+Thank you for helping us make the site better.
