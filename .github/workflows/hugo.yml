@@ -62,7 +62,12 @@ jobs:
           if not feed.exists():
               raise SystemExit("RSS validation failed: public/index.xml was not generated")
 
-          root = ET.parse(feed).getroot()
+          raw = feed.read_bytes().lstrip(b"\xef\xbb\xbf \t\r\n")
+          try:
+              root = ET.fromstring(raw)
+          except ET.ParseError as exc:
+              print("RSS first bytes:", repr(raw[:120]))
+              raise SystemExit(f"RSS validation failed: invalid XML: {exc}")
           if root.tag != "rss" or root.attrib.get("version") not in {"2.0", "2"}:
               raise SystemExit("RSS validation failed: expected RSS 2.x")
 
