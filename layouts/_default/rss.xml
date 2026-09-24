@@ -24,12 +24,7 @@
       <media:content url="{{ $image }}" medium="image" />
       <enclosure url="{{ $image }}" type="image/jpeg" length="0" />
       {{- end }}
-      <content:encoded><![CDATA[
-        {{- with .Params.image }}
-        <p><img src="{{ . | absURL | htmlEscape }}" alt="{{ $.Title | htmlEscape }}" /></p>
-        {{- end }}
-        {{ .Content | safeHTML }}
-      ]]></content:encoded>
+
     </item>
     {{- end }}
   </channel>
