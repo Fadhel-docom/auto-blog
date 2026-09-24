@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-24T06:21:00+00:00",
+  "timestamp": "2026-09-24T12:20:46+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "repository": "Fadhel-docom/auto-blog",
   "checks": {
@@ -16,8 +16,8 @@
       "broken": []
     },
     "keywords": {
-      "published": 18,
-      "pending": 3,
+      "published": 19,
+      "pending": 2,
       "processing": 0,
       "failed": 0,
       "other": 0,
@@ -32,184 +32,184 @@
     },
     "runs": [
       {
-        "id": 35964048166,
+        "id": 35998452399,
         "name": "Health Monitor",
-        "status": "in_progress",
+        "status": "queued",
         "conclusion": null,
-        "created_at": "2026-09-24T06:20:53Z",
-        "updated_at": "2026-09-24T06:20:55Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35964048166"
+        "created_at": "2026-09-24T12:20:39Z",
+        "updated_at": "2026-09-24T12:20:39Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35998452399"
       },
       {
-        "id": 35962908838,
-        "name": "Auto Repair",
-        "status": "completed",
-        "conclusion": "skipped",
-        "created_at": "2026-09-24T06:06:13Z",
-        "updated_at": "2026-09-24T06:06:15Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35962908838"
-      },
-      {
-        "id": 35962908792,
-        "name": "Deploy Hugo site to Pages",
+        "id": 35997915004,
+        "name": "UI Checker",
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-09-24T06:06:13Z",
-        "updated_at": "2026-09-24T06:08:00Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35962908792"
+        "created_at": "2026-09-24T12:15:28Z",
+        "updated_at": "2026-09-24T12:15:42Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35997915004"
       },
       {
-        "id": 35962903778,
-        "name": "pages build and deployment",
-        "status": "completed",
-        "conclusion": "success",
-        "created_at": "2026-09-24T06:06:10Z",
-        "updated_at": "2026-09-24T06:06:35Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35962903778"
-      },
-      {
-        "id": 35962653505,
-        "name": "Daily Auto Blog",
-        "status": "completed",
-        "conclusion": "success",
-        "created_at": "2026-09-24T06:02:59Z",
-        "updated_at": "2026-09-24T06:06:12Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35962653505"
-      },
-      {
-        "id": 35961256581,
-        "name": "Deploy Hugo site to Pages",
-        "status": "completed",
-        "conclusion": "success",
-        "created_at": "2026-09-24T05:44:08Z",
-        "updated_at": "2026-09-24T05:44:49Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35961256581"
-      },
-      {
-        "id": 35961256571,
+        "id": 35990415410,
         "name": "Link Audit",
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-09-24T05:44:08Z",
-        "updated_at": "2026-09-24T05:44:18Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35961256571"
+        "created_at": "2026-09-24T10:59:40Z",
+        "updated_at": "2026-09-24T10:59:53Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35990415410"
       },
       {
-        "id": 35961190848,
-        "name": "Link Audit",
-        "status": "completed",
-        "conclusion": "success",
-        "created_at": "2026-09-24T05:43:15Z",
-        "updated_at": "2026-09-24T05:43:27Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35961190848"
-      },
-      {
-        "id": 35961190843,
-        "name": "Deploy Hugo site to Pages",
-        "status": "completed",
-        "conclusion": "success",
-        "created_at": "2026-09-24T05:43:15Z",
-        "updated_at": "2026-09-24T05:44:00Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35961190843"
-      },
-      {
-        "id": 35961122283,
-        "name": "Deploy Hugo site to Pages",
+        "id": 35990415033,
+        "name": "Pinterest Auto Publisher",
         "status": "completed",
         "conclusion": "failure",
-        "created_at": "2026-09-24T05:42:21Z",
-        "updated_at": "2026-09-24T05:42:47Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35961122283"
+        "created_at": "2026-09-24T10:59:40Z",
+        "updated_at": "2026-09-24T10:59:47Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35990415033"
       },
       {
-        "id": 35961122263,
-        "name": "Link Audit",
-        "status": "completed",
-        "conclusion": "success",
-        "created_at": "2026-09-24T05:42:21Z",
-        "updated_at": "2026-09-24T05:42:34Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35961122263"
-      },
-      {
-        "id": 35961051967,
+        "id": 35990414980,
         "name": "Deploy Hugo site to Pages",
         "status": "completed",
-        "conclusion": "failure",
-        "created_at": "2026-09-24T05:41:23Z",
-        "updated_at": "2026-09-24T05:41:54Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35961051967"
+        "conclusion": "success",
+        "created_at": "2026-09-24T10:59:40Z",
+        "updated_at": "2026-09-24T11:01:30Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35990414980"
       },
       {
-        "id": 35961051927,
+        "id": 35990405865,
         "name": "Link Audit",
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-09-24T05:41:23Z",
-        "updated_at": "2026-09-24T05:41:31Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35961051927"
+        "created_at": "2026-09-24T10:59:34Z",
+        "updated_at": "2026-09-24T10:59:43Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35990405865"
       },
       {
-        "id": 35960986805,
+        "id": 35990405820,
         "name": "Deploy Hugo site to Pages",
         "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-09-24T10:59:34Z",
+        "updated_at": "2026-09-24T11:00:16Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35990405820"
+      },
+      {
+        "id": 35990405793,
+        "name": "Pinterest Auto Publisher",
+        "status": "completed",
         "conclusion": "failure",
-        "created_at": "2026-09-24T05:40:27Z",
-        "updated_at": "2026-09-24T05:40:59Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35960986805"
+        "created_at": "2026-09-24T10:59:34Z",
+        "updated_at": "2026-09-24T10:59:45Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35990405793"
       },
       {
-        "id": 35960986804,
-        "name": "Link Audit",
-        "status": "completed",
-        "conclusion": "success",
-        "created_at": "2026-09-24T05:40:27Z",
-        "updated_at": "2026-09-24T05:40:41Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35960986804"
-      },
-      {
-        "id": 35960918526,
-        "name": "Link Audit",
-        "status": "completed",
-        "conclusion": "success",
-        "created_at": "2026-09-24T05:39:33Z",
-        "updated_at": "2026-09-24T05:39:45Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35960918526"
-      },
-      {
-        "id": 35960918524,
+        "id": 35989168470,
         "name": "Deploy Hugo site to Pages",
         "status": "completed",
-        "conclusion": "failure",
-        "created_at": "2026-09-24T05:39:33Z",
-        "updated_at": "2026-09-24T05:40:06Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35960918524"
+        "conclusion": "success",
+        "created_at": "2026-09-24T10:46:28Z",
+        "updated_at": "2026-09-24T10:47:30Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35989168470"
       },
       {
-        "id": 35960848244,
+        "id": 35989168416,
+        "name": "Pinterest Auto Publisher",
+        "status": "completed",
+        "conclusion": "failure",
+        "created_at": "2026-09-24T10:46:28Z",
+        "updated_at": "2026-09-24T10:46:36Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35989168416"
+      },
+      {
+        "id": 35989168408,
+        "name": "Link Audit",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-09-24T10:46:28Z",
+        "updated_at": "2026-09-24T10:46:41Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35989168408"
+      },
+      {
+        "id": 35989153988,
         "name": "Deploy Hugo site to Pages",
         "status": "completed",
-        "conclusion": "failure",
-        "created_at": "2026-09-24T05:38:35Z",
-        "updated_at": "2026-09-24T05:39:02Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35960848244"
+        "conclusion": "cancelled",
+        "created_at": "2026-09-24T10:46:19Z",
+        "updated_at": "2026-09-24T10:46:29Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35989153988"
       },
       {
-        "id": 35960848217,
+        "id": 35989153895,
         "name": "Link Audit",
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-09-24T05:38:35Z",
-        "updated_at": "2026-09-24T05:38:44Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35960848217"
+        "created_at": "2026-09-24T10:46:19Z",
+        "updated_at": "2026-09-24T10:46:30Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35989153895"
       },
       {
-        "id": 35960757936,
+        "id": 35989148966,
         "name": "Link Audit",
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-09-24T05:37:20Z",
-        "updated_at": "2026-09-24T05:37:31Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35960757936"
+        "created_at": "2026-09-24T10:46:16Z",
+        "updated_at": "2026-09-24T10:46:26Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35989148966"
+      },
+      {
+        "id": 35989148936,
+        "name": "Deploy Hugo site to Pages",
+        "status": "completed",
+        "conclusion": "cancelled",
+        "created_at": "2026-09-24T10:46:16Z",
+        "updated_at": "2026-09-24T10:46:20Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35989148936"
+      },
+      {
+        "id": 35989133384,
+        "name": "Link Audit",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-09-24T10:46:06Z",
+        "updated_at": "2026-09-24T10:46:17Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35989133384"
+      },
+      {
+        "id": 35989133375,
+        "name": "Deploy Hugo site to Pages",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-09-24T10:46:06Z",
+        "updated_at": "2026-09-24T10:46:49Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35989133375"
+      },
+      {
+        "id": 35973606191,
+        "name": "Deploy Hugo site to Pages",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-09-24T08:09:32Z",
+        "updated_at": "2026-09-24T08:10:56Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35973606191"
+      },
+      {
+        "id": 35973606110,
+        "name": "Link Audit",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-09-24T08:09:32Z",
+        "updated_at": "2026-09-24T08:09:42Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35973606110"
+      },
+      {
+        "id": 35973598580,
+        "name": "Deploy Hugo site to Pages",
+        "status": "completed",
+        "conclusion": "cancelled",
+        "created_at": "2026-09-24T08:09:27Z",
+        "updated_at": "2026-09-24T08:09:33Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/35973598580"
       }
     ]
   },
@@ -217,7 +217,7 @@
   "issues": [
     {
       "type": "multiple_recent_failures",
-      "count": 5
+      "count": 3
     },
     {
       "type": "issue_creation_failed",
