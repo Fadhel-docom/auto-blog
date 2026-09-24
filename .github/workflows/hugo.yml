@@ -51,6 +51,22 @@ jobs:
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
+      - name: Normalize Hugo RSS feed
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          feed = Path("public/index.xml")
+          if not feed.exists():
+              raise SystemExit("RSS normalization failed: public/index.xml was not generated")
+
+          raw = feed.read_bytes()
+          escaped_declaration = b'&lt;?xml version="1.0" encoding="utf-8" standalone="yes"?><rss'
+          if raw.startswith(escaped_declaration):
+              raw = b'<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss' + raw[len(escaped_declaration):]
+              feed.write_bytes(raw)
+          PY
+
       - name: Validate RSS feed for social automation
         run: |
           python - <<'PY'
