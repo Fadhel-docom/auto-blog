@@ -66,6 +66,9 @@ hasCJKLanguage = false
   home = ["HTML", "RSS"]
   section = ["HTML", "RSS"]
 
+[outputFormats.RSS]
+  isPlainText = true
+
 [sitemap]
   changeFreq = "daily"
   priority = 0.5
