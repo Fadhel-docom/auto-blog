@@ -57,58 +57,20 @@ jobs:
                   except Exception: payload = {"raw": raw}
                   return e.code, payload
 
-          # Prefer the post changed by this push; fall back to the newest markdown post.
-          changed = subprocess.check_output(
-              ["git", "diff", "--name-only", "HEAD^", "HEAD", "--", "content/posts/"],
-              text=True
-          ).splitlines()
-          posts = [Path(p) for p in changed if p.endswith(".md") and Path(p).exists()]
-          if not posts:
-              posts = sorted(Path("content/posts").glob("*.md"), key=lambda p: p.stat().st_mtime, reverse=True)
-          if not posts:
-              print("No post found; nothing to publish.")
+          # Publish every unpinned post while the current token is valid.
+          # This intentionally uses the existing article set; no new/low-quality content is created.
+          all_posts = sorted(Path("content/posts").glob("*.md"), key=lambda p: p.stat().st_mtime, reverse=True)
+          if not all_posts:
+              print("No posts found; nothing to publish.")
               sys.exit(0)
 
-          post = posts[0]
-          text = post.read_text(encoding="utf-8")
-
-          def fm(name):
-              # Posts are TOML front matter, while older posts may use YAML-style separators.
-              m = re.search(r"^" + re.escape(name) + r"\s*[:=]\s*(.*)$", text, re.M)
-              if not m:
-                  return ""
-              value = m.group(1).strip()
-              if value.startswith('"') and value.endswith('"'):
-                  value = value[1:-1]
-              elif value.startswith("'") and value.endswith("'"):
-                  value = value[1:-1]
-              return value.strip()
-
-          title = fm("title")
-          description = fm("description")
-          image = fm("image")
-          slug = post.stem
-          link = f"https://fadhel-docom.github.io/auto-blog/posts/{slug}/"
-
-          # Hugo may store local images as /images/...; Pinterest needs a public absolute URL.
-          if image.startswith("/"):
-              image = "https://fadhel-docom.github.io/auto-blog" + image
-
-          if not title or not image:
-              print(f"ERROR: Missing title or image in {post}")
-              sys.exit(1)
-
-          # Pinterest documents GET /v5/pins as the canonical authentication preflight.
+          # Read existing Pins once. The current site has far fewer than 100 posts.
           status, pins = api("GET", "/pins?page_size=100")
           if status != 200:
               print("ERROR: Pinterest API authentication/read access failed.")
               print(json.dumps(pins, indent=2))
               sys.exit(1)
-
-          for pin in pins.get("items", []):
-              if pin.get("link") == link:
-                  print(f"Pin already exists for {link}: {pin.get('id')}")
-                  sys.exit(0)
+          existing_links = {p.get("link") for p in pins.get("items", []) if p.get("link")}
 
           status, boards = api("GET", "/boards?page_size=100")
           if status != 200:
@@ -121,34 +83,71 @@ jobs:
               print("ERROR: No Pinterest board is available to receive the Pin.")
               sys.exit(1)
 
-          # Prefer a relevant organization board; otherwise use the first available board.
           preferred = [b for b in items if any(k in (b.get("name") or "").lower()
                        for k in ("organization", "home", "decor", "storage"))]
           board = preferred[0] if preferred else items[0]
           board_id = board.get("id")
 
-          payload = {
-              "board_id": board_id,
-              "title": title[:100],
-              "description": (description or title)[:800],
-              "link": link,
-              "media_source": {
-                  "source_type": "image_url",
-                  "url": image,
-                  "is_standard": True
+          published = 0
+          skipped = 0
+          failed = 0
+
+          for post in all_posts:
+              text = post.read_text(encoding="utf-8")
+
+              def fm(name):
+                  m = re.search(r"^" + re.escape(name) + r"\s*[:=]\s*(.*)$", text, re.M)
+                  if not m:
+                      return ""
+                  value = m.group(1).strip()
+                  if value.startswith('"') and value.endswith('"'):
+                      value = value[1:-1]
+                  elif value.startswith("'") and value.endswith("'"):
+                      value = value[1:-1]
+                  return value.strip()
+
+              title = fm("title")
+              description = fm("description")
+              image = fm("image")
+              slug = post.stem
+              link = f"https://fadhel-docom.github.io/auto-blog/posts/{slug}/"
+
+              if not title or not image:
+                  print(f"SKIP: Missing title or image in {post}")
+                  skipped += 1
+                  continue
+
+              if image.startswith("/"):
+                  image = "https://fadhel-docom.github.io/auto-blog" + image
+
+              if link in existing_links:
+                  print(f"SKIP: Pin already exists for {link}")
+                  skipped += 1
+                  continue
+
+              payload = {
+                  "board_id": board_id,
+                  "title": title[:100],
+                  "description": (description or title)[:800],
+                  "link": link,
+                  "media_source": {
+                      "source_type": "image_url",
+                      "url": image,
+                      "is_standard": True
+                  }
               }
-          }
 
-          status, result = api("POST", "/pins", payload)
-          if status == 201:
-              print(f"SUCCESS: Pinterest Pin created: {result.get('id')}")
-              print(f"Board: {board.get('name')} ({board_id})")
-              print(f"Link: {link}")
-              sys.exit(0)
+              status, result = api("POST", "/pins", payload)
+              if status == 201:
+                  print(f"SUCCESS: Pinterest Pin created: {result.get('id')} | {title}")
+                  existing_links.add(link)
+                  published += 1
+              else:
+                  print(f"ERROR: Pinterest Pin creation failed for {post} (HTTP {status}).")
+                  print(json.dumps(result, indent=2))
+                  failed += 1
 
-          print("ERROR: Pinterest Pin creation failed.")
-          print(json.dumps(result, indent=2))
-          if status == 403:
-              print("This usually means the access token does not include pins:write.")
+          print(f"SUMMARY: published={published}, skipped={skipped}, failed={failed}, board={board.get('name')} ({board_id})")
+          sys.exit(1 if failed and published == 0 else 0)
           sys.exit(1)
           PY
