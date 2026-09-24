@@ -60,11 +60,26 @@ jobs:
           if not feed.exists():
               raise SystemExit("RSS normalization failed: public/index.xml was not generated")
 
+          import html
+          import re
+          from xml.sax.saxutils import escape as xml_escape
+
           raw = feed.read_bytes()
           escaped_declaration = b'&lt;?xml version="1.0" encoding="utf-8" standalone="yes"?><rss'
           if raw.startswith(escaped_declaration):
               raw = b'<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss' + raw[len(escaped_declaration):]
-              feed.write_bytes(raw)
+
+          text = raw.decode("utf-8")
+          xml_entities = {"&amp;", "&lt;", "&gt;", "&quot;", "&apos;"}
+
+          def normalize_entity(match):
+              entity = match.group(0)
+              if entity in xml_entities or entity.startswith("&#"):
+                  return entity
+              return xml_escape(html.unescape(entity))
+
+          text = re.sub(r"&[A-Za-z][A-Za-z0-9]+;", normalize_entity, text)
+          feed.write_text(text, encoding="utf-8")
           PY
 
       - name: Validate RSS feed for social automation
