@@ -1,3 +1,377 @@
+/* Homepage editorial redesign V3
+   Direction: contemporary home magazine — strong photography,
+   restrained typography, asymmetric feature hierarchy.
+*/
+
+.home-hero-editorial {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  align-items: stretch;
+  gap: 0;
+  padding: 0;
+  min-height: 560px;
+  overflow: hidden;
+  border: 1px solid var(--v2-line);
+  border-radius: 30px;
+  background: var(--v2-paper);
+  box-shadow: none;
+}
+
+.home-hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(44px, 6vw, 78px);
+}
+
+.home-hero-editorial .home-hero-kicker {
+  margin-bottom: 20px;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+}
+
+.home-hero-editorial h1 {
+  max-width: 600px;
+  margin: 0 0 22px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.6rem, 5.2vw, 5rem);
+  font-weight: 500;
+  line-height: .99;
+  letter-spacing: -.055em;
+  text-wrap: balance;
+}
+
+.home-hero-editorial .home-hero-description {
+  max-width: 510px;
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
+.home-hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.home-hero-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 48px;
+  padding: 0 19px;
+  border-radius: 999px;
+  background: var(--v2-ink);
+  color: var(--v2-paper);
+  font-size: .86rem;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.home-hero-button:hover {
+  background: var(--v2-accent-dark);
+  color: #fff;
+}
+
+.home-hero-text-link {
+  color: var(--v2-ink-soft);
+  font-size: .86rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid var(--v2-line);
+  padding-bottom: 4px;
+}
+
+.home-hero-text-link:hover {
+  color: var(--v2-accent-dark);
+  border-color: var(--v2-accent);
+}
+
+.home-hero-editorial .hero-trust-row {
+  margin-top: 38px;
+  justify-content: flex-start;
+  font-size: .72rem;
+  letter-spacing: .02em;
+}
+
+.home-hero-image {
+  position: relative;
+  display: block;
+  min-height: 560px;
+  overflow: hidden;
+  background: var(--v2-warm);
+}
+
+.home-hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 48%, rgba(18, 23, 20, .58));
+  pointer-events: none;
+}
+
+.home-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .7s cubic-bezier(.2,.65,.2,1);
+}
+
+.home-hero-image:hover img {
+  transform: scale(1.035);
+}
+
+.home-hero-image-caption {
+  position: absolute;
+  right: 28px;
+  bottom: 26px;
+  left: 28px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #fff;
+}
+
+.home-hero-image-caption span {
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  opacity: .82;
+}
+
+.home-hero-image-caption strong {
+  max-width: 570px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.25rem, 2.2vw, 1.8rem);
+  line-height: 1.15;
+  font-weight: 500;
+}
+
+.category-filter-section {
+  margin-top: 70px;
+}
+
+.category-filter-header {
+  margin-bottom: 18px;
+}
+
+.category-filter-header h2,
+.home-section-heading h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -.035em;
+}
+
+.category-filters {
+  gap: 9px;
+}
+
+.category-filter {
+  min-height: 40px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: transparent;
+}
+
+.featured-section {
+  margin-top: 72px;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+  gap: 18px;
+}
+
+.featured-card {
+  border-radius: 24px;
+  box-shadow: none;
+}
+
+.featured-card-primary {
+  grid-row: span 2;
+}
+
+.featured-card-primary .featured-card-image {
+  aspect-ratio: 1.32 / 1;
+}
+
+.featured-card:not(.featured-card-primary) {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+}
+
+.featured-card:not(.featured-card-primary) .featured-card-image {
+  height: 100%;
+  min-height: 180px;
+  aspect-ratio: auto;
+}
+
+.featured-card:not(.featured-card-primary) .featured-card-body {
+  align-self: center;
+}
+
+.featured-card-primary .featured-card-body {
+  padding: 24px 26px 27px;
+}
+
+.featured-card-primary .featured-card-body h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.featured-card:not(.featured-card-primary) .featured-card-body h3 {
+  font-size: 1.05rem;
+}
+
+.featured-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-posts {
+  margin-top: 86px;
+}
+
+.home-posts .posts-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px 18px;
+}
+
+.home-post-card {
+  border-radius: 18px;
+  box-shadow: none;
+}
+
+.home-post-card-image {
+  aspect-ratio: 1.2 / 1;
+}
+
+.home-post-card-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: -.025em;
+}
+
+.home-post-card-body {
+  padding: 17px 4px 24px;
+}
+
+.home-post-card {
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+}
+
+.home-post-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.home-post-card:hover .home-post-card-image img {
+  transform: scale(1.025);
+}
+
+@media (max-width: 900px) {
+  .home-hero-editorial {
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero-copy {
+    padding: 48px 38px 42px;
+  }
+
+  .home-hero-image {
+    min-height: 430px;
+  }
+
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-card-primary {
+    grid-row: auto;
+  }
+
+  .featured-card:not(.featured-card-primary) {
+    grid-template-columns: 190px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 780px) {
+  .home-hero-editorial {
+    border-radius: 22px;
+  }
+
+  .home-hero-copy {
+    padding: 40px 22px 36px;
+  }
+
+  .home-hero-editorial h1 {
+    font-size: clamp(2.25rem, 11vw, 3.4rem);
+  }
+
+  .home-hero-editorial .hero-trust-row {
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+
+  .home-hero-image {
+    min-height: 360px;
+  }
+
+  .home-hero-image-caption {
+    right: 18px;
+    bottom: 18px;
+    left: 18px;
+  }
+
+  .category-filter-section {
+    margin-top: 48px;
+  }
+
+  .featured-section,
+  .home-posts {
+    margin-top: 54px;
+  }
+
+  .featured-card:not(.featured-card-primary) {
+    grid-template-columns: 125px minmax(0, 1fr);
+  }
+
+  .featured-card-primary .featured-card-image {
+    aspect-ratio: 1.15 / 1;
+  }
+
+  .home-posts .posts-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 14px;
+  }
+
+  .home-post-card-title {
+    font-size: 1.12rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .home-posts .posts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-card:not(.featured-card-primary) {
+    grid-template-columns: 112px minmax(0, 1fr);
+  }
+}
+
 /* Site V2 — editorial visual system
    Inspired by successful home-organization publishers:
    clear editorial hierarchy, real-room photography, generous whitespace,
