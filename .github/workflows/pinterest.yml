@@ -29,9 +29,12 @@ jobs:
           from urllib.request import Request, urlopen
           from urllib.error import HTTPError
 
-          token = os.environ.get("PINTEREST_ACCESS_TOKEN")
+          token = os.environ.get("PINTEREST_ACCESS_TOKEN", "").strip()
           if not token:
               print("ERROR: PINTEREST_ACCESS_TOKEN secret is missing.")
+              sys.exit(1)
+          if not token.startswith("pina"):
+              print("ERROR: PINTEREST_ACCESS_TOKEN does not look like a Pinterest OAuth access token.")
               sys.exit(1)
 
           def api(method, path, body=None):
@@ -95,7 +98,7 @@ jobs:
               print(f"ERROR: Missing title or image in {post}")
               sys.exit(1)
 
-          # Confirm the token can read Pins before attempting publication.
+          # Pinterest documents GET /v5/pins as the canonical authentication preflight.
           status, pins = api("GET", "/pins?page_size=100")
           if status != 200:
               print("ERROR: Pinterest API authentication/read access failed.")
