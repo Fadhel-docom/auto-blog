@@ -1,6 +1,24 @@
 {
-  "timestamp": "2026-09-23T12:15:57+00:00",
+  "timestamp": "2026-09-24T00:16:34+00:00",
   "suggestions": [
+    {
+      "priority": "medium",
+      "area": "tags",
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-laundry-room-organization-ideas-a-practical-storage-system-that-stays-tidy/",
+      "suggestion": "Fix article-level tags consistency."
+    },
+    {
+      "priority": "medium",
+      "area": "tags",
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/narrow-entryway-organization-build-a-drop-zone-that-stays-tidy/",
+      "suggestion": "Fix article-level tags consistency."
+    },
+    {
+      "priority": "medium",
+      "area": "image credits",
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/narrow-entryway-organization-build-a-drop-zone-that-stays-tidy/",
+      "suggestion": "Fix article-level image credits consistency."
+    },
     {
       "priority": "medium",
       "area": "tags",
@@ -17,18 +35,6 @@
       "priority": "medium",
       "area": "tags",
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-apartment-storage-ideas-a-practical-small-space-guide/",
-      "suggestion": "Fix article-level tags consistency."
-    },
-    {
-      "priority": "medium",
-      "area": "tags",
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bathroom-organization-ideas-a-practical-small-space-guide/",
-      "suggestion": "Fix article-level tags consistency."
-    },
-    {
-      "priority": "medium",
-      "area": "tags",
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-storage-ideas-diy-pull-out-drawers-and-rolling-bins-under-a-queen-bed/",
       "suggestion": "Fix article-level tags consistency."
     }
   ]
