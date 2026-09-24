@@ -1,0 +1,141 @@
+name: Pinterest Auto Publisher
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "content/posts/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish-pin:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Find newest post and publish to Pinterest
+        env:
+          PINTEREST_ACCESS_TOKEN: ${{ secrets.PINTEREST_ACCESS_TOKEN }}
+        run: |
+          python - <<'PY'
+          import json, os, re, subprocess, sys
+          from pathlib import Path
+          from urllib.request import Request, urlopen
+          from urllib.error import HTTPError
+
+          token = os.environ.get("PINTEREST_ACCESS_TOKEN")
+          if not token:
+              print("ERROR: PINTEREST_ACCESS_TOKEN secret is missing.")
+              sys.exit(1)
+
+          def api(method, path, body=None):
+              data = None
+              headers = {
+                  "Authorization": f"Bearer {token}",
+                  "Content-Type": "application/json",
+                  "Accept": "application/json",
+              }
+              if body is not None:
+                  data = json.dumps(body).encode()
+              req = Request("https://api.pinterest.com/v5" + path, data=data, headers=headers, method=method)
+              try:
+                  with urlopen(req, timeout=30) as r:
+                      raw = r.read().decode()
+                      return r.status, json.loads(raw) if raw else {}
+              except HTTPError as e:
+                  raw = e.read().decode(errors="replace")
+                  try: payload = json.loads(raw)
+                  except Exception: payload = {"raw": raw}
+                  return e.code, payload
+
+          # Prefer the post changed by this push; fall back to the newest markdown post.
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only", "HEAD^", "HEAD", "--", "content/posts/"],
+              text=True
+          ).splitlines()
+          posts = [Path(p) for p in changed if p.endswith(".md") and Path(p).exists()]
+          if not posts:
+              posts = sorted(Path("content/posts").glob("*.md"), key=lambda p: p.stat().st_mtime, reverse=True)
+          if not posts:
+              print("No post found; nothing to publish.")
+              sys.exit(0)
+
+          post = posts[0]
+          text = post.read_text(encoding="utf-8")
+
+          def fm(name):
+              m = re.search(r"^" + re.escape(name) + r":\\s*(.*)$", text, re.M)
+              if not m: return ""
+              value = m.group(1).strip().strip('"').strip("'")
+              return value
+
+          title = fm("title")
+          description = fm("description")
+          image = fm("image")
+          slug = post.stem
+          link = f"https://fadhel-docom.github.io/auto-blog/posts/{slug}/"
+
+          if not title or not image:
+              print(f"ERROR: Missing title or image in {post}")
+              sys.exit(1)
+
+          # Confirm the token can read Pins before attempting publication.
+          status, pins = api("GET", "/pins?page_size=100")
+          if status != 200:
+              print("ERROR: Pinterest API authentication/read access failed.")
+              print(json.dumps(pins, indent=2))
+              sys.exit(1)
+
+          for pin in pins.get("items", []):
+              if pin.get("link") == link:
+                  print(f"Pin already exists for {link}: {pin.get('id')}")
+                  sys.exit(0)
+
+          status, boards = api("GET", "/boards?page_size=100")
+          if status != 200:
+              print("ERROR: Could not list Pinterest boards.")
+              print(json.dumps(boards, indent=2))
+              sys.exit(1)
+
+          items = boards.get("items", [])
+          if not items:
+              print("ERROR: No Pinterest board is available to receive the Pin.")
+              sys.exit(1)
+
+          # Prefer a relevant organization board; otherwise use the first available board.
+          preferred = [b for b in items if any(k in (b.get("name") or "").lower()
+                       for k in ("organization", "home", "decor", "storage"))]
+          board = preferred[0] if preferred else items[0]
+          board_id = board.get("id")
+
+          payload = {
+              "board_id": board_id,
+              "title": title[:100],
+              "description": (description or title)[:800],
+              "link": link,
+              "media_source": {
+                  "source_type": "image_url",
+                  "url": image,
+                  "is_standard": True
+              }
+          }
+
+          status, result = api("POST", "/pins", payload)
+          if status == 201:
+              print(f"SUCCESS: Pinterest Pin created: {result.get('id')}")
+              print(f"Board: {board.get('name')} ({board_id})")
+              print(f"Link: {link}")
+              sys.exit(0)
+
+          print("ERROR: Pinterest Pin creation failed.")
+          print(json.dumps(result, indent=2))
+          if status == 403:
+              print("This usually means the access token does not include pins:write.")
+          sys.exit(1)
+          PY
