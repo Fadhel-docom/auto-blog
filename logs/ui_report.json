@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-24T00:16:33+00:00",
+  "timestamp": "2026-09-24T12:15:37+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -31,7 +31,7 @@
     "url": "https://fadhel-docom.github.io/auto-blog/",
     "status": 200,
     "hero": true,
-    "search": true,
+    "search": false,
     "grid": true,
     "featured": true,
     "nav_links": 12,
@@ -39,9 +39,85 @@
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 31716
+    "html_length": 31642
   },
   "articles": [
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-a-simple-system-that-stays-tidy/",
+      "status": 200,
+      "title": "Under-Sink Organization Ideas: A Simple System That Stays Tidy",
+      "title_capitalized": true,
+      "meta_description": "Practical under-sink organization ideas for kitchens and bathrooms: measure first, create zones, use pull-out storage, protect against leaks, and keep daily essentials easy to reach.",
+      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-a-simple-system-that-stays-tidy/",
+      "images": 5,
+      "tags": 0,
+      "h2_count": 15,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 1,
+        "types": [
+          "FAQPage"
+        ],
+        "has_article": false
+      },
+      "required_failures": [
+        "tags"
+      ],
+      "html_length": 26499
+    },
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-organization-a-practical-small-space-guide/",
+      "status": 200,
+      "title": "Small Bedroom Organization: A Practical Small-Space Guide",
+      "title_capitalized": true,
+      "meta_description": "Practical small bedroom organization ideas with clear storage zones, measurements, vertical space solutions, and a simple maintenance routine.",
+      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-organization-a-practical-small-space-guide/",
+      "images": 10,
+      "tags": 0,
+      "h2_count": 12,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 1,
+        "types": [
+          "FAQPage"
+        ],
+        "has_article": false
+      },
+      "required_failures": [
+        "tags"
+      ],
+      "html_length": 31118
+    },
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bathroom-organization-create-more-storage-without-adding-clutter/",
+      "status": 200,
+      "title": "Small Bathroom Organization: Create More Storage Without Adding Clutter",
+      "title_capitalized": true,
+      "meta_description": "A practical small-bathroom organization plan using zones, vertical storage, drawer limits, and a simple reset routine without overcrowding the room.",
+      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/small-bathroom-organization-create-more-storage-without-adding-clutter/",
+      "images": 11,
+      "tags": 0,
+      "h2_count": 18,
+      "image_credits": false,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 1,
+        "types": [
+          "FAQPage"
+        ],
+        "has_article": false
+      },
+      "required_failures": [
+        "tags",
+        "image credits"
+      ],
+      "html_length": 30770
+    },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-laundry-room-organization-ideas-a-practical-storage-system-that-stays-tidy/",
       "status": 200,
@@ -65,7 +141,7 @@
       "required_failures": [
         "tags"
       ],
-      "html_length": 34324
+      "html_length": 34343
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/narrow-entryway-organization-build-a-drop-zone-that-stays-tidy/",
@@ -91,89 +167,21 @@
         "tags",
         "image credits"
       ],
-      "html_length": 26135
-    },
-    {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/kitchen-organization-ideas-for-small-spaces-small-space-guide/",
-      "status": 200,
-      "title": "Kitchen organization ideas for small spaces - Small Space Guide",
-      "title_capitalized": true,
-      "meta_description": "Practical kitchen organization ideas for small spaces ideas with simple measurements, storage zones, and realistic steps for a more organized home.",
-      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/kitchen-organization-ideas-for-small-spaces-small-space-guide/",
-      "images": 10,
-      "tags": 0,
-      "h2_count": 13,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 0,
-        "types": [],
-        "has_article": false
-      },
-      "required_failures": [
-        "tags"
-      ],
-      "html_length": 27882
-    },
-    {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-closet-organization-ideas-a-practical-small-space-guide/",
-      "status": 200,
-      "title": "Small closet organization ideas - A Practical Small Space Guide",
-      "title_capitalized": true,
-      "meta_description": "Practical small closet organization ideas ideas with simple measurements, storage zones, and realistic steps for a more organized home. Designed for everyday",
-      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/small-closet-organization-ideas-a-practical-small-space-guide/",
-      "images": 10,
-      "tags": 0,
-      "h2_count": 13,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 0,
-        "types": [],
-        "has_article": false
-      },
-      "required_failures": [
-        "tags"
-      ],
-      "html_length": 26727
-    },
-    {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-apartment-storage-ideas-a-practical-small-space-guide/",
-      "status": 200,
-      "title": "Small apartment storage ideas - A Practical Small Space Guide",
-      "title_capitalized": true,
-      "meta_description": "Practical small apartment storage ideas ideas with simple measurements, storage zones, and realistic steps for a more organized home. Designed for everyday sp",
-      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/small-apartment-storage-ideas-a-practical-small-space-guide/",
-      "images": 10,
-      "tags": 0,
-      "h2_count": 13,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 0,
-        "types": [],
-        "has_article": false
-      },
-      "required_failures": [
-        "tags"
-      ],
-      "html_length": 26471
+      "html_length": 26073
     }
   ],
   "responsive": {
     "inline_media_queries": false,
     "responsive_units": false,
     "overflow_x_hidden": false,
-    "stylesheet_count": 3,
+    "stylesheet_count": 4,
     "stylesheet_urls": [
       "https://fadhel-docom.github.io/auto-blog/css/custom.css",
       "https://fadhel-docom.github.io/auto-blog/css/competitive.css",
-      "https://fadhel-docom.github.io/auto-blog/css/enhancements.css"
+      "https://fadhel-docom.github.io/auto-blog/css/enhancements.css",
+      "https://fadhel-docom.github.io/auto-blog/css/site-v2.css"
     ]
   },
   "status": "needs_attention",
-  "failure_count": 6
+  "failure_count": 7
 }
