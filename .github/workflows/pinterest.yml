@@ -70,16 +70,26 @@ jobs:
           text = post.read_text(encoding="utf-8")
 
           def fm(name):
-              m = re.search(r"^" + re.escape(name) + r":\s*(.*)$", text, re.M)
-              if not m: return ""
-              value = m.group(1).strip().strip('"').strip("'")
-              return value
+              # Posts are TOML front matter, while older posts may use YAML-style separators.
+              m = re.search(r"^" + re.escape(name) + r"\s*[:=]\s*(.*)$", text, re.M)
+              if not m:
+                  return ""
+              value = m.group(1).strip()
+              if value.startswith('"') and value.endswith('"'):
+                  value = value[1:-1]
+              elif value.startswith("'") and value.endswith("'"):
+                  value = value[1:-1]
+              return value.strip()
 
           title = fm("title")
           description = fm("description")
           image = fm("image")
           slug = post.stem
           link = f"https://fadhel-docom.github.io/auto-blog/posts/{slug}/"
+
+          # Hugo may store local images as /images/...; Pinterest needs a public absolute URL.
+          if image.startswith("/"):
+              image = "https://fadhel-docom.github.io/auto-blog" + image
 
           if not title or not image:
               print(f"ERROR: Missing title or image in {post}")
