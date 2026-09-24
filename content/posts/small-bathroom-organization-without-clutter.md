@@ -255,7 +255,7 @@ The aim is not maximum storage.
 
 It is **maximum usefulness from the space you already have**.
 
-If you want to keep improving other small areas of the home, our [narrow entryway drop-zone guide](/auto-blog/posts/narrow-entryway-organization-drop-zone/) covers the same principle in a different room: give the things you use every day a simple destination and remove unnecessary decisions.
+If you want to keep improving other small areas of the home, our [renter-friendly closet organization guide](../renter-friendly-closet-organization-using-adhesive-hooks-and-tension-rods/) covers the same principle in another space: give frequently used items a defined destination and make the system easy to maintain.
 
 ## Frequently Asked Questions
 
