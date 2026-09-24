@@ -1,30 +1,30 @@
 {{- $pages := where .Pages "Kind" "page" -}}
 {{- $pages = $pages.ByDate.Reverse -}}
 {{- $pages = first 20 $pages -}}
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
 <rss version="2.0"
   xmlns:atom="http://www.w3.org/2005/Atom"
   xmlns:content="http://purl.org/rss/1.0/modules/content/"
   xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
-    <title>{{ .Title | htmlEscape }}</title>
-    <link>{{ .Permalink | htmlEscape }}</link>
-    <description>{{ .Site.Params.description | htmlEscape }}</description>
+    <title>{{ .Title | transform.XMLEscape | safeHTML }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>{{ .Site.Params.description | transform.XMLEscape | safeHTML }}</description>
     <language>{{ .Site.LanguageCode }}</language>
     <generator>Hugo</generator>
-    <atom:link href="{{ .Permalink | htmlEscape }}" rel="self" type="application/rss+xml" />
+    <atom:link href="{{ .Permalink }}" rel="self" type="application/rss+xml" />
     {{- range $pages }}
     <item>
-      <title>{{ .Title | htmlEscape }}</title>
+      <title>{{ .Title | transform.XMLEscape | safeHTML }}</title>
       <link>{{ .Permalink }}</link>
       <guid isPermaLink="true">{{ .Permalink }}</guid>
-      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
-      <description>{{ .Description | htmlEscape }}</description>
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      <description>{{ .Description | transform.XMLEscape | safeHTML }}</description>
       {{- with .Params.image }}
-      {{- $image := index (split . "?") 0 | absURL }}
-      <media:content url="{{ $image }}" medium="image" />
-      <enclosure url="{{ $image }}" type="image/jpeg" length="0" />
+      {{- $image := . | absURL | transform.XMLEscape }}
+      {{ printf "<media:content url=%q medium=\"image\" />" $image | safeHTML }}
+      {{ printf "<enclosure url=%q type=\"image/jpeg\" length=\"0\" />" $image | safeHTML }}
       {{- end }}
-
     </item>
     {{- end }}
   </channel>
