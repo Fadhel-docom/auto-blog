@@ -197,3 +197,4 @@ Take action today: pick one room, apply the four‑box method, and install a sin
 
 Photo by [Max Vakhtbovych](https://www.pexels.com/@artbovich) via Pexels.
 
+
