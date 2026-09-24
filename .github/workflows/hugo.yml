@@ -98,6 +98,7 @@ jobs:
               root = ET.fromstring(raw)
           except ET.ParseError as exc:
               print("RSS first bytes:", repr(raw[:120]))
+              print("RSS first lines:", repr(raw[:1200]))
               raise SystemExit(f"RSS validation failed: invalid XML: {exc}")
           if root.tag != "rss" or root.attrib.get("version") not in {"2.0", "2"}:
               raise SystemExit("RSS validation failed: expected RSS 2.x")
