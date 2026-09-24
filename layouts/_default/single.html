@@ -261,6 +261,27 @@
 </article>
 
 
+
+{{ if .IsPage }}
+  {{ $articleSchema := dict
+    "@context" "https://schema.org"
+    "@type" "Article"
+    "headline" .Title
+    "description" .Description
+    "datePublished" .Date
+    "dateModified" .Lastmod
+    "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
+    "author" (dict "@type" "Organization" "name" "Home Ideas")
+    "publisher" (dict "@type" "Organization" "name" "Home Ideas")
+  }}
+  {{ with .Params.image }}
+    {{ $articleSchema = merge $articleSchema (dict "image" (slice .)) }}
+  {{ end }}
+  <script type="application/ld+json">
+    {{ $articleSchema | jsonify | safeJS }}
+  </script>
+{{ end }}
+
 {{ with .Params.faq }}
   {{ $faqEntities := slice }}
   {{ range . }}
