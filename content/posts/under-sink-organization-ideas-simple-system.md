@@ -251,6 +251,11 @@ Before you finish, make sure:
 
 A well-organized under-sink cabinet does not need expensive accessories. A few correctly sized containers, a clear zoning system, and a five-minute weekly reset can turn an awkward cabinet into useful storage.
 
+
+## 10-Minute Under-Sink Reset
+
+A good system should be quick to restore. Once a week, pull the front bins forward, return stray products to their zones, remove empty packaging, wipe any visible spills, and check the cabinet floor for moisture. If one item repeatedly stays outside its assigned zone, change the zone rather than adding another container.
+
 ## Related Organization Guides
 
 - [Small Bathroom Organization Ideas](../small-bathroom-organization-ideas-practical-space/)
