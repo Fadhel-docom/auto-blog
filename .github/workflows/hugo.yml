@@ -80,6 +80,14 @@ jobs:
 
           text = re.sub(r"&[A-Za-z][A-Za-z0-9]+;", normalize_entity, text)
           text = re.sub(r"&(?!amp;|lt;|gt;|quot;|apos;|#[0-9]+;|#x[0-9A-Fa-f]+;)", "&amp;", text)
+
+          def clean_description(match):
+              value = re.sub(r"<[^>]+>", " ", match.group(1))
+              value = html.unescape(value)
+              value = re.sub(r"\s+", " ", value).strip()
+              return "<description>" + xml_escape(value) + "</description>"
+
+          text = re.sub(r"<description>(.*?)</description>", clean_description, text, flags=re.DOTALL)
           feed.write_text(text, encoding="utf-8")
           PY
 
