@@ -149,5 +149,4 @@ jobs:
 
           print(f"SUMMARY: published={published}, skipped={skipped}, failed={failed}, board={board.get('name')} ({board_id})")
           sys.exit(1 if failed and published == 0 else 0)
-          sys.exit(1)
           PY
