@@ -70,7 +70,7 @@ jobs:
           text = post.read_text(encoding="utf-8")
 
           def fm(name):
-              m = re.search(r"^" + re.escape(name) + r":\\s*(.*)$", text, re.M)
+              m = re.search(r"^" + re.escape(name) + r":\s*(.*)$", text, re.M)
               if not m: return ""
               value = m.group(1).strip().strip('"').strip("'")
               return value
