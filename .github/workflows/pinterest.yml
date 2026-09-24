@@ -19,7 +19,7 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Find newest post and publish to Pinterest
+      - name: Publish unpinned posts to Pinterest
         env:
           PINTEREST_ACCESS_TOKEN: ${{ secrets.PINTEREST_ACCESS_TOKEN }}
         run: |
@@ -146,6 +146,11 @@ jobs:
                   print(f"ERROR: Pinterest Pin creation failed for {post} (HTTP {status}).")
                   print(json.dumps(result, indent=2))
                   failed += 1
+                  # Trial-access apps cannot create production Pins. Stop immediately
+                  # instead of generating a misleading wall of identical 403 errors.
+                  if status == 403 and result.get("code") == 29:
+                      print("BLOCKED: Pinterest app has Trial access; production Pin creation requires Standard access.")
+                      break
 
           print(f"SUMMARY: published={published}, skipped={skipped}, failed={failed}, board={board.get('name')} ({board_id})")
           sys.exit(1 if failed and published == 0 else 0)
