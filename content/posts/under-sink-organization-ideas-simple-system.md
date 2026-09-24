@@ -1,7 +1,7 @@
 +++
 title = "Under-Sink Organization Ideas: A Simple System That Stays Tidy"
-date = "2026-09-24T23:00:00+00:00"
-lastmod = "2026-09-24T23:00:00+00:00"
+date = "2026-09-24T09:08:00+00:00"
+lastmod = "2026-09-24T09:08:00+00:00"
 description = "Practical under-sink organization ideas for kitchens and bathrooms: measure first, create zones, use pull-out storage, protect against leaks, and keep daily essentials easy to reach."
 image = "https://images.pexels.com/photos/36777570/pexels-photo-36777570.jpeg?cs=srgb&dl=pexels-american-cleaning-institute-2155509001-36777570.jpg&fm=jpg"
 images = ["https://images.pexels.com/photos/36777570/pexels-photo-36777570.jpeg?cs=srgb&dl=pexels-american-cleaning-institute-2155509001-36777570.jpg&fm=jpg"]
@@ -22,6 +22,10 @@ The solution is not to buy more containers first. A better system starts with me
 
 These under-sink organization ideas are designed for ordinary kitchens and bathrooms, including small cabinets where every inch matters.
 
+https://images.pexels.com/photos/36777570/pexels-photo-36777570.jpeg?auto=compress&cs=tinysrgb&w=1600
+
+*Organized under-sink cabinet with cleaning supplies.*
+
 ## 1. Empty the Cabinet Before Buying Anything
 
 Take everything out and clean the cabinet floor and walls. This gives you a blank starting point and makes it easier to spot wasted space.
@@ -35,6 +39,10 @@ Create three groups:
 Do not automatically keep a product because there is room for it. The goal is to make the cabinet easier to use, not simply fuller.
 
 Before putting anything back, wipe the cabinet completely dry. If the bottom has already suffered water damage, deal with that problem before installing storage.
+
+https://images.pexels.com/photos/34558046/pexels-photo-34558046.jpeg?auto=compress&cs=tinysrgb&w=1600
+
+*Person organizing a modern kitchen cabinet.*
 
 ## 2. Measure Around the Plumbing
 
@@ -77,6 +85,10 @@ The exact arrangement should follow your plumbing rather than a rigid diagram.
 
 A useful rule is simple: **the more often you use something, the easier it should be to reach.**
 
+https://images.pexels.com/photos/33784616/pexels-photo-33784616.jpeg?auto=compress&cs=tinysrgb&w=1600
+
+*Kitchen cabinet organized with storage baskets.*
+
 ## 4. Use Pull-Out Storage for the Back
 
 The back of an under-sink cabinet is often wasted because reaching it means moving everything in front.
@@ -112,6 +124,10 @@ Do not force storage behind valves or tightly against connections.
 
 The cabinet should remain serviceable. If a plumber needs access, you should be able to remove the relevant container quickly rather than dismantling the entire system.
 
+https://images.pexels.com/photos/10568271/pexels-photo-10568271.jpeg?auto=compress&cs=tinysrgb&w=1600
+
+*Cleaning products organized beside a kitchen sink.*
+
 ## 6. Choose Containers for the Cabinet, Not the Other Way Around
 
 Measure first, then choose containers.
@@ -125,6 +141,10 @@ For cloths and reusable cleaning tools, a ventilated basket can help them dry be
 Avoid buying a large matching set simply because it looks attractive. Different parts of the cabinet may need different sizes.
 
 The best container is the one that makes the contents easier to see, reach, and return.
+
+https://images.pexels.com/photos/9462220/pexels-photo-9462220.jpeg?auto=compress&cs=tinysrgb&w=1600
+
+*Cleaning and maintaining kitchen cabinets.*
 
 ## 7. Protect the Cabinet From Small Leaks
 
@@ -179,6 +199,10 @@ Labels are useful when several bins look alike, but they are not mandatory. If t
 
 Remember the principle: **simple systems are easier to maintain.**
 
+https://images.pexels.com/photos/10568482/pexels-photo-10568482.jpeg?auto=compress&cs=tinysrgb&w=1600
+
+*Minimal kitchen cleaning supplies in an organizer.*
+
 ## 10. Build a Five-Minute Reset
 
 Once the cabinet is organized, maintenance should be almost automatic.
@@ -227,6 +251,6 @@ Before you finish, make sure:
 
 A well-organized under-sink cabinet does not need expensive accessories. A few correctly sized containers, a clear zoning system, and a five-minute weekly reset can turn an awkward cabinet into useful storage.
 
-## Image Credit
+## Image Credits
 
-Photo by American Cleaning Institute via Pexels.
+Photos via Pexels: American Cleaning Institute, HONG SON, and Ron Lach.
