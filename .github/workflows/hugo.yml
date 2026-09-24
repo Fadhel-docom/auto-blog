@@ -54,41 +54,63 @@ jobs:
       - name: Normalize Hugo RSS feed
         run: |
           python - <<'PY'
-          from pathlib import Path
-
-          feed = Path("public/index.xml")
-          if not feed.exists():
-              raise SystemExit("RSS normalization failed: public/index.xml was not generated")
-
           import html
           import re
+          from pathlib import Path
           from xml.sax.saxutils import escape as xml_escape
 
-          raw = feed.read_bytes()
-          escaped_declaration = b'&lt;?xml version="1.0" encoding="utf-8" standalone="yes"?><rss'
-          if raw.startswith(escaped_declaration):
-              raw = b'<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss' + raw[len(escaped_declaration):]
+          feed = Path("public/index.xml")
+          raw = feed.read_text(encoding="utf-8")
 
-          text = raw.decode("utf-8")
-          xml_entities = {"&amp;", "&lt;", "&gt;", "&quot;", "&apos;"}
+          def field(block, name):
+              match = re.search(rf"<{name}>(.*?)</{name}>", block, flags=re.DOTALL)
+              return html.unescape(re.sub(r"<[^>]+>", " ", match.group(1))).strip() if match else ""
 
-          def normalize_entity(match):
-              entity = match.group(0)
-              if entity in xml_entities or entity.startswith("&#"):
-                  return entity
-              return xml_escape(html.unescape(entity))
+          channel_match = re.search(r"<channel>(.*?)</channel>", raw, flags=re.DOTALL)
+          if not channel_match:
+              raise SystemExit("RSS normalization failed: channel missing")
 
-          text = re.sub(r"&[A-Za-z][A-Za-z0-9]+;", normalize_entity, text)
-          text = re.sub(r"&(?!amp;|lt;|gt;|quot;|apos;|#[0-9]+;|#x[0-9A-Fa-f]+;)", "&amp;", text)
+          channel = channel_match.group(1)
+          items = re.findall(r"<item>(.*?)</item>", channel, flags=re.DOTALL)
 
-          def clean_description(match):
-              value = re.sub(r"<[^>]+>", " ", match.group(1))
-              value = html.unescape(value)
-              value = re.sub(r"\s+", " ", value).strip()
-              return "<description>" + xml_escape(value) + "</description>"
+          title = field(channel, "title") or "Home Organization Ideas"
+          link = field(channel, "link") or "https://fadhel-docom.github.io/auto-blog/"
+          description = field(channel, "description") or "Practical home organization and small-space living ideas."
 
-          text = re.sub(r"<description>(.*?)</description>", clean_description, text, flags=re.DOTALL)
-          feed.write_text(text, encoding="utf-8")
+          output = [
+              '<?xml version="1.0" encoding="utf-8" standalone="yes"?>',
+              '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">',
+              '<channel>',
+              f"<title>{xml_escape(title)}</title>",
+              f"<link>{xml_escape(link)}</link>",
+              f"<description>{xml_escape(description)}</description>",
+              "<language>en-us</language>",
+              "<generator>Hugo</generator>",
+              f'<atom:link href="{xml_escape(link)}" rel="self" type="application/rss+xml" />',
+          ]
+
+          for block in items:
+              item_title = field(block, "title")
+              item_link = field(block, "link")
+              item_guid = field(block, "guid") or item_link
+              item_date = field(block, "pubDate")
+              item_description = field(block, "description")
+
+              if not item_title or not item_link:
+                  continue
+
+              output.extend([
+                  "<item>",
+                  f"<title>{xml_escape(item_title)}</title>",
+                  f"<link>{xml_escape(item_link)}</link>",
+                  f"<guid isPermaLink=\"true\">{xml_escape(item_guid)}</guid>",
+                  f"<pubDate>{xml_escape(item_date)}</pubDate>" if item_date else "",
+                  f"<description>{xml_escape(item_description)}</description>",
+                  "</item>",
+              ])
+
+          output.extend(["</channel>", "</rss>"])
+          feed.write_text("\n".join(line for line in output if line), encoding="utf-8")
           PY
 
       - name: Validate RSS feed for social automation
