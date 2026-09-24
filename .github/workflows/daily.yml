@@ -4,7 +4,6 @@ on:
   schedule:
     - cron: "0 6 * * *"
     - cron: "0 18 * * *"
-
   workflow_dispatch:
 
 permissions:
@@ -15,130 +14,68 @@ permissions:
 jobs:
   generate-and-publish:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
-      - name: Install Python dependencies
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f scripts/requirements.txt ]; then
-            python -m pip install -r scripts/requirements.txt
-          fi
-
+          python -m pip install requests
+          if [ -f scripts/requirements.txt ]; then python -m pip install -r scripts/requirements.txt; fi
       - name: Configure Python path
-        run: |
-          echo "PYTHONPATH=$PWD" >> "$GITHUB_ENV"
-
-      - name: Generate article
+        run: echo "PYTHONPATH=$PWD" >> "$GITHUB_ENV"
+      - name: Generate article with OpenAI editorial pipeline
         env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          GROQ_MODEL: "openai/gpt-oss-120b"
-        run: |
-          python scripts/generate_post.py
-
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: "gpt-5.6"
+        run: python scripts/openai_generate_post.py
       - name: Normalize article slug
-        run: |
-          python scripts/normalize_slug.py
-
-      - name: Upgrade article content
-        env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          GROQ_MODEL: "openai/gpt-oss-120b"
-        run: |
-          python scripts/content_upgrade.py
-
-      - name: Normalize article slug after upgrade
-        run: |
-          python scripts/normalize_slug.py
-
-      - name: Create competitive image plan
-        env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          GROQ_MODEL: "openai/gpt-oss-120b"
-        run: |
-          python scripts/competitive_image_plan.py
-
-      - name: Fetch competitive images
+        run: python scripts/normalize_slug.py
+      - name: Fetch six competitive images
         env:
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
-        run: |
-          python scripts/competitive_fetch.py
-
+        run: python scripts/competitive_fetch.py
       - name: Run competitive SEO check
-        run: |
-          python scripts/competitive_seo_check.py
-
+        run: python scripts/competitive_seo_check.py
       - name: Publish Hugo post
         env:
           SITE_URL: ${{ secrets.SITE_URL }}
-        run: |
-          python scripts/competitive_publish.py
-
+        run: python scripts/competitive_publish.py
       - name: Normalize post categories
-        run: |
-          python scripts/fix_post_categories.py
-
+        run: python scripts/fix_post_categories.py
       - name: Final competitive SEO check
-        run: |
-          python scripts/competitive_seo_check.py
-
+        run: python scripts/competitive_seo_check.py
       - name: Install Hugo 0.128.0 Extended
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: "0.128.0"
           extended: true
-
       - name: Build Hugo site
-        run: |
-          hugo --gc --minify
-
+        run: hugo --gc --minify
       - name: Verify Hugo output
         run: |
-          if [ ! -d public ]; then
-            echo "ERROR: Hugo did not create public/"
-            exit 1
-          fi
-
-          if [ ! -f public/index.html ]; then
-            echo "ERROR: public/index.html is missing"
-            exit 1
-          fi
-
+          test -d public || (echo "ERROR: Hugo did not create public/" && exit 1)
+          test -f public/index.html || (echo "ERROR: public/index.html is missing" && exit 1)
           echo "Hugo build verified."
-
       - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
       - name: Commit source changes
         run: |
-          git add article.json
-
-          if [ -f keywords.csv ]; then
-            git add keywords.csv
-          fi
-
-          git add content/posts/
-          git add static/images/
-          git add data/
-
+          git add article.json keywords.csv content/posts/ static/images/ data/
           if git diff --cached --quiet; then
             echo "No source changes detected."
           else
-            git commit -m "Add daily blog post and update image tracker"
+            git commit -m "Publish twice-daily editorial post"
             git push
           fi
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
