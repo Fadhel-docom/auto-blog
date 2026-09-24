@@ -67,8 +67,6 @@ hasCJKLanguage = false
   section = ["HTML", "RSS"]
 
 
-[outputFormats.rss]
-  isPlainText = true
 
 [sitemap]
   changeFreq = "daily"
