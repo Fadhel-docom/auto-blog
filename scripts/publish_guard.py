@@ -15,6 +15,13 @@ MIN_IMAGES = 4
 MIN_H2 = 5
 MIN_FAQ = 3
 
+STOP = {
+    "a","an","and","are","as","at","be","by","for","from","how","in","into",
+    "is","it","of","on","or","that","the","this","to","with","your","you",
+    "home","ideas","organization","organizing","organize","small","space",
+    "spaces","tips","guide","simple","practical","ways"
+}
+
 def frontmatter(text):
     if not text.startswith("+++"):
         return "", text
@@ -28,11 +35,19 @@ def field(fm, name):
     return m.group(1).strip() if m else ""
 
 def quoted_value(v):
-    m = re.match(r'^["\'](.*)["\']$', v)
+    m = re.match(r'^[\"\'](.*)[\"\']$', v)
     return m.group(1) if m else v
 
 def word_count(body):
     return len(re.findall(r"\b[\w’'-]+\b", body))
+
+def tokens(text):
+    return [w.lower() for w in re.findall(r"[a-z0-9]+", text.lower())
+            if len(w) > 2 and w.lower() not in STOP]
+
+def shingles(text, size=4):
+    t = tokens(text)
+    return {" ".join(t[i:i+size]) for i in range(max(0, len(t)-size+1))}
 
 def main():
     posts = [p for p in POSTS.glob("*.md") if p.name != ".gitkeep"]
@@ -40,8 +55,7 @@ def main():
         print("CONTENT GATE: no posts found")
         return 0
 
-    # The daily generator creates/updates one post per run. Validate the newest
-    # file only; historical content is not modified by this gate.
+    # Validate the newest generated post only.
     post = max(posts, key=lambda p: p.stat().st_mtime)
     text = post.read_text(encoding="utf-8")
     fm, body = frontmatter(text)
@@ -87,15 +101,36 @@ def main():
         if marker in lower:
             errors.append(f"forbidden legacy marker: {marker}")
 
-    # Prevent exact-title duplication across the existing library.
+    # Duplicate protection is deliberately broader than exact-title matching.
+    # It catches closely reworded titles and articles sharing substantial
+    # four-word sequences, while ignoring generic home-organization vocabulary.
+    current_title_tokens = set(tokens(title))
+    current_shingles = shingles(body)
     for other in posts:
         if other == post:
             continue
-        ofm, _ = frontmatter(other.read_text(encoding="utf-8"))
+        other_text = other.read_text(encoding="utf-8")
+        ofm, obody = frontmatter(other_text)
         other_title = quoted_value(field(ofm, "title"))
+        other_title_tokens = set(tokens(other_title))
+
         if title and other_title and title.casefold() == other_title.casefold():
             errors.append(f"duplicate title with {other.name}")
             break
+
+        title_overlap = len(current_title_tokens & other_title_tokens)
+        smaller_title = min(len(current_title_tokens), len(other_title_tokens))
+        if smaller_title >= 2 and title_overlap >= 2 and title_overlap / smaller_title >= 0.66:
+            errors.append(f"near-duplicate title/topic with {other.name}")
+            break
+
+        if len(current_shingles) >= 20:
+            other_shingles = shingles(obody)
+            union = current_shingles | other_shingles
+            overlap = len(current_shingles & other_shingles) / max(1, len(union))
+            if overlap >= 0.025:
+                errors.append(f"high content overlap with {other.name} ({overlap:.1%} four-word shingles)")
+                break
 
     if errors:
         print(f"CONTENT GATE: BLOCKED {post}")
