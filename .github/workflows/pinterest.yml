@@ -57,9 +57,18 @@ jobs:
                   except Exception: payload = {"raw": raw}
                   return e.code, payload
 
-          # Publish every unpinned post while the current token is valid.
-          # This intentionally uses the existing article set; no new/low-quality content is created.
-          all_posts = sorted(Path("content/posts").glob("*.md"), key=lambda p: p.stat().st_mtime, reverse=True)
+          # Safety rule: publish only posts changed by the triggering commit.
+          # Never drain the historical backlog or mass-publish old content.
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only", "HEAD^", "HEAD", "--", "content/posts/*.md"],
+              text=True,
+          ).splitlines()
+          all_posts = [Path(p) for p in changed if p.endswith(".md") and Path(p).exists()]
+          if len(all_posts) > 2:
+              all_posts = sorted(all_posts, key=lambda p: p.stat().st_mtime, reverse=True)[:2]
+          if not all_posts:
+              print("No newly changed posts in this commit; nothing to publish.")
+              sys.exit(0)
           if not all_posts:
               print("No posts found; nothing to publish.")
               sys.exit(0)
