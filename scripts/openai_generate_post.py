@@ -3,6 +3,10 @@ import csv,json,os,re,sys
 from datetime import datetime,timezone
 from pathlib import Path
 import requests
+try:
+    from json_repair import repair_json
+except ImportError:
+    repair_json = None
 
 ROOT=Path(__file__).resolve().parents[1]
 KEYWORDS=ROOT/"keywords.csv"
@@ -79,11 +83,28 @@ def parse_json_content(response_json):
         content='\n'.join(lines).strip()
     try: return json.loads(content)
     except json.JSONDecodeError:
+        if repair_json is not None:
+            try:
+                repaired_obj=repair_json(content, return_objects=True)
+                if isinstance(repaired_obj,dict):
+                    return repaired_obj
+            except Exception:
+                pass
         repaired=repair_json_text(content)
         try: return json.loads(repaired)
         except json.JSONDecodeError:
             start,end=repaired.find('{'),repaired.rfind('}')
-            if start>=0 and end>start: return json.loads(repaired[start:end+1])
+            if start>=0 and end>start:
+                candidate=repaired[start:end+1]
+                if repair_json is not None:
+                    try:
+                        repaired_obj=repair_json(candidate, return_objects=True)
+                        if isinstance(repaired_obj,dict):
+                            return repaired_obj
+                    except Exception:
+                        pass
+                try: return json.loads(candidate)
+                except json.JSONDecodeError: pass
             raise ValueError('OpenRouter response was not valid JSON')
 
 def call_openai(topic):
@@ -139,8 +160,8 @@ def main():
                 save(a,topic,name)
                 return
             except Exception as exc:
-                if name=="OpenRouter Free" and ("empty message content" in str(exc) or "no choices" in str(exc)) and attempt<2:
-                    print(f"{name} returned an empty response; retrying with a fresh editorial request.",file=sys.stderr)
+                if name=="OpenRouter Free" and attempt<2:
+                    print(f"{name} attempt {attempt+1} failed validation/parsing; retrying with a fresh editorial request: {exc}",file=sys.stderr)
                     continue
                 if "Word count" in str(exc) and attempt==0:
                     print(f"{name} produced a short draft; retrying with a longer editorial target.",file=sys.stderr)
