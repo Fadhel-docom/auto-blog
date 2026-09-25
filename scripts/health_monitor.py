@@ -484,8 +484,8 @@ def git_commit(message: str) -> bool:
 
 def create_issue(title: str, body: str) -> None:
     github_json(
+        "POST",
         f"/repos/{REPO}/issues",
-        method="POST",
         json={
             "title": title,
             "body": body,
