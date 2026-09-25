@@ -227,4 +227,4 @@ A well-organized linen closet does not need expensive products or a complicated 
 
 ### Image Credits
 
-- Photos: Pexels images by the photographers credited on the original image pages.
+All six photos in this article are sourced from Pexels. The original Pexels image URLs are retained in the article so the source of each image remains identifiable.
