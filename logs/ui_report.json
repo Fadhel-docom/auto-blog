@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-24T12:15:37+00:00",
+  "timestamp": "2026-09-25T00:18:04+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -31,7 +31,7 @@
     "url": "https://fadhel-docom.github.io/auto-blog/",
     "status": 200,
     "hero": true,
-    "search": false,
+    "search": true,
     "grid": true,
     "featured": true,
     "nav_links": 12,
@@ -39,9 +39,36 @@
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 31642
+    "html_length": 32127
   },
   "articles": [
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-a-simple-system-for-small-shelves/",
+      "status": 200,
+      "title": "Linen Closet Organization Ideas: A Simple System for Small Shelves",
+      "title_capitalized": true,
+      "meta_description": "Linen closet organization ideas for small shelves: measure the space, group linens by use, fold to shelf height, label simple zones, and keep everyday towels easy to reach.",
+      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-a-simple-system-for-small-shelves/",
+      "images": 10,
+      "tags": 0,
+      "h2_count": 14,
+      "image_credits": false,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "Article",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [
+        "tags",
+        "image credits"
+      ],
+      "html_length": 25194
+    },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-a-simple-system-that-stays-tidy/",
       "status": 200,
@@ -49,23 +76,24 @@
       "title_capitalized": true,
       "meta_description": "Practical under-sink organization ideas for kitchens and bathrooms: measure first, create zones, use pull-out storage, protect against leaks, and keep daily essentials easy to reach.",
       "canonical": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-a-simple-system-that-stays-tidy/",
-      "images": 5,
+      "images": 11,
       "tags": 0,
-      "h2_count": 15,
+      "h2_count": 17,
       "image_credits": true,
       "related": true,
       "schema": {
         "present": true,
-        "valid_blocks": 1,
+        "valid_blocks": 2,
         "types": [
+          "Article",
           "FAQPage"
         ],
-        "has_article": false
+        "has_article": true
       },
       "required_failures": [
         "tags"
       ],
-      "html_length": 26499
+      "html_length": 28005
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-organization-a-practical-small-space-guide/",
@@ -81,16 +109,17 @@
       "related": true,
       "schema": {
         "present": true,
-        "valid_blocks": 1,
+        "valid_blocks": 2,
         "types": [
+          "Article",
           "FAQPage"
         ],
-        "has_article": false
+        "has_article": true
       },
       "required_failures": [
         "tags"
       ],
-      "html_length": 31118
+      "html_length": 31794
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bathroom-organization-create-more-storage-without-adding-clutter/",
@@ -106,17 +135,18 @@
       "related": true,
       "schema": {
         "present": true,
-        "valid_blocks": 1,
+        "valid_blocks": 2,
         "types": [
+          "Article",
           "FAQPage"
         ],
-        "has_article": false
+        "has_article": true
       },
       "required_failures": [
         "tags",
         "image credits"
       ],
-      "html_length": 30770
+      "html_length": 31534
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-laundry-room-organization-ideas-a-practical-storage-system-that-stays-tidy/",
@@ -132,42 +162,17 @@
       "related": true,
       "schema": {
         "present": true,
-        "valid_blocks": 1,
+        "valid_blocks": 2,
         "types": [
+          "Article",
           "FAQPage"
         ],
-        "has_article": false
+        "has_article": true
       },
       "required_failures": [
         "tags"
       ],
-      "html_length": 34343
-    },
-    {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/narrow-entryway-organization-build-a-drop-zone-that-stays-tidy/",
-      "status": 200,
-      "title": "Narrow Entryway Organization: Build a Drop Zone That Stays Tidy",
-      "title_capitalized": true,
-      "meta_description": "A practical plan for organizing a narrow entryway with a simple drop zone, vertical storage, defined shoe space, and a 15-minute reset routine.",
-      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/narrow-entryway-organization-build-a-drop-zone-that-stays-tidy/",
-      "images": 9,
-      "tags": 0,
-      "h2_count": 15,
-      "image_credits": false,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 1,
-        "types": [
-          "FAQPage"
-        ],
-        "has_article": false
-      },
-      "required_failures": [
-        "tags",
-        "image credits"
-      ],
-      "html_length": 26073
+      "html_length": 35182
     }
   ],
   "responsive": {

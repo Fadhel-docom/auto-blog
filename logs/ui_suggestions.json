@@ -1,10 +1,17 @@
 {
-  "timestamp": "2026-09-24T12:15:37+00:00",
+  "timestamp": "2026-09-25T00:18:05+00:00",
   "suggestions": [
     {
-      "priority": "high",
-      "area": "search",
-      "suggestion": "Ensure the search control is present and usable."
+      "priority": "medium",
+      "area": "tags",
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-a-simple-system-for-small-shelves/",
+      "suggestion": "Fix article-level tags consistency."
+    },
+    {
+      "priority": "medium",
+      "area": "image credits",
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-a-simple-system-for-small-shelves/",
+      "suggestion": "Fix article-level image credits consistency."
     },
     {
       "priority": "medium",
@@ -35,18 +42,6 @@
       "area": "tags",
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-laundry-room-organization-ideas-a-practical-storage-system-that-stays-tidy/",
       "suggestion": "Fix article-level tags consistency."
-    },
-    {
-      "priority": "medium",
-      "area": "tags",
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/narrow-entryway-organization-build-a-drop-zone-that-stays-tidy/",
-      "suggestion": "Fix article-level tags consistency."
-    },
-    {
-      "priority": "medium",
-      "area": "image credits",
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/narrow-entryway-organization-build-a-drop-zone-that-stays-tidy/",
-      "suggestion": "Fix article-level image credits consistency."
     }
   ]
 }
