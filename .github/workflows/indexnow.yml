@@ -1,0 +1,80 @@
+name: IndexNow URL Discovery
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "content/posts/**"
+      - "static/**"
+      - "layouts/**"
+      - "config.toml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  notify-search-engines:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout changed files
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Submit changed post URLs to IndexNow
+        env:
+          INDEXNOW_KEY: "9f6c2e4a7b1d8e53c0f4a9b6d2e7c1f8"
+          SITE_URL: "https://fadhel-docom.github.io/auto-blog"
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import subprocess
+          import urllib.request
+          from pathlib import Path
+
+          site = os.environ["SITE_URL"].rstrip("/")
+          key = os.environ["INDEXNOW_KEY"]
+
+          try:
+              changed = subprocess.check_output(
+                  ["git", "diff", "--name-only", "HEAD^", "HEAD"],
+                  text=True
+              ).splitlines()
+          except subprocess.CalledProcessError:
+              changed = []
+
+          urls = []
+          for path in changed:
+              p = Path(path)
+              if p.parts[:2] == ("content", "posts") and p.suffix == ".md":
+                  urls.append(f"{site}/posts/{p.stem}/")
+
+          urls = sorted(set(urls))
+          if not urls:
+              print("No changed post URLs to submit.")
+              raise SystemExit(0)
+
+          payload = {
+              "host": "fadhel-docom.github.io",
+              "key": key,
+              "keyLocation": f"{site}/{key}.txt",
+              "urlList": urls,
+          }
+
+          req = urllib.request.Request(
+              "https://api.indexnow.org/IndexNow",
+              data=json.dumps(payload).encode(),
+              headers={"Content-Type": "application/json; charset=utf-8"},
+              method="POST",
+          )
+
+          try:
+              with urllib.request.urlopen(req, timeout=30) as response:
+                  print(f"IndexNow submitted {len(urls)} URL(s): HTTP {response.status}")
+          except urllib.error.HTTPError as exc:
+              body = exc.read().decode(errors="replace")
+              print(f"IndexNow submission returned HTTP {exc.code}: {body}")
+              raise SystemExit(1)
+          PY
