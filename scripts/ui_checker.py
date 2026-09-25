@@ -369,13 +369,6 @@ def responsive_checks(
 
     style_text = "\n".join(style_parts)
 
-    stylesheet_urls = [
-        urljoin(SITE_URL, link.get("href"))
-        for link in page.select(
-            'link[rel="stylesheet"][href]'
-        )
-    ]
-
     media_query = bool(
         re.search(r"@media", style_text, re.I)
     )
