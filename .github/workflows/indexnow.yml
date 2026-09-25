@@ -31,7 +31,9 @@ jobs:
           import json
           import os
           import subprocess
+          import time
           import urllib.request
+          import urllib.error
           from pathlib import Path
 
           site = os.environ["SITE_URL"].rstrip("/")
@@ -56,10 +58,25 @@ jobs:
               print("No changed post URLs to submit.")
               raise SystemExit(0)
 
+          key_url = f"{site}/{key}.txt"
+          print(f"Waiting for deployed IndexNow key: {key_url}")
+          for attempt in range(18):
+              try:
+                  with urllib.request.urlopen(key_url, timeout=10) as response:
+                      live_key = response.read().decode().strip()
+                      if live_key == key:
+                          break
+              except Exception:
+                  pass
+              time.sleep(10)
+          else:
+              print("IndexNow key is not live after 3 minutes; skipping safely.")
+              raise SystemExit(0)
+
           payload = {
               "host": "fadhel-docom.github.io",
               "key": key,
-              "keyLocation": f"{site}/{key}.txt",
+              "keyLocation": key_url,
               "urlList": urls,
           }
 
