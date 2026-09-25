@@ -29,7 +29,8 @@ def slugify(s):
 
 def validate(a):
     req=["keyword","specific_angle","title","meta_description","content_markdown","image_queries","tags","h2_headings","faq"]
-    if any(not a.get(k) for k in req): raise ValueError("Missing required field")
+    missing=[k for k in req if not a.get(k)]
+    if missing: raise ValueError("Missing required field(s): " + ", ".join(missing))
     words=len(re.findall(r"\b\w+\b",a["content_markdown"]))
     if not MIN_WORDS<=words<=MAX_WORDS: raise ValueError(f"Word count {words} outside {MIN_WORDS}-{MAX_WORDS}")
     if len(re.findall(r"^##\s+.+$",a["content_markdown"],re.M))!=10: raise ValueError("Expected exactly 10 H2 sections")
@@ -73,6 +74,8 @@ def parse_json_content(response_json):
     if not choices: raise ValueError('OpenRouter returned no choices')
     message=choices[0].get('message') or {}
     content=message.get('content')
+    if content is None and isinstance(message.get('text'),str):
+        content=message.get('text')
     if isinstance(content,list):
         content=''.join(p.get('text','') for p in content if isinstance(p,dict) and isinstance(p.get('text'),str))
     if not isinstance(content,str) or not content.strip(): raise ValueError('OpenRouter returned empty message content')
@@ -117,7 +120,24 @@ def call_openai(topic):
 def call_openrouter(topic, relaxed_json=False):
     key=os.getenv("OPENROUTER_API_KEY")
     if not key: raise RuntimeError("OPENROUTER_API_KEY unavailable")
-    payload={"model":OPENROUTER_MODEL,"temperature":0.5,"max_tokens":5000,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":f"Focus keyword/topic: {topic}\nWrite a polished, specific article with a clear promise, practical systems, examples, tradeoffs, mistakes, checklist, FAQs, and maintenance routine. Return ONLY one JSON object matching the required fields. Do not pad."}]}
+    user_prompt=(
+        f"Focus keyword/topic: {topic}\n"
+        "Write a complete, polished article of 1900-2100 words. "
+        "Return ONLY one JSON object with every required field. "
+        "content_markdown must contain exactly 10 H2 headings and 6 distinct image queries. "
+        "Do not use markdown fences around the JSON. Do not omit fields."
+    )
+    payload={
+        "model":OPENROUTER_MODEL,
+        "temperature":0.35,
+        "max_tokens":6000,
+        "messages":[
+            {"role":"system","content":SYSTEM},
+            {"role":"user","content":user_prompt},
+        ],
+    }
+    if not relaxed_json:
+        payload["response_format"]={"type":"json_object"}
     r=requests.post("https://openrouter.ai/api/v1/chat/completions",headers={"Authorization":f"Bearer {key}","Content-Type":"application/json","HTTP-Referer":"https://fadhel-docom.github.io/auto-blog/","X-Title":"Home Organization Ideas"},json=payload,timeout=240)
     if not r.ok:
         try:
@@ -151,9 +171,14 @@ def main():
             try:
                 prompt_topic=topic
                 if attempt>=1:
-                    prompt_topic=f"{topic}\nIMPORTANT REVISION: The previous draft was below the minimum word count. Produce a complete replacement article of 1900-2100 words, with all required JSON fields and exactly 10 H2 sections."
+                    prompt_topic=(
+                        f"{topic}\n"
+                        "RETRY: Produce a fresh complete replacement. The previous response failed validation or JSON parsing. "
+                        "Return one syntactically valid JSON object containing ALL required fields, 1900-2100 words, exactly 10 H2 headings, and 6 unique image queries. "
+                        "Do not wrap the JSON in markdown fences."
+                    )
                 if name=="OpenRouter Free":
-                    a=fn(prompt_topic, relaxed_json=(attempt==2))
+                    a=fn(prompt_topic, relaxed_json=(attempt>=2))
                 else:
                     a=fn(prompt_topic)
                 validate(a)
@@ -161,7 +186,7 @@ def main():
                 return
             except Exception as exc:
                 if name=="OpenRouter Free" and attempt<2:
-                    print(f"{name} attempt {attempt+1} failed validation/parsing; retrying with a fresh editorial request: {exc}",file=sys.stderr)
+                    print(f"{name} attempt {attempt+1} failed validation/parsing: {exc}; retrying with a fresh editorial request.",file=sys.stderr)
                     continue
                 if "Word count" in str(exc) and attempt==0:
                     print(f"{name} produced a short draft; retrying with a longer editorial target.",file=sys.stderr)
