@@ -350,10 +350,24 @@ def responsive_checks(
 ) -> dict[str, Any]:
     page = soup(home_html)
 
-    style_text = "\n".join(
-        style.get_text()
-        for style in page.select("style")
-    )
+    style_parts = [style.get_text() for style in page.select("style")]
+
+    stylesheet_urls = [
+        urljoin(SITE_URL, link.get("href"))
+        for link in page.select(
+            'link[rel="stylesheet"][href]'
+        )
+    ]
+
+    for stylesheet_url in stylesheet_urls:
+        try:
+            css_response = fetch(stylesheet_url)
+            if css_response.ok:
+                style_parts.append(css_response.text)
+        except requests.RequestException:
+            pass
+
+    style_text = "\n".join(style_parts)
 
     stylesheet_urls = [
         urljoin(SITE_URL, link.get("href"))
