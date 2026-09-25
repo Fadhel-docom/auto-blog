@@ -11,7 +11,7 @@ MODEL=os.getenv("OPENAI_MODEL","gpt-5.6")
 OPENROUTER_MODEL=os.getenv("OPENROUTER_MODEL","openrouter/free")
 MIN_WORDS,MAX_WORDS=1700,2300
 
-SYSTEM="""You are the senior editor for Home Organization Ideas. Write a genuinely useful, human-sounding English article. Never mention AI, automation, models, providers, prompts, or generation. Never invent statistics, studies, expert claims, quotes, prices, or credentials. Avoid filler, repetition, vague advice, and keyword stuffing. Explain practical decisions, tradeoffs, examples, common mistakes, and maintenance. Return ONLY JSON with keys: keyword, specific_angle, title, meta_description, content_markdown, image_queries, tags, h2_headings, faq. content_markdown must be 1700-2300 words with exactly 10 H2 headings. image_queries exactly 6 distinct concrete Pexels-ready queries. faq 4-6 items. title <=68 characters. meta_description 140-158 characters."""
+SYSTEM="""You are the senior editor for Home Organization Ideas. Write a genuinely useful, human-sounding English article. Aim for 1900-2100 words so the final validated article safely stays within the required 1700-2300 range. Never mention AI, automation, models, providers, prompts, or generation. Never invent statistics, studies, expert claims, quotes, prices, or credentials. Avoid filler, repetition, vague advice, and keyword stuffing. Explain practical decisions, tradeoffs, examples, common mistakes, and maintenance. Return ONLY JSON with keys: keyword, specific_angle, title, meta_description, content_markdown, image_queries, tags, h2_headings, faq. content_markdown must be 1700-2300 words with exactly 10 H2 headings. image_queries exactly 6 distinct concrete Pexels-ready queries. faq 4-6 items. title <=68 characters. meta_description 140-158 characters."""
 
 def load_topic():
     with KEYWORDS.open("r",encoding="utf-8-sig",newline="") as f: rows=list(csv.DictReader(f))
@@ -89,7 +89,7 @@ def parse_json_content(response_json):
 def call_openai(topic):
     key=os.getenv("OPENAI_API_KEY")
     if not key: raise RuntimeError("OPENAI_API_KEY unavailable")
-    r=requests.post("https://api.openai.com/v1/chat/completions",headers={"Authorization":f"Bearer {key}","Content-Type":"application/json"},json={"model":MODEL,"temperature":0.5,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":f"Focus keyword/topic: {topic}\nWrite a polished, specific article with a clear promise, practical systems, examples, tradeoffs, mistakes, checklist, FAQs, and maintenance routine. Do not pad."}],"response_format":{"type":"json_object"}},timeout=180)
+    r=requests.post("https://api.openai.com/v1/chat/completions",headers={"Authorization":f"Bearer {key}","Content-Type":"application/json"},json={"model":MODEL,"temperature":0.5,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":f"Focus keyword/topic: {topic}\nWrite a polished, specific article with a clear promise, practical systems, examples, tradeoffs, mistakes, checklist, FAQs, and maintenance routine. Target 1900-2100 words. Do not pad, but do not stop early."}],"response_format":{"type":"json_object"}},timeout=180)
     r.raise_for_status()
     return json.loads(r.json()["choices"][0]["message"]["content"])
 
@@ -119,13 +119,24 @@ def save(a,topic,provider):
 def main():
     topic=load_topic()
     for name,fn in [("OpenAI",call_openai),("OpenRouter Free",call_openrouter)]:
-        try:
-            a=fn(topic)
-            validate(a)
-            save(a,topic,name)
-            return
-        except Exception as exc:
-            print(f"{name} failed; trying next provider: {exc}",file=sys.stderr)
+        for attempt in range(2):
+            try:
+                prompt_topic=topic
+                if attempt==1:
+                    prompt_topic=f"{topic}\nIMPORTANT REVISION: The previous draft was below the minimum word count. Produce a complete replacement article of 1900-2100 words, with all required JSON fields and exactly 10 H2 sections."
+                a=fn(prompt_topic)
+                validate(a)
+                save(a,topic,name)
+                return
+            except Exception as exc:
+                if "Word count" in str(exc) and attempt==0:
+                    print(f"{name} produced a short draft; retrying with a longer editorial target.",file=sys.stderr)
+                    continue
+                if attempt==1:
+                    print(f"{name} failed after retry; trying next provider: {exc}",file=sys.stderr)
+                else:
+                    print(f"{name} failed; trying next provider: {exc}",file=sys.stderr)
+                break
     raise RuntimeError("All editorial providers failed; no article published.")
 
 if __name__=="__main__":
