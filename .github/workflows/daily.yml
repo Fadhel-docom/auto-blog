@@ -51,6 +51,8 @@ jobs:
         run: python scripts/fix_post_categories.py
       - name: Final competitive SEO check
         run: python scripts/competitive_seo_check.py
+      - name: Hard content safety gate
+        run: python scripts/publish_guard.py
       - name: Install Hugo 0.128.0 Extended
         uses: peaceiris/actions-hugo@v3
         with:
