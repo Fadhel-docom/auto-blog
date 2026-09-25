@@ -1,6 +1,10 @@
 name: Daily Auto Blog
 
 on:
+  push:
+    paths:
+      - "scripts/openai_generate_post.py"
+      - "scripts/auto_repair.py"
   schedule:
     - cron: "0 5 * * *"
     - cron: "0 17 * * *"
