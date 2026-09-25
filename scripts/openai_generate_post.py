@@ -4,4 +4,3 @@
     r=requests.post('https://openrouter.ai/api/v1/chat/completions',headers={'Authorization':f'Bearer {key}','Content-Type':'application/json','HTTP-Referer':'https://fadhel-docom.github.io/auto-blog/','X-Title':'Home Organization Ideas'},json={'model':OPENROUTER_MODEL,'temperature':0.5,'messages':[{'role':'system','content':SYSTEM},{'role':'user','content':f'Focus keyword/topic: {topic}\nWrite a polished, specific article with a clear promise, practical systems, examples, tradeoffs, mistakes, checklist, FAQs, and maintenance routine. Do not pad.'}],'response_format':{'type':'json_object'}},timeout=240)
     r.raise_for_status(); data=r.json(); txt=data['choices'][0]['message']['content']
     txt=re.sub(r'^```(?:json)?\s*|\s*```$','',txt.strip(),flags=re.S); return json.loads(txt)
-)
