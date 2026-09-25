@@ -32,10 +32,12 @@ jobs:
           if [ -f scripts/requirements.txt ]; then python -m pip install -r scripts/requirements.txt; fi
       - name: Configure Python path
         run: echo "PYTHONPATH=$PWD" >> "$GITHUB_ENV"
-      - name: Generate article with OpenAI editorial pipeline
+      - name: Generate article with primary and premium fallback
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: "gpt-5.6"
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: "claude-opus-4-8"
         run: python scripts/openai_generate_post.py
       - name: Normalize article slug
         run: python scripts/normalize_slug.py
