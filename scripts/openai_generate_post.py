@@ -37,8 +37,7 @@ def validate(a):
 def call_openai(topic):
     key=os.getenv('OPENAI_API_KEY')
     if not key: raise RuntimeError('OPENAI_API_KEY unavailable')
-    r=requests.post('https://api.openai.com/v1/chat/completions',headers={'Authorization':f'Bearer {key}','Content-Type':'application/json'},json={'model':MODEL,'temperature':0.5,'messages':[{'role':'system','content':SYSTEM},{'role':'user','content':f'Focus keyword/topic: {topic}
-Write a polished, specific article with a clear promise, practical systems, examples, tradeoffs, mistakes, checklist, FAQs, and maintenance routine. Do not pad.'}],'response_format':{'type':'json_object'}},timeout=180)
+    r=requests.post('https://api.openai.com/v1/chat/completions',headers={'Authorization':f'Bearer {key}','Content-Type':'application/json'},json={'model':MODEL,'temperature':0.5,'messages':[{'role':'system','content':SYSTEM},{'role':'user','content':f'Focus keyword/topic: {topic}\\nWrite a polished, specific article with a clear promise, practical systems, examples, tradeoffs, mistakes, checklist, FAQs, and maintenance routine. Do not pad.'}],'response_format':{'type':'json_object'}},timeout=180)
     r.raise_for_status(); return json.loads(r.json()['choices'][0]['message']['content'])
 
 def call_openrouter(topic):
