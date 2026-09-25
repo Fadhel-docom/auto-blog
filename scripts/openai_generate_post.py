@@ -40,15 +40,49 @@ def call_openai(topic):
     r=requests.post('https://api.openai.com/v1/chat/completions',headers={'Authorization':f'Bearer {key}','Content-Type':'application/json'},json={'model':MODEL,'temperature':0.5,'messages':[{'role':'system','content':SYSTEM},{'role':'user','content':f'Focus keyword/topic: {topic}\\nWrite a polished, specific article with a clear promise, practical systems, examples, tradeoffs, mistakes, checklist, FAQs, and maintenance routine. Do not pad.'}],'response_format':{'type':'json_object'}},timeout=180)
     r.raise_for_status(); return json.loads(r.json()['choices'][0]['message']['content'])
 
+def parse_json_content(response_json):
+    choices = response_json.get('choices') or []
+    if not choices: raise ValueError('OpenRouter returned no choices')
+    message = choices[0].get('message') or {}
+    content = message.get('content')
+    if isinstance(content, list):
+        parts=[]
+        for part in content:
+            if isinstance(part, dict) and isinstance(part.get('text'), str): parts.append(part['text'])
+        content=''.join(parts)
+    if not isinstance(content, str) or not content.strip(): raise ValueError('OpenRouter returned empty message content')
+    content=content.strip()
+    content=re.sub(r'^\x60\x60\x60(?:json)?\s*', '', content, flags=re.I)
+    content=re.sub(r'\s*\x60\x60\x60
+    a['slug']=slugify(a['title']); a['generated_at']=datetime.now(timezone.utc).isoformat(); a['word_count']=len(re.findall(r'\b\w+\b',a['content_markdown'])); a['h2_count']=10; a['images']=[]; a['image']=''; a['generation_provider']=provider
+    with ARTICLE.open('w',encoding='utf-8') as f: json.dump(a,f,ensure_ascii=False,indent=2); f.write('\\n')
+    print(f"Generated: {a['title']}"); print(f"Provider: {provider}"); print(f"Words: {a['word_count']} | H2: 10 | Images planned: 6")
+
+def main():
+    topic=load_topic()
+    for name,fn in [('OpenAI',call_openai),('OpenRouter Free',call_openrouter)]:
+        try: a=fn(topic); validate(a); save(a,topic,name); return
+        except Exception as exc: print(f'{name} failed; trying next provider: {exc}',file=sys.stderr)
+    raise RuntimeError('All editorial providers failed; no article published.')
+
+if __name__=='__main__':
+    try: main()
+    except Exception as exc: print(f'GENERATION FAILED: {exc}',file=sys.stderr); sys.exit(1), '', content)
+    try:
+        return json.loads(content)
+    except json.JSONDecodeError:
+        start=content.find('{'); end=content.rfind('}')
+        if start >= 0 and end > start: return json.loads(content[start:end+1])
+        raise ValueError('OpenRouter response was not valid JSON')
+
 def call_openrouter(topic):
     key=os.getenv('OPENROUTER_API_KEY')
     if not key: raise RuntimeError('OPENROUTER_API_KEY unavailable')
-    payload={'model':OPENROUTER_MODEL,'temperature':0.5,'messages':[{'role':'system','content':SYSTEM},{'role':'user','content':f'Focus keyword/topic: {topic} Write a polished, specific article with a clear promise, practical systems, examples, tradeoffs, mistakes, checklist, FAQs, and maintenance routine. Do not pad.'}],'response_format':{'type':'json_object'}}
+    payload={'model':OPENROUTER_MODEL,'temperature':0.5,'messages':[{'role':'system','content':SYSTEM},{'role':'user','content':f'Focus keyword/topic: {topic}\nWrite a polished, specific article with a clear promise, practical systems, examples, tradeoffs, mistakes, checklist, FAQs, and maintenance routine. Do not pad.'}],'response_format':{'type':'json_object'}}
     r=requests.post('https://openrouter.ai/api/v1/chat/completions',headers={'Authorization':f'Bearer {key}','Content-Type':'application/json','HTTP-Referer':'https://fadhel-docom.github.io/auto-blog/','X-Title':'Home Organization Ideas'},json=payload,timeout=240)
     r.raise_for_status()
-    txt=r.json()['choices'][0]['message']['content']
-    txt=re.sub(r'^```(?:json)?\\s*|\\s*```$','',txt.strip(),flags=re.S)
-    return json.loads(txt)
+    return parse_json_content(r.json())
+
 def save(a,topic,provider):
     a['slug']=slugify(a['title']); a['generated_at']=datetime.now(timezone.utc).isoformat(); a['word_count']=len(re.findall(r'\b\w+\b',a['content_markdown'])); a['h2_count']=10; a['images']=[]; a['image']=''; a['generation_provider']=provider
     with ARTICLE.open('w',encoding='utf-8') as f: json.dump(a,f,ensure_ascii=False,indent=2); f.write('\\n')
