@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-25T00:18:04+00:00",
+  "timestamp": "2026-09-25T12:15:55+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -39,7 +39,7 @@
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 32127
+    "html_length": 32264
   },
   "articles": [
     {
@@ -56,18 +56,17 @@
       "related": true,
       "schema": {
         "present": true,
-        "valid_blocks": 2,
+        "valid_blocks": 1,
         "types": [
-          "Article",
           "FAQPage"
         ],
-        "has_article": true
+        "has_article": false
       },
       "required_failures": [
         "tags",
         "image credits"
       ],
-      "html_length": 25194
+      "html_length": 24325
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-a-simple-system-that-stays-tidy/",
@@ -83,17 +82,16 @@
       "related": true,
       "schema": {
         "present": true,
-        "valid_blocks": 2,
+        "valid_blocks": 1,
         "types": [
-          "Article",
           "FAQPage"
         ],
-        "has_article": true
+        "has_article": false
       },
       "required_failures": [
         "tags"
       ],
-      "html_length": 28005
+      "html_length": 27124
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-organization-a-practical-small-space-guide/",
@@ -109,17 +107,16 @@
       "related": true,
       "schema": {
         "present": true,
-        "valid_blocks": 2,
+        "valid_blocks": 1,
         "types": [
-          "Article",
           "FAQPage"
         ],
-        "has_article": true
+        "has_article": false
       },
       "required_failures": [
         "tags"
       ],
-      "html_length": 31794
+      "html_length": 31070
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bathroom-organization-create-more-storage-without-adding-clutter/",
@@ -135,18 +132,17 @@
       "related": true,
       "schema": {
         "present": true,
-        "valid_blocks": 2,
+        "valid_blocks": 1,
         "types": [
-          "Article",
           "FAQPage"
         ],
-        "has_article": true
+        "has_article": false
       },
       "required_failures": [
         "tags",
         "image credits"
       ],
-      "html_length": 31534
+      "html_length": 30775
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-laundry-room-organization-ideas-a-practical-storage-system-that-stays-tidy/",
@@ -162,17 +158,16 @@
       "related": true,
       "schema": {
         "present": true,
-        "valid_blocks": 2,
+        "valid_blocks": 1,
         "types": [
-          "Article",
           "FAQPage"
         ],
-        "has_article": true
+        "has_article": false
       },
       "required_failures": [
         "tags"
       ],
-      "html_length": 35182
+      "html_length": 34242
     }
   ],
   "responsive": {
