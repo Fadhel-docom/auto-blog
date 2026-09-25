@@ -125,7 +125,7 @@ def main():
         for attempt in range(max_attempts):
             try:
                 prompt_topic=topic
-                if attempt==1:
+                if attempt>=1:
                     prompt_topic=f"{topic}\nIMPORTANT REVISION: The previous draft was below the minimum word count. Produce a complete replacement article of 1900-2100 words, with all required JSON fields and exactly 10 H2 sections."
                 if name=="OpenRouter Free":
                     a=fn(prompt_topic, relaxed_json=(attempt==2))
