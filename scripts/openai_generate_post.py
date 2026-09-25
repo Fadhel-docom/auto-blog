@@ -96,11 +96,15 @@ def call_openai(topic):
 def call_openrouter(topic, relaxed_json=False):
     key=os.getenv("OPENROUTER_API_KEY")
     if not key: raise RuntimeError("OPENROUTER_API_KEY unavailable")
-    payload={"model":OPENROUTER_MODEL,"temperature":0.5,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":f"Focus keyword/topic: {topic}\nWrite a polished, specific article with a clear promise, practical systems, examples, tradeoffs, mistakes, checklist, FAQs, and maintenance routine. Do not pad."}]}
-    if not relaxed_json:
-        payload["response_format"]={"type":"json_object"}
+    payload={"model":OPENROUTER_MODEL,"temperature":0.5,"max_tokens":5000,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":f"Focus keyword/topic: {topic}\nWrite a polished, specific article with a clear promise, practical systems, examples, tradeoffs, mistakes, checklist, FAQs, and maintenance routine. Return ONLY one JSON object matching the required fields. Do not pad."}]}
     r=requests.post("https://openrouter.ai/api/v1/chat/completions",headers={"Authorization":f"Bearer {key}","Content-Type":"application/json","HTTP-Referer":"https://fadhel-docom.github.io/auto-blog/","X-Title":"Home Organization Ideas"},json=payload,timeout=240)
-    r.raise_for_status()
+    if not r.ok:
+        try:
+            detail=r.json().get("error",{})
+            message=detail.get("message") if isinstance(detail,dict) else str(detail)
+        except Exception:
+            message=r.text[:500]
+        raise RuntimeError(f"OpenRouter HTTP {r.status_code}: {message}")
     return parse_json_content(r.json())
 
 def save(a,topic,provider):
