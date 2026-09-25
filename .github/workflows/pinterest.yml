@@ -10,6 +10,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: "pinterest-auto-publisher"
+  cancel-in-progress: false
+
 jobs:
   publish-pin:
     runs-on: ubuntu-latest
@@ -60,17 +64,14 @@ jobs:
           # Safety rule: publish only posts changed by the triggering commit.
           # Never drain the historical backlog or mass-publish old content.
           changed = subprocess.check_output(
-              ["git", "diff", "--name-only", "HEAD^", "HEAD", "--", "content/posts/*.md"],
+              ["git", "diff", "--name-only", "HEAD^", "HEAD"],
               text=True,
           ).splitlines()
-          all_posts = [Path(p) for p in changed if p.endswith(".md") and Path(p).exists()]
+          all_posts = [Path(p) for p in changed if p.startswith("content/posts/") and p.endswith(".md") and Path(p).exists()]
           if len(all_posts) > 2:
               all_posts = sorted(all_posts, key=lambda p: p.stat().st_mtime, reverse=True)[:2]
           if not all_posts:
               print("No newly changed posts in this commit; nothing to publish.")
-              sys.exit(0)
-          if not all_posts:
-              print("No posts found; nothing to publish.")
               sys.exit(0)
 
           # Read existing Pins once. The current site has far fewer than 100 posts.
