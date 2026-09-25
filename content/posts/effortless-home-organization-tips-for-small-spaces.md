@@ -1,7 +1,9 @@
 +++
 title = "Small Space Home Organization: A Practical Room-by-Room System"
 date = "2026-09-20T14:10:22.386113+00:00"
-lastmod = "2026-09-24T11:58:00+01:00"
+lastmod = "2026-09-25T03:00:00+01:00"
+slug = "effortless-home-organization-tips-for-small-spaces"
+aliases = ["/posts/small-space-home-organization-a-practical-room-by-room-system/"]
 description = "A practical room-by-room system for organizing a small home, with decluttering steps, storage zones, vertical space ideas, and a simple weekly reset."
 image = "/images/effortless-home-organization-tips-for-small-spaces.jpg"
 images = [
