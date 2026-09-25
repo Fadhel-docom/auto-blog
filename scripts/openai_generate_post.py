@@ -93,10 +93,12 @@ def call_openai(topic):
     r.raise_for_status()
     return json.loads(r.json()["choices"][0]["message"]["content"])
 
-def call_openrouter(topic):
+def call_openrouter(topic, relaxed_json=False):
     key=os.getenv("OPENROUTER_API_KEY")
     if not key: raise RuntimeError("OPENROUTER_API_KEY unavailable")
-    payload={"model":OPENROUTER_MODEL,"temperature":0.5,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":f"Focus keyword/topic: {topic}\nWrite a polished, specific article with a clear promise, practical systems, examples, tradeoffs, mistakes, checklist, FAQs, and maintenance routine. Do not pad."}],"response_format":{"type":"json_object"}}
+    payload={"model":OPENROUTER_MODEL,"temperature":0.5,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":f"Focus keyword/topic: {topic}\nWrite a polished, specific article with a clear promise, practical systems, examples, tradeoffs, mistakes, checklist, FAQs, and maintenance routine. Do not pad."}]}
+    if not relaxed_json:
+        payload["response_format"]={"type":"json_object"}
     r=requests.post("https://openrouter.ai/api/v1/chat/completions",headers={"Authorization":f"Bearer {key}","Content-Type":"application/json","HTTP-Referer":"https://fadhel-docom.github.io/auto-blog/","X-Title":"Home Organization Ideas"},json=payload,timeout=240)
     r.raise_for_status()
     return parse_json_content(r.json())
@@ -119,21 +121,28 @@ def save(a,topic,provider):
 def main():
     topic=load_topic()
     for name,fn in [("OpenAI",call_openai),("OpenRouter Free",call_openrouter)]:
-        for attempt in range(2):
+        max_attempts=1 if name=="OpenAI" else 3
+        for attempt in range(max_attempts):
             try:
                 prompt_topic=topic
                 if attempt==1:
                     prompt_topic=f"{topic}\nIMPORTANT REVISION: The previous draft was below the minimum word count. Produce a complete replacement article of 1900-2100 words, with all required JSON fields and exactly 10 H2 sections."
-                a=fn(prompt_topic)
+                if name=="OpenRouter Free":
+                    a=fn(prompt_topic, relaxed_json=(attempt==2))
+                else:
+                    a=fn(prompt_topic)
                 validate(a)
                 save(a,topic,name)
                 return
             except Exception as exc:
+                if name=="OpenRouter Free" and ("empty message content" in str(exc) or "no choices" in str(exc)) and attempt<2:
+                    print(f"{name} returned an empty response; retrying with a fresh editorial request.",file=sys.stderr)
+                    continue
                 if "Word count" in str(exc) and attempt==0:
                     print(f"{name} produced a short draft; retrying with a longer editorial target.",file=sys.stderr)
                     continue
-                if attempt==1:
-                    print(f"{name} failed after retry; trying next provider: {exc}",file=sys.stderr)
+                if attempt>0:
+                    print(f"{name} failed after retry {attempt}; trying next provider: {exc}",file=sys.stderr)
                 else:
                     print(f"{name} failed; trying next provider: {exc}",file=sys.stderr)
                 break
