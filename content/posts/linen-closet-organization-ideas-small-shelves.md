@@ -223,3 +223,8 @@ Before you finish, check five things:
 - The system can be reset in a few minutes.
 
 A well-organized linen closet does not need expensive products or a complicated folding method. Consistent zones, sensible shelf measurements and a small amount of maintenance are enough to turn limited storage into a system that works every day.
+
+
+### Image Credits
+
+- Photos: Pexels images by the photographers credited on the original image pages.
