@@ -259,7 +259,7 @@ def check_article(url: str) -> dict[str, Any]:
         images = page.select("main img, article img")
 
         tags = page.select(
-            ".tags a, [class*='tag' i] a"
+            ".tags a, .tags span, .post-tags a, .post-tags span, [class*='tag' i] a, [class*='tag' i] span"
         )
 
         related = page.select(
