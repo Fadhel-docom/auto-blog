@@ -1,7 +1,8 @@
 +++
 title = "Bedroom Organization: Step‑by‑Step Under‑Bed Storage Makeover for a Studio Apartment with 48‑Inch Clearance"
 date = "2026-09-21T12:54:42+00:00"
-lastmod = "2026-09-21T12:54:42+00:00"
+lastmod = "2026-09-25T16:15:00+01:00"
+slug = "bedroom-organization-stepbystep-48inch-clearance"
 description = "Transform a studio bedroom with only 48‑inches of clearance using a step‑by‑step under‑bed storage makeover. Practical tips, measurements, and product ideas."
 image = "/images/bedroom-organization-stepbystep-48inch-clearance-1.jpg"
 images = ["/images/bedroom-organization-stepbystep-48inch-clearance-1.jpg", "/images/bedroom-organization-stepbystep-48inch-clearance-2.jpg", "/images/bedroom-organization-stepbystep-48inch-clearance-3.jpg", "/images/bedroom-organization-stepbystep-48inch-clearance-4.jpg", "/images/bedroom-organization-stepbystep-48inch-clearance-5.jpg"]
