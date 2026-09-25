@@ -8,8 +8,10 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
+
+concurrency:
+  group: "daily-auto-blog"
+  cancel-in-progress: false
 
 jobs:
   generate-and-publish:
