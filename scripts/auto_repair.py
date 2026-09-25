@@ -246,7 +246,10 @@ def classify_failure(
             "json validation failed",
             "response_format",
             "invalid json",
+            "not valid json",
             "unable to extract valid json",
+            "missing required field",
+            "validation/parsing",
             "truncatedjsonerror",
         ],
         "rate_limit": [
