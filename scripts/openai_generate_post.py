@@ -35,25 +35,56 @@ def validate(a):
     if not 140<=len(a["meta_description"])<=158: raise ValueError("Meta description length invalid")
     if len(a["h2_headings"])!=10: raise ValueError("Expected 10 h2_headings")
 
+def repair_json_text(s):
+    out=[]
+    in_string=False
+    escaped=False
+    i=0
+    while i<len(s):
+        ch=s[i]
+        if escaped:
+            out.append(ch); escaped=False; i+=1; continue
+        if ch=='\\':
+            out.append(ch); escaped=True; i+=1; continue
+        if ch=='"':
+            if not in_string:
+                in_string=True; out.append(ch)
+            else:
+                j=i+1
+                while j<len(s) and s[j].isspace(): j+=1
+                nxt=s[j] if j<len(s) else ''
+                if nxt in [',','}',']',':'] or nxt=='':
+                    in_string=False; out.append(ch)
+                else:
+                    out.append('\\"')
+            i+=1; continue
+        if in_string and ch in ['\r','\n']:
+            out.append('\\n')
+        else: out.append(ch)
+        i+=1
+    return ''.join(out)
+
 def parse_json_content(response_json):
-    choices=response_json.get("choices") or []
-    if not choices: raise ValueError("OpenRouter returned no choices")
-    message=choices[0].get("message") or {}
-    content=message.get("content")
+    choices=response_json.get('choices') or []
+    if not choices: raise ValueError('OpenRouter returned no choices')
+    message=choices[0].get('message') or {}
+    content=message.get('content')
     if isinstance(content,list):
-        content="".join(p.get("text","") for p in content if isinstance(p,dict) and isinstance(p.get("text"),str))
-    if not isinstance(content,str) or not content.strip(): raise ValueError("OpenRouter returned empty message content")
+        content=''.join(p.get('text','') for p in content if isinstance(p,dict) and isinstance(p.get('text'),str))
+    if not isinstance(content,str) or not content.strip(): raise ValueError('OpenRouter returned empty message content')
     content=content.strip()
-    if content.startswith("```"):
-        lines=content.splitlines()
-        lines=lines[1:]
-        if lines and lines[-1].strip()=="```": lines=lines[:-1]
-        content="\n".join(lines).strip()
+    if content.startswith('```'):
+        lines=content.splitlines()[1:]
+        if lines and lines[-1].strip()=='```': lines=lines[:-1]
+        content='\n'.join(lines).strip()
     try: return json.loads(content)
     except json.JSONDecodeError:
-        start,end=content.find("{"),content.rfind("}")
-        if start>=0 and end>start: return json.loads(content[start:end+1])
-        raise ValueError("OpenRouter response was not valid JSON")
+        repaired=repair_json_text(content)
+        try: return json.loads(repaired)
+        except json.JSONDecodeError:
+            start,end=repaired.find('{'),repaired.rfind('}')
+            if start>=0 and end>start: return json.loads(repaired[start:end+1])
+            raise ValueError('OpenRouter response was not valid JSON')
 
 def call_openai(topic):
     key=os.getenv("OPENAI_API_KEY")
