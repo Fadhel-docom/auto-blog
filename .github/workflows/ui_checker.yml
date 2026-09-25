@@ -4,6 +4,15 @@ on:
   schedule:
     - cron: "0 */12 * * *"
 
+  push:
+    branches: [main]
+    paths:
+      - "content/posts/**"
+      - "layouts/**"
+      - "assets/**"
+      - "static/**"
+      - "scripts/ui_checker.py"
+
   workflow_dispatch:
 
 permissions:
