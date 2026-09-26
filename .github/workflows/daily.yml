@@ -38,6 +38,8 @@ jobs:
           OPENAI_MODEL: "gpt-5.6"
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           OPENROUTER_MODEL: "openrouter/free"
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROQ_MODEL: "openai/gpt-oss-120b"
         run: python scripts/openai_generate_post.py
       - name: Normalize article slug
         run: python scripts/normalize_slug.py
