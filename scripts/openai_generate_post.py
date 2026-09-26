@@ -225,27 +225,27 @@ def _merge_article(base, incoming):
 def _normalize_length(a):
     """Deterministically bring an overlong valid draft back under the hard limit."""
     content=a.get("content_markdown","")
-    words=re.findall(r"\\b\\w+\\b",content)
+    words=re.findall(r"\b\w+\b",content)
     if len(words) <= MAX_WORDS:
         return a
     # Remove whole trailing paragraphs first, never removing an H2 heading.
-    parts=re.split(r"(\\n##\\s+[^\\n]+\\n?)",content)
+    parts=re.split(r"(\n##\s+[^\n]+\n?)",content)
     target=2200
-    while len(re.findall(r"\\b\\w+\\b",content)) > target:
+    while len(re.findall(r"\b\w+\b",content)) > target:
         candidates=[]
         for i in range(0,len(parts),2):
             block=parts[i]
-            paras=[p for p in re.split(r"\\n\\s*\\n",block) if p.strip()]
+            paras=[p for p in re.split(r"\n\s*\n",block) if p.strip()]
             if len(paras)>1:
                 for j,p in enumerate(paras):
-                    if j>0 and len(re.findall(r"\\b\\w+\\b",p))>=35:
-                        candidates.append((len(re.findall(r"\\b\\w+\\b",p)),i,j))
+                    if j>0 and len(re.findall(r"\b\w+\b",p))>=35:
+                        candidates.append((len(re.findall(r"\b\w+\b",p)),i,j))
         if not candidates:
             break
         _,i,j=min(candidates)
-        paras=[p for p in re.split(r"\\n\\s*\\n",parts[i]) if p.strip()]
+        paras=[p for p in re.split(r"\n\s*\n",parts[i]) if p.strip()]
         paras.pop(j)
-        parts[i]="\\n\\n".join(paras)
+        parts[i]="\n\n".join(paras)
         content="".join(parts)
     a=dict(a)
     a["content_markdown"]=content
