@@ -1,0 +1,65 @@
+name: Traffic Report
+
+on:
+  schedule:
+    - cron: "23 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: "traffic-report"
+  cancel-in-progress: false
+
+jobs:
+  traffic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+      - name: Setup Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.11"
+      - name: Install requests
+        run: python -m pip install requests
+      - name: Read real GoatCounter traffic
+        id: traffic
+        continue-on-error: true
+        env:
+          GOATCOUNTER_SITE: "homeorganizationideas.goatcounter.com"
+          GOATCOUNTER_API_KEY: ${{ secrets.GOATCOUNTER_API_KEY }}
+        run: python scripts/traffic_report.py
+      - name: Alert if traffic is unavailable
+        if: steps.traffic.outcome == 'failure'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python - <<'PY'
+          import os,requests
+          repo=os.environ["GITHUB_REPOSITORY"]
+          token=os.environ["GITHUB_TOKEN"]
+          title="Automation alert: GoatCounter unavailable"
+          open_issues=requests.get(f"https://api.github.com/repos/{repo}/issues",headers={"Authorization":f"Bearer {token}","Accept":"application/vnd.github+json"},params={"state":"open","labels":"automation","per_page":100},timeout=20).json()
+          if any(i.get("title")==title for i in open_issues if isinstance(i,dict)):
+              raise SystemExit(0)
+          r=requests.post(f"https://api.github.com/repos/{repo}/issues",headers={"Authorization":f"Bearer {token}","Accept":"application/vnd.github+json"},json={"title":title,"body":"GoatCounter returned UNAVAILABLE. Add/repair GOATCOUNTER_API_KEY; no traffic number was invented.","labels":["automation","health"]},timeout=20)
+          r.raise_for_status()
+          PY
+      - name: Commit traffic report
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add logs/traffic_report.json
+          if git diff --cached --quiet; then
+            echo "No traffic report changes."
+          else
+            git commit -m "Traffic report: update real GoatCounter data"
+            git push
+          fi
