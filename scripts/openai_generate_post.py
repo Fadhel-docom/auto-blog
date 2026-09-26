@@ -174,8 +174,8 @@ def main():
         router_models=OPENROUTER_FALLBACK_MODELS if name=="OpenRouter Free" else [None]
         for router_model in router_models:
             for attempt in range(max_attempts):
-            try:
-                prompt_topic=topic
+                try:
+                    prompt_topic=topic
                 if attempt>=1:
                     prompt_topic=(
                         f"{topic}\n"
