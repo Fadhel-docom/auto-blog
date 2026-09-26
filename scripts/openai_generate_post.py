@@ -209,13 +209,14 @@ def _merge_article(base, incoming):
     old=base.get("content_markdown","").strip()
     new=incoming.get("content_markdown","").strip()
     if new:
-        # Models are told to continue only; avoid duplicating an identical prefix.
-        if old and new.startswith(old):
+        # A complete review replaces the shared draft; a partial continuation
+        # is appended. This prevents the same 10 sections being duplicated.
+        incoming_h2=len(re.findall(r"^##\s+.+$",new,re.M))
+        existing_h2=len(re.findall(r"^##\s+.+$",old,re.M))
+        if not old or new.startswith(old) or incoming_h2 >= 8 or incoming_h2 >= existing_h2:
             merged["content_markdown"]=new
-        elif old:
-            merged["content_markdown"]=old+"\n\n"+new
         else:
-            merged["content_markdown"]=new
+            merged["content_markdown"]=old+"\n\n"+new
     for key in ["keyword","specific_angle","title","meta_description","image_queries","tags","h2_headings","faq"]:
         if incoming.get(key):
             merged[key]=incoming[key]
