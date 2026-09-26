@@ -68,6 +68,9 @@ def main():
     fields,rows=read_rows()
     due=due_rows(rows)
     if action=="due":
+        marker=ROOT/".automation"/"due_keyword"
+        marker.parent.mkdir(parents=True,exist_ok=True)
+        marker.unlink(missing_ok=True)
         if not due:
             set_output("has_due","false")
             print("QUEUE: no due articles")
@@ -76,6 +79,7 @@ def main():
         keyword=str(row.get("Keyword","")).strip()
         if not keyword:
             raise RuntimeError(f"QUEUE_INVALID: empty keyword at row {i+2}")
+        marker.write_text(keyword+"\n",encoding="utf-8")
         set_output("has_due","true")
         set_output("keyword",keyword.replace("%","%25").replace("\n","%0A"))
         set_output("publish_at",dt.isoformat())
