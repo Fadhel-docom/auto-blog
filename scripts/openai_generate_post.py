@@ -176,34 +176,34 @@ def main():
             for attempt in range(max_attempts):
                 try:
                     prompt_topic=topic
-                if attempt>=1:
-                    prompt_topic=(
-                        f"{topic}\n"
-                        "RETRY: Produce a fresh complete replacement. The previous response failed validation or JSON parsing. "
-                        "Return one syntactically valid JSON object containing ALL required fields, 1900-2100 words, exactly 10 H2 headings, and 6 unique image queries. "
-                        "Do not wrap the JSON in markdown fences."
-                    )
-                if name=="OpenRouter Free":
-                    a=fn(prompt_topic, relaxed_json=(attempt>=2), model=router_model)
-                else:
-                    a=fn(prompt_topic)
-                validate(a)
-                save(a,topic,name)
-                return
-            except Exception as exc:
-                if name=="OpenRouter Free" and attempt<2:
-                    print(f"{name} model {router_model} attempt {attempt+1} failed validation/parsing: {exc}; retrying.",file=sys.stderr)
-                    continue
-                if "Word count" in str(exc) and attempt==0:
-                    print(f"{name} produced a short draft; retrying with a longer editorial target.",file=sys.stderr)
-                    continue
-                if name=="OpenRouter Free":
-                    print(f"{name} model {router_model} failed after retry {attempt}: {exc}; trying next free model.",file=sys.stderr)
-                elif attempt>0:
-                    print(f"{name} failed after retry {attempt}; trying next provider: {exc}",file=sys.stderr)
-                else:
-                    print(f"{name} failed; trying next provider: {exc}",file=sys.stderr)
-                break
+                    if attempt>=1:
+                        prompt_topic=(
+                            f"{topic}\n"
+                            "RETRY: Produce a fresh complete replacement. The previous response failed validation or JSON parsing. "
+                            "Return one syntactically valid JSON object containing ALL required fields, 1900-2100 words, exactly 10 H2 headings, and 6 unique image queries. "
+                            "Do not wrap the JSON in markdown fences."
+                        )
+                    if name=="OpenRouter Free":
+                        a=fn(prompt_topic, relaxed_json=(attempt>=2), model=router_model)
+                    else:
+                        a=fn(prompt_topic)
+                    validate(a)
+                    save(a,topic,name)
+                    return
+                except Exception as exc:
+                    if name=="OpenRouter Free" and attempt<2:
+                        print(f"{name} model {router_model} attempt {attempt+1} failed validation/parsing: {exc}; retrying.",file=sys.stderr)
+                        continue
+                    if "Word count" in str(exc) and attempt==0:
+                        print(f"{name} produced a short draft; retrying with a longer editorial target.",file=sys.stderr)
+                        continue
+                    if name=="OpenRouter Free":
+                        print(f"{name} model {router_model} failed after retry {attempt}: {exc}; trying next free model.",file=sys.stderr)
+                    elif attempt>0:
+                        print(f"{name} failed after retry {attempt}; trying next provider: {exc}",file=sys.stderr)
+                    else:
+                        print(f"{name} failed; trying next provider: {exc}",file=sys.stderr)
+                    break
     raise RuntimeError("All editorial providers failed; no article published.")
 
 if __name__=="__main__":
