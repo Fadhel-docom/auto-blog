@@ -10,10 +10,10 @@ import re
 import sys
 
 POSTS = Path("content/posts")
-MIN_WORDS = 800
-MIN_IMAGES = 4
-MIN_H2 = 5
-MIN_FAQ = 3
+MIN_WORDS = 1500
+MIN_IMAGES = 5
+MIN_H2 = 8
+MIN_FAQ = 4
 
 STOP = {
     "a","an","and","are","as","at","be","by","for","from","how","in","into",
@@ -81,6 +81,16 @@ def main():
     images = len(re.findall(r"!\[[^\]]*\]\([^\)]+\)", body))
     if images < MIN_IMAGES:
         errors.append(f"only {images} inline images; minimum is {MIN_IMAGES}")
+
+    image_urls = re.findall(r"!\[[^\]]*\]\(([^\)]+)\)", body)
+    if len(set(image_urls)) != len(image_urls):
+        errors.append("duplicate inline image URL detected")
+
+    if images > 0 and image_urls:
+        for image_url in image_urls:
+            if not image_url.strip():
+                errors.append("empty inline image URL")
+                break
 
     h2 = len(re.findall(r"^##\s+\S", body, re.M))
     if h2 < MIN_H2:
