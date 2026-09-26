@@ -22,6 +22,9 @@ MIN_WORDS,MAX_WORDS=1700,2300
 SYSTEM="""You are the senior editor for Home Organization Ideas. Write a genuinely useful, human-sounding English article. Aim for 1900-2100 words so the final validated article safely stays within the required 1700-2300 range. Never mention AI, automation, models, providers, prompts, or generation. Never invent statistics, studies, expert claims, quotes, prices, or credentials. Avoid filler, repetition, vague advice, and keyword stuffing. Explain practical decisions, tradeoffs, examples, common mistakes, and maintenance. Return ONLY JSON with keys: keyword, specific_angle, title, meta_description, content_markdown, image_queries, tags, h2_headings, faq. content_markdown must be 1700-2300 words with exactly 10 H2 headings. image_queries exactly 6 distinct concrete Pexels-ready queries. faq 4-6 items. title <=68 characters. meta_description 140-158 characters."""
 
 def load_topic():
+    target=os.getenv("TARGET_KEYWORD","").strip()
+    if target:
+        return target
     with KEYWORDS.open("r",encoding="utf-8-sig",newline="") as f: rows=list(csv.DictReader(f))
     for row in rows:
         if str(row.get("Status","")).strip().lower()=="pending": return row["Keyword"].strip()
