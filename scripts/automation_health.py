@@ -55,7 +55,16 @@ def content_check():
     posts=[p for p in posts_dir.glob("*.md") if p.name != ".gitkeep"]
     if not posts:
         return {"status":"UNAVAILABLE","reason":"no posts found"}
-    post=max(posts,key=lambda p:p.stat().st_mtime)
+    def editorial_date(path):
+        text=path.read_text(encoding="utf-8")
+        m=re.search(r'^date\\s*=\\s*["\\']([^"\\']+)["\\']', text, re.M)
+        if not m:
+            return datetime.min
+        try:
+            return datetime.fromisoformat(m.group(1).replace("Z","+00:00")).replace(tzinfo=None)
+        except Exception:
+            return datetime.min
+    post=max(posts,key=editorial_date)
     text=post.read_text(encoding="utf-8")
     body=text.split("\n+++\n",1)[1] if "\n+++\n" in text else text
     words=len(re.findall(r"\b[\w’'-]+\b",body))
@@ -64,7 +73,7 @@ def content_check():
     faq=len(re.findall(r"question\s*=",text,re.I))
     unique_images=len(set(images))
     return {
-        "status":"OK" if words>=1500 and len(images)>=5 and unique_images==len(images) and h2>=8 and faq>=4 else "FAIL",
+        "status":"OK" if words>=1500 and len(images)>=6 and unique_images==len(images) and h2>=8 and faq>=4 else "FAIL",
         "post":post.name,"words":words,"inline_images":len(images),
         "unique_inline_images":unique_images,"h2":h2,"faq":faq
     }
