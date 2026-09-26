@@ -226,7 +226,7 @@ def main():
                     save(a,topic,name + (f" ({model})" if model else ""))
                     return
                 except Exception as exc:
-                    print(f"{name} model {model or ""} attempt {attempt+1} failed: {exc}",file=sys.stderr)
+                    print(f"{name} model {model or ''} attempt {attempt+1} failed: {exc}",file=sys.stderr)
     raise RuntimeError("All editorial providers failed; no article published.")
 if __name__=="__main__":
     try: main()
