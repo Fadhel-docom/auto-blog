@@ -50,6 +50,25 @@ def queue_check():
                 overdue.append({"keyword":row.get("Keyword",""),"publish_at":raw,"status":"INVALID_PUBLISH_AT"})
     return {"total":len(rows),"active":active,"due_or_overdue":len(overdue),"overdue":overdue}
 
+def content_check():
+    posts_dir=ROOT/"content"/"posts"
+    posts=[p for p in posts_dir.glob("*.md") if p.name != ".gitkeep"]
+    if not posts:
+        return {"status":"UNAVAILABLE","reason":"no posts found"}
+    post=max(posts,key=lambda p:p.stat().st_mtime)
+    text=post.read_text(encoding="utf-8")
+    body=text.split("\n+++\n",1)[1] if "\n+++\n" in text else text
+    words=len(re.findall(r"\\b[\\w’'-]+\\b",body))
+    images=re.findall(r"!\\[[^\\]]*\\]\\(([^\\)]+)\\)",body)
+    h2=len(re.findall(r"^##\\s+\\S",body,re.M))
+    faq=len(re.findall(r"question\\s*=",text,re.I))
+    unique_images=len(set(images))
+    return {
+        "status":"OK" if words>=1500 and len(images)>=5 and unique_images==len(images) and h2>=8 and faq>=4 else "FAIL",
+        "post":post.name,"words":words,"inline_images":len(images),
+        "unique_inline_images":unique_images,"h2":h2,"faq":faq
+    }
+
 def runs():
     data=gh(f"/repos/{REPO}/actions/runs?per_page=50&exclude_pull_requests=true")
     out={}
@@ -98,10 +117,10 @@ def create_alerts(issues):
 
 def main():
     now=datetime.now(timezone.utc).replace(microsecond=0).isoformat()
-    report={"timestamp":now,"site":SITE,"queue":{},"site_health":{},"runs":{},"quality_gate":{},"traffic":{},"alerts":[],"issues":[]}
+    report={"timestamp":now,"site":SITE,"queue":{},"site_health":{},"content":{},"runs":{},"quality_gate":{},"traffic":{},"alerts":[],"issues":[]}
     try:
         report["site_health"]=site_check()
-        report["queue"]=queue_check()
+        report["queue"]=queue_check()\n        report["content"]=content_check()
         report["runs"]=runs()
         pub=report["runs"].get("Scheduled Publisher")
         report["publisher_steps"]=publisher_steps(pub)
@@ -110,7 +129,7 @@ def main():
         report["secrets"]={"INDEXNOW_KEY":"OK" if INDEXNOW_KEY else "MISSING","GOATCOUNTER_API_KEY":"OK" if GOAT_KEY else "MISSING"}
         if not INDEXNOW_KEY: report["issues"].append({"type":"Secret missing","secret":"INDEXNOW_KEY"})
         if any(not x.get("ok") for x in report["site_health"].values()): report["issues"].append({"type":"Site Health failure","site_health":report["site_health"]})
-        if report["queue"].get("overdue"): report["issues"].append({"type":"Due article not published","overdue":report["queue"]["overdue"]})
+        if report["queue"].get("overdue"): report["issues"].append({"type":"Due article not published","overdue":report["queue"]["overdue"]})\n        if report["content"].get("status")=="FAIL": report["issues"].append({"type":"Latest content quality failure","content":report["content"]})
         if report["quality_gate"].get("status")=="failure": report["issues"].append({"type":"Quality Gate failure","quality_gate":report["quality_gate"]})
         run=report["runs"].get("Scheduled Publisher")
         if run and run.get("conclusion")=="failure": report["issues"].append({"type":"Scheduled Publisher failure","run":run})
