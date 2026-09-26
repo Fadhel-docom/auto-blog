@@ -37,6 +37,7 @@ jobs:
       - name: Configure Python path
         run: echo "PYTHONPATH=$PWD" >> "$GITHUB_ENV"
       - name: Generate article with primary and free fallback
+        if: "!startsWith(github.event.head_commit.message, 'Manual publish:')"
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: "gpt-5.6"
