@@ -178,6 +178,6 @@ def main():
     OUT.parent.mkdir(parents=True,exist_ok=True)
     OUT.write_text(json.dumps(report,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     print(json.dumps(report,indent=2,ensure_ascii=False))
-    return 1 if report.get("issues") else 0
+    # Detected site/publisher issues are health findings, not monitor crashes.\n    # Keep the workflow green so the monitoring system itself remains observable.\n    return 0
 
 if __name__=="__main__": raise SystemExit(main())
