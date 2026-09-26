@@ -149,7 +149,7 @@ def discover_openrouter_free_models():
 def call_groq(topic, relaxed_json=False):
     key=os.getenv("GROQ_API_KEY")
     if not key: raise RuntimeError("GROQ_API_KEY unavailable")
-    payload={"model":GROQ_MODEL,"temperature":0.35,"max_tokens":6000,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":f"Focus keyword/topic: {topic}\\nWrite a complete, polished article of 1900-2100 words. Return ONLY one JSON object with every required field. content_markdown must contain exactly 10 H2 headings and 6 distinct image queries. Do not use markdown fences around the JSON. Do not omit fields."}]}
+    payload={"model":GROQ_MODEL,"temperature":0.35,"max_tokens":3500,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":f"Focus keyword/topic: {topic}\\nWrite a complete, polished article of 1900-2100 words. Return ONLY one JSON object with every required field. content_markdown must contain exactly 10 H2 headings and 6 distinct image queries. Do not use markdown fences around the JSON. Do not omit fields."}]}
     if not relaxed_json: payload["response_format"]={"type":"json_object"}
     r=requests.post("https://api.groq.com/openai/v1/chat/completions",headers={"Authorization":f"Bearer {key}","Content-Type":"application/json"},json=payload,timeout=240)
     if not r.ok:
@@ -171,7 +171,7 @@ def call_openrouter(topic, relaxed_json=False, model=None):
     payload={
         "model":model,
         "temperature":0.35,
-        "max_tokens":6000,
+        "max_tokens":3500,
         "messages":[
             {"role":"system","content":SYSTEM},
             {"role":"user","content":user_prompt},
