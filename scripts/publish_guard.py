@@ -110,6 +110,19 @@ def main():
     if len(set(image_urls)) != len(image_urls):
         errors.append("duplicate inline image URL detected")
 
+    used_external = {}
+    for other in posts:
+        if other == post:
+            continue
+        other_text = other.read_text(encoding="utf-8")
+        for other_url in re.findall(r"!\\[[^\\]]*\\]\\(([^)]+)\\)", other_text):
+            used_external.setdefault(other_url.strip(), other.name)
+    for image_url in image_urls:
+        prior = used_external.get(image_url.strip())
+        if prior:
+            errors.append(f"image URL already used by {prior}: {image_url}")
+            break
+
     current_hashes = local_image_hashes(body)
     all_hashes = {}
     for other in posts:
