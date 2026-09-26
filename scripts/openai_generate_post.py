@@ -15,7 +15,8 @@ KEYWORDS=ROOT/"keywords.csv"
 ARTICLE=ROOT/"article.json"
 MODEL=os.getenv("OPENAI_MODEL","gpt-5.6")
 OPENROUTER_MODEL=os.getenv("OPENROUTER_MODEL","openrouter/free")
-OPENROUTER_FALLBACK_MODELS=[OPENROUTER_MODEL,"meta-llama/llama-3.3-70b-instruct:free","qwen/qwen3-235b-a22b:free","google/gemma-3-27b-it:free"]
+GROQ_MODEL=os.getenv("GROQ_MODEL","openai/gpt-oss-120b")
+OPENROUTER_FALLBACK_MODELS=[]
 MIN_WORDS,MAX_WORDS=1700,2300
 
 SYSTEM="""You are the senior editor for Home Organization Ideas. Write a genuinely useful, human-sounding English article. Aim for 1900-2100 words so the final validated article safely stays within the required 1700-2300 range. Never mention AI, automation, models, providers, prompts, or generation. Never invent statistics, studies, expert claims, quotes, prices, or credentials. Avoid filler, repetition, vague advice, and keyword stuffing. Explain practical decisions, tradeoffs, examples, common mistakes, and maintenance. Return ONLY JSON with keys: keyword, specific_angle, title, meta_description, content_markdown, image_queries, tags, h2_headings, faq. content_markdown must be 1700-2300 words with exactly 10 H2 headings. image_queries exactly 6 distinct concrete Pexels-ready queries. faq 4-6 items. title <=68 characters. meta_description 140-158 characters."""
@@ -120,6 +121,39 @@ def call_openai(topic):
     r.raise_for_status()
     return json.loads(r.json()["choices"][0]["message"]["content"])
 
+def discover_openrouter_free_models():
+    key=os.getenv("OPENROUTER_API_KEY")
+    if not key: return []
+    try:
+        r=requests.get("https://openrouter.ai/api/v1/models",headers={"Authorization":f"Bearer {key}","Content-Type":"application/json"},timeout=30)
+        r.raise_for_status()
+        data=r.json().get("data") or []
+        candidates=[]
+        for item in data:
+            mid=item.get("id"); pricing=item.get("pricing") or {}; params=item.get("supported_parameters") or []
+            if not mid or not mid.endswith(":free"): continue
+            if str(pricing.get("prompt")) not in ("0","0.0","0.00") or str(pricing.get("completion")) not in ("0","0.0","0.00"): continue
+            score=100 if "structured_outputs" in params else 0
+            score += 20 if "response_format" in params else 0
+            score += min(int(item.get("context_length") or 0)//10000,20)
+            candidates.append((score,mid))
+        candidates.sort(reverse=True)
+        return [mid for _,mid in candidates[:8]]
+    except Exception as exc:
+        print(f"OpenRouter model discovery failed: {exc}",file=sys.stderr)
+        return []
+
+def call_groq(topic, relaxed_json=False):
+    key=os.getenv("GROQ_API_KEY")
+    if not key: raise RuntimeError("GROQ_API_KEY unavailable")
+    payload={"model":GROQ_MODEL,"temperature":0.35,"max_tokens":6000,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":f"Focus keyword/topic: {topic}\\nWrite a complete, polished article of 1900-2100 words. Return ONLY one JSON object with every required field. content_markdown must contain exactly 10 H2 headings and 6 distinct image queries. Do not use markdown fences around the JSON. Do not omit fields."}]}
+    if not relaxed_json: payload["response_format"]={"type":"json_object"}
+    r=requests.post("https://api.groq.com/openai/v1/chat/completions",headers={"Authorization":f"Bearer {key}","Content-Type":"application/json"},json=payload,timeout=240)
+    if not r.ok:
+        try: message=(r.json().get("error") or {}).get("message","")
+        except Exception: message=r.text[:500]
+        raise RuntimeError(f"Groq HTTP {r.status_code}: {message}")
+    return parse_json_content(r.json())
 def call_openrouter(topic, relaxed_json=False, model=None):
     model = model or OPENROUTER_MODEL
     key=os.getenv("OPENROUTER_API_KEY")
@@ -169,43 +203,31 @@ def save(a,topic,provider):
 
 def main():
     topic=load_topic()
-    for name,fn in [("OpenAI",call_openai),("OpenRouter Free",call_openrouter)]:
-        max_attempts=1 if name=="OpenAI" else 3
-        router_models=OPENROUTER_FALLBACK_MODELS if name=="OpenRouter Free" else [None]
-        for router_model in router_models:
-            for attempt in range(max_attempts):
+    providers=[
+        ("OpenAI",call_openai,[None]),
+        ("Groq",call_groq,[GROQ_MODEL]),
+        ("OpenRouter Free",call_openrouter,discover_openrouter_free_models()),
+    ]
+    for name,fn,models in providers:
+        if name=="OpenRouter Free" and not models: models=["openrouter/free"]
+        if name=="Groq" and not os.getenv("GROQ_API_KEY"):
+            print("Groq unavailable: GROQ_API_KEY unavailable; trying next provider.",file=sys.stderr); continue
+        if name=="OpenRouter Free" and not os.getenv("OPENROUTER_API_KEY"):
+            print("OpenRouter unavailable: OPENROUTER_API_KEY unavailable; trying next provider.",file=sys.stderr); continue
+        for model in models:
+            for attempt in range(3):
                 try:
                     prompt_topic=topic
-                    if attempt>=1:
-                        prompt_topic=(
-                            f"{topic}\n"
-                            "RETRY: Produce a fresh complete replacement. The previous response failed validation or JSON parsing. "
-                            "Return one syntactically valid JSON object containing ALL required fields, 1900-2100 words, exactly 10 H2 headings, and 6 unique image queries. "
-                            "Do not wrap the JSON in markdown fences."
-                        )
-                    if name=="OpenRouter Free":
-                        a=fn(prompt_topic, relaxed_json=(attempt>=2), model=router_model)
-                    else:
-                        a=fn(prompt_topic)
+                    if attempt>=1: prompt_topic=f"{topic}\\nRETRY: Produce a fresh complete replacement with ALL required fields, 1900-2100 words, exactly 10 H2 headings, and 6 unique image queries. Return one valid JSON object only."
+                    if name=="OpenAI": a=fn(prompt_topic)
+                    elif name=="Groq": a=fn(prompt_topic,relaxed_json=(attempt>=2))
+                    else: a=fn(prompt_topic,relaxed_json=(attempt>=2),model=model)
                     validate(a)
-                    save(a,topic,name)
+                    save(a,topic,name + (f" ({model})" if model else ""))
                     return
                 except Exception as exc:
-                    if name=="OpenRouter Free" and attempt<2:
-                        print(f"{name} model {router_model} attempt {attempt+1} failed validation/parsing: {exc}; retrying.",file=sys.stderr)
-                        continue
-                    if "Word count" in str(exc) and attempt==0:
-                        print(f"{name} produced a short draft; retrying with a longer editorial target.",file=sys.stderr)
-                        continue
-                    if name=="OpenRouter Free":
-                        print(f"{name} model {router_model} failed after retry {attempt}: {exc}; trying next free model.",file=sys.stderr)
-                    elif attempt>0:
-                        print(f"{name} failed after retry {attempt}; trying next provider: {exc}",file=sys.stderr)
-                    else:
-                        print(f"{name} failed; trying next provider: {exc}",file=sys.stderr)
-                    break
+                    print(f"{name} model {model or ""} attempt {attempt+1} failed: {exc}",file=sys.stderr)
     raise RuntimeError("All editorial providers failed; no article published.")
-
 if __name__=="__main__":
     try: main()
     except Exception as exc:
