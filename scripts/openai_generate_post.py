@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # Editorial fallback hardened: structured-output first, parser-safe retry.
+# Multiple free-model fallback is enabled for provider resilience.
 import csv,json,os,re,sys
 from datetime import datetime,timezone
 from pathlib import Path
