@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import csv,json,os,re
-from datetime import datetime,timezone
+from datetime import datetime,timezone,timedelta
 from pathlib import Path
 from urllib.parse import urljoin
 import requests
@@ -95,13 +95,34 @@ def quality_gate(latest_publisher):
     return steps.get("Quality Gate",{"status":"UNAVAILABLE"})
 
 def traffic():
-    if not GOAT_KEY or not GOAT_SITE: return {"status":"UNAVAILABLE","reason":"missing GOATCOUNTER_API_KEY" if not GOAT_KEY else "missing GOATCOUNTER_SITE"}
+    if not GOAT_KEY or not GOAT_SITE:
+        return {"status":"UNAVAILABLE","reason":"missing GOATCOUNTER_API_KEY" if not GOAT_KEY else "missing GOATCOUNTER_SITE"}
     try:
-        r=requests.get(f"https://{GOAT_SITE}/api/v0/stats/total",headers={"Authorization":f"Bearer {GOAT_KEY}","Content-Type":"application/json"},timeout=20)
-        if not r.ok: return {"status":"UNAVAILABLE","reason":f"HTTP {r.status_code}"}
-        p=r.json()
-        return {"status":"OK","visitors":p.get("total")}
-    except Exception as e: return {"status":"UNAVAILABLE","reason":str(e)}
+        now=datetime.now(timezone.utc).replace(minute=0,second=0,microsecond=0)
+        day_start=now.replace(hour=0)
+        headers={"Authorization":f"Bearer {GOAT_KEY}","Content-Type":"application/json"}
+        def stats(start):
+            r=requests.get(
+                f"https://{GOAT_SITE}/api/v0/stats/total",
+                params={"start":start.isoformat().replace("+00:00","Z"),"end":now.isoformat().replace("+00:00","Z")},
+                headers=headers,timeout=20)
+            if not r.ok:
+                return None, f"HTTP {r.status_code}"
+            return r.json(), None
+        today,err=stats(day_start)
+        if err:
+            return {"status":"UNAVAILABLE","reason":err}
+        week,err=stats(day_start-timedelta(days=6))
+        month,err=stats(day_start.replace(day=1))
+        return {
+            "status":"OK",
+            "visitors_today":today.get("total",0),
+            "visitors_last_7_days":week.get("total",0) if week else None,
+            "visitors_this_month":month.get("total",0) if month else None,
+            "stats_today":today.get("stats",[])
+        }
+    except Exception as e:
+        return {"status":"UNAVAILABLE","reason":str(e)}
 
 def create_alerts(issues):
     if not issues: return []
@@ -120,7 +141,8 @@ def main():
     report={"timestamp":now,"site":SITE,"queue":{},"site_health":{},"content":{},"runs":{},"quality_gate":{},"traffic":{},"alerts":[],"issues":[]}
     try:
         report["site_health"]=site_check()
-        report["queue"]=queue_check()\n        report["content"]=content_check()
+        report["queue"]=queue_check()
+        report["content"]=content_check()
         report["runs"]=runs()
         pub=report["runs"].get("Scheduled Publisher")
         report["publisher_steps"]=publisher_steps(pub)
@@ -129,7 +151,8 @@ def main():
         report["secrets"]={"INDEXNOW_KEY":"OK" if INDEXNOW_KEY else "MISSING","GOATCOUNTER_API_KEY":"OK" if GOAT_KEY else "MISSING"}
         if not INDEXNOW_KEY: report["issues"].append({"type":"Secret missing","secret":"INDEXNOW_KEY"})
         if any(not x.get("ok") for x in report["site_health"].values()): report["issues"].append({"type":"Site Health failure","site_health":report["site_health"]})
-        if report["queue"].get("overdue"): report["issues"].append({"type":"Due article not published","overdue":report["queue"]["overdue"]})\n        if report["content"].get("status")=="FAIL": report["issues"].append({"type":"Latest content quality failure","content":report["content"]})
+        if report["queue"].get("overdue"): report["issues"].append({"type":"Due article not published","overdue":report["queue"]["overdue"]})
+        if report["content"].get("status")=="FAIL": report["issues"].append({"type":"Latest content quality failure","content":report["content"]})
         if report["quality_gate"].get("status")=="failure": report["issues"].append({"type":"Quality Gate failure","quality_gate":report["quality_gate"]})
         run=report["runs"].get("Scheduled Publisher")
         if run and run.get("conclusion")=="failure": report["issues"].append({"type":"Scheduled Publisher failure","run":run})
