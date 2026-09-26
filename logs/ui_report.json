@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-26T13:44:43+00:00",
+  "timestamp": "2026-09-26T17:34:15+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -39,9 +39,34 @@
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 32274
+    "html_length": 31832
   },
   "articles": [
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/decluttering-ideas-for-small-homes-that-actually-last/",
+      "status": 200,
+      "title": "Decluttering Ideas for Small Homes That Actually Last",
+      "title_capitalized": true,
+      "meta_description": "Practical decluttering ideas for small homes: simple categories, storage boundaries, daily resets, and realistic rules that prevent clutter from returning.",
+      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/decluttering-ideas-for-small-homes-that-actually-last/",
+      "images": 5,
+      "tags": 3,
+      "h2_count": 12,
+      "image_credits": false,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 1,
+        "types": [
+          "FAQPage"
+        ],
+        "has_article": false
+      },
+      "required_failures": [
+        "image credits"
+      ],
+      "html_length": 26290
+    },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-a-simple-system-for-small-shelves/",
       "status": 200,
@@ -134,30 +159,7 @@
       "required_failures": [
         "image credits"
       ],
-      "html_length": 30763
-    },
-    {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-laundry-room-organization-ideas-a-practical-storage-system-that-stays-tidy/",
-      "status": 200,
-      "title": "Small Laundry Room Organization Ideas: A Practical Storage System That Stays Tidy",
-      "title_capitalized": true,
-      "meta_description": "A practical system for organizing a small laundry room with shelves, baskets, sorting zones, vertical storage, and a simple weekly reset routine.",
-      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/small-laundry-room-organization-ideas-a-practical-storage-system-that-stays-tidy/",
-      "images": 11,
-      "tags": 4,
-      "h2_count": 15,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 1,
-        "types": [
-          "FAQPage"
-        ],
-        "has_article": false
-      },
-      "required_failures": [],
-      "html_length": 34252
+      "html_length": 30791
     }
   ],
   "responsive": {
@@ -173,5 +175,5 @@
     ]
   },
   "status": "needs_attention",
-  "failure_count": 1
+  "failure_count": 2
 }

@@ -1,6 +1,12 @@
 {
-  "timestamp": "2026-09-26T13:44:45+00:00",
+  "timestamp": "2026-09-26T17:34:16+00:00",
   "suggestions": [
+    {
+      "priority": "medium",
+      "area": "image credits",
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/decluttering-ideas-for-small-homes-that-actually-last/",
+      "suggestion": "Fix article-level image credits consistency."
+    },
     {
       "priority": "medium",
       "area": "image credits",
