@@ -1159,7 +1159,7 @@ def main() -> int:
         post_path = POSTS_DIR / f"{slug}.md"
         save_post(post_path, post_content)
 
-        update_keywords_csv(keyword, slug)
+        if os.getenv("DEFER_QUEUE_STATUS","").strip().lower() not in {"1","true","yes"}:\n            update_keywords_csv(keyword, slug)\n        else:\n            print("Queue status deferred until deployment verification.")
 
         print("")
         print("=" * 70)
