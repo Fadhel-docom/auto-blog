@@ -58,10 +58,10 @@ def content_check():
     post=max(posts,key=lambda p:p.stat().st_mtime)
     text=post.read_text(encoding="utf-8")
     body=text.split("\n+++\n",1)[1] if "\n+++\n" in text else text
-    words=len(re.findall(r"\\b[\\w’'-]+\\b",body))
-    images=re.findall(r"!\\[[^\\]]*\\]\\(([^\\)]+)\\)",body)
-    h2=len(re.findall(r"^##\\s+\\S",body,re.M))
-    faq=len(re.findall(r"question\\s*=",text,re.I))
+    words=len(re.findall(r"\b[\w’'-]+\b",body))
+    images=re.findall(r"!\[[^\]]*\]\(([^\)]+)\)",body)
+    h2=len(re.findall(r"^##\s+\S",body,re.M))
+    faq=len(re.findall(r"question\s*=",text,re.I))
     unique_images=len(set(images))
     return {
         "status":"OK" if words>=1500 and len(images)>=5 and unique_images==len(images) and h2>=8 and faq>=4 else "FAIL",
