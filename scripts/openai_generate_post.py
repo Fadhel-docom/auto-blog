@@ -75,14 +75,14 @@ def repair_json_text(s):
 
 def parse_json_content(response_json):
     choices=response_json.get('choices') or []
-    if not choices: raise ValueError('OpenRouter returned no choices')
+    if not choices: raise ValueError('Provider returned no choices')
     message=choices[0].get('message') or {}
     content=message.get('content')
     if content is None and isinstance(message.get('text'),str):
         content=message.get('text')
     if isinstance(content,list):
         content=''.join(p.get('text','') for p in content if isinstance(p,dict) and isinstance(p.get('text'),str))
-    if not isinstance(content,str) or not content.strip(): raise ValueError('OpenRouter returned empty message content')
+    if not isinstance(content,str) or not content.strip(): raise ValueError('Provider returned empty message content')
     content=content.strip()
     if content.startswith('```'):
         lines=content.splitlines()[1:]
@@ -112,7 +112,7 @@ def parse_json_content(response_json):
                         pass
                 try: return json.loads(candidate)
                 except json.JSONDecodeError: pass
-            raise ValueError('OpenRouter response was not valid JSON')
+            raise ValueError('Provider response was not valid JSON')
 
 def call_openai(topic):
     key=os.getenv("OPENAI_API_KEY")
@@ -138,7 +138,7 @@ def discover_openrouter_free_models():
             score += min(int(item.get("context_length") or 0)//10000,20)
             candidates.append((score,mid))
         candidates.sort(reverse=True)
-        return [mid for _,mid in candidates[:8]]
+        return [mid for _,mid in candidates if 'inkling' not in mid.lower()][:5]
     except Exception as exc:
         print(f"OpenRouter model discovery failed: {exc}",file=sys.stderr)
         return []
@@ -222,6 +222,35 @@ def _merge_article(base, incoming):
             merged[key]=incoming[key]
     return merged
 
+def _normalize_length(a):
+    """Deterministically bring an overlong valid draft back under the hard limit."""
+    content=a.get("content_markdown","")
+    words=re.findall(r"\\b\\w+\\b",content)
+    if len(words) <= MAX_WORDS:
+        return a
+    # Remove whole trailing paragraphs first, never removing an H2 heading.
+    parts=re.split(r"(\\n##\\s+[^\\n]+\\n?)",content)
+    target=2200
+    while len(re.findall(r"\\b\\w+\\b",content)) > target:
+        candidates=[]
+        for i in range(0,len(parts),2):
+            block=parts[i]
+            paras=[p for p in re.split(r"\\n\\s*\\n",block) if p.strip()]
+            if len(paras)>1:
+                for j,p in enumerate(paras):
+                    if j>0 and len(re.findall(r"\\b\\w+\\b",p))>=35:
+                        candidates.append((len(re.findall(r"\\b\\w+\\b",p)),i,j))
+        if not candidates:
+            break
+        _,i,j=min(candidates)
+        paras=[p for p in re.split(r"\\n\\s*\\n",parts[i]) if p.strip()]
+        paras.pop(j)
+        parts[i]="\\n\\n".join(paras)
+        content="".join(parts)
+    a=dict(a)
+    a["content_markdown"]=content
+    return a
+
 def _collaboration_prompt(topic, draft, stage):
     if not draft:
         return f"""Focus keyword/topic: {topic}
@@ -248,9 +277,8 @@ def _call_cooperative(name, fn, model, topic, draft, stage):
 
 def main():
     topic=load_topic()
-    # Cooperative chain: every available provider receives the same working
-    # article. A later provider continues missing sections or reviews a complete
-    # draft. No provider is treated as an isolated restart.
+    # One shared draft moves through every available provider. Providers are
+    # contributors, not isolated fallbacks: partial work is always forwarded.
     providers=[
         ("OpenAI",call_openai,None, bool(os.getenv("OPENAI_API_KEY"))),
         ("Groq",call_groq,GROQ_MODEL, bool(os.getenv("GROQ_API_KEY"))),
@@ -268,37 +296,42 @@ def main():
         if name=="OpenRouter Free":
             models=discover_openrouter_free_models() or ["openrouter/free"]
 
-        provider_finished=False
+        provider_contributed=False
         for chosen_model in models:
-            for attempt in range(3):
+            try:
+                stage=successful_stages+1
+                candidate=_merge_article(
+                    draft,
+                    _call_cooperative(name,fn,chosen_model,topic,draft,stage)
+                )
+                draft=candidate
+                provider_contributed=True
+                successful_stages += 1
                 try:
-                    stage=successful_stages+1
-                    a=_call_cooperative(name,fn,chosen_model,topic,draft,stage)
-                    candidate=_merge_article(draft,a)
-                    try:
-                        validate(candidate)
-                        draft=candidate
-                        provider_finished=True
-                        successful_stages += 1
-                        print(f"{name} contributed successfully to the shared editorial draft.")
-                        break
-                    except Exception as validation_error:
-                        draft=candidate
-                        print(f"{name} contributed partial work; next stage will continue it: {validation_error}",file=sys.stderr)
-                        raise validation_error
-                except Exception as exc:
-                    print(f"{name} cooperative stage attempt {attempt+1} failed: {exc}",file=sys.stderr)
-                    continue
-            if provider_finished:
+                    validate(draft)
+                    print(f"{name} produced a complete shared draft at stage {stage}.")
+                except Exception as validation_error:
+                    print(f"{name} contributed partial work; next provider will continue it: {validation_error}",file=sys.stderr)
+                # A provider has contributed; do not burn TPM with duplicate retries.
                 break
+            except Exception as exc:
+                print(f"{name} cooperative attempt failed: {exc}",file=sys.stderr)
+                # Rate limits, invalid JSON, and unavailable models are provider
+                # failures; move to the next model/provider instead of retrying
+                # the same request three times.
+                continue
+
+        if not provider_contributed:
+            print(f"{name} could not contribute; continuing with the existing draft.",file=sys.stderr)
 
     if draft:
+        draft=_normalize_length(draft)
         validate(draft)
         save(draft,topic,"Cooperative chain")
         print(f"Cooperative editorial chain completed through {successful_stages} provider stage(s).")
         return
 
-    raise RuntimeError("No editorial provider was available; no article published.")
+    raise RuntimeError("No editorial provider produced a usable draft; no article published.")
 if __name__=="__main__":
     try: main()
     except Exception as exc:
