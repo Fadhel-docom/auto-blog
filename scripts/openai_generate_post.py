@@ -201,33 +201,100 @@ def save(a,topic,provider):
     print(f"Provider: {provider}")
     print(f"Words: {a['word_count']} | H2: 10 | Images planned: 6")
 
+def _merge_article(base, incoming):
+    """Merge a continuation into one shared article instead of restarting from zero."""
+    if not base:
+        return incoming
+    merged=dict(base)
+    old=base.get("content_markdown","").strip()
+    new=incoming.get("content_markdown","").strip()
+    if new:
+        # Models are told to continue only; avoid duplicating an identical prefix.
+        if old and new.startswith(old):
+            merged["content_markdown"]=new
+        elif old:
+            merged["content_markdown"]=old+"\n\n"+new
+        else:
+            merged["content_markdown"]=new
+    for key in ["keyword","specific_angle","title","meta_description","image_queries","tags","h2_headings","faq"]:
+        if incoming.get(key):
+            merged[key]=incoming[key]
+    return merged
+
+def _collaboration_prompt(topic, draft, stage):
+    if not draft:
+        return f"""Focus keyword/topic: {topic}
+You are the first editor in a cooperative writing chain. Start the shared article.
+Write ONLY valid JSON. Build the article toward 1900-2100 words, exactly 10 H2 headings, 6 unique image queries and 4-6 FAQs.
+You may write the first half now (roughly 900-1200 words, headings 1-5) if needed. Do not stop because of an artificial short target; produce as much high-quality article content as the response limit safely allows.
+This draft will be handed directly to another editor, who must continue it rather than restart it."""
+    return f"""Focus keyword/topic: {topic}
+You are stage {stage} in a cooperative editorial chain. CONTINUE THE SHARED DRAFT below; do not restart, summarize, or rewrite completed sections.
+Add the next missing H2 sections and complete missing required fields. Preserve the existing useful text exactly where possible.
+Target a final article of 1900-2100 words with exactly 10 H2 headings, 6 unique image queries and 4-6 FAQs.
+Return ONLY one valid JSON object. If the previous editor stopped mid-article, continue naturally from its last complete sentence.
+
+SHARED DRAFT:
+{json.dumps(draft, ensure_ascii=False)}"""
+
+def _call_cooperative(name, fn, model, topic, draft, stage):
+    prompt=_collaboration_prompt(topic,draft,stage)
+    if name=="OpenAI":
+        return fn(prompt)
+    if name=="Groq":
+        return fn(prompt,relaxed_json=(stage>=2))
+    return fn(prompt,relaxed_json=(stage>=2),model=model)
+
 def main():
     topic=load_topic()
+    # One shared draft moves through every available provider. A later provider
+    # continues the same article when an earlier provider stops, rather than
+    # discarding the work and generating another unrelated article.
     providers=[
-        ("OpenAI",call_openai,[None]),
-        ("Groq",call_groq,[GROQ_MODEL]),
-        ("OpenRouter Free",call_openrouter,discover_openrouter_free_models()),
+        ("OpenAI",call_openai,None, bool(os.getenv("OPENAI_API_KEY"))),
+        ("Groq",call_groq,GROQ_MODEL, bool(os.getenv("GROQ_API_KEY"))),
+        ("OpenRouter Free",call_openrouter,None, bool(os.getenv("OPENROUTER_API_KEY"))),
     ]
-    for name,fn,models in providers:
-        if name=="OpenRouter Free" and not models: models=["openrouter/free"]
-        if name=="Groq" and not os.getenv("GROQ_API_KEY"):
-            print("Groq unavailable: GROQ_API_KEY unavailable; trying next provider.",file=sys.stderr); continue
-        if name=="OpenRouter Free" and not os.getenv("OPENROUTER_API_KEY"):
-            print("OpenRouter unavailable: OPENROUTER_API_KEY unavailable; trying next provider.",file=sys.stderr); continue
-        for model in models:
+
+    draft=None
+    completed_provider=None
+    for name,fn,model,available in providers:
+        if not available:
+            print(f"{name} unavailable; cooperative chain will continue.",file=sys.stderr)
+            continue
+
+        models=[model]
+        if name=="OpenRouter Free":
+            models=discover_openrouter_free_models() or ["openrouter/free"]
+
+        provider_done=False
+        for chosen_model in models:
             for attempt in range(3):
                 try:
-                    prompt_topic=topic
-                    if attempt>=1: prompt_topic=f"{topic}\\nRETRY: Produce a fresh complete replacement with ALL required fields, 1900-2100 words, exactly 10 H2 headings, and 6 unique image queries. Return one valid JSON object only."
-                    if name=="OpenAI": a=fn(prompt_topic)
-                    elif name=="Groq": a=fn(prompt_topic,relaxed_json=(attempt>=2))
-                    else: a=fn(prompt_topic,relaxed_json=(attempt>=2),model=model)
-                    validate(a)
-                    save(a,topic,name + (f" ({model})" if model else ""))
+                    stage=(1 if draft is None else 2)+attempt
+                    a=_call_cooperative(name,fn,chosen_model,topic,draft,stage)
+                    candidate=_merge_article(draft,a)
+                    try:
+                        validate(candidate)
+                    except Exception as validation_error:
+                        # Keep the partial work for the next provider. This is
+                        # the key difference from the old fallback: no restart.
+                        draft=candidate
+                        raise validation_error
+                    save(candidate,topic,name + (f" ({chosen_model})" if chosen_model else ""))
+                    completed_provider=name
+                    print(f"Cooperative editorial chain completed by {completed_provider}.")
                     return
                 except Exception as exc:
-                    print(f"{name} model {model or ''} attempt {attempt+1} failed: {exc}",file=sys.stderr)
-    raise RuntimeError("All editorial providers failed; no article published.")
+                    print(f"{name} cooperative stage attempt {attempt+1} failed: {exc}",file=sys.stderr)
+                    # A parseable partial response remains in draft and is passed
+                    # forward; a non-parseable response cannot be safely merged.
+                    continue
+
+    if draft:
+        raise RuntimeError("Cooperative editorial chain exhausted providers before the shared draft passed validation.")
+    raise RuntimeError("No editorial provider was available; no article published.")
+
 if __name__=="__main__":
     try: main()
     except Exception as exc:
