@@ -2,8 +2,7 @@ name: Health Monitor
 
 on:
   schedule:
-    - cron: "0 */6 * * *"
-
+    - cron: "13 */6 * * *"
   workflow_dispatch:
 
 permissions:
@@ -12,45 +11,40 @@ permissions:
   issues: write
 
 concurrency:
-  group: health-monitor
+  group: "health-monitor"
   cancel-in-progress: false
 
 jobs:
   health:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           fetch-depth: 0
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Setup Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: "3.11"
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install requests
-
-      - name: Run health monitor
+      - name: Install requests
+        run: python -m pip install requests
+      - name: Run autonomous health monitor
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           SITE_URL: "https://fadhel-docom.github.io/auto-blog/"
-        run: |
-          python scripts/health_monitor.py
-
+          GOATCOUNTER_SITE: "homeorganizationideas.goatcounter.com"
+          GOATCOUNTER_API_KEY: ${{ secrets.GOATCOUNTER_API_KEY }}
+        run: python scripts/automation_health.py
       - name: Commit health report
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add logs/health.json
+          git add logs/automation_health.json
           if git diff --cached --quiet; then
             echo "No health report changes."
           else
-            git commit -m "Health monitor: update health report"
+            git commit -m "Health monitor: update automation state"
             git push
           fi
