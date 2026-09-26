@@ -3,7 +3,7 @@ name: Auto Repair
 on:
   workflow_run:
     workflows:
-      - "Daily Auto Blog"
+      - "Scheduled Publisher"
     types:
       - completed
 
