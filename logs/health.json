@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-26T06:19:52+00:00",
+  "timestamp": "2026-09-26T12:18:52+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "repository": "Fadhel-docom/auto-blog",
   "checks": {
@@ -32,184 +32,184 @@
     },
     "runs": [
       {
-        "id": 36223416517,
+        "id": 36241514950,
         "name": "Health Monitor",
         "status": "in_progress",
         "conclusion": null,
-        "created_at": "2026-09-26T06:19:43Z",
-        "updated_at": "2026-09-26T06:19:47Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36223416517"
+        "created_at": "2026-09-26T12:18:43Z",
+        "updated_at": "2026-09-26T12:18:45Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36241514950"
       },
       {
-        "id": 36220728623,
+        "id": 36241310923,
+        "name": "UI Checker",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-09-26T12:14:46Z",
+        "updated_at": "2026-09-26T12:15:01Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36241310923"
+      },
+      {
+        "id": 36239164999,
         "name": "Daily Auto Blog",
         "status": "completed",
         "conclusion": "failure",
-        "created_at": "2026-09-26T05:25:02Z",
-        "updated_at": "2026-09-26T05:37:35Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36220728623"
+        "created_at": "2026-09-26T11:32:52Z",
+        "updated_at": "2026-09-26T11:35:33Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36239164999"
       },
       {
-        "id": 36220721243,
+        "id": 36239156489,
         "name": "Auto Repair",
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-09-26T05:24:52Z",
-        "updated_at": "2026-09-26T05:25:08Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36220721243"
+        "created_at": "2026-09-26T11:32:43Z",
+        "updated_at": "2026-09-26T11:32:56Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36239156489"
       },
       {
-        "id": 36220721161,
+        "id": 36239156443,
         "name": "Deploy Hugo site to Pages",
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-09-26T05:24:52Z",
-        "updated_at": "2026-09-26T05:25:25Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36220721161"
+        "created_at": "2026-09-26T11:32:43Z",
+        "updated_at": "2026-09-26T11:33:06Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36239156443"
       },
       {
-        "id": 36220256819,
-        "name": "Daily Auto Blog",
-        "status": "completed",
-        "conclusion": "failure",
-        "created_at": "2026-09-26T05:15:24Z",
-        "updated_at": "2026-09-26T05:24:50Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36220256819"
-      },
-      {
-        "id": 36219060248,
-        "name": "Daily Auto Blog",
-        "status": "completed",
-        "conclusion": "failure",
-        "created_at": "2026-09-26T04:51:19Z",
-        "updated_at": "2026-09-26T04:55:39Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36219060248"
-      },
-      {
-        "id": 36219052097,
+        "id": 36238477622,
         "name": "Auto Repair",
         "status": "completed",
-        "conclusion": "success",
-        "created_at": "2026-09-26T04:51:08Z",
-        "updated_at": "2026-09-26T04:51:25Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36219052097"
+        "conclusion": "skipped",
+        "created_at": "2026-09-26T11:19:48Z",
+        "updated_at": "2026-09-26T11:19:50Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36238477622"
       },
       {
-        "id": 36219052082,
+        "id": 36238477619,
         "name": "Deploy Hugo site to Pages",
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-09-26T04:51:08Z",
-        "updated_at": "2026-09-26T04:51:41Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36219052082"
+        "created_at": "2026-09-26T11:19:48Z",
+        "updated_at": "2026-09-26T11:20:51Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36238477619"
       },
       {
-        "id": 36218887954,
-        "name": "Link Audit",
-        "status": "completed",
-        "conclusion": "failure",
-        "created_at": "2026-09-26T04:47:49Z",
-        "updated_at": "2026-09-26T04:47:57Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36218887954"
-      },
-      {
-        "id": 36218887942,
-        "name": "Deploy Hugo site to Pages",
-        "status": "completed",
-        "conclusion": "success",
-        "created_at": "2026-09-26T04:47:49Z",
-        "updated_at": "2026-09-26T04:48:31Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36218887942"
-      },
-      {
-        "id": 36218876514,
-        "name": "Daily Auto Blog",
-        "status": "completed",
-        "conclusion": "failure",
-        "created_at": "2026-09-26T04:47:35Z",
-        "updated_at": "2026-09-26T04:53:22Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36218876514"
-      },
-      {
-        "id": 36218794475,
-        "name": "Daily Auto Blog",
-        "status": "completed",
-        "conclusion": "cancelled",
-        "created_at": "2026-09-26T04:45:52Z",
-        "updated_at": "2026-09-26T04:47:37Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36218794475"
-      },
-      {
-        "id": 36218787380,
-        "name": "Deploy Hugo site to Pages",
-        "status": "completed",
-        "conclusion": "success",
-        "created_at": "2026-09-26T04:45:42Z",
-        "updated_at": "2026-09-26T04:46:47Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36218787380"
-      },
-      {
-        "id": 36218787343,
-        "name": "Link Audit",
-        "status": "completed",
-        "conclusion": "failure",
-        "created_at": "2026-09-26T04:45:42Z",
-        "updated_at": "2026-09-26T04:45:54Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36218787343"
-      },
-      {
-        "id": 36218787342,
-        "name": "Daily Auto Blog",
-        "status": "completed",
-        "conclusion": "failure",
-        "created_at": "2026-09-26T04:45:42Z",
-        "updated_at": "2026-09-26T04:51:07Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36218787342"
-      },
-      {
-        "id": 36218771059,
+        "id": 36238475579,
         "name": "Deploy Hugo site to Pages",
         "status": "completed",
         "conclusion": "cancelled",
-        "created_at": "2026-09-26T04:45:22Z",
-        "updated_at": "2026-09-26T04:45:44Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36218771059"
+        "created_at": "2026-09-26T11:19:46Z",
+        "updated_at": "2026-09-26T11:19:50Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36238475579"
       },
       {
-        "id": 36218771016,
-        "name": "Auto Repair",
-        "status": "completed",
-        "conclusion": "failure",
-        "created_at": "2026-09-26T04:45:22Z",
-        "updated_at": "2026-09-26T04:47:39Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36218771016"
-      },
-      {
-        "id": 36218758309,
+        "id": 36238475553,
         "name": "Link Audit",
         "status": "completed",
         "conclusion": "failure",
-        "created_at": "2026-09-26T04:45:09Z",
-        "updated_at": "2026-09-26T04:45:17Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36218758309"
+        "created_at": "2026-09-26T11:19:46Z",
+        "updated_at": "2026-09-26T11:19:57Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36238475553"
       },
       {
-        "id": 36218758277,
+        "id": 36238475547,
         "name": "Daily Auto Blog",
         "status": "completed",
         "conclusion": "failure",
-        "created_at": "2026-09-26T04:45:09Z",
-        "updated_at": "2026-09-26T04:45:20Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36218758277"
+        "created_at": "2026-09-26T11:19:46Z",
+        "updated_at": "2026-09-26T11:32:41Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36238475547"
       },
       {
-        "id": 36218758234,
+        "id": 36238469347,
+        "name": "Link Audit",
+        "status": "completed",
+        "conclusion": "failure",
+        "created_at": "2026-09-26T11:19:38Z",
+        "updated_at": "2026-09-26T11:19:47Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36238469347"
+      },
+      {
+        "id": 36238469315,
         "name": "Deploy Hugo site to Pages",
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-09-26T04:45:09Z",
-        "updated_at": "2026-09-26T04:45:59Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36218758234"
+        "created_at": "2026-09-26T11:19:38Z",
+        "updated_at": "2026-09-26T11:20:17Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36238469315"
+      },
+      {
+        "id": 36238469310,
+        "name": "Daily Auto Blog",
+        "status": "completed",
+        "conclusion": "cancelled",
+        "created_at": "2026-09-26T11:19:38Z",
+        "updated_at": "2026-09-26T11:19:47Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36238469310"
+      },
+      {
+        "id": 36238446365,
+        "name": "Daily Auto Blog",
+        "status": "completed",
+        "conclusion": "cancelled",
+        "created_at": "2026-09-26T11:19:10Z",
+        "updated_at": "2026-09-26T11:19:39Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36238446365"
+      },
+      {
+        "id": 36238361141,
+        "name": "Deploy Hugo site to Pages",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-09-26T11:17:32Z",
+        "updated_at": "2026-09-26T11:18:04Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36238361141"
+      },
+      {
+        "id": 36238361130,
+        "name": "Auto Repair",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-09-26T11:17:32Z",
+        "updated_at": "2026-09-26T11:19:16Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36238361130"
+      },
+      {
+        "id": 36237954323,
+        "name": "Daily Auto Blog",
+        "status": "completed",
+        "conclusion": "failure",
+        "created_at": "2026-09-26T11:09:42Z",
+        "updated_at": "2026-09-26T11:28:06Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36237954323"
+      },
+      {
+        "id": 36237945787,
+        "name": "Deploy Hugo site to Pages",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-09-26T11:09:31Z",
+        "updated_at": "2026-09-26T11:10:02Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36237945787"
+      },
+      {
+        "id": 36237945748,
+        "name": "Auto Repair",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-09-26T11:09:31Z",
+        "updated_at": "2026-09-26T11:09:47Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36237945748"
+      },
+      {
+        "id": 36237425717,
+        "name": "Auto Repair",
+        "status": "completed",
+        "conclusion": "skipped",
+        "created_at": "2026-09-26T10:59:23Z",
+        "updated_at": "2026-09-26T10:59:24Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36237425717"
       }
     ]
   },
@@ -217,7 +217,7 @@
   "issues": [
     {
       "type": "multiple_recent_failures",
-      "count": 10
+      "count": 5
     },
     {
       "type": "issue_creation_failed",
