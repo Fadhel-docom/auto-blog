@@ -224,8 +224,10 @@ def _merge_article(base, incoming):
                 body_end=matches[i+1].start() if i+1<len(matches) else len(text)
                 out.append((m.group(1).strip(), text[body_start:body_end].strip()))
             return prefix,out
-        old_prefix,old_sections=sections(old)
-        new_prefix,new_sections=sections(new)
+        old_result=sections(old)
+        new_result=sections(new)
+        old_prefix,old_sections=old_result if old_result else ("",[])
+        new_prefix,new_sections=new_result if new_result else ("",[])
         if old_sections and new_sections:
             old_map={h.lower():(h,b) for h,b in old_sections}
             new_map={h.lower():(h,b) for h,b in new_sections}
