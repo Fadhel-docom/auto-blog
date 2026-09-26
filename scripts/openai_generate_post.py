@@ -351,6 +351,24 @@ def main():
             print(f"{name} could not contribute; continuing with the existing draft.",file=sys.stderr)
 
     if draft:
+        try:
+            validate(draft)
+        except Exception as validation_error:
+            # If the only available provider produced a partial draft, give Groq
+            # up to two continuation passes. Never lower the editorial gate.
+            if os.getenv("GROQ_API_KEY"):
+                for continuation in range(2):
+                    try:
+                        stage=successful_stages+continuation+1
+                        prompt=_collaboration_prompt(topic,draft,stage)
+                        candidate=call_groq(prompt,relaxed_json=True)
+                        draft=_merge_article(draft,candidate)
+                        validate(draft)
+                        print(f"Groq continuation completed the shared draft at stage {stage}.")
+                        break
+                    except Exception as exc:
+                        print(f"Groq continuation {continuation+1} failed: {exc}",file=sys.stderr)
+            validate(draft)
         draft=_normalize_length(draft)
         validate(draft)
         save(draft,topic,"Cooperative chain")
