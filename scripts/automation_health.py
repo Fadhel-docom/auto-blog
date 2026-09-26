@@ -57,7 +57,7 @@ def content_check():
         return {"status":"UNAVAILABLE","reason":"no posts found"}
     def editorial_date(path):
         text=path.read_text(encoding="utf-8")
-        m=re.search(r'^date\\s*=\\s*["\\']([^"\\']+)["\\']', text, re.M)
+        m=re.search(r'^date\s*=\s*["\']([^"\']+)["\']', text, re.M)
         if not m:
             return datetime.min
         try:
