@@ -14,6 +14,7 @@ KEYWORDS=ROOT/"keywords.csv"
 ARTICLE=ROOT/"article.json"
 MODEL=os.getenv("OPENAI_MODEL","gpt-5.6")
 OPENROUTER_MODEL=os.getenv("OPENROUTER_MODEL","openrouter/free")
+OPENROUTER_FALLBACK_MODELS=[OPENROUTER_MODEL,"meta-llama/llama-3.3-70b-instruct:free","qwen/qwen3-235b-a22b:free","google/gemma-3-27b-it:free"]
 MIN_WORDS,MAX_WORDS=1700,2300
 
 SYSTEM="""You are the senior editor for Home Organization Ideas. Write a genuinely useful, human-sounding English article. Aim for 1900-2100 words so the final validated article safely stays within the required 1700-2300 range. Never mention AI, automation, models, providers, prompts, or generation. Never invent statistics, studies, expert claims, quotes, prices, or credentials. Avoid filler, repetition, vague advice, and keyword stuffing. Explain practical decisions, tradeoffs, examples, common mistakes, and maintenance. Return ONLY JSON with keys: keyword, specific_angle, title, meta_description, content_markdown, image_queries, tags, h2_headings, faq. content_markdown must be 1700-2300 words with exactly 10 H2 headings. image_queries exactly 6 distinct concrete Pexels-ready queries. faq 4-6 items. title <=68 characters. meta_description 140-158 characters."""
@@ -118,7 +119,8 @@ def call_openai(topic):
     r.raise_for_status()
     return json.loads(r.json()["choices"][0]["message"]["content"])
 
-def call_openrouter(topic, relaxed_json=False):
+def call_openrouter(topic, relaxed_json=False, model=None):
+    model = model or OPENROUTER_MODEL
     key=os.getenv("OPENROUTER_API_KEY")
     if not key: raise RuntimeError("OPENROUTER_API_KEY unavailable")
     user_prompt=(
@@ -129,7 +131,7 @@ def call_openrouter(topic, relaxed_json=False):
         "Do not use markdown fences around the JSON. Do not omit fields."
     )
     payload={
-        "model":OPENROUTER_MODEL,
+        "model":model,
         "temperature":0.35,
         "max_tokens":6000,
         "messages":[
@@ -168,7 +170,9 @@ def main():
     topic=load_topic()
     for name,fn in [("OpenAI",call_openai),("OpenRouter Free",call_openrouter)]:
         max_attempts=1 if name=="OpenAI" else 3
-        for attempt in range(max_attempts):
+        router_models=OPENROUTER_FALLBACK_MODELS if name=="OpenRouter Free" else [None]
+        for router_model in router_models:
+            for attempt in range(max_attempts):
             try:
                 prompt_topic=topic
                 if attempt>=1:
@@ -179,7 +183,7 @@ def main():
                         "Do not wrap the JSON in markdown fences."
                     )
                 if name=="OpenRouter Free":
-                    a=fn(prompt_topic, relaxed_json=(attempt>=2))
+                    a=fn(prompt_topic, relaxed_json=(attempt>=2), model=router_model)
                 else:
                     a=fn(prompt_topic)
                 validate(a)
@@ -187,12 +191,14 @@ def main():
                 return
             except Exception as exc:
                 if name=="OpenRouter Free" and attempt<2:
-                    print(f"{name} attempt {attempt+1} failed validation/parsing: {exc}; retrying with a fresh editorial request.",file=sys.stderr)
+                    print(f"{name} model {router_model} attempt {attempt+1} failed validation/parsing: {exc}; retrying.",file=sys.stderr)
                     continue
                 if "Word count" in str(exc) and attempt==0:
                     print(f"{name} produced a short draft; retrying with a longer editorial target.",file=sys.stderr)
                     continue
-                if attempt>0:
+                if name=="OpenRouter Free":
+                    print(f"{name} model {router_model} failed after retry {attempt}: {exc}; trying next free model.",file=sys.stderr)
+                elif attempt>0:
                     print(f"{name} failed after retry {attempt}; trying next provider: {exc}",file=sys.stderr)
                 else:
                     print(f"{name} failed; trying next provider: {exc}",file=sys.stderr)
