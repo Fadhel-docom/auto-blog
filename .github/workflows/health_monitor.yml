@@ -2,7 +2,7 @@ name: Health Monitor
 
 on:
   schedule:
-    - cron: "13 */6 * * *"
+    - cron: "*/15 * * * *"
   workflow_dispatch:
 
 permissions:
