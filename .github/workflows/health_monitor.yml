@@ -35,6 +35,7 @@ jobs:
           SITE_URL: "https://fadhel-docom.github.io/auto-blog/"
           GOATCOUNTER_SITE: "homeorganizationideas.goatcounter.com"
           GOATCOUNTER_API_KEY: ${{ secrets.GOATCOUNTER_API_KEY }}
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
         run: python scripts/automation_health.py
       - name: Commit health report
         if: always()
