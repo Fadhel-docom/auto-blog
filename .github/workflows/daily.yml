@@ -1,14 +1,13 @@
 name: Scheduled Publisher
 
 on:
-  push:
-    branches: ["main"]
   schedule:
     - cron: "7,17,27,37,47,57 * * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: "scheduled-publisher"
@@ -149,6 +148,21 @@ jobs:
         continue-on-error: true
         run: python scripts/indexnow_submit.py
 
+      - name: Alert IndexNow failure
+        if: hashFiles('.automation/due_keyword') != '' && steps.indexnow.outcome == 'failure'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python - <<'PY'
+          import os, requests
+          repo=os.environ["GITHUB_REPOSITORY"]; token=os.environ["GITHUB_TOKEN"]
+          title="Automation alert: IndexNow failure"
+          h={"Authorization":f"Bearer {token}","Accept":"application/vnd.github+json"}
+          items=requests.get(f"https://api.github.com/repos/{repo}/issues",headers=h,params={"state":"open","labels":"automation","per_page":100},timeout=20).json()
+          if not any(i.get("title")==title for i in items if isinstance(i,dict)):
+              requests.post(f"https://api.github.com/repos/{repo}/issues",headers=h,json={"title":title,"body":"IndexNow failed or INDEXNOW_KEY is missing. The article remains protected by the queue recovery logic.","labels":["automation","health"]},timeout=20).raise_for_status()
+
       - name: Finalize queue after Pages verification
         if: hashFiles('.automation/due_keyword') != ''
         run: |
@@ -158,6 +172,22 @@ jobs:
           git add keywords.csv logs/indexnow.json
           git commit -m "Finalize published queue item"
           git push
+
+      - name: Alert on publisher failure
+        if: failure()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python - <<'PY'
+          import os, requests
+          repo=os.environ["GITHUB_REPOSITORY"]; token=os.environ["GITHUB_TOKEN"]
+          title="Automation alert: Publisher failure"
+          h={"Authorization":f"Bearer {token}","Accept":"application/vnd.github+json"}
+          items=requests.get(f"https://api.github.com/repos/{repo}/issues",headers=h,params={"state":"open","labels":"automation","per_page":100},timeout=20).json()
+          if not any(i.get("title")==title for i in items if isinstance(i,dict)):
+              requests.post(f"https://api.github.com/repos/{repo}/issues",headers=h,json={"title":title,"body":"Scheduled Publisher failed. The due Queue item was not finalized; recovery will retry it on the next run.","labels":["automation","health"]},timeout=20).raise_for_status()
+          PY
 
       - name: Recovery check
         run: |
