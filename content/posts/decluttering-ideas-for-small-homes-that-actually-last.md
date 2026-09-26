@@ -246,8 +246,6 @@ After two weeks, review it. If it makes daily life easier, keep it. If it create
 
 A small home also benefits from intentionally empty space. An uncrowded drawer, clear corner, or partly empty shelf is not wasted capacity. It gives you room to put things away, handle temporary changes, and notice when a category is growing again.
 
-![Calm organized living space with uncluttered surfaces](https://images.pexels.com/photos/6487941/pexels-photo-6487941.jpeg?auto=compress&cs=tinysrgb&w=1600)
-
 ### Frequently Asked Questions
 
 **How do I start decluttering a small home without making a bigger mess?**
