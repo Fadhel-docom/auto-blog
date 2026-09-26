@@ -2172,49 +2172,12 @@ def fetch_all_images(
                 file=sys.stderr,
             )
 
-            if (
-                images
-                and failed_images
-                <= MAX_ALLOWED_FAILED_IMAGES
-            ):
-                source = images[
-                    (
-                        failed_images - 1
-                    )
-                    % len(images)
-                ]
-
-                try:
-                    reused = (
-                        create_reused_image(
-                            source,
-                            destination,
-                            index,
-                        )
-                    )
-
-                    images.append(
-                        reused
-                    )
-
-                    print(
-                        f"WARNING: image {index} "
-                        "was reused from a "
-                        "previous successful image."
-                    )
-
-                except Exception as reuse_exc:
-                    print(
-                        "ERROR: reuse failed: "
-                        f"{reuse_exc}",
-                        file=sys.stderr,
-                    )
-
-            if failed_images >= 4:
-                raise RuntimeError(
-                    "Four image failures "
-                    "are considered fatal."
-                )
+            # Never reuse another article's image to satisfy the six-image
+            # requirement. A reused image is a duplicate even if its local
+            # filename is different. Fail closed and let the publisher retry.
+            raise RuntimeError(
+                f"Image {index} failed; refusing duplicate-image fallback: {exc}"
+            )
 
     if len(images) != IMAGE_COUNT:
         raise RuntimeError(
@@ -2224,11 +2187,8 @@ def fetch_all_images(
         )
 
     if failed_images:
-        print("")
-        print(
-            f"WARNING: {failed_images} "
-            "image(s) required controlled "
-            "fallback/reuse."
+        raise RuntimeError(
+            f"{failed_images} image(s) failed; no duplicate fallback is allowed."
         )
 
     # Only genuinely downloaded Pexels images
