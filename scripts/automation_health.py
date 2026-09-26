@@ -54,18 +54,25 @@ def runs():
     out={}
     for run in data.get("workflow_runs",[]):
         name=run.get("name","")
-        if name in {"Scheduled Publisher","Health Monitor","Traffic Report","IndexNow URL Discovery","Deploy Hugo site to Pages"} and name not in out:
+        if name in {"Scheduled Publisher","Health Monitor","Traffic Report"} and name not in out:
             out[name]={"id":run.get("id"),"status":run.get("status"),"conclusion":run.get("conclusion"),"created_at":run.get("created_at"),"updated_at":run.get("updated_at"),"url":run.get("html_url")}
     return out
 
-def quality_gate(latest_publisher):
-    if not latest_publisher: return {"status":"UNAVAILABLE"}
+def publisher_steps(latest_publisher):
+    if not latest_publisher: return {}
     jobs=gh(f"/repos/{REPO}/actions/runs/{latest_publisher['id']}/jobs?per_page=100")
+    result={}
     for job in jobs.get("jobs",[]):
         for step in job.get("steps",[]):
-            if "quality gate" in str(step.get("name","")).lower() or "content safety gate" in str(step.get("name","")).lower():
-                return {"status":step.get("conclusion") or step.get("status"),"name":step.get("name"),"job":job.get("name"),"run_id":latest_publisher["id"]}
-    return {"status":"UNAVAILABLE"}
+            name=str(step.get("name",""))
+            low=name.lower()
+            if any(k in low for k in ["quality gate","deploy github pages","submit indexnow","verify live article","publish hugo post","recovery check"]):
+                result[name]={"status":step.get("conclusion") or step.get("status"),"job":job.get("name")}
+    return result
+
+def quality_gate(latest_publisher):
+    steps=publisher_steps(latest_publisher)
+    return steps.get("Quality Gate",{"status":"UNAVAILABLE"})
 
 def traffic():
     if not GOAT_KEY or not GOAT_SITE: return {"status":"UNAVAILABLE","reason":"missing GOATCOUNTER_API_KEY" if not GOAT_KEY else "missing GOATCOUNTER_SITE"}
@@ -96,14 +103,19 @@ def main():
         report["queue"]=queue_check()
         report["runs"]=runs()
         pub=report["runs"].get("Scheduled Publisher")
+        report["publisher_steps"]=publisher_steps(pub)
         report["quality_gate"]=quality_gate(pub)
         report["traffic"]=traffic()
         if any(not x.get("ok") for x in report["site_health"].values()): report["issues"].append({"type":"Site Health failure","site_health":report["site_health"]})
         if report["queue"].get("overdue"): report["issues"].append({"type":"Due article not published","overdue":report["queue"]["overdue"]})
         if report["quality_gate"].get("status")=="failure": report["issues"].append({"type":"Quality Gate failure","quality_gate":report["quality_gate"]})
-        for wf in ["Scheduled Publisher","Deploy Hugo site to Pages","IndexNow URL Discovery"]:
-            run=report["runs"].get(wf)
-            if run and run.get("conclusion")=="failure": report["issues"].append({"type":f"{wf} failure","run":run})
+        run=report["runs"].get("Scheduled Publisher")
+        if run and run.get("conclusion")=="failure": report["issues"].append({"type":"Scheduled Publisher failure","run":run})
+        for step_name in ["Quality Gate","Deploy GitHub Pages","Verify live article","Recovery check"]:
+            step=report.get("publisher_steps",{}).get(step_name)
+            if step and step.get("status")=="failure": report["issues"].append({"type":f"{step_name} failure","step":step})
+        idx=report.get("publisher_steps",{}).get("Submit IndexNow")
+        if idx and idx.get("status")=="failure": report["issues"].append({"type":"IndexNow failure","step":idx})
         if report["traffic"].get("status")=="UNAVAILABLE": report["issues"].append({"type":"GoatCounter unavailable","traffic":report["traffic"]})
         report["alerts"]=create_alerts(report["issues"])
     except Exception as exc:
