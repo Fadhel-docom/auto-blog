@@ -202,21 +202,44 @@ def save(a,topic,provider):
     print(f"Words: {a['word_count']} | H2: 10 | Images planned: 6")
 
 def _merge_article(base, incoming):
-    """Merge a continuation into one shared article instead of restarting from zero."""
+    """Merge one shared draft by H2 section, keeping the richer version."""
     if not base:
         return incoming
     merged=dict(base)
     old=base.get("content_markdown","").strip()
     new=incoming.get("content_markdown","").strip()
     if new:
-        # A complete review replaces the shared draft; a partial continuation
-        # is appended. This prevents the same 10 sections being duplicated.
-        incoming_h2=len(re.findall(r"^##\s+.+$",new,re.M))
-        existing_h2=len(re.findall(r"^##\s+.+$",old,re.M))
-        if not old or new.startswith(old) or incoming_h2 >= 8 or incoming_h2 >= existing_h2:
+        pattern=r"(?m)^##\\s+([^\\n]+)\\n"
+        def sections(text):
+            matches=list(re.finditer(pattern,text))
+            out=[]
+            if not matches:
+                return out
+            prefix=text[:matches[0].start()].strip()
+            for i,m in enumerate(matches):
+                body_start=m.end()
+                body_end=matches[i+1].start() if i+1<len(matches) else len(text)
+                out.append((m.group(1).strip(), text[body_start:body_end].strip()))
+            return prefix,out
+        old_prefix,old_sections=sections(old)
+        new_prefix,new_sections=sections(new)
+        if old_sections and new_sections:
+            old_map={h.lower():(h,b) for h,b in old_sections}
+            new_map={h.lower():(h,b) for h,b in new_sections}
+            ordered=[]
+            for key in list(old_map)+[k for k in new_map if k not in old_map]:
+                if key not in old_map and key not in new_map:
+                    continue
+                h1,b1=old_map.get(key,(None,""))
+                h2,b2=new_map.get(key,(None,""))
+                if b2 and len(re.findall(r"\\b\\w+\\b",b2)) > len(re.findall(r"\\b\\w+\\b",b1)):
+                    ordered.append((h2,b2))
+                else:
+                    ordered.append((h1 or h2,b1 or b2))
+            prefix=old_prefix or new_prefix
+            merged["content_markdown"]=(prefix+"\\n\\n" if prefix else "")+"\\n\\n".join("## "+h+"\\n\\n"+b for h,b in ordered)
+        elif len(re.findall(r"\\b\\w+\\b",new)) > len(re.findall(r"\\b\\w+\\b",old)):
             merged["content_markdown"]=new
-        else:
-            merged["content_markdown"]=old+"\n\n"+new
     for key in ["keyword","specific_angle","title","meta_description","image_queries","tags","h2_headings","faq"]:
         if incoming.get(key):
             merged[key]=incoming[key]
