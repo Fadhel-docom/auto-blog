@@ -1,44 +1,48 @@
-name: Daily Auto Blog
+name: Scheduled Publisher
 
 on:
-  push:
-    branches: ["main"]
-    paths:
-      - "scripts/openai_generate_post.py"
   schedule:
-    - cron: "0 5 * * *"
-    - cron: "0 17 * * *"
+    - cron: "7,17,27,37,47,57 * * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: "daily-auto-blog"
+  group: "scheduled-publisher"
   cancel-in-progress: false
 
 jobs:
-  generate-and-publish:
+  publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      SITE_URL: "https://fadhel-docom.github.io/auto-blog"
+      INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           fetch-depth: 0
-      - name: Set up Python 3.11
+
+      - name: Setup Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: "3.11"
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           python -m pip install requests json-repair
           if [ -f scripts/requirements.txt ]; then python -m pip install -r scripts/requirements.txt; fi
-      - name: Configure Python path
-        run: echo "PYTHONPATH=$PWD" >> "$GITHUB_ENV"
-      - name: Generate article with primary and free fallback
-        if: "!startsWith(github.event.head_commit.message, 'Manual publish:')"
+
+      - name: Select due article
+        run: python scripts/queue_manager.py due
+
+      - name: Generate due article
+        if: hashFiles('.automation/due_keyword') != ''
         env:
+          TARGET_KEYWORD: $(cat .automation/due_keyword)
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: "gpt-5.6"
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
@@ -46,53 +50,131 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           GROQ_MODEL: "openai/gpt-oss-120b"
         run: python scripts/openai_generate_post.py
-      - name: Normalize article slug
+
+      - name: Normalize slug
+        if: hashFiles('.automation/due_keyword') != ''
         run: python scripts/normalize_slug.py
+
       - name: Fetch six competitive images
+        if: hashFiles('.automation/due_keyword') != ''
         env:
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: python scripts/competitive_fetch.py
-      - name: Run competitive SEO check
+
+      - name: Update image usage ledger
+        if: hashFiles('.automation/due_keyword') != ''
+        run: python scripts/sync_used_images.py
+
+      - name: Competitive SEO check
+        if: hashFiles('.automation/due_keyword') != ''
         run: python scripts/competitive_seo_check.py
+
       - name: Publish Hugo post
+        if: hashFiles('.automation/due_keyword') != ''
         env:
-          SITE_URL: ${{ secrets.SITE_URL }}
+          DEFER_QUEUE_STATUS: "1"
         run: python scripts/competitive_publish.py
-      - name: Normalize post categories
+
+      - name: Normalize categories
+        if: hashFiles('.automation/due_keyword') != ''
         run: python scripts/fix_post_categories.py
-      - name: Final competitive SEO check
+
+      - name: Final SEO check
+        if: hashFiles('.automation/due_keyword') != ''
         run: python scripts/competitive_seo_check.py
-      - name: Hard content safety gate
+
+      - name: Quality Gate
+        if: hashFiles('.automation/due_keyword') != ''
         run: python scripts/publish_guard.py
-      - name: Install Hugo 0.128.0 Extended
+
+      - name: Prepare IndexNow key file
+        if: hashFiles('.automation/due_keyword') != '' && env.INDEXNOW_KEY != ''
+        run: |
+          test "$INDEXNOW_KEY" = "$(printf '%s' "$INDEXNOW_KEY" | tr -d -c 'A-Za-z0-9')"
+          printf '%s' "$INDEXNOW_KEY" > "static/$INDEXNOW_KEY.txt"
+
+      - name: Install Hugo
+        if: hashFiles('.automation/due_keyword') != ''
         uses: peaceiris/actions-hugo@2752ce1d29631191ea3f27c23495fa06139a5b78
         with:
           hugo-version: "0.128.0"
           extended: true
-      - name: Build Hugo site
+
+      - name: Build site
+        if: hashFiles('.automation/due_keyword') != ''
         run: hugo --gc --minify
+
       - name: Verify Hugo output
+        if: hashFiles('.automation/due_keyword') != ''
         run: |
-          test -d public || (echo "ERROR: Hugo did not create public/" && exit 1)
-          test -f public/index.html || (echo "ERROR: public/index.html is missing" && exit 1)
-          echo "Hugo build verified."
-      - name: Configure Git
+          test -f public/index.html
+          test -f public/sitemap.xml
+          test -f public/index.xml
+          echo "Hugo output verified: homepage + sitemap + RSS."
+
+      - name: Commit source state
+        if: hashFiles('.automation/due_keyword') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-      - name: Commit source changes
-        run: |
-          git add article.json keywords.csv content/posts/ static/images/ data/
-          if git diff --cached --quiet; then
-            echo "No source changes detected."
-          else
-            git commit -m "Publish twice-daily editorial post"
-            git push
-          fi
-      - name: Deploy to GitHub Pages
+          git add article.json keywords.csv content/posts/ static/images/ static/ data/ logs/
+          git commit -m "Publish scheduled editorial post"
+          git push
+
+      - name: Deploy GitHub Pages
+        if: hashFiles('.automation/due_keyword') != ''
         uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./public
           force_orphan: true
+
+      - name: Verify live article
+        if: hashFiles('.automation/due_keyword') != ''
+        run: |
+          python - <<'PY'
+          import json, os, requests
+          a=json.load(open("article.json",encoding="utf-8"))
+          url=f'{os.environ["SITE_URL"].rstrip("/")}/posts/{a["slug"]}/'
+          r=requests.get(url,timeout=30)
+          if not (200 <= r.status_code < 400):
+              raise SystemExit(f"Pages verification failed: HTTP {r.status_code} {url}")
+          print(f"Live article verified: {url}")
+          PY
+
+      - name: Submit IndexNow
+        if: hashFiles('.automation/due_keyword') != ''
+        continue-on-error: true
+        run: python scripts/indexnow_submit.py
+
+      - name: Finalize queue after Pages verification
+        if: hashFiles('.automation/due_keyword') != ''
+        run: |
+          python scripts/queue_manager.py finalize "$(cat .automation/due_keyword)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add keywords.csv logs/indexnow.json
+          git commit -m "Finalize published queue item"
+          git push
+
+      - name: Recovery check
+        run: |
+          python scripts/queue_manager.py status
+          python - <<'PY'
+          import csv
+          from datetime import datetime, timezone
+          rows=list(csv.DictReader(open("keywords.csv",encoding="utf-8-sig",newline="")))
+          now=datetime.now(timezone.utc)
+          due=[]
+          for r in rows:
+              if r.get("Status","").strip().lower() in {"pending","queued","scheduled","failed"} and r.get("publish_at","").strip():
+                  try:
+                      dt=datetime.fromisoformat(r["publish_at"].replace("Z","+00:00"))
+                      if dt.tzinfo is None: dt=dt.replace(tzinfo=timezone.utc)
+                      if dt<=now: due.append(r.get("Keyword",""))
+                  except ValueError: due.append(r.get("Keyword",""))
+          if due:
+              raise SystemExit("DUE_QUEUE_REMAINS: " + ", ".join(due))
+          print("Recovery check passed: no due articles remain.")
+          PY
