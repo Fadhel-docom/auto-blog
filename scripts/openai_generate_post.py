@@ -247,9 +247,9 @@ def _call_cooperative(name, fn, model, topic, draft, stage):
 
 def main():
     topic=load_topic()
-    # One shared draft moves through every available provider. A later provider
-    # continues the same article when an earlier provider stops, rather than
-    # discarding the work and generating another unrelated article.
+    # Cooperative chain: every available provider receives the same working
+    # article. A later provider continues missing sections or reviews a complete
+    # draft. No provider is treated as an isolated restart.
     providers=[
         ("OpenAI",call_openai,None, bool(os.getenv("OPENAI_API_KEY"))),
         ("Groq",call_groq,GROQ_MODEL, bool(os.getenv("GROQ_API_KEY"))),
@@ -257,7 +257,7 @@ def main():
     ]
 
     draft=None
-    completed_provider=None
+    successful_stages=0
     for name,fn,model,available in providers:
         if not available:
             print(f"{name} unavailable; cooperative chain will continue.",file=sys.stderr)
@@ -267,34 +267,37 @@ def main():
         if name=="OpenRouter Free":
             models=discover_openrouter_free_models() or ["openrouter/free"]
 
-        provider_done=False
+        provider_finished=False
         for chosen_model in models:
             for attempt in range(3):
                 try:
-                    stage=(1 if draft is None else 2)+attempt
+                    stage=successful_stages+1
                     a=_call_cooperative(name,fn,chosen_model,topic,draft,stage)
                     candidate=_merge_article(draft,a)
                     try:
                         validate(candidate)
-                    except Exception as validation_error:
-                        # Keep the partial work for the next provider. This is
-                        # the key difference from the old fallback: no restart.
                         draft=candidate
+                        provider_finished=True
+                        successful_stages += 1
+                        print(f"{name} contributed successfully to the shared editorial draft.")
+                        break
+                    except Exception as validation_error:
+                        draft=candidate
+                        print(f"{name} contributed partial work; next stage will continue it: {validation_error}",file=sys.stderr)
                         raise validation_error
-                    save(candidate,topic,name + (f" ({chosen_model})" if chosen_model else ""))
-                    completed_provider=name
-                    print(f"Cooperative editorial chain completed by {completed_provider}.")
-                    return
                 except Exception as exc:
                     print(f"{name} cooperative stage attempt {attempt+1} failed: {exc}",file=sys.stderr)
-                    # A parseable partial response remains in draft and is passed
-                    # forward; a non-parseable response cannot be safely merged.
                     continue
+            if provider_finished:
+                break
 
     if draft:
-        raise RuntimeError("Cooperative editorial chain exhausted providers before the shared draft passed validation.")
-    raise RuntimeError("No editorial provider was available; no article published.")
+        validate(draft)
+        save(draft,topic,"Cooperative chain")
+        print(f"Cooperative editorial chain completed through {successful_stages} provider stage(s).")
+        return
 
+    raise RuntimeError("No editorial provider was available; no article published.")
 if __name__=="__main__":
     try: main()
     except Exception as exc:
