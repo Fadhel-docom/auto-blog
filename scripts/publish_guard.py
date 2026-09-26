@@ -6,8 +6,10 @@ thin, duplicated, or legacy low-quality output before the workflow commits.
 It does not rewrite content and never sends traffic.
 """
 from pathlib import Path
+import hashlib
 import re
 import sys
+from datetime import datetime
 
 POSTS = Path("content/posts")
 MIN_WORDS = 1500
@@ -34,6 +36,28 @@ def field(fm, name):
     m = re.search(rf"^{re.escape(name)}\s*=\s*(.+)$", fm, re.M)
     return m.group(1).strip() if m else ""
 
+def post_date(text):
+    fm, _ = frontmatter(text)
+    raw = quoted_value(field(fm, "date"))
+    try:
+        return datetime.fromisoformat(raw.replace("Z", "+00:00")).timestamp()
+    except Exception:
+        return 0.0
+
+def local_image_hashes(post):
+    hashes = {}
+    for raw in re.findall(r"!\[[^\]]*\]\(([^)]+)\)", post):
+        value = raw.strip()
+        if not value.startswith("/images/"):
+            continue
+        path = Path("static") / value.lstrip("/")
+        if path.exists() and path.is_file():
+            try:
+                hashes[value] = hashlib.sha256(path.read_bytes()).hexdigest()
+            except OSError:
+                pass
+    return hashes
+
 def quoted_value(v):
     m = re.match(r'^[\"\'](.*)[\"\']$', v)
     return m.group(1) if m else v
@@ -55,8 +79,8 @@ def main():
         print("CONTENT GATE: no posts found")
         return 0
 
-    # Validate the newest generated post only.
-    post = max(posts, key=lambda p: p.stat().st_mtime)
+    # GitHub Actions checkout mtimes are not editorial dates.
+    post = max(posts, key=lambda p: post_date(p.read_text(encoding="utf-8")))
     text = post.read_text(encoding="utf-8")
     fm, body = frontmatter(text)
 
@@ -79,12 +103,25 @@ def main():
         errors.append(f"only {words} body words; minimum is {MIN_WORDS}")
 
     images = len(re.findall(r"!\[[^\]]*\]\([^\)]+\)", body))
-    if images < MIN_IMAGES:
-        errors.append(f"only {images} inline images; minimum is {MIN_IMAGES}")
+    if images < 6:
+        errors.append(f"only {images} inline images; minimum is 6")
 
     image_urls = re.findall(r"!\[[^\]]*\]\(([^\)]+)\)", body)
     if len(set(image_urls)) != len(image_urls):
         errors.append("duplicate inline image URL detected")
+
+    current_hashes = local_image_hashes(body)
+    all_hashes = {}
+    for other in posts:
+        if other == post:
+            continue
+        other_text = other.read_text(encoding="utf-8")
+        for image_url, digest in local_image_hashes(other_text).items():
+            all_hashes.setdefault(digest, other.name)
+    for image_url, digest in current_hashes.items():
+        if digest in all_hashes:
+            errors.append(f"image file is byte-identical to {all_hashes[digest]}: {image_url}")
+            break
 
     if images > 0 and image_urls:
         for image_url in image_urls:
