@@ -1,0 +1,192 @@
+{
+  "timestamp": "2026-09-26T17:53:14+00:00",
+  "repository": "Fadhel-docom/auto-blog",
+  "failed_run_id": 36260570483,
+  "run": {
+    "status": "completed",
+    "conclusion": "failure",
+    "html_url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36260570483",
+    "head_sha": "aa260b3685ee4c7f7490d53195d5f9ddf7faabe5"
+  },
+  "diagnosis": {
+    "category": "rate_limit",
+    "confidence": 1.0,
+    "scores": {
+      "keyword_missing": {
+        "matches": [],
+        "score": 0
+      },
+      "json_failure": {
+        "matches": [],
+        "score": 0
+      },
+      "rate_limit": {
+        "matches": [
+          "rate limit reached",
+          "too many requests",
+          "429",
+          "rate limit"
+        ],
+        "score": 4
+      },
+      "images": {
+        "matches": [],
+        "score": 0
+      },
+      "seo_check": {
+        "matches": [],
+        "score": 0
+      },
+      "hugo": {
+        "matches": [
+          "hugo"
+        ],
+        "score": 1
+      },
+      "internal_links": {
+        "matches": [
+          "404"
+        ],
+        "score": 1
+      }
+    }
+  },
+  "repair": {
+    "category": "rate_limit",
+    "confidence": 1.0,
+    "actions": [
+      {
+        "action": "wait_before_retry",
+        "seconds": 90
+      },
+      {
+        "action": "daily_workflow_dispatched"
+      }
+    ]
+  },
+  "recent_runs": [
+    {
+      "id": 36260696261,
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-09-26T17:54:47Z"
+    },
+    {
+      "id": 36260570483,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-26T17:52:33Z"
+    },
+    {
+      "id": 36260187994,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-26T17:46:02Z"
+    },
+    {
+      "id": 36260061906,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-26T17:43:53Z"
+    },
+    {
+      "id": 36259573895,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-26T17:35:36Z"
+    },
+    {
+      "id": 36259445148,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-26T17:33:25Z"
+    },
+    {
+      "id": 36258669667,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-26T17:20:19Z"
+    },
+    {
+      "id": 36258540273,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-26T17:18:08Z"
+    },
+    {
+      "id": 36257834497,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-26T17:06:23Z"
+    },
+    {
+      "id": 36257699390,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-26T17:04:10Z"
+    },
+    {
+      "id": 36257272120,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-26T16:56:57Z"
+    },
+    {
+      "id": 36257145821,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-26T16:54:42Z"
+    },
+    {
+      "id": 36256623120,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-26T16:45:52Z"
+    },
+    {
+      "id": 36255939138,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-26T16:34:28Z"
+    },
+    {
+      "id": 36255115644,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-26T16:20:39Z"
+    },
+    {
+      "id": 36254161813,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-26T16:04:41Z"
+    },
+    {
+      "id": 36253565273,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-26T15:54:33Z"
+    },
+    {
+      "id": 36253059091,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-26T15:45:41Z"
+    },
+    {
+      "id": 36252408052,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-26T15:34:25Z"
+    },
+    {
+      "id": 36251530777,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-26T15:19:25Z"
+    }
+  ],
+  "consecutive_failures": 19,
+  "issue_created": true,
+  "dry_run": false
+}
