@@ -11,6 +11,7 @@ REPO=os.getenv("GITHUB_REPOSITORY","Fadhel-docom/auto-blog")
 TOKEN=os.getenv("GITHUB_TOKEN","").strip()
 GOAT_SITE=os.getenv("GOATCOUNTER_SITE","").strip()
 GOAT_KEY=os.getenv("GOATCOUNTER_API_KEY","").strip()
+INDEXNOW_KEY=os.getenv("INDEXNOW_KEY","").strip()
 OUT=ROOT/"logs"/"automation_health.json"
 QUEUE=ROOT/"keywords.csv"
 
@@ -106,6 +107,8 @@ def main():
         report["publisher_steps"]=publisher_steps(pub)
         report["quality_gate"]=quality_gate(pub)
         report["traffic"]=traffic()
+        report["secrets"]={"INDEXNOW_KEY":"OK" if INDEXNOW_KEY else "MISSING","GOATCOUNTER_API_KEY":"OK" if GOAT_KEY else "MISSING"}
+        if not INDEXNOW_KEY: report["issues"].append({"type":"Secret missing","secret":"INDEXNOW_KEY"})
         if any(not x.get("ok") for x in report["site_health"].values()): report["issues"].append({"type":"Site Health failure","site_health":report["site_health"]})
         if report["queue"].get("overdue"): report["issues"].append({"type":"Due article not published","overdue":report["queue"]["overdue"]})
         if report["quality_gate"].get("status")=="failure": report["issues"].append({"type":"Quality Gate failure","quality_gate":report["quality_gate"]})
