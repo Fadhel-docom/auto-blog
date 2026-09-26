@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Editorial fallback hardened: structured-output first, parser-safe retry.
+# Editorial fallback hardened: structured-output first, parser-safe retry.\n# Provider routing is dynamic: OpenAI -> Groq -> discovered OpenRouter free models.
 # Multiple free-model fallback is enabled for provider resilience.
 import csv,json,os,re,sys
 from datetime import datetime,timezone
