@@ -13,7 +13,7 @@ from datetime import datetime
 
 POSTS = Path("content/posts")
 MIN_WORDS = 1500
-MIN_IMAGES = 5
+MIN_IMAGES = 6
 MIN_H2 = 8
 MIN_FAQ = 4
 
@@ -44,18 +44,31 @@ def post_date(text):
     except Exception:
         return 0.0
 
+def normalize_image_ref(value):
+    value = str(value or "").strip()
+    value = value.split("?", 1)[0].split("#", 1)[0]
+    value = value.replace("\\", "/")
+    if value.startswith("/images/"):
+        return value
+    if "/images/" in value:
+        return "/images/" + value.rsplit("/images/", 1)[1]
+    if value.startswith("images/"):
+        return "/" + value
+    return value
+
 def local_image_hashes(post):
     hashes = {}
     for raw in re.findall(r"!\[[^\]]*\]\(([^)]+)\)", post):
-        value = raw.strip()
+        value = normalize_image_ref(raw)
         if not value.startswith("/images/"):
             continue
         path = Path("static") / value.lstrip("/")
-        if path.exists() and path.is_file():
-            try:
-                hashes[value] = hashlib.sha256(path.read_bytes()).hexdigest()
-            except OSError:
-                pass
+        if not path.exists() or not path.is_file():
+            continue
+        try:
+            hashes[value] = hashlib.sha256(path.read_bytes()).hexdigest()
+        except OSError:
+            pass
     return hashes
 
 def quoted_value(v):
