@@ -40,6 +40,10 @@ DRY_RUN = os.getenv("AUTO_REPAIR_DRY_RUN", "").lower() in {
     "yes",
 }
 
+AUTONOMOUS_PUBLISHING_ENABLED = os.getenv(
+    "AUTONOMOUS_PUBLISHING_ENABLED", "false"
+).lower() in {"1", "true", "yes"}
+
 
 def utc_now() -> str:
     return (
@@ -699,13 +703,13 @@ def repair_failure(
         })
 
     elif category == "rate_limit":
+        # Provider rate limits are availability conditions. Sleeping inside
+        # a runner wastes compute and does not improve provider availability.
         actions.append({
-            "action": "wait_before_retry",
-            "seconds": RATE_LIMIT_WAIT_SECONDS,
+            "action": "defer_provider_retry",
+            "reason": "Provider rate limit detected; no generation call will be made.",
+            "cooldown_seconds": RATE_LIMIT_WAIT_SECONDS,
         })
-
-        if not DRY_RUN:
-            time.sleep(RATE_LIMIT_WAIT_SECONDS)
 
     elif category == "images":
         actions.append({
@@ -741,12 +745,16 @@ def repair_failure(
         )
 
     if category != "unknown":
-        if not DRY_RUN:
+        if AUTONOMOUS_PUBLISHING_ENABLED and not DRY_RUN:
             dispatch_daily()
-
-        actions.append({
-            "action": "daily_workflow_dispatched",
-        })
+            actions.append({
+                "action": "daily_workflow_dispatched",
+            })
+        else:
+            actions.append({
+                "action": "daily_workflow_not_dispatched",
+                "reason": "Publishing is paused by the stabilization gate.",
+            })
 
     return {
         "category": category,
