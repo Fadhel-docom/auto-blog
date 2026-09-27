@@ -1,0 +1,9 @@
+{
+  "generation_cooldown": {
+    "storage ideas for small apartments": {
+      "until": "2026-09-27T02:58:19+00:00",
+      "started_at": "2026-09-27T01:58:19+00:00",
+      "reason": "Provider rate limits exhausted; previous draft was below the minimum word-count gate. Cooldown prevents repeated generation attempts."
+    }
+  }
+}
