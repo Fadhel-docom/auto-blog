@@ -21,6 +21,8 @@ A small home does not need more storage every time it feels crowded. Often, the 
 
 The most useful decluttering ideas for small homes therefore do two jobs: they remove things you do not need and make the things you keep easier to manage. This guide uses a practical system you can test without emptying the whole house or buying a room full of organizers.
 
+![Bright, organized small-home interior after a decluttering reset](https://images.pexels.com/photos/6487941/pexels-photo-6487941.jpeg?auto=compress&cs=tinysrgb&w=1600)
+
 ## Start With a 15-Minute Decluttering Audit
 
 Do not begin by pulling everything out of a closet. That can create a larger mess before you know what problem you are solving.
