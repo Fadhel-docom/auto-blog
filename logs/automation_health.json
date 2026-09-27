@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-27T15:48:22+00:00",
+  "timestamp": "2026-09-27T16:03:02+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "PAUSED",
@@ -45,12 +45,12 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 36330889717,
+      "id": 36331772499,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-09-27T15:48:13Z",
-      "updated_at": "2026-09-27T15:48:17Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36330889717"
+      "created_at": "2026-09-27T16:02:54Z",
+      "updated_at": "2026-09-27T16:02:57Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36331772499"
     },
     "Traffic Report": {
       "id": 36319606817,
@@ -59,19 +59,10 @@
       "created_at": "2026-09-27T12:37:27Z",
       "updated_at": "2026-09-27T12:37:47Z",
       "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36319606817"
-    },
-    "Scheduled Publisher": {
-      "id": 36304067975,
-      "status": "completed",
-      "conclusion": "cancelled",
-      "created_at": "2026-09-27T07:45:10Z",
-      "updated_at": "2026-09-27T08:34:18Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36304067975"
     }
   },
   "quality_gate": {
-    "status": "skipped",
-    "job": "publish"
+    "status": "UNAVAILABLE"
   },
   "traffic": {
     "status": "OK",
@@ -115,36 +106,7 @@
   },
   "alerts": [],
   "issues": [],
-  "publisher_steps": {
-    "OpenAI Editorial Quality Gate": {
-      "status": "skipped",
-      "job": "publish"
-    },
-    "Publish Hugo post": {
-      "status": "skipped",
-      "job": "publish"
-    },
-    "Quality Gate": {
-      "status": "skipped",
-      "job": "publish"
-    },
-    "Deploy GitHub Pages": {
-      "status": "skipped",
-      "job": "publish"
-    },
-    "Verify live article": {
-      "status": "skipped",
-      "job": "publish"
-    },
-    "Submit IndexNow": {
-      "status": "skipped",
-      "job": "publish"
-    },
-    "Recovery check": {
-      "status": "skipped",
-      "job": "publish"
-    }
-  },
+  "publisher_steps": {},
   "secrets": {
     "INDEXNOW_KEY": "OK",
     "GOATCOUNTER_API_KEY": "OK"
