@@ -4,14 +4,7 @@ on:
   schedule:
     - cron: "0 */12 * * *"
 
-  push:
-    branches: [main]
-    paths:
-      - "content/posts/**"
-      - "layouts/**"
-      - "assets/**"
-      - "static/**"
-      - "scripts/ui_checker.py"
+  # Push-triggered runs are paused during stabilization.
 
   workflow_dispatch:
 
