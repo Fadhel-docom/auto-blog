@@ -78,7 +78,8 @@ def due_rows(rows):
     for i,row in enumerate(rows):
         status=str(row.get("Status","")).strip().lower()
         dt=parse_dt(row.get("publish_at"))
-        if status in DUE_STATUSES and dt and dt <= current:
+        keyword=str(row.get("Keyword","")).strip()
+        if status in DUE_STATUSES and dt and dt <= current and keyword and not cooldown_active(keyword):
             result.append((dt,i,row))
     result.sort(key=lambda x:(x[0],str(x[2].get("Keyword","")).lower()))
     return result
