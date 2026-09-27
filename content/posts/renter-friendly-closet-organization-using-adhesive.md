@@ -59,7 +59,7 @@ Combining hooks and tension rods lets you carve out functional zones without per
 - Mark the existing built‑in rod (if any) and any shelves.
 - Indicate where you will place each hook and rod.
 
-[Read more about Bedroom Organization: Step‑by‑Step Under‑Bed Storage Makeover for a Studio Apartment with 48‑Inch Clearance](../bedroom-organization-stepbystep-underbed-storage-makeover-for-a-studio-apartment-with-48inch-clearance/)
+[Read more about Bedroom Organization: Step‑by‑Step Under‑Bed Storage Makeover for a Studio Apartment with 48‑Inch Clearance](../bedroom-organization-stepbystep-48inch-clearance/)
 
 **Step 2 - Prioritize High‑Use Items**
 - Keep everyday clothing within arm’s reach (about 18‑24 inches from the floor).
