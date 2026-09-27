@@ -84,7 +84,7 @@ You do not need labels for everything. You need a location that is obvious enoug
 
 If an item repeatedly lands on the same surface, treat that as useful information. Either give it a proper home there or move its storage closer to the routine that uses it.
 
-For more small-space storage ideas, see our guide to [small apartment storage ideas](../small-apartment-organization-maximizing-storage-in-a-350sqft/).
+For more small-space storage ideas, use the storage-zone method described earlier in this article.
 
 ## Set Physical Limits for Problem Categories
 
@@ -148,7 +148,7 @@ A container that fits the shelf width can still be a bad choice if it blocks the
 
 Leave some empty space as working room. A closet filled to 100 percent capacity may look efficient, but it usually becomes harder to maintain.
 
-For another practical approach, see [small closet organization ideas](../renter-friendly-closet-organization-using-adhesive/).
+For another practical approach, adapt the same zone-first method to closets and entryway storage.
 
 ![Small closet with organized belongings and accessible storage](https://images.pexels.com/photos/19980247/pexels-photo-19980247.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
