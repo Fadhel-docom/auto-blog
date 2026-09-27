@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import json, os, re, sys
+import json, os, re, sys, time
 from pathlib import Path
 import requests
 
@@ -26,9 +26,38 @@ def call(article):
             content_parts.append({'type':'text','text':f"IMAGE {item['index']} - query: {item.get('query','')}"})
             content_parts.append({'type':'image_url','image_url':{'url':url}})
     payload={'model':MODEL,'temperature':0.15,'messages':[{'role':'system','content':SYSTEM},{'role':'user','content':content_parts}],'response_format':{'type':'json_object'}}
-    r=requests.post('https://api.openai.com/v1/chat/completions',headers={'Authorization':'Bearer '+key,'Content-Type':'application/json'},json=payload,timeout=180)
-    r.raise_for_status()
-    c=(r.json().get('choices') or [{}])[0].get('message',{}).get('content','')
+    last_error=None
+    for attempt in range(4):
+        try:
+            r=requests.post(
+                'https://api.openai.com/v1/chat/completions',
+                headers={'Authorization':'Bearer '+key,'Content-Type':'application/json'},
+                json=payload,timeout=180
+            )
+            if r.status_code == 429:
+                retry_after=r.headers.get('Retry-After','')
+                try:
+                    delay=max(2,min(60,int(float(retry_after))))
+                except (ValueError,TypeError):
+                    delay=min(60,5*(2**attempt))
+                print(f'OpenAI transient 429; retry {attempt+1}/4 after {delay}s',file=sys.stderr)
+                last_error=RuntimeError('OpenAI rate limited (429)')
+                if attempt < 3:
+                    time.sleep(delay)
+                    continue
+                raise last_error
+            r.raise_for_status()
+            c=(r.json().get('choices') or [{}])[0].get('message',{}).get('content','')
+            break
+        except requests.RequestException as exc:
+            last_error=exc
+            if attempt >= 3:
+                raise
+            delay=min(60,5*(2**attempt))
+            print(f'OpenAI transient request error; retry {attempt+1}/4 after {delay}s',file=sys.stderr)
+            time.sleep(delay)
+    else:
+        raise last_error or RuntimeError('OpenAI request failed')
     if isinstance(c,list): c=''.join(x.get('text','') for x in c if isinstance(x,dict))
     if not c: raise RuntimeError('OpenAI returned empty review')
     return json.loads(c.strip().strip('`'))
