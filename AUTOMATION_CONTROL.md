@@ -43,12 +43,13 @@ Publishing can be re-enabled only after all are true:
 - Manager review: after material incidents and at least once/twice weekly.
 - Publishing optimization: only after the stability gate is green.
 
-## Current known blockers
-- Provider rate limits have caused repeated generation failures.
-- A scheduled publisher run was cancelled during image fetching.
-- One queue item remains overdue.
-- The latest content check reports fewer than the required six inline images.
-- Auto Repair previously retried provider failures too aggressively.
+## Current state / blockers
+- Provider rate limits caused repeated generation failures; retries are now bounded and publishing is paused.
+- One legacy Scheduled Publisher run remains pending from before the stabilization pause; it is not being treated as proof of successful publishing.
+- One queue item remains overdue by design while publishing is paused.
+- The latest article quality issue was repaired: it now has 6 unique inline images, 10 H2 sections, 5 FAQs, and 2,169 words.
+- Link Audit is green after repairing two broken internal links.
+- Auto Repair now handles failure/cancellation/timeout events and will not dispatch publishing while the stabilization gate is closed.
 
 ## Next phase
 1. Stabilize orchestration and failure handling.
