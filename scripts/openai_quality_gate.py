@@ -18,7 +18,14 @@ def call(article):
     images=[]
     for i,x in enumerate(article.get('images') or [],1):
         if isinstance(x,dict): images.append({'index':i,'query':x.get('query',''),'source_url':x.get('image_source_url',''),'width':x.get('width'),'height':x.get('height')})
-    payload={'model':MODEL,'temperature':0.15,'messages':[{'role':'system','content':SYSTEM},{'role':'user','content':json.dumps({'keyword':article.get('keyword',''),'angle':article.get('specific_angle',''),'title':article.get('title',''),'meta_description':article.get('meta_description',''),'word_count':words(article.get('content_markdown','')),'content_markdown':article.get('content_markdown',''),'hero_image':article.get('image',''),'images':images},ensure_ascii=False)}],'response_format':{'type':'json_object'}}
+    review_data={'keyword':article.get('keyword',''),'angle':article.get('specific_angle',''),'title':article.get('title',''),'meta_description':article.get('meta_description',''),'word_count':words(article.get('content_markdown','')),'content_markdown':article.get('content_markdown',''),'hero_image':article.get('image',''),'images':images}
+    content_parts=[{'type':'text','text':json.dumps(review_data,ensure_ascii=False)}]
+    for item in images:
+        url=str(item.get('source_url','')).strip()
+        if url.startswith('http://') or url.startswith('https://'):
+            content_parts.append({'type':'text','text':f"IMAGE {item['index']} - query: {item.get('query','')}"})
+            content_parts.append({'type':'image_url','image_url':{'url':url}})
+    payload={'model':MODEL,'temperature':0.15,'messages':[{'role':'system','content':SYSTEM},{'role':'user','content':content_parts}],'response_format':{'type':'json_object'}}
     r=requests.post('https://api.openai.com/v1/chat/completions',headers={'Authorization':'Bearer '+key,'Content-Type':'application/json'},json=payload,timeout=180)
     r.raise_for_status()
     c=(r.json().get('choices') or [{}])[0].get('message',{}).get('content','')
