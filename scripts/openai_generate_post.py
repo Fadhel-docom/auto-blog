@@ -18,6 +18,7 @@ OPENROUTER_MODEL=os.getenv("OPENROUTER_MODEL","openrouter/free")
 GROQ_MODEL=os.getenv("GROQ_MODEL","openai/gpt-oss-120b")
 OPENROUTER_FALLBACK_MODELS=[]
 MIN_WORDS,MAX_WORDS=1500,2300
+COOLDOWN_MINUTES=60
 
 SYSTEM="""You are the senior editor for Home Organization Ideas. Write a genuinely useful, human-sounding English article. Aim for 1900-2100 words so the final validated article safely stays within the required 1700-2300 range. Never mention AI, automation, models, providers, prompts, or generation. Never invent statistics, studies, expert claims, quotes, prices, or credentials. Avoid filler, repetition, vague advice, and keyword stuffing. Explain practical decisions, tradeoffs, examples, common mistakes, and maintenance. Return ONLY JSON with keys: keyword, specific_angle, title, meta_description, content_markdown, image_queries, tags, h2_headings, faq. content_markdown must be at least 1500 words (aim for 1900-2100) with exactly 10 H2 headings. image_queries exactly 6 distinct concrete Pexels-ready queries. faq 4-6 items. title <=68 characters. meta_description 140-158 characters."""
 
@@ -321,6 +322,26 @@ def _call_cooperative(name, fn, model, topic, draft, stage):
         return fn(prompt,relaxed_json=(stage>=2))
     return fn(prompt,relaxed_json=(stage>=2),model=model)
 
+def mark_generation_cooldown(topic, reason):
+    state_path=ROOT/"logs"/"publisher_state.json"
+    try:
+        state=json.loads(state_path.read_text(encoding="utf-8")) if state_path.exists() else {}
+    except Exception:
+        state={}
+    state.setdefault("generation_cooldown",{})[str(topic).strip().lower()]={
+        "until": (datetime.now(timezone.utc).replace(microsecond=0)).isoformat(),
+        "reason": str(reason)[:500],
+    }
+    from datetime import timedelta
+    until=datetime.now(timezone.utc).replace(microsecond=0)+timedelta(minutes=COOLDOWN_MINUTES)
+    state["generation_cooldown"][str(topic).strip().lower()]["until"]=until.isoformat()
+    state["generation_cooldown"][str(topic).strip().lower()]["started_at"]=datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+    state_path.parent.mkdir(parents=True,exist_ok=True)
+    tmp=state_path.with_suffix(".tmp")
+    tmp.write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    tmp.replace(state_path)
+    print(f"GENERATION COOLDOWN: {topic} until {until.isoformat()}",file=sys.stderr)
+
 def main():
     topic=load_topic()
     # One shared draft moves through every available provider. Providers are
@@ -361,35 +382,18 @@ def main():
                 # A provider has contributed; do not burn TPM with duplicate retries.
                 break
             except Exception as exc:
-                print(f"{name} cooperative attempt failed: {exc}",file=sys.stderr)
-                # Rate limits, invalid JSON, and unavailable models are provider
-                # failures; move to the next model/provider instead of retrying
-                # the same request three times.
+                message=str(exc)
+                print(f"{name} cooperative attempt failed: {message}",file=sys.stderr)
+                # A provider rate limit is a hard stop for that provider. Do not
+                # burn additional models/requests in the same run.
+                if "429" in message or "rate limit" in message.lower() or "too many requests" in message.lower() or "TPD" in message:
+                    break
                 continue
 
         if not provider_contributed:
             print(f"{name} could not contribute; continuing with the existing draft.",file=sys.stderr)
 
     if draft:
-        draft=_rescue_near_minimum(draft)
-        try:
-            validate(draft)
-        except Exception as validation_error:
-            # If the only available provider produced a partial draft, give Groq
-            # up to two continuation passes. Never lower the editorial gate.
-            if os.getenv("GROQ_API_KEY"):
-                for continuation in range(2):
-                    try:
-                        stage=successful_stages+continuation+1
-                        prompt=_collaboration_prompt(topic,draft,stage)
-                        candidate=call_groq(prompt,relaxed_json=True)
-                        draft=_merge_article(draft,candidate)
-                        validate(draft)
-                        print(f"Groq continuation completed the shared draft at stage {stage}.")
-                        break
-                    except Exception as exc:
-                        print(f"Groq continuation {continuation+1} failed: {exc}",file=sys.stderr)
-            validate(draft)
         draft=_rescue_near_minimum(draft)
         draft=_normalize_length(draft)
         validate(draft)
@@ -398,8 +402,10 @@ def main():
         return
 
     raise RuntimeError("No editorial provider produced a usable draft; no article published.")
+
 if __name__=="__main__":
     try: main()
     except Exception as exc:
+        mark_generation_cooldown(load_topic(), exc)
         print(f"GENERATION FAILED: {exc}",file=sys.stderr)
         sys.exit(1)
