@@ -31,5 +31,16 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Compile automation scripts
+        run: |
+          python -m py_compile \
+            scripts/openai_generate_post.py \
+            scripts/queue_manager.py \
+            scripts/publish_guard.py \
+            scripts/competitive_fetch.py \
+            scripts/competitive_publish.py \
+            scripts/competitive_seo_check.py \
+            scripts/automation_health.py
+
       - name: Run link audit
         run: python scripts/link_audit.py
