@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-27T08:02:43+00:00",
+  "timestamp": "2026-09-27T08:23:39+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "PAUSED",
@@ -45,19 +45,19 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 36304956220,
+      "id": 36306045145,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-09-27T08:02:37Z",
-      "updated_at": "2026-09-27T08:02:40Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36304956220"
+      "created_at": "2026-09-27T08:23:31Z",
+      "updated_at": "2026-09-27T08:23:34Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36306045145"
     },
     "Scheduled Publisher": {
       "id": 36304067975,
-      "status": "pending",
+      "status": "in_progress",
       "conclusion": null,
       "created_at": "2026-09-27T07:45:10Z",
-      "updated_at": "2026-09-27T07:45:11Z",
+      "updated_at": "2026-09-27T08:09:04Z",
       "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36304067975"
     },
     "Traffic Report": {
@@ -70,7 +70,8 @@
     }
   },
   "quality_gate": {
-    "status": "UNAVAILABLE"
+    "status": "pending",
+    "job": "publish"
   },
   "traffic": {
     "status": "OK",
@@ -114,7 +115,36 @@
   },
   "alerts": [],
   "issues": [],
-  "publisher_steps": {},
+  "publisher_steps": {
+    "OpenAI Editorial Quality Gate": {
+      "status": "pending",
+      "job": "publish"
+    },
+    "Publish Hugo post": {
+      "status": "pending",
+      "job": "publish"
+    },
+    "Quality Gate": {
+      "status": "pending",
+      "job": "publish"
+    },
+    "Deploy GitHub Pages": {
+      "status": "pending",
+      "job": "publish"
+    },
+    "Verify live article": {
+      "status": "pending",
+      "job": "publish"
+    },
+    "Submit IndexNow": {
+      "status": "pending",
+      "job": "publish"
+    },
+    "Recovery check": {
+      "status": "pending",
+      "job": "publish"
+    }
+  },
   "secrets": {
     "INDEXNOW_KEY": "OK",
     "GOATCOUNTER_API_KEY": "OK"
