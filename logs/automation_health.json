@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-09-27T02:03:05+00:00",
+  "timestamp": "2026-09-27T02:23:32+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "queue": {
-    "total": 21,
-    "active": 1,
+    "total": 23,
+    "active": 3,
     "due_or_overdue": 1,
     "overdue": [
       {
@@ -33,7 +33,7 @@
   "content": {
     "status": "FAIL",
     "post": "decluttering-ideas-for-small-homes-that-actually-last.md",
-    "words": 2170,
+    "words": 2174,
     "inline_images": 5,
     "unique_inline_images": 5,
     "h2": 11,
@@ -41,28 +41,20 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 36287343643,
+      "id": 36288370434,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-09-27T02:02:39Z",
-      "updated_at": "2026-09-27T02:03:01Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36287343643"
+      "created_at": "2026-09-27T02:23:26Z",
+      "updated_at": "2026-09-27T02:23:29Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36288370434"
     },
     "Scheduled Publisher": {
-      "id": 36287305488,
+      "id": 36288119804,
       "status": "completed",
       "conclusion": "success",
-      "created_at": "2026-09-27T02:01:52Z",
-      "updated_at": "2026-09-27T02:02:08Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36287305488"
-    },
-    "Traffic Report": {
-      "id": 36283210970,
-      "status": "completed",
-      "conclusion": "success",
-      "created_at": "2026-09-27T00:40:31Z",
-      "updated_at": "2026-09-27T00:40:41Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36283210970"
+      "created_at": "2026-09-27T02:18:11Z",
+      "updated_at": "2026-09-27T02:18:27Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36288119804"
     }
   },
   "quality_gate": {
@@ -126,7 +118,7 @@
       "content": {
         "status": "FAIL",
         "post": "decluttering-ideas-for-small-homes-that-actually-last.md",
-        "words": 2170,
+        "words": 2174,
         "inline_images": 5,
         "unique_inline_images": 5,
         "h2": 11,
