@@ -56,7 +56,7 @@ When floor area is at a premium, each piece must earn multiple points. The goal 
 
 A tangled mess of cords can make even the most thoughtfully designed corner feel chaotic. Good cable management not only looks better; it also reduces wear on cords and prevents accidental unplugging during important video meetings.
 
-[Read more about Bedroom Organization: Step‑by‑Step Under‑Bed Storage Makeover for a Studio Apartment with 48‑Inch Clearance](../bedroom-organization-stepbystep-underbed-storage-makeover-for-a-studio-apartment-with-48inch-clearance/)
+[Read more about Bedroom Organization: Step‑by‑Step Under‑Bed Storage Makeover for a Studio Apartment with 48‑Inch Clearance](../bedroom-organization-stepbystep-48inch-clearance/)
 
 1. **Group cables by function** – use reusable Velcro straps (30‑piece kits work well) to bundle power cords, USB cables, and HDMI lines separately.
 2. **Create a cable pathway** – attach adhesive cable clips every 12 inches along the wall, guiding cords upward and behind the desk. This keeps the floor clear and makes future re‑routing simple.
