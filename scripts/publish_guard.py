@@ -115,25 +115,41 @@ def main():
     if words < MIN_WORDS:
         errors.append(f"only {words} body words; minimum is {MIN_WORDS}")
 
-    images = len(re.findall(r"!\[[^\]]*\]\([^\)]+\)", body))
-    if images < 6:
-        errors.append(f"only {images} inline images; minimum is 6")
+    image_urls = re.findall(r"!\[[^\]]*\]\(([^)]+)\)", body)
+    images = len(image_urls)
+    if images < MIN_IMAGES:
+        errors.append(f"only {images} inline images; minimum is {MIN_IMAGES}")
 
-    image_urls = re.findall(r"!\[[^\]]*\]\(([^\)]+)\)", body)
-    if len(set(image_urls)) != len(image_urls):
+    normalized_urls = [normalize_image_ref(x) for x in image_urls]
+    if len(set(normalized_urls)) != len(normalized_urls):
         errors.append("duplicate inline image URL detected")
 
-    used_external = {}
+    for image_url in normalized_urls:
+        if image_url.startswith("/images/"):
+            image_path = Path("static") / image_url.lstrip("/")
+            if not image_path.exists() or not image_path.is_file() or image_path.stat().st_size <= 0:
+                errors.append(f"missing or empty local image: {image_url}")
+
+    hero = normalize_image_ref(field(fm, "image"))
+    if hero and hero.startswith("/images/") and hero not in normalized_urls:
+        errors.append(f"featured image is not one of this article's inline images: {hero}")
+
+    used_by_other = {}
     for other in posts:
         if other == post:
             continue
         other_text = other.read_text(encoding="utf-8")
-        for other_url in re.findall(r"!\\[[^\\]]*\\]\\(([^)]+)\\)", other_text):
-            used_external.setdefault(other_url.strip(), other.name)
-    for image_url in image_urls:
-        prior = used_external.get(image_url.strip())
+        other_fm, other_body = frontmatter(other_text)
+        refs = re.findall(r"!\[[^\]]*\]\(([^)]+)\)", other_body)
+        refs.append(field(other_fm, "image"))
+        for other_url in refs:
+            canonical = normalize_image_ref(other_url)
+            if canonical:
+                used_by_other.setdefault(canonical, other.name)
+    for image_url in normalized_urls:
+        prior = used_by_other.get(image_url)
         if prior:
-            errors.append(f"image URL already used by {prior}: {image_url}")
+            errors.append(f"image reference already used by {prior}: {image_url}")
             break
 
     current_hashes = local_image_hashes(body)
