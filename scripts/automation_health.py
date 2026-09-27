@@ -160,7 +160,22 @@ def main():
         report["secrets"]={"INDEXNOW_KEY":"OK" if INDEXNOW_KEY else "MISSING","GOATCOUNTER_API_KEY":"OK" if GOAT_KEY else "MISSING"}
         if not INDEXNOW_KEY: report["issues"].append({"type":"Secret missing","secret":"INDEXNOW_KEY"})
         if any(not x.get("ok") for x in report["site_health"].values()): report["issues"].append({"type":"Site Health failure","site_health":report["site_health"]})
-        if report["queue"].get("overdue"): report["issues"].append({"type":"Due article not published","overdue":report["queue"]["overdue"]})
+        # A due item under an active generation cooldown is intentionally held.
+        # It is not an operational failure and must not create a false alert.
+        active_cooldowns = set()
+        try:
+            state_path = ROOT/"logs"/"publisher_state.json"
+            state = json.loads(state_path.read_text(encoding="utf-8")) if state_path.exists() else {}
+            now_dt = datetime.now(timezone.utc)
+            for key, item in (state.get("generation_cooldown") or {}).items():
+                try:
+                    until = datetime.fromisoformat(str(item.get("until","")).replace("Z","+00:00"))
+                    if until.tzinfo is None: until = until.replace(tzinfo=timezone.utc)
+                    if until > now_dt: active_cooldowns.add(key)
+                except Exception: pass
+        except Exception: pass
+        actionable_overdue = [x for x in report["queue"].get("overdue", []) if str(x.get("keyword","")).strip().lower() not in active_cooldowns]
+        if actionable_overdue: report["issues"].append({"type":"Due article not published","overdue":actionable_overdue})
         if report["content"].get("status")=="FAIL": report["issues"].append({"type":"Latest content quality failure","content":report["content"]})
         if report["quality_gate"].get("status")=="failure": report["issues"].append({"type":"Quality Gate failure","quality_gate":report["quality_gate"]})
         run=report["runs"].get("Scheduled Publisher")
