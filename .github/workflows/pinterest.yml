@@ -1,10 +1,7 @@
 name: Pinterest Auto Publisher
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "content/posts/**"
+  # Push-triggered runs are paused during stabilization.
   workflow_dispatch:
 
 permissions:
