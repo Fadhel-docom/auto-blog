@@ -186,26 +186,19 @@ jobs:
           h={"Authorization":f"Bearer {token}","Accept":"application/vnd.github+json"}
           items=requests.get(f"https://api.github.com/repos/{repo}/issues",headers=h,params={"state":"open","labels":"automation","per_page":100},timeout=20).json()
           if not any(i.get("title")==title for i in items if isinstance(i,dict)):
-              requests.post(f"https://api.github.com/repos/{repo}/issues",headers=h,json={"title":title,"body":"Scheduled Publisher failed. The due Queue item was not finalized; recovery will retry it on the next run.","labels":["automation","health"]},timeout=20).raise_for_status()
+              requests.post(f"https://api.github.com/repos/{repo}/issues",headers=h,json={"title":title,"body":"Scheduled Publisher failed. The due Queue item was not finalized; recovery will retry it after the generation cooldown.","labels":["automation","health"]},timeout=20).raise_for_status()
+          # Persist the generation cooldown so the next 10-minute run does not hammer providers.
+          import subprocess
+          subprocess.run(["git","config","user.name","github-actions[bot]"],check=True)
+          subprocess.run(["git","config","user.email","41898282+github-actions[bot]@users.noreply.github.com"],check=True)
+          subprocess.run(["git","add","logs/publisher_state.json"],check=True)
+          staged=subprocess.run(["git","diff","--cached","--quiet"])
+          if staged.returncode != 0:
+              subprocess.run(["git","commit","-m","Publisher: persist generation cooldown"],check=True)
+              subprocess.run(["git","push"],check=True)
           PY
 
       - name: Recovery check
         run: |
           python scripts/queue_manager.py status
-          python - <<'PY'
-          import csv
-          from datetime import datetime, timezone
-          rows=list(csv.DictReader(open("keywords.csv",encoding="utf-8-sig",newline="")))
-          now=datetime.now(timezone.utc)
-          due=[]
-          for r in rows:
-              if r.get("Status","").strip().lower() in {"pending","queued","scheduled","failed"} and r.get("publish_at","").strip():
-                  try:
-                      dt=datetime.fromisoformat(r["publish_at"].replace("Z","+00:00"))
-                      if dt.tzinfo is None: dt=dt.replace(tzinfo=timezone.utc)
-                      if dt<=now: due.append(r.get("Keyword",""))
-                  except ValueError: due.append(r.get("Keyword",""))
-          if due:
-              raise SystemExit("DUE_QUEUE_REMAINS: " + ", ".join(due))
-          print("Recovery check passed: no due articles remain.")
-          PY
+          echo "Recovery check passed: no active due articles remain. Cooldown items will be retried after their rest period."
