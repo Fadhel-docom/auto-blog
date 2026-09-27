@@ -2,7 +2,7 @@
 # Editorial fallback hardened: structured-output first, parser-safe retry.\n# Provider routing is dynamic: OpenAI -> Groq -> discovered OpenRouter free models.
 # Multiple free-model fallback is enabled for provider resilience.
 import csv,json,os,re,sys
-from datetime import datetime,timezone
+from datetime import datetime,timezone,timedelta
 from pathlib import Path
 import requests
 try:
@@ -21,6 +21,7 @@ MIN_WORDS,MAX_WORDS=1500,2300
 COOLDOWN_MINUTES=60
 LONG_COOLDOWN_MINUTES=360
 DAILY_COOLDOWN_MINUTES=1440
+PROVIDER_STATE_KEY="provider_cooldown"
 
 SYSTEM="""You are the senior editor for Home Organization Ideas. Write a genuinely useful, human-sounding English article. Aim for 1900-2100 words so the final validated article safely stays within the required 1700-2300 range. Never mention AI, automation, models, providers, prompts, or generation. Never invent statistics, studies, expert claims, quotes, prices, or credentials. Avoid filler, repetition, vague advice, and keyword stuffing. Explain practical decisions, tradeoffs, examples, common mistakes, and maintenance. Return ONLY JSON with keys: keyword, specific_angle, title, meta_description, content_markdown, image_queries, tags, h2_headings, faq. content_markdown must be at least 1500 words (aim for 1900-2100) with exactly 10 H2 headings. image_queries exactly 6 distinct concrete Pexels-ready queries. faq 4-6 items. title <=68 characters. meta_description 140-158 characters."""
 
@@ -324,101 +325,127 @@ def _call_cooperative(name, fn, model, topic, draft, stage):
         return fn(prompt,relaxed_json=(stage>=2))
     return fn(prompt,relaxed_json=(stage>=2),model=model)
 
-def mark_generation_cooldown(topic, reason):
-    state_path=ROOT/"logs"/"publisher_state.json"
+def _state_path():
+    return ROOT/"logs"/"publisher_state.json"
+
+def _read_state():
+    path=_state_path()
     try:
-        state=json.loads(state_path.read_text(encoding="utf-8")) if state_path.exists() else {}
+        data=json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+        return data if isinstance(data,dict) else {}
     except Exception:
-        state={}
+        return {}
+
+def _write_state(state):
+    path=_state_path()
+    path.parent.mkdir(parents=True,exist_ok=True)
+    tmp=path.with_suffix(".tmp")
+    tmp.write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+    tmp.replace(path)
+
+def provider_cooldown_active(provider):
+    state=_read_state()
+    item=(state.get(PROVIDER_STATE_KEY) or {}).get(provider)
+    if not isinstance(item,dict):
+        return False
+    until=item.get("until")
+    try:
+        dt=datetime.fromisoformat(str(until).replace("Z","+00:00"))
+        if dt.tzinfo is None:
+            dt=dt.replace(tzinfo=timezone.utc)
+    except Exception:
+        return False
+    if dt <= datetime.now(timezone.utc):
+        state.setdefault(PROVIDER_STATE_KEY,{}).pop(provider,None)
+        _write_state(state)
+        return False
+    return True
+
+def mark_provider_cooldown(provider, reason):
+    reason_text=str(reason)[:500]
+    lower=reason_text.lower()
+    if "free-models-per-day" in lower or "per day" in lower or "tpd" in lower or "tokens per day" in lower:
+        minutes=DAILY_COOLDOWN_MINUTES
+    elif "429" in lower or "rate limit" in lower or "too many requests" in lower:
+        minutes=LONG_COOLDOWN_MINUTES
+    else:
+        minutes=COOLDOWN_MINUTES
+    now_dt=datetime.now(timezone.utc).replace(microsecond=0)
+    until=now_dt+timedelta(minutes=minutes)
+    state=_read_state()
+    state.setdefault(PROVIDER_STATE_KEY,{})[provider]={
+        "until":until.isoformat(),
+        "started_at":now_dt.isoformat(),
+        "cooldown_minutes":minutes,
+        "reason":reason_text,
+    }
+    _write_state(state)
+    print(f"PROVIDER COOLDOWN: {provider} until {until.isoformat()} ({minutes}m)",file=sys.stderr)
+
+def clear_provider_cooldown(provider):
+    state=_read_state()
+    changed=state.setdefault(PROVIDER_STATE_KEY,{}).pop(provider,None) is not None
+    if changed:
+        _write_state(state)
+
+def mark_generation_cooldown(topic, reason):
+    state=_read_state()
     state.setdefault("generation_cooldown",{})[str(topic).strip().lower()]={
-        "until": (datetime.now(timezone.utc).replace(microsecond=0)).isoformat(),
+        "until": (datetime.now(timezone.utc).replace(microsecond=0)+timedelta(minutes=(
+            DAILY_COOLDOWN_MINUTES if any(x in str(reason).lower() for x in ["per day","tpd","tokens per day"])
+            else LONG_COOLDOWN_MINUTES if any(x in str(reason).lower() for x in ["429","rate limit","too many requests"])
+            else COOLDOWN_MINUTES
+        ))).isoformat(),
         "reason": str(reason)[:500],
     }
-    from datetime import timedelta
-    reason_text=str(reason)
-    reason_lower=reason_text.lower()
-    if "free-models-per-day" in reason_lower or "per day" in reason_lower:
-        cooldown_minutes=DAILY_COOLDOWN_MINUTES
-    elif "tpd" in reason_lower or "tokens per day" in reason_lower:
-        cooldown_minutes=DAILY_COOLDOWN_MINUTES
-    elif "429" in reason_lower or "rate limit" in reason_lower or "too many requests" in reason_lower:
-        cooldown_minutes=LONG_COOLDOWN_MINUTES
-    else:
-        cooldown_minutes=COOLDOWN_MINUTES
-    until=datetime.now(timezone.utc).replace(microsecond=0)+timedelta(minutes=cooldown_minutes)
-    state["generation_cooldown"][str(topic).strip().lower()]["until"]=until.isoformat()
-    state["generation_cooldown"][str(topic).strip().lower()]["cooldown_minutes"]=cooldown_minutes
-    state["generation_cooldown"][str(topic).strip().lower()]["started_at"]=datetime.now(timezone.utc).replace(microsecond=0).isoformat()
-    state_path.parent.mkdir(parents=True,exist_ok=True)
-    tmp=state_path.with_suffix(".tmp")
-    tmp.write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    tmp.replace(state_path)
-    print(f"GENERATION COOLDOWN: {topic} until {until.isoformat()}",file=sys.stderr)
+    _write_state(state)
 
 def main():
     topic=load_topic()
-    # One shared draft moves through every available provider. Providers are
-    # contributors, not isolated fallbacks: partial work is always forwarded.
+
+    # One request per provider per run. A provider that is cooling down is
+    # skipped entirely. Partial/invalid drafts are discarded instead of being
+    # passed to another provider, which prevents token-heavy continuation loops.
     providers=[
         ("OpenAI",call_openai,None, bool(os.getenv("OPENAI_API_KEY"))),
         ("Groq",call_groq,GROQ_MODEL, bool(os.getenv("GROQ_API_KEY"))),
-        ("OpenRouter Free",call_openrouter,None, bool(os.getenv("OPENROUTER_API_KEY"))),
+        ("OpenRouter Free",call_openrouter,OPENROUTER_MODEL, bool(os.getenv("OPENROUTER_API_KEY"))),
     ]
 
-    draft=None
-    successful_stages=0
+    failures=[]
     for name,fn,model,available in providers:
+        key=name.lower().replace(" ","_")
         if not available:
-            print(f"{name} unavailable; cooperative chain will continue.",file=sys.stderr)
+            print(f"{name} unavailable; skipping.",file=sys.stderr)
+            continue
+        if provider_cooldown_active(key):
+            print(f"{name} is resting; skipping this run.",file=sys.stderr)
             continue
 
-        models=[model]
+        chosen_model=model
         if name=="OpenRouter Free":
-            models=discover_openrouter_free_models() or ["openrouter/free"]
+            discovered=discover_openrouter_free_models()
+            # Discovery is metadata only; use exactly one model this run.
+            chosen_model=discovered[0] if discovered else OPENROUTER_MODEL
 
-        provider_contributed=False
-        for chosen_model in models:
-            try:
-                stage=successful_stages+1
-                candidate=_merge_article(
-                    draft,
-                    _call_cooperative(name,fn,chosen_model,topic,draft,stage)
-                )
-                draft=candidate
-                provider_contributed=True
-                successful_stages += 1
-                try:
-                    validate(draft)
-                    print(f"{name} produced a complete shared draft at stage {stage}.")
-                except Exception as validation_error:
-                    print(f"{name} contributed partial work; next provider will continue it: {validation_error}",file=sys.stderr)
-                # A provider has contributed; do not burn TPM with duplicate retries.
-                break
-            except Exception as exc:
-                message=str(exc)
-                print(f"{name} cooperative attempt failed: {message}",file=sys.stderr)
-                # A provider rate limit is a hard stop for that provider. Do not
-                # burn additional models/requests in the same run.
-                if "429" in message or "rate limit" in message.lower() or "too many requests" in message.lower() or "TPD" in message:
-                    break
-                continue
+        try:
+            candidate=(
+                call_openai(topic) if name=="OpenAI"
+                else call_groq(topic) if name=="Groq"
+                else call_openrouter(topic,model=chosen_model)
+            )
+            validate(candidate)
+            clear_provider_cooldown(key)
+            save(candidate,topic,name)
+            print(f"Generation completed safely with {name}; no other provider was called.")
+            return
+        except Exception as exc:
+            message=str(exc)
+            failures.append(f"{name}: {message}")
+            mark_provider_cooldown(key,message)
+            print(f"{name} failed once; no retry for this provider in this run: {message}",file=sys.stderr)
 
-        if not provider_contributed:
-            print(f"{name} could not contribute; continuing with the existing draft.",file=sys.stderr)
+    reason="; ".join(failures) if failures else "all configured providers are unavailable or resting"
+    raise RuntimeError(f"No provider produced a valid article. {reason}")
 
-    if draft:
-        draft=_rescue_near_minimum(draft)
-        draft=_normalize_length(draft)
-        validate(draft)
-        save(draft,topic,"Cooperative chain")
-        print(f"Cooperative editorial chain completed through {successful_stages} provider stage(s).")
-        return
 
-    raise RuntimeError("No editorial provider produced a usable draft; no article published.")
-
-if __name__=="__main__":
-    try: main()
-    except Exception as exc:
-        mark_generation_cooldown(load_topic(), exc)
-        print(f"GENERATION FAILED: {exc}",file=sys.stderr)
-        sys.exit(1)
