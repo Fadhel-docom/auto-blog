@@ -35,6 +35,7 @@ jobs:
         run: |
           python -m py_compile \
             scripts/openai_generate_post.py \
+            scripts/openai_quality_gate.py \
             scripts/queue_manager.py \
             scripts/publish_guard.py \
             scripts/competitive_fetch.py \
