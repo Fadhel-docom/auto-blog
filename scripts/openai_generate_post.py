@@ -16,6 +16,7 @@ ARTICLE=ROOT/"article.json"
 MODEL=os.getenv("OPENAI_MODEL","gpt-5.6")
 OPENROUTER_MODEL=os.getenv("OPENROUTER_MODEL","openrouter/free")
 GROQ_MODEL=os.getenv("GROQ_MODEL","openai/gpt-oss-120b")
+GROQ_SECONDARY_MODEL=os.getenv("GROQ_SECONDARY_MODEL","openai/gpt-oss-20b")
 OPENROUTER_FALLBACK_MODELS=[]
 MIN_WORDS,MAX_WORDS=1500,2300
 COOLDOWN_MINUTES=60
@@ -150,10 +151,10 @@ def discover_openrouter_free_models():
         print(f"OpenRouter model discovery failed: {exc}",file=sys.stderr)
         return []
 
-def call_groq(topic, relaxed_json=False):
+def call_groq(topic, relaxed_json=False, model=None):
     key=os.getenv("GROQ_API_KEY")
     if not key: raise RuntimeError("GROQ_API_KEY unavailable")
-    payload={"model":GROQ_MODEL,"temperature":0.35,"max_tokens":3500,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":f"Focus keyword/topic: {topic}\\nWrite a complete, polished article of 1900-2100 words. Return ONLY one JSON object with every required field. content_markdown must contain exactly 10 H2 headings and 6 distinct image queries. Do not use markdown fences around the JSON. Do not omit fields."}]}
+    payload={"model":model or GROQ_MODEL,"temperature":0.35,"max_tokens":3500,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":f"Focus keyword/topic: {topic}\\nWrite a complete, polished article of 1900-2100 words. Return ONLY one JSON object with every required field. content_markdown must contain exactly 10 H2 headings and 6 distinct image queries. Do not use markdown fences around the JSON. Do not omit fields."}]}
     if not relaxed_json: payload["response_format"]={"type":"json_object"}
     r=requests.post("https://api.groq.com/openai/v1/chat/completions",headers={"Authorization":f"Bearer {key}","Content-Type":"application/json"},json=payload,timeout=240)
     if not r.ok:
@@ -406,9 +407,10 @@ def main():
     # One request per provider per run. A provider that is cooling down is
     # skipped entirely. Partial/invalid drafts are discarded instead of being
     # passed to another provider, which prevents token-heavy continuation loops.
+    # OpenAI is reserved for the editorial quality gate.
     providers=[
-        ("OpenAI",call_openai,None, bool(os.getenv("OPENAI_API_KEY"))),
-        ("Groq",call_groq,GROQ_MODEL, bool(os.getenv("GROQ_API_KEY"))),
+        ("Groq 120B",call_groq,GROQ_MODEL, bool(os.getenv("GROQ_API_KEY"))),
+        ("Groq 20B",call_groq,GROQ_SECONDARY_MODEL, bool(os.getenv("GROQ_API_KEY"))),
         ("OpenRouter Free",call_openrouter,OPENROUTER_MODEL, bool(os.getenv("OPENROUTER_API_KEY"))),
     ]
 
@@ -430,8 +432,7 @@ def main():
 
         try:
             candidate=(
-                call_openai(topic) if name=="OpenAI"
-                else call_groq(topic) if name=="Groq"
+                call_groq(topic,model=chosen_model) if name.startswith("Groq")
                 else call_openrouter(topic,model=chosen_model)
             )
             validate(candidate)
