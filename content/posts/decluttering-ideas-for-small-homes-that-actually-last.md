@@ -229,7 +229,7 @@ Maybe the storage location is too far away. Maybe the container is awkward. Mayb
 
 Change the system rather than depending entirely on willpower.
 
-## Give Each Room One Simple Maintenance Rule
+### Give Each Room One Simple Maintenance Rule
 
 Finish by choosing one rule for each room that has a recurring clutter problem.
 
