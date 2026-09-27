@@ -108,7 +108,7 @@ With measurements, hardware, and materials in hand, you can assemble the rack.
 - Apply a thin rubber gasket to the bottom of the rack to dampen vibration.
 - Install a small magnetic strip on the side panel for metal spice tins.
 
-[Read more about Bedroom Organization Step by Step](../bedroom-organization-stepbystep-underbed-storage-makeover-for-a-studio-apartment-with-48inch-clearance/)
+[Read more about Bedroom Organization Step by Step](../bedroom-organization-stepbystep-48inch-clearance/)
 
 ---
 
