@@ -60,7 +60,7 @@ Common mistakes: loading shelves to the brim, which creates a “wall of stuff�
 
 Pick containers that fit the dimensions of your cabinets, drawers, and pantry shelves before you buy. A 12‑inch deep pantry shelf can comfortably hold a 10‑inch square bin; anything larger will force the door to sag or the items to spill. For a standard 24‑inch base cabinet drawer, stackable acrylic trays that are 22 × 12 × 2 inches let you separate spices, packets, and small tools without wasting space.
 
-[Read more about Bedroom Organization Step by Step](../bedroom-organization-stepbystep-underbed-storage-makeover-for-a-studio-apartment-with-48inch-clearance/)
+[Read more about Bedroom Organization Step by Step](../bedroom-organization-stepbystep-48inch-clearance/)
 
 **Practical steps**
 
