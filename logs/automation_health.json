@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-27T00:31:31+00:00",
+  "timestamp": "2026-09-27T00:52:56+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "queue": {
     "total": 21,
@@ -41,24 +41,32 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 36282753647,
+      "id": 36283822788,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-09-27T00:31:23Z",
-      "updated_at": "2026-09-27T00:31:27Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36282753647"
+      "created_at": "2026-09-27T00:52:43Z",
+      "updated_at": "2026-09-27T00:52:46Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36283822788"
     },
     "Scheduled Publisher": {
-      "id": 36282666216,
-      "status": "in_progress",
-      "conclusion": null,
-      "created_at": "2026-09-27T00:29:49Z",
-      "updated_at": "2026-09-27T00:29:52Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36282666216"
+      "id": 36283411226,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-09-27T00:44:32Z",
+      "updated_at": "2026-09-27T00:46:16Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36283411226"
+    },
+    "Traffic Report": {
+      "id": 36283210970,
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-09-27T00:40:31Z",
+      "updated_at": "2026-09-27T00:40:41Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36283210970"
     }
   },
   "quality_gate": {
-    "status": "pending",
+    "status": "skipped",
     "job": "publish"
   },
   "traffic": {
@@ -122,31 +130,42 @@
         "h2": 11,
         "faq": 5
       }
+    },
+    {
+      "type": "Scheduled Publisher failure",
+      "run": {
+        "id": 36283411226,
+        "status": "completed",
+        "conclusion": "failure",
+        "created_at": "2026-09-27T00:44:32Z",
+        "updated_at": "2026-09-27T00:46:16Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36283411226"
+      }
     }
   ],
   "publisher_steps": {
     "Publish Hugo post": {
-      "status": "pending",
+      "status": "skipped",
       "job": "publish"
     },
     "Quality Gate": {
-      "status": "pending",
+      "status": "skipped",
       "job": "publish"
     },
     "Deploy GitHub Pages": {
-      "status": "pending",
+      "status": "skipped",
       "job": "publish"
     },
     "Verify live article": {
-      "status": "pending",
+      "status": "skipped",
       "job": "publish"
     },
     "Submit IndexNow": {
-      "status": "pending",
+      "status": "skipped",
       "job": "publish"
     },
     "Recovery check": {
-      "status": "pending",
+      "status": "skipped",
       "job": "publish"
     }
   },
