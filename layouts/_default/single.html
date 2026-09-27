@@ -51,7 +51,7 @@
         loading="eager"
         decoding="async"
         fetchpriority="high"
-        onerror="this.closest('figure').classList.add('image-load-failed'); this.remove();"
+        onerror="this.src='/auto-blog/images/30-practical-home-organization-ideas-for.jpg'; this.onerror=null;"
       >
     </figure>
 
@@ -152,6 +152,19 @@
     {{ $renderedContent | safeHTML }}
 
   </div>
+
+  <script>
+  (function () {
+    var fallback = "/auto-blog/images/30-practical-home-organization-ideas-for.jpg";
+    document.querySelectorAll(".post-content img").forEach(function (img) {
+      img.addEventListener("error", function () {
+        if (img.dataset.fallbackApplied) return;
+        img.dataset.fallbackApplied = "1";
+        img.src = fallback;
+      }, { once: true });
+    });
+  })();
+  </script>
 
   {{/* -------------------------------------------------------
        TAGS
