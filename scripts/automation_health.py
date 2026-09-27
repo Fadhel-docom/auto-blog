@@ -148,7 +148,7 @@ def create_alerts(issues):
 
 def main():
     now=datetime.now(timezone.utc).replace(microsecond=0).isoformat()
-    report={"timestamp":now,"site":SITE,"queue":{},"site_health":{},"content":{},"runs":{},"quality_gate":{},"traffic":{},"alerts":[],"issues":[]}
+    report={"timestamp":now,"site":SITE,"publishing":{"status":"PAUSED" if PUBLISHING_PAUSED else "ACTIVE"},"queue":{},"site_health":{},"content":{},"runs":{},"quality_gate":{},"traffic":{},"alerts":[],"issues":[]}
     try:
         report["site_health"]=site_check()
         report["queue"]=queue_check()
@@ -179,7 +179,7 @@ def main():
         if actionable_overdue and not PUBLISHING_PAUSED:
             report["issues"].append({"type":"Due article not published","overdue":actionable_overdue})
         elif actionable_overdue and PUBLISHING_PAUSED:
-            report["issues"].append({"type":"Publishing paused intentionally","overdue":actionable_overdue})
+            report["publishing"]["reason"] = "Intentional stabilization pause; overdue queue items are held safely."
         if report["content"].get("status")=="FAIL": report["issues"].append({"type":"Latest content quality failure","content":report["content"]})
         if report["quality_gate"].get("status")=="failure": report["issues"].append({"type":"Quality Gate failure","quality_gate":report["quality_gate"]})
         run=report["runs"].get("Scheduled Publisher")
