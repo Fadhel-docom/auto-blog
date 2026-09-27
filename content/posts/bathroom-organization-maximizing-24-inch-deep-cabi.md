@@ -54,7 +54,7 @@ Pull‑out bins are the workhorse of any under‑sink makeover because they slid
 
 A tension rod is a simple, cost‑effective way to create a hanging zone inside the cabinet. It works like a miniature clothes‑line, supporting spray bottles, rolled towels, or a slim cleaning caddy without any permanent modifications.
 
-[Read more about Bedroom Organization: Step‑by‑Step Under‑Bed Storage Makeover for a Studio Apartment with 48‑Inch Clearance](../bedroom-organization-stepbystep-underbed-storage-makeover-for-a-studio-apartment-with-48inch-clearance/)
+[Read more about Bedroom Organization: Step‑by‑Step Under‑Bed Storage Makeover for a Studio Apartment with 48‑Inch Clearance](../bedroom-organization-stepbystep-48inch-clearance/)
 
 **Why a tension rod works so well:**
 
