@@ -12,6 +12,7 @@ TOKEN=os.getenv("GITHUB_TOKEN","").strip()
 GOAT_SITE=os.getenv("GOATCOUNTER_SITE","").strip()
 GOAT_KEY=os.getenv("GOATCOUNTER_API_KEY","").strip()
 INDEXNOW_KEY=os.getenv("INDEXNOW_KEY","").strip()
+PUBLISHING_PAUSED=os.getenv("PUBLISHING_PAUSED","").lower() in {"1","true","yes"}
 OUT=ROOT/"logs"/"automation_health.json"
 QUEUE=ROOT/"keywords.csv"
 
@@ -175,7 +176,10 @@ def main():
                 except Exception: pass
         except Exception: pass
         actionable_overdue = [x for x in report["queue"].get("overdue", []) if str(x.get("keyword","")).strip().lower() not in active_cooldowns]
-        if actionable_overdue: report["issues"].append({"type":"Due article not published","overdue":actionable_overdue})
+        if actionable_overdue and not PUBLISHING_PAUSED:
+            report["issues"].append({"type":"Due article not published","overdue":actionable_overdue})
+        elif actionable_overdue and PUBLISHING_PAUSED:
+            report["issues"].append({"type":"Publishing paused intentionally","overdue":actionable_overdue})
         if report["content"].get("status")=="FAIL": report["issues"].append({"type":"Latest content quality failure","content":report["content"]})
         if report["quality_gate"].get("status")=="failure": report["issues"].append({"type":"Quality Gate failure","quality_gate":report["quality_gate"]})
         run=report["runs"].get("Scheduled Publisher")
