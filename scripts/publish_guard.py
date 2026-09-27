@@ -131,7 +131,7 @@ def main():
                 errors.append(f"missing or empty local image: {image_url}")
 
     hero = normalize_image_ref(field(fm, "image"))
-    if hero and hero.startswith("/images/") and hero not in normalized_urls:
+    if hero and hero not in normalized_urls:
         errors.append(f"featured image is not one of this article's inline images: {hero}")
 
     used_by_other = {}
