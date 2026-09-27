@@ -27,6 +27,35 @@ def parse_dt(value):
     except ValueError:
         return None
 
+def read_state():
+    try:
+        if STATE.exists():
+            data=json.loads(STATE.read_text(encoding="utf-8"))
+            return data if isinstance(data,dict) else {}
+    except Exception as exc:
+        print(f"STATE WARNING: {exc}", file=sys.stderr)
+    return {}
+
+def write_state(data):
+    STATE.parent.mkdir(parents=True,exist_ok=True)
+    tmp=STATE.with_suffix(".tmp")
+    tmp.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    tmp.replace(STATE)
+
+def cooldown_active(keyword):
+    state=read_state()
+    item=(state.get("generation_cooldown") or {}).get(str(keyword).strip().lower())
+    if not isinstance(item,dict):
+        return False
+    until=parse_dt(item.get("until"))
+    if not until:
+        return False
+    if until <= now():
+        state.setdefault("generation_cooldown",{}).pop(str(keyword).strip().lower(),None)
+        write_state(state)
+        return False
+    return True
+
 def read_rows():
     with QUEUE.open("r",encoding="utf-8-sig",newline="") as f:
         reader=csv.DictReader(f)
@@ -75,7 +104,17 @@ def main():
             set_output("has_due","false")
             print("QUEUE: no due articles")
             return 0
-        dt,i,row=due[0]
+        selected=None
+        for candidate in due:
+            candidate_keyword=str(candidate[2].get("Keyword","")).strip()
+            if candidate_keyword and not cooldown_active(candidate_keyword):
+                selected=candidate
+                break
+        if selected is None:
+            set_output("has_due","false")
+            print("QUEUE: due articles are in generation cooldown; no provider call this cycle")
+            return 0
+        dt,i,row=selected
         keyword=str(row.get("Keyword","")).strip()
         if not keyword:
             raise RuntimeError(f"QUEUE_INVALID: empty keyword at row {i+2}")
@@ -107,6 +146,8 @@ def main():
         pending=sum(1 for r in rows if str(r.get("Status","")).strip().lower() in DUE_STATUSES)
         due=len(due_rows(rows))
         print(json.dumps({"queue_total":len(rows),"active_queue":pending,"due":due},indent=2))
+        if due:
+            raise SystemExit("DUE_QUEUE_REMAINS: " + ", ".join(str(r.get("Keyword","")) for _,_,r in due))
         return 0
     raise RuntimeError(f"UNKNOWN_ACTION: {action}")
 
