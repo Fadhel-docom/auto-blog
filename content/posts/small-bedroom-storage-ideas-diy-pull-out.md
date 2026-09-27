@@ -88,7 +88,7 @@ Drawers are great for items you need often, but rolling bins give you the freedo
 
 Rolling bins are especially useful for seasonal items—swap them out when the weather changes without disturbing the drawer arrangement.
 
-[Read more about Bedroom Organization Step by Step](../bedroom-organization-stepbystep-underbed-storage-makeover-for-a-studio-apartment-with-48inch-clearance/)
+[Read more about Bedroom Organization Step by Step](../bedroom-organization-stepbystep-48inch-clearance/)
 
 ---
 
