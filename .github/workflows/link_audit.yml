@@ -40,7 +40,8 @@ jobs:
             scripts/competitive_fetch.py \
             scripts/competitive_publish.py \
             scripts/competitive_seo_check.py \
-            scripts/automation_health.py
+            scripts/automation_health.py \
+            scripts/auto_repair.py
 
       - name: Run link audit
         run: python scripts/link_audit.py
