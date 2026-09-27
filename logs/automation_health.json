@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-27T03:03:11+00:00",
+  "timestamp": "2026-09-27T03:23:47+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "queue": {
     "total": 23,
@@ -41,20 +41,20 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 36290276974,
+      "id": 36291272639,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-09-27T03:03:01Z",
-      "updated_at": "2026-09-27T03:03:07Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36290276974"
+      "created_at": "2026-09-27T03:23:39Z",
+      "updated_at": "2026-09-27T03:23:42Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36291272639"
     },
     "Scheduled Publisher": {
-      "id": 36289970331,
+      "id": 36290566144,
       "status": "completed",
-      "conclusion": "success",
-      "created_at": "2026-09-27T02:56:39Z",
-      "updated_at": "2026-09-27T02:56:54Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36289970331"
+      "conclusion": "failure",
+      "created_at": "2026-09-27T03:08:56Z",
+      "updated_at": "2026-09-27T03:09:17Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36290566144"
     }
   },
   "quality_gate": {
@@ -112,6 +112,17 @@
           "status": "pending"
         }
       ]
+    },
+    {
+      "type": "Scheduled Publisher failure",
+      "run": {
+        "id": 36290566144,
+        "status": "completed",
+        "conclusion": "failure",
+        "created_at": "2026-09-27T03:08:56Z",
+        "updated_at": "2026-09-27T03:09:17Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36290566144"
+      }
     }
   ],
   "publisher_steps": {
@@ -140,7 +151,7 @@
       "job": "publish"
     },
     "Recovery check": {
-      "status": "success",
+      "status": "skipped",
       "job": "publish"
     }
   },
