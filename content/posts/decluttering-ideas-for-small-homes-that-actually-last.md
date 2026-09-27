@@ -66,6 +66,8 @@ Avoid creating a whole-house "maybe" pile. If a decision is difficult, place onl
 
 ## Give Everyday Items a Home Near Where You Use Them
 
+![Decluttering-focused home organization with a clear everyday storage zone](https://images.pexels.com/photos/6487941/pexels-photo-6487941.jpeg?auto=compress&cs=tinysrgb&w=1600)
+
 A storage system works when it matches your real routine.
 
 If you use your charging cable beside the sofa every night, storing it across the room creates unnecessary friction. If you always remove your shoes at the entrance, shoe storage belongs there rather than in a bedroom closet.
