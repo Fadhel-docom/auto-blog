@@ -66,7 +66,6 @@ Avoid creating a whole-house "maybe" pile. If a decision is difficult, place onl
 
 ## Give Everyday Items a Home Near Where You Use Them
 
-![Decluttering-focused home organization with a clear everyday storage zone](https://images.pexels.com/photos/6487941/pexels-photo-6487941.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
 A storage system works when it matches your real routine.
 
@@ -86,7 +85,7 @@ You do not need labels for everything. You need a location that is obvious enoug
 
 If an item repeatedly lands on the same surface, treat that as useful information. Either give it a proper home there or move its storage closer to the routine that uses it.
 
-For more small-space storage ideas, use the storage-zone method described earlier in this article.
+The same zone-first approach can also help with shelves, drawers, and other small storage areas.
 
 ## Set Physical Limits for Problem Categories
 
@@ -150,7 +149,7 @@ A container that fits the shelf width can still be a bad choice if it blocks the
 
 Leave some empty space as working room. A closet filled to 100 percent capacity may look efficient, but it usually becomes harder to maintain.
 
-For another practical approach, adapt the same zone-first method to closets and entryway storage.
+Apply the same zone-first approach to other storage areas: group similar items, keep frequent-use belongings accessible, and leave enough working space.
 
 ![Small closet with organized belongings and accessible storage](https://images.pexels.com/photos/19980247/pexels-photo-19980247.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
