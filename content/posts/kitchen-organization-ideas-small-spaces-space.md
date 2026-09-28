@@ -1,5 +1,5 @@
 +++
-title = "kitchen organization ideas for small spaces - Small Space Guide"
+title = "Small Kitchen Organization Ideas: A Practical Small-Space Guide"
 date = "2026-09-23T05:15:23+00:00"
 lastmod = "2026-09-23T05:15:23+00:00"
 description = "Practical kitchen organization ideas for small spaces ideas with simple measurements, storage zones, and realistic steps for a more organized home."
