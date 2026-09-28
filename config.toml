@@ -2,7 +2,7 @@
 # Base
 # ============================================================
 
-baseURL = "https://fadhel-docom.github.io/auto-blog/"
+baseURL = "https://home-organization-ideas.com/"
 languageCode = "en-us"
 title = "Home Organization Ideas"
 enableRobotsTXT = true
@@ -35,7 +35,7 @@ hasCJKLanguage = false
 
   pinterest = "homeorganizationideas0164"
   tumblr = "homeorganizationideas.tumblr.com"
-  goatcounter = "https://fadhel-blog.goatcounter.com/count"
+  goatcounter = "https://homeorganizationideas.goatcounter.com/count"
 
 [pagination]
   pagerSize = 12
