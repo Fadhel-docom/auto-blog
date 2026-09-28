@@ -44,5 +44,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./public
-          # No custom domain during stabilization; publish on the default GitHub Pages URL.
+          # Default GitHub Pages URL only during stabilization.
           force_orphan: false
