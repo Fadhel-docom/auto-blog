@@ -2,7 +2,7 @@
 # Base
 # ============================================================
 
-baseURL = "https://home-organization-ideas.com/"
+baseURL = "https://fadhel-docom.github.io/auto-blog/"
 languageCode = "en-us"
 title = "Home Organization Ideas"
 enableRobotsTXT = true
