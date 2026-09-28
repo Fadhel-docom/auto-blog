@@ -4,9 +4,9 @@
 Keep Home Organization Ideas stable, safe, observable, and maintainable before optimizing publishing volume.
 
 ## Operating mode
-**STABILIZATION — PUBLISHING PAUSED**
+**EMERGENCY ROLLBACK — PUBLISHING PAUSED**
 
-Scheduled publishing is paused while the canonical-domain migration is repaired and verified. No new generator call is allowed until the live production domain, redirects/canonicals, and end-to-end publishing path are proven healthy.
+Scheduled publishing is paused after the custom-domain migration was found to be broken. The project has been rolled back to the known Google-indexed GitHub Pages URL while the custom domain remains off. No new generator call is allowed during this recovery.
 
 ## Team roles
 - **Manager / Orchestrator:** ChatGPT — owns sequencing, evidence, rollback decisions, and the single source of truth for the project.
@@ -46,7 +46,8 @@ Publishing can be re-enabled only after all are true:
 - Publishing optimization: only after the stability gate is green.
 
 ## Current state / blockers
-- Canonical domain migration is incomplete at the DNS layer: repository configuration is set to `home-organization-ideas.com`, but live DNS resolution is currently failing. GitHub Pages custom-domain DNS must be repaired before publishing resumes.
+- Emergency rollback completed: the broken custom-domain binding was removed from the source and published `gh-pages` branch; Hugo `baseURL`, queue URLs, and Auto Repair URL generation were restored to `https://fadhel-docom.github.io/auto-blog/`.
+- `home-organization-ideas.com` is not being used as the live canonical domain now. The domain migration is frozen until the site is stable again.
 - Legacy published queue URLs have been migrated in `keywords.csv` to the canonical domain, and Auto Repair now uses the canonical post URL base. The previous GitHub Pages URL remains preserved in Git history and the stabilization backup branch.
 - Provider rate limits previously caused repeated generation failures; retries remain bounded and the publisher must never enter a retry storm.
 - One legacy Scheduled Publisher run remains pending from before the stabilization pause; it is not being treated as proof of successful publishing.
@@ -56,8 +57,10 @@ Publishing can be re-enabled only after all are true:
 - Auto Repair handles failure/cancellation/timeout events and preserves cooldown state.
 
 ## Next phase
-1. Repair DNS for `home-organization-ideas.com` and verify homepage, sitemap, RSS, HTTPS, and a real post.
-2. Verify canonical/legacy URL continuity and external platform links before changing any more URLs.
+1. Verify the rollback deployment on `https://fadhel-docom.github.io/auto-blog/` (homepage, sitemap, RSS, HTTPS, and a real post).
+2. Verify that published URLs and generated canonicals are back on the indexed GitHub Pages property.
+3. Keep the custom domain migration frozen; do not touch Search Console Change of Address yet.
+4. Only after the old site is healthy, prepare a separate controlled custom-domain migration.
 3. Run one controlled end-to-end publisher test manually; do not restore the 10-minute schedule until it passes.
 4. Verify Auto Repair, OpenAI Quality Gate, and Health Monitor behavior without retry storms or generator waste.
 5. Only then resume article/design optimization and normal publishing.
