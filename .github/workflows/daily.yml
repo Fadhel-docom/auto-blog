@@ -2,8 +2,8 @@ name: Scheduled Publisher
 
 # Controlled publishing cadence: one queue item at a time, protected by Quality Gate and live verification.
 on:
-  schedule:
-    - cron: "*/10 * * * *"
+  # Publishing is intentionally paused during canonical-domain stabilization.
+  # Restore the 10-minute schedule only after DNS + live-site verification passes.
   workflow_dispatch:
 
 permissions:
