@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-28T18:27:47+00:00",
+  "timestamp": "2026-09-28T18:43:51+00:00",
   "site": "https://home-organization-ideas.com/",
   "publishing": {
     "status": "ACTIVE"
@@ -54,33 +54,24 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 36465335005,
+      "id": 36467233525,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-09-28T18:27:39Z",
-      "updated_at": "2026-09-28T18:27:42Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36465335005"
+      "created_at": "2026-09-28T18:43:42Z",
+      "updated_at": "2026-09-28T18:43:46Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36467233525"
     },
     "Traffic Report": {
-      "id": 36423492250,
+      "id": 36466607896,
       "status": "completed",
       "conclusion": "success",
-      "created_at": "2026-09-28T12:41:52Z",
-      "updated_at": "2026-09-28T12:42:13Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36423492250"
-    },
-    "Scheduled Publisher": {
-      "id": 36418357587,
-      "status": "completed",
-      "conclusion": "cancelled",
-      "created_at": "2026-09-28T11:53:20Z",
-      "updated_at": "2026-09-28T12:21:42Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36418357587"
+      "created_at": "2026-09-28T18:38:20Z",
+      "updated_at": "2026-09-28T18:38:40Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36466607896"
     }
   },
   "quality_gate": {
-    "status": "skipped",
-    "job": "publish"
+    "status": "UNAVAILABLE"
   },
   "traffic": {
     "status": "OK",
@@ -165,36 +156,7 @@
       ]
     }
   ],
-  "publisher_steps": {
-    "OpenAI Editorial Quality Gate": {
-      "status": "skipped",
-      "job": "publish"
-    },
-    "Publish Hugo post": {
-      "status": "skipped",
-      "job": "publish"
-    },
-    "Quality Gate": {
-      "status": "skipped",
-      "job": "publish"
-    },
-    "Deploy GitHub Pages": {
-      "status": "skipped",
-      "job": "publish"
-    },
-    "Verify live article": {
-      "status": "skipped",
-      "job": "publish"
-    },
-    "Submit IndexNow": {
-      "status": "skipped",
-      "job": "publish"
-    },
-    "Recovery check": {
-      "status": "skipped",
-      "job": "publish"
-    }
-  },
+  "publisher_steps": {},
   "secrets": {
     "INDEXNOW_KEY": "OK",
     "GOATCOUNTER_API_KEY": "OK"
