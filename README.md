@@ -64,7 +64,7 @@ Never place API keys or passwords in Python files, Markdown, config, or HTML. Us
 
 ## Site
 
-https://fadhel-docom.github.io/auto-blog/
+https://home-organization-ideas.com/
 
 ## License
 
