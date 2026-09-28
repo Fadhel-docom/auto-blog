@@ -51,7 +51,7 @@
         loading="eager"
         decoding="async"
         fetchpriority="high"
-        onerror="this.src='/auto-blog/images/30-practical-home-organization-ideas-for.jpg'; this.onerror=null;"
+        onerror="this.src='/images/30-practical-home-organization-ideas-for.jpg'; this.onerror=null;"
       >
     </figure>
 
@@ -145,7 +145,7 @@
     {{/* Normalize article image paths for the GitHub Pages subpath. */}}
     {{ $renderedContent = replaceRE
       `src="(?:../)+images/`
-      `src="/auto-blog/images/`
+      `src="/images/`
       $renderedContent
     }}
 
@@ -155,7 +155,7 @@
 
   <script>
   (function () {
-    var fallback = "/auto-blog/images/30-practical-home-organization-ideas-for.jpg";
+    var fallback = "/images/30-practical-home-organization-ideas-for.jpg";
     document.querySelectorAll(".post-content img").forEach(function (img) {
       img.addEventListener("error", function () {
         if (img.dataset.fallbackApplied) return;
@@ -165,6 +165,14 @@
     });
   })();
   </script>
+
+  {{/* -------------------------------------------------------
+       IMAGE CREDITS
+       ------------------------------------------------------- */}}
+
+  <p class="image-credits" id="image-credits">
+    <strong>Image credits:</strong> Images are sourced from Pexels. Source URLs are retained in the article image markup.
+  </p>
 
   {{/* -------------------------------------------------------
        TAGS
