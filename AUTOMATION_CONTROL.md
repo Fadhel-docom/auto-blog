@@ -4,12 +4,13 @@
 Keep Home Organization Ideas stable, safe, observable, and maintainable before optimizing publishing volume.
 
 ## Operating mode
-**CONTROLLED RECOVERY — PUBLISHING ACTIVE**
+**STABILIZATION — PUBLISHING PAUSED**
 
-Scheduled publishing is active on a 10-minute cadence, but every item remains protected by deterministic SEO checks, an independent OpenAI Quality Gate, live verification, and queue finalization only after successful deployment.
+Scheduled publishing is paused while the canonical-domain migration is repaired and verified. No new generator call is allowed until the live production domain, redirects/canonicals, and end-to-end publishing path are proven healthy.
 
 ## Team roles
-- **Manager / Orchestrator:** ChatGPT — prioritizes work, verifies evidence, and does not declare success without a real test.
+- **Manager / Orchestrator:** ChatGPT — owns sequencing, evidence, rollback decisions, and the single source of truth for the project.
+- **Migration / SEO guardian:** deterministic checks — protects canonical URLs, sitemap, robots.txt, queue URLs, and legacy-link continuity; no destructive URL changes during stabilization.
 - **Generator team:** OpenAI / Groq / OpenRouter — content generation only, used cooperatively and never hammered when providers are rate-limited.
 - **Editorial Quality Gate:** OpenAI — independent quality decision; failure is fail-closed.
 - **Repair Agent:** Auto Repair — diagnoses completed failures and repairs deterministic state problems.
@@ -45,6 +46,8 @@ Publishing can be re-enabled only after all are true:
 - Publishing optimization: only after the stability gate is green.
 
 ## Current state / blockers
+- Canonical domain migration is incomplete at the DNS layer: repository configuration is set to `home-organization-ideas.com`, but live DNS resolution is currently failing. GitHub Pages custom-domain DNS must be repaired before publishing resumes.
+- Legacy published queue URLs have been migrated in `keywords.csv` to the canonical domain, and Auto Repair now uses the canonical post URL base. The previous GitHub Pages URL remains preserved in Git history and the stabilization backup branch.
 - Provider rate limits previously caused repeated generation failures; retries remain bounded and the publisher must never enter a retry storm.
 - One legacy Scheduled Publisher run remains pending from before the stabilization pause; it is not being treated as proof of successful publishing.
 - One queue item remains overdue by design while publishing is paused.
@@ -53,7 +56,8 @@ Publishing can be re-enabled only after all are true:
 - Auto Repair handles failure/cancellation/timeout events and preserves cooldown state.
 
 ## Next phase
-1. Verify the first controlled scheduled run after this recovery commit.
-2. Verify live article deployment and queue finalization.
-3. Keep health monitoring lightweight every 15 minutes.
-4. Audit and improve weak legacy articles while preserving successful automation.
+1. Repair DNS for `home-organization-ideas.com` and verify homepage, sitemap, RSS, HTTPS, and a real post.
+2. Verify canonical/legacy URL continuity and external platform links before changing any more URLs.
+3. Run one controlled end-to-end publisher test manually; do not restore the 10-minute schedule until it passes.
+4. Verify Auto Repair, OpenAI Quality Gate, and Health Monitor behavior without retry storms or generator waste.
+5. Only then resume article/design optimization and normal publishing.
