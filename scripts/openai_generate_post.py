@@ -184,7 +184,7 @@ def call_openrouter(topic, relaxed_json=False, model=None):
     }
     if not relaxed_json:
         payload["response_format"]={"type":"json_object"}
-    r=requests.post("https://openrouter.ai/api/v1/chat/completions",headers={"Authorization":f"Bearer {key}","Content-Type":"application/json","HTTP-Referer":"https://fadhel-docom.github.io/auto-blog/","X-Title":"Home Organization Ideas"},json=payload,timeout=240)
+    r=requests.post("https://openrouter.ai/api/v1/chat/completions",headers={"Authorization":f"Bearer {key}","Content-Type":"application/json","HTTP-Referer":"https://home-organization-ideas.com/","X-Title":"Home Organization Ideas"},json=payload,timeout=240)
     if not r.ok:
         try:
             detail=r.json().get("error",{})
