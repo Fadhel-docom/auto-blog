@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-28T11:52:37+00:00",
+  "timestamp": "2026-09-28T12:03:39+00:00",
   "site": "https://home-organization-ideas.com/",
   "publishing": {
     "status": "ACTIVE"
@@ -49,24 +49,25 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 36418272672,
+      "id": 36419392155,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-09-28T11:52:30Z",
-      "updated_at": "2026-09-28T11:52:33Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36418272672"
+      "created_at": "2026-09-28T12:03:32Z",
+      "updated_at": "2026-09-28T12:03:35Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36419392155"
     },
     "Scheduled Publisher": {
-      "id": 36416585035,
-      "status": "pending",
+      "id": 36418357587,
+      "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-09-28T11:35:46Z",
-      "updated_at": "2026-09-28T11:35:47Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36416585035"
+      "created_at": "2026-09-28T11:53:20Z",
+      "updated_at": "2026-09-28T11:56:25Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36418357587"
     }
   },
   "quality_gate": {
-    "status": "UNAVAILABLE"
+    "status": "pending",
+    "job": "publish"
   },
   "traffic": {
     "status": "OK",
@@ -146,7 +147,36 @@
       ]
     }
   ],
-  "publisher_steps": {},
+  "publisher_steps": {
+    "OpenAI Editorial Quality Gate": {
+      "status": "pending",
+      "job": "publish"
+    },
+    "Publish Hugo post": {
+      "status": "pending",
+      "job": "publish"
+    },
+    "Quality Gate": {
+      "status": "pending",
+      "job": "publish"
+    },
+    "Deploy GitHub Pages": {
+      "status": "pending",
+      "job": "publish"
+    },
+    "Verify live article": {
+      "status": "pending",
+      "job": "publish"
+    },
+    "Submit IndexNow": {
+      "status": "pending",
+      "job": "publish"
+    },
+    "Recovery check": {
+      "status": "pending",
+      "job": "publish"
+    }
+  },
   "secrets": {
     "INDEXNOW_KEY": "OK",
     "GOATCOUNTER_API_KEY": "OK"
