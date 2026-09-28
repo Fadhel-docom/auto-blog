@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-27T12:15:25+00:00",
+  "timestamp": "2026-09-28T00:19:01+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -39,7 +39,7 @@
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 31832
+    "html_length": 31835
   },
   "articles": [
     {
@@ -47,9 +47,9 @@
       "status": 200,
       "title": "Decluttering Ideas for Small Homes That Actually Last",
       "title_capitalized": true,
-      "meta_description": "Practical decluttering ideas for small homes: simple categories, storage boundaries, daily resets, and realistic rules that prevent clutter from returning.",
+      "meta_description": "Practical decluttering ideas for small homes: a 15-minute audit, room-by-room limits, storage boundaries, and a simple reset routine that prevents clutter from returning.",
       "canonical": "https://fadhel-docom.github.io/auto-blog/posts/decluttering-ideas-for-small-homes-that-actually-last/",
-      "images": 5,
+      "images": 11,
       "tags": 3,
       "h2_count": 12,
       "image_credits": false,
@@ -65,7 +65,7 @@
       "required_failures": [
         "image credits"
       ],
-      "html_length": 26290
+      "html_length": 30737
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-a-simple-system-for-small-shelves/",
@@ -88,7 +88,7 @@
         "has_article": false
       },
       "required_failures": [],
-      "html_length": 24554
+      "html_length": 24870
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-a-simple-system-that-stays-tidy/",
@@ -111,7 +111,7 @@
         "has_article": false
       },
       "required_failures": [],
-      "html_length": 27134
+      "html_length": 27450
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-organization-a-practical-small-space-guide/",
@@ -134,7 +134,7 @@
         "has_article": false
       },
       "required_failures": [],
-      "html_length": 31080
+      "html_length": 31396
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bathroom-organization-create-more-storage-without-adding-clutter/",
@@ -159,7 +159,7 @@
       "required_failures": [
         "image credits"
       ],
-      "html_length": 30791
+      "html_length": 31169
     }
   ],
   "responsive": {
