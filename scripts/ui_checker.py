@@ -301,6 +301,8 @@ def check_article(url: str) -> dict[str, Any]:
 
         if not schema["present"]:
             required_failures.append("schema")
+        elif "BlogPosting" not in schema.get("types", []):
+            required_failures.append("article schema")
 
         if not image_credit:
             required_failures.append("image credits")
