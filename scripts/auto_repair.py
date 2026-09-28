@@ -487,7 +487,7 @@ def repair_keyword_urls() -> list[dict[str, str]]:
     changes = []
 
     base_url = (
-        "https://home-organization-ideas.com/"
+        "https://fadhel-docom.github.io/auto-blog/"
         "posts/"
     )
 
