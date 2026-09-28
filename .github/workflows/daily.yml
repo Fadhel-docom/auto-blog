@@ -1,8 +1,9 @@
 name: Scheduled Publisher
 
-# Automatic publishing is intentionally paused during stabilization.
-# Re-enable the schedule only after AUTOMATION_CONTROL.md readiness gate passes.
+# Controlled publishing cadence: one queue item at a time, protected by Quality Gate and live verification.
 on:
+  schedule:
+    - cron: "*/10 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -18,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
-      SITE_URL: "https://fadhel-docom.github.io/auto-blog"
+      SITE_URL: "https://home-organization-ideas.com"
       INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
     steps:
       - name: Checkout
