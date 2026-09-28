@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-28T11:24:22+00:00",
+  "timestamp": "2026-09-28T11:39:41+00:00",
   "site": "https://home-organization-ideas.com/",
   "publishing": {
     "status": "ACTIVE"
@@ -49,28 +49,20 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 36415438546,
+      "id": 36416961335,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-09-28T11:24:15Z",
-      "updated_at": "2026-09-28T11:24:18Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36415438546"
+      "created_at": "2026-09-28T11:39:33Z",
+      "updated_at": "2026-09-28T11:39:38Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36416961335"
     },
     "Scheduled Publisher": {
-      "id": 36414404621,
+      "id": 36416585035,
       "status": "pending",
       "conclusion": null,
-      "created_at": "2026-09-28T11:13:51Z",
-      "updated_at": "2026-09-28T11:13:52Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36414404621"
-    },
-    "Traffic Report": {
-      "id": 36387835853,
-      "status": "completed",
-      "conclusion": "success",
-      "created_at": "2026-09-28T06:42:57Z",
-      "updated_at": "2026-09-28T06:43:08Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36387835853"
+      "created_at": "2026-09-28T11:35:46Z",
+      "updated_at": "2026-09-28T11:35:47Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36416585035"
     }
   },
   "quality_gate": {
