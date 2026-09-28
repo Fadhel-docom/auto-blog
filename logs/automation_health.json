@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-28T09:54:56+00:00",
+  "timestamp": "2026-09-28T10:04:48+00:00",
   "site": "https://home-organization-ideas.com/",
   "publishing": {
     "status": "ACTIVE"
@@ -49,19 +49,19 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 36406475448,
+      "id": 36407485425,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-09-28T09:54:50Z",
-      "updated_at": "2026-09-28T09:54:53Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36406475448"
+      "created_at": "2026-09-28T10:04:39Z",
+      "updated_at": "2026-09-28T10:04:42Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36407485425"
     },
     "Scheduled Publisher": {
       "id": 36406290716,
-      "status": "in_progress",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "failure",
       "created_at": "2026-09-28T09:53:03Z",
-      "updated_at": "2026-09-28T09:53:06Z",
+      "updated_at": "2026-09-28T09:55:23Z",
       "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36406290716"
     },
     "Traffic Report": {
@@ -74,7 +74,7 @@
     }
   },
   "quality_gate": {
-    "status": "pending",
+    "status": "skipped",
     "job": "publish"
   },
   "traffic": {
@@ -153,35 +153,46 @@
           "status": "pending"
         }
       ]
+    },
+    {
+      "type": "Scheduled Publisher failure",
+      "run": {
+        "id": 36406290716,
+        "status": "completed",
+        "conclusion": "failure",
+        "created_at": "2026-09-28T09:53:03Z",
+        "updated_at": "2026-09-28T09:55:23Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36406290716"
+      }
     }
   ],
   "publisher_steps": {
     "OpenAI Editorial Quality Gate": {
-      "status": "in_progress",
+      "status": "failure",
       "job": "publish"
     },
     "Publish Hugo post": {
-      "status": "pending",
+      "status": "skipped",
       "job": "publish"
     },
     "Quality Gate": {
-      "status": "pending",
+      "status": "skipped",
       "job": "publish"
     },
     "Deploy GitHub Pages": {
-      "status": "pending",
+      "status": "skipped",
       "job": "publish"
     },
     "Verify live article": {
-      "status": "pending",
+      "status": "skipped",
       "job": "publish"
     },
     "Submit IndexNow": {
-      "status": "pending",
+      "status": "skipped",
       "job": "publish"
     },
     "Recovery check": {
-      "status": "pending",
+      "status": "skipped",
       "job": "publish"
     }
   },
