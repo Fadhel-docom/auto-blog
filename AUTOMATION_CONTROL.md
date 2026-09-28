@@ -4,9 +4,9 @@
 Keep Home Organization Ideas stable, safe, observable, and maintainable before optimizing publishing volume.
 
 ## Operating mode
-**STABILIZATION — PUBLISHING PAUSED**
+**CONTROLLED RECOVERY — PUBLISHING ACTIVE**
 
-Automatic scheduled publishing remains disabled until the readiness gate below is explicitly satisfied.
+Scheduled publishing is active on a 10-minute cadence, but every item remains protected by deterministic SEO checks, an independent OpenAI Quality Gate, live verification, and queue finalization only after successful deployment.
 
 ## Team roles
 - **Manager / Orchestrator:** ChatGPT — prioritizes work, verifies evidence, and does not declare success without a real test.
@@ -36,6 +36,7 @@ Publishing can be re-enabled only after all are true:
 - Provider rate-limit behavior is bounded and produces no retry loop.
 - Health Monitor remains green for at least several cycles.
 - No unresolved critical automation issue remains.
+- The live site uses the production custom domain and canonical URLs.
 - Content quality checks pass on the latest article.
 
 ## Review rhythm
@@ -44,15 +45,15 @@ Publishing can be re-enabled only after all are true:
 - Publishing optimization: only after the stability gate is green.
 
 ## Current state / blockers
-- Provider rate limits caused repeated generation failures; retries are now bounded and publishing is paused.
+- Provider rate limits previously caused repeated generation failures; retries remain bounded and the publisher must never enter a retry storm.
 - One legacy Scheduled Publisher run remains pending from before the stabilization pause; it is not being treated as proof of successful publishing.
 - One queue item remains overdue by design while publishing is paused.
 - The latest article quality issue was repaired: it now has 6 unique inline images, 10 H2 sections, 5 FAQs, and 2,169 words.
 - Link Audit is green after repairing two broken internal links.
-- Auto Repair now handles failure/cancellation/timeout events and will not dispatch publishing while the stabilization gate is closed.
+- Auto Repair handles failure/cancellation/timeout events and preserves cooldown state.
 
 ## Next phase
-1. Stabilize orchestration and failure handling.
-2. Validate deterministic checks without consuming model quotas.
-3. Run one controlled end-to-end publishing test.
-4. Re-enable scheduling only after the readiness gate passes.
+1. Verify the first controlled scheduled run after this recovery commit.
+2. Verify live article deployment and queue finalization.
+3. Keep health monitoring lightweight every 15 minutes.
+4. Audit and improve weak legacy articles while preserving successful automation.
