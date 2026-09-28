@@ -44,5 +44,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./public
-          cname: home-organization-ideas.com
+          # No custom domain during stabilization; publish on the default GitHub Pages URL.
           force_orphan: false
