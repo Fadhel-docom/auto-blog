@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-29T13:09:45+00:00",
+  "timestamp": "2026-09-29T13:30:01+00:00",
   "site": "https://home-organization-ideas.com/",
   "publishing": {
     "status": "ACTIVE"
@@ -54,12 +54,12 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 36573087291,
+      "id": 36575514615,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-09-29T13:09:38Z",
-      "updated_at": "2026-09-29T13:09:42Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36573087291"
+      "created_at": "2026-09-29T13:29:51Z",
+      "updated_at": "2026-09-29T13:29:54Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36575514615"
     },
     "Traffic Report": {
       "id": 36569855310,
@@ -74,42 +74,8 @@
     "status": "UNAVAILABLE"
   },
   "traffic": {
-    "status": "OK",
-    "visitors_today": 0,
-    "visitors_last_7_days": 15,
-    "visitors_this_month": 15,
-    "stats_today": [
-      {
-        "day": "2026-09-29",
-        "hourly": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "daily": 0
-      }
-    ]
+    "status": "UNAVAILABLE",
+    "reason": "('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
   },
   "alerts": [],
   "issues": [
@@ -152,6 +118,13 @@
           "status": "pending"
         }
       ]
+    },
+    {
+      "type": "GoatCounter unavailable",
+      "traffic": {
+        "status": "UNAVAILABLE",
+        "reason": "('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
+      }
     }
   ],
   "publisher_steps": {},
