@@ -20,6 +20,7 @@ faq = [
   { question = "How many sheet sets should I keep?", answer = "Keep enough for your household's normal laundry rhythm and a practical spare rather than filling the closet with rarely used sets." },
   { question = "Do I need baskets for a linen closet?", answer = "No. Baskets are useful for small loose items, but open shelves often work better for towels and sheets because you can see and reach the stacks immediately." }
 ]
+aliases = ["/posts/linen-closet-organization-ideas-a-simple-system-for-small-shelves/"]
 draft = false
 +++
 

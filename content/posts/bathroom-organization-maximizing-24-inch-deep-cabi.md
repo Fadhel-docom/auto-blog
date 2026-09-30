@@ -8,6 +8,7 @@ images = ["/images/bathroom-organization-maximizing-24-inch-deep-cabi-1.jpg", "/
 tags = ["bathroom organization", "small space storage", "under sink solutions"]
 categories = ["Bathroom"]
 faq = []
+aliases = ["/posts/bathroom-organization-maximizing-under-sink-storage-in-a-24-inch-deep-cabinet-with-pull-out-bins-and-tension-rods/"]
 draft = false
 +++
 ## Understanding the Under‑Sink Space

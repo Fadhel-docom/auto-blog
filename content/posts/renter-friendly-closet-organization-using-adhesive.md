@@ -9,6 +9,7 @@ tags = ["closet organization", "renter friendly", "small space living"]
 categories = ["Rental"]
 faq = []
 aliases = ["/posts/renter-friendly-closet-organization-using-adhesive/"]
+aliases = ["/posts/renter-friendly-closet-organization-using-adhesive-hooks-and-tension-rods/"]
 draft = false
 +++
 ## Assess Your Space and Set Goals

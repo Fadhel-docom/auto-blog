@@ -8,6 +8,7 @@ images = ["https://images.pexels.com/photos/6580394/pexels-photo-6580394.jpeg?cs
 tags = ["small closet organization ideas", "home organization", "small spaces"]
 categories = ["Bedroom"]
 faq = []
+aliases = ["/posts/small-closet-organization-ideas-a-practical-small-space-guide/"]
 draft = false
 +++
 ## Assess Your Space for small closet organization ideas

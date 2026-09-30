@@ -14,6 +14,7 @@ faq = [
   {question = "How do I keep a small bedroom organized after the first cleanup?", answer = "Give each category a predictable home and use a short nightly or weekly reset. If the same item repeatedly lands outside its zone, change its location rather than adding more storage."},
   {question = "Should I buy containers before organizing a small bedroom?", answer = "Usually no. Declutter and measure first, then choose containers that fit the actual shelves, drawers, closet, or under-bed space."}
 ]
+aliases = ["/posts/small-bedroom-organization-a-practical-small-space-guide/"]
 draft = false
 +++
 ## Assess Your Space for small bedroom organization ideas

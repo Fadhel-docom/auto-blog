@@ -13,6 +13,7 @@ faq = [
   {question = "What should go in an entryway drop zone?", answer = "Keep the drop zone focused on daily-use items such as keys, a bag, mail that needs action, and the shoes or outer layer you are currently using."},
   {question = "How can I keep an entryway organized long term?", answer = "Use a short reset routine, return each item to a defined location, and remove things that repeatedly accumulate without being used."}
 ]
+aliases = ["/posts/narrow-entryway-organization-build-a-drop-zone-that-stays-tidy/"]
 draft = false
 +++
 

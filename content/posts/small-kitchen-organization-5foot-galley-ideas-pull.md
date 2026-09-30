@@ -8,6 +8,7 @@ images = ["/images/small-kitchen-organization-5foot-galley-ideas-pull-1.jpg", "/
 tags = ["small kitchen organization", "pull out spice rack", "galley kitchen"]
 categories = ["Kitchen"]
 faq = []
+aliases = ["/posts/small-kitchen-organization-ideas-pull-out-spice-rack-for-5ft-galley/"]
 draft = false
 +++
 ## Why a Pull‑Out Spice Rack Is Perfect for a 5‑Foot Galley

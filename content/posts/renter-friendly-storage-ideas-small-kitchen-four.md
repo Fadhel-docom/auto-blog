@@ -8,6 +8,7 @@ images = ["/images/renter-friendly-storage-ideas-small-kitchen-four-1.jpg", "/im
 tags = ["storage ideas", "small kitchen", "renter-friendly"]
 categories = ["Rental"]
 faq = []
+aliases = ["/posts/renter-friendly-storage-ideas-for-small-kitchen-with-four-cabinets/"]
 draft = false
 +++
 ## Introduction

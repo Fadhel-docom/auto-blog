@@ -8,6 +8,7 @@ images = ["https://images.pexels.com/photos/19866402/pexels-photo-19866402.jpeg?
 tags = ["small bathroom organization ideas", "home organization", "small spaces"]
 categories = ["Bathroom"]
 faq = []
+aliases = ["/posts/small-bathroom-organization-ideas-a-practical-small-space-guide/"]
 draft = false
 +++
 ## Assess Your Space for small bathroom organization ideas

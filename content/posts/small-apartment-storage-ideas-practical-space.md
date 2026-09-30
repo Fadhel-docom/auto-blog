@@ -8,6 +8,7 @@ images = ["https://images.pexels.com/photos/18470969/pexels-photo-18470969.jpeg?
 tags = ["small apartment storage ideas", "home organization", "small spaces"]
 categories = ["Small Space"]
 faq = []
+aliases = ["/posts/small-apartment-storage-ideas-a-practical-small-space-guide/"]
 draft = false
 +++
 ## Assess Your Space for small apartment storage ideas

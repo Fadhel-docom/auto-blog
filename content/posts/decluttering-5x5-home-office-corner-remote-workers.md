@@ -8,6 +8,7 @@ images = ["/images/decluttering-5x5-home-office-corner-remote-workers-1.jpg", "/
 tags = ["decluttering", "home office", "small space"]
 categories = ["Decluttering"]
 faq = []
+aliases = ["/posts/decluttering-a-5x5-home-office-corner-for-remote-workers-in-a-studio-apartment/"]
 draft = false
 +++
 ## Why a 5x5 Corner Is Critical for Remote Work

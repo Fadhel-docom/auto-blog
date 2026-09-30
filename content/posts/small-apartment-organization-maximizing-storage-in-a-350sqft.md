@@ -6,6 +6,7 @@ image = "/images/small-apartment-organization-maximizing-storage-in-a-350sqft-1.
 images = ["/images/small-apartment-organization-maximizing-storage-in-a-350sqft-1.jpg", "/images/small-apartment-organization-maximizing-storage-in-a-350sqft-2.jpg", "/images/small-apartment-organization-maximizing-storage-in-a-350sqft-3.jpg", "/images/small-apartment-organization-maximizing-storage-in-a-350sqft-4.jpg", "/images/small-apartment-organization-maximizing-storage-in-a-350sqft-5.jpg"]
 tags = ["small apartment organization", "studio storage", "space saving"]
 categories = ["Bedroom"]
+aliases = ["/posts/small-apartment-organization-maximizing-storage-in-a-350sqft-studio-with-no-builtin-closet/"]
 draft = false
 +++
 ## Assessing Your Space and Identifying Storage Gaps
