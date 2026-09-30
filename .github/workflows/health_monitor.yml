@@ -32,7 +32,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
-          SITE_URL: "https://home-organization-ideas.com/"
+          SITE_URL: "https://fadhel-docom.github.io/auto-blog/"
           GOATCOUNTER_SITE: "homeorganizationideas.goatcounter.com"
           GOATCOUNTER_API_KEY: ${{ secrets.GOATCOUNTER_API_KEY }}
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}

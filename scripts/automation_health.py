@@ -6,7 +6,7 @@ from urllib.parse import urljoin
 import requests
 
 ROOT=Path(__file__).resolve().parents[1]
-SITE=os.getenv("SITE_URL","https://home-organization-ideas.com/").rstrip("/")+"/"
+SITE=os.getenv("SITE_URL","https://fadhel-docom.github.io/auto-blog/").rstrip("/")+"/"
 REPO=os.getenv("GITHUB_REPOSITORY","Fadhel-docom/auto-blog")
 TOKEN=os.getenv("GITHUB_TOKEN","").strip()
 GOAT_SITE=os.getenv("GOATCOUNTER_SITE","").strip()
