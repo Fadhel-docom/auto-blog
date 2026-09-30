@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
-      SITE_URL: "https://fadhel-docom.github.io/auto-blog"
+      SITE_URL: "https://home-organization-ideas.com"
       INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
     steps:
       - name: Checkout
@@ -137,6 +137,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./public
+          cname: home-organization-ideas.com
           force_orphan: true
 
       - name: Verify live article

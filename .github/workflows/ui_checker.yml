@@ -34,7 +34,7 @@ jobs:
 
       - name: Run UI checker
         env:
-          SITE_URL: "https://fadhel-docom.github.io/auto-blog/"
+          SITE_URL: "https://home-organization-ideas.com/"
         run: |
           python scripts/ui_checker.py
 
