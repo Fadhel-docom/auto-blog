@@ -8,6 +8,7 @@ images = ["/images/kitchen-organization-ideas-small-spaces-space-1.jpg", "/image
 tags = ["kitchen organization ideas for small spaces", "home organization", "small spaces"]
 categories = ["Kitchen"]
 faq = []
+aliases = ["/posts/kitchen-organization-ideas-small-spaces-space/"]
 draft = false
 +++
 ## Assess Your Space for kitchen organization ideas for small spaces

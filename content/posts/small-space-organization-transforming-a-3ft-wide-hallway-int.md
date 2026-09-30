@@ -6,6 +6,7 @@ image = "/images/small-space-organization-transforming-a-3ft-wide-hallway-int-1.
 images = ["/images/small-space-organization-transforming-a-3ft-wide-hallway-int-1.jpg", "/images/small-space-organization-transforming-a-3ft-wide-hallway-int-2.jpg", "/images/small-space-organization-transforming-a-3ft-wide-hallway-int-3.jpg", "/images/small-space-organization-transforming-a-3ft-wide-hallway-int-4.jpg", "/images/small-space-organization-transforming-a-3ft-wide-hallway-int-5.jpg"]
 tags = ["small space organization", "hallway storage", "home organization"]
 categories = ["Small Space"]
+aliases = ["/posts/small-space-organization-transforming-a-3ft-wide-hallway-int/"]
 draft = false
 +++
 ## Assessing the Hallway's Limitations and Opportunities
