@@ -10,6 +10,7 @@ categories = ["Small Space"]
 faq = []
 aliases = ["/posts/small-apartment-storage-ideas-a-practical-small-space-guide/"]
 draft = false
+slug = "small-apartment-storage-ideas-practical-space"
 +++
 ## Assess Your Space for small apartment storage ideas
 

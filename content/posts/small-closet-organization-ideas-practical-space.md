@@ -10,6 +10,7 @@ categories = ["Bedroom"]
 faq = []
 aliases = ["/posts/small-closet-organization-ideas-a-practical-small-space-guide/"]
 draft = false
+slug = "small-closet-organization-ideas-practical-space"
 +++
 ## Assess Your Space for small closet organization ideas
 

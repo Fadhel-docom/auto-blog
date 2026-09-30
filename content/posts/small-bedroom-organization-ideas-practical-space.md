@@ -16,6 +16,7 @@ faq = [
 ]
 aliases = ["/posts/small-bedroom-organization-a-practical-small-space-guide/"]
 draft = false
+slug = "small-bedroom-organization-ideas-practical-space"
 +++
 ## Assess Your Space for small bedroom organization ideas
 

@@ -10,6 +10,7 @@ categories = ["Decluttering"]
 faq = []
 aliases = ["/posts/decluttering-a-5x5-home-office-corner-for-remote-workers-in-a-studio-apartment/"]
 draft = false
+slug = "decluttering-5x5-home-office-corner-remote-workers"
 +++
 ## Why a 5x5 Corner Is Critical for Remote Work
 

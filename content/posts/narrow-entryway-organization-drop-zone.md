@@ -15,6 +15,7 @@ faq = [
 ]
 aliases = ["/posts/narrow-entryway-organization-build-a-drop-zone-that-stays-tidy/"]
 draft = false
+slug = "narrow-entryway-organization-drop-zone"
 +++
 
 ## Why Narrow Entryways Become Cluttered So Quickly

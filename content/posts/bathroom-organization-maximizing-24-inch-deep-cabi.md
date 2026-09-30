@@ -10,6 +10,7 @@ categories = ["Bathroom"]
 faq = []
 aliases = ["/posts/bathroom-organization-maximizing-under-sink-storage-in-a-24-inch-deep-cabinet-with-pull-out-bins-and-tension-rods/"]
 draft = false
+slug = "bathroom-organization-maximizing-24-inch-deep-cabi"
 +++
 ## Understanding the Under‑Sink Space
 

@@ -22,6 +22,7 @@ faq = [
 ]
 aliases = ["/posts/linen-closet-organization-ideas-a-simple-system-for-small-shelves/"]
 draft = false
+slug = "linen-closet-organization-ideas-small-shelves"
 +++
 
 A linen closet can look full while still being difficult to use. Towels slide into uneven piles, sheet sets get separated, and the items you use every day somehow end up at the back.

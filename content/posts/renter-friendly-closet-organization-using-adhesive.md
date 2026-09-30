@@ -10,6 +10,7 @@ categories = ["Rental"]
 faq = []
 aliases = ["/posts/renter-friendly-closet-organization-using-adhesive/", "/posts/renter-friendly-closet-organization-using-adhesive-hooks-and-tension-rods/"]
 draft = false
+slug = "renter-friendly-closet-organization-using-adhesive"
 +++
 ## Assess Your Space and Set Goals
 

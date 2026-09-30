@@ -8,6 +8,7 @@ tags = ["kitchen organization", "renter tips", "magnetic spice rack"]
 categories = ["Rental"]
 aliases = ["/posts/renterfriendly-kitchen-organization-magnetic-spice-rack-solutions-that-require-no-drilling/"]
 draft = false
+slug = "renterfriendly-kitchen-organization-magnetic-spice"
 +++
 ## Why Magnetic Spice Racks Are Ideal for Renters
 

@@ -10,6 +10,7 @@ categories = ["Rental"]
 faq = []
 aliases = ["/posts/renter-friendly-storage-ideas-for-small-kitchen-with-four-cabinets/"]
 draft = false
+slug = "renter-friendly-storage-ideas-small-kitchen-four"
 +++
 ## Introduction
 

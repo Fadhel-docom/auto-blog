@@ -10,6 +10,7 @@ categories = ["Kitchen"]
 faq = []
 aliases = ["/posts/kitchen-organization-ideas-small-spaces-space/", "/posts/small-kitchen-organization-ideas-a-practical-small-space-guide/"]
 draft = false
+slug = "kitchen-organization-ideas-small-spaces-space"
 +++
 ## Assess Your Space for kitchen organization ideas for small spaces
 

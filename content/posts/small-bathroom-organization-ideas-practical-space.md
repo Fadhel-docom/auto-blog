@@ -10,6 +10,7 @@ categories = ["Bathroom"]
 faq = []
 aliases = ["/posts/small-bathroom-organization-ideas-a-practical-small-space-guide/"]
 draft = false
+slug = "small-bathroom-organization-ideas-practical-space"
 +++
 ## Assess Your Space for small bathroom organization ideas
 

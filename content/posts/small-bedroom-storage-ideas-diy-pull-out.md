@@ -10,6 +10,7 @@ categories = ["Bedroom"]
 faq = []
 aliases = ["/posts/small-bedroom-storage-ideas-diy-pull-out-drawers-and-rolling-bins-under-a-queen-bed/"]
 draft = false
+slug = "small-bedroom-storage-ideas-diy-pull-out"
 +++
 Living in a 10×10 bedroom with a queen‑size bed can feel cramped, but the space beneath the mattress is often under‑utilized. **Small bedroom storage ideas** that focus on pull‑out drawers and rolling bins let you reclaim that hidden area without sacrificing comfort. In this guide we walk you through measuring, selecting hardware, building simple drawers, adding mobile bins, and keeping everything tidy. By the end you’ll have a custom, low‑cost system that slides in and out like a dream, giving you extra room for clothes, linens, shoes, or hobby supplies.
 
