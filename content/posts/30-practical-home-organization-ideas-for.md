@@ -5,7 +5,9 @@ description = "Discover 30 actionable home organization ideas to transform tiny 
 image = "/images/30-practical-home-organization-ideas-for.jpg"
 tags = ["home organization ideas", "small space living", "decluttering tips", "storage solutions", "multi functional furniture"]
 categories = ["Small Space"]
+aliases = ["/posts/30-practical-home-organization-ideas-for-small-spaces/"]
 draft = false
+slug = "30-practical-home-organization-ideas-for"
 +++
 ## Introduction
 

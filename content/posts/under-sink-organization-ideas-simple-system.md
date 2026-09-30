@@ -13,7 +13,9 @@ faq = [
   { question = "How do I prevent leaks from damaging stored items?", answer = "Keep products in washable bins, avoid packing the cabinet tightly around plumbing, and check connections periodically so a small leak is noticed quickly." },
   { question = "How can I make a small under-sink cabinet easier to use?", answer = "Group supplies by frequency of use and put daily items at the front in open bins or on a pull-out tray." }
 ]
+aliases = ["/posts/under-sink-organization-ideas-a-simple-system-that-stays-tidy/"]
 draft = false
+slug = "under-sink-organization-ideas-simple-system"
 +++
 
 A cabinet under the sink is one of the easiest places for clutter to hide. Pipes divide the available space, bottles get pushed to the back, and a small leak can turn a neat cabinet into a damaged mess.

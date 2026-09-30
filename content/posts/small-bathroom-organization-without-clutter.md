@@ -21,7 +21,9 @@ faq = [
   {question = "How much bathroom storage do I actually need?", answer = "You need enough capacity for the products and tools used regularly, plus a modest reserve for replacements. When a shelf is permanently overfilled, the problem is usually the inventory rather than the lack of another container."},
   {question = "How do I keep a small bathroom organized?", answer = "Give every daily item a defined home, keep categories together, process empty packaging quickly, and use a short weekly reset instead of waiting for clutter to become a larger cleaning project."}
 ]
+aliases = ["/posts/small-bathroom-organization-create-more-storage-without-adding-clutter/"]
 draft = false
+slug = "small-bathroom-organization-without-clutter"
 +++
 
 ## Start With the Routine, Not the Containers
