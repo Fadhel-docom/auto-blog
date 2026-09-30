@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://home-organization-ideas.com/sitemap.xml
+Sitemap: https://fadhel-docom.github.io/auto-blog/sitemap.xml
