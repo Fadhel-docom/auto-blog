@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-28T00:19:01+00:00",
+  "timestamp": "2026-09-30T10:38:59+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -39,7 +39,7 @@
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 31835
+    "html_length": 31676
   },
   "articles": [
     {
@@ -52,7 +52,7 @@
       "images": 11,
       "tags": 3,
       "h2_count": 12,
-      "image_credits": false,
+      "image_credits": true,
       "related": true,
       "schema": {
         "present": true,
@@ -63,9 +63,9 @@
         "has_article": false
       },
       "required_failures": [
-        "image credits"
+        "article schema"
       ],
-      "html_length": 30737
+      "html_length": 30878
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-a-simple-system-for-small-shelves/",
@@ -87,8 +87,10 @@
         ],
         "has_article": false
       },
-      "required_failures": [],
-      "html_length": 24870
+      "required_failures": [
+        "article schema"
+      ],
+      "html_length": 25013
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-a-simple-system-that-stays-tidy/",
@@ -110,8 +112,10 @@
         ],
         "has_article": false
       },
-      "required_failures": [],
-      "html_length": 27450
+      "required_failures": [
+        "article schema"
+      ],
+      "html_length": 27591
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-organization-a-practical-small-space-guide/",
@@ -133,8 +137,10 @@
         ],
         "has_article": false
       },
-      "required_failures": [],
-      "html_length": 31396
+      "required_failures": [
+        "article schema"
+      ],
+      "html_length": 31534
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bathroom-organization-create-more-storage-without-adding-clutter/",
@@ -146,7 +152,7 @@
       "images": 11,
       "tags": 5,
       "h2_count": 18,
-      "image_credits": false,
+      "image_credits": true,
       "related": true,
       "schema": {
         "present": true,
@@ -157,9 +163,9 @@
         "has_article": false
       },
       "required_failures": [
-        "image credits"
+        "article schema"
       ],
-      "html_length": 31169
+      "html_length": 31310
     }
   ],
   "responsive": {
@@ -175,5 +181,5 @@
     ]
   },
   "status": "needs_attention",
-  "failure_count": 2
+  "failure_count": 5
 }

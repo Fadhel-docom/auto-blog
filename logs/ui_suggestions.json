@@ -1,17 +1,35 @@
 {
-  "timestamp": "2026-09-28T00:19:02+00:00",
+  "timestamp": "2026-09-30T10:39:00+00:00",
   "suggestions": [
     {
       "priority": "medium",
-      "area": "image credits",
+      "area": "article schema",
       "url": "https://fadhel-docom.github.io/auto-blog/posts/decluttering-ideas-for-small-homes-that-actually-last/",
-      "suggestion": "Fix article-level image credits consistency."
+      "suggestion": "Fix article-level article schema consistency."
     },
     {
       "priority": "medium",
-      "area": "image credits",
+      "area": "article schema",
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-a-simple-system-for-small-shelves/",
+      "suggestion": "Fix article-level article schema consistency."
+    },
+    {
+      "priority": "medium",
+      "area": "article schema",
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-a-simple-system-that-stays-tidy/",
+      "suggestion": "Fix article-level article schema consistency."
+    },
+    {
+      "priority": "medium",
+      "area": "article schema",
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-organization-a-practical-small-space-guide/",
+      "suggestion": "Fix article-level article schema consistency."
+    },
+    {
+      "priority": "medium",
+      "area": "article schema",
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bathroom-organization-create-more-storage-without-adding-clutter/",
-      "suggestion": "Fix article-level image credits consistency."
+      "suggestion": "Fix article-level article schema consistency."
     }
   ]
 }
