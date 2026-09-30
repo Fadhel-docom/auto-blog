@@ -82,7 +82,7 @@ Having these reference lines ensures that the bin and rod will coexist without i
 
 The installation process varies slightly by product, but the general workflow is consistent. Below is a numbered guide that works for most metal‑frame or plastic‑slide bins.
 
-[Read more about Small Space Organization: Transforming a 3‑ft Wide Hallway into Functional Coat and Shoe Storage](../small-space-organization-transforming-a-3ft-wide-hallway-into-functional-coat-and-shoe-storage/)
+[Read more about Small Space Organization: Transforming a 3‑ft Wide Hallway into Functional Coat and Shoe Storage](/posts/small-space-organization-transforming-a-3ft-wide-hallway-int/)
 
 1. **Attach the rail brackets** – Most bins come with L‑shaped brackets that snap into the side walls of the cabinet. Align the brackets with the interior walls and press until you hear a click.
 2. **Insert the bin** – Slide the bin onto the rails, pulling it fully out to test the glide. If the bin feels tight, loosen the brackets a fraction and try again.
@@ -92,7 +92,7 @@ The installation process varies slightly by product, but the general workflow is
 
 If you encounter resistance, apply a light coat of silicone spray to the rails (avoid oil‑based lubricants that attract dust).
 
-[Read more about Renter Friendly Closet Organization Using Adhesive Hooks and Tension Rods](../renter-friendly-closet-organization-using-adhesive-hooks-and-tension-rods/)
+[Read more about Renter Friendly Closet Organization Using Adhesive Hooks and Tension Rods](/posts/renter-friendly-closet-organization-using-adhesive/)
 
 ## Adding and Securing the Tension Rod
 
