@@ -259,7 +259,7 @@ A good system should be quick to restore. Once a week, pull the front bins forwa
 ## Related Organization Guides
 
 - [Small Bathroom Organization Ideas](../small-bathroom-organization-ideas-a-practical-small-space-guide/)
-- [Kitchen Organization Ideas for Small Spaces](../kitchen-organization-ideas-for-small-spaces-small-space-guide/)
+- [Kitchen Organization Ideas for Small Spaces](../small-kitchen-organization-ideas-a-practical-small-space-guide/)
 
 ## Image Credits
 
