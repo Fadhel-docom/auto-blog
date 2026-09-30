@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-30T18:27:42+00:00",
+  "timestamp": "2026-09-30T18:44:24+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "PAUSED",
@@ -55,67 +55,39 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 36758716833,
+      "id": 36760708485,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-09-30T18:27:33Z",
-      "updated_at": "2026-09-30T18:27:37Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36758716833"
+      "created_at": "2026-09-30T18:44:14Z",
+      "updated_at": "2026-09-30T18:44:19Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36760708485"
     },
     "Traffic Report": {
-      "id": 36716781246,
+      "id": 36760032975,
       "status": "completed",
       "conclusion": "success",
-      "created_at": "2026-09-30T12:44:55Z",
-      "updated_at": "2026-09-30T12:45:14Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36716781246"
+      "created_at": "2026-09-30T18:38:33Z",
+      "updated_at": "2026-09-30T18:38:48Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/36760032975"
     }
   },
   "quality_gate": {
     "status": "UNAVAILABLE"
   },
   "traffic": {
-    "status": "OK",
-    "visitors_today": 2,
-    "visitors_last_7_days": 27,
-    "visitors_this_month": 27,
-    "stats_today": [
-      {
-        "day": "2026-09-30",
-        "hourly": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "daily": 2,
-        "weekly": 2,
-        "monthly": 2
-      }
-    ]
+    "status": "UNAVAILABLE",
+    "reason": "HTTP 404"
   },
   "alerts": [],
-  "issues": [],
+  "issues": [
+    {
+      "type": "GoatCounter unavailable",
+      "traffic": {
+        "status": "UNAVAILABLE",
+        "reason": "HTTP 404"
+      }
+    }
+  ],
   "publisher_steps": {},
   "secrets": {
     "INDEXNOW_KEY": "OK",
