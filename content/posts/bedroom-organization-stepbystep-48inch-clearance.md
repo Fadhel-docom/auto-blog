@@ -23,6 +23,8 @@ Under-bed storage is one of the easiest ways to gain usable space in a small bed
 
 This guide treats the project like a small installation rather than a decorating exercise. You will measure the space, sort what belongs there, select containers, test the clearance, and build a simple retrieval system. The result should be storage that you can actually use—not a dark pile of boxes that you forget exists.
 
+![A practical under-bed storage setup with labeled low-profile containers ready for a small bedroom organization project](../../images/bedroom-organization-stepbystep-48inch-clearance-1.jpg)
+
 ## 1. Understand What the 48-Inch Measurement Means
 
 ![A measuring tape being used beside a bed to establish the available clearance before planning storage](../../images/bedroom-organization-stepbystep-48inch-clearance-2.jpg)
