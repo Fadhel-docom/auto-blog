@@ -3,13 +3,13 @@ title = "Linen Closet Organization Ideas: A Simple System for Small Shelves"
 date = "2026-09-24T21:05:00+00:00"
 lastmod = "2026-10-01T05:45:00+01:00"
 description = "Linen closet organization ideas for small shelves: measure the space, group linens by use, fold to shelf height, label simple zones, and keep everyday towels easy to reach."
-image = "/images/small-closet-organization-ideas-practical-space-2.jpg"
+image = "/images/linen-closet-measure-shelf.svg"
 images = [
-  "/images/small-closet-organization-ideas-practical-space-2.jpg",
-  "/images/small-closet-organization-ideas-practical-space-3.jpg",
-  "/images/small-closet-organization-ideas-practical-space-4.jpg",
-  "/images/small-closet-organization-ideas-practical-space-5.jpg",
-  "/images/small-closet-organization-ideas-practical-space-6.jpg"
+  "/images/linen-closet-measure-shelf.svg",
+  "/images/linen-closet-fold-towels.svg",
+  "/images/linen-closet-sheet-set.svg",
+  "/images/linen-closet-basket-zone.svg",
+  "/images/linen-closet-label-zones.svg"
 ]
 tags = ["linen closet organization ideas", "linen closet", "home organization", "small spaces"]
 categories = ["Home Organization"]
@@ -49,7 +49,7 @@ This is also the right time to remove worn towels, unmatched pillowcases, sheets
 
 A small closet has a fixed amount of shelf space. Removing five unnecessary items can be more useful than buying another basket.
 
-![closet shelf organization with storage baskets](../../images/small-closet-organization-ideas-practical-space-2.jpg)
+![closet shelf organization with storage baskets](../../images/linen-closet-measure-shelf.svg)
 
 *Start with an empty shelf so you can see the real storage capacity before adding containers.*
 
@@ -71,7 +71,7 @@ Also measure the height of your usual folded towel. If a stack of four towels re
 
 Use the measurements to choose the folding direction and container size. The closet should determine the system, not the other way around.
 
-![measured closet storage shelves](../../images/small-closet-organization-ideas-practical-space-3.jpg)
+![measured closet storage shelves](../../images/linen-closet-fold-towels.svg)
 
 *Measure first; a container that looks compact can still waste valuable shelf depth.*
 
@@ -111,7 +111,7 @@ Make stacks short enough that one towel can be removed without toppling the othe
 
 For a shared closet, you can also create one bath-towel stack per bathroom. That can be easier to maintain than a single large stack that everyone disturbs.
 
-![folded towels arranged for easy access](../../images/small-closet-organization-ideas-practical-space-4.jpg)
+![folded towels arranged for easy access](../../images/linen-closet-sheet-set.svg)
 
 *Consistent folds make the contents easier to identify and help prevent leaning stacks.*
 
@@ -200,7 +200,7 @@ For a family closet, consider grouping by use rather than by person. For example
 
 If a category is used every day but lives on the top shelf, the layout is fighting the routine. Move it down.
 
-![accessible closet shelves with organized storage](../../images/small-closet-organization-ideas-practical-space-5.jpg)
+![accessible closet shelves with organized storage](../../images/linen-closet-basket-zone.svg)
 
 *Keep frequent-use categories in the easiest reach zone and reserve higher shelves for occasional items.*
 
@@ -342,4 +342,4 @@ For image-source information and additional free organization photography, see [
 
 ### Image Credits
 
-The five article images are local copies of Pexels-sourced organization photography already maintained in the site's image library. They are used here as process-oriented supporting visuals rather than decorative showroom imagery.
+The five article images are original local process diagrams created for this guide so each visual directly explains a step rather than acting as decorative showroom photography.
