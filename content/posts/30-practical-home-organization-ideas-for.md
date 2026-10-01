@@ -25,7 +25,7 @@ faq = [
 
 ![Small-space storage arranged for easier access](../../images/renter-friendly-storage-ideas-small-kitchen-four-10.jpg)
 
-![A compact storage system grouped by category](../../images/renter-friendly-storage-ideas-small-kitchen-four-10.jpg)
+![A compact storage system grouped by category](../../images/decluttering-5x5-home-office-corner-remote-workers-10.jpg)
 
 ## Introduction
 
