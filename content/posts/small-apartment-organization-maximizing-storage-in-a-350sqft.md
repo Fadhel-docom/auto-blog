@@ -161,6 +161,10 @@ The most common failures are predictable:
 
 Aim for accessible storage rather than maximum storage density.
 
+![A compact apartment storage shelf being organized into clearly separated everyday zones](../../images/small-apartment-organization-maximizing-storage-in-a-350sqft-5.jpg)
+
+*Use the final storage zone for a defined category rather than turning an unused corner into miscellaneous overflow.*
+
 ## 10. A Simple 350-Sq-Ft Organization Plan
 
 If the studio feels overwhelming, complete the project in this order:
