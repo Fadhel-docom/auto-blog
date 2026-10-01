@@ -1,0 +1,54 @@
+name: Sync Article 1 Images
+
+on:
+  push:
+    paths:
+      - '.github/image-sync-article1.trigger'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download verified Pexels images
+        shell: bash
+        run: |
+          set -euo pipefail
+          declare -A images=(
+            ["static/images/renterfriendly-kitchen-organization-magnetic-spice-1.jpg"]="https://images.pexels.com/photos/11911870/pexels-photo-11911870.jpeg?cs=srgb&dl=pexels-matreding-11911870.jpg&fm=jpg"
+            ["static/images/renterfriendly-kitchen-organization-magnetic-spice-2.jpg"]="https://images.pexels.com/photos/5418583/pexels-photo-5418583.jpeg?cs=srgb&dl=pexels-polina-tankilevitch-5418583.jpg&fm=jpg"
+            ["static/images/renterfriendly-kitchen-organization-magnetic-spice-4.jpg"]="https://images.pexels.com/photos/7772017/pexels-photo-7772017.jpeg?cs=srgb&dl=pexels-anntarazevich-7772017.jpg&fm=jpg"
+            ["static/images/renterfriendly-kitchen-organization-magnetic-spice-5.jpg"]="https://images.pexels.com/photos/3735147/pexels-photo-3735147.jpeg?cs=srgb&dl=pexels-polina-tankilevitch-3735147.jpg&fm=jpg"
+          )
+          for file in "${!images[@]}"; do
+            curl --fail --location --retry 3 --silent --show-error "${images[$file]}" -o "$file"
+            test -s "$file"
+            file "$file"
+          done
+
+      - name: Update article timestamp
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path("content/posts/renterfriendly-kitchen-organization-magnetic-spice.md")
+          s = p.read_text()
+          s = s.replace('lastmod = "2026-10-01T06:00:00+01:00"', 'lastmod = "2026-10-01T08:00:00+01:00"', 1)
+          p.write_text(s)
+          PY
+
+      - name: Commit downloaded images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add static/images/renterfriendly-kitchen-organization-magnetic-spice-1.jpg                   static/images/renterfriendly-kitchen-organization-magnetic-spice-2.jpg                   static/images/renterfriendly-kitchen-organization-magnetic-spice-4.jpg                   static/images/renterfriendly-kitchen-organization-magnetic-spice-5.jpg                   content/posts/renterfriendly-kitchen-organization-magnetic-spice.md
+          if git diff --cached --quiet; then
+            echo "No image/article changes to commit."
+            exit 0
+          fi
+          git commit -m "Replace article 1 images with process-oriented Pexels photos"
+          git push
