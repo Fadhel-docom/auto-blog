@@ -4,7 +4,7 @@ date = "2026-09-26T13:45:00+00:00"
 lastmod = "2026-09-26T18:40:00+00:00"
 description = "Practical decluttering ideas for small homes: a 15-minute audit, room-by-room limits, storage boundaries, and a simple reset routine that prevents clutter from returning."
 image = "https://images.pexels.com/photos/6487941/pexels-photo-6487941.jpeg?auto=compress&cs=tinysrgb&w=1600"
-images = ["https://images.pexels.com/photos/6487941/pexels-photo-6487941.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/9457270/pexels-photo-9457270.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/7061417/pexels-photo-7061417.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/7620863/pexels-photo-7620863.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/19980247/pexels-photo-19980247.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/2062431/pexels-photo-2062431.jpeg?auto=compress&cs=tinysrgb&w=1600"]
+images = ["https://images.pexels.com/photos/6487941/pexels-photo-6487941.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/8581413/pexels-photo-8581413.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/7061417/pexels-photo-7061417.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/7620863/pexels-photo-7620863.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/19980247/pexels-photo-19980247.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/2062431/pexels-photo-2062431.jpeg?auto=compress&cs=tinysrgb&w=1600"]
 tags = ["decluttering", "small homes", "home organization"]
 categories = ["Decluttering", "Small Space"]
 faq = [
@@ -44,7 +44,7 @@ For example, if scissors always end up on the dining table, the problem may not 
 
 The goal of the first audit is not a perfect home. It is to find the small number of locations causing most of the daily mess.
 
-![Person organizing a small home during a decluttering session](https://images.pexels.com/photos/9457270/pexels-photo-9457270.jpeg?auto=compress&cs=tinysrgb&w=1600)
+![Person organizing a small home during a decluttering session](https://images.pexels.com/photos/8581413/pexels-photo-8581413.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
 ## Declutter One Category at a Time
 
