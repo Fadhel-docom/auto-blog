@@ -1,7 +1,7 @@
 +++
 title = "Linen Closet Organization Ideas: A Simple System for Small Shelves"
 date = "2026-09-24T21:05:00+00:00"
-lastmod = "2026-10-01T05:45:00+01:00"
+lastmod = "2026-10-01T21:45:00+01:00"
 description = "Linen closet organization ideas for small shelves: measure the space, group linens by use, fold to shelf height, label simple zones, and keep everyday towels easy to reach."
 image = "/images/linen-closet-measure-shelf.svg"
 images = [
@@ -9,7 +9,8 @@ images = [
   "/images/linen-closet-fold-towels.svg",
   "/images/linen-closet-sheet-set.svg",
   "/images/linen-closet-basket-zone.svg",
-  "/images/linen-closet-label-zones.svg"
+  "/images/linen-closet-label-zones.svg",
+  "/images/linen-closet-door-clearance.svg"
 ]
 tags = ["linen closet organization ideas", "linen closet", "home organization", "small spaces"]
 categories = ["Home Organization"]
@@ -222,6 +223,10 @@ Before installing anything, measure:
 A shallow door organizer can work for small, lightweight items such as washcloths or spare laundry bags.
 
 Do not use the door for heavy stacks of towels unless the hardware is specifically designed for that load. A door that becomes difficult to close is not an improvement.
+
+![closet door storage clearance check](../../images/linen-closet-door-clearance.svg)
+
+*Check the door swing, shelf depth, hinge area, and organizer clearance before adding door storage.*
 
 For renters, removable solutions may be preferable, but the same measurement rule applies: test the clearance before committing to a storage product.
 
