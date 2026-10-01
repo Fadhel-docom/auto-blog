@@ -1,10 +1,10 @@
 +++
 title = "Decluttering Ideas for Small Homes That Actually Last"
 date = "2026-09-26T13:45:00+00:00"
-lastmod = "2026-09-26T18:40:00+00:00"
+lastmod = "2026-10-01T22:58:00+01:00"
 description = "Practical decluttering ideas for small homes: a 15-minute audit, room-by-room limits, storage boundaries, and a simple reset routine that prevents clutter from returning."
 image = "https://images.pexels.com/photos/4247726/pexels-photo-4247726.jpeg?auto=compress&cs=tinysrgb&w=1600"
-images = ["https://images.pexels.com/photos/4247726/pexels-photo-4247726.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/8581413/pexels-photo-8581413.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/8580739/pexels-photo-8580739.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/7203811/pexels-photo-7203811.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/7203881/pexels-photo-7203881.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/2062431/pexels-photo-2062431.jpeg?auto=compress&cs=tinysrgb&w=1600"]
+images = ["https://images.pexels.com/photos/4247726/pexels-photo-4247726.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/8581413/pexels-photo-8581413.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/8580739/pexels-photo-8580739.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/8581372/pexels-photo-8581372.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/7203881/pexels-photo-7203881.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/2062431/pexels-photo-2062431.jpeg?auto=compress&cs=tinysrgb&w=1600"]
 tags = ["decluttering", "small homes", "home organization"]
 categories = ["Decluttering", "Small Space"]
 faq = [
@@ -170,7 +170,7 @@ Keep the system close to the door and make it possible to use it in seconds.
 
 Paper needs a second step. Decide where important documents go, where pending paperwork waits, and where recycling happens. A permanent "deal with later" pile is not a system because it has no decision point.
 
-For reusable bags, use the space available as the limit. If the bag basket is full, remove extras instead of finding another basket.
+For reusable bags, use the space available as the limit. If the bag basket is full, remove extras instead of finding another basket. For broader guidance on reducing, reusing, donating, and recycling household items, see the [U.S. EPA guide to reducing and reusing](https://www.epa.gov/recycle/what-you-can-do).
 
 The objective is not to make the entrance look perfect all day. It is to prevent a five-minute arrival routine from creating a 30-minute cleanup later.
 
