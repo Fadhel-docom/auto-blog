@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Standalone editorial quality gate.
 
+# Validates the current editorial target without relaxing publish_guard criteria.
+
 On a push, validate the post changed by that push. This prevents an unrelated
 legacy article from blocking closure of a newly edited article while retaining
 the full publish_guard criteria for the target post.
