@@ -136,7 +136,7 @@ def main(target_post=None):
             if not image_path.exists() or not image_path.is_file() or image_path.stat().st_size <= 0:
                 errors.append(f"missing or empty local image: {image_url}")
 
-    hero = normalize_image_ref(field(fm, "image"))
+    hero = normalize_image_ref(quoted_value(field(fm, "image")))
     if hero and hero not in normalized_urls:
         errors.append(f"featured image is not one of this article's inline images: {hero}")
 
