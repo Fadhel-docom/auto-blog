@@ -4,7 +4,7 @@ date = "2026-09-26T13:45:00+00:00"
 lastmod = "2026-09-26T18:40:00+00:00"
 description = "Practical decluttering ideas for small homes: a 15-minute audit, room-by-room limits, storage boundaries, and a simple reset routine that prevents clutter from returning."
 image = "https://images.pexels.com/photos/6487941/pexels-photo-6487941.jpeg?auto=compress&cs=tinysrgb&w=1600"
-images = ["https://images.pexels.com/photos/6487941/pexels-photo-6487941.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/8581413/pexels-photo-8581413.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/7061417/pexels-photo-7061417.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/7620863/pexels-photo-7620863.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/19980247/pexels-photo-19980247.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/2062431/pexels-photo-2062431.jpeg?auto=compress&cs=tinysrgb&w=1600"]
+images = ["https://images.pexels.com/photos/6487941/pexels-photo-6487941.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/8581413/pexels-photo-8581413.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/8580739/pexels-photo-8580739.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/7620863/pexels-photo-7620863.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/19980247/pexels-photo-19980247.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/2062431/pexels-photo-2062431.jpeg?auto=compress&cs=tinysrgb&w=1600"]
 tags = ["decluttering", "small homes", "home organization"]
 categories = ["Decluttering", "Small Space"]
 faq = [
@@ -65,7 +65,7 @@ A useful example is food containers. If a cabinet comfortably holds 12 container
 
 Avoid creating a whole-house "maybe" pile. If a decision is difficult, place only a small number of uncertain items in a dated box. Review it later rather than allowing an unfinished project to occupy your living space.
 
-![Household items being sorted during a decluttering process](https://images.pexels.com/photos/7061417/pexels-photo-7061417.jpeg?auto=compress&cs=tinysrgb&w=1600)
+![Household items being sorted during a decluttering process](https://images.pexels.com/photos/8580739/pexels-photo-8580739.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
 ## Give Everyday Items a Home Near Where You Use Them
 
