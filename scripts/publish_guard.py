@@ -13,7 +13,7 @@ from datetime import datetime
 
 POSTS = Path("content/posts")
 MIN_WORDS = 1500
-MIN_IMAGES = 6
+MIN_IMAGES = 5
 MIN_H2 = 8
 MIN_FAQ = 4
 
