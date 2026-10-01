@@ -3,8 +3,8 @@ title = "Decluttering Ideas for Small Homes That Actually Last"
 date = "2026-09-26T13:45:00+00:00"
 lastmod = "2026-09-26T18:40:00+00:00"
 description = "Practical decluttering ideas for small homes: a 15-minute audit, room-by-room limits, storage boundaries, and a simple reset routine that prevents clutter from returning."
-image = "https://images.pexels.com/photos/6487941/pexels-photo-6487941.jpeg?auto=compress&cs=tinysrgb&w=1600"
-images = ["https://images.pexels.com/photos/6487941/pexels-photo-6487941.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/8581413/pexels-photo-8581413.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/8580739/pexels-photo-8580739.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/7203811/pexels-photo-7203811.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/19980247/pexels-photo-19980247.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/2062431/pexels-photo-2062431.jpeg?auto=compress&cs=tinysrgb&w=1600"]
+image = "https://images.pexels.com/photos/4247726/pexels-photo-4247726.jpeg?auto=compress&cs=tinysrgb&w=1600"
+images = ["https://images.pexels.com/photos/4247726/pexels-photo-4247726.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/8581413/pexels-photo-8581413.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/8580739/pexels-photo-8580739.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/7203811/pexels-photo-7203811.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/7203881/pexels-photo-7203881.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/2062431/pexels-photo-2062431.jpeg?auto=compress&cs=tinysrgb&w=1600"]
 tags = ["decluttering", "small homes", "home organization"]
 categories = ["Decluttering", "Small Space"]
 faq = [
@@ -22,7 +22,7 @@ A small home does not need more storage every time it feels crowded. Often, the 
 
 The most useful decluttering ideas for small homes therefore do two jobs: they remove things you do not need and make the things you keep easier to manage. This guide uses a practical system you can test without emptying the whole house or buying a room full of organizers.
 
-![Bright, organized small-home interior after a decluttering reset](https://images.pexels.com/photos/6487941/pexels-photo-6487941.jpeg?auto=compress&cs=tinysrgb&w=1600)
+![Bright, organized small-home interior after a decluttering reset](https://images.pexels.com/photos/4247726/pexels-photo-4247726.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
 ## Start With a 15-Minute Decluttering Audit
 
@@ -154,7 +154,7 @@ Leave some empty space as working room. A closet filled to 100 percent capacity 
 
 Apply the same zone-first approach to other storage areas: group similar items, keep frequent-use belongings accessible, and leave enough working space.
 
-![Small closet with organized belongings and accessible storage](https://images.pexels.com/photos/19980247/pexels-photo-19980247.jpeg?auto=compress&cs=tinysrgb&w=1600)
+![Small closet with organized belongings and accessible storage](https://images.pexels.com/photos/7203881/pexels-photo-7203881.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
 ## Create a Landing Zone for Mail, Bags, and Keys
 
