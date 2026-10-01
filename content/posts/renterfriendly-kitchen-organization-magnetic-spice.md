@@ -2,7 +2,7 @@
 title = "Renter-Friendly Kitchen Organization: Magnetic Spice Rack Solutions That Require No Drilling"
 date = "2026-09-21T12:14:51+00:00"
 lastmod = "2026-10-01T08:00:00+01:00"
-description = "A practical renter-friendly kitchen organization guide for using magnetic spice racks without drilling. Measure the space, choose a safe metal surface, build a usable spice zone, and keep everyday cooking supplies easy to reach."
+description = "Practical renter-friendly magnetic spice rack organization: measure the space, choose a safe surface, build a usable spice zone, and keep cooking supplies easy to reach."
 image = "/images/renterfriendly-kitchen-organization-magnetic-spice-1.jpg"
 images = ["/images/renterfriendly-kitchen-organization-magnetic-spice-1.jpg", "/images/renterfriendly-kitchen-organization-magnetic-spice-2.jpg", "/images/renterfriendly-kitchen-organization-magnetic-spice-3.jpg", "/images/renterfriendly-kitchen-organization-magnetic-spice-4.jpg", "/images/renterfriendly-kitchen-organization-magnetic-spice-5.jpg"]
 tags = ["kitchen organization", "renter tips", "magnetic spice rack", "small kitchen storage"]
