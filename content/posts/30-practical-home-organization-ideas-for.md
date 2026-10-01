@@ -205,14 +205,16 @@ Return misplaced objects, clear one surface, review the entryway, and remove one
 
 
 
-![Practical small-space storage baskets arranged by category on open shelving](../../images/30-practical-home-organization-ideas-for-2.jpg)
-![Measuring a narrow cabinet before choosing an organization container](../../images/30-practical-home-organization-ideas-for-3.jpg)
-![Organized pantry containers grouped into practical food zones](../../images/30-practical-home-organization-ideas-for-4.jpg)
-![Labeled seasonal storage bins used to organize a small bedroom](../../images/30-practical-home-organization-ideas-for-5.jpg)
 
 
 
 For a small apartment, pair these principles with our [350-sq-ft storage plan](../small-apartment-organization-maximizing-storage-in-a-350sqft/), [small-apartment storage ideas](../small-apartment-storage-ideas-practical-space/), and [small-bedroom organization guide](../small-bedroom-organization-ideas-practical-space/). For specific zones, see the [small-closet guide](../small-closet-organization-ideas-practical-space/), [small-kitchen guide](../small-kitchen-organization-5foot-galley-ideas-pull/), and [under-sink system](../under-sink-organization-ideas-simple-system/).
+
+
+![Practical storage zones in a compact apartment](../../images/small-apartment-organization-maximizing-storage-in-a-350sqft-1.jpg)
+![Measured vertical storage used to free floor space](../../images/small-apartment-organization-maximizing-storage-in-a-350sqft-2.jpg)
+![A small closet arranged by clothing category](../../images/small-closet-organization-ideas-practical-space-1.jpg)
+![Organized closet shelves using practical storage zones](../../images/small-closet-organization-ideas-practical-space-2.jpg)
 
 ## Conclusion
 
