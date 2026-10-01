@@ -27,6 +27,16 @@ if event == "push":
         line.strip() for line in diff.stdout.splitlines()
         if line.startswith("content/posts/") and line.endswith(".md")
     ]
+    if not changed_posts:
+        history = subprocess.run(
+            ["git", "log", "-1", "--format=", "--name-only", "--", "content/posts"],
+            capture_output=True, text=True, check=False,
+        )
+        changed_posts = [
+            line.strip() for line in history.stdout.splitlines()
+            if line.startswith("content/posts/") and line.endswith(".md")
+        ]
+
     if changed_posts:
         if len(changed_posts) > 1:
             print("QUALITY GATE: multiple changed posts; validating each")
