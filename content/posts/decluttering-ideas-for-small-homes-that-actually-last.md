@@ -170,7 +170,22 @@ Keep the system close to the door and make it possible to use it in seconds.
 
 Paper needs a second step. Decide where important documents go, where pending paperwork waits, and where recycling happens. A permanent "deal with later" pile is not a system because it has no decision point.
 
-For reusable bags, use the space available as the limit. If the bag basket is full, remove extras instead of finding another basket. For broader guidance on reducing, reusing, donating, and recycling household items, see the [U.S. EPA guide to reducing and reusing](https://www.epa.gov/recycle/what-you-can-do).
+For reusable bags, use the space available as the limit. If the bag basket is full, remove extras instead of finding another basket.
+
+## Choose a Clear Exit Route for Unwanted Items
+
+Decluttering does not finish when an item leaves a shelf. Decide where each unwanted item goes so bags and boxes do not become a new form of clutter.
+
+Use a simple route:
+
+- **Donate:** clean, usable items that someone else can reasonably use.
+- **Sell:** items worth the time and effort of listing them.
+- **Recycle:** materials accepted by your local recycling program.
+- **Discard:** broken, unsafe, or unusable items that have no practical recovery route.
+
+Keep outgoing items in one temporary location and set a short deadline for moving them out of the home. This prevents a “donation pile” from becoming permanent storage. Local recycling rules vary, so check the guidance for your area before putting unusual materials in a recycling bin.
+
+For broader guidance on reducing, reusing, donating, and recycling household items, see the [U.S. EPA guide to reducing and reusing](https://www.epa.gov/recycle/what-you-can-do).
 
 The objective is not to make the entrance look perfect all day. It is to prevent a five-minute arrival routine from creating a 30-minute cleanup later.
 
