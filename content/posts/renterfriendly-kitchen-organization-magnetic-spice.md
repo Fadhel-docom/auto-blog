@@ -347,8 +347,8 @@ For renters, that makes the approach especially practical. Measure first, test t
 
 ### Image Credits
 
-- Photo 1: [RDNE Stock project](https://www.pexels.com/@rdne) via [Pexels](https://www.pexels.com/photo/brown-paper-on-silver-refrigerator-door-8580726/)
-- Photo 2: [Taryn Elliott](https://www.pexels.com/@taryn-elliott) via [Pexels](https://www.pexels.com/photo/white-wooden-kitchen-cabinet-with-green-potted-plants-4112622/)
+- Photo 1: [Mathias Reding](https://www.pexels.com/@matreding) via [Pexels](https://www.pexels.com/photo/jars-of-spices-on-a-shelf-11911870/)
+- Photo 2: [Polina Tankilevitch](https://www.pexels.com/@polina-tankilevitch) via [Pexels](https://www.pexels.com/photo/close-up-of-woman-and-fridge-5418583/)
 - Photo 3: [Ron Lach](https://www.pexels.com/@ron-lach) via [Pexels](https://www.pexels.com/photo/close-up-photo-of-a-tape-measure-7778196/)
-- Photo 4: [RDNE Stock project](https://www.pexels.com/@rdne) via [Pexels](https://www.pexels.com/photo/a-person-holding-brown-cardboard-8580800/)
-- Photo 5: [Taryn Elliott](https://www.pexels.com/@taryn-elliott) via [Pexels](https://www.pexels.com/photo/white-wooden-kitchen-cabinet-with-green-potted-plants-4112622/)
+- Photo 4: [Anna Tarazevich](https://www.pexels.com/@anntarazevich) via [Pexels](https://www.pexels.com/photo/clear-glass-jars-on-brown-wooden-shelves-7772017/)
+- Photo 5: [Polina Tankilevitch](https://www.pexels.com/@polina-tankilevitch) via [Pexels](https://www.pexels.com/photo/glass-jars-on-wooden-shelf-3735147/)
