@@ -86,14 +86,20 @@ def shingles(text, size=4):
     t = tokens(text)
     return {" ".join(t[i:i+size]) for i in range(max(0, len(t)-size+1))}
 
-def main():
+def main(target_post=None):
     posts = [p for p in POSTS.glob("*.md") if p.name != ".gitkeep"]
     if not posts:
         print("CONTENT GATE: no posts found")
         return 0
 
-    # GitHub Actions checkout mtimes are not editorial dates.
-    post = max(posts, key=lambda p: post_date(p.read_text(encoding="utf-8")))
+    if target_post:
+        post = Path(target_post)
+        if not post.is_file() or post.suffix.lower() != ".md":
+            print(f"CONTENT GATE: target post not found: {post}")
+            return 1
+    else:
+        # GitHub Actions checkout mtimes are not editorial dates.
+        post = max(posts, key=lambda p: post_date(p.read_text(encoding="utf-8")))
     text = post.read_text(encoding="utf-8")
     fm, body = frontmatter(text)
 
@@ -234,4 +240,7 @@ def main():
     return 0
 
 if __name__ == "__main__":
-    sys.exit(main())
+    target = None
+    if len(sys.argv) > 1:
+        target = sys.argv[1]
+    sys.exit(main(target))
