@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-01T00:19:31+00:00",
+  "timestamp": "2026-10-01T12:18:10+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -39,7 +39,7 @@
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 30803
+    "html_length": 30741
   },
   "articles": [
     {
@@ -51,7 +51,7 @@
       "canonical": "https://fadhel-docom.github.io/auto-blog/posts/decluttering-ideas-for-small-homes-that-actually-last/",
       "images": 11,
       "tags": 3,
-      "h2_count": 12,
+      "h2_count": 13,
       "image_credits": true,
       "related": true,
       "schema": {
@@ -65,7 +65,7 @@
       "required_failures": [
         "article schema"
       ],
-      "html_length": 30776
+      "html_length": 33086
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-small-shelves/",
@@ -76,7 +76,7 @@
       "canonical": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-small-shelves/",
       "images": 10,
       "tags": 4,
-      "h2_count": 14,
+      "h2_count": 18,
       "image_credits": true,
       "related": true,
       "schema": {
@@ -90,7 +90,7 @@
       "required_failures": [
         "article schema"
       ],
-      "html_length": 24825
+      "html_length": 33795
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-simple-system/",
@@ -115,7 +115,7 @@
       "required_failures": [
         "article schema"
       ],
-      "html_length": 27397
+      "html_length": 27334
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-organization-ideas-practical-space/",
@@ -140,7 +140,7 @@
       "required_failures": [
         "article schema"
       ],
-      "html_length": 31376
+      "html_length": 31313
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bathroom-organization-without-clutter/",
