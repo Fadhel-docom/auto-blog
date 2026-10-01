@@ -204,6 +204,10 @@ If a category is used every day but lives on the top shelf, the layout is fighti
 
 *Keep frequent-use categories in the easiest reach zone and reserve higher shelves for occasional items.*
 
+![simple labeled linen closet zones](../../images/linen-closet-label-zones.svg)
+
+*Simple labels make similar linen categories easier to find and return.*
+
 ## 10. Use the Door Only When It Adds Real Capacity
 
 The inside of a closet door can provide useful storage, but only if the added organizer does not interfere with the shelves.
