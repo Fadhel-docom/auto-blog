@@ -2,6 +2,7 @@
 """Standalone editorial quality gate.
 
 # Validates the current editorial target without relaxing publish_guard criteria.
+# The fallback uses recent Git history so script-only pushes still validate the latest article.
 
 On a push, validate the post changed by that push. This prevents an unrelated
 legacy article from blocking closure of a newly edited article while retaining
