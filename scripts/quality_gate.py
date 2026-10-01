@@ -29,13 +29,19 @@ if event == "push":
     ]
     if not changed_posts:
         history = subprocess.run(
-            ["git", "log", "-1", "--format=", "--name-only", "--", "content/posts"],
+            ["git", "log", "-1", "--format=%H", "--", "content/posts"],
             capture_output=True, text=True, check=False,
         )
-        changed_posts = [
-            line.strip() for line in history.stdout.splitlines()
-            if line.startswith("content/posts/") and line.endswith(".md")
-        ]
+        if history.stdout.strip():
+            latest_content_commit = history.stdout.strip()
+            files = subprocess.run(
+                ["git", "diff-tree", "--no-commit-id", "--name-only", "-r", latest_content_commit, "--", "content/posts"],
+                capture_output=True, text=True, check=False,
+            )
+            changed_posts = [
+                line.strip() for line in files.stdout.splitlines()
+                if line.startswith("content/posts/") and line.endswith(".md")
+            ]
 
     if changed_posts:
         if len(changed_posts) > 1:
