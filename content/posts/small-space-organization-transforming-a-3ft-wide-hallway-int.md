@@ -275,6 +275,10 @@ Move the item closer to where it is used, or reduce the number of steps needed t
 
 For more practical small-space systems, see our [small bathroom organization guide](../small-bathroom-organization-ideas-practical-space/) and [small-space bedroom storage guide](../small-bedroom-storage-ideas-diy-pull-out-drawers-and-rolling-bins-under-a-queen-bed/).
 
+![organized hallway with a clear entry path](../../images/small-space-organization-transforming-a-3ft-wide-hallway-int-5.jpg)
+
+*The finished setup should keep coats and shoes contained while leaving the entry path simple to use.*
+
 ## 15. Six Questions About Organizing a 3-ft Hallway
 
 ### Can a 3-ft hallway really hold coats and shoes?
