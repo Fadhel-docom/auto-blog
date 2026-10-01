@@ -60,6 +60,10 @@ For general food-safety practices at home, use the [FDA's food-safety guidance](
 
 ## Measure the Usable Space Before Buying
 
+![Measuring the available refrigerator-side space before installing a magnetic spice rack](../../images/renterfriendly-kitchen-organization-magnetic-spice-3.jpg)
+
+
+
 A common mistake is measuring the whole refrigerator side instead of the space that is actually available.
 
 Use a tape measure and record:
@@ -93,6 +97,10 @@ Put daily spices in the easiest positions. Weekly spices can occupy the next row
 This simple grouping prevents the rack from becoming another miniature clutter pile.
 
 ## Build a Simple One-Row Layout First
+
+![Testing a magnetic spice rack on a refrigerator door before loading spices](../../images/renterfriendly-kitchen-organization-magnetic-spice-2.jpg)
+
+
 
 If you are unsure how much capacity you need, start with one row.
 
@@ -131,6 +139,10 @@ If you already have a collection of mismatched containers, organize the contents
 
 ## Install the Rack Without Drilling
 
+![Cleaning and positioning a magnetic spice rack on a refrigerator surface](../../images/renterfriendly-kitchen-organization-magnetic-spice-4.jpg)
+
+
+
 Once the location is tested, install the rack according to its manufacturer's instructions.
 
 For a basic magnetic system:
@@ -149,6 +161,10 @@ Do not improvise by exceeding the stated weight limit. If the rack begins slidin
 For renters, reversibility matters. If an accessory requires permanent screws, strong permanent adhesive, or modifications to a cabinet, it is no longer the same low-risk solution.
 
 ## Make the Refrigerator Door a Functional Spice Zone
+
+![Organized spice jars arranged on a magnetic rack on a refrigerator door](../../images/renterfriendly-kitchen-organization-magnetic-spice-5.jpg)
+
+
 
 The refrigerator is often the most obvious magnetic surface, but it still needs a layout.
 
@@ -224,6 +240,10 @@ A few mistakes can turn a useful idea into another source of clutter.
 A good storage solution should make the kitchen easier to use, not simply make it look fuller.
 
 ## Keep the Spice Collection Under Control
+
+![Checking and reorganizing a small collection of spice jars for everyday use](../../images/renterfriendly-kitchen-organization-magnetic-spice-1.jpg)
+
+
 
 The rack will stay organized only if the collection itself stays controlled.
 
