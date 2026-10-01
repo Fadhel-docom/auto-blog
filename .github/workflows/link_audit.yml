@@ -1,8 +1,9 @@
 name: Link Audit
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
-  # Push-triggered runs are paused during stabilization.
   schedule:
     - cron: '0 3 * * *'
 
