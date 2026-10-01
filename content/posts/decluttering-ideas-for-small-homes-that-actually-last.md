@@ -110,7 +110,7 @@ The limit should reflect actual use. A household that regularly hosts guests may
 
 This is also why buying storage containers too early can backfire. A larger container can hide the fact that you already own more than the room can comfortably support.
 
-![Organized storage area with visible space between household items](https://images.pexels.com/photos/7203811/pexels-photo-7203811.jpeg?auto=compress&cs=tinysrgb&w=1600)
+![Cardboard boxes labeled Keep, Donate, and Trash for sorting decluttered items](https://images.pexels.com/photos/8581372/pexels-photo-8581372.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
 ## Turn High-Clutter Surfaces Into Controlled Zones
 
