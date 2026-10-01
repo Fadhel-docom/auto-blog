@@ -17,6 +17,16 @@ faq = [
   { question = "What is the biggest mistake in small-space organization?", answer = "Adding storage before reducing excess is a common mistake. More containers can hide clutter instead of solving the underlying volume problem." }
 ]
 +++
+![The practical starting point for sorting a small home's belongings](../../images/30-practical-home-organization-ideas-for.jpg)
+
+![Bathroom storage organized into measured categories](../../images/bathroom-organization-maximizing-24-inch-deep-cabi-10.jpg)
+
+![A practical home-office organization zone](../../images/decluttering-5x5-home-office-corner-remote-workers-10.jpg)
+
+![Small-kitchen storage arranged for easier access](../../images/kitchen-organization-ideas-small-spaces-space-10.jpg)
+
+![A compact storage system grouped by category](../../images/renter-friendly-storage-ideas-small-kitchen-four-10.jpg)
+
 ## Introduction
 
 Living in a compact apartment or a modest‑sized house can feel like a daily puzzle. Every square foot matters, and clutter can quickly turn a cozy nook into a chaotic mess. That’s why **home organization ideas** are essential for anyone who wants to make the most of limited space without sacrificing comfort or style. In this guide we’ll walk through step‑by‑step strategies, real‑world examples, and common pitfalls so you can turn even the tiniest rooms into functional, attractive living areas. Whether you’re a first‑time renter, a downsizer, or simply looking to streamline your environment, these ideas will help you create order, reduce stress, and enjoy a home that truly works for you.
@@ -211,10 +221,6 @@ Return misplaced objects, clear one surface, review the entryway, and remove one
 For a small apartment, pair these principles with our [350-sq-ft storage plan](../small-apartment-organization-maximizing-storage-in-a-350sqft/), [small-apartment storage ideas](../small-apartment-storage-ideas-practical-space/), and [small-bedroom organization guide](../small-bedroom-organization-ideas-practical-space/). For specific zones, see the [small-closet guide](../small-closet-organization-ideas-practical-space/), [small-kitchen guide](../small-kitchen-organization-5foot-galley-ideas-pull/), and [under-sink system](../under-sink-organization-ideas-simple-system/).
 
 
-![Practical storage zones in a compact apartment](../../images/small-apartment-organization-maximizing-storage-in-a-350sqft-1.jpg)
-![Measured vertical storage used to free floor space](../../images/small-apartment-organization-maximizing-storage-in-a-350sqft-2.jpg)
-![A small closet arranged by clothing category](../../images/small-closet-organization-ideas-practical-space-1.jpg)
-![Organized closet shelves using practical storage zones](../../images/small-closet-organization-ideas-practical-space-2.jpg)
 
 ## Conclusion
 
