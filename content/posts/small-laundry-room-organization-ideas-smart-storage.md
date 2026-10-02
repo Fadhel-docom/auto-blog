@@ -1,5 +1,5 @@
 +++
-title = "Small Laundry Room Organization Ideas: A Practical Storage System That Stays Tidy"
+title = "Small Laundry Room Storage: 16 Ways to Keep Supplies Under Control"
 date = "2026-09-23T20:30:00+01:00"
 lastmod = "2026-10-02T05:20:00+01:00"
 description = "Practical small laundry room organization ideas for creating clear sorting, supply, folding, and backup-storage zones without wasting floor space."
