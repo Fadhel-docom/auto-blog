@@ -1,19 +1,8 @@
 name: Pinterest Auto Publish
 
 on:
-  # DISABLED: Pinterest Trial access cannot create production Pins.
-  # Re-enable push/workflow_dispatch only after Standard access is approved.
+  # Disabled: manual definition retained, but job is hard-disabled below.
   workflow_dispatch:
-    inputs:
-      disabled:
-        description: "Pinterest Auto Publish is intentionally disabled"
-        required: false
-        default: "true"
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - "data/pinterest_pins.json"
 
 permissions:
   contents: write
