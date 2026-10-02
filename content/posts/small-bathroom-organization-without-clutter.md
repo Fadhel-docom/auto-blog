@@ -219,7 +219,6 @@ A useful test is simple:
 
 If not, the storage system is probably creating as much work as it removes.
 
-![Clean minimalist bathroom with practical storage](/images/bathroom-organization-maximizing-24-inch-deep-cabi-9.jpg)
 
 ## Finish With a 10-Minute Weekly Reset
 
