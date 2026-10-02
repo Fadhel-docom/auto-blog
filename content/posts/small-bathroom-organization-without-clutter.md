@@ -7,7 +7,6 @@ image = "/images/small-bathroom-organization-ideas-practical-space-7.jpg"
 images = [
   "/images/small-bathroom-organization-ideas-practical-space-7.jpg",
   "/images/small-bathroom-organization-ideas-practical-space-8.jpg",
-  "/images/small-bathroom-organization-ideas-practical-space-9.jpg",
   "/images/small-bathroom-organization-ideas-practical-space-10.jpg",
   "/images/bathroom-organization-maximizing-24-inch-deep-cabi-7.jpg",
   "/images/bathroom-organization-maximizing-24-inch-deep-cabi-9.jpg",
@@ -127,7 +126,7 @@ First group similar items. Then use small dividers only where they solve a speci
 
 If you cannot close a drawer comfortably, stop adding organizers. Remove duplicates, relocate reserve products, and reconsider whether every item belongs in that bathroom.
 
-![Compact bathroom with storage shelves and simple layout](/images/small-bathroom-organization-ideas-practical-space-9.jpg)
+![Compact bathroom with storage shelves and simple layout](/images/small-bathroom-organization-ideas-practical-space-10.jpg)
 
 ## Control Towels by Capacity, Not by Wishful Thinking
 
@@ -162,7 +161,7 @@ This turns the reserve zone into a simple inventory signal.
 
 If you regularly have three bottles of the same product waiting for their turn, the problem is probably purchasing rather than storage.
 
-![Bathroom sink and cabinet with a clean, functional arrangement](/images/small-bathroom-organization-ideas-practical-space-10.jpg)
+![Bathroom sink and cabinet with a clean, functional arrangement](/images/bathroom-organization-maximizing-24-inch-deep-cabi-7.jpg)
 
 ## Keep Cleaning Supplies Together
 
@@ -188,7 +187,7 @@ A shower caddy can help, but only if its size matches the space and it does not 
 
 If the caddy is permanently overflowing, treat that as an inventory problem first.
 
-![Minimal bathroom with shelving and organized toiletries](/images/bathroom-organization-maximizing-24-inch-deep-cabi-7.jpg)
+![Minimal bathroom with shelving and organized toiletries](/images/bathroom-organization-maximizing-24-inch-deep-cabi-9.jpg)
 
 ## Solve Repeated Clutter at Its Source
 
