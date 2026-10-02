@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-02T17:25:36+00:00",
+  "timestamp": "2026-10-02T17:38:20+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "ACTIVE"
@@ -54,19 +54,19 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 37040603276,
+      "id": 37042050456,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-10-02T17:25:28Z",
-      "updated_at": "2026-10-02T17:25:31Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37040603276"
+      "created_at": "2026-10-02T17:38:11Z",
+      "updated_at": "2026-10-02T17:38:15Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37042050456"
     },
     "Scheduled Publisher": {
       "id": 37038302580,
-      "status": "in_progress",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "cancelled",
       "created_at": "2026-10-02T17:05:03Z",
-      "updated_at": "2026-10-02T17:05:08Z",
+      "updated_at": "2026-10-02T17:30:22Z",
       "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37038302580"
     },
     "Traffic Report": {
@@ -79,7 +79,7 @@
     }
   },
   "quality_gate": {
-    "status": "pending",
+    "status": "skipped",
     "job": "publish"
   },
   "traffic": {
@@ -145,31 +145,31 @@
   ],
   "publisher_steps": {
     "OpenAI Editorial Quality Gate": {
-      "status": "pending",
+      "status": "skipped",
       "job": "publish"
     },
     "Publish Hugo post": {
-      "status": "pending",
+      "status": "skipped",
       "job": "publish"
     },
     "Quality Gate": {
-      "status": "pending",
+      "status": "skipped",
       "job": "publish"
     },
     "Deploy GitHub Pages": {
-      "status": "pending",
+      "status": "skipped",
       "job": "publish"
     },
     "Verify live article": {
-      "status": "pending",
+      "status": "skipped",
       "job": "publish"
     },
     "Submit IndexNow": {
-      "status": "pending",
+      "status": "skipped",
       "job": "publish"
     },
     "Recovery check": {
-      "status": "pending",
+      "status": "skipped",
       "job": "publish"
     }
   },
