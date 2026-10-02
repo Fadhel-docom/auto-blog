@@ -5,7 +5,7 @@ import requests
 
 ROOT=Path(__file__).resolve().parents[1]
 ARTICLE=ROOT/'article.json'
-MODEL=os.getenv('OPENAI_MODEL','gpt-5.6')
+MODEL=os.getenv('GROQ_QUALITY_MODEL','openai/gpt-oss-120b')
 MIN_WORDS,MAX_WORDS=1500,2300
 
 SYSTEM='''You are the senior editorial quality controller for Home Organization Ideas. Review the near-final English article and six selected images before publication. Check usefulness, specificity, originality, natural English, repetition, factual caution, title/meta quality, SEO without keyword stuffing, and image relevance. Do not approve thin, repetitive, deceptive, scraped, or search-manipulation content. Return ONLY JSON with decision PASS, REPAIR, or REJECT; reason; revised_title; revised_meta_description; revised_content_markdown; bad_image_indexes. Use REPAIR only for a targeted textual correction and return the complete corrected content. Put 1-based indexes of clearly irrelevant, duplicate, misleading, or unsuitable images in bad_image_indexes. Do not invent facts, studies, experts, prices, or quotes.'''.strip()
@@ -13,8 +13,8 @@ SYSTEM='''You are the senior editorial quality controller for Home Organization 
 def words(s): return len(re.findall(r'\b[\w’\-]+\b',s or ''))
 
 def call(article):
-    key=os.getenv('OPENAI_API_KEY','').strip()
-    if not key: raise RuntimeError('OPENAI_API_KEY unavailable; publication is blocked')
+    key=os.getenv('GROQ_API_KEY','').strip()
+    if not key: raise RuntimeError('GROQ_API_KEY unavailable; publication is blocked')
     images=[]
     for i,x in enumerate(article.get('images') or [],1):
         if isinstance(x,dict): images.append({'index':i,'query':x.get('query',''),'source_url':x.get('image_source_url',''),'width':x.get('width'),'height':x.get('height')})
@@ -30,7 +30,7 @@ def call(article):
     for attempt in range(4):
         try:
             r=requests.post(
-                'https://api.openai.com/v1/chat/completions',
+                'https://api.groq.com/openai/v1/chat/completions',
                 headers={'Authorization':'Bearer '+key,'Content-Type':'application/json'},
                 json=payload,timeout=180
             )
@@ -40,8 +40,8 @@ def call(article):
                     delay=max(2,min(60,int(float(retry_after))))
                 except (ValueError,TypeError):
                     delay=min(60,5*(2**attempt))
-                print(f'OpenAI transient 429; retry {attempt+1}/4 after {delay}s',file=sys.stderr)
-                last_error=RuntimeError('OpenAI rate limited (429)')
+                print(f'Groq transient 429; retry {attempt+1}/4 after {delay}s',file=sys.stderr)
+                last_error=RuntimeError('Groq rate limited (429)')
                 if attempt < 3:
                     time.sleep(delay)
                     continue
@@ -54,12 +54,12 @@ def call(article):
             if attempt >= 3:
                 raise
             delay=min(60,5*(2**attempt))
-            print(f'OpenAI transient request error; retry {attempt+1}/4 after {delay}s',file=sys.stderr)
+            print(f'Groq transient request error; retry {attempt+1}/4 after {delay}s',file=sys.stderr)
             time.sleep(delay)
     else:
         raise last_error or RuntimeError('OpenAI request failed')
     if isinstance(c,list): c=''.join(x.get('text','') for x in c if isinstance(x,dict))
-    if not c: raise RuntimeError('OpenAI returned empty review')
+    if not c: raise RuntimeError('Groq returned empty review')
     return json.loads(c.strip().strip('`'))
 
 def main():
@@ -72,18 +72,18 @@ def main():
     decision=str(review.get('decision','')).upper().strip()
     bad=review.get('bad_image_indexes') or []
     print(json.dumps({'decision':decision,'reason':review.get('reason',''),'bad_image_indexes':bad},ensure_ascii=False))
-    if bad: raise RuntimeError('OpenAI rejected image indexes: '+','.join(map(str,bad)))
+    if bad: raise RuntimeError('Groq rejected image indexes: '+','.join(map(str,bad)))
     if decision=='PASS': return 0
     if decision=='REPAIR':
         content=str(review.get('revised_content_markdown','')).strip()
         title=str(review.get('revised_title','')).strip() or article.get('title','')
         meta=str(review.get('revised_meta_description','')).strip() or article.get('meta_description','')
-        if not content or not MIN_WORDS<=words(content)<=MAX_WORDS: raise RuntimeError('Invalid OpenAI repair')
+        if not content or not MIN_WORDS<=words(content)<=MAX_WORDS: raise RuntimeError('Invalid Groq repair')
         article['title']=title; article['meta_description']=meta; article['content_markdown']=content
         ARTICLE.write_text(json.dumps(article,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
         return 0
-    raise RuntimeError('OpenAI quality decision: '+(decision or 'UNKNOWN'))
+    raise RuntimeError('Groq quality decision: '+(decision or 'UNKNOWN'))
 
 try: sys.exit(main())
 except Exception as e:
-    print('OPENAI QUALITY GATE: BLOCKED: '+str(e),file=sys.stderr); sys.exit(1)
+    print('GROQ QUALITY GATE: BLOCKED: '+str(e),file=sys.stderr); sys.exit(1)

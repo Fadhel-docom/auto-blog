@@ -55,6 +55,7 @@ MAX_RETRIES = 3
 REQUEST_TIMEOUT = 30
 
 MAX_ALLOWED_FAILED_IMAGES = 3
+MAX_SELECTION_ATTEMPTS = 5
 
 JPEG_MAGIC_BYTES = b"\xff\xd8\xff"
 MIN_IMAGE_SIZE_BYTES = 1024
@@ -193,109 +194,16 @@ HOME_ORGANIZATION_WHITELIST = {
 }
 
 STRICT_BLACKLIST = {
-    "car",
-    "cars",
-    "automobile",
-    "automobiles",
-    "vehicle",
-    "vehicles",
-    "engine",
-    "engines",
-    "motor",
-    "motors",
-    "mechanic",
-    "mechanics",
-    "motorcycle",
-    "motorcycles",
-    "bike",
-    "bikes",
-    "bicycle",
-    "bicycles",
-    "truck",
-    "trucks",
-    "racecar",
-    "racing",
-    "food",
-    "meal",
-    "meals",
-    "restaurant",
-    "restaurants",
-    "pizza",
-    "burger",
-    "burgers",
-    "recipe",
-    "recipes",
-    "cooking",
-    "cook",
-    "dish",
-    "dishes",
-    "fruit",
-    "vegetable",
-    "vegetables",
-    "portrait",
-    "portraits",
-    "face",
-    "faces",
-    "selfie",
-    "selfies",
-    "person",
-    "people",
-    "man",
-    "men",
-    "woman",
-    "women",
-    "boy",
-    "boys",
-    "girl",
-    "girls",
-    "baby",
-    "babies",
-    "model",
-    "models",
-    "animal",
-    "animals",
-    "cat",
-    "cats",
-    "dog",
-    "dogs",
-    "horse",
-    "horses",
-    "bird",
-    "birds",
-    "wildlife",
-    "flower",
-    "flowers",
-    "plant",
-    "plants",
-    "garden",
-    "gardening",
-    "forest",
-    "mountain",
-    "mountains",
-    "beach",
-    "ocean",
-    "sea",
-    "lake",
-    "river",
-    "landscape",
-    "nature",
-    "sunset",
-    "sunrise",
-    "wedding",
-    "party",
-    "concert",
-    "fashion",
-    "sports",
-    "football",
-    "basketball",
-    "soccer",
-    "tennis",
-    "hospital",
-    "doctor",
-    "medicine",
-    "medical",
-    "laboratory",
+    "violence",
+    "violent",
+    "gore",
+    "nudity",
+    "nude",
+    "explicit",
 }
+
+MAX_CONSECUTIVE_BLACKLIST_REJECTIONS = 5
+MAX_IMAGE_SEARCH_SECONDS = 300
 
 WEAK_WHITELIST_WORDS = {
     "home",
@@ -1030,6 +938,7 @@ def collect_candidates(
     dimension_count = 0
     semantic_count = 0
     blacklist_count = 0
+    consecutive_blacklist_rejections = 0
 
     for query_index, current_query in enumerate(
         queries
@@ -1132,12 +1041,26 @@ def collect_candidates(
                     )[0]
 
                     blacklist_count += 1
+                    consecutive_blacklist_rejections += 1
 
                     print(
                         f"  Rejected candidate "
                         f"#{photo_id}: "
-                        f'blacklist "{word}"'
+                        f'blacklist "{word}" '
+                        f"(consecutive={consecutive_blacklist_rejections}/"
+                        f"{MAX_CONSECUTIVE_BLACKLIST_REJECTIONS})"
                     )
+
+                    if (
+                        consecutive_blacklist_rejections
+                        >= MAX_CONSECUTIVE_BLACKLIST_REJECTIONS
+                    ):
+                        print(
+                            "  Blacklist rejection limit reached; "
+                            "switching to fallback query."
+                        )
+                        break
+
                     continue
 
                 query_match = (
@@ -1167,6 +1090,7 @@ def collect_candidates(
                     )
                     >= 2
                 ):
+                    consecutive_blacklist_rejections = 0
                     print(
                         f"  Rejected candidate "
                         f"#{photo_id}: "
@@ -1174,6 +1098,7 @@ def collect_candidates(
                     )
                     continue
 
+                consecutive_blacklist_rejections = 0
                 semantic_count += 1
 
                 candidate[
@@ -1918,6 +1843,7 @@ def fetch_all_images(
     )
 
     failed_images = 0
+    search_started_at = time.monotonic()
 
     used_modifiers: Set[str] = set()
 
@@ -1957,6 +1883,11 @@ def fetch_all_images(
         )
 
         try:
+            if time.monotonic() - search_started_at >= MAX_IMAGE_SEARCH_SECONDS:
+                raise TimeoutError(
+                    "Image search exceeded 5-minute limit; cancelling image step."
+                )
+
             diversified_query = (
                 diversify_query(
                     query,
@@ -1976,6 +1907,17 @@ def fetch_all_images(
                     diversified_query,
                 )
             )
+
+            if not candidates:
+                print(
+                    "  No candidates after bounded search; "
+                    "trying fallback query."
+                )
+                candidates = collect_candidates(
+                    api_key,
+                    query,
+                    "organized home storage",
+                )
 
             candidate = (
                 choose_best_candidate(
@@ -2003,6 +1945,7 @@ def fetch_all_images(
             )
 
             selected = None
+            selection_attempts = 0
 
             for ranked_candidate in candidates:
                 if (
@@ -2010,6 +1953,14 @@ def fetch_all_images(
                     in used_ids
                 ):
                     continue
+
+                selection_attempts += 1
+                if selection_attempts > MAX_SELECTION_ATTEMPTS:
+                    print(
+                        "  Selection attempt limit reached; "
+                        "using fallback/cancelling this image."
+                    )
+                    break
 
                 if ENABLE_GROQ_VALIDATION:
                     if not groq_validate_image(
