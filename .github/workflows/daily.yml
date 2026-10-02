@@ -2,6 +2,9 @@ name: Scheduled Publisher
 
 # Controlled publishing cadence: one queue item at a time, protected by Quality Gate and live verification.
 on:
+  push:
+    branches:
+      - main
   # Regular publishing: two controlled queue checks per day (05:00 and 17:00 UTC).
   schedule:
     - cron: "0 5,17 * * *"
@@ -17,6 +20,7 @@ concurrency:
 
 jobs:
   publish:
+    if: github.event_name != 'push' || github.event.head_commit.message == 'MANUAL: Scheduled Publisher test'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
