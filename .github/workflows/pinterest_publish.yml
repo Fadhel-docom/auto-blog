@@ -224,3 +224,5 @@ jobs:
           git add data/pinterest_pins.json
           git commit -m "chore: record Pinterest Pin"
           git push
+
+# Manual smoke-test trigger: workflow_dispatch is also enabled.
