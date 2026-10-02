@@ -38,7 +38,7 @@ The best setup follows three rules:
 - **Use a real magnetic surface.** Do not assume every stainless-looking appliance will hold a magnet.
 - **Protect the working area.** Storage should not block handles, doors, vents, switches, or the main food-preparation zone.
 
-If your kitchen has several small storage problems, combine this solution with our [small-kitchen organization guide](../kitchen-organization-ideas-small-spaces-space/) rather than trying to make one magnetic rack store everything.
+If your kitchen has several small storage problems, combine this solution with our [small-kitchen organization guide](/posts/kitchen-organization-ideas-small-spaces-space/) rather than trying to make one magnetic rack store everything.
 
 ## Start With the Surface, Not the Rack
 
@@ -78,7 +78,7 @@ Then mark the proposed rack position temporarily with removable painter's tape.
 
 This gives you a visual test before you commit to a layout. If the rack looks crowded while empty, it will feel even more crowded when loaded.
 
-For another practical approach to measuring small storage zones, see our [small-apartment storage guide](../small-apartment-storage-ideas-practical-space/).
+For another practical approach to measuring small storage zones, see our [small-apartment storage guide](/posts/small-apartment-storage-ideas-practical-space/).
 
 ## Choose the Rack Around Your Spice Collection
 
@@ -272,9 +272,9 @@ Instead, consider another renter-friendly storage zone:
 - A drawer insert for spices.
 - A pull-out organizer sized to the cabinet.
 
-The right alternative depends on the kitchen rather than the product. Our [renter-friendly kitchen storage guide](../renter-friendly-storage-ideas-small-kitchen-four/) covers additional no-permanent-fixture approaches.
+The right alternative depends on the kitchen rather than the product. Our [renter-friendly kitchen storage guide](/posts/renter-friendly-storage-ideas-small-kitchen-four/) covers additional no-permanent-fixture approaches.
 
-You can also use the [small-closet organization guide](../small-closet-organization-ideas-practical-space/) for the same measurement-first approach when adapting storage to tight spaces.
+You can also use the [small-closet organization guide](/posts/small-closet-organization-ideas-practical-space/) for the same measurement-first approach when adapting storage to tight spaces.
 
 ## A 10-Minute Magnetic Spice Rack Setup
 
@@ -299,6 +299,10 @@ If you want a simple starting point, use this sequence.
 **Minute 10:** Add only the remaining jars that fit comfortably.
 
 Stop when the system works. You do not need to fill every available inch.
+
+## More Small-Kitchen Storage Ideas
+
+Use the [small-kitchen organization guide](/posts/kitchen-organization-ideas-small-spaces-space/) for cabinet planning, [renter-friendly small-kitchen storage](/posts/renter-friendly-storage-ideas-small-kitchen-four/) for reversible organizers, [small apartment storage ideas](/posts/small-apartment-storage-ideas-practical-space/) for overall capacity, [under-sink organization](/posts/under-sink-organization-ideas-simple-system/) for cleaning supplies, [narrow entryway organization](/posts/narrow-entryway-organization-drop-zone/) for overflow bags and shoes, and [small closet organization](/posts/small-closet-organization-ideas-practical-space/) for household storage outside the kitchen.
 
 ## FAQ: Magnetic Spice Rack Organization for Renters
 
