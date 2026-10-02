@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-01T12:18:10+00:00",
+  "timestamp": "2026-10-02T00:18:25+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -51,7 +51,7 @@
       "canonical": "https://fadhel-docom.github.io/auto-blog/posts/decluttering-ideas-for-small-homes-that-actually-last/",
       "images": 11,
       "tags": 3,
-      "h2_count": 13,
+      "h2_count": 14,
       "image_credits": true,
       "related": true,
       "schema": {
@@ -65,7 +65,7 @@
       "required_failures": [
         "article schema"
       ],
-      "html_length": 33086
+      "html_length": 34353
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-small-shelves/",
@@ -74,7 +74,7 @@
       "title_capitalized": true,
       "meta_description": "Linen closet organization ideas for small shelves: measure the space, group linens by use, fold to shelf height, label simple zones, and keep everyday towels easy to reach.",
       "canonical": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-small-shelves/",
-      "images": 10,
+      "images": 11,
       "tags": 4,
       "h2_count": 18,
       "image_credits": true,
@@ -90,7 +90,7 @@
       "required_failures": [
         "article schema"
       ],
-      "html_length": 33795
+      "html_length": 34045
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-simple-system/",
