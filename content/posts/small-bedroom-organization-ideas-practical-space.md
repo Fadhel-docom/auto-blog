@@ -175,6 +175,9 @@ Use it for items that are needed less often. Daily essentials should remain easi
 ### What should I do when every storage zone is full?
 Edit the category first, then relocate low-frequency items. Add furniture only after the existing capacity has been used efficiently.
 
+
+For another high-traffic transition zone, see our [narrow entryway organization guide](/posts/narrow-entryway-organization-drop-zone/) before adding storage to the bedroom.
+
 ### Image Credits
 
 - Photo 1: [Michael D Beckwith](https://www.pexels.com/@michael-d-beckwith-2150568551) via [Pexels](https://www.pexels.com/photo/elegant-vintage-bedroom-with-canopy-bed-36099150/)
