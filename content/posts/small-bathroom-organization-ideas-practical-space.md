@@ -7,7 +7,14 @@ image = "/images/small-bathroom-organization-ideas-practical-space-2.jpg"
 images = ["https://images.pexels.com/photos/19866402/pexels-photo-19866402.jpeg?cs=srgb&dl=pexels-lisa-anna-901356985-19866402.jpg&fm=jpg", "/images/small-bathroom-organization-ideas-practical-space-2.jpg", "/images/small-bathroom-organization-ideas-practical-space-3.jpg", "/images/small-bathroom-organization-ideas-practical-space-4.jpg", "/images/small-bathroom-organization-ideas-practical-space-5.jpg"]
 tags = ["small bathroom organization ideas", "home organization", "small spaces"]
 categories = ["Bathroom"]
-faq = []
+faq = [
+  {question = "How can I organize a very small bathroom without making it feel crowded?", answer = "Use vertical storage and keep the countertop limited to daily-use items. Measure first, then choose shallow shelves, hooks, or a narrow caddy."},
+  {question = "What should stay on a small bathroom counter?", answer = "Keep only items used every day. Move backups, rarely used tools, and bulk packages into labeled closed storage."},
+  {question = "How do I organize the space above a toilet?", answer = "Use a securely anchored shelf or cabinet with enough clearance for the lid and user. Keep heavier items low."},
+  {question = "How can I organize bathroom products under the sink?", answer = "Measure around plumbing first and use shallow pull-outs or bins that leave valves and pipes visible."},
+  {question = "How do I keep a small bathroom organized long term?", answer = "Use a short daily reset and a weekly five-to-ten-minute check. Return each category to the same zone."},
+  {question = "What is the biggest small-bathroom organization mistake?", answer = "Buying storage before measuring. Oversized bins and shelves can reduce usable floor space and block doors."}
+]
 aliases = ["/posts/small-bathroom-organization-ideas-a-practical-small-space-guide/"]
 draft = false
 slug = "small-bathroom-organization-ideas-practical-space"
