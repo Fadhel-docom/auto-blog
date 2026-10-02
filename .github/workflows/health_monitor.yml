@@ -36,7 +36,7 @@ jobs:
           GOATCOUNTER_SITE: "homeorganizationideas.goatcounter.com"
           GOATCOUNTER_API_KEY: ${{ secrets.GOATCOUNTER_API_KEY }}
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
-          PUBLISHING_PAUSED: "1"
+          PUBLISHING_PAUSED: "0"
         run: python scripts/automation_health.py
       - name: Commit health report
         if: always()
