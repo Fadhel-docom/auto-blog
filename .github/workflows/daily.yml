@@ -2,8 +2,7 @@ name: Scheduled Publisher
 
 # Controlled publishing cadence: one queue item at a time, protected by Quality Gate and live verification.
 on:
-  # Publishing is intentionally paused during canonical-domain stabilization.
-  # Restore the 10-minute schedule only after DNS + live-site verification passes.
+  # Publishing remains manually controlled until the site is cleared for regular publishing.
   workflow_dispatch:
 
 permissions:
@@ -19,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
-      SITE_URL: "https://home-organization-ideas.com"
+      SITE_URL: "https://fadhel-docom.github.io/auto-blog/"
       INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
     steps:
       - name: Checkout
@@ -137,7 +136,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./public
-          cname: home-organization-ideas.com
           force_orphan: true
 
       - name: Verify live article
