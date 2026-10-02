@@ -1,18 +1,26 @@
 name: Pinterest Auto Publish
 
 on:
+  # DISABLED: Pinterest Trial access cannot create production Pins.
+  # Re-enable push/workflow_dispatch only after Standard access is approved.
+  workflow_dispatch:
+    inputs:
+      disabled:
+        description: "Pinterest Auto Publish is intentionally disabled"
+        required: false
+        default: "true"
   push:
     branches:
       - main
     paths-ignore:
       - "data/pinterest_pins.json"
-  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
   publish-pin:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -263,4 +271,4 @@ jobs:
           git commit -m "chore: record Pinterest Pin"
           git push
 
-# Manual smoke-test trigger: workflow_dispatch is also enabled.
+# Pinterest Auto Publish is intentionally disabled until Standard API access is approved.
