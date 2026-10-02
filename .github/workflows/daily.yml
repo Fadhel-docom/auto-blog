@@ -2,7 +2,9 @@ name: Scheduled Publisher
 
 # Controlled publishing cadence: one queue item at a time, protected by Quality Gate and live verification.
 on:
-  # Publishing remains manually controlled until the site is cleared for regular publishing.
+  # Regular publishing: two controlled queue checks per day (05:00 and 17:00 UTC).
+  schedule:
+    - cron: "0 5,17 * * *"
   workflow_dispatch:
 
 permissions:
