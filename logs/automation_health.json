@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-02T21:24:37+00:00",
+  "timestamp": "2026-10-02T21:38:03+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "ACTIVE"
@@ -54,20 +54,20 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 37066638197,
+      "id": 37067974758,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-10-02T21:24:23Z",
-      "updated_at": "2026-10-02T21:24:27Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37066638197"
+      "created_at": "2026-10-02T21:37:53Z",
+      "updated_at": "2026-10-02T21:37:56Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37067974758"
     },
     "Scheduled Publisher": {
-      "id": 37062745923,
-      "status": "completed",
-      "conclusion": "failure",
-      "created_at": "2026-10-02T20:46:44Z",
-      "updated_at": "2026-10-02T20:53:19Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37062745923"
+      "id": 37067545087,
+      "status": "in_progress",
+      "conclusion": null,
+      "created_at": "2026-10-02T21:33:33Z",
+      "updated_at": "2026-10-02T21:33:37Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37067545087"
     },
     "Traffic Report": {
       "id": 37048883945,
@@ -79,7 +79,7 @@
     }
   },
   "quality_gate": {
-    "status": "skipped",
+    "status": "pending",
     "job": "publish"
   },
   "traffic": {
@@ -143,46 +143,35 @@
           "status": "pending"
         }
       ]
-    },
-    {
-      "type": "Scheduled Publisher failure",
-      "run": {
-        "id": 37062745923,
-        "status": "completed",
-        "conclusion": "failure",
-        "created_at": "2026-10-02T20:46:44Z",
-        "updated_at": "2026-10-02T20:53:19Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37062745923"
-      }
     }
   ],
   "publisher_steps": {
     "Groq Editorial Quality Gate": {
-      "status": "skipped",
+      "status": "pending",
       "job": "publish"
     },
     "Publish Hugo post": {
-      "status": "skipped",
+      "status": "pending",
       "job": "publish"
     },
     "Quality Gate": {
-      "status": "skipped",
+      "status": "pending",
       "job": "publish"
     },
     "Deploy GitHub Pages": {
-      "status": "skipped",
+      "status": "pending",
       "job": "publish"
     },
     "Verify live article": {
-      "status": "skipped",
+      "status": "pending",
       "job": "publish"
     },
     "Submit IndexNow": {
-      "status": "skipped",
+      "status": "pending",
       "job": "publish"
     },
     "Recovery check": {
-      "status": "skipped",
+      "status": "pending",
       "job": "publish"
     }
   },
