@@ -900,6 +900,7 @@ def collect_candidates(
     api_key: str,
     query: str,
     search_query: Optional[str] = None,
+    deadline: Optional[float] = None,
 ) -> List[Dict[str, Any]]:
     semantic_query = normalize_query(
         query
@@ -943,6 +944,10 @@ def collect_candidates(
     for query_index, current_query in enumerate(
         queries
     ):
+        if deadline is not None and time.monotonic() >= deadline:
+            raise TimeoutError(
+                "Image search exceeded 5-minute limit."
+            )
         if query_index > 0:
             print(
                 '  Trying fallback query: '
@@ -953,6 +958,10 @@ def collect_candidates(
             1,
             MAX_PAGES + 1,
         ):
+            if deadline is not None and time.monotonic() >= deadline:
+                raise TimeoutError(
+                    "Image search exceeded 5-minute limit."
+                )
             print(
                 f"  Searching page "
                 f"{page}/{MAX_PAGES}..."
@@ -990,6 +999,11 @@ def collect_candidates(
             )
 
             for photo in photos:
+                if deadline is not None and time.monotonic() >= deadline:
+                    raise TimeoutError(
+                        "Image search exceeded 5-minute limit."
+                    )
+
                 if not isinstance(
                     photo,
                     dict,
@@ -1905,6 +1919,7 @@ def fetch_all_images(
                     api_key,
                     query,
                     diversified_query,
+                    deadline=search_started_at + MAX_IMAGE_SEARCH_SECONDS,
                 )
             )
 
@@ -1917,6 +1932,7 @@ def fetch_all_images(
                     api_key,
                     query,
                     "organized home storage",
+                    deadline=search_started_at + MAX_IMAGE_SEARCH_SECONDS,
                 )
 
             candidate = (
