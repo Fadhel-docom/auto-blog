@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-02T00:18:25+00:00",
+  "timestamp": "2026-10-02T12:16:27+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -39,7 +39,7 @@
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 30741
+    "html_length": 30597
   },
   "articles": [
     {
@@ -65,7 +65,7 @@
       "required_failures": [
         "article schema"
       ],
-      "html_length": 34353
+      "html_length": 34385
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-small-shelves/",
@@ -90,7 +90,7 @@
       "required_failures": [
         "article schema"
       ],
-      "html_length": 34045
+      "html_length": 34086
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-simple-system/",
@@ -101,7 +101,7 @@
       "canonical": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-simple-system/",
       "images": 11,
       "tags": 4,
-      "h2_count": 17,
+      "h2_count": 23,
       "image_credits": true,
       "related": true,
       "schema": {
@@ -115,7 +115,7 @@
       "required_failures": [
         "article schema"
       ],
-      "html_length": 27334
+      "html_length": 37511
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-organization-ideas-practical-space/",
@@ -126,7 +126,7 @@
       "canonical": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-organization-ideas-practical-space/",
       "images": 10,
       "tags": 3,
-      "h2_count": 12,
+      "h2_count": 14,
       "image_credits": true,
       "related": true,
       "schema": {
@@ -140,7 +140,7 @@
       "required_failures": [
         "article schema"
       ],
-      "html_length": 31313
+      "html_length": 34039
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bathroom-organization-without-clutter/",
@@ -149,9 +149,9 @@
       "title_capitalized": true,
       "meta_description": "A practical small-bathroom organization plan using zones, vertical storage, drawer limits, and a simple reset routine without overcrowding the room.",
       "canonical": "https://fadhel-docom.github.io/auto-blog/posts/small-bathroom-organization-without-clutter/",
-      "images": 11,
+      "images": 10,
       "tags": 5,
-      "h2_count": 18,
+      "h2_count": 22,
       "image_credits": true,
       "related": true,
       "schema": {
@@ -165,7 +165,7 @@
       "required_failures": [
         "article schema"
       ],
-      "html_length": 31028
+      "html_length": 31704
     }
   ],
   "responsive": {
