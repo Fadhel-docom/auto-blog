@@ -234,7 +234,7 @@ A simple rule is:
 
 At the end of a laundry session, return supplies to their zone and move clean clothes to the folding or temporary area.
 
-If you use a dryer, keep the lint filter and surrounding access clear enough for routine cleaning. ENERGY STAR recommends cleaning the lint filter after every load as part of dryer efficiency and safety practices; its laundry guidance also covers efficient washer and dryer use. See the [ENERGY STAR clothes dryer guidance](https://www.energystar.gov/products/clothes_dryers) and [clothes washer guidance](https://www.energystar.gov/products/clothes_washers). citeturn0search5turn0search1
+If you use a dryer, keep the lint filter and surrounding access clear enough for routine cleaning. ENERGY STAR recommends cleaning the lint filter after every load as part of dryer efficiency and safety practices. See its [clothes dryer guidance](https://www.energystar.gov/products/clothes_dryers) for additional laundry efficiency and maintenance information. citeturn0search5turn0search1
 
 The goal is not an empty-looking room. It is a room where the important maintenance points remain accessible.
 
