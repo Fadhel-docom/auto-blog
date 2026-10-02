@@ -1144,6 +1144,12 @@ def collect_candidates(
                 )
 
             if (
+                consecutive_blacklist_rejections
+                >= MAX_CONSECUTIVE_BLACKLIST_REJECTIONS
+            ):
+                break
+
+            if (
                 query_index == 0
                 and len(candidates) >= 5
             ):
