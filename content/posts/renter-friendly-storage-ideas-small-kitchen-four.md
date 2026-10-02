@@ -22,7 +22,7 @@ slug = "renter-friendly-storage-ideas-small-kitchen-four"
 +++
 ## Introduction
 
-![small rental kitchen with four cabinets, countertop displaying pots and spice jars](../../images/renter-friendly-storage-ideas-small-kitchen-four-2.jpg)
+![small rental kitchen with four cabinets, countertop displaying pots and spice jars](../../images/renter-friendly-storage-ideas-small-kitchen-four-1.jpg)
 
 Living in a rental where the kitchen consists of **only four cabinets** can feel like a perpetual game of Tetris. You need space for pots, pans, spices, and everyday gadgets, yet you cannot drill holes, remove walls, or make permanent alterations. The good news is that smart, renter‑friendly **storage ideas** can turn a cramped cooking area into a functional, organized hub—without leaving a trace when it’s time to move. This guide walks you through concrete, step‑by‑step strategies, real‑world examples, and product suggestions that work in any lease‑bound home.
 
