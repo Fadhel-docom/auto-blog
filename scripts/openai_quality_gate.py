@@ -8,7 +8,7 @@ ARTICLE=ROOT/'article.json'
 MODEL=os.getenv('GROQ_QUALITY_MODEL','openai/gpt-oss-120b')
 MIN_WORDS,MAX_WORDS=1500,2300
 
-SYSTEM='''You are the senior editorial quality controller for Home Organization Ideas. Review the near-final English article and six selected images before publication. Check usefulness, specificity, originality, natural English, repetition, factual caution, title/meta quality, SEO without keyword stuffing, and image relevance. Do not approve thin, repetitive, deceptive, scraped, or search-manipulation content. Return ONLY JSON with decision PASS, REPAIR, or REJECT; reason; revised_title; revised_meta_description; revised_content_markdown; bad_image_indexes. Use REPAIR only for a targeted textual correction and return the complete corrected content. Put 1-based indexes of clearly irrelevant, duplicate, misleading, or unsuitable images in bad_image_indexes. Do not invent facts, studies, experts, prices, or quotes.'''.strip()
+SYSTEM='''You are the senior editorial quality controller for Home Organization Ideas. Review the near-final English article and the metadata for six selected images before publication. Check usefulness, specificity, originality, natural English, repetition, factual caution, title/meta quality, SEO without keyword stuffing, and image relevance. Do not approve thin, repetitive, deceptive, scraped, or search-manipulation content. Return ONLY JSON with decision PASS, REPAIR, or REJECT; reason; revised_title; revised_meta_description; revised_content_markdown; bad_image_indexes. Use REPAIR only for a targeted textual correction and return the complete corrected content. Put 1-based indexes of clearly irrelevant, duplicate, misleading, or unsuitable images in bad_image_indexes. Do not invent facts, studies, experts, prices, or quotes.'''.strip()
 
 def words(s): return len(re.findall(r'\b[\w’\-]+\b',s or ''))
 
@@ -21,10 +21,14 @@ def call(article):
     review_data={'keyword':article.get('keyword',''),'angle':article.get('specific_angle',''),'title':article.get('title',''),'meta_description':article.get('meta_description',''),'word_count':words(article.get('content_markdown','')),'content_markdown':article.get('content_markdown',''),'hero_image':article.get('image',''),'images':images}
     content_parts=[{'type':'text','text':json.dumps(review_data,ensure_ascii=False)}]
     for item in images:
-        url=str(item.get('source_url','')).strip()
-        if url.startswith('http://') or url.startswith('https://'):
-            content_parts.append({'type':'text','text':f"IMAGE {item['index']} - query: {item.get('query','')}"})
-            content_parts.append({'type':'image_url','image_url':{'url':url}})
+        content_parts.append({
+            'type':'text',
+            'text':(
+                f"IMAGE {item['index']} - query: {item.get('query','')} "
+                f"source_url: {item.get('source_url','')} "
+                f"dimensions: {item.get('width')}x{item.get('height')}"
+            )
+        })
     payload={'model':MODEL,'temperature':0.15,'messages':[{'role':'system','content':SYSTEM},{'role':'user','content':content_parts}],'response_format':{'type':'json_object'}}
     last_error=None
     for attempt in range(4):
