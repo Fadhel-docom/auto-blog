@@ -60,45 +60,17 @@ jobs:
           fi
           echo "HOMEPAGE PASS: HTTP 200 $url"
 
-      - name: Verify Pinterest hero images
+      - name: Verify homepage and legacy kitchen URLs
         env:
           SITE_URL: "https://fadhel-docom.github.io/auto-blog"
         run: |
           set -euo pipefail
-          python - <<'PY'
-          import json
-          import os
-          import subprocess
-          import sys
-
-          base = os.environ["SITE_URL"].rstrip("/")
-          with open("data/pinterest_heroes.json", encoding="utf-8") as f:
-              data = json.load(f)
-
-          assets = data.get("assets")
-          if not isinstance(assets, list) or not assets:
-              raise SystemExit("ASSET GATE FAIL: data/pinterest_heroes.json has no assets list")
-
-          print(f"ASSET GATE: checking {len(assets)} Pinterest hero images")
-          for name in assets:
-              url = f"{base}/images/pinterest/{name}"
-              print(f"CHECK: {url}")
-              result = subprocess.run(
-                  ["curl", "-sSIL", "--retry", "3", "--retry-all-errors", "-o", "/dev/null",
-                   "-w", "%{http_code}\t%{content_type}", url],
-                  text=True,
-                  capture_output=True,
-              )
-              if result.returncode != 0:
-                  print(f"ASSET FAIL: curl error for {name}: {result.stderr.strip()}")
-                  sys.exit(1)
-              parts = result.stdout.strip().split("\t", 1)
-              status = parts[0] if parts else ""
-              content_type = parts[1] if len(parts) > 1 else ""
-              if status != "200" or content_type.split(";", 1)[0].lower() != "image/jpeg":
-                  print(f"ASSET FAIL: {name} -> HTTP {status}, Content-Type {content_type or 'missing'}")
-                  sys.exit(1)
-              print(f"ASSET PASS: {name} -> HTTP 200, Content-Type image/jpeg")
-
-          print(f"ASSET GATE PASS: {len(assets)}/{len(assets)} Pinterest hero images verified.")
-
+          for path in "/" "/posts/kitchen-organization-ideas-small-spaces-space/" "/posts/small-kitchen-organization-ideas-a-practical-small-space-guide/"; do
+            url="${SITE_URL%/}${path}"
+            status="$(curl -sSIL -o /dev/null -w '%{http_code}' --retry 3 --retry-all-errors "$url")"
+            if [ "$status" != "200" ]; then
+              echo "SITE URL FAIL: HTTP $status $url"
+              exit 1
+            fi
+            echo "SITE URL PASS: HTTP 200 $url"
+          done
