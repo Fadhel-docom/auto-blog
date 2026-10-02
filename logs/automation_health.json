@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-02T16:54:18+00:00",
+  "timestamp": "2026-10-02T17:03:47+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "ACTIVE"
@@ -54,12 +54,20 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 37037073293,
+      "id": 37038144524,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-10-02T16:54:10Z",
-      "updated_at": "2026-10-02T16:54:14Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37037073293"
+      "created_at": "2026-10-02T17:03:40Z",
+      "updated_at": "2026-10-02T17:03:44Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37038144524"
+    },
+    "Scheduled Publisher": {
+      "id": 37038001323,
+      "status": "in_progress",
+      "conclusion": null,
+      "created_at": "2026-10-02T17:02:25Z",
+      "updated_at": "2026-10-02T17:02:29Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37038001323"
     },
     "Traffic Report": {
       "id": 37008235145,
@@ -71,7 +79,8 @@
     }
   },
   "quality_gate": {
-    "status": "UNAVAILABLE"
+    "status": "pending",
+    "job": "publish"
   },
   "traffic": {
     "status": "OK",
@@ -134,7 +143,36 @@
       ]
     }
   ],
-  "publisher_steps": {},
+  "publisher_steps": {
+    "OpenAI Editorial Quality Gate": {
+      "status": "pending",
+      "job": "publish"
+    },
+    "Publish Hugo post": {
+      "status": "pending",
+      "job": "publish"
+    },
+    "Quality Gate": {
+      "status": "pending",
+      "job": "publish"
+    },
+    "Deploy GitHub Pages": {
+      "status": "pending",
+      "job": "publish"
+    },
+    "Verify live article": {
+      "status": "pending",
+      "job": "publish"
+    },
+    "Submit IndexNow": {
+      "status": "pending",
+      "job": "publish"
+    },
+    "Recovery check": {
+      "status": "pending",
+      "job": "publish"
+    }
+  },
   "secrets": {
     "INDEXNOW_KEY": "OK",
     "GOATCOUNTER_API_KEY": "OK"
