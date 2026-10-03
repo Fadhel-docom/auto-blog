@@ -24,7 +24,7 @@ LONG_COOLDOWN_MINUTES=360
 DAILY_COOLDOWN_MINUTES=1440
 PROVIDER_STATE_KEY="provider_cooldown"
 
-SYSTEM="""You are the senior editor for Home Organization Ideas. Write a genuinely useful, human-sounding English article. Aim for 1900-2100 words so the final validated article safely stays within the required 1700-2300 range. Never mention AI, automation, models, providers, prompts, or generation. Never invent statistics, studies, expert claims, quotes, prices, or credentials. Avoid filler, repetition, vague advice, and keyword stuffing. Explain practical decisions, tradeoffs, examples, common mistakes, and maintenance. Return ONLY JSON with keys: keyword, specific_angle, title, meta_description, content_markdown, image_queries, tags, h2_headings, faq. content_markdown must be at least 1500 words (aim for 1900-2100) with exactly 10 H2 headings. image_queries exactly 6 distinct concrete Pexels-ready queries. faq 4-6 items. title <=68 characters. meta_description 140-158 characters."""
+SYSTEM="""You are the senior editor for Home Organization Ideas. Write a genuinely useful, human-sounding English article. Aim for 1900-2100 words so the final validated article safely stays within the required 1700-2300 range. Never mention AI, automation, models, providers, prompts, or generation. Never invent statistics, studies, expert claims, quotes, prices, or credentials. Avoid filler, repetition, vague advice, and keyword stuffing. Explain practical decisions, tradeoffs, examples, common mistakes, and maintenance. Return ONLY JSON with keys: keyword, specific_angle, title, meta_description, content_markdown, image_queries, tags, h2_headings, faq. content_markdown MUST be at least 1800 words (aim for 1900-2100). Count carefully. Do not stop before reaching 1800+ words with exactly 10 H2 headings. image_queries exactly 6 distinct concrete Pexels-ready queries. faq 4-6 items. title <=68 characters. meta_description 140-158 characters."""
 
 def load_topic():
     target=os.getenv("TARGET_KEYWORD","").strip()
@@ -154,8 +154,9 @@ def discover_openrouter_free_models():
 def call_groq(topic, relaxed_json=False, model=None):
     key=os.getenv("GROQ_API_KEY")
     if not key: raise RuntimeError("GROQ_API_KEY unavailable")
-    payload={"model":model or GROQ_MODEL,"temperature":0.35,"max_tokens":3500,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":f"Focus keyword/topic: {topic}\\nWrite a complete, polished article of 1900-2100 words. Return ONLY one JSON object with every required field. content_markdown must contain exactly 10 H2 headings and 6 distinct image queries. Do not use markdown fences around the JSON. Do not omit fields."}]}
-    if not relaxed_json: payload["response_format"]={"type":"json_object"}
+    payload={"model":model or GROQ_MODEL,"temperature":0.35,"max_tokens":4500,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":f"Focus keyword/topic: {topic}\\nWrite a complete, polished article of 1900-2100 words. MUST be at least 1800 words. Count carefully. Do not stop before reaching 1800+ words. Return ONLY one JSON object with every required field. content_markdown must contain exactly 10 H2 headings and 6 distinct image queries. Do not use markdown fences around the JSON. Do not omit fields."}]}
+    if not relaxed_json and not (model or GROQ_MODEL).endswith("20b-4e0"):
+        payload["response_format"]={"type":"json_object"}
     r=requests.post("https://api.groq.com/openai/v1/chat/completions",headers={"Authorization":f"Bearer {key}","Content-Type":"application/json"},json=payload,timeout=240)
     if not r.ok:
         try: message=(r.json().get("error") or {}).get("message","")
@@ -176,7 +177,7 @@ def call_openrouter(topic, relaxed_json=False, model=None):
     payload={
         "model":model,
         "temperature":0.35,
-        "max_tokens":3500,
+        "max_tokens":4500,
         "messages":[
             {"role":"system","content":SYSTEM},
             {"role":"user","content":user_prompt},
