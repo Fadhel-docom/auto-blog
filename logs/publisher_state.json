@@ -1,10 +1,10 @@
 {
   "provider_cooldown": {
-    "groq_20b": {
-      "until": "2026-10-03T05:08:04+00:00",
-      "started_at": "2026-10-03T04:08:04+00:00",
+    "groq_120b": {
+      "until": "2026-10-03T06:12:34+00:00",
+      "started_at": "2026-10-03T05:12:34+00:00",
       "cooldown_minutes": 60,
-      "reason": "Provider returned empty message content"
+      "reason": "Word count 1374 outside 1500-2300"
     }
   }
 }\n
