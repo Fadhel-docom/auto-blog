@@ -404,11 +404,6 @@ def retry_delay(
         else None
     )
 
-    # Keep the project's explicit 429 protection:
-    # wait 90 seconds before retrying.
-    if status == 429:
-        return 90
-
     if response is not None:
         retry_after = response.headers.get(
             "Retry-After"
