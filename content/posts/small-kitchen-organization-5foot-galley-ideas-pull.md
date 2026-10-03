@@ -11,6 +11,14 @@ faq = []
 aliases = ["/posts/small-kitchen-organization-ideas-pull-out-spice-rack-for-5ft-galley/"]
 draft = false
 slug = "small-kitchen-organization-5foot-galley-ideas-pull"
+faq = [
+  {question = "How do I organize a 5-foot galley kitchen?", answer = "Keep the most-used tools closest to the main work zone, group similar items together, and use vertical or inside-cabinet storage to protect counter space."},
+  {question = "What should I declutter first in a small kitchen?", answer = "Start with duplicates, expired food, damaged tools, and appliances you rarely use. Clear the easiest categories before tackling harder decisions."},
+  {question = "How can I create more counter space in a galley kitchen?", answer = "Move infrequently used appliances off the counter, use wall or cabinet-door storage where appropriate, and keep one clear prep zone."},
+  {question = "Where should pots and pans go in a narrow kitchen?", answer = "Store frequently used cookware closest to the cooking zone and use vertical dividers or nesting to reduce wasted space."},
+  {question = "How do I keep a small galley kitchen organized?", answer = "Give each category a fixed home, avoid filling every cabinet to capacity, and use a short reset after cooking."},
+  {question = "What storage works best for a narrow kitchen?", answer = "Choose shallow solutions such as drawer dividers, shelf risers, pull-out organizers, and wall storage that preserves the walkway."}
+]
 +++
 ## Why a Pull‑Out Spice Rack Is Perfect for a 5‑Foot Galley
 
