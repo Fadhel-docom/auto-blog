@@ -1,35 +1,4 @@
 {
-  "timestamp": "2026-10-03T00:18:16+00:00",
-  "suggestions": [
-    {
-      "priority": "medium",
-      "area": "article schema",
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/decluttering-ideas-for-small-homes-that-actually-last/",
-      "suggestion": "Fix article-level article schema consistency."
-    },
-    {
-      "priority": "medium",
-      "area": "article schema",
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-small-shelves/",
-      "suggestion": "Fix article-level article schema consistency."
-    },
-    {
-      "priority": "medium",
-      "area": "article schema",
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-simple-system/",
-      "suggestion": "Fix article-level article schema consistency."
-    },
-    {
-      "priority": "medium",
-      "area": "article schema",
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-organization-ideas-practical-space/",
-      "suggestion": "Fix article-level article schema consistency."
-    },
-    {
-      "priority": "medium",
-      "area": "article schema",
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bathroom-organization-without-clutter/",
-      "suggestion": "Fix article-level article schema consistency."
-    }
-  ]
+  "timestamp": "2026-10-03T14:57:49+00:00",
+  "suggestions": []
 }
