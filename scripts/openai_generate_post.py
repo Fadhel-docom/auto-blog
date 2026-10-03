@@ -155,7 +155,7 @@ def call_groq(topic, relaxed_json=False, model=None):
     key=os.getenv("GROQ_API_KEY")
     if not key: raise RuntimeError("GROQ_API_KEY unavailable")
     payload={"model":model or GROQ_MODEL,"temperature":0.35,"max_tokens":4500,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":f"Focus keyword/topic: {topic}\\nWrite a complete, polished article of 1900-2100 words. MUST be at least 1800 words. Count carefully. Do not stop before reaching 1800+ words. Return ONLY one JSON object with every required field. content_markdown must contain exactly 10 H2 headings and 6 distinct image queries. Do not use markdown fences around the JSON. Do not omit fields."}]}
-    if not relaxed_json and not (model or GROQ_MODEL).endswith("20b-4e0"):
+    if not relaxed_json and "20b" not in (model or GROQ_MODEL).lower():
         payload["response_format"]={"type":"json_object"}
     r=requests.post("https://api.groq.com/openai/v1/chat/completions",headers={"Authorization":f"Bearer {key}","Content-Type":"application/json"},json=payload,timeout=240)
     if not r.ok:
@@ -412,7 +412,6 @@ def main():
     providers=[
         ("Groq 120B",call_groq,GROQ_MODEL, bool(os.getenv("GROQ_API_KEY"))),
         ("Groq 20B",call_groq,GROQ_SECONDARY_MODEL, bool(os.getenv("GROQ_API_KEY"))),
-        ("OpenRouter Free",call_openrouter,OPENROUTER_MODEL, bool(os.getenv("OPENROUTER_API_KEY"))),
     ]
 
     failures=[]
