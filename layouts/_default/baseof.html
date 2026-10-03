@@ -223,7 +223,7 @@
     {{ end }}
 
     <script type="application/ld+json">
-      {{ $articleSchema | jsonify | safeHTML }}
+      {{ $articleSchema | jsonify | safeJS }}
     </script>
 
     {{ with .Params.faq }}
@@ -254,7 +254,7 @@
         }}
 
         <script type="application/ld+json">
-          {{ $faqSchema | jsonify | safeHTML }}
+          {{ $faqSchema | jsonify | safeJS }}
         </script>
 
       {{ end }}
