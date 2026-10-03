@@ -7,7 +7,6 @@ image = "../../images/small-kitchen-organization-5foot-galley-ideas-pull-2.jpg"
 images = ["/images/small-kitchen-organization-5foot-galley-ideas-pull-1.jpg", "/images/small-kitchen-organization-5foot-galley-ideas-pull-2.jpg", "/images/small-kitchen-organization-5foot-galley-ideas-pull-3.jpg", "/images/small-kitchen-organization-5foot-galley-ideas-pull-4.jpg", "/images/small-kitchen-organization-5foot-galley-ideas-pull-5.jpg"]
 tags = ["small kitchen organization", "pull out spice rack", "galley kitchen"]
 categories = ["Kitchen"]
-faq = []
 aliases = ["/posts/small-kitchen-organization-ideas-pull-out-spice-rack-for-5ft-galley/"]
 draft = false
 slug = "small-kitchen-organization-5foot-galley-ideas-pull"
