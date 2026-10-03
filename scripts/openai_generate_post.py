@@ -24,7 +24,7 @@ LONG_COOLDOWN_MINUTES=360
 DAILY_COOLDOWN_MINUTES=1440
 PROVIDER_STATE_KEY="provider_cooldown"
 
-SYSTEM="""You are the senior editor for Home Organization Ideas. Write a genuinely useful, human-sounding English article. Aim for 1900-2100 words so the final validated article safely stays within the required 1700-2300 range. Never mention AI, automation, models, providers, prompts, or generation. Never invent statistics, studies, expert claims, quotes, prices, or credentials. Avoid filler, repetition, vague advice, and keyword stuffing. Explain practical decisions, tradeoffs, examples, common mistakes, and maintenance. Return ONLY JSON with keys: keyword, specific_angle, title, meta_description, content_markdown, image_queries, tags, h2_headings, faq. content_markdown MUST be at least 1800 words (aim for 1900-2100). Count carefully. Do not stop before reaching 1800+ words with exactly 10 H2 headings. image_queries exactly 6 distinct concrete Pexels-ready queries. faq 4-6 items. title <=68 characters. meta_description 140-158 characters."""
+SYSTEM="""You are the senior editor for Home Organization Ideas. Write a genuinely useful, human-sounding English article. Aim for 1900-2100 words so the final validated article safely stays within the required 1700-2300 range. Never mention AI, automation, models, providers, prompts, or generation. Never invent statistics, studies, expert claims, quotes, prices, or credentials. Avoid filler, repetition, vague advice, and keyword stuffing. Explain practical decisions, tradeoffs, examples, common mistakes, and maintenance. Return ONLY JSON with keys: keyword, specific_angle, title, meta_description, content_markdown, image_queries, tags, h2_headings, faq. content_markdown MUST be at least 1800 words (aim for 1900-2100). Count carefully. Do not stop before reaching 1800+ words with exactly 10 H2 headings. image_queries exactly 6 distinct concrete Pexels-ready queries. faq 4-6 items. title MUST be 60 characters or fewer. Count carefully. meta_description 140-158 characters."""
 
 def load_topic():
     target=os.getenv("TARGET_KEYWORD","").strip()
@@ -195,7 +195,18 @@ def call_openrouter(topic, relaxed_json=False, model=None):
         raise RuntimeError(f"OpenRouter HTTP {r.status_code}: {message}")
     return parse_json_content(r.json())
 
+def _normalize_title(a):
+    """Keep titles safely within the 60-character editorial limit."""
+    title=str(a.get("title","")).strip()
+    if len(title)<=60:
+        return a
+    clipped=title[:57].rsplit(" ",1)[0].rstrip(" ,:;-")
+    a=dict(a)
+    a["title"]=clipped+"..."
+    return a
+
 def save(a,topic,provider):
+    a=_normalize_title(a)
     a["slug"]=slugify(a["title"])
     a["generated_at"]=datetime.now(timezone.utc).isoformat()
     a["word_count"]=len(re.findall(r"\b\w+\b",a["content_markdown"]))
@@ -411,7 +422,6 @@ def main():
     # OpenAI is reserved for the editorial quality gate.
     providers=[
         ("Groq 120B",call_groq,GROQ_MODEL, bool(os.getenv("GROQ_API_KEY"))),
-        ("Groq 20B",call_groq,GROQ_SECONDARY_MODEL, bool(os.getenv("GROQ_API_KEY"))),
     ]
 
     failures=[]
