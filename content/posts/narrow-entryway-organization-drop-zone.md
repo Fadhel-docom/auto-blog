@@ -177,6 +177,8 @@ Keep the drop zone focused on daily-use items such as keys, a bag, mail that nee
 Use a short reset routine, return each item to a defined location, and remove things that repeatedly accumulate without being used.
 
 
+![Mirror, coat rack and bench](https://images.pexels.com/photos/19980247/pexels-photo-19980247.jpeg?auto=compress&cs=tinysrgb&w=1600)
+
 ## Related Small-Space Guides
 
 If you need to relocate overflow items, these related guides provide useful secondary storage: [renter-friendly closet organization](/posts/renter-friendly-closet-organization-using-adhesive/), [small bathroom organization](/posts/small-bathroom-organization-ideas-practical-space/), [small laundry room organization](/posts/small-laundry-room-organization-ideas-smart-storage/), and [linen closet organization](/posts/linen-closet-organization-ideas-small-shelves/).
