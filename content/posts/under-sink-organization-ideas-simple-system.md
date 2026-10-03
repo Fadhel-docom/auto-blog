@@ -3,7 +3,7 @@ title = "Under-Sink Organization Ideas: A Simple System That Stays Tidy"
 date = "2026-09-24T09:08:00+00:00"
 lastmod = "2026-10-02T06:30:00+01:00"
 description = "Practical under-sink organization ideas for kitchens and bathrooms: measure first, create zones, use pull-out storage, protect against leaks, and keep daily essentials easy to reach."
-image = "https://images.pexels.com/photos/36777570/pexels-photo-36777570.jpeg?cs=srgb&dl=pexels-american-cleaning-institute-2155509001-36777570.jpg&fm=jpg"
+image = "https://images.pexels.com/photos/36777570/pexels-photo-36777570.jpeg?auto=compress&cs=tinysrgb&w=1600"
 images = ["https://images.pexels.com/photos/36777570/pexels-photo-36777570.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/34558046/pexels-photo-34558046.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/33784616/pexels-photo-33784616.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/10568271/pexels-photo-10568271.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/9462220/pexels-photo-9462220.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/10568482/pexels-photo-10568482.jpeg?auto=compress&cs=tinysrgb&w=1600"]
 tags = ["under sink organization ideas", "kitchen organization", "bathroom organization", "small spaces"]
 categories = ["Home Organization"]
