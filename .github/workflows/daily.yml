@@ -58,6 +58,10 @@ jobs:
         if: hashFiles('.automation/due_keyword') != ''
         run: python scripts/normalize_slug.py
 
+      - name: Python syntax gate
+        if: hashFiles('.automation/due_keyword') != ''
+        run: python -m py_compile scripts/publish.py scripts/competitive_fetch.py
+
       - name: Fetch six competitive images
         if: hashFiles('.automation/due_keyword') != ''
         env:
