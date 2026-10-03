@@ -48,12 +48,9 @@
     {{ end }}
 
     {{ if $heroImage }}
-      {{ $heroPath := $heroImage }}
-      {{ if not (or (strings.HasPrefix $heroImage "http://") (strings.HasPrefix $heroImage "https://")) }}
-        {{ $heroPath = strings.TrimPrefix "/" $heroImage | relURL }}
-      {{ end }}
+      {{ $heroPath := $heroImage | relURL }}
       <a class="home-hero-image" href="{{ $heroPost.RelPermalink }}" aria-label="Read {{ $heroPost.Title }}">
-        <img src="{{ $heroPath | relURL }}" alt="{{ $heroPost.Title }}" loading="eager" decoding="async" fetchpriority="high">
+        <img src="{{ $heroPath }}" alt="{{ $heroPost.Title }}" loading="eager" decoding="async" fetchpriority="high">
         <span class="home-hero-image-caption">
           <span>Latest guide</span>
           <strong>{{ $heroPost.Title }}</strong>
@@ -229,10 +226,7 @@
 
         {{ if $thumbnail }}
 
-          {{ $thumbPath := $thumbnail }}
-          {{ if not (or (strings.HasPrefix $thumbnail "http://") (strings.HasPrefix $thumbnail "https://")) }}
-            {{ $thumbPath = strings.TrimPrefix "/" $thumbnail | relURL }}
-          {{ end }}
+          {{ $thumbPath := $thumbnail | relURL }}
 
           <a
             href="{{ $post.RelPermalink }}"
@@ -241,7 +235,7 @@
           >
 
             <img
-              src="{{ $thumbPath | relURL }}"
+              src="{{ $thumbPath }}"
               alt="{{ $post.Title }}"
               loading="{{ if eq $index 0 }}eager{{ else }}lazy{{ end }}"
               decoding="async"
@@ -368,7 +362,7 @@
             >
 
               <img
-                src="{{ $thumbPath | relURL }}"
+                src="{{ $thumbPath }}"
                 alt="{{ .Title }}"
                 loading="lazy"
                 decoding="async"
