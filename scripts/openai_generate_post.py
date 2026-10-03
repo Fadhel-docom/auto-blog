@@ -450,3 +450,6 @@ def main():
     raise RuntimeError(f"No provider produced a valid article. {reason}")
 
 
+
+if __name__ == "__main__":
+    main()
