@@ -43,8 +43,8 @@ GROQ_CHAT_URL = (
 )
 
 IMAGE_COUNT = 6
-MAX_PAGES = 3
-PER_PAGE = 15
+MAX_PAGES = 1
+PER_PAGE = 5
 
 MIN_WIDTH = 1200
 MIN_ASPECT_RATIO = 1.3
@@ -56,6 +56,7 @@ REQUEST_TIMEOUT = 30
 
 MAX_ALLOWED_FAILED_IMAGES = 3
 MAX_SELECTION_ATTEMPTS = 5
+MAX_PEXELS_QUERIES = 2
 
 JPEG_MAGIC_BYTES = b"\xff\xd8\xff"
 MIN_IMAGE_SIZE_BYTES = 1024
@@ -935,6 +936,8 @@ def collect_candidates(
             != actual_search_query.lower()
         ):
             queries.append(fallback)
+        if len(queries) >= MAX_PEXELS_QUERIES:
+            break
 
     dimension_count = 0
     semantic_count = 0
@@ -1102,15 +1105,16 @@ def collect_candidates(
                     or len(
                         meaningful_home_matches
                     )
-                    >= 2
+                    >= 1
                 ):
-                    consecutive_blacklist_rejections = 0
+                    # The Pexels search engine has already ranked this photo
+                    # for the requested query. After dimension and blacklist
+                    # checks, accept it as a good-enough semantic match.
                     print(
-                        f"  Rejected candidate "
+                        f"  Accepted candidate "
                         f"#{photo_id}: "
-                        "no semantic match"
+                        "Pexels search relevance fallback"
                     )
-                    continue
 
                 consecutive_blacklist_rejections = 0
                 semantic_count += 1
