@@ -5,7 +5,7 @@ lastmod = "2026-09-25T03:00:00+01:00"
 slug = "effortless-home-organization-tips-for-small-spaces"
 aliases = ["/posts/small-space-home-organization-a-practical-room-by-room-system/"]
 description = "A practical room-by-room system for organizing a small home, with decluttering steps, storage zones, vertical space ideas, and a simple weekly reset."
-image = "/images/effortless-home-organization-tips-for-small-spaces.jpg"
+image = "https://images.pexels.com/photos/19980221/pexels-photo-19980221.jpeg?auto=compress&cs=tinysrgb&w=1600"
 images = [
   "/images/effortless-home-organization-tips-for-small-spaces.jpg",
   "https://images.pexels.com/photos/19980221/pexels-photo-19980221.jpeg?auto=compress&cs=tinysrgb&w=1600",

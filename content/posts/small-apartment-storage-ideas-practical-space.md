@@ -3,7 +3,7 @@ title = "Small Apartment Storage Ideas: A Practical Small-Space Guide"
 date = "2026-09-22T23:10:01+00:00"
 lastmod = "2026-09-22T23:10:01+00:00"
 description = "Practical small-apartment storage ideas with simple measurements, storage zones, and realistic steps for everyday use in a small home."
-image = "https://images.pexels.com/photos/18470969/pexels-photo-18470969.jpeg?cs=srgb&dl=pexels-alan-antony-279974862-18470969.jpg&fm=jpg"
+image = "../../images/small-apartment-storage-ideas-practical-space-2.jpg"
 images = ["https://images.pexels.com/photos/18470969/pexels-photo-18470969.jpeg?cs=srgb&dl=pexels-alan-antony-279974862-18470969.jpg&fm=jpg", "/images/small-apartment-storage-ideas-practical-space-2.jpg", "/images/small-apartment-storage-ideas-practical-space-3.jpg", "/images/small-apartment-storage-ideas-practical-space-4.jpg", "/images/small-apartment-storage-ideas-practical-space-5.jpg"]
 tags = ["small apartment storage ideas", "home organization", "small spaces"]
 categories = ["Small Space"]
