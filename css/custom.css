@@ -1620,3 +1620,67 @@ h6 {
   line-height: 1.5;
 }
 
+/* =========================================
+   HOMEPAGE CARD GRID — FINAL OVERRIDES
+   ========================================= */
+
+.home-posts .posts-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 24px !important;
+  align-items: stretch;
+}
+
+.home-posts .home-post-card {
+  min-width: 0;
+  width: 100%;
+}
+
+.home-posts .home-post-card-image {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  overflow: hidden !important;
+}
+
+.home-posts .home-post-card-image img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover !important;
+}
+
+/* Keep the latest guides compact on phones too. */
+@media (max-width: 980px) {
+  .home-posts .posts-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .home-posts .posts-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .home-posts .home-post-card-body {
+    padding: 13px 13px 15px;
+  }
+
+  .home-posts .home-post-card-title {
+    font-size: 0.98rem;
+  }
+
+  .home-posts .home-post-card-description {
+    font-size: 0.82rem;
+    -webkit-line-clamp: 2;
+  }
+
+  .home-posts .home-post-card-meta {
+    font-size: 0.68rem;
+  }
+}
+
