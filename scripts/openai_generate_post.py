@@ -445,6 +445,7 @@ def main():
                 call_groq(topic,model=chosen_model) if name.startswith("Groq")
                 else call_openrouter(topic,model=chosen_model)
             )
+            candidate=_normalize_title(candidate)
             validate(candidate)
             clear_provider_cooldown(key)
             save(candidate,topic,name)
