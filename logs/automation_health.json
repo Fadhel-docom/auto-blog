@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-03T03:34:57+00:00",
+  "timestamp": "2026-10-03T04:00:03+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "ACTIVE"
@@ -54,32 +54,24 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 37093674926,
+      "id": 37095045823,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-10-03T03:34:50Z",
-      "updated_at": "2026-10-03T03:34:53Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37093674926"
-    },
-    "Traffic Report": {
-      "id": 37083107469,
-      "status": "completed",
-      "conclusion": "success",
-      "created_at": "2026-10-03T00:41:24Z",
-      "updated_at": "2026-10-03T00:41:55Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37083107469"
+      "created_at": "2026-10-03T03:59:55Z",
+      "updated_at": "2026-10-03T03:59:58Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37095045823"
     },
     "Scheduled Publisher": {
-      "id": 37068147550,
+      "id": 37094794722,
       "status": "completed",
       "conclusion": "failure",
-      "created_at": "2026-10-02T21:39:42Z",
-      "updated_at": "2026-10-02T21:46:03Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37068147550"
+      "created_at": "2026-10-03T03:55:22Z",
+      "updated_at": "2026-10-03T03:55:49Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37094794722"
     }
   },
   "quality_gate": {
-    "status": "skipped",
+    "status": "failure",
     "job": "publish"
   },
   "traffic": {
@@ -120,7 +112,10 @@
       }
     ]
   },
-  "alerts": [],
+  "alerts": [
+    "Automation alert: Quality Gate failure",
+    "Automation alert: Quality Gate failure"
+  ],
   "issues": [
     {
       "type": "Due article not published",
@@ -143,28 +138,42 @@
       ]
     },
     {
+      "type": "Quality Gate failure",
+      "quality_gate": {
+        "status": "failure",
+        "job": "publish"
+      }
+    },
+    {
       "type": "Scheduled Publisher failure",
       "run": {
-        "id": 37068147550,
+        "id": 37094794722,
         "status": "completed",
         "conclusion": "failure",
-        "created_at": "2026-10-02T21:39:42Z",
-        "updated_at": "2026-10-02T21:46:03Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37068147550"
+        "created_at": "2026-10-03T03:55:22Z",
+        "updated_at": "2026-10-03T03:55:49Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37094794722"
+      }
+    },
+    {
+      "type": "Quality Gate failure",
+      "step": {
+        "status": "failure",
+        "job": "publish"
       }
     }
   ],
   "publisher_steps": {
     "Groq Editorial Quality Gate": {
-      "status": "skipped",
+      "status": "success",
       "job": "publish"
     },
     "Publish Hugo post": {
-      "status": "skipped",
+      "status": "success",
       "job": "publish"
     },
     "Quality Gate": {
-      "status": "skipped",
+      "status": "failure",
       "job": "publish"
     },
     "Deploy GitHub Pages": {
