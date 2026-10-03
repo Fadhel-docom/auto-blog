@@ -33,6 +33,8 @@ ARTICLE_PATH = ROOT_DIR / "article.json"
 IMAGE_DIR = (
     ROOT_DIR / "static" / "images"
 )
+PEXELS_CACHE_PATH = ROOT_DIR / "data" / "pexels_search_cache.json"
+PEXELS_CACHE_TTL_SECONDS = 24 * 60 * 60
 
 PEXELS_SEARCH_URL = (
     "https://api.pexels.com/v1/search"
@@ -427,6 +429,28 @@ def retry_delay(
     )
 
 
+def load_pexels_cache() -> Dict[str, Any]:
+    if not PEXELS_CACHE_PATH.exists():
+        return {}
+    try:
+        with PEXELS_CACHE_PATH.open("r", encoding="utf-8") as file:
+            cache = json.load(file)
+        return cache if isinstance(cache, dict) else {}
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def save_pexels_cache(cache: Dict[str, Any]) -> None:
+    PEXELS_CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    temp_path = PEXELS_CACHE_PATH.with_suffix(".tmp")
+    try:
+        with temp_path.open("w", encoding="utf-8") as file:
+            json.dump(cache, file, ensure_ascii=False)
+        temp_path.replace(PEXELS_CACHE_PATH)
+    except OSError:
+        temp_path.unlink(missing_ok=True)
+
+
 def search_pexels(
     api_key: str,
     query: str,
@@ -444,6 +468,17 @@ def search_pexels(
         "per_page": PER_PAGE,
         "page": page,
     }
+
+    cache = load_pexels_cache()
+    cache_key = f"{normalize_query(query).lower()}|{page}|{PER_PAGE}"
+    cached = cache.get(cache_key)
+    if isinstance(cached, dict):
+        cached_at = float(cached.get("cached_at", 0) or 0)
+        if time.time() - cached_at < PEXELS_CACHE_TTL_SECONDS:
+            data = cached.get("data")
+            if isinstance(data, dict):
+                print(f"  Pexels cache hit: {query} page {page}")
+                return data
 
     last_exception: Optional[
         Exception
@@ -497,6 +532,11 @@ def search_pexels(
                     "a JSON object."
                 )
 
+            cache[cache_key] = {
+                "cached_at": time.time(),
+                "data": data,
+            }
+            save_pexels_cache(cache)
             return data
 
         except requests.Timeout as exc:
