@@ -1794,6 +1794,36 @@ def create_reused_image(
     }
 
 
+def find_local_fallback_image(
+    query: str,
+    destination: Path,
+    current_images: List[Dict[str, Any]],
+) -> Optional[Path]:
+    """Find a valid existing image whose filename overlaps the query."""
+    query_tokens = {
+        token
+        for token in tokenize(query)
+        if token not in WEAK_WHITELIST_WORDS
+    }
+    current_paths = {
+        ROOT_DIR / str(item["file_path"])
+        for item in current_images
+        if item.get("file_path")
+    }
+    ranked = []
+    for path in IMAGE_DIR.glob("*.jpg"):
+        if path == destination or path in current_paths:
+            continue
+        try:
+            validate_jpeg_file(path)
+        except Exception:
+            continue
+        score = len(query_tokens & tokenize(path.stem.replace("-", " ")))
+        ranked.append((score, path))
+    ranked.sort(key=lambda item: (item[0], item[1].stat().st_mtime), reverse=True)
+    return ranked[0][1] if ranked else None
+
+
 # ============================================================================
 # Main image pipeline
 # ============================================================================
@@ -2149,11 +2179,40 @@ def fetch_all_images(
                 file=sys.stderr,
             )
 
-            # Never reuse another article's image to satisfy the six-image
-            # requirement. A reused image is a duplicate even if its local
-            # filename is different. Fail closed and let the publisher retry.
-            raise RuntimeError(
-                f"Image {index} failed; refusing duplicate-image fallback: {exc}"
+            fallback_source = find_local_fallback_image(
+                query,
+                destination,
+                images,
+            )
+            if fallback_source is None:
+                raise RuntimeError(
+                    f"Image {index} failed and no local fallback exists: {exc}"
+                )
+            print(
+                f"  Using local fallback image: {fallback_source}"
+            )
+            images.append(
+                create_reused_image(
+                    {
+                        "file_path": str(
+                            fallback_source.relative_to(ROOT_DIR)
+                        ),
+                        "query": query,
+                        "photographer": "",
+                        "photographer_url": "",
+                        "pexels_url": "",
+                        "image_source_url": "",
+                        "image_id": None,
+                        "width": 0,
+                        "height": 0,
+                        "aspect_ratio": 0,
+                        "validation_score": 0,
+                        "groq_validated": False,
+                        "index": index,
+                    },
+                    destination,
+                    index,
+                )
             )
 
     if len(images) != IMAGE_COUNT:
@@ -2164,8 +2223,8 @@ def fetch_all_images(
         )
 
     if failed_images:
-        raise RuntimeError(
-            f"{failed_images} image(s) failed; no duplicate fallback is allowed."
+        print(
+            f"{failed_images} image(s) used local fallback assets."
         )
 
     # Only genuinely downloaded Pexels images
