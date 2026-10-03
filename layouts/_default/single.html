@@ -309,7 +309,7 @@
     {{ $articleSchema = merge $articleSchema (dict "image" (slice $imageURL)) }}
   {{ end }}
   <script type="application/ld+json">
-    {{ $articleSchema | jsonify | safeJS }}
+    {{ $articleSchema | jsonify }}
   </script>
 {{ end }}
 
