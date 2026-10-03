@@ -283,36 +283,6 @@
 
 
 
-{{ if .IsPage }}
-  {{ $authorName := .Site.Params.author | default "Auto Blog" }}
-  {{ $imageURL := "" }}
-  {{ with .Params.image }}
-    {{ if or (strings.HasPrefix . "http://") (strings.HasPrefix . "https://") }}
-      {{ $imageURL = . }}
-    {{ else }}
-      {{ $imageURL = strings.TrimPrefix . "/" | relURL | absURL }}
-    {{ end }}
-  {{ end }}
-  {{ $articleSchema := dict
-    "@context" "https://schema.org"
-    "@type" "BlogPosting"
-    "headline" .Title
-    "description" .Description
-    "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
-    "author" (dict "@type" "Organization" "name" $authorName)
-    "publisher" (dict "@type" "Organization" "name" .Site.Title "url" .Site.BaseURL)
-    "datePublished" .Date
-    "dateModified" .Lastmod
-    "url" .Permalink
-  }}
-  {{ if $imageURL }}
-    {{ $articleSchema = merge $articleSchema (dict "image" (slice $imageURL)) }}
-  {{ end }}
-  <script type="application/ld+json">
-    {{ $articleSchema | jsonify }}
-  </script>
-{{ end }}
-
 {{ with .Params.faq }}
   {{ $faqEntities := slice }}
   {{ range . }}
