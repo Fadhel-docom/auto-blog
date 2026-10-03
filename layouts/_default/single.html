@@ -283,27 +283,4 @@
 
 
 
-{{ with .Params.faq }}
-  {{ $faqEntities := slice }}
-  {{ range . }}
-    {{ $faqEntities = $faqEntities | append (dict
-      "@type" "Question"
-      "name" .question
-      "acceptedAnswer" (dict
-        "@type" "Answer"
-        "text" .answer
-      )
-    ) }}
-  {{ end }}
-  <script type="application/ld+json">
-    {{ dict
-      "@context" "https://schema.org"
-      "@type" "FAQPage"
-      "mainEntity" $faqEntities
-      | jsonify
-      | safeJS
-    }}
-  </script>
-{{ end }}
-
 {{ end }}
