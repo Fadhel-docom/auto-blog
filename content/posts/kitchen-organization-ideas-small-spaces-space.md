@@ -33,7 +33,7 @@ A common mistake is buying storage bins or racks before you’ve measured; a 15�
 
 ## Measure the Area Before Buying Anything
 
-![kitchen drawer storage organized interior](../../images/kitchen-organization-ideas-small-spaces-space-3.jpg)
+![kitchen drawer storage organized interior](https://images.pexels.com/photos/31871391/pexels-photo-31871391.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
 Start by pulling a tape measure, a notebook, and a pencil. Measure the width, depth, and height of every cabinet, wall, and countertop where you plan to add storage. For a typical galley kitchen, the narrow wall might be only **24‑30 in** wide; a standard base cabinet is **24 in** deep, leaving just **6‑12 in** of clearance for a pull‑out shelf. Write down each dimension and sketch a quick floor plan, labeling the exact square footage of open wall space (e.g., a 48‑in‑wide, 12‑in‑deep area above the sink).
 
@@ -43,7 +43,7 @@ Finally, verify door swing clearances. If a pantry door swings inward **30 in*
 
 ## Create Zones for the Items You Use Most
 
-![kitchen drawer organized storage organized interior](../../images/kitchen-organization-ideas-small-spaces-space-4.jpg)
+![kitchen drawer organized storage organized interior](https://images.pexels.com/photos/13684937/pexels-photo-13684937.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
 Arrange your kitchen into clear zones that match the tasks you perform most often—prep, cooking, cleaning, and pantry. Start by measuring the “work triangle”: the distance between the sink, stove, and refrigerator should total 13‑26 ft, with each leg between 4‑9 ft. Place the prep zone (cutting board, knives, mixing bowls) on the countertop nearest the sink, ideally within a 24‑inch reach. Install a pull‑out drawer under this area and keep the most‑used tools in the top tier; a common mistake is stuffing the drawer with rarely‑used gadgets, which forces you to dig for essentials.
 
@@ -203,8 +203,8 @@ Use the [small apartment storage guide](/posts/small-apartment-organization-maxi
 ## Image Credits
 
 - Photo 1: [Yunus Tuğ](https://www.pexels.com/@yunustug) via [Pexels](https://www.pexels.com/photo/cozy-modern-kitchen-with-coffee-bar-and-elegant-lighting-29435290/)
-- Photo 2: [Max Vakhtbovych](https://www.pexels.com/@artbovich) via [Pexels](https://www.pexels.com/photo/empty-dressing-room-11701120/)
-- Photo 3: [Curtis Adams](https://www.pexels.com/@curtis-adams-1694007) via [Pexels](https://www.pexels.com/photo/modern-bathroom-with-shower-and-shelving-36777570/)
+- Photo 2: [Max Vakhtbovych](https://www.pexels.com/@artbovich) via [Pexels](https://www.pexels.com/photo/organized-kitchen-cabinet-with-dishes-and-glassware-31871391/)
+- Photo 3: [Curtis Adams](https://www.pexels.com/@curtis-adams-1694007) via [Pexels](https://www.pexels.com/photo/items-on-a-small-kitchen-counter-13684937/)
 - Photo 4: [Keegan Checks](https://www.pexels.com/@keeganjchecks) via [Pexels](https://www.pexels.com/photo/interior-design-of-room-10117733/)
 - Photo 5: [Jonathan Borba](https://www.pexels.com/@jonathanborba) via [Pexels](https://www.pexels.com/photo/cozy-modern-kitchen-in-espirito-santo-brazil-30628753/)
 - Photo 6: [ASR Design Studio](https://www.pexels.com/@asr-design-studio-623558661) via [Pexels](https://www.pexels.com/photo/house-kitchen-interior-design-18109909/)
