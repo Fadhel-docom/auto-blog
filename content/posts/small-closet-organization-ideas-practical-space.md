@@ -61,7 +61,7 @@ A common mistake is overloading one zone and leaving the others empty, which for
 
 ## Use Vertical Space Without Making Clutter
 
-![reuse:small closet organization ideas organized home storage interior wide shot](../../images/small-closet-organization-ideas-practical-space-5.jpg)
+![reuse:small closet organization ideas organized home storage interior wide shot](https://images.pexels.com/photos/6580394/pexels-photo-6580394.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
 Keep the floor clear and let the walls do the heavy lifting. Start by measuring the height of your closet wall—most closets are 7–8 ft tall. Install a 3‑ft tall, 2‑inch wide wire shelving unit at the top; this gives you a sturdy, low‑profile space for hats or seasonal décor. Below that, add a tension‑rod system about 2 inches from the floor; use it for hanging scarves or lightweight sweaters—just make sure the rod is snug, otherwise items will slide down and create a mess. For shoes, attach a 4‑inch wide shoe rack to the back wall, leaving a 6‑inch clearance from the floor so you can walk around easily. If you have a narrow closet, consider a pull‑out shoe organizer that fits a 12‑inches deep space; this keeps shoes visible but out of the way.  
 
@@ -168,6 +168,6 @@ Use the same method with our [small bedroom organization guide](/posts/small-bed
 - Photo 1: [Max Vakhtbovych](https://www.pexels.com/@artbovich) via [Pexels](https://www.pexels.com/photo/modern-wardrobe-storage-6580394/)
 - Photo 2: [Curtis Adams](https://www.pexels.com/@curtis-adams-1694007) via [Pexels](https://www.pexels.com/photo/spacious-minimalist-walk-in-closet-design-36777580/)
 - Photo 3: [Keegan Checks](https://www.pexels.com/@keeganjchecks) via [Pexels](https://www.pexels.com/photo/brown-woven-basket-on-brown-wooden-cabinet-10117739/)
-- Photo 4: [American  Cleaning Institute](https://www.pexels.com/@american-cleaning-institute-2155509001) via [Pexels](https://www.pexels.com/photo/organized-kitchen-cabinet-with-wicker-baskets-33784616/)
+- Photo 4: [American  Cleaning Institute](https://www.pexels.com/@american-cleaning-institute-2155509001) via [Pexels](https://www.pexels.com/photo/modern-wardrobe-storage-6580394/)
 - Photo 5: [Max Vakhtbovych](https://www.pexels.com/@artbovich) via [Pexels](https://www.pexels.com/photo/empty-dressing-room-11701120/)
 - Photo 6: [cottonbro studio](https://www.pexels.com/@cottonbro) via [Pexels](https://www.pexels.com/photo/framed-vintage-photos-hanging-in-a-wall-6923497/)
