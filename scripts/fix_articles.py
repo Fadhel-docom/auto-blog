@@ -16,8 +16,8 @@ FAQ_PATTERNS = [
     (re.compile(r'What are some organizing (.+?) ideas\?', re.I), r'What are some practical ways to organize \1?'),
     (re.compile(r'How can I organize (.+?) ideas\?', re.I), r'How can I organize \1?'),
 ]
-REPEATED_WORD = re.compile(r'\b([A-Za-z][A-Za-z\'-]*)\s+\\1\b', re.I)
-MEASUREMENT = re.compile(r'\b\\d+(?:\.\\d+)?\s*(?:×|x|X|by)\s*\\d+(?:\.\\d+)?\s*(?:ft|feet|foot|sq\s*ft|square feet)?\b', re.I)
+REPEATED_WORD = re.compile(r'\b([A-Za-z][A-Za-z\'-]*)\s+\1\b', re.I)
+MEASUREMENT = re.compile(r'\b\d+(?:\.\d+)?\s*(?:×|x|X|by)\s*\d+(?:\.\d+)?\s*(?:ft|feet|foot|sq\s*ft|square feet)?\b', re.I)
 H2 = re.compile(r'^##\s+(.+?)\s*$', re.M)
 IMAGE = re.compile(r'!\[([^\]]*)\]\(([^)]+)\)')
 STOPWORDS = {'the','a','an','and','or','to','for','of','in','on','with','your','you','is','are','how','what','can','do','ideas','best','ways','way','organize','organization','organizing','small'}
