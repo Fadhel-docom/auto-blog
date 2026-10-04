@@ -137,9 +137,7 @@ A leaning ladder shelf adds vertical storage for books and decor, while the rung
 
 Even the best physical organization fails without a system for tracking where things belong.
 
-### 6.1 Inventory Apps
-
-Apps like Sortly or Google Sheets let you catalog stored items, note their locations, and set reminders for seasonal rotation. A quick search saves time when you need that spare key or a specific spice.
+### 6.1 Inventory Apps like Sortly or Google Sheets let you catalog stored items, note their locations, and set reminders for seasonal rotation. A quick search saves time when you need that spare key or a specific spice.
 
 ### 6.2 Simple Labeling Systems
 

@@ -46,7 +46,7 @@ A common mistake is assuming “standard” sizes will work; always double‑che
 
 ## Create Zones for the Items You Use Most
 
-![apartment container organized organized interior](../../images/small-apartment-storage-ideas-practical-space-4.jpg)
+![apartment container organized interior](../../images/small-apartment-storage-ideas-practical-space-4.jpg)
 
 Divide the area into clear zones so every category has a predictable home. For small apartment storage ideas, a 120 centimeter run could contain a 40 centimeter daily-use zone, a 40 centimeter reserve zone, and a 40 centimeter occasional zone. The exact measurements should follow the available space rather than a fixed formula. Keep items used every day between waist and shoulder height whenever possible. Labels help when several categories look similar, but they should remain short and easy to read. A system with three obvious zones is often easier to maintain than one with ten tiny categories.
 
