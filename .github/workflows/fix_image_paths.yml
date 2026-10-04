@@ -6,7 +6,7 @@ on:
       mode:
         description: "Run mode"
         required: true
-        default: dry-run
+        default: apply
         type: choice
         options:
           - dry-run
