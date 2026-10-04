@@ -1054,8 +1054,21 @@ h6 {
 }
 
 .post-content img {
-  border-radius: var(--radius-md);
-  margin: 28px 0;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: 480px;
+  margin: 24px auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.post-content figure { margin: 24px 0; }
+.post-content figcaption {
+  font-size: 0.875rem;
+  color: #666;
+  margin-top: 8px;
+  text-align: center;
 }
 
 .post-content blockquote {
