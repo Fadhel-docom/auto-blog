@@ -69,7 +69,7 @@ For a small bedroom, **side‑mount ball bearing slides** are the most space‑e
 
 ## Step 3 - Build Simple Pull‑Out Drawers
 
-![small bedroom storage ideas drawer storage organized interior](../../images/small-bedroom-storage-ideas-diy-pull-out-5.jpg)
+![small bedroom storage ideas drawer storage organized interior](https://images.pexels.com/photos/6670659/pexels-photo-6670659.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
 You don’t need a carpenter’s workshop to craft sturdy drawers. Follow these numbered steps and you’ll have a pair of drawers ready in a weekend.
 
@@ -234,6 +234,6 @@ Pair the pull-out approach with our [small bedroom organization guide](/posts/sm
 - Photo 1: [Michael D Beckwith](https://www.pexels.com/@michael-d-beckwith-2150568551) via [Pexels](https://www.pexels.com/photo/historic-english-bedroom-with-vintage-decor-37884161/)
 - Photo 2: [Max Vakhtbovych](https://www.pexels.com/@artbovich) via [Pexels](https://www.pexels.com/photo/empty-dressing-room-11701120/)
 - Photo 3: [Manuel Aldana](https://www.pexels.com/@manuel-aldana-321951004) via [Pexels](https://www.pexels.com/photo/photo-of-a-bedroom-13893887/)
-- Photo 4: [Curtis Adams](https://www.pexels.com/@curtis-adams-1694007) via [Pexels](https://www.pexels.com/photo/modern-bathroom-with-shower-and-shelving-36777570/)
+- Photo 4: [Curtis Adams](https://www.pexels.com/@curtis-adams-1694007) via [Pexels](https://www.pexels.com/photo/photo-of-a-bedroom-6670659/)
 - Photo 5: [Keegan Checks](https://www.pexels.com/@keeganjchecks) via [Pexels](https://www.pexels.com/photo/brown-woven-basket-on-brown-wooden-cabinet-10117739/)
 - Photo 6: [murod lens](https://www.pexels.com/@murod-lens-1082996343) via [Pexels](https://www.pexels.com/photo/modern-bedroom-workspace-with-wooden-accents-37831449/)
