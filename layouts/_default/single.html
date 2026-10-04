@@ -38,22 +38,20 @@
 
   {{ if $heroImage }}
 
-    {{ $fallbackImg := "images/30-practical-home-organization-ideas-for.jpg" | relURL }}
-
-  {{ $heroPath := $heroImage }}
+    {{ $heroPath := $heroImage }}
     {{ if not (or (strings.HasPrefix $heroImage "http://") (strings.HasPrefix $heroImage "https://")) }}
       {{ $heroPath = strings.TrimPrefix "/" $heroImage | relURL }}
     {{ end }}
 
     <figure class="post-hero">
       <img
-        src="{{ $heroPath }}"
+        src="{{ $heroPath | relURL }}"
         alt="{{ $title }}"
         class="post-hero-image"
         loading="eager"
         decoding="async"
         fetchpriority="high"
-        onerror="this.src='{{ $fallbackImg }}'; this.onerror=null;"
+        onerror="this.src='/images/30-practical-home-organization-ideas-for.jpg'; this.onerror=null;"
       >
     </figure>
 
@@ -146,7 +144,7 @@
 
     {{/* Normalize article image paths for the GitHub Pages subpath. */}}
     {{ $renderedContent = replaceRE
-      `src="(?:\.\./)+images/`
+      `src="(?:../)+images/`
       `src="/images/`
       $renderedContent
     }}
@@ -157,7 +155,7 @@
 
   <script>
   (function () {
-    var fallback = "{{ $fallbackImg }}";
+    var fallback = "/images/30-practical-home-organization-ideas-for.jpg";
     document.querySelectorAll(".post-content img").forEach(function (img) {
       img.addEventListener("error", function () {
         if (img.dataset.fallbackApplied) return;
@@ -251,7 +249,7 @@
               aria-label="Read: {{ .Title }}"
             >
               <img
-                src="{{ $relatedPath }}"
+                src="{{ $relatedPath | relURL }}"
                 alt=""
                 loading="lazy"
                 decoding="async"
