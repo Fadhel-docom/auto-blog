@@ -92,10 +92,10 @@
 
   {{ if .Params.image }}
 
-    {{ if or (strings.HasPrefix .Params.image "http://") (strings.HasPrefix .Params.image "https://") }}
+    {{ if or (strings.HasPrefix .Params.image "http://") (strings.HasPrefix .Params.image "https://") (strings.HasPrefix .Params.image "//") }}
       {{ $ogImage = .Params.image }}
     {{ else }}
-      {{ $ogImage = strings.TrimPrefix .Params.image "/" | relURL | absURL }}
+      {{ $ogImage = strings.TrimPrefix "/" .Params.image | absURL }}
     {{ end }}
 
   {{ else }}
@@ -182,10 +182,10 @@
 
     {{ with .Params.image }}
 
-      {{ if or (strings.HasPrefix . "http://") (strings.HasPrefix . "https://") }}
+      {{ if or (strings.HasPrefix . "http://") (strings.HasPrefix . "https://") (strings.HasPrefix . "//") }}
         {{ $imageURL = . }}
       {{ else }}
-        {{ $imageURL = strings.TrimPrefix . "/" | relURL | absURL }}
+        {{ $imageURL = strings.TrimPrefix "/" . | absURL }}
       {{ end }}
 
     {{ end }}
