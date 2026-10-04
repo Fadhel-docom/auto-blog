@@ -1,5 +1,8 @@
 {{ define "main" }}
 
+{{ $fallbackImg := "images/30-practical-home-organization-ideas-for.jpg" | relURL }}
+{{ $imageBase := "images/" | relURL }}
+
 {{/* Capitalize first letter of title */}}
 {{ $title := .Title }}
 {{ if $title }}
@@ -45,13 +48,13 @@
 
     <figure class="post-hero">
       <img
-        src="{{ $heroPath | relURL }}"
+        src="{{ $heroPath }}"
         alt="{{ $title }}"
         class="post-hero-image"
         loading="eager"
         decoding="async"
         fetchpriority="high"
-        onerror="this.src='/images/30-practical-home-organization-ideas-for.jpg'; this.onerror=null;"
+        onerror="this.src='{{ $fallbackImg }}'; this.onerror=null;"
       >
     </figure>
 
@@ -144,8 +147,8 @@
 
     {{/* Normalize article image paths for the GitHub Pages subpath. */}}
     {{ $renderedContent = replaceRE
-      `src="(?:../)+images/`
-      `src="/images/`
+      `src="(?:\.\./)+images/`
+      (print "src=" $imageBase)
       $renderedContent
     }}
 
@@ -155,7 +158,7 @@
 
   <script>
   (function () {
-    var fallback = "/images/30-practical-home-organization-ideas-for.jpg";
+    var fallback = "{{ $fallbackImg }}";
     document.querySelectorAll(".post-content img").forEach(function (img) {
       img.addEventListener("error", function () {
         if (img.dataset.fallbackApplied) return;
@@ -249,7 +252,7 @@
               aria-label="Read: {{ .Title }}"
             >
               <img
-                src="{{ $relatedPath | relURL }}"
+                src="{{ $relatedPath }}"
                 alt=""
                 loading="lazy"
                 decoding="async"
