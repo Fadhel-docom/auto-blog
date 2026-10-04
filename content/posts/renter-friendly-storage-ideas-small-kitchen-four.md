@@ -44,7 +44,7 @@ Before you purchase any organizer, spend a few minutes measuring and cataloguing
 
 ## Transform the Inside of Your Four Cabinets
 
-![inside of kitchen cabinet with tension shelf dividers holding plates and bowls](../../images/renter-friendly-storage-ideas-small-kitchen-four-4.jpg)
+![inside of kitchen cabinet with tension shelf dividers holding plates and bowls](https://images.pexels.com/photos/8580763/pexels-photo-8580763.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
 The interior of each cabinet is prime real estate. With a few inexpensive, non‑permanent tweaks you can double the usable space.
 
@@ -224,7 +224,7 @@ This routine is also useful for roommates or families because the storage rules 
 
 - Photo 1: [Max Vakhtbovych](https://www.pexels.com/@artbovich) via [Pexels](https://www.pexels.com/photo/brown-and-white-counter-in-the-kitchen-8146322/)
 - Photo 2: [RDNE Stock project](https://www.pexels.com/@rdne) via [Pexels](https://www.pexels.com/photo/glass-jars-and-plastic-containers-on-white-table-8580794/)
-- Photo 3: [Thirdman](https://www.pexels.com/@thirdman) via [Pexels](https://www.pexels.com/photo/man-in-blue-long-sleeves-shirt-wearing-white-helmet-8470775/)
+- Photo 3: [Thirdman](https://www.pexels.com/@thirdman) via [Pexels](https://www.pexels.com/photo/woman-putting-glass-containers-on-a-kitchen-cabinet-8580763/)
 - Photo 4: [Valeria Boltneva](https://www.pexels.com/@valeriya) via [Pexels](https://www.pexels.com/photo/a-shelf-with-dishes-and-glasses-on-it-27305347/)
 - Photo 5: [https://kaboompics.com/](https://www.pexels.com/@karola-g) via [Pexels](https://www.pexels.com/photo/a-woman-in-a-kitchen-5237908/)
 - Photo 6: [Hoài  Nam](https://www.pexels.com/@hoinommm) via [Pexels](https://www.pexels.com/photo/mugs-on-wooden-wall-25651554/)
