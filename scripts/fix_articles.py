@@ -89,3 +89,4 @@ def main():
     print(f'Report: {REPORT_PATH}')
 
 if __name__ == '__main__': raise SystemExit(main())
+# Bulk fixer workflow trigger: safe deterministic fixes only.
