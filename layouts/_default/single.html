@@ -45,13 +45,13 @@
 
     <figure class="post-hero">
       <img
-        src="{{ $heroPath | relURL }}"
+        src="{{ $heroPath }}"
         alt="{{ $title }}"
         class="post-hero-image"
         loading="eager"
         decoding="async"
         fetchpriority="high"
-        onerror="this.src='/images/30-practical-home-organization-ideas-for.jpg'; this.onerror=null;"
+        onerror="this.src='{{ \"images/30-practical-home-organization-ideas-for.jpg\" | relURL }}'; this.onerror=null;"
       >
     </figure>
 
@@ -144,7 +144,7 @@
 
     {{/* Normalize article image paths for the GitHub Pages subpath. */}}
     {{ $renderedContent = replaceRE
-      `src="(?:../)+images/`
+      `src="(?:\.\./)+images/`
       `src="/images/`
       $renderedContent
     }}
@@ -155,7 +155,7 @@
 
   <script>
   (function () {
-    var fallback = "/images/30-practical-home-organization-ideas-for.jpg";
+    var fallback = "{{ "images/30-practical-home-organization-ideas-for.jpg" | relURL }}";
     document.querySelectorAll(".post-content img").forEach(function (img) {
       img.addEventListener("error", function () {
         if (img.dataset.fallbackApplied) return;
@@ -249,7 +249,7 @@
               aria-label="Read: {{ .Title }}"
             >
               <img
-                src="{{ $relatedPath | relURL }}"
+                src="{{ $relatedPath }}"
                 alt=""
                 loading="lazy"
                 decoding="async"
