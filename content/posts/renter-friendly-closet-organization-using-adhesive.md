@@ -27,7 +27,7 @@ This guide uses two simple tools: **adhesive hooks for lightweight accessories**
 
 ## 1. Measure the Closet and Identify the Real Problem
 
-![A closet interior being measured with a tape measure while a simple storage plan is prepared](../../images/renter-friendly-closet-organization-using-adhesive-2.jpg)
+![A closet interior being measured with a tape measure while a simple storage plan is prepared](/auto-blog/images/renter-friendly-closet-organization-using-adhesive-2.jpg)
 
 Before buying hooks or rods, measure the closet at the exact locations where you intend to install them.
 
@@ -44,7 +44,7 @@ Then state the problem in plain language: “Shoes are blocking the floor,” �
 
 ## 2. Choose Adhesive Hooks by Load and Surface
 
-![A removable adhesive hook being pressed onto a clean closet surface, illustrating correct application rather than decorative use](../../images/renter-friendly-closet-organization-using-adhesive-3.jpg)
+![A removable adhesive hook being pressed onto a clean closet surface, illustrating correct application rather than decorative use](/auto-blog/images/renter-friendly-closet-organization-using-adhesive-3.jpg)
 
 Adhesive hooks work best when the product, surface, load, and installation method all match.
 
@@ -58,7 +58,7 @@ Before installing several hooks, test one in a discreet location if the surface 
 
 ## 3. Plan Three or Four Closet Zones
 
-![A closet being divided into upper, middle, and lower zones for clothing, accessories, and shoes](../../images/renter-friendly-closet-organization-using-adhesive-5.jpg)
+![A closet being divided into upper, middle, and lower zones for clothing, accessories, and shoes](/auto-blog/images/renter-friendly-closet-organization-using-adhesive-5.jpg)
 
 A closet becomes easier to maintain when every area has a job.
 
@@ -96,7 +96,7 @@ Avoid using adhesive hardware on a surface that the product instructions exclude
 
 ## 5. Use Tension Rods for Flexible Storage
 
-![A tension rod being installed between closet walls with lightweight clothing hanging from it](../../images/renter-friendly-closet-organization-using-adhesive-4.jpg)
+![A tension rod being installed between closet walls with lightweight clothing hanging from it](/auto-blog/images/renter-friendly-closet-organization-using-adhesive-4.jpg)
 
 A tension rod is useful because it can create another hanging level without drilling. But it is still a load-bearing component, so measure carefully and follow the rod manufacturer's weight and installation instructions.
 
@@ -168,7 +168,7 @@ If shoes are stored in closed containers for long periods, make sure they are cl
 
 ## 9. Test the System Before You Fully Load It
 
-![A renter testing newly installed hooks and rods with a small selection of clothing before fully loading the closet](../../images/renter-friendly-closet-organization-using-adhesive-1.jpg)
+![A renter testing newly installed hooks and rods with a small selection of clothing before fully loading the closet](/auto-blog/images/renter-friendly-closet-organization-using-adhesive-1.jpg)
 
 Do not wait until the closet is fully loaded to discover a weak point.
 

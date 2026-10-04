@@ -27,7 +27,7 @@ This guide uses a simple rule: **measure first, edit what you own, then add stor
 
 ## 1. Measure the Studio Before Buying Storage
 
-![A small apartment storage area being assessed with boxes and a floor plan, showing the starting point for measuring available space](../../images/small-apartment-organization-maximizing-storage-in-a-350sqft-1.jpg)
+![A small apartment storage area being assessed with boxes and a floor plan, showing the starting point for measuring available space](/auto-blog/images/small-apartment-organization-maximizing-storage-in-a-350sqft-1.jpg)
 
 Start with a rough floor plan. Mark the entry door, windows, bed, kitchen cabinets, bathroom door, radiators, outlets, and the main walking route.
 
@@ -60,7 +60,7 @@ This step also prevents a common mistake: buying attractive containers first and
 
 ## 3. Build One Compact Clothing Zone
 
-![An open wardrobe and hanging clothing being arranged into a compact storage zone, illustrating how to create a closet when the studio has limited built-in storage](../../images/small-apartment-organization-maximizing-storage-in-a-350sqft-2.jpg)
+![An open wardrobe and hanging clothing being arranged into a compact storage zone, illustrating how to create a closet when the studio has limited built-in storage](/auto-blog/images/small-apartment-organization-maximizing-storage-in-a-350sqft-2.jpg)
 
 If your studio has no built-in closet, give clothing one clearly defined zone rather than scattering garments around the room.
 
@@ -78,7 +78,7 @@ If you rent, a freestanding garment rack or modular shelving unit may be easier 
 
 ## 4. Turn the Space Under the Bed Into a Storage Zone
 
-![Storage containers and bags being placed under a bed, showing a practical way to use otherwise unused floor space](../../images/small-apartment-organization-maximizing-storage-in-a-350sqft-3.jpg)
+![Storage containers and bags being placed under a bed, showing a practical way to use otherwise unused floor space](/auto-blog/images/small-apartment-organization-maximizing-storage-in-a-350sqft-3.jpg)
 
 Measure the under-bed opening at its **lowest point**, not at the center. Then choose containers that are at least 1 inch shorter than that measurement so they can slide without scraping.
 
@@ -98,7 +98,7 @@ For more detailed measurements and drawer ideas, see our [bedroom organization s
 
 ## 5. Use Vertical Space Without Making the Studio Feel Heavy
 
-![Storage bins being placed on an upper cabinet shelf, showing how vertical space can hold seasonal items without using floor area](../../images/small-apartment-organization-maximizing-storage-in-a-350sqft-4.jpg)
+![Storage bins being placed on an upper cabinet shelf, showing how vertical space can hold seasonal items without using floor area](/auto-blog/images/small-apartment-organization-maximizing-storage-in-a-350sqft-4.jpg)
 
 Once the floor is organized, look upward. The best vertical storage is not necessarily the tallest possible shelving; it is storage that can be reached safely and still leaves the room usable.
 
@@ -170,7 +170,7 @@ The most common failures are predictable:
 
 Aim for accessible storage rather than maximum storage density.
 
-![A compact apartment storage shelf being organized into clearly separated everyday zones](../../images/small-apartment-organization-maximizing-storage-in-a-350sqft-5.jpg)
+![A compact apartment storage shelf being organized into clearly separated everyday zones](/auto-blog/images/small-apartment-organization-maximizing-storage-in-a-350sqft-5.jpg)
 
 *Use the final storage zone for a defined category rather than turning an unused corner into miscellaneous overflow.*
 

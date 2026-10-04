@@ -50,7 +50,7 @@ This is also the right time to remove worn towels, unmatched pillowcases, sheets
 
 A small closet has a fixed amount of shelf space. Removing five unnecessary items can be more useful than buying another basket.
 
-![closet shelf organization with storage baskets](../../images/linen-closet-measure-shelf.svg)
+![closet shelf organization with storage baskets](/auto-blog/images/linen-closet-measure-shelf.svg)
 
 *Start with an empty shelf so you can see the real storage capacity before adding containers.*
 
@@ -72,7 +72,7 @@ Also measure the height of your usual folded towel. If a stack of four towels re
 
 Use the measurements to choose the folding direction and container size. The closet should determine the system, not the other way around.
 
-![measured closet storage shelves](../../images/linen-closet-fold-towels.svg)
+![measured closet storage shelves](/auto-blog/images/linen-closet-fold-towels.svg)
 
 *Measure first; a container that looks compact can still waste valuable shelf depth.*
 
@@ -112,7 +112,7 @@ Make stacks short enough that one towel can be removed without toppling the othe
 
 For a shared closet, you can also create one bath-towel stack per bathroom. That can be easier to maintain than a single large stack that everyone disturbs.
 
-![folded towels arranged for easy access](../../images/linen-closet-sheet-set.svg)
+![folded towels arranged for easy access](/auto-blog/images/linen-closet-sheet-set.svg)
 
 *Consistent folds make the contents easier to identify and help prevent leaning stacks.*
 
@@ -201,11 +201,11 @@ For a family closet, consider grouping by use rather than by person. For example
 
 If a category is used every day but lives on the top shelf, the layout is fighting the routine. Move it down.
 
-![accessible closet shelves with organized storage](../../images/linen-closet-basket-zone.svg)
+![accessible closet shelves with organized storage](/auto-blog/images/linen-closet-basket-zone.svg)
 
 *Keep frequent-use categories in the easiest reach zone and reserve higher shelves for occasional items.*
 
-![simple labeled linen closet zones](../../images/linen-closet-label-zones.svg)
+![simple labeled linen closet zones](/auto-blog/images/linen-closet-label-zones.svg)
 
 *Simple labels make similar linen categories easier to find and return.*
 
@@ -224,7 +224,7 @@ A shallow door organizer can work for small, lightweight items such as washcloth
 
 Do not use the door for heavy stacks of towels unless the hardware is specifically designed for that load. A door that becomes difficult to close is not an improvement.
 
-![closet door storage clearance check](../../images/linen-closet-door-clearance.svg)
+![closet door storage clearance check](/auto-blog/images/linen-closet-door-clearance.svg)
 
 *Check the door swing, shelf depth, hinge area, and organizer clearance before adding door storage.*
 

@@ -22,7 +22,7 @@ slug = "renter-friendly-storage-ideas-small-kitchen-four"
 +++
 ## Introduction
 
-![small rental kitchen with four cabinets, countertop displaying pots and spice jars](../../images/renter-friendly-storage-ideas-small-kitchen-four-1.jpg)
+![small rental kitchen with four cabinets, countertop displaying pots and spice jars](/auto-blog/images/renter-friendly-storage-ideas-small-kitchen-four-1.jpg)
 
 Living in a rental where the kitchen consists of **only four cabinets** can feel like a perpetual game of Tetris. You need space for pots, pans, spices, and everyday gadgets, yet you cannot drill holes, remove walls, or make permanent alterations. The good news is that smart, renter‑friendly **storage ideas** can turn a cramped cooking area into a functional, organized hub—without leaving a trace when it’s time to move. This guide walks you through concrete, step‑by‑step strategies, real‑world examples, and product suggestions that work in any lease‑bound home.
 
@@ -30,7 +30,7 @@ Living in a rental where the kitchen consists of **only four cabinets** can feel
 
 ## Assess Your Kitchen Layout and Storage Needs
 
-![kitchen interior with measuring tape and tension rod ready to install on empty cabinet](../../images/renter-friendly-storage-ideas-small-kitchen-four-3.jpg)
+![kitchen interior with measuring tape and tension rod ready to install on empty cabinet](/auto-blog/images/renter-friendly-storage-ideas-small-kitchen-four-3.jpg)
 
 Before you purchase any organizer, spend a few minutes measuring and cataloguing what you already have. A clear picture of dimensions and usage patterns prevents wasted purchases and highlights hidden opportunities.
 
@@ -67,7 +67,7 @@ A lightweight, freestanding tiered shelf (think a small plastic rack) can sit in
 
 ## Add Portable Organizers Without Drilling
 
-![rolling kitchen cart beside sink holding kettle, plates and produce basket in studio kitchen](../../images/renter-friendly-storage-ideas-small-kitchen-four-5.jpg)
+![rolling kitchen cart beside sink holding kettle, plates and produce basket in studio kitchen](/auto-blog/images/renter-friendly-storage-ideas-small-kitchen-four-5.jpg)
 
 When built‑in storage falls short, bring in movable pieces that sit on the floor or countertop. These items can be packed up and taken with you when the lease ends.
 
@@ -109,7 +109,7 @@ Clamps attach to the top of upper cabinets and extend a few inches forward. Use 
 
 ## Corner Hacks for Maximum Reach
 
-![kitchen cabinet interior with adhesive hook strips holding](../../images/renter-friendly-storage-ideas-small-kitchen-four-6.jpg)
+![kitchen cabinet interior with adhesive hook strips holding](/auto-blog/images/renter-friendly-storage-ideas-small-kitchen-four-6.jpg)
 
 
 Corners are the most under‑utilised spots in a kitchen. With a couple of renter‑safe tricks you can turn them into accessible storage zones.

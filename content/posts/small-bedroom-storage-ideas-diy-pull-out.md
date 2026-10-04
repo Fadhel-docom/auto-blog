@@ -25,7 +25,7 @@ Living in a 10×10 bedroom with a queen‑size bed can feel cramped, but the spa
 
 ## Why Under‑Bed Space Is a Goldmine in a Small Bedroom
 
-![bedroom storage cabinet organized storage organized interior](../../images/small-bedroom-storage-ideas-diy-pull-out-2.jpg)
+![bedroom storage cabinet organized storage organized interior](/auto-blog/images/small-bedroom-storage-ideas-diy-pull-out-2.jpg)
 
 Even a standard queen bed (60" wide × 80" long) leaves a rectangular cavity that can be up to 12‑14 inches high when the mattress sits on a low‑profile platform. In a 10×10 room that cavity can hold **up to 5,000 cubic inches** of items—enough for a week’s worth of clothing, extra bedding, or a mini‑home office stash. The benefits are clear:
 
@@ -39,7 +39,7 @@ The key is to design a system that fits the exact dimensions of your bed frame a
 
 ## Step 1 - Measure Your Bed and Clearance
 
-![small bedroom storage ideas drawer organized storage organized interior](../../images/small-bedroom-storage-ideas-diy-pull-out-3.jpg)
+![small bedroom storage ideas drawer organized storage organized interior](/auto-blog/images/small-bedroom-storage-ideas-diy-pull-out-3.jpg)
 
 Accurate numbers prevent wasted lumber and ensure smooth operation. Grab a tape measure, a notebook, and follow these five quick checks:
 
@@ -55,7 +55,7 @@ Accurate numbers prevent wasted lumber and ensure smooth operation. Grab a tape 
 
 ## Step 2 - Choose the Right Drawer System
 
-![bedroom drawer organized storage organized interior](../../images/small-bedroom-storage-ideas-diy-pull-out-4.jpg)
+![bedroom drawer organized storage organized interior](/auto-blog/images/small-bedroom-storage-ideas-diy-pull-out-4.jpg)
 
 Not all drawer hardware is created equal. For a DIY under‑bed build you’ll want a system that balances load capacity, smooth glide, and low profile. Here are three common options:
 
@@ -103,7 +103,7 @@ Rolling bins are especially useful for seasonal items—swap them out when the w
 
 ## Finishing Touches - Labels Wheels and Aesthetics
 
-![small bedroom storage ideas storage cabinet storage organized](../../images/small-bedroom-storage-ideas-diy-pull-out-6.jpg)
+![small bedroom storage ideas storage cabinet storage organized](/auto-blog/images/small-bedroom-storage-ideas-diy-pull-out-6.jpg)
 
 
 A functional system looks better when it’s tidy. Consider these finishing details:

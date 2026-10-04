@@ -21,7 +21,7 @@ slug = "kitchen-organization-ideas-small-spaces-space"
 +++
 ## Assess Your Space for kitchen organization ideas for small spaces
 
-![small space drawer organization organized interior](../../images/kitchen-organization-ideas-small-spaces-space-2.jpg)
+![small space drawer organization organized interior](/auto-blog/images/kitchen-organization-ideas-small-spaces-space-2.jpg)
 
 Start by pulling out a tape measure and sketching a quick floor plan on graph paper or a note‑taking app. Measure the length of each wall (most small kitchens range from 6‑8 ft wide) and the depth of the countertop—typically 24 in, but island edges can be as narrow as 12 in. Record the height from floor to the bottom of upper cabinets; many homes have a 42‑in clearance, but low ceilings may reduce this to 36 in.  
 
@@ -87,7 +87,7 @@ By aligning container size with the exact space you have, you turn every nook in
 
 ## Make Frequently Used Items Easy to Reach
 
-![pantry drawer storage organized interior](../../images/kitchen-organization-ideas-small-spaces-space-6.jpg)
+![pantry drawer storage organized interior](/auto-blog/images/kitchen-organization-ideas-small-spaces-space-6.jpg)
 
 
 Keep the “reach zone” – the space between the countertop and eye level (about 18‑24 inches high) – free for the tools you use most. Install a 12‑inch‑deep pull‑out pantry shelf in a narrow cabinet; it slides out fully, letting you see every spice jar without digging. For a 30‑inch‑wide wall, mount a magnetic strip 2 feet long at a height of 48 inches to hold knives, metal tins, and a small set of scissors – everything snaps into place and stays visible.

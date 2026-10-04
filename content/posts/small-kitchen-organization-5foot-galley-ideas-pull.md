@@ -21,7 +21,7 @@ faq = [
 +++
 ## Why a Pull‑Out Spice Rack Is Perfect for a 5‑Foot Galley
 
-![galley kitchen base cabinet open showing pull-out spice rack with jars](../../images/small-kitchen-organization-5foot-galley-ideas-pull-2.jpg)
+![galley kitchen base cabinet open showing pull-out spice rack with jars](/auto-blog/images/small-kitchen-organization-5foot-galley-ideas-pull-2.jpg)
 
 Living in a studio apartment means every square inch competes for a purpose. In a galley kitchen that is only five feet wide, countertop space is a premium commodity. **Small kitchen organization ideas** that push storage out of sight while keeping essential items within arm’s reach are the most effective. A pull‑out spice rack slides from a narrow base cabinet, turning dead space into a vertical pantry that sits at eye level. Compared with a countertop carousel, the rack eliminates clutter, frees up cooking space, and lets you see every jar without rummaging. The hidden mechanism also protects spices from steam and splashes, extending their shelf life.
 
@@ -29,7 +29,7 @@ Living in a studio apartment means every square inch competes for a purpose. In 
 
 ## Measuring and Planning Your Cabinet Space
 
-![studio kitchen cabinet interior measured with tape measure and sketch](../../images/small-kitchen-organization-5foot-galley-ideas-pull-3.jpg)
+![studio kitchen cabinet interior measured with tape measure and sketch](/auto-blog/images/small-kitchen-organization-5foot-galley-ideas-pull-3.jpg)
 
 Accurate measurements are the foundation of a successful build. A typical studio galley cabinet is 12 in deep and 34‑36 in high, but variations are common. Follow these steps before you cut any material:
 
@@ -45,7 +45,7 @@ Accurate measurements are the foundation of a successful build. A typical studio
 
 ## Selecting the Ideal Slide Mechanism
 
-![cabinet side view showing full extension ball bearing slide mechanism](../../images/small-kitchen-organization-5foot-galley-ideas-pull-4.jpg)
+![cabinet side view showing full extension ball bearing slide mechanism](/auto-blog/images/small-kitchen-organization-5foot-galley-ideas-pull-4.jpg)
 
 The slide mechanism determines how smoothly the rack operates and how much weight it can support. For a galley cabinet, you need a slim, full‑extension system that can handle the combined weight of jars, labels, and occasional bulk items.
 
@@ -66,7 +66,7 @@ The slide mechanism determines how smoothly the rack operates and how much weigh
 
 ## Designing the Rack Layout and Shelf Configuration
 
-![pull out spice rack three tiers with herb, spice, oil jars displayed](../../images/small-kitchen-organization-5foot-galley-ideas-pull-5.jpg)
+![pull out spice rack three tiers with herb, spice, oil jars displayed](/auto-blog/images/small-kitchen-organization-5foot-galley-ideas-pull-5.jpg)
 
 A well‑thought‑out layout maximizes storage while keeping the rack compact enough to glide effortlessly.
 
@@ -97,7 +97,7 @@ Material choice affects durability, finish options, and resistance to moisture.
 
 ## Step‑by‑Step Build and Installation Guide
 
-![kitchen workshop showing birch plywood and stainless hardware](../../images/small-kitchen-organization-5foot-galley-ideas-pull-6.jpg)
+![kitchen workshop showing birch plywood and stainless hardware](/auto-blog/images/small-kitchen-organization-5foot-galley-ideas-pull-6.jpg)
 
 
 With measurements, hardware, and materials in hand, you can assemble the rack.
