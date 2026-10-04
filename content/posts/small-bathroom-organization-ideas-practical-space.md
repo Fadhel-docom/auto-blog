@@ -3,8 +3,8 @@ title = "Small Bathroom Organization Ideas: A Practical Small-Space Guide"
 date = "2026-09-22T22:39:35+00:00"
 lastmod = "2026-09-22T22:39:35+00:00"
 description = "Practical small-bathroom organization ideas with simple measurements, storage zones, and realistic steps for everyday use."
-image = "/images/small-bathroom-organization-ideas-practical-space-2.jpg"
-images = ["https://images.pexels.com/photos/19866402/pexels-photo-19866402.jpeg?cs=srgb&dl=pexels-lisa-anna-901356985-19866402.jpg&fm=jpg", "/images/small-bathroom-organization-ideas-practical-space-2.jpg", "/images/small-bathroom-organization-ideas-practical-space-3.jpg", "/images/small-bathroom-organization-ideas-practical-space-4.jpg", "/images/small-bathroom-organization-ideas-practical-space-5.jpg"]
+image = "images/small-bathroom-organization-ideas-practical-space-2.jpg"
+images = ["https://images.pexels.com/photos/19866402/pexels-photo-19866402.jpeg?cs=srgb&dl=pexels-lisa-anna-901356985-19866402.jpg&fm=jpg", "images/small-bathroom-organization-ideas-practical-space-2.jpg", "images/small-bathroom-organization-ideas-practical-space-3.jpg", "images/small-bathroom-organization-ideas-practical-space-4.jpg", "images/small-bathroom-organization-ideas-practical-space-5.jpg"]
 tags = ["small bathroom organization ideas", "home organization", "small spaces"]
 categories = ["Bathroom"]
 faq = [
@@ -21,7 +21,7 @@ slug = "small-bathroom-organization-ideas-practical-space"
 +++
 ## Assess Your Space for small bathroom organization ideas
 
-![small bathroom with tape measure and slim wall shelf installed](/auto-blog/images/small-bathroom-organization-ideas-practical-space--alias--small-bathroom-organization-ideas-practical-space-2.jpg)
+![small bathroom with tape measure and slim wall shelf installed](images/small-bathroom-organization-ideas-practical-space--alias--small-bathroom-organization-ideas-practical-space-2.jpg)
 
 Start by pulling out a tape measure and sketching a quick floor plan on graph paper or a notes app. Record the length and width of the room—most “small” bathrooms fall between **5 ft × 7 ft** and **6 ft × 8 ft**—and note the location of the door, toilet, vanity, and shower or tub. Measure the clearance in front of each fixture; you’ll need at least **30 in** of walking space between the toilet and vanity to avoid a cramped feel.
 
@@ -31,7 +31,7 @@ Finally, list what you actually keep in the bathroom—every bottle, brush, and 
 
 ## Measure the Area Before Buying Anything
 
-![small bathroom vanity tape measure measuring clearance for wall shelf](/auto-blog/images/small-bathroom-organization-ideas-practical-space--alias--small-bathroom-organization-ideas-practical-space-3.jpg)
+![small bathroom vanity tape measure measuring clearance for wall shelf](images/small-bathroom-organization-ideas-practical-space--alias--small-bathroom-organization-ideas-practical-space-3.jpg)
 
 Start with a tape measure and a sheet of graph paper. Sketch the room to scale—most small bathrooms fall between **5 ft × 7 ft** and **6 ft × 8 ft**. Mark the exact width of the floor (wall‑to‑wall), the depth from the vanity to the shower wall, and the ceiling height (usually 8 ft, but older homes can be as low as 7 ft 2 in).  
 
@@ -41,7 +41,7 @@ Write these numbers down before you shop. A frequent mistake is buying a storage
 
 ## Create Zones for the Items You Use Most
 
-![small bathroom vanity narrow pull out drawer with floating shelf above sink](/auto-blog/images/small-bathroom-organization-ideas-practical-space--alias--small-bathroom-organization-ideas-practical-space-4.jpg)
+![small bathroom vanity narrow pull out drawer with floating shelf above sink](images/small-bathroom-organization-ideas-practical-space--alias--small-bathroom-organization-ideas-practical-space-4.jpg)
 
 Start by mapping the floor plan onto a sheet of graph paper (each square = 1 ft). In a 5‑ft‑by‑7‑ft bathroom, you’ll quickly see three natural clusters: the vanity, the shower/tub, and the entry‑toilet corridor.  
 
@@ -57,7 +57,7 @@ Start by mapping the floor plan onto a sheet of graph paper (each square = 1
 
 ## Use Vertical Space Without Making Clutter
 
-![small bathroom above toilet floating shelf with rolled towels and rack](/auto-blog/images/small-bathroom-organization-ideas-practical-space--alias--small-bathroom-organization-ideas-practical-space-5.jpg)
+![small bathroom above toilet floating shelf with rolled towels and rack](images/small-bathroom-organization-ideas-practical-space--alias--small-bathroom-organization-ideas-practical-space-5.jpg)
 
 Add a slim floating shelf 12 inches deep above the toilet and space it about 24 inches from the floor. A single 30‑inch‑wide unit can hold a few neatly rolled towels, a small basket for toiletries, and a decorative jar for cotton swabs—everything stays visible without crowding the floor. For a truly vertical solution, mount a tension rod 48 inches high between the wall and the back of the door; use it to hang a lightweight, waterproof rack for washcloths or a couple of rolled‑up hand towels.  
 
@@ -77,7 +77,7 @@ Common mistakes include buying overly tall jars that block the mirror, using mis
 
 ## Make Frequently Used Items Easy to Reach
 
-![small bathroom vanity top clear acrylic tray with](/auto-blog/images/small-bathroom-organization-ideas-practical-space--alias--small-bathroom-organization-ideas-practical-space-6.jpg)
+![small bathroom vanity top clear acrylic tray with](images/small-bathroom-organization-ideas-practical-space--alias--small-bathroom-organization-ideas-practical-space-6.jpg)
 
 
 Place the items you reach for most—toothbrush, daily moisturizer, shaving cream—within a 12‑inch radius of the sink’s edge. A floating shelf that’s 12 in wide × 6 in deep, mounted 48 in from the floor, gives a solid hand‑hold without crowding the countertop. Keep the shelf empty of décor; a single clear acrylic tray holds the essentials and lets you see everything at a glance.

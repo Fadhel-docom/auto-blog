@@ -4,8 +4,8 @@ date = "2026-09-21T12:54:42+00:00"
 lastmod = "2026-10-01T00:00:00+00:00"
 slug = "bedroom-organization-stepbystep-48inch-clearance"
 description = "Turn unused space under a studio bed into practical storage with a measured plan, low-profile bins, sliding drawers, labels, and a simple maintenance routine."
-image = "/images/bedroom-organization-stepbystep-48inch-clearance-1.jpg"
-images = ["/images/bedroom-organization-stepbystep-48inch-clearance-1.jpg", "/images/bedroom-organization-stepbystep-48inch-clearance-2.jpg", "/images/bedroom-organization-stepbystep-48inch-clearance-3.jpg", "/images/bedroom-organization-stepbystep-48inch-clearance-4.jpg", "/images/bedroom-organization-stepbystep-48inch-clearance-5.jpg"]
+image = "images/bedroom-organization-stepbystep-48inch-clearance-1.jpg"
+images = ["images/bedroom-organization-stepbystep-48inch-clearance-1.jpg", "images/bedroom-organization-stepbystep-48inch-clearance-2.jpg", "images/bedroom-organization-stepbystep-48inch-clearance-3.jpg", "images/bedroom-organization-stepbystep-48inch-clearance-4.jpg", "images/bedroom-organization-stepbystep-48inch-clearance-5.jpg"]
 tags = ["bedroom organization", "small space storage", "under-bed solutions"]
 categories = ["Bedroom"]
 faq = [
@@ -23,11 +23,11 @@ Under-bed storage is one of the easiest ways to gain usable space in a small bed
 
 This guide treats the project like a small installation rather than a decorating exercise. You will measure the space, sort what belongs there, select containers, test the clearance, and build a simple retrieval system. The result should be storage that you can actually use—not a dark pile of boxes that you forget exists.
 
-![A practical under-bed storage setup with labeled low-profile containers ready for a small bedroom organization project](/auto-blog/images/bedroom-organization-stepbystep-48inch-clearance-1.jpg)
+![A practical under-bed storage setup with labeled low-profile containers ready for a small bedroom organization project](images/bedroom-organization-stepbystep-48inch-clearance-1.jpg)
 
 ## 1. Understand What the 48-Inch Measurement Means
 
-![A measuring tape being used beside a bed to establish the available clearance before planning storage](/auto-blog/images/bedroom-organization-stepbystep-48inch-clearance-2.jpg)
+![A measuring tape being used beside a bed to establish the available clearance before planning storage](images/bedroom-organization-stepbystep-48inch-clearance-2.jpg)
 
 First, identify exactly where the 48-inch measurement comes from. Is it the floor-to-headboard height, the open area beside the bed, or the vertical clearance inside a furniture layout? Do not treat it as the maximum height of an under-bed container unless you have measured the actual opening.
 
@@ -45,7 +45,7 @@ If a storage container will be rolled out, also measure the access space around 
 
 ## 2. Empty the Area and Sort Before Installing Anything
 
-![An empty space beneath a bed being vacuumed and inspected before storage containers are added](/auto-blog/images/bedroom-organization-stepbystep-48inch-clearance-4.jpg)
+![An empty space beneath a bed being vacuumed and inspected before storage containers are added](images/bedroom-organization-stepbystep-48inch-clearance-4.jpg)
 
 Clear the floor around and beneath the bed. Vacuum the area and inspect for moisture, damaged flooring, loose hardware, or objects that could catch on a container.
 
@@ -68,7 +68,7 @@ For a broader studio plan, continue with our [small-apartment organization guide
 
 ## 3. Map the Under-Bed Zones
 
-![A simple paper sketch showing a bed footprint, measurements, and storage zones before containers are purchased](/auto-blog/images/bedroom-organization-stepbystep-48inch-clearance-3.jpg)
+![A simple paper sketch showing a bed footprint, measurements, and storage zones before containers are purchased](images/bedroom-organization-stepbystep-48inch-clearance-3.jpg)
 
 Draw the bed as a rectangle and divide the space underneath into zones. You might use one long side for clothing and the foot area for luggage, or divide both sides into equal container widths.
 
@@ -103,7 +103,7 @@ IKEA's current under-bed storage range illustrates how cases, bins, and rolling 
 
 ## 5. Step 1 — Prepare the Bed and Storage Area
 
-![A simple bed frame with tools and low-profile materials nearby, illustrating preparation before installing or placing under-bed storage](/auto-blog/images/bedroom-organization-stepbystep-48inch-clearance-5.jpg)
+![A simple bed frame with tools and low-profile materials nearby, illustrating preparation before installing or placing under-bed storage](images/bedroom-organization-stepbystep-48inch-clearance-5.jpg)
 
 If the bed frame needs modification, follow its instructions and do not remove structural components simply to gain storage height.
 

@@ -3,8 +3,8 @@ title = "Decluttering a 5x5 Home Office Corner for Remote Workers in a Studio Ap
 date = "2026-09-22T11:29:25+00:00"
 lastmod = "2026-09-22T11:29:25+00:00"
 description = "Learn step‑by‑step how to declutter a 5'x5' home office corner in a studio apartment, using smart furniture, cable management, vertical storage, lighting tricks, and maintenance habits for remote work success."
-image = "../../images/decluttering-5x5-home-office-corner-remote-workers-2.jpg"
-images = ["/images/decluttering-5x5-home-office-corner-remote-workers-1.jpg", "/images/decluttering-5x5-home-office-corner-remote-workers-2.jpg", "/images/decluttering-5x5-home-office-corner-remote-workers-3.jpg", "/images/decluttering-5x5-home-office-corner-remote-workers-4.jpg", "/images/decluttering-5x5-home-office-corner-remote-workers-5.jpg"]
+image = "images/decluttering-5x5-home-office-corner-remote-workers-2.jpg"
+images = ["images/decluttering-5x5-home-office-corner-remote-workers-1.jpg", "images/decluttering-5x5-home-office-corner-remote-workers-2.jpg", "images/decluttering-5x5-home-office-corner-remote-workers-3.jpg", "images/decluttering-5x5-home-office-corner-remote-workers-4.jpg", "images/decluttering-5x5-home-office-corner-remote-workers-5.jpg"]
 tags = ["decluttering", "home office", "small space"]
 categories = ["Decluttering"]
 faq = [
@@ -21,7 +21,7 @@ slug = "decluttering-5x5-home-office-corner-remote-workers"
 +++
 ## Why a 5x5 Corner Is Critical for Remote Work
 
-![studio corner workspace with laptop on small desk and ergonomic chair](/auto-blog/images/decluttering-5x5-home-office-corner-remote-workers-2.jpg)
+![studio corner workspace with laptop on small desk and ergonomic chair](images/decluttering-5x5-home-office-corner-remote-workers-2.jpg)
 
 In a studio apartment every square foot competes for attention, and a 5'x5' corner often doubles as the only dedicated workspace. For remote workers that tiny zone must accommodate a laptop, a chair, a few essential supplies, and enough breathing room to stay focused during video calls. **When you practice decluttering in this limited footprint, you create visual calm, improve ergonomics, and protect the rest of your living area from becoming a permanent storage dump.** The psychological boost of a tidy nook can translate directly into higher productivity and lower stress, especially when the line between "home" and "office" is blurred.
 
@@ -29,7 +29,7 @@ In a studio apartment every square foot competes for attention, and a 5'x5' corn
 
 ## Step 1: Measure, Map, and Visualize Your Corner
 
-![studio floor corner taped outline showing future desk footprint](/auto-blog/images/decluttering-5x5-home-office-corner-remote-workers-3.jpg)
+![studio floor corner taped outline showing future desk footprint](images/decluttering-5x5-home-office-corner-remote-workers-3.jpg)
 
 Before you move a single item, treat the space like a mini‑floor plan. A precise measurement gives you realistic constraints and prevents you from buying furniture that simply won’t fit.
 
@@ -44,7 +44,7 @@ Before you move a single item, treat the space like a mini‑floor plan. A preci
 
 ## Step 2: Choose Multi‑Purpose Furniture That Saves Space
 
-![compact mesh chair and narrow desk fitted in studio corner](/auto-blog/images/decluttering-5x5-home-office-corner-remote-workers-4.jpg)
+![compact mesh chair and narrow desk fitted in studio corner](images/decluttering-5x5-home-office-corner-remote-workers-4.jpg)
 
 When floor area is at a premium, each piece must earn multiple points. The goal is to keep the footprint under 20 inches deep for the desk, while the chair should be compact yet supportive.
 
@@ -61,7 +61,7 @@ When floor area is at a premium, each piece must earn multiple points. The goal 
 
 ## Step 3: Master Cable Management for a Clean Look
 
-![desk in studio corner with zip tie cable bundles and cord cover](/auto-blog/images/decluttering-5x5-home-office-corner-remote-workers-5.jpg)
+![desk in studio corner with zip tie cable bundles and cord cover](images/decluttering-5x5-home-office-corner-remote-workers-5.jpg)
 
 A tangled mess of cords can make even the most thoughtfully designed corner feel chaotic. Good cable management not only looks better; it also reduces wear on cords and prevents accidental unplugging during important video meetings.
 
@@ -93,7 +93,7 @@ With only 25 sq ft of floor, the walls become the most valuable real estate.
 
 ## Step 5: Optimize Lighting Without Adding Clutter
 
-![wall-mounted vertical shelves holding books and decor in studio corner](/auto-blog/images/decluttering-5x5-home-office-corner-remote-workers-6.jpg)
+![wall-mounted vertical shelves holding books and decor in studio corner](images/decluttering-5x5-home-office-corner-remote-workers-6.jpg)
 
 
 Good lighting is essential for video calls and reduces eye strain, yet a floor lamp can quickly become another visual obstacle. Choose lighting solutions that integrate into the corner rather than dominate it.

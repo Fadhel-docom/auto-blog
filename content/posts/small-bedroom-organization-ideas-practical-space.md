@@ -3,8 +3,8 @@ title = "Small Bedroom Organization: A Practical Small-Space Guide"
 date = "2026-09-24T06:06:02+00:00"
 lastmod = "2026-10-04T05:00:00+00:00"
 description = "A practical small bedroom organization guide with room-size scenarios, realistic storage measurements, useful zones, and a simple maintenance system."
-image = "../../images/small-bedroom-organization-ideas-practical-space-2.jpg"
-images = ["/images/small-bedroom-organization-ideas-practical-space-2.jpg", "/images/small-bedroom-organization-ideas-practical-space-3.jpg", "/images/small-bedroom-organization-ideas-practical-space-4.jpg", "/images/small-bedroom-organization-ideas-practical-space-5.jpg", "/images/small-bedroom-organization-ideas-practical-space-6.jpg"]
+image = "images/small-bedroom-organization-ideas-practical-space-2.jpg"
+images = ["images/small-bedroom-organization-ideas-practical-space-2.jpg", "images/small-bedroom-organization-ideas-practical-space-3.jpg", "images/small-bedroom-organization-ideas-practical-space-4.jpg", "images/small-bedroom-organization-ideas-practical-space-5.jpg", "images/small-bedroom-organization-ideas-practical-space-6.jpg"]
 tags = ["small bedroom organization ideas", "home organization", "small spaces"]
 categories = ["Bedroom"]
 faq = [
@@ -22,7 +22,7 @@ slug = "small-bedroom-organization-ideas-practical-space"
 
 ## Start With What You Have
 
-![Small bedroom floor plan marked with a tape measure and furniture footprint](/auto-blog/images/small-bedroom-organization-ideas-practical-space--alias--small-bedroom-organization-ideas-practical-space-2.jpg)
+![Small bedroom floor plan marked with a tape measure and furniture footprint](images/small-bedroom-organization-ideas-practical-space--alias--small-bedroom-organization-ideas-practical-space-2.jpg)
 
 Before buying a shelf, basket, or dresser, remove obvious duplicates and measure the furniture already in the room. Record the room length and width, ceiling height, door swing, window position, closet depth, and the footprint of the bed and other large pieces.
 
@@ -34,7 +34,7 @@ Mark furniture footprints on paper or with painter's tape on the floor. Try the 
 
 ## Build Zones Around Real Routines
 
-![Small bedroom with a wall shelf, hanging storage, and compact rolling cart](/auto-blog/images/small-bedroom-organization-ideas-practical-space--alias--small-bedroom-organization-ideas-practical-space-3.jpg)
+![Small bedroom with a wall shelf, hanging storage, and compact rolling cart](images/small-bedroom-organization-ideas-practical-space--alias--small-bedroom-organization-ideas-practical-space-3.jpg)
 
 Give each part of the room a job instead of spreading storage everywhere. Most small bedrooms need only a few practical zones:
 
@@ -48,7 +48,7 @@ Put frequently used items closest to where they are used. A shallow shelf around
 
 ## Use Vertical Space Before Adding More Floor Furniture
 
-![Small bedroom corner using a tall narrow shelf and wall hooks for everyday items](/auto-blog/images/small-bedroom-organization-ideas-practical-space--alias--small-bedroom-organization-ideas-practical-space-4.jpg)
+![Small bedroom corner using a tall narrow shelf and wall hooks for everyday items](images/small-bedroom-organization-ideas-practical-space--alias--small-bedroom-organization-ideas-practical-space-4.jpg)
 
 When floor space is limited, look upward. A tall, narrow shelf can provide several storage levels while using less floor area than a wide cabinet. Keep deep or heavy items low and lighter, less frequently used items higher.
 
@@ -62,7 +62,7 @@ Avoid turning vertical storage into visual clutter. A shelf packed with small bo
 
 ## Match Storage to the Actual Space
 
-![Compact bedroom storage using a shallow bin, trays, and small organizers](/auto-blog/images/small-bedroom-organization-ideas-practical-space--alias--small-bedroom-organization-ideas-practical-space-5.jpg)
+![Compact bedroom storage using a shallow bin, trays, and small organizers](images/small-bedroom-organization-ideas-practical-space--alias--small-bedroom-organization-ideas-practical-space-5.jpg)
 
 Measure the space first, then choose the container. A storage bin that fits under a bed, inside a closet, or on a shelf is useful; a bin that wastes depth or blocks access simply moves the problem.
 
@@ -74,7 +74,7 @@ Use clear containers when visibility saves time, and opaque containers when visu
 
 ## Solve the Awkward Spots
 
-![Small bedroom corner with a narrow shelf and compact storage beside the bed](/auto-blog/images/small-bedroom-organization-ideas-practical-space--alias--small-bedroom-organization-ideas-practical-space-6.jpg)
+![Small bedroom corner with a narrow shelf and compact storage beside the bed](images/small-bedroom-organization-ideas-practical-space--alias--small-bedroom-organization-ideas-practical-space-6.jpg)
 
 Small bedrooms often lose useful space in corners, behind doors, and beside furniture. These areas are valuable when the storage matches the shape of the space.
 

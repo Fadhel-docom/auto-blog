@@ -7,7 +7,7 @@ aliases = ["/posts/small-space-home-organization-a-practical-room-by-room-system
 description = "A practical room-by-room system for organizing a small home, with decluttering steps, storage zones, vertical space ideas, and a simple weekly reset."
 image = "https://images.pexels.com/photos/19980221/pexels-photo-19980221.jpeg?auto=compress&cs=tinysrgb&w=1600"
 images = [
-  "/images/effortless-home-organization-tips-for-small-spaces.jpg",
+  "images/effortless-home-organization-tips-for-small-spaces.jpg",
   "https://images.pexels.com/photos/19980221/pexels-photo-19980221.jpeg?auto=compress&cs=tinysrgb&w=1600",
   "https://images.pexels.com/photos/31390644/pexels-photo-31390644.jpeg?auto=compress&cs=tinysrgb&w=1600",
   "https://images.pexels.com/photos/34005910/pexels-photo-34005910.jpeg?auto=compress&cs=tinysrgb&w=1600",

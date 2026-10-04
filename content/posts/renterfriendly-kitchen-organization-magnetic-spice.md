@@ -3,8 +3,8 @@ title = "Renter-Friendly Kitchen Organization: Magnetic Spice Rack Solutions Tha
 date = "2026-09-21T12:14:51+00:00"
 lastmod = "2026-10-01T08:00:00+01:00"
 description = "Practical renter-friendly magnetic spice rack organization: measure the space, choose a safe surface, build a usable spice zone, and keep cooking supplies easy to reach."
-image = "/images/renterfriendly-kitchen-organization-magnetic-spice-1.jpg"
-images = ["/images/renterfriendly-kitchen-organization-magnetic-spice-1.jpg", "/images/renterfriendly-kitchen-organization-magnetic-spice-2.jpg", "/images/renterfriendly-kitchen-organization-magnetic-spice-3.jpg", "/images/renterfriendly-kitchen-organization-magnetic-spice-4.jpg", "/images/renterfriendly-kitchen-organization-magnetic-spice-5.jpg"]
+image = "images/renterfriendly-kitchen-organization-magnetic-spice-1.jpg"
+images = ["images/renterfriendly-kitchen-organization-magnetic-spice-1.jpg", "images/renterfriendly-kitchen-organization-magnetic-spice-2.jpg", "images/renterfriendly-kitchen-organization-magnetic-spice-3.jpg", "images/renterfriendly-kitchen-organization-magnetic-spice-4.jpg", "images/renterfriendly-kitchen-organization-magnetic-spice-5.jpg"]
 tags = ["kitchen organization", "renter tips", "magnetic spice rack", "small kitchen storage"]
 categories = ["Rental"]
 aliases = ["/posts/renterfriendly-kitchen-organization-magnetic-spice-rack-solutions-that-require-no-drilling/"]
@@ -60,7 +60,7 @@ For general food-safety practices at home, use the [FDA's food-safety guidance](
 
 ## Measure the Usable Space Before Buying
 
-![Measuring the available refrigerator-side space before installing a magnetic spice rack](/auto-blog/images/renterfriendly-kitchen-organization-magnetic-spice-3.jpg)
+![Measuring the available refrigerator-side space before installing a magnetic spice rack](images/renterfriendly-kitchen-organization-magnetic-spice-3.jpg)
 
 
 
@@ -98,7 +98,7 @@ This simple grouping prevents the rack from becoming another miniature clutter p
 
 ## Build a Simple One-Row Layout First
 
-![Testing a magnetic spice rack on a refrigerator door before loading spices](/auto-blog/images/renterfriendly-kitchen-organization-magnetic-spice-2.jpg)
+![Testing a magnetic spice rack on a refrigerator door before loading spices](images/renterfriendly-kitchen-organization-magnetic-spice-2.jpg)
 
 
 
@@ -139,7 +139,7 @@ If you already have a collection of mismatched containers, organize the contents
 
 ## Install the Rack Without Drilling
 
-![Cleaning and positioning a magnetic spice rack on a refrigerator surface](/auto-blog/images/renterfriendly-kitchen-organization-magnetic-spice-4.jpg)
+![Cleaning and positioning a magnetic spice rack on a refrigerator surface](images/renterfriendly-kitchen-organization-magnetic-spice-4.jpg)
 
 
 
@@ -162,7 +162,7 @@ For renters, reversibility matters. If an accessory requires permanent screws, s
 
 ## Make the Refrigerator Door a Functional Spice Zone
 
-![Organized spice jars arranged on a magnetic rack on a refrigerator door](/auto-blog/images/renterfriendly-kitchen-organization-magnetic-spice-5.jpg)
+![Organized spice jars arranged on a magnetic rack on a refrigerator door](images/renterfriendly-kitchen-organization-magnetic-spice-5.jpg)
 
 
 
@@ -241,7 +241,7 @@ A good storage solution should make the kitchen easier to use, not simply make i
 
 ## Keep the Spice Collection Under Control
 
-![Checking and reorganizing a small collection of spice jars for everyday use](/auto-blog/images/renterfriendly-kitchen-organization-magnetic-spice-1.jpg)
+![Checking and reorganizing a small collection of spice jars for everyday use](images/renterfriendly-kitchen-organization-magnetic-spice-1.jpg)
 
 
 

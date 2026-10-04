@@ -3,8 +3,8 @@ title = "Small Closet Organization Ideas: A Practical Small-Space Guide"
 date = "2026-09-22T23:46:03+00:00"
 lastmod = "2026-09-22T23:46:03+00:00"
 description = "Practical small-closet organization ideas with simple measurements, storage zones, and realistic steps for everyday use."
-image = "/images/small-closet-organization-ideas-practical-space-2.jpg"
-images = ["https://images.pexels.com/photos/6580394/pexels-photo-6580394.jpeg?cs=srgb&dl=pexels-artbovich-6580394.jpg&fm=jpg", "/images/small-closet-organization-ideas-practical-space-2.jpg", "/images/small-closet-organization-ideas-practical-space-3.jpg", "/images/small-closet-organization-ideas-practical-space-4.jpg", "/images/small-closet-organization-ideas-practical-space-5.jpg"]
+image = "images/small-closet-organization-ideas-practical-space-2.jpg"
+images = ["https://images.pexels.com/photos/6580394/pexels-photo-6580394.jpeg?cs=srgb&dl=pexels-artbovich-6580394.jpg&fm=jpg", "images/small-closet-organization-ideas-practical-space-2.jpg", "images/small-closet-organization-ideas-practical-space-3.jpg", "images/small-closet-organization-ideas-practical-space-4.jpg", "images/small-closet-organization-ideas-practical-space-5.jpg"]
 tags = ["small closet organization ideas", "home organization", "small spaces"]
 categories = ["Bedroom"]
 faq = [
@@ -21,7 +21,7 @@ slug = "small-closet-organization-ideas-practical-space"
 +++
 ## Assess Your Space for small closet organization ideas
 
-![closet shelves organization organized interior](/auto-blog/images/small-closet-organization-ideas-practical-space--alias--small-closet-organization-ideas-practical-space-2.jpg)
+![closet shelves organization organized interior](images/small-closet-organization-ideas-practical-space--alias--small-closet-organization-ideas-practical-space-2.jpg)
 
 Start by pulling a tape measure and recording the exact dimensions of the closet. Most “small” closets range from 24‑30 in wide, 12‑18 in deep, and 72‑84 in high. Write these numbers down, then measure the usable height after accounting for the ceiling or any built‑in shelves. Don’t forget to note the door swing: a bi‑fold door needs at least 30 in of clear floor space, while a sliding door requires a 36‑in track.
 
@@ -31,7 +31,7 @@ Create a simple sketch on graph paper (each square = 1 in) and plot the measur
 
 ## Measure the Area Before Buying Anything
 
-![closet organizer storage organized interior](/auto-blog/images/small-closet-organization-ideas-practical-space--alias--small-closet-organization-ideas-practical-space-3.jpg)
+![closet organizer storage organized interior](images/small-closet-organization-ideas-practical-space--alias--small-closet-organization-ideas-practical-space-3.jpg)
 
 Start by pulling out a metal tape measure and jotting down three key dimensions: **width**, **depth**, and **height** of the interior space. Most small closets range from 24‑30 inches wide, 12‑15 inches deep, and 72‑84 inches tall, but your numbers will dictate what storage solutions actually fit.  
 
@@ -45,7 +45,7 @@ A common mistake is assuming “standard” dimensions—many older homes have c
 
 ## Create Zones for the Items You Use Most
 
-![closet basket organized storage organized interior](/auto-blog/images/small-closet-organization-ideas-practical-space--alias--small-closet-organization-ideas-practical-space-4.jpg)
+![closet basket organized storage organized interior](images/small-closet-organization-ideas-practical-space--alias--small-closet-organization-ideas-practical-space-4.jpg)
 
 Start by measuring the interior of your closet. A typical reach‑in is about 24 inches deep and 48 inches high, so you have roughly 12 sq ft of usable wall space. Sketch a quick layout on graph paper, then assign three zones: daily‑wear, seasonal pieces, and accessories.  
 
@@ -81,7 +81,7 @@ Finally, test the weight capacity of your chosen containers. Heavy sweaters or w
 
 ## Make Frequently Used Items Easy to Reach
 
-![closet shelf pull out organized interior](/auto-blog/images/small-closet-organization-ideas-practical-space--alias--small-closet-organization-ideas-practical-space-6.jpg)
+![closet shelf pull out organized interior](images/small-closet-organization-ideas-practical-space--alias--small-closet-organization-ideas-practical-space-6.jpg)
 
 
 Keep the most-used items—like a favorite jacket, a pair of shoes, or a daily tote—within arm’s reach by placing them on a 12‑inch‑high pull‑out drawer or a shallow shelf at waist level. If your closet is 5 feet tall, dedicate the bottom 18 inches to a pull‑out shoe rack; this eliminates the need to climb or shuffle. For a narrow 2‑foot aisle, install a 4‑inch‑wide sliding door that opens fully, allowing you to pull out a small, 6‑inch‑deep basket for scarves or belts.  

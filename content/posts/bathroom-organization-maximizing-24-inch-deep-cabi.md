@@ -3,8 +3,8 @@ title = "Bathroom Organization: Maximize a 24-Inch Deep Under-Sink Cabinet"
 date = "2026-09-22T10:33:52+00:00"
 lastmod = "2026-09-22T10:33:52+00:00"
 description = "Learn step‑by‑step how to turn a 24‑inch deep under‑sink cabinet into a tidy, accessible space using pull‑out bins and tension rods for small‑space living."
-image = "/images/bathroom-organization-maximizing-24-inch-deep-cabi-1.jpg"
-images = ["/images/bathroom-organization-maximizing-24-inch-deep-cabi-1.jpg", "/images/bathroom-organization-maximizing-24-inch-deep-cabi-2.jpg", "/images/bathroom-organization-maximizing-24-inch-deep-cabi-3.jpg", "/images/bathroom-organization-maximizing-24-inch-deep-cabi-4.jpg", "/images/bathroom-organization-maximizing-24-inch-deep-cabi-5.jpg"]
+image = "images/bathroom-organization-maximizing-24-inch-deep-cabi-1.jpg"
+images = ["images/bathroom-organization-maximizing-24-inch-deep-cabi-1.jpg", "images/bathroom-organization-maximizing-24-inch-deep-cabi-2.jpg", "images/bathroom-organization-maximizing-24-inch-deep-cabi-3.jpg", "images/bathroom-organization-maximizing-24-inch-deep-cabi-4.jpg", "images/bathroom-organization-maximizing-24-inch-deep-cabi-5.jpg"]
 tags = ["bathroom organization", "small space storage", "under sink solutions"]
 categories = ["Bathroom"]
 faq = [
@@ -21,7 +21,7 @@ slug = "bathroom-organization-maximizing-24-inch-deep-cabi"
 +++
 ## Understanding the Under‑Sink Space
 
-![Bathroom under-sink organization planning](/auto-blog/images/bathroom-organization-maximizing-24-inch-deep-cabi-1.jpg)
+![Bathroom under-sink organization planning](images/bathroom-organization-maximizing-24-inch-deep-cabi-1.jpg)
 
 A typical bathroom under‑sink cabinet that is **24 inches deep, 30 inches wide, and 30‑32 inches high** offers a surprising amount of hidden volume. When the space is left unorganized, it quickly becomes a catch‑all for cleaning supplies, toiletries, and spare towels, making it difficult to see what you have and forcing you to crouch or reach awkwardly. The core principle of effective **bathroom organization** is to break that deep cavity into distinct, reachable zones rather than treating it as a single, inaccessible box. By visualizing the cabinet as a series of horizontal shelves and a vertical hanging line, you can create a layout where every item has a logical home and is easy to retrieve.
 
@@ -29,7 +29,7 @@ A typical bathroom under‑sink cabinet that is **24 inches deep, 30 inches wide
 
 ## Planning Your Pull‑Out Bin System
 
-![Selecting the Ideal Pull Out bathroom organization home interior](/auto-blog/images/bathroom-organization-maximizing-24-inch-deep-cabi-3.jpg)
+![Selecting the Ideal Pull Out bathroom organization home interior](images/bathroom-organization-maximizing-24-inch-deep-cabi-3.jpg)
 
 Before you buy any hardware, spend a few minutes sketching the interior of the cabinet. Measure the interior width, depth, and height with a tape measure; write the numbers down. Then decide how many horizontal zones you want:
 
@@ -41,7 +41,7 @@ When you map the zones, think about the weight distribution. Heavy items belong 
 
 ## Selecting the Ideal Pull‑Out Bins
 
-![How Tension Rods Add bathroom organization home interior](/auto-blog/images/bathroom-organization-maximizing-24-inch-deep-cabi-4.jpg)
+![How Tension Rods Add bathroom organization home interior](images/bathroom-organization-maximizing-24-inch-deep-cabi-4.jpg)
 
 Pull‑out bins are the workhorse of any under‑sink makeover because they slide out on rails, exposing the back of the cabinet without you having to crouch. Here are the key criteria to evaluate when choosing a bin:
 
@@ -59,7 +59,7 @@ Pull‑out bins are the workhorse of any under‑sink makeover because they slid
 
 ## How Tension Rods Add Vertical Storage
 
-![Preparing the Cabinet for bathroom organization home interior](/auto-blog/images/bathroom-organization-maximizing-24-inch-deep-cabi-5.jpg)
+![Preparing the Cabinet for bathroom organization home interior](images/bathroom-organization-maximizing-24-inch-deep-cabi-5.jpg)
 
 A tension rod is a simple, cost‑effective way to create a hanging zone inside the cabinet. It works like a miniature clothes‑line, supporting spray bottles, rolled towels, or a slim cleaning caddy without any permanent modifications.
 
@@ -86,7 +86,7 @@ Having these reference lines ensures that the bin and rod will coexist without i
 
 ## Installing Pull‑Out Bins Step by Step
 
-![Installing Pull Out Bins Step bathroom organization home interior](/auto-blog/images/bathroom-organization-maximizing-24-inch-deep-cabi-6.jpg)
+![Installing Pull Out Bins Step bathroom organization home interior](images/bathroom-organization-maximizing-24-inch-deep-cabi-6.jpg)
 
 
 The installation process varies slightly by product, but the general workflow is consistent. Below is a numbered guide that works for most metal‑frame or plastic‑slide bins.

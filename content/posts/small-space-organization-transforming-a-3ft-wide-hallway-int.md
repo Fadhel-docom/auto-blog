@@ -3,13 +3,13 @@ title = "Small Space Organization: Transforming a 3‑ft Wide Hallway into Funct
 date = "2026-09-21T07:38:29.258631+00:00"
 lastmod = "2026-10-01T12:55:00+01:00"
 description = "Turn a 3‑ft-wide hallway into practical coat and shoe storage with a measurement-first plan, shallow storage, clear walking space, and a simple maintenance routine."
-image = "/images/small-space-organization-transforming-a-3ft-wide-hallway-int-1.jpg"
+image = "images/small-space-organization-transforming-a-3ft-wide-hallway-int-1.jpg"
 images = [
-  "/images/small-space-organization-transforming-a-3ft-wide-hallway-int-1.jpg",
-  "/images/small-space-organization-transforming-a-3ft-wide-hallway-int-2.jpg",
-  "/images/small-space-organization-transforming-a-3ft-wide-hallway-int-3.jpg",
-  "/images/small-space-organization-transforming-a-3ft-wide-hallway-int-4.jpg",
-  "/images/small-space-organization-transforming-a-3ft-wide-hallway-int-5.jpg"
+  "images/small-space-organization-transforming-a-3ft-wide-hallway-int-1.jpg",
+  "images/small-space-organization-transforming-a-3ft-wide-hallway-int-2.jpg",
+  "images/small-space-organization-transforming-a-3ft-wide-hallway-int-3.jpg",
+  "images/small-space-organization-transforming-a-3ft-wide-hallway-int-4.jpg",
+  "images/small-space-organization-transforming-a-3ft-wide-hallway-int-5.jpg"
 ]
 tags = ["small space organization", "hallway storage", "home organization"]
 categories = ["Small Space"]
@@ -52,7 +52,7 @@ Write down four numbers:
 
 Use those numbers to reject unsuitable products before they enter your home.
 
-![narrow hallway ready for storage planning](/auto-blog/images/small-space-organization-transforming-a-3ft-wide-hallway-int-1.jpg)
+![narrow hallway ready for storage planning](images/small-space-organization-transforming-a-3ft-wide-hallway-int-1.jpg)
 
 *Start with the empty hallway and identify the wall section that can accept storage without interfering with doors or circulation.*
 
@@ -110,7 +110,7 @@ Keep the most frequently worn pairs at the easiest height. Put seasonal or occas
 
 Do not stack shoes so high that removing the bottom pair disturbs the rest. If a shelf is becoming a pile, the problem is usually inventory or shelf design rather than a lack of labels.
 
-![shoes organized in a compact entryway storage zone](/auto-blog/images/small-space-organization-transforming-a-3ft-wide-hallway-int-2.jpg)
+![shoes organized in a compact entryway storage zone](images/small-space-organization-transforming-a-3ft-wide-hallway-int-2.jpg)
 
 *Keep everyday footwear together in a low-access zone so the entry routine does not create a new floor pile.*
 
@@ -161,7 +161,7 @@ If any of these happen repeatedly, change the layout before adding more items.
 
 A useful organization system should make the next action obvious. You should be able to enter, put something away, and leave without thinking about the storage system.
 
-![narrow corridor showing vertical storage planning](/auto-blog/images/small-space-organization-transforming-a-3ft-wide-hallway-int-3.jpg)
+![narrow corridor showing vertical storage planning](images/small-space-organization-transforming-a-3ft-wide-hallway-int-3.jpg)
 
 *Use the hallway's vertical space while keeping the main route visually and physically clear.*
 
@@ -194,7 +194,7 @@ Check:
 
 A cabinet should not be so deep that it turns a three-foot hallway into a tunnel.
 
-![compact closet-style storage in a narrow interior](/auto-blog/images/small-space-organization-transforming-a-3ft-wide-hallway-int-4.jpg)
+![compact closet-style storage in a narrow interior](images/small-space-organization-transforming-a-3ft-wide-hallway-int-4.jpg)
 
 *A shallow cabinet can hide visual clutter, but its doors and total depth must still work with the hallway's circulation.*
 
@@ -275,7 +275,7 @@ Move the item closer to where it is used, or reduce the number of steps needed t
 
 For more practical small-space systems, see our [small bathroom organization guide](../small-bathroom-organization-ideas-practical-space/) and [small-space bedroom storage guide](../small-bedroom-storage-ideas-diy-pull-out-drawers-and-rolling-bins-under-a-queen-bed/).
 
-![organized hallway with a clear entry path](/auto-blog/images/small-space-organization-transforming-a-3ft-wide-hallway-int-5.jpg)
+![organized hallway with a clear entry path](images/small-space-organization-transforming-a-3ft-wide-hallway-int-5.jpg)
 
 *The finished setup should keep coats and shoes contained while leaving the entry path simple to use.*
 
