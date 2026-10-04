@@ -84,21 +84,51 @@ Do not force storage into every gap. A space that is needed to open a drawer, wa
 
 **If a storage piece makes a door, drawer, or walkway harder to use → remove it, even if it technically fits.**
 
-## Choose Solutions by Room Type
 
-The best layout depends on what makes the room difficult.
+## If Your Bedroom Is X, Do Y
 
-**If your bedroom is around 8 × 10 ft →** prioritize the bed, one compact clothing solution, vertical storage, and under-bed storage. Avoid adding a reading chair unless the remaining route is comfortable.
+The right solution changes with the room's footprint and who uses it. Use these starting plans, then adjust them to your actual furniture and walking paths.
 
-**If your bedroom is around 9 × 10 ft →** you can usually create a clearer dressing zone and add one shallow bedside surface without sacrificing the main path.
+**8 × 10 ft (80 sq ft) →** Keep the bed and clothing storage as the priorities. Use one tall storage piece, under-bed containers, and wall hooks instead of a second floor cabinet. Protect the main route from the door to the bed and avoid furniture that has to be moved to open drawers.
 
-**If you have no closet →** use one tall, narrow clothing unit rather than several small cabinets. Put seasonal clothing and spare bedding under the bed or on the highest safe shelf.
+**9 × 10 ft (90 sq ft) →** Create a defined dressing zone near the clothing storage and use one shallow bedside surface if the route remains comfortable. Put low-frequency items under the bed rather than taking floor space with another cabinet. This size gives you a little more flexibility, but it still rewards restraint.
 
-**If two people share the room →** give each person a defined clothing and personal-item zone. Shared storage should hold shared categories instead of becoming the place where both people's overflow accumulates.
+**10 × 12 ft (120 sq ft) →** You have enough room to separate sleeping, dressing, and a small secondary activity zone. Keep the center path open and use the extra floor area for only one purposeful piece, such as a compact bench or chair. Do not fill the larger footprint simply because it is available.
 
-**If you rent →** favor freestanding, removable, or low-impact solutions and avoid buying a permanent system for a temporary layout.
+**Shared with a partner →** Divide personal storage before buying more storage. Give each person a defined clothing area and keep shared categories together so the same space is not claimed twice.
 
-These are starting points, not rigid rules. Measure the actual room and keep the layout that leaves the clearest everyday path.
+**No closet →** Combine one tall wardrobe or clothing rack with under-bed storage and a door organizer. Keep daily clothes at easy reach and move seasonal items higher or lower.
+
+**Renter →** Favor freestanding furniture, removable hooks, and storage that can move with you. Before buying anything large, confirm that it can pass through the doorway and work in another room if your next home has a different layout.
+
+## When There Is No Closet
+
+A no-closet bedroom needs one clear clothing system rather than several small pieces scattered around the room. A **tall wardrobe around 30–36 inches wide and 18–24 inches deep** can provide hanging space while keeping its floor footprint controlled; verify the manufacturer's actual dimensions before buying. If a wardrobe is not practical, use a sturdy clothing rack with a defined limit instead of allowing clothes to spread across chairs and surfaces.
+
+Use under-bed storage for seasonal clothing, spare bedding, luggage, or other items you do not need every day. A door organizer can handle lightweight accessories, while a **storage bench or chair with a lift-up seat** can combine seating with hidden storage. Keep the daily clothing zone together so getting dressed does not require searching several locations.
+
+## When Two People Share
+
+Shared bedrooms work better when personal storage and shared storage are separated. Give each person a defined section of the wardrobe, dresser, or shelving, even if one person needs more space than the other. Shared categories such as spare bedding should have one agreed location rather than being duplicated.
+
+Identify the likely conflict points: the chair that becomes a clothes pile, the top of the dresser, limited hanging space, and the floor beside the bed. Solve each with a rule, not just another container. For example, each person can have one hook or small basket for temporarily worn clothing and one place for everyday accessories.
+
+The routine should work for two people: a five-minute reset at night, laundry returned to the correct person's zone, and a short weekly check of shared storage. If one person's items repeatedly spill into the other's area, reduce that category or change the storage allocation instead of accepting permanent overflow.
+
+## Quick Measurement Checklist
+
+Measure before buying storage or changing the layout. Write the numbers down in the same unit so you can compare furniture dimensions without guessing.
+
+| Measurement | Why it matters |
+|-------------|-----------------|
+| Room width × length | Base plan |
+| Ceiling height | Vertical storage |
+| Door clearance | Path |
+| Window position | Light + no blocking |
+| Bed dimensions | Under-bed |
+| Closet depth | Hanging |
+
+Also measure the usable height under the bed, the depth available beside major furniture, and the swing of every door and drawer. For a wardrobe or shelf, compare the **full outside dimensions**, not only the advertised storage dimensions. Leave enough operating space to open doors, pull drawers, walk past the furniture, and clean behind it. A storage unit that fits on paper but blocks one of these actions is not a good fit.
 
 ## Make the System Easy to Maintain
 
