@@ -53,7 +53,7 @@ The cleaning zone should have a slim, 15‑inch wide caddy under the sink for di
 
 ## Use Vertical Space Without Making Clutter
 
-![kitchen organization ideas for small spaces drawer organized storage organized interior](../../images/kitchen-organization-ideas-small-spaces-space-5.jpg)
+![kitchen organization ideas for small spaces drawer organized storage organized interior](https://images.pexels.com/photos/4499232/pexels-photo-4499232.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
 Install a row of floating shelves 12‑16 inches deep at about 48‑inches high, then add a second tier 12‑inches above it. The upper shelf can hold rarely‑used serving platters, while the lower one becomes a “grab‑and‑go” zone for everyday dishes. Use clear acrylic bins that are no deeper than the shelf depth; label each with a simple icon to keep the visual field tidy.  
 
@@ -205,6 +205,6 @@ Use the [small apartment storage guide](/posts/small-apartment-organization-maxi
 - Photo 1: [Yunus Tuğ](https://www.pexels.com/@yunustug) via [Pexels](https://www.pexels.com/photo/cozy-modern-kitchen-with-coffee-bar-and-elegant-lighting-29435290/)
 - Photo 2: [Max Vakhtbovych](https://www.pexels.com/@artbovich) via [Pexels](https://www.pexels.com/photo/organized-kitchen-cabinet-with-dishes-and-glassware-31871391/)
 - Photo 3: [Curtis Adams](https://www.pexels.com/@curtis-adams-1694007) via [Pexels](https://www.pexels.com/photo/items-on-a-small-kitchen-counter-13684937/)
-- Photo 4: [Keegan Checks](https://www.pexels.com/@keeganjchecks) via [Pexels](https://www.pexels.com/photo/interior-design-of-room-10117733/)
+- Photo 4: [Keegan Checks](https://www.pexels.com/@keeganjchecks) via [Pexels](https://www.pexels.com/photo/shelves-in-a-kitchen-4499232/)
 - Photo 5: [Jonathan Borba](https://www.pexels.com/@jonathanborba) via [Pexels](https://www.pexels.com/photo/cozy-modern-kitchen-in-espirito-santo-brazil-30628753/)
 - Photo 6: [ASR Design Studio](https://www.pexels.com/@asr-design-studio-623558661) via [Pexels](https://www.pexels.com/photo/house-kitchen-interior-design-18109909/)
