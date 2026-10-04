@@ -1,0 +1,64 @@
+name: Fix Image Paths
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Run mode"
+        required: true
+        default: dry-run
+        type: choice
+        options:
+          - dry-run
+          - apply
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fix-image-paths
+  cancel-in-progress: false
+
+jobs:
+  fix-image-paths:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Compile script
+        run: python -m py_compile scripts/fix_image_paths.py
+
+      - name: Run image path scan
+        run: |
+          if [ "${{ inputs.mode }}" = "apply" ]; then
+            python scripts/fix_image_paths.py --apply
+          else
+            python scripts/fix_image_paths.py
+          fi
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: image-paths-report
+          path: reports/image_paths_report.md
+
+      - name: Commit and push
+        if: inputs.mode == 'apply'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/posts reports/image_paths_report.md
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Fix local image paths"
+          git push
