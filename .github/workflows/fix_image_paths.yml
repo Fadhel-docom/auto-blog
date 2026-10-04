@@ -32,8 +32,18 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Compile script
-        run: python -m py_compile scripts/fix_image_paths.py
+      - name: Compile scripts
+        run: |
+          python -m py_compile scripts/restore_alias_images.py
+          python -m py_compile scripts/fix_image_paths.py
+
+      - name: Restore alias images
+        run: |
+          if [ "${{ inputs.mode }}" = "apply" ]; then
+            python scripts/restore_alias_images.py --apply
+          else
+            python scripts/restore_alias_images.py
+          fi
 
       - name: Run image path scan
         run: |
@@ -43,19 +53,21 @@ jobs:
             python scripts/fix_image_paths.py
           fi
 
-      - name: Upload report
+      - name: Upload reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: image-paths-report
-          path: reports/image_paths_report.md
+          name: image-paths-reports
+          path: |
+            reports/alias_images_report.md
+            reports/image_paths_report.md
 
       - name: Commit and push
         if: inputs.mode == 'apply'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/posts reports/image_paths_report.md
+          git add content/posts static/images reports
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
