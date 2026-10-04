@@ -1,0 +1,32 @@
+name: Bulk Article Fix
+
+on:
+  push:
+    paths:
+      - 'scripts/fix_articles.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Run bulk fixer
+        run: python scripts/fix_articles.py
+      - name: Commit automatic fixes and report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+          git add content/posts reports/article-fix-report.md
+          git commit -m "fix: bulk article quality cleanup [skip ci]"
+          git push
