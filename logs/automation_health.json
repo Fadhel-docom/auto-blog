@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-03T18:47:42+00:00",
+  "timestamp": "2026-10-04T02:24:05+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "ACTIVE"
@@ -54,28 +54,28 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 37145534209,
+      "id": 37170926141,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-10-03T18:47:34Z",
-      "updated_at": "2026-10-03T18:47:38Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37145534209"
+      "created_at": "2026-10-04T02:23:55Z",
+      "updated_at": "2026-10-04T02:23:59Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37170926141"
     },
     "Traffic Report": {
-      "id": 37135865883,
+      "id": 37163152737,
       "status": "completed",
       "conclusion": "success",
-      "created_at": "2026-10-03T16:10:19Z",
-      "updated_at": "2026-10-03T16:10:33Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37135865883"
+      "created_at": "2026-10-03T23:52:38Z",
+      "updated_at": "2026-10-03T23:52:57Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37163152737"
     },
     "Scheduled Publisher": {
-      "id": 37099096175,
+      "id": 37151985276,
       "status": "completed",
       "conclusion": "failure",
-      "created_at": "2026-10-03T05:12:50Z",
-      "updated_at": "2026-10-03T05:13:11Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37099096175"
+      "created_at": "2026-10-03T20:33:45Z",
+      "updated_at": "2026-10-03T20:34:11Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37151985276"
     }
   },
   "quality_gate": {
@@ -84,12 +84,12 @@
   },
   "traffic": {
     "status": "OK",
-    "visitors_today": 14,
-    "visitors_last_7_days": 62,
-    "visitors_this_month": 39,
+    "visitors_today": 0,
+    "visitors_last_7_days": 65,
+    "visitors_this_month": 49,
     "stats_today": [
       {
-        "day": "2026-10-03",
+        "day": "2026-10-04",
         "hourly": [
           0,
           0,
@@ -99,10 +99,10 @@
           0,
           0,
           0,
-          13,
           0,
           0,
-          1,
+          0,
+          0,
           0,
           0,
           0,
@@ -116,9 +116,7 @@
           0,
           0
         ],
-        "daily": 14,
-        "weekly": 14,
-        "monthly": 14
+        "daily": 0
       }
     ]
   },
@@ -147,12 +145,12 @@
     {
       "type": "Scheduled Publisher failure",
       "run": {
-        "id": 37099096175,
+        "id": 37151985276,
         "status": "completed",
         "conclusion": "failure",
-        "created_at": "2026-10-03T05:12:50Z",
-        "updated_at": "2026-10-03T05:13:11Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37099096175"
+        "created_at": "2026-10-03T20:33:45Z",
+        "updated_at": "2026-10-03T20:34:11Z",
+        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37151985276"
       }
     }
   ],
