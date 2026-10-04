@@ -10,11 +10,11 @@ POSTS_DIR = ROOT / 'content' / 'posts'
 REPORT_PATH = ROOT / 'reports' / 'article-fix-report.md'
 
 FAQ_PATTERNS = [
-    (re.compile(r'How should I start organizing (.+?) ideas\?', re.I), r'What should I do first when organizing \\1?'),
-    (re.compile(r'What are the best ways to organize (.+?) ideas\?', re.I), r'How do I organize \\1?'),
-    (re.compile(r'What is the best way to organize (.+?) ideas\?', re.I), r'How do I organize \\1?'),
-    (re.compile(r'What are some organizing (.+?) ideas\?', re.I), r'What are some practical ways to organize \\1?'),
-    (re.compile(r'How can I organize (.+?) ideas\?', re.I), r'How can I organize \\1?'),
+    (re.compile(r'How should I start organizing (.+?) ideas\?', re.I), r'What should I do first when organizing \1?'),
+    (re.compile(r'What are the best ways to organize (.+?) ideas\?', re.I), r'How do I organize \1?'),
+    (re.compile(r'What is the best way to organize (.+?) ideas\?', re.I), r'How do I organize \1?'),
+    (re.compile(r'What are some organizing (.+?) ideas\?', re.I), r'What are some practical ways to organize \1?'),
+    (re.compile(r'How can I organize (.+?) ideas\?', re.I), r'How can I organize \1?'),
 ]
 REPEATED_WORD = re.compile(r'\b([A-Za-z][A-Za-z\'-]*)\s+\\1\b', re.I)
 MEASUREMENT = re.compile(r'\b\\d+(?:\.\\d+)?\s*(?:×|x|X|by)\s*\\d+(?:\.\\d+)?\s*(?:ft|feet|foot|sq\s*ft|square feet)?\b', re.I)
