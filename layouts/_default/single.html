@@ -38,7 +38,9 @@
 
   {{ if $heroImage }}
 
-    {{ $heroPath := $heroImage }}
+    {{ $fallbackImg := "images/30-practical-home-organization-ideas-for.jpg" | relURL }}
+
+  {{ $heroPath := $heroImage }}
     {{ if not (or (strings.HasPrefix $heroImage "http://") (strings.HasPrefix $heroImage "https://")) }}
       {{ $heroPath = strings.TrimPrefix "/" $heroImage | relURL }}
     {{ end }}
@@ -51,7 +53,7 @@
         loading="eager"
         decoding="async"
         fetchpriority="high"
-        onerror="this.src='{{ \"images/30-practical-home-organization-ideas-for.jpg\" | relURL }}'; this.onerror=null;"
+        onerror="this.src='{{ $fallbackImg }}'; this.onerror=null;"
       >
     </figure>
 
@@ -155,7 +157,7 @@
 
   <script>
   (function () {
-    var fallback = "{{ "images/30-practical-home-organization-ideas-for.jpg" | relURL }}";
+    var fallback = "{{ $fallbackImg }}";
     document.querySelectorAll(".post-content img").forEach(function (img) {
       img.addEventListener("error", function () {
         if (img.dataset.fallbackApplied) return;
