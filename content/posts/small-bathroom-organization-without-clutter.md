@@ -38,7 +38,7 @@ That observation gives you a better starting point than a shopping list.
 
 The goal is simple: **make the bathroom easier to use without making it look or feel more crowded.**
 
-![Bright modern bathroom with clean storage and fixtures](/auto-blog/images/small-bathroom-organization-ideas-practical-space-7.jpg)
+![Bright modern bathroom with clean storage and fixtures](/auto-blog/images/small-bathroom-organization-without-clutter--alias--small-bathroom-organization-ideas-practical-space-7.jpg)
 
 ## Give the Bathroom Four Clear Zones
 
@@ -88,7 +88,7 @@ Do not cover every available wall with shelves simply because the wall is empty.
 
 The same principle applies to cabinet doors. If the cabinet manufacturer permits it and the added load is appropriate, the inside of a door can sometimes hold small lightweight categories without taking additional floor space.
 
-![Minimal bathroom with compact sink and clean layout](/auto-blog/images/small-bathroom-organization-ideas-practical-space-8.jpg)
+![Minimal bathroom with compact sink and clean layout](/auto-blog/images/small-bathroom-organization-without-clutter--alias--small-bathroom-organization-ideas-practical-space-8.jpg)
 
 ## Make the Counter a Working Surface Again
 
@@ -126,7 +126,7 @@ First group similar items. Then use small dividers only where they solve a speci
 
 If you cannot close a drawer comfortably, stop adding organizers. Remove duplicates, relocate reserve products, and reconsider whether every item belongs in that bathroom.
 
-![Compact bathroom with storage shelves and simple layout](/auto-blog/images/small-bathroom-organization-ideas-practical-space-10.jpg)
+![Compact bathroom with storage shelves and simple layout](/auto-blog/images/small-bathroom-organization-without-clutter--alias--small-bathroom-organization-ideas-practical-space-10.jpg)
 
 ## Control Towels by Capacity, Not by Wishful Thinking
 
@@ -161,7 +161,7 @@ This turns the reserve zone into a simple inventory signal.
 
 If you regularly have three bottles of the same product waiting for their turn, the problem is probably purchasing rather than storage.
 
-![Bathroom sink and cabinet with a clean, functional arrangement](/auto-blog/images/bathroom-organization-maximizing-24-inch-deep-cabi-7.jpg)
+![Bathroom sink and cabinet with a clean, functional arrangement](/auto-blog/images/small-bathroom-organization-without-clutter--alias--bathroom-organization-maximizing-24-inch-deep-cabi-7.jpg)
 
 ## Keep Cleaning Supplies Together
 
@@ -187,7 +187,7 @@ A shower caddy can help, but only if its size matches the space and it does not 
 
 If the caddy is permanently overflowing, treat that as an inventory problem first.
 
-![Minimal bathroom with shelving and organized toiletries](/auto-blog/images/bathroom-organization-maximizing-24-inch-deep-cabi-9.jpg)
+![Minimal bathroom with shelving and organized toiletries](/auto-blog/images/small-bathroom-organization-without-clutter--alias--bathroom-organization-maximizing-24-inch-deep-cabi-9.jpg)
 
 ## Solve Repeated Clutter at Its Source
 

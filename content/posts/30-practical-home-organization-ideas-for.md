@@ -17,15 +17,15 @@ faq = [
   { question = "What is the biggest mistake in small-space organization?", answer = "Adding storage before reducing excess is a common mistake. More containers can hide clutter instead of solving the underlying volume problem." }
 ]
 +++
-![The practical starting point for sorting a small home's belongings](/auto-blog/images/30-practical-home-organization-ideas-for.jpg)
+![The practical starting point for sorting a small home's belongings](/auto-blog/images/30-practical-home-organization-ideas-for--alias--30-practical-home-organization-ideas-for.jpg)
 
-![Bathroom storage organized into measured categories](/auto-blog/images/bathroom-organization-maximizing-24-inch-deep-cabi-10.jpg)
+![Bathroom storage organized into measured categories](/auto-blog/images/30-practical-home-organization-ideas-for--alias--bathroom-organization-maximizing-24-inch-deep-cabi-10.jpg)
 
-![A practical home-office organization zone](/auto-blog/images/decluttering-5x5-home-office-corner-remote-workers-10.jpg)
+![A practical home-office organization zone](/auto-blog/images/30-practical-home-organization-ideas-for--alias--decluttering-5x5-home-office-corner-remote-workers-10.jpg)
 
-![Small-space storage arranged for easier access](/auto-blog/images/renter-friendly-storage-ideas-small-kitchen-four-10.jpg)
+![Small-space storage arranged for easier access](/auto-blog/images/30-practical-home-organization-ideas-for--alias--renter-friendly-storage-ideas-small-kitchen-four-10.jpg)
 
-![A compact storage system grouped by category](/auto-blog/images/bathroom-organization-maximizing-24-inch-deep-cabi-8.jpg)
+![A compact storage system grouped by category](/auto-blog/images/30-practical-home-organization-ideas-for--alias--bathroom-organization-maximizing-24-inch-deep-cabi-8.jpg)
 
 ## Introduction
 
