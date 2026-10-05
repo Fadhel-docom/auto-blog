@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-05T12:33:13+00:00",
+  "timestamp": "2026-10-05T13:00:22+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "ACTIVE"
@@ -54,12 +54,20 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 37310305985,
+      "id": 37313493324,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-10-05T12:33:05Z",
-      "updated_at": "2026-10-05T12:33:09Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37310305985"
+      "created_at": "2026-10-05T13:00:13Z",
+      "updated_at": "2026-10-05T13:00:16Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37313493324"
+    },
+    "Traffic Report": {
+      "id": 37311637020,
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-05T12:44:31Z",
+      "updated_at": "2026-10-05T12:44:46Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37311637020"
     },
     "Scheduled Publisher": {
       "id": 37298517443,
@@ -68,14 +76,6 @@
       "created_at": "2026-10-05T10:44:41Z",
       "updated_at": "2026-10-05T10:44:58Z",
       "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37298517443"
-    },
-    "Traffic Report": {
-      "id": 37274263821,
-      "status": "completed",
-      "conclusion": "success",
-      "created_at": "2026-10-05T06:48:05Z",
-      "updated_at": "2026-10-05T06:48:16Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37274263821"
     }
   },
   "quality_gate": {
@@ -84,9 +84,9 @@
   },
   "traffic": {
     "status": "OK",
-    "visitors_today": 5,
-    "visitors_last_7_days": 80,
-    "visitors_this_month": 65,
+    "visitors_today": 7,
+    "visitors_last_7_days": 82,
+    "visitors_this_month": 67,
     "stats_today": [
       {
         "day": "2026-10-05",
@@ -104,7 +104,7 @@
           0,
           1,
           0,
-          0,
+          2,
           0,
           0,
           0,
@@ -116,9 +116,9 @@
           0,
           0
         ],
-        "daily": 5,
-        "weekly": 5,
-        "monthly": 5
+        "daily": 7,
+        "weekly": 7,
+        "monthly": 7
       }
     ]
   },
