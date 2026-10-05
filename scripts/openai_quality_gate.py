@@ -55,6 +55,8 @@ def call(article):
             break
         except requests.RequestException as exc:
             last_error=exc
+            resp=getattr(exc,"response",None)
+            if resp is not None: print("Groq error body:", resp.text[:800])
             if attempt >= 3:
                 raise
             delay=min(60,5*(2**attempt))
