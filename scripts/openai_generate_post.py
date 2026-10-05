@@ -49,7 +49,7 @@ def validate(a):
     words=len(re.findall(r"\b\w+\b",a["content_markdown"]))
     if not MIN_WORDS<=words<=MAX_WORDS: raise ValueError(f"Word count {words} outside {MIN_WORDS}-{MAX_WORDS}")
     h2s=[h.strip() for h in re.findall(r"^##\s+(.+)$",a["content_markdown"],re.M)]
-    if not 8<=len(h2s)<=12: raise ValueError(f"Expected 8-12 H2 sections, got {len(h2s)}")
+    if not 8<=len(h2s)<=12: raise ValueError(f'Expected 8-12 H2 sections, got {len(h2s)}')
     a["h2_headings"]=h2s
     if len(a["image_queries"])!=6 or len({x.lower().strip() for x in a["image_queries"]})!=6: raise ValueError("Expected 6 unique image queries")
     if not 4<=len(a["faq"])<=6: raise ValueError("Expected 4-6 FAQs")
