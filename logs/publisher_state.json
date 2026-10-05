@@ -1,1 +1,10 @@
-{}
+{
+  "provider_cooldown": {
+    "groq_120b": {
+      "until": "2026-10-05T11:41:00+00:00",
+      "started_at": "2026-10-05T10:41:00+00:00",
+      "cooldown_minutes": 60,
+      "reason": "Expected exactly 10 H2 sections"
+    }
+  }
+}
