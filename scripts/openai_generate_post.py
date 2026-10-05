@@ -48,12 +48,13 @@ def validate(a):
     if missing: raise ValueError("Missing required field(s): " + ", ".join(missing))
     words=len(re.findall(r"\b\w+\b",a["content_markdown"]))
     if not MIN_WORDS<=words<=MAX_WORDS: raise ValueError(f"Word count {words} outside {MIN_WORDS}-{MAX_WORDS}")
-    if len(re.findall(r"^##\s+.+$",a["content_markdown"],re.M))!=10: raise ValueError("Expected exactly 10 H2 sections")
+    h2s=[h.strip() for h in re.findall(r"^##\s+(.+)$",a["content_markdown"],re.M)]
+    if not 8<=len(h2s)<=12: raise ValueError(f"Expected 8-12 H2 sections, got {len(h2s)}")
+    a["h2_headings"]=h2s
     if len(a["image_queries"])!=6 or len({x.lower().strip() for x in a["image_queries"]})!=6: raise ValueError("Expected 6 unique image queries")
     if not 4<=len(a["faq"])<=6: raise ValueError("Expected 4-6 FAQs")
     if len(a["title"])>68: raise ValueError("Title too long")
     if not 140<=len(a["meta_description"])<=158: raise ValueError("Meta description length invalid")
-    if len(a["h2_headings"])!=10: raise ValueError("Expected 10 h2_headings")
 
 def repair_json_text(s):
     out=[]
@@ -216,7 +217,7 @@ def save(a,topic,provider):
     a["slug"]=slugify(a["title"])
     a["generated_at"]=datetime.now(timezone.utc).isoformat()
     a["word_count"]=len(re.findall(r"\b\w+\b",a["content_markdown"]))
-    a["h2_count"]=10
+    a["h2_count"]=len(re.findall(r"^##\s+.+$",a["content_markdown"],re.M))
     a["images"]=[]
     a["image"]=""
     a["generation_provider"]=provider
@@ -225,7 +226,7 @@ def save(a,topic,provider):
         f.write("\n")
     print(f"Generated: {a['title']}")
     print(f"Provider: {provider}")
-    print(f"Words: {a['word_count']} | H2: 10 | Images planned: 6")
+    print(f"Words: {a['word_count']} | H2: {a['h2_count']} | Images planned: 6")
 
 def _merge_article(base, incoming):
     """Merge one shared draft by H2 section, keeping the richer version."""
