@@ -22,7 +22,7 @@ faq = [
   {question = "What is the biggest small-bathroom organization mistake?", answer = "Buying storage before measuring. Oversized bins and shelves can reduce usable floor space and block doors."}
 ]
 aliases = ["/posts/small-bathroom-organization-create-more-storage-without-adding-clutter/"]
-draft = false
+draft = true
 slug = "small-bathroom-organization-without-clutter"
 +++
 
