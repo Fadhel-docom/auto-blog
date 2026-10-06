@@ -173,9 +173,11 @@
        IMAGE CREDITS
        ------------------------------------------------------- */}}
 
+  {{ if not .Params.original_graphics }}
   <p class="image-credits" id="image-credits">
     <strong>Image credits:</strong> Images are sourced from Pexels. Source URLs are retained in the article image markup.
   </p>
+  {{ end }}
 
   {{/* -------------------------------------------------------
        TAGS
