@@ -19,16 +19,13 @@ def call(article):
     for i,x in enumerate(article.get('images') or [],1):
         if isinstance(x,dict): images.append({'index':i,'query':x.get('query',''),'source_url':x.get('image_source_url',''),'width':x.get('width'),'height':x.get('height')})
     review_data={'keyword':article.get('keyword',''),'angle':article.get('specific_angle',''),'title':article.get('title',''),'meta_description':article.get('meta_description',''),'word_count':words(article.get('content_markdown','')),'content_markdown':article.get('content_markdown',''),'hero_image':article.get('image',''),'images':images}
-    content_parts=[{'type':'text','text':json.dumps(review_data,ensure_ascii=False)}]
+    content_parts=json.dumps(review_data,ensure_ascii=False)
     for item in images:
-        content_parts.append({
-            'type':'text',
-            'text':(
-                f"IMAGE {item['index']} - query: {item.get('query','')} "
-                f"source_url: {item.get('source_url','')} "
-                f"dimensions: {item.get('width')}x{item.get('height')}"
-            )
-        })
+        content_parts+=(
+            f"\nIMAGE {item['index']} - query: {item.get('query','')} "
+            f"source_url: {item.get('source_url','')} "
+            f"dimensions: {item.get('width')}x{item.get('height')}"
+        )
     payload={'model':MODEL,'temperature':0.15,'messages':[{'role':'system','content':SYSTEM},{'role':'user','content':content_parts}],'response_format':{'type':'json_object'}}
     last_error=None
     for attempt in range(4):
