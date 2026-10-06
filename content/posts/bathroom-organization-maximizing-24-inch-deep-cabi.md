@@ -16,7 +16,7 @@ faq = [
   {question = "Are pull-out bins worth it under a bathroom sink?", answer = "They can be useful when the cabinet is deep because they bring the back of the cabinet forward and reduce the need to reach around plumbing."}
 ]
 aliases = ["/posts/bathroom-organization-maximizing-under-sink-storage-in-a-24-inch-deep-cabinet-with-pull-out-bins-and-tension-rods/"]
-draft = false
+draft = true
 slug = "bathroom-organization-maximizing-24-inch-deep-cabi"
 +++
 ## Understanding the Under‑Sink Space
