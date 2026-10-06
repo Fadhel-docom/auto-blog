@@ -16,7 +16,7 @@ faq = [
   { question = "What should I not store under a sink?", answer = "Food, medicines, electronics, and documents. Also keep bleach apart from ammonia-based and acidic cleaners, and keep all products out of children's reach." },
   { question = "Are pull-out drawers worth it under a sink?", answer = "They help when the cabinet is deep and nothing sits in front of the track. If a pipe, trap, or hose blocks the path, a bin with a handle works better." }
 ]
-aliases = ["/posts/under-sink-organization-ideas-a-simple-system-that-stays-tidy/"]
+aliases = ["/posts/under-sink-organization-ideas-a-simple-system-that-stays-tidy/", "/posts/bathroom-organization-maximizing-24-inch-deep-cabi/", "/posts/bathroom-organization-maximizing-under-sink-storage-in-a-24-inch-deep-cabinet-with-pull-out-bins-and-tension-rods/"]
 draft = false
 slug = "under-sink-organization-ideas-simple-system"
 +++
