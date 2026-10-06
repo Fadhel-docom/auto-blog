@@ -1,0 +1,42 @@
+name: Groq Gate Test
+
+# Test only: runs the Groq editorial gate on the current article.json. Does not publish, commit or deploy.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Setup Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: python -m pip install requests
+
+      - name: Add six placeholder image records (runner only)
+        run: |
+          python - <<'PY'
+          import json
+          a=json.load(open("article.json",encoding="utf-8"))
+          a["images"]=[{"query":q,"image_source_url":f"https://example.com/{i}","width":1600,"height":1067} for i,q in enumerate(a.get("image_queries") or ["home organization"]*6,1)][:6]
+          while len(a["images"])<6:
+              a["images"].append({"query":"home organization","image_source_url":"https://example.com/x","width":1600,"height":1067})
+          json.dump(a,open("article.json","w",encoding="utf-8"),ensure_ascii=False,indent=2)
+          print("images:",len(a["images"]))
+          PY
+
+      - name: Groq Editorial Quality Gate (test)
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROQ_QUALITY_MODEL: "openai/gpt-oss-120b"
+        run: python scripts/openai_quality_gate.py
