@@ -1,1 +1,10 @@
-{}
+{
+  "provider_cooldown": {
+    "groq_120b": {
+      "until": "2026-10-06T22:05:41+00:00",
+      "started_at": "2026-10-06T21:05:41+00:00",
+      "cooldown_minutes": 60,
+      "reason": "Meta description length invalid"
+    }
+  }
+}
