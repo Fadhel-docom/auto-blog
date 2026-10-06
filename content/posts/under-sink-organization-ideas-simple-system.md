@@ -4,7 +4,7 @@ date = "2026-09-24T09:08:00+00:00"
 lastmod = "2026-10-06T02:00:00+00:00"
 description = "Measure six points, build three zones around the pipes, and add a leak check. An under-sink organization system with diagrams and a printable sheet."
 image = "images/under-sink-hero.png"
-images = ["images/under-sink-hero.png", "images/under-sink-measure-map.svg", "images/under-sink-zones-layout.svg", "images/under-sink-depth-side-view.svg"]
+images = ["images/under-sink-hero.png", "images/under-sink-measure-map.svg", "images/under-sink-bin-sizing-example.svg", "images/under-sink-zones-layout.svg", "images/under-sink-depth-side-view.svg", "images/under-sink-leak-check-points.svg"]
 tags = ["under sink organization ideas", "kitchen organization", "bathroom organization", "small spaces"]
 categories = ["Home Organization"]
 original_graphics = true
@@ -52,7 +52,11 @@ Measuring around the plumbing prevents most under-sink mistakes. Take these six 
 | E | Depth, front frame to back wall | The longest bin that still lets the door close |
 | F | Position and height of the shut-off valves | They must stay reachable at all times |
 
-Subtract about half an inch from every pocket width. That small gap lets you slide a bin out with one hand and keeps the cabinet walls from scuffing. Before you buy anything, cut cardboard to the planned bin sizes and test the layout. It costs nothing and catches most sizing errors.
+Subtract about half an inch from every pocket width. That small gap lets you slide a bin out with one hand and keeps the cabinet walls from scuffing. Here is the math with example numbers; yours will differ:
+
+![Worked example: a 30-inch-wide cabinet with a 4-inch pipe leaves two 13-inch pockets, which fit bins up to 12.5 inches wide](images/under-sink-bin-sizing-example.svg)
+
+Before you buy anything, cut cardboard to the planned bin sizes and test the layout. It costs nothing and catches most sizing errors.
 
 ## Empty, Sort, and Fix What You Find
 
@@ -100,11 +104,16 @@ A leak under a sink is common, slow, and quiet. Three habits catch it early:
 
 1. **Leave the floor visible.** Do not pack bins tight against the plumbing.
 2. **Add a leak alarm.** A small battery-powered water sensor on the cabinet floor, at the lowest point, is an inexpensive early warning.
-3. **Run a monthly five-minute check.** Pull the front bins out, then:
-   - look around the drain and supply connections for drips, crust, or stains;
-   - feel the cabinet floor for dampness or swelling;
-   - check bottles for cracks or residue;
-   - return everything only when the area is dry.
+3. **Run a monthly five-minute check.** Pull the front bins out and look at four spots:
+
+![The four monthly leak-check spots under a sink: shut-off valves and supply lines, the drain joint under the basin, the trap, and the cabinet floor](images/under-sink-leak-check-points.svg)
+
+   1. **Valves and supply lines:** look for drips, crust, or stains.
+   2. **Drain joint under the basin:** run a little water and watch for seepage.
+   3. **The trap:** check the joints and the bottom of the bend for moisture.
+   4. **The cabinet floor:** feel for dampness or swelling, and check bottles for cracks or residue.
+
+   Return everything only when the area is dry.
 
 If you find water, close both shut-off valves (clockwise) and call a plumber. Do not force a stuck valve, and do not cover an active leak with a liner or tray.
 
