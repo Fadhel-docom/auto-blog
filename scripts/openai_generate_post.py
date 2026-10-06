@@ -54,7 +54,13 @@ def validate(a):
     if len(a["image_queries"])!=6 or len({x.lower().strip() for x in a["image_queries"]})!=6: raise ValueError("Expected 6 unique image queries")
     if not 4<=len(a["faq"])<=6: raise ValueError("Expected 4-6 FAQs")
     if len(a["title"])>68: raise ValueError("Title too long")
-    if not 140<=len(a["meta_description"])<=158: raise ValueError("Meta description length invalid")
+    md=" ".join(str(a["meta_description"]).split())
+    if len(md)>158:
+        md=md[:158]
+        md=md[:md.rfind(" ")].rstrip(" ,;:-\u2013\u2014")
+        if not md.endswith((".","!","?")) and len(md)<158: md+="."
+    a["meta_description"]=md
+    if not 140<=len(md)<=158: raise ValueError("Meta description length invalid")
 
 def repair_json_text(s):
     out=[]
@@ -447,22 +453,30 @@ def main():
             # Discovery is metadata only; use exactly one model this run.
             chosen_model=discovered[0] if discovered else OPENROUTER_MODEL
 
-        try:
-            candidate=(
-                call_groq(topic,model=chosen_model) if name.startswith("Groq")
-                else call_openrouter(topic,model=chosen_model)
-            )
-            candidate=_normalize_title(candidate)
-            validate(candidate)
-            clear_provider_cooldown(key)
-            save(candidate,topic,name)
-            print(f"Generation completed safely with {name}; no other provider was called.")
-            return
-        except Exception as exc:
-            message=str(exc)
-            failures.append(f"{name}: {message}")
-            mark_provider_cooldown(key,message)
-            print(f"{name} failed once; no retry for this provider in this run: {message}",file=sys.stderr)
+        last_exc=None
+        for attempt in (1,2):
+            try:
+                candidate=(
+                    call_groq(topic,model=chosen_model) if name.startswith("Groq")
+                    else call_openrouter(topic,model=chosen_model)
+                )
+                candidate=_normalize_title(candidate)
+                validate(candidate)
+                clear_provider_cooldown(key)
+                save(candidate,topic,name)
+                print(f"Generation completed safely with {name}; no other provider was called.")
+                return
+            except ValueError as exc:
+                # Validation problem only: retry once, no provider cooldown.
+                last_exc=exc
+                print(f"{name} validation failed (attempt {attempt}/2): {exc}",file=sys.stderr)
+            except Exception as exc:
+                last_exc=exc
+                break
+        message=str(last_exc)
+        failures.append(f"{name}: {message}")
+        if not isinstance(last_exc,ValueError): mark_provider_cooldown(key,message)
+        print(f"{name} failed; stopping this provider for this run: {message}",file=sys.stderr)
 
     reason="; ".join(failures) if failures else "all configured providers are unavailable or resting"
     raise RuntimeError(f"No provider produced a valid article. {reason}")
