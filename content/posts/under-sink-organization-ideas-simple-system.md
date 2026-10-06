@@ -102,9 +102,9 @@ To compare cleaners by ingredients, the [EPA Safer Choice program](https://www.e
 
 A leak under a sink is common, slow, and quiet. Three habits catch it early:
 
-1. **Leave the floor visible.** Do not pack bins tight against the plumbing.
-2. **Add a leak alarm.** A small battery-powered water sensor on the cabinet floor, at the lowest point, is an inexpensive early warning.
-3. **Run a monthly five-minute check.** Pull the front bins out and look at four spots:
+- **Leave the floor visible.** Do not pack bins tight against the plumbing.
+- **Add a leak alarm.** A small battery-powered water sensor on the cabinet floor, at the lowest point, is an inexpensive early warning.
+- **Run a monthly five-minute check.** Pull the front bins out and look at four spots:
 
 ![The four monthly leak-check spots under a sink: shut-off valves and supply lines, the drain joint under the basin, the trap, and the cabinet floor](images/under-sink-leak-check-points.svg)
 
