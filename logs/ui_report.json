@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-06T00:20:07+00:00",
+  "timestamp": "2026-10-06T12:16:10+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -39,7 +39,7 @@
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 30472
+    "html_length": 30395
   },
   "articles": [
     {
@@ -64,7 +64,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 32513
+      "html_length": 32494
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-small-shelves/",
@@ -93,14 +93,14 @@
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-simple-system/",
       "status": 200,
-      "title": "Under-Sink Organization Ideas: A Simple System That Stays Tidy",
+      "title": "Under-Sink Organization Ideas: A Measured, Leak-Aware System",
       "title_capitalized": true,
-      "meta_description": "Practical under-sink organization ideas for kitchens and bathrooms: measure first, create zones, use pull-out storage, protect against leaks, and keep daily essentials easy to reach.",
+      "meta_description": "Measure six points, build three zones around the pipes, and add a leak check. An under-sink organization system with diagrams and a printable sheet.",
       "canonical": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-simple-system/",
-      "images": 11,
+      "images": 10,
       "tags": 4,
-      "h2_count": 23,
-      "image_credits": true,
+      "h2_count": 12,
+      "image_credits": false,
       "related": true,
       "schema": {
         "present": true,
@@ -111,8 +111,10 @@
         ],
         "has_article": true
       },
-      "required_failures": [],
-      "html_length": 35348
+      "required_failures": [
+        "image credits"
+      ],
+      "html_length": 25932
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-organization-ideas-practical-space/",
@@ -139,15 +141,15 @@
       "html_length": 26474
     },
     {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bathroom-organization-without-clutter/",
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-laundry-room-organization-ideas-smart-storage/",
       "status": 200,
-      "title": "Small Bathroom Organization: Create More Storage Without Adding Clutter",
+      "title": "Small Laundry Room Storage: 16 Ways to Keep Supplies Under Control",
       "title_capitalized": true,
-      "meta_description": "A practical small-bathroom organization plan using zones, vertical storage, drawer limits, and a simple reset routine without overcrowding the room.",
-      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/small-bathroom-organization-without-clutter/",
-      "images": 10,
-      "tags": 5,
-      "h2_count": 22,
+      "meta_description": "Practical small laundry room organization ideas for creating clear sorting, supply, folding, and backup-storage zones without wasting floor space.",
+      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/small-laundry-room-organization-ideas-smart-storage/",
+      "images": 11,
+      "tags": 4,
+      "h2_count": 21,
       "image_credits": true,
       "related": true,
       "schema": {
@@ -160,7 +162,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 30522
+      "html_length": 39852
     }
   ],
   "responsive": {
@@ -175,6 +177,6 @@
       "https://fadhel-docom.github.io/auto-blog/css/site-v2.css"
     ]
   },
-  "status": "healthy",
-  "failure_count": 0
+  "status": "needs_attention",
+  "failure_count": 1
 }
