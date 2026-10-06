@@ -137,7 +137,10 @@ def main(target_post=None):
                 errors.append(f"missing or empty local image: {image_url}")
 
     hero = normalize_image_ref(quoted_value(field(fm, "image")))
-    if hero and hero not in normalized_urls:
+    original_graphics = field(fm, "original_graphics").strip().lower() == "true"
+    # Posts with a purpose-built cover (original_graphics = true) may use a cover
+    # that is not repeated inline; every other post keeps the strict rule.
+    if hero and not original_graphics and hero not in normalized_urls:
         errors.append(f"featured image is not one of this article's inline images: {hero}")
 
     used_by_other = {}
