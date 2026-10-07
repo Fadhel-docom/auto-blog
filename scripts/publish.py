@@ -448,6 +448,7 @@ def insert_images_between_h2(
         )
 
     image_index = 1
+    hero_placed = False
     lines = content.splitlines()
     output = []
 
@@ -478,6 +479,22 @@ def insert_images_between_h2(
 
             output.append(line)
             continue
+
+        if (
+            not hero_placed
+            and not in_fenced_code_block
+            and re.match(r"^##[ \t]+[^#]", line)
+        ):
+            hero_image = images[0]
+            hero_alt = str(
+                hero_image.get("query", "")
+            ).strip() or "Home organization image"
+            output.append("")
+            output.append(
+                image_markdown(hero_image["file"], hero_alt)
+            )
+            output.append("")
+            hero_placed = True
 
         output.append(line)
 
