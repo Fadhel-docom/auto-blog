@@ -35,7 +35,7 @@ Living in a rental where the kitchen consists of **only four cabinets** can feel
 Before you purchase any organizer, spend a few minutes measuring and cataloguing what you already have. A clear picture of dimensions and usage patterns prevents wasted purchases and highlights hidden opportunities.
 
 1. **Make an inventory** – Write down core items such as cookware, baking sheets, dishes, spices, dry goods, and small appliances.
-2. **Measure each cabinet** – Record interior width, depth, and height. A typical lower cabinet is roughly 24" wide, 12" deep, and 34" high, but rentals vary widely.
+2. **Measure each cabinet** – Record interior width, depth, and height. A typical lower cabinet is roughly 24" wide, 24" deep, and 34" high (wall cabinets are usually about 12" deep), but rentals vary widely.
 3. **Spot dead space** – Look for under‑utilised zones like the gap between a cabinet door and countertop, the interior corners of upper cabinets, and the top of high cabinets.
 
 **Why it matters:** Knowing exact dimensions stops you from buying a drawer organizer that won’t fit, and it reveals where a tension rod or hanging rack can add the most value.

@@ -31,12 +31,12 @@ Living in a studio apartment means every square inch competes for a purpose. In 
 
 ![studio kitchen cabinet interior measured with tape measure and sketch](images/small-kitchen-organization-5foot-galley-ideas-pull-3.jpg)
 
-Accurate measurements are the foundation of a successful build. A typical studio galley cabinet is 12 in deep and 34‑36 in high, but variations are common. Follow these steps before you cut any material:
+Accurate measurements are the foundation of a successful build. A typical narrow base cabinet beside the stove is about 12 in wide, 24 in deep and 34–36 in high, but variations are common. Follow these steps before you cut any material:
 
 1. **Select the cabinet** you’ll convert – most studios have a narrow base cabinet under the sink or beside the stove.
 2. **Measure interior width** (inside face‑to‑face). Subtract 2 in to allow a 1‑in clearance on each side for the slide hardware.
-3. **Determine rack depth** – a 10‑in deep rack leaves a 2‑in gap for the slides while still fitting standard 2‑in spice jars.
-4. **Mark the ideal height** – eye level (48‑54 in from the floor) provides the most ergonomic reach.
+3. **Determine rack depth** – a rack about 10 in deep holds standard 2‑in spice jars in several rows and leaves room in a 24‑in‑deep cabinet for the slide hardware and the door.
+4. **Mark the ideal height** – inside a 34–36 in base cabinet, keep the most‑used jars close to the front opening where they are easy to reach; eye level (about 48–54 in from the floor) only applies if you mount the rack in a tall pantry cabinet.
 5. **Check for obstacles** – locate water lines, electrical outlets, and dishwasher hoses. Adjust the rack’s vertical position if any obstruction interferes with the slide path.
 
 > **Pro tip:** Sketch a simple diagram on graph paper (1 square = 1 in). Visualizing the rack inside the cabinet helps you spot clearance issues before you start cutting.
@@ -76,7 +76,7 @@ A well‑thought‑out layout maximizes storage while keeping the rack compact e
 
 ### Width and Depth
 - **Rack width** matches the cabinet interior width minus the slide clearance (usually 10‑11 in).
-- **Rack depth** stays at 10 in to keep the front of the rack flush with the cabinet face when closed.
+- **Rack depth** stays at about 10 in, which keeps the rack well inside a 24‑in‑deep cabinet and leaves room for the slides and the door.
 
 ### Customizable Options
 - **Adjustable shelf brackets** allow you to move tiers up or down as your collection evolves.

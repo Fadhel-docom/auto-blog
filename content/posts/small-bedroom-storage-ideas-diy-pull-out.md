@@ -27,7 +27,7 @@ Living in a 10×10 bedroom with a queen‑size bed can feel cramped, but the spa
 
 ![bedroom storage cabinet organized storage organized interior](images/small-bedroom-storage-ideas-diy-pull-out-2.jpg)
 
-Even a standard queen bed (60" wide × 80" long) leaves a rectangular cavity that can be up to 12‑14 inches high when the mattress sits on a low‑profile platform. In a 10×10 room that cavity can hold **up to 5,000 cubic inches** of items—enough for a week’s worth of clothing, extra bedding, or a mini‑home office stash. The benefits are clear:
+Even a standard queen bed (60" wide × 80" long) leaves a rectangular cavity whose height depends on the frame: only about 2–3 inches under a low platform bed, and 8–14 inches under a raised frame. In a 10×10 room, a queen frame with 8 inches of clearance (60 × 80 × 8 in) offers roughly **38,000 cubic inches** of room for items—enough for a week’s worth of clothing, extra bedding, or a mini‑home office stash. The benefits are clear:
 
 - **Out of sight, out of mind** – Items are stored but not displayed, keeping the room looking uncluttered.
 - **Easy access** – Pull‑out drawers glide out, while rolling bins can be wheeled to the wall for quick retrieval.

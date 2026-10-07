@@ -151,6 +151,12 @@ Food, medicines, electronics, and documents. Also keep bleach apart from ammonia
 ### Are pull-out drawers worth it under a sink?
 They help when the cabinet is deep and nothing sits in front of the track. If a pipe, trap, or hose blocks the path, a bin with a handle works better.
 
+## Sources
+
+- U.S. EPA, [Household Hazardous Waste](https://www.epa.gov/hw/household-hazardous-waste-hhw)
+- U.S. EPA, [Safer Choice](https://www.epa.gov/saferchoice)
+- Poison Help (HRSA), [poisonhelp.hrsa.gov](https://www.poisonhelp.hrsa.gov): US helpline 1-800-222-1222
+
 ## Related Guides
 
 - [Small Bathroom Organization Ideas for Practical Space](/posts/small-bathroom-organization-ideas-practical-space/)

@@ -145,6 +145,12 @@ Run the fan during the shower and for about 20 minutes afterward, hang towels sp
 ### How do I organize a rental bathroom without drilling?
 Use rated adhesive hooks, an over-door rack, a tension pole, and freestanding units. Follow the product's weight limit and let adhesive cure as the label directs.
 
+## Sources
+
+- International Code Council, International Residential Code (IRC), Sections R307 and P2705.1: toilet clearances of about 15 in from the center to a side wall and 21 in in front. Local codes may require more.
+- Home Ventilating Institute (HVI): run the bathroom fan about 20 minutes after bathing.
+- Poison Help (HRSA), [poisonhelp.hrsa.gov](https://www.poisonhelp.hrsa.gov): US helpline 1-800-222-1222
+
 ## Related Guides
 
 - [Under-Sink Organization Ideas: A Measured, Leak-Aware System](/posts/under-sink-organization-ideas-simple-system/)
