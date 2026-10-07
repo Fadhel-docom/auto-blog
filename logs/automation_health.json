@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-07T00:04:20+00:00",
+  "timestamp": "2026-10-07T00:36:35+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "PAUSED",
@@ -55,12 +55,12 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 37549975852,
+      "id": 37552852568,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-10-07T00:04:11Z",
-      "updated_at": "2026-10-07T00:04:16Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37549975852"
+      "created_at": "2026-10-07T00:36:29Z",
+      "updated_at": "2026-10-07T00:36:32Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37552852568"
     },
     "Scheduled Publisher": {
       "id": 37533439047,
@@ -69,14 +69,6 @@
       "created_at": "2026-10-06T21:22:37Z",
       "updated_at": "2026-10-06T21:22:52Z",
       "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37533439047"
-    },
-    "Traffic Report": {
-      "id": 37513056757,
-      "status": "completed",
-      "conclusion": "success",
-      "created_at": "2026-10-06T18:40:02Z",
-      "updated_at": "2026-10-06T18:40:19Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37513056757"
     }
   },
   "quality_gate": {
@@ -84,42 +76,8 @@
     "job": "publish"
   },
   "traffic": {
-    "status": "OK",
-    "visitors_today": 0,
-    "visitors_last_7_days": 89,
-    "visitors_this_month": 89,
-    "stats_today": [
-      {
-        "day": "2026-10-07",
-        "hourly": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "daily": 0
-      }
-    ]
+    "status": "UNAVAILABLE",
+    "reason": "HTTP 404"
   },
   "alerts": [],
   "issues": [
@@ -132,6 +90,13 @@
         "created_at": "2026-10-06T21:22:37Z",
         "updated_at": "2026-10-06T21:22:52Z",
         "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37533439047"
+      }
+    },
+    {
+      "type": "GoatCounter unavailable",
+      "traffic": {
+        "status": "UNAVAILABLE",
+        "reason": "HTTP 404"
       }
     }
   ],
