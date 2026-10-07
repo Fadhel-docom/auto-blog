@@ -1,7 +1,7 @@
 +++
 title = "Small Bedroom Storage Ideas: DIY Pull-Out Drawers and Rolling Bins Under a Queen Bed"
 date = "2026-09-22T15:39:18+00:00"
-lastmod = "2026-09-22T15:39:18+00:00"
+lastmod = "2026-10-07T21:00:00+00:00"
 description = "Transform the under‑bed space of a 10×10 bedroom with DIY pull‑out drawers and rolling bins. Step‑by‑step plans, real examples, and budget tips."
 image = "images/small-bedroom-storage-ideas-diy-pull-out-2.jpg"
 images = ["images/small-bedroom-storage-ideas-diy-pull-out-1.jpg", "images/small-bedroom-storage-ideas-diy-pull-out-2.jpg", "images/small-bedroom-storage-ideas-diy-pull-out-3.jpg", "images/small-bedroom-storage-ideas-diy-pull-out-4.jpg", "images/small-bedroom-storage-ideas-diy-pull-out-5.jpg"]
@@ -49,7 +49,7 @@ Accurate numbers prevent wasted lumber and ensure smooth operation. Grab a tape 
 4. **Side clearance** – Ensure there is at least 1‑2" of space on each side of the frame for drawer slides to mount.
 5. **Floor condition** – Check for carpet pile or uneven flooring; you may need adjustable legs or small shims.
 
-*Example*: In a standard 10×10 room with a queen on a 10" platform, the under‑bed height is 12" (floor‑to‑mattress) minus 10" (mattress) = **2"**. That’s too low for a drawer, so you’d first raise the bed using **adjustable bed risers** (2‑inch to 4‑inch height). After raising, you gain a usable 4‑6" drawer depth.
+*Example*: In a standard 10×10 room with a queen that has a 10" mattress on a low platform frame (mattress top 12" off the floor), the under‑bed height is 12" (floor‑to‑mattress) minus 10" (mattress) = **2"**. That’s too low for a drawer, so you’d first raise the bed using **adjustable bed risers** (2‑inch to 4‑inch height). After raising, you gain a usable 4‑6" drawer depth.
 
 ---
 
@@ -63,7 +63,7 @@ Not all drawer hardware is created equal. For a DIY under‑bed build you’ll w
 - **Under‑mount concealed slides** – Provide a cleaner look but need a minimum of 2" clearance under the drawer, which can eat into your storage height.
 - **Drawer runners with built‑in stops** – Ideal for shallow bins; they prevent the drawer from pulling all the way out and hitting the wall.
 
-For a small bedroom, **side‑mount ball bearing slides** are the most space‑efficient. Pair them with **full‑extension slides** so you can reach the back of the cavity without crouching. Keep the slide length no longer than the interior width of the cavity (usually 58" for a queen frame) to maintain stability.
+For a small bedroom, **side‑mount ball bearing slides** are the most space‑efficient. Pair them with **full‑extension slides** so you can reach the back of the cavity without crouching. Match the slide length to the drawer's front‑to‑back depth (typically 14–22" for under‑bed drawers) so the slides never extend past the box; the roughly 58" interior width of a queen frame is the drawer's width, not its slide length.
 
 ---
 
@@ -75,13 +75,13 @@ You don’t need a carpenter’s workshop to craft sturdy drawers. Follow these 
 
 [Read more about Bathroom Organization Maximizing Under Sink](../bathroom-organization-maximizing-under-sink-storage-in-a-24-inch-deep-cabinet-with-pull-out-bins-and-tension-rods/)
 
-1. **Cut the box panels** – Use ¾" plywood for strength. Cut two side pieces (height = under‑bed clearance, length = 58"), a front and back piece (width = 58" – 2×side thickness, height = clearance), and a bottom panel (width = 58" – 2×side thickness, depth = 58").
+1. **Cut the box panels** – Use ¾" plywood for strength. Cut two side pieces (height = under‑bed clearance minus ½", length = drawer depth, e.g. 14"), a front and back piece (width = drawer width – 2×side thickness, height = clearance minus ½"), and a bottom panel (width = drawer width – 2×side thickness, depth = drawer depth). A full‑width queen drawer is about 58" wide; two side‑by‑side drawers of roughly 28" each are easier to pull.
 2. **Assemble the box** – Apply wood glue to the edges, then reinforce with 1¼" pocket hole screws. The bottom panel slides into a groove cut ½" deep along the inner edges of the sides.
 3. **Install the slides** – Attach the slide brackets to the inside of the side panels, following the manufacturer’s layout. Then mount the corresponding slide on the interior of the bed frame (or on a plywood strip that spans the frame for extra support).
 4. **Add a handle** – A simple recessed metal pull or a wooden knob fits in a drilled hole 2" from the front edge. Keep the handle low‑profile to avoid snagging on bedding.
 5. **Finish** – Sand rough edges, apply a clear sealant or paint that matches your décor, and test the glide. Adjust the slide tension if the drawer feels too loose.
 
-**Tip**: Build the drawer depth a half‑inch shorter than the measured clearance to allow the slides to sit fully in the cavity. If you raised the bed by 3", you could achieve a drawer height of 5" – perfect for folded sweaters or shoes.
+**Tip**: Build the drawer height a half‑inch shorter than the measured clearance so it moves freely. If you raised the bed by 3" from a 2" starting clearance, you would have 5" of clearance and could build a drawer about 4½" high – perfect for folded sweaters or shoes.
 
 ---
 
@@ -89,9 +89,9 @@ You don’t need a carpenter’s workshop to craft sturdy drawers. Follow these 
 
 Drawers are great for items you need often, but rolling bins give you the freedom to re‑arrange storage without rebuilding. Here’s how to integrate them:
 
-1. **Select low‑profile bins** – Look for bins with a total height of 6‑8" and wheels that sit flush with the bottom. Plastic or fabric bins with reinforced bottoms work well.
+1. **Select low‑profile bins** – Look for wheeled bins that sit flush with the bottom and are at least ½" shorter than your clearance (3–5" on a low frame, 6–8" only if you have 8" or more of clearance). Plastic or fabric bins with reinforced bottoms work well.
 2. **Create a guide rail** – Attach a 1×2" wooden strip along the interior side of the frame, 1" above the floor. This rail keeps the bins from sliding sideways while still allowing smooth rolling.
-3. **Space the bins** – Measure the interior length (58") and divide by the number of bins you want. For three bins, leave roughly 2" of clearance between each to prevent wheels from catching.
+3. **Space the bins** – Measure the interior width (about 58") and divide by the number of bins you want. For three bins, leave roughly 2" of clearance between each to prevent wheels from catching.
 4. **Add a lock‑in strap** – A simple elastic cord or Velcro strap across the front of the bin array prevents accidental movement when the bed is made.
 5. **Label and stack** – Use removable label tags on the front of each bin. You can also stack a second tier of bins on top of the first if the clearance allows (max 12" total height).
 
@@ -128,19 +128,19 @@ Seeing the concept in action helps you decide which configuration fits your life
 ### Example 1 – Minimalist Student Dorm
 - **Clearance**: Bed raised 2" with risers, giving 4" drawer height.
 - **Drawers**: One shallow drawer (58" × 14" × 4") for textbooks and a laptop sleeve.
-- **Bins**: Two rolling bins (6" × 20" × 8") for sneakers and gym clothes.
+- **Bins**: Two low rolling bins (6" × 20" × 3½") for socks and gym clothes.
 - **Result**: All essentials are stored under the bed, freeing the closet for coats.
 
 ### Example 2 – Home Office Hybrid
 - **Clearance**: Bed raised 3" for a 5" drawer.
 - **Drawers**: Two side‑by‑side drawers; the left holds printer paper and office supplies, the right stores a spare monitor.
-- **Bins**: One larger bin (8" × 30" × 10") for archived files, plus a small bin for charging cables.
+- **Bins**: One larger bin (8" × 30" × 4½") for flat‑stored archived files, plus a small bin for charging cables.
 - **Result**: The bedroom doubles as a quiet work nook without a dedicated desk.
 
 ### Example 3 – Family Bedroom with Kids
-- **Clearance**: Bed raised 4" for a 6" deep drawer.
+- **Clearance**: Bed raised 4" for a 6" high drawer.
 - **Drawers**: Single deep drawer for extra bedding and seasonal blankets.
-- **Bins**: Three colorful bins (6" × 18" × 8") labeled "Toys", "Art Supplies", and "Shoes".
+- **Bins**: Three colorful bins (6" × 18" × 5") labeled "Toys", "Art Supplies", and "Shoes".
 - **Result**: Kids learn to tidy up; parents keep the room looking neat.
 
 Each setup demonstrates how the same core system can be customized for different priorities—whether it’s study space, work efficiency, or child-friendly organization.
@@ -169,7 +169,7 @@ By anticipating these pitfalls, your DIY under‑bed storage will stay functiona
 
 You don’t need high‑end brands to build a reliable system. Here are three generic product categories that are widely available at hardware stores or online marketplaces:
 
-1. **Heavy‑Duty Side‑Mount Ball Bearing Slides** – Look for 58" length, 100 lb capacity, and full‑extension design.
+1. **Heavy‑Duty Side‑Mount Ball Bearing Slides** – Look for a length that matches your drawer depth (typically 14–22"), 100 lb capacity, and full‑extension design.
 2. **Plastic Rolling Storage Bins with Soft‑Close Wheels** – Choose bins with a height of 6‑8" and a weight limit of at least 30 lb.
 3. **Adjustable Bed Risers (2‑4 inch)** – Metal or sturdy plastic risers that lock in place and provide a stable lift.
 

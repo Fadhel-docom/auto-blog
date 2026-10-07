@@ -1,7 +1,7 @@
 +++
 title = "Decluttering a 5x5 Home Office Corner for Remote Workers in a Studio Apartment"
 date = "2026-09-22T11:29:25+00:00"
-lastmod = "2026-09-22T11:29:25+00:00"
+lastmod = "2026-10-07T21:00:00+00:00"
 description = "Learn step‑by‑step how to declutter a 5'x5' home office corner in a studio apartment, using smart furniture, cable management, vertical storage, lighting tricks, and maintenance habits for remote work success."
 image = "images/decluttering-5x5-home-office-corner-remote-workers-2.jpg"
 images = ["images/decluttering-5x5-home-office-corner-remote-workers-1.jpg", "images/decluttering-5x5-home-office-corner-remote-workers-2.jpg", "images/decluttering-5x5-home-office-corner-remote-workers-3.jpg", "images/decluttering-5x5-home-office-corner-remote-workers-4.jpg", "images/decluttering-5x5-home-office-corner-remote-workers-5.jpg"]
@@ -80,7 +80,7 @@ A tangled mess of cords can make even the most thoughtfully designed corner feel
 
 With only 25 sq ft of floor, the walls become the most valuable real estate. Vertical storage lets you keep essential items within arm’s reach while preserving precious floor space.
 
-- **Floating shelves** – install two or three 24‑inch wide shelves. Space them 12‑inch apart, starting about 36 inches from the floor. Lower shelves hold heavier books; upper shelves can display a small plant or decorative box.
+- **Floating shelves** – install two or three 24‑inch wide shelves. Space them 12‑inch apart, starting about 48 inches from the floor, which leaves roughly 18 inches of clear space above a standard desk surface (about 29–30 inches high). Lower shelves hold heavier books; upper shelves can display a small plant or decorative box.
 - **Pegboard system** – a 24" × 48" pegboard mounted above the desk can hold headphones, a small whiteboard, and frequently used tools. Use interchangeable hooks to adapt the layout as needs change.
 - **Over‑door organizer** – if the corner is near a door, a hanging organizer with clear pockets can store mail, chargers, and notebooks without taking up wall space.
 - **Magnetic strip** – attach a thin magnetic strip to the side of the desk to keep metal paper clips, pins, and small tools organized.

@@ -1,7 +1,7 @@
 +++
 title = "Renter Friendly Storage Ideas for Small Kitchen with Four Cabinets"
 date = "2026-09-22T12:29:32+00:00"
-lastmod = "2026-09-22T12:29:32+00:00"
+lastmod = "2026-10-07T21:00:00+00:00"
 description = "Discover renter‑friendly storage ideas for a tiny kitchen with only four cabinets. Practical, non‑permanent solutions that boost space without breaking your lease."
 image = "images/renter-friendly-storage-ideas-small-kitchen-four-1.jpg"
 images = ["images/renter-friendly-storage-ideas-small-kitchen-four-1.jpg", "images/renter-friendly-storage-ideas-small-kitchen-four-2.jpg", "images/renter-friendly-storage-ideas-small-kitchen-four-3.jpg", "images/renter-friendly-storage-ideas-small-kitchen-four-4.jpg", "images/renter-friendly-storage-ideas-small-kitchen-four-5.jpg"]
@@ -55,7 +55,7 @@ The interior of each cabinet is prime real estate. With a few inexpensive, non�
 
 ### Slim Pull‑Out Drawers for Deep Cabinets
 Deep lower cabinets often become a black hole for baking sheets. A set of 2‑3"‑deep pull‑out drawers slides out on rails, giving you front‑to‑back visibility.
-- **Fit tip:** Choose a drawer kit designed for a 12"‑deep cabinet; the rails attach with adhesive strips, so no drilling is needed.
+- **Fit tip:** Choose a drawer kit sized to your cabinet's interior depth (a standard 24" base cabinet leaves roughly 21–22" of usable depth once the door and face frame are accounted for); the rails attach with adhesive strips, so no drilling is needed.
 - **Result:** You can see every sheet or tray without rummaging.
 
 ### Tiered Shelf Inserts for Upper Cabinets
@@ -150,7 +150,7 @@ Even the best **storage ideas** can backfire if you overlook a few simple detail
 All of the following items are widely available at home‑goods stores, big‑box retailers, or online marketplaces. They require no drilling and can be removed without damage.
 
 1. **Adjustable Shelf Divider Set** – Tension‑based, fits cabinet widths up to 30".
-2. **Slim Pull‑Out Drawer Kit** – 2"‑deep drawers with adhesive rails for 12"‑deep cabinets.
+2. **Slim Pull‑Out Drawer Kit** – 2"‑deep drawers with adhesive rails sized to the usable depth of a standard 24"‑deep base cabinet.
 3. **Compact Rolling Kitchen Cart** – 24" × 15" footprint, two shelves, lockable wheels.
 4. **Command‑Style Hook Strip** – Holds up to 5 lb per hook, removable adhesive.
 5. **12‑inch Tension Rod** – Ideal for cabinet‑door hanging rails.

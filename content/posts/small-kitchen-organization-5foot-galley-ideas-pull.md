@@ -1,7 +1,7 @@
 +++
 title = "Small Kitchen Organization Ideas: Pull Out Spice Rack for 5‑ft Galley"
 date = "2026-09-22T12:48:45+00:00"
-lastmod = "2026-09-22T12:48:45+00:00"
+lastmod = "2026-10-07T21:00:00+00:00"
 description = "Learn how to design, build, and install a pull‑out spice rack for a 5‑ft galley kitchen in a studio apartment. Step‑by‑step instructions, material tips, and maintenance advice for smarter small kitchen organization."
 image = "images/small-kitchen-organization-5foot-galley-ideas-pull-2.jpg"
 images = ["images/small-kitchen-organization-5foot-galley-ideas-pull-1.jpg", "images/small-kitchen-organization-5foot-galley-ideas-pull-2.jpg", "images/small-kitchen-organization-5foot-galley-ideas-pull-3.jpg", "images/small-kitchen-organization-5foot-galley-ideas-pull-4.jpg", "images/small-kitchen-organization-5foot-galley-ideas-pull-5.jpg"]
@@ -31,12 +31,12 @@ Living in a studio apartment means every square inch competes for a purpose. In 
 
 ![studio kitchen cabinet interior measured with tape measure and sketch](images/small-kitchen-organization-5foot-galley-ideas-pull-3.jpg)
 
-Accurate measurements are the foundation of a successful build. A typical narrow base cabinet beside the stove is about 12 in wide, 24 in deep and 34–36 in high, but variations are common. Follow these steps before you cut any material:
+Accurate measurements are the foundation of a successful build. A typical narrow base cabinet beside the stove is about 12 in wide and 24 in deep. It stands roughly 34½ in tall (36 in with the countertop), which leaves about 29–31 in of usable interior height once the toe-kick and top rail are subtracted, but variations are common. Follow these steps before you cut any material:
 
 1. **Select the cabinet** you’ll convert – most studios have a narrow base cabinet under the sink or beside the stove.
 2. **Measure interior width** (inside face‑to‑face). Subtract 2 in to allow a 1‑in clearance on each side for the slide hardware.
 3. **Determine rack depth** – a rack about 10 in deep holds standard 2‑in spice jars in several rows and leaves room in a 24‑in‑deep cabinet for the slide hardware and the door.
-4. **Mark the ideal height** – inside a 34–36 in base cabinet, keep the most‑used jars close to the front opening where they are easy to reach; eye level (about 48–54 in from the floor) only applies if you mount the rack in a tall pantry cabinet.
+4. **Mark the ideal height** – inside a base cabinet, keep the most‑used jars close to the front opening where they are easy to reach; eye level (about 48–54 in from the floor) only applies if you mount the rack in a tall pantry cabinet.
 5. **Check for obstacles** – locate water lines, electrical outlets, and dishwasher hoses. Adjust the rack’s vertical position if any obstruction interferes with the slide path.
 
 > **Pro tip:** Sketch a simple diagram on graph paper (1 square = 1 in). Visualizing the rack inside the cabinet helps you spot clearance issues before you start cutting.
@@ -56,7 +56,7 @@ The slide mechanism determines how smoothly the rack operates and how much weigh
 - **Weight capacity** – choose slides rated for at least 30‑40 lb. A fully stocked rack rarely exceeds this, but the extra margin prevents sagging over time.
 
 **Typical hardware set** (no brand names mentioned):
-1. 12‑in heavy‑duty full‑extension ball‑bearing slide pair.
+1. 10‑in heavy‑duty full‑extension ball‑bearing slide pair.
 2. Optional soft‑close side‑mount kit for quieter operation.
 3. Adjustable mounting brackets to accommodate slight wall irregularities.
 
@@ -102,7 +102,7 @@ Material choice affects durability, finish options, and resistance to moisture.
 
 With measurements, hardware, and materials in hand, you can assemble the rack.
 
-1. **Cut side panels** – two pieces of ½‑in plywood to the interior cabinet height (34‑36 in) and 10 in depth.
+1. **Cut side panels** – two pieces of ½‑in plywood to the interior cabinet height you measured (typically about 29–31 in) and 10 in depth.
 2. **Cut shelves** – one piece per tier, each 10 in wide by 10 in deep.
 3. **Prepare the back panel** (optional) – cut a ¼‑in sheet to the same width and depth as the shelves.
 4. **Drill pilot holes** for the slide brackets on the inner faces of the side panels. Keep holes at least 1 in from the top and bottom edges.
@@ -165,10 +165,10 @@ A pull‑out rack stays useful only if you keep it tidy and functional.
 
 
 **Studio Apartment – 5‑ft Galley**
-- **Cabinet dimensions**: 12‑in deep, 35‑in high interior, located under the sink.
+- **Cabinet dimensions**: 12‑in wide, 24‑in deep, about 30‑in high interior, located beside the stove.
 - **Rack size**: 10‑in deep, 10‑in wide, three tiers.
 - **Materials**: ½‑in birch plywood for sides and shelves, ¼‑in plywood back panel, water‑based white paint.
-- **Slides**: 12‑in full‑extension ball‑bearing side‑mount slides, 35 lb capacity.
+- **Slides**: 10‑in full‑extension ball‑bearing side‑mount slides, 35 lb capacity.
 - **Containers**: 2‑in clear acrylic jars with magnetic lids.
 - **Installation time**: Approximately 3 hours (including cutting, assembly, and finishing).
 - **Result**: The rack slides out smoothly, displaying all 12 spice jars at eye level. Countertop space is reclaimed, and the kitchen feels less cluttered.

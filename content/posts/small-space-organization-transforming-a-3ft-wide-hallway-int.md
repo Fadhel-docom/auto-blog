@@ -1,7 +1,7 @@
 +++
 title = "Small Space Organization: Transforming a 3‑ft Wide Hallway into Functional Coat and Shoe Storage"
 date = "2026-09-21T07:38:29.258631+00:00"
-lastmod = "2026-10-01T12:55:00+01:00"
+lastmod = "2026-10-07T21:00:00+00:00"
 description = "Turn a 3‑ft-wide hallway into practical coat and shoe storage with a measurement-first plan, shallow storage, clear walking space, and a simple maintenance routine."
 image = "images/small-space-organization-transforming-a-3ft-wide-hallway-int-1.jpg"
 images = [
@@ -15,7 +15,7 @@ tags = ["small space organization", "hallway storage", "home organization"]
 categories = ["Small Space"]
 faq = [
   { question = "Can a 3-ft hallway really hold coats and shoes?", answer = "Yes, when storage is shallow and the walking route is protected. Measure the actual hallway first, then use vertical wall space, a narrow shoe shelf, or another solution that does not create a pinch point." },
-  { question = "How deep should hallway storage be?", answer = "Use the shallowest depth that solves the storage problem. Around 12 to 15 inches can work for many entryway items, but the correct depth depends on the hallway and the storage product. Always measure the remaining passage." },
+  { question = "How deep should hallway storage be?", answer = "Use the shallowest depth that solves the storage problem. In a 3-foot hallway, keep it to about 4 to 8 inches (hooks, a slim rail, a narrow shoe shelf). A depth of 12 to 15 inches suits wider entryways, not a 36-inch passage, because it leaves only 21 to 24 inches. Always measure the remaining passage." },
   { question = "Should I use wall-mounted or freestanding storage?", answer = "Wall-mounted storage usually preserves more floor area, while a freestanding unit can be easier to reposition. Choose based on wall construction, rental restrictions, available depth, and how much storage you actually need." },
   { question = "Where should shoes go in a narrow hallway?", answer = "Keep frequently worn shoes low and easy to reach. A shallow open shelf or compact shoe cabinet can work well, provided it does not obstruct doors or the normal walking route." },
   { question = "How many coats should I keep in the hallway?", answer = "Keep the coats used during the current season in the easiest-access zone. Move rarely used or out-of-season coats elsewhere rather than expanding hallway storage until the passage feels crowded." },
@@ -41,7 +41,7 @@ Start with a tape measure rather than a storage catalog.
 
 Record the hallway's **clear width**, total usable length, ceiling height, door swings, and the locations of switches, vents, trim, radiators, and other fixed obstacles. Measure the wall section where storage could actually sit; the total hallway length is less important if doors interrupt the usable wall.
 
-Then measure the depth of the storage area you can tolerate. A shelf that is 15 inches deep takes a significant amount of space in a 36-inch-wide corridor, so do not treat the maximum available depth as a target.
+Then measure the depth of the storage area you can tolerate. A 36-inch corridor is already the minimum hallway width in the International Residential Code (section R311.6), so any permanent depth narrows it below that. A 15-inch shelf would leave only 21 inches, well under the 30 to 36 inches generally recommended for a main walkway. Treat shallow storage of about 4 to 8 inches (hooks, a slim rail, a narrow shoe shelf) as the practical limit, and never treat the maximum available depth as a target.
 
 Write down four numbers:
 
@@ -287,7 +287,7 @@ Yes, when storage is shallow and the walking route is protected. Measure the act
 
 ### How deep should hallway storage be?
 
-Use the shallowest depth that solves the storage problem. Around 12 to 15 inches can work for many entryway items, but the correct depth depends on the hallway and the storage product. Always measure the remaining passage.
+Use the shallowest depth that solves the storage problem. In a 3-foot hallway, keep it to about 4 to 8 inches (hooks, a slim rail, a narrow shoe shelf). A depth of 12 to 15 inches suits wider entryways, not a 36-inch passage, because it leaves only 21 to 24 inches. Always measure the remaining passage.
 
 ### Should I use wall-mounted or freestanding storage?
 
