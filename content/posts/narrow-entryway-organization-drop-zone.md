@@ -177,7 +177,7 @@ Keep the drop zone focused on daily-use items such as keys, a bag, mail that nee
 Use a short reset routine, return each item to a defined location, and remove things that repeatedly accumulate without being used.
 
 
-![Mirror, coat rack and bench](https://images.pexels.com/photos/19980247/pexels-photo-19980247.jpeg?auto=compress&cs=tinysrgb&w=1600)
+![Narrow apartment corridor with a compact wall-mounted wardrobe](https://images.pexels.com/photos/6489092/pexels-photo-6489092.jpeg?auto=compress&cs=tinysrgb&w=1600)
 
 ## Related Small-Space Guides
 
