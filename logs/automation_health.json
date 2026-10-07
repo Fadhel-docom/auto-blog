@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-07T12:34:24+00:00",
+  "timestamp": "2026-10-07T13:00:58+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "PAUSED",
@@ -55,67 +55,39 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 37621877144,
+      "id": 37625205639,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-10-07T12:33:41Z",
-      "updated_at": "2026-10-07T12:34:20Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37621877144"
+      "created_at": "2026-10-07T13:00:49Z",
+      "updated_at": "2026-10-07T13:00:53Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37625205639"
     },
     "Traffic Report": {
-      "id": 37583052658,
+      "id": 37623282164,
       "status": "completed",
       "conclusion": "success",
-      "created_at": "2026-10-07T06:43:01Z",
-      "updated_at": "2026-10-07T06:43:15Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37583052658"
+      "created_at": "2026-10-07T12:45:13Z",
+      "updated_at": "2026-10-07T12:45:29Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/37623282164"
     }
   },
   "quality_gate": {
     "status": "UNAVAILABLE"
   },
   "traffic": {
-    "status": "OK",
-    "visitors_today": 2,
-    "visitors_last_7_days": 91,
-    "visitors_this_month": 91,
-    "stats_today": [
-      {
-        "day": "2026-10-07",
-        "hourly": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          2,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "daily": 2,
-        "weekly": 2,
-        "monthly": 2
-      }
-    ]
+    "status": "UNAVAILABLE",
+    "reason": "('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
   },
   "alerts": [],
-  "issues": [],
+  "issues": [
+    {
+      "type": "GoatCounter unavailable",
+      "traffic": {
+        "status": "UNAVAILABLE",
+        "reason": "('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
+      }
+    }
+  ],
   "publisher_steps": {},
   "secrets": {
     "INDEXNOW_KEY": "OK",
