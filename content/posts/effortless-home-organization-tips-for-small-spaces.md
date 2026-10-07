@@ -190,7 +190,7 @@ Do not buy an organizer simply because a gap exists. First decide what problem t
 
 If the answer is “anything that does not have a home,” the organizer is likely to become a clutter collector.
 
-## 9. Keep Surfaces Deliberately Partly Empty space is functional.
+## 9. Keep Useful Surfaces Partly Empty
 
 A kitchen counter with a clear working area is easier to clean. A bathroom vanity with one open section feels less crowded. A bedroom dresser with some visible surface makes it easier to notice when clutter is returning.
 
