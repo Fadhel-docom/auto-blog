@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-07T00:20:21+00:00",
+  "timestamp": "2026-10-07T12:18:22+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -99,7 +99,7 @@
       "canonical": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-simple-system/",
       "images": 10,
       "tags": 4,
-      "h2_count": 12,
+      "h2_count": 13,
       "image_credits": false,
       "related": true,
       "schema": {
@@ -114,7 +114,7 @@
       "required_failures": [
         "image credits"
       ],
-      "html_length": 25932
+      "html_length": 26310
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-organization-ideas-practical-space/",
