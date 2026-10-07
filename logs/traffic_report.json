@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-07T06:43:10+00:00",
+  "timestamp": "2026-10-07T12:45:24+00:00",
   "status": "OK",
   "site": "homeorganizationideas.goatcounter.com",
-  "period_start": "2026-10-06T06:00:00+00:00",
-  "period_end": "2026-10-07T06:00:00+00:00",
-  "visitors": 19,
+  "period_start": "2026-10-06T12:00:00+00:00",
+  "period_end": "2026-10-07T12:00:00+00:00",
+  "visitors": 3,
   "stats": [
     {
       "day": "2026-10-06",
@@ -17,8 +17,8 @@
         0,
         0,
         0,
-        3,
-        13,
+        0,
+        0,
         0,
         0,
         0,
@@ -34,9 +34,9 @@
         0,
         0
       ],
-      "daily": 17,
-      "weekly": 19,
-      "monthly": 19
+      "daily": 1,
+      "weekly": 3,
+      "monthly": 3
     },
     {
       "day": "2026-10-07",
