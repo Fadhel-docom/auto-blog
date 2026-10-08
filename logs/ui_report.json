@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-08T00:18:59+00:00",
+  "timestamp": "2026-10-08T12:17:44+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -39,7 +39,7 @@
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 30395
+    "html_length": 30362
   },
   "articles": [
     {
@@ -47,12 +47,12 @@
       "status": 200,
       "title": "Decluttering Ideas for Small Homes That Actually Last",
       "title_capitalized": true,
-      "meta_description": "Practical decluttering ideas for small homes: a 15-minute audit, room-by-room limits, storage boundaries, and a simple reset routine that prevents clutter from returning.",
+      "meta_description": "A practical decluttering system for small homes: audit problem areas, set space limits, create easy homes, remove excess, and maintain a simple reset routine.",
       "canonical": "https://fadhel-docom.github.io/auto-blog/posts/decluttering-ideas-for-small-homes-that-actually-last/",
-      "images": 11,
+      "images": 10,
       "tags": 3,
-      "h2_count": 14,
-      "image_credits": true,
+      "h2_count": 17,
+      "image_credits": false,
       "related": true,
       "schema": {
         "present": true,
@@ -63,8 +63,10 @@
         ],
         "has_article": true
       },
-      "required_failures": [],
-      "html_length": 32494
+      "required_failures": [
+        "image credits"
+      ],
+      "html_length": 36564
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-small-shelves/",
@@ -178,5 +180,5 @@
     ]
   },
   "status": "needs_attention",
-  "failure_count": 1
+  "failure_count": 2
 }
