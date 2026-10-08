@@ -203,7 +203,7 @@ Change the system.
 
 This is especially important in small spaces because every repeated mistake consumes a visible part of the room.
 
-If you also struggle with limited storage elsewhere in the home, our guide to [small-apartment storage ideas](../small-apartment-storage-ideas-a-practical-small-space-guide/) can help you redistribute items instead of forcing every category into the bathroom.
+If you also struggle with limited storage elsewhere in the home, our guide to [small-apartment storage ideas](../small-apartment-storage-ideas-practical-space/) can help you redistribute items instead of forcing every category into the bathroom.
 
 ## Make Cleaning Part of the Organization System
 
@@ -288,7 +288,7 @@ This small rule reduces visual noise and makes restocking predictable. It also h
 
 ## Related Guides
 
-Continue with our [small bathroom organization guide](/posts/small-bathroom-organization-ideas-practical-space/), [under-sink storage system](/posts/under-sink-organization-ideas-simple-system/), [small closet organization guide](/posts/small-closet-organization-ideas-practical-space/), [small bedroom organization guide](/posts/small-bedroom-organization-ideas-practical-space/), [linen closet guide](/posts/linen-closet-organization-ideas-small-shelves/), and [small apartment storage guide](/posts/small-apartment-storage-ideas-practical-space/).
+Continue with our [small bathroom organization guide](../small-bathroom-organization-ideas-practical-space/), [under-sink storage system](../under-sink-organization-ideas-simple-system/), [small closet organization guide](../small-closet-organization-ideas-practical-space/), [small bedroom organization guide](../small-bedroom-organization-ideas-practical-space/), [linen closet guide](../linen-closet-organization-ideas-small-shelves/), and [small apartment storage guide](../small-apartment-storage-ideas-practical-space/).
 
 ## Photo Sources
 
