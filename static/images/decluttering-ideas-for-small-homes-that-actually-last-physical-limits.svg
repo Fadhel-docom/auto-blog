@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="527" viewBox="0 0 700 527" role="img" aria-labelledby="title desc">
+<title id="title">Physical storage limit</title>
+<desc id="desc">A storage boundary keeps a household category from growing beyond the space available.</desc>
+<defs>
+<style>.c0{font:700 26px DejaVu Sans, Helvetica, Arial, sans-serif;fill:#1F3A34} .c1{font:20px DejaVu Sans, Helvetica, Arial, sans-serif;fill:#5E6B66} .c2{font:700 22px DejaVu Sans, Helvetica, Arial, sans-serif;fill:#1F3A34} .c3{font:700 20px DejaVu Sans, Helvetica, Arial, sans-serif;fill:#F6F1E8} .c4{font:700 21px DejaVu Sans, Helvetica, Arial, sans-serif;fill:#1F3A34}</style>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#2F7F79"/></marker>
+</defs>
+<rect width="700" height="527" rx="24" fill="#F6F1E8"/>
+<text x="40" y="48" class="c0">Set a physical limit</text>
+<text x="40" y="78" class="c1">Let the available space trigger a decision.</text>
+<rect x="40" y="110" width="290" height="300" rx="18" fill="#E6EEF2"/>
+<text x="60" y="148" class="c2">Storage boundary</text>
+<rect x="70" y="170" width="230" height="130" rx="12" fill="#DCEBDD" stroke="#2F7F79" stroke-width="5"/>
+<rect x="90" y="192" width="60" height="36" rx="7" fill="#F3E3D3"/>
+<rect x="158" y="192" width="60" height="36" rx="7" fill="#F3E3D3"/>
+<rect x="226" y="192" width="56" height="36" rx="7" fill="#F3E3D3"/>
+<rect x="90" y="242" width="80" height="36" rx="7" fill="#F3E3D3"/>
+<rect x="178" y="242" width="104" height="36" rx="7" fill="#F3E3D3"/>
+<text x="60" y="332" class="c1">basket, drawer, shelf, or</text>
+<text x="60" y="358" class="c1">hooks</text>
+<path d="M334 260 L356 260" stroke="#2F7F79" stroke-width="4" marker-end="url(#arrow)"/>
+<rect x="356" y="110" width="304" height="88" rx="18" fill="#DCEBDD"/>
+<circle cx="390" cy="146" r="21" fill="#2F7F79"/>
+<text x="390" y="153" class="c3" text-anchor="middle">1</text>
+<text x="422" y="146" class="c4">FULL</text>
+<text x="422" y="171" class="c1">Stop adding storage.</text>
+<rect x="356" y="214" width="304" height="138" rx="18" fill="#F3E3D3"/>
+<circle cx="390" cy="250" r="21" fill="#C4622D"/>
+<text x="390" y="257" class="c3" text-anchor="middle">2</text>
+<text x="422" y="250" class="c4">EDIT</text>
+<text x="422" y="275" class="c1">Remove the</text>
+<text x="422" y="300" class="c1">least-useful items</text>
+<text x="422" y="325" class="c1">first.</text>
+<rect x="356" y="368" width="304" height="113" rx="18" fill="#E6EEF2"/>
+<circle cx="390" cy="404" r="21" fill="#2F7F79"/>
+<text x="390" y="411" class="c3" text-anchor="middle">3</text>
+<text x="422" y="404" class="c4">THEN ADD</text>
+<text x="422" y="429" class="c1">Replace or add one</text>
+<text x="422" y="454" class="c1">item.</text>
+</svg>
