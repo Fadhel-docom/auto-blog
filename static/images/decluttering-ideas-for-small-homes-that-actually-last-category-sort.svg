@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="503" viewBox="0 0 700 503" role="img" aria-labelledby="title desc">
+<title id="title">Four-way decluttering category sort</title>
+<desc id="desc">Four practical decisions for each item in a category: keep, relocate, donate, or discard and recycle.</desc>
+<defs>
+<style>.c0{font:700 26px DejaVu Sans, Helvetica, Arial, sans-serif;fill:#1F3A34} .c1{font:20px DejaVu Sans, Helvetica, Arial, sans-serif;fill:#5E6B66} .c2{font:700 21px DejaVu Sans, Helvetica, Arial, sans-serif;fill:#1F3A34} .c3{font:700 20px DejaVu Sans, Helvetica, Arial, sans-serif;fill:#F6F1E8}</style>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#2F7F79"/></marker>
+</defs>
+<rect width="700" height="503" rx="24" fill="#F6F1E8"/>
+<text x="40" y="48" class="c0">Sort one category</text>
+<text x="40" y="78" class="c1">Compare similar items before making storage decisions.</text>
+<rect x="200" y="105" width="300" height="80" rx="18" fill="#E6EEF2"/>
+<text x="350" y="140" class="c2" text-anchor="middle">One category</text>
+<text x="350" y="167" class="c1" text-anchor="middle">mugs, cables, toiletries</text>
+<path d="M350 185 L350 215" stroke="#2F7F79" stroke-width="4" marker-end="url(#arrow)"/>
+<rect x="40" y="225" width="290" height="113" rx="18" fill="#DCEBDD"/>
+<circle cx="74" cy="261" r="21" fill="#2F7F79"/>
+<text x="74" y="268" class="c3" text-anchor="middle">1</text>
+<text x="106" y="261" class="c2">KEEP</text>
+<text x="106" y="286" class="c1">Used, and has a</text>
+<text x="106" y="311" class="c1">clear home.</text>
+<rect x="370" y="225" width="290" height="113" rx="18" fill="#E6EEF2"/>
+<circle cx="404" cy="261" r="21" fill="#C4622D"/>
+<text x="404" y="268" class="c3" text-anchor="middle">2</text>
+<text x="436" y="261" class="c2">RELOCATE</text>
+<text x="436" y="286" class="c1">Useful, but stored in</text>
+<text x="436" y="311" class="c1">the wrong place.</text>
+<rect x="40" y="360" width="290" height="113" rx="18" fill="#F3E3D3"/>
+<circle cx="74" cy="396" r="21" fill="#2F7F79"/>
+<text x="74" y="403" class="c3" text-anchor="middle">3</text>
+<text x="106" y="396" class="c2">DONATE</text>
+<text x="106" y="421" class="c1">Useful, but not</text>
+<text x="106" y="446" class="c1">needed here.</text>
+<rect x="370" y="360" width="290" height="113" rx="18" fill="#E6EEF2"/>
+<circle cx="404" cy="396" r="21" fill="#C4622D"/>
+<text x="404" y="403" class="c3" text-anchor="middle">4</text>
+<text x="436" y="396" class="c2">DISCARD</text>
+<text x="436" y="421" class="c1">Broken, unsafe, or</text>
+<text x="436" y="446" class="c1">unusable.</text>
+</svg>
