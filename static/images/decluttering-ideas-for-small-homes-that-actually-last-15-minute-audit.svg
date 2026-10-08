@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="463" viewBox="0 0 700 463" role="img" aria-labelledby="title desc">
+<title id="title">15-minute decluttering audit</title>
+<desc id="desc">A four-step audit for finding one recurring clutter problem without emptying the whole home.</desc>
+<defs>
+<style>.c0{font:700 26px DejaVu Sans, Helvetica, Arial, sans-serif;fill:#1F3A34} .c1{font:20px DejaVu Sans, Helvetica, Arial, sans-serif;fill:#5E6B66} .c2{font:700 20px DejaVu Sans, Helvetica, Arial, sans-serif;fill:#F6F1E8} .c3{font:700 21px DejaVu Sans, Helvetica, Arial, sans-serif;fill:#1F3A34}</style>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#2F7F79"/></marker>
+</defs>
+<rect width="700" height="463" rx="24" fill="#F6F1E8"/>
+<text x="40" y="48" class="c0">15-minute audit</text>
+<text x="40" y="78" class="c1">Find the repeat problem before moving anything.</text>
+<rect x="40" y="110" width="290" height="163" rx="18" fill="#E6EEF2"/>
+<circle cx="74" cy="146" r="21" fill="#2F7F79"/>
+<text x="74" y="153" class="c2" text-anchor="middle">1</text>
+<text x="106" y="146" class="c3">Walk for 15 min</text>
+<text x="106" y="171" class="c1">Mark the places</text>
+<text x="106" y="196" class="c1">where clutter</text>
+<text x="106" y="221" class="c1">appears again and</text>
+<text x="106" y="246" class="c1">again.</text>
+<rect x="370" y="110" width="290" height="163" rx="18" fill="#DCEBDD"/>
+<circle cx="404" cy="146" r="21" fill="#C4622D"/>
+<text x="404" y="153" class="c2" text-anchor="middle">2</text>
+<text x="436" y="146" class="c3">Choose one area</text>
+<text x="436" y="171" class="c1">Do not empty</text>
+<text x="436" y="196" class="c1">several rooms at the</text>
+<text x="436" y="221" class="c1">same time.</text>
+<rect x="40" y="295" width="290" height="138" rx="18" fill="#F3E3D3"/>
+<circle cx="74" cy="331" r="21" fill="#2F7F79"/>
+<text x="74" y="338" class="c2" text-anchor="middle">3</text>
+<text x="106" y="331" class="c3">Record the cause</text>
+<text x="106" y="356" class="c1">No home, poor</text>
+<text x="106" y="381" class="c1">location, or too</text>
+<text x="106" y="406" class="c1">many items?</text>
+<rect x="370" y="295" width="290" height="138" rx="18" fill="#E6EEF2"/>
+<circle cx="404" cy="331" r="21" fill="#C4622D"/>
+<text x="404" y="338" class="c2" text-anchor="middle">4</text>
+<text x="436" y="331" class="c3">Set one test</text>
+<text x="436" y="356" class="c1">Change one thing</text>
+<text x="436" y="381" class="c1">and check whether</text>
+<text x="436" y="406" class="c1">clutter returns.</text>
+<path d="M334 191 L366 191" stroke="#2F7F79" stroke-width="4" marker-end="url(#arrow)"/>
+<path d="M334 364 L366 364" stroke="#2F7F79" stroke-width="4" marker-end="url(#arrow)"/>
+<path d="M515 275 L515 293" stroke="#2F7F79" stroke-width="4" marker-end="url(#arrow)"/>
+</svg>
