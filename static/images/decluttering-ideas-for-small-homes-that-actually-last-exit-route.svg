@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="512" viewBox="0 0 700 512" role="img" aria-labelledby="title desc">
+<title id="title">Decluttering exit route</title>
+<desc id="desc">A decision path for moving unwanted household items out of the home without creating a permanent donation or recycling pile.</desc>
+<defs>
+<style>.c0{font:700 26px DejaVu Sans, Helvetica, Arial, sans-serif;fill:#1F3A34} .c1{font:20px DejaVu Sans, Helvetica, Arial, sans-serif;fill:#5E6B66} .c2{font:700 21px DejaVu Sans, Helvetica, Arial, sans-serif;fill:#1F3A34} .c3{font:700 20px DejaVu Sans, Helvetica, Arial, sans-serif;fill:#F6F1E8}</style>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#2F7F79"/></marker>
+</defs>
+<rect width="700" height="512" rx="24" fill="#F6F1E8"/>
+<text x="40" y="48" class="c0">Give every unwanted item an exit</text>
+<text x="40" y="78" class="c1">The goal is removal from the home, not another pile.</text>
+<rect x="200" y="105" width="300" height="64" rx="18" fill="#E6EEF2"/>
+<text x="350" y="145" class="c2" text-anchor="middle">Unwanted item</text>
+<path d="M350 169 L350 199" stroke="#2F7F79" stroke-width="4" marker-end="url(#arrow)"/>
+<rect x="40" y="209" width="290" height="113" rx="18" fill="#DCEBDD"/>
+<circle cx="74" cy="245" r="21" fill="#2F7F79"/>
+<text x="74" y="252" class="c3" text-anchor="middle">1</text>
+<text x="106" y="245" class="c2">DONATE</text>
+<text x="106" y="270" class="c1">Clean and usable by</text>
+<text x="106" y="295" class="c1">someone else.</text>
+<rect x="370" y="209" width="290" height="113" rx="18" fill="#F3E3D3"/>
+<circle cx="404" cy="245" r="21" fill="#C4622D"/>
+<text x="404" y="252" class="c3" text-anchor="middle">2</text>
+<text x="436" y="245" class="c2">SELL</text>
+<text x="436" y="270" class="c1">Worth the effort of</text>
+<text x="436" y="295" class="c1">listing.</text>
+<rect x="40" y="344" width="290" height="138" rx="18" fill="#E6EEF2"/>
+<circle cx="74" cy="380" r="21" fill="#2F7F79"/>
+<text x="74" y="387" class="c3" text-anchor="middle">3</text>
+<text x="106" y="380" class="c2">RECYCLE</text>
+<text x="106" y="405" class="c1">Accepted by your</text>
+<text x="106" y="430" class="c1">local program.</text>
+<rect x="370" y="344" width="290" height="138" rx="18" fill="#E6EEF2"/>
+<circle cx="404" cy="380" r="21" fill="#C4622D"/>
+<text x="404" y="387" class="c3" text-anchor="middle">4</text>
+<text x="436" y="380" class="c2">DISCARD</text>
+<text x="436" y="405" class="c1">Broken, unsafe, or</text>
+<text x="436" y="430" class="c1">no practical</text>
+<text x="436" y="455" class="c1">recovery route.</text>
+</svg>
