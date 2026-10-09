@@ -82,7 +82,13 @@ def tokens(text):
     return [w.lower() for w in re.findall(r"[a-z0-9]+", text.lower())
             if len(w) > 2 and w.lower() not in STOP]
 
+def prose_only(text):
+    # Source citations and "Related Guides" lists legitimately repeat across articles
+    # (same authority, same URL), so they are excluded from the duplicate-content check.
+    return re.split(r"^##+\s+(?:Sources|References|Related Guides)\b", text, maxsplit=1, flags=re.M | re.I)[0]
+
 def shingles(text, size=4):
+    text = prose_only(text)
     t = tokens(text)
     return {" ".join(t[i:i+size]) for i in range(max(0, len(t)-size+1))}
 

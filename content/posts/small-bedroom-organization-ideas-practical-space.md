@@ -4,7 +4,7 @@ date = "2026-09-24T06:06:02+00:00"
 lastmod = "2026-10-09T09:00:00+00:00"
 description = "Measure the room, protect a 24-inch walking path, and give clothes, bedding and daily items a fixed height zone. A small bedroom plan with two diagrams."
 image = "images/small-bedroom-floor-first-cover.jpg"
-images = ["images/small-bedroom-floor-first-cover.jpg", "images/small-bedroom-floor-plan.svg", "images/small-bedroom-height-zones.svg"]
+images = ["images/small-bedroom-floor-first-cover.jpg", "images/small-bedroom-floor-plan.svg", "images/small-bedroom-height-zones.svg", "images/small-bedroom-underbed-clearance.svg"]
 tags = ["small bedroom organization ideas", "bedroom storage", "small spaces"]
 categories = ["Bedroom"]
 original_graphics = true
@@ -21,7 +21,6 @@ draft = false
 slug = "small-bedroom-organization-ideas-practical-space"
 +++
 
-![Original illustration of a small bedroom floor plan with a bed, a dresser and a green walking path, titled Small Bedroom Floor-First Plan](images/small-bedroom-floor-first-cover.jpg)
 
 A small bedroom usually fails for one reason: storage gets added to a floor that was already full. The room ends up with more containers, a narrower path to the bed, and the same chair covered in clothes. This guide fixes the order. You measure first, protect a walking path, and only then decide what each wall and each height is for.
 
@@ -65,10 +64,12 @@ A shallow shelf can replace a bedside table when floor space is tight. Choose a 
 
 Under-bed storage works for items you need a few times a year: off-season clothes, spare sheets, luggage. It fails for anything daily, because lifting a bin every morning is a habit that does not last.
 
-1. Measure the clearance from the floor to the lowest part of the frame, at the bed's narrowest point.
+1. Measure the clearance (A in the diagram) from the floor to the lowest part of the frame, at the bed's narrowest point.
 2. Choose bins that are a little shorter than that clearance, so they slide without catching.
 3. Label the end that faces you, and keep one bin per category.
 4. Leave the head end free if the frame has a headboard brace or cables run there.
+
+![Side view of a bed on legs with measurement A from the floor to the lowest part of the frame and a storage bin slightly shorter than A](images/small-bedroom-underbed-clearance.svg)
 
 If your bed sits flat on the floor, skip this step and use the high and low wall zones instead.
 
@@ -134,4 +135,4 @@ NFPA guidance says inside each bedroom and outside each sleeping area. Do not bl
 - [Small Closet Organization Ideas](/posts/small-closet-organization-ideas-practical-space/)
 - [Renter-Friendly Closet Organization With Adhesive Hooks](/posts/renter-friendly-closet-organization-using-adhesive/)
 
-*The two diagrams and the cover in this guide are original illustrations drawn for this article. Measurements are typical examples; measure your own room.*
+*The three diagrams and the cover in this guide are original illustrations drawn for this article. Measurements are typical examples; measure your own room.*

@@ -1,239 +1,129 @@
 +++
 title = "Small Bedroom Storage Ideas: DIY Pull-Out Drawers and Rolling Bins Under a Queen Bed"
 date = "2026-09-22T15:39:18+00:00"
-lastmod = "2026-10-07T21:00:00+00:00"
-description = "Transform the under‑bed space of a 10×10 bedroom with DIY pull‑out drawers and rolling bins. Step‑by‑step plans, real examples, and budget tips."
-image = "images/small-bedroom-storage-ideas-diy-pull-out-2.jpg"
-images = ["images/small-bedroom-storage-ideas-diy-pull-out-1.jpg", "images/small-bedroom-storage-ideas-diy-pull-out-2.jpg", "images/small-bedroom-storage-ideas-diy-pull-out-3.jpg", "images/small-bedroom-storage-ideas-diy-pull-out-4.jpg", "images/small-bedroom-storage-ideas-diy-pull-out-5.jpg"]
+lastmod = "2026-10-09T10:00:00+00:00"
+description = "Measure the under-bed clearance, then choose rolling bins or build simple pull-out drawers. A queen-bed plan with a side view and a top layout."
+image = "images/small-bedroom-diy-drawers-cover.jpg"
+images = ["images/small-bedroom-diy-drawers-cover.jpg", "images/small-bedroom-drawer-side-view.svg", "images/small-bedroom-drawer-layout.svg", "images/small-bedroom-drawer-slide-clearance.svg"]
 tags = ["small bedroom storage ideas", "DIY pull-out drawers", "rolling bins"]
 categories = ["Bedroom"]
+original_graphics = true
 faq = [
-  {question = "What should go in a DIY pull-out bedroom drawer?", answer = "Use pull-outs for categories that benefit from visibility and easy access, such as shoes, folded clothes, bedding, or seasonal items."},
-  {question = "How much clearance should a pull-out need?", answer = "Measure the full path, including hardware and nearby furniture, and leave enough room for the drawer to open fully."},
-  {question = "Is under-bed storage good for everyday clothing?", answer = "It can work, but daily clothing should remain easier to reach than seasonal items."},
-  {question = "How do I keep rolling bins from becoming messy?", answer = "Give each bin one category and label the front. Avoid mixing unrelated items just because there is spare space."},
-  {question = "What is safer than building a heavy pull-out myself?", answer = "Use properly rated hardware or a ready-made storage system when loads are significant. Do not compromise the bed frame."},
-  {question = "How often should I reset bedroom storage?", answer = "Do a two-minute daily reset and a short weekly check. Re-sort a bin when its category becomes difficult to identify."}
+  { question = "What should go in a DIY pull-out bedroom drawer?", answer = "Items you use occasionally, such as shoes, folded clothes or spare bedding. Keep nightly items on a bedside shelf so you never reach under the bed in the dark." },
+  { question = "How much clearance do I need?", answer = "Measure from the floor to the lowest part of the frame. Your drawer height must be less than that, minus space for slides or wheels, so measure first and build second." },
+  { question = "Should I build drawers or buy rolling bins?", answer = "If clearance is low or you want no tools, buy shallow rolling bins sized to the measurement. Build drawers only if you can use slides rated for the load and have the tools." },
+  { question = "Is it safe to modify the bed frame?", answer = "Do not cut or weaken the frame. Build around it, and keep the sleeping surface stable. Check the bed maker's instructions if you add risers." },
+  { question = "Do I need ventilation when finishing wood?", answer = "Yes. Paints and varnishes release organic compounds, so work with windows open and follow the product label. The EPA advises increasing ventilation when using these products." }
 ]
 aliases = ["/posts/small-bedroom-storage-ideas-diy-pull-out-drawers-and-rolling-bins-under-a-queen-bed/"]
 draft = false
 slug = "small-bedroom-storage-ideas-diy-pull-out"
 +++
-Living in a 10×10 bedroom with a queen‑size bed can feel cramped, but the space beneath the mattress is often under‑utilized. **Small bedroom storage ideas** that focus on pull‑out drawers and rolling bins let you reclaim that hidden area without sacrificing comfort. In this guide we walk you through measuring, selecting hardware, building simple drawers, adding mobile bins, and keeping everything tidy. By the end you’ll have a custom, low‑cost system that slides in and out like a dream, giving you extra room for clothes, linens, shoes, or hobby supplies.
 
----
+A queen bed leaves a large, unused rectangle underneath. Whether it is useful depends on one number: the clearance between the floor and the lowest part of the frame. This guide shows how to measure it, choose between rolling bins and DIY drawers, and avoid the mistakes that make under-bed storage fail.
 
-## Why Under‑Bed Space Is a Goldmine in a Small Bedroom
+You need a tape measure and paper. For drawers you also need basic tools and a free weekend.
 
-![bedroom storage cabinet organized storage organized interior](images/small-bedroom-storage-ideas-diy-pull-out-2.jpg)
+## Step 1: Measure the Clearance (A)
 
-Even a standard queen bed (60" wide × 80" long) leaves a rectangular cavity whose height depends on the frame: only about 2–3 inches under a low platform bed, and 8–14 inches under a raised frame. In a 10×10 room, a queen frame with 8 inches of clearance (60 × 80 × 8 in) offers roughly **38,000 cubic inches** of room for items—enough for a week’s worth of clothing, extra bedding, or a mini‑home office stash. The benefits are clear:
+Measure from the floor to the lowest part of the bed frame, at several points. Low platform beds can leave only a few inches, while frames on legs can leave much more. Also measure the width and length of the open space and the space around the bed, because drawers need room to pull out.
 
-- **Out of sight, out of mind** – Items are stored but not displayed, keeping the room looking uncluttered.
-- **Easy access** – Pull‑out drawers glide out, while rolling bins can be wheeled to the wall for quick retrieval.
-- **Scalable** – You can start with a single drawer and add more as your needs evolve.
+![Side view of a bed on legs with a drawer box underneath, showing clearance A and a drawer length limited by the slide](images/small-bedroom-drawer-side-view.svg)
 
-The key is to design a system that fits the exact dimensions of your bed frame and floor clearance. That’s why the first step is precise measurement.
+If A is very low, use flat bins or skip under-bed storage and use the wall instead, as in the [floor-first bedroom plan](/posts/small-bedroom-organization-ideas-practical-space/).
 
----
+## Step 2: Choose the System
 
-## Step 1 - Measure Your Bed and Clearance
+| Option | Best when | Watch out for |
+|---|---|---|
+| Rolling bins | Clearance is moderate and you want no tools | Wheels that catch on thick carpet; bins taller than A |
+| Pull-out drawers on slides | You can build and want a tidy front | Slide load rating and the room to pull drawers open |
+| Fabric or plastic bins without wheels | Items are rarely accessed | Heavy bins are hard to drag out |
 
-![small bedroom storage ideas drawer organized storage organized interior](images/small-bedroom-storage-ideas-diy-pull-out-3.jpg)
+Whatever you choose, make the container a little shorter than A, so it slides without catching.
 
-Accurate numbers prevent wasted lumber and ensure smooth operation. Grab a tape measure, a notebook, and follow these five quick checks:
+## Step 3: Plan the Layout
 
-1. **Bed width and length** – Most queens are 60" × 80", but custom frames may differ. Measure the outer edges of the frame, not the mattress.
-2. **Height from floor to mattress top** – Sit on the edge of the bed and measure down to the floor. Typical low‑profile frames sit 10‑12" high; platform beds can be 14‑16".
-3. **Under‑bed clearance** – Subtract the mattress thickness (usually 10‑12") from the total height measured in step 2. The remainder is the maximum drawer height.
-4. **Side clearance** – Ensure there is at least 1‑2" of space on each side of the frame for drawer slides to mount.
-5. **Floor condition** – Check for carpet pile or uneven flooring; you may need adjustable legs or small shims.
+Drawers usually pull out toward the foot or sides of the bed. Leave the center for the frame support, and check you have room to pull each drawer fully open.
 
-*Example*: In a standard 10×10 room with a queen that has a 10" mattress on a low platform frame (mattress top 12" off the floor), the under‑bed height is 12" (floor‑to‑mattress) minus 10" (mattress) = **2"**. That’s too low for a drawer, so you’d first raise the bed using **adjustable bed risers** (2‑inch to 4‑inch height). After raising, you gain a usable 4‑6" drawer depth.
+![Top view of a bed with two drawers under the foot end that pull out toward the foot, with the center left free for the frame support](images/small-bedroom-drawer-layout.svg)
 
----
+Mark the positions with tape on the floor and test that you can open each one with the bedroom door closed. Check also that a person can still step out of bed on that side, and that cords from lamps and chargers are not caught under a drawer.
 
-## Step 2 - Choose the Right Drawer System
+## Step 4: Build Simple Drawers (If You Choose To)
 
-![bedroom drawer organized storage organized interior](images/small-bedroom-storage-ideas-diy-pull-out-4.jpg)
+1. **Plan the box.** Make the drawer box a little narrower and shorter than the open space, and lower than A minus the slide or wheel allowance.
+2. **Pick slides rated for the load.** Check the slide maker's data sheet for the rated load per pair and the clearance they need on each side, and do not guess.
+3. **Cut and assemble.** Use plywood, glue and screws, and square the box before the glue sets.
+4. **Mount the slides.** Follow the maker's instructions for spacing, and test with an empty drawer first.
+5. **Finish.** Seal or paint if you wish, with windows open and following the product label.
+6. **Test.** Load the drawer with its real contents and open and close it ten times.
 
-Not all drawer hardware is created equal. For a DIY under‑bed build you’ll want a system that balances load capacity, smooth glide, and low profile. Here are three common options:
+Do not cut or weaken the bed frame. Build around it.
 
-- **Side‑mount ball bearing slides** – Offer up to 100 lb per drawer, require only 1‑1.5" of side clearance, and stay hidden when the drawer is closed.
-- **Under‑mount concealed slides** – Provide a cleaner look but need a minimum of 2" clearance under the drawer, which can eat into your storage height.
-- **Drawer runners with built‑in stops** – Ideal for shallow bins; they prevent the drawer from pulling all the way out and hitting the wall.
+![Front view of an under-bed drawer box between two supports with a slide on each side, showing that the box width equals the opening minus the slide space on both sides](images/small-bedroom-drawer-slide-clearance.svg)
 
-For a small bedroom, **side‑mount ball bearing slides** are the most space‑efficient. Pair them with **full‑extension slides** so you can reach the back of the cavity without crouching. Match the slide length to the drawer's front‑to‑back depth (typically 14–22" for under‑bed drawers) so the slides never extend past the box; the roughly 58" interior width of a queen frame is the drawer's width, not its slide length.
+The most common build error is making the box as wide as the opening. Slides need space on both sides, and the amount depends on the model, so read the data sheet before cutting any wood.
 
----
+## Step 5: Add Rolling Bins
 
-## Step 3 - Build Simple Pull‑Out Drawers
+Rolling bins give you flexibility without building. Choose low bins with wheels that fit your floor type, and label the end that faces you. Keep a pull handle or cord on the front so you can retrieve them without crawling.
 
-![small bedroom storage ideas drawer storage organized interior](https://images.pexels.com/photos/6670659/pexels-photo-6670659.jpeg?auto=compress&cs=tinysrgb&w=1600)
+## Step 6: Decide What Goes Under the Bed
 
-You don’t need a carpenter’s workshop to craft sturdy drawers. Follow these numbered steps and you’ll have a pair of drawers ready in a weekend.
+Under-bed storage works for items you need a few times a year or in a weekly rotation: off-season clothes, spare bedding, shoes and luggage. It fails for anything daily, because digging under a bed every morning is a habit that does not last. Keep nightly items on a bedside shelf or hook.
 
-[Read more about Bathroom Organization Maximizing Under Sink](../bathroom-organization-maximizing-under-sink-storage-in-a-24-inch-deep-cabinet-with-pull-out-bins-and-tension-rods/)
+## Tools and Time
 
-1. **Cut the box panels** – Use ¾" plywood for strength. Cut two side pieces (height = under‑bed clearance minus ½", length = drawer depth, e.g. 14"), a front and back piece (width = drawer width – 2×side thickness, height = clearance minus ½"), and a bottom panel (width = drawer width – 2×side thickness, depth = drawer depth). A full‑width queen drawer is about 58" wide; two side‑by‑side drawers of roughly 28" each are easier to pull.
-2. **Assemble the box** – Apply wood glue to the edges, then reinforce with 1¼" pocket hole screws. The bottom panel slides into a groove cut ½" deep along the inner edges of the sides.
-3. **Install the slides** – Attach the slide brackets to the inside of the side panels, following the manufacturer’s layout. Then mount the corresponding slide on the interior of the bed frame (or on a plywood strip that spans the frame for extra support).
-4. **Add a handle** – A simple recessed metal pull or a wooden knob fits in a drilled hole 2" from the front edge. Keep the handle low‑profile to avoid snagging on bedding.
-5. **Finish** – Sand rough edges, apply a clear sealant or paint that matches your décor, and test the glide. Adjust the slide tension if the drawer feels too loose.
+For a simple two-drawer build, you need a tape measure, a pencil, a square, a saw (or have the store cut the plywood for you), a drill and driver, clamps, sandpaper and a pair of safety glasses. Expect a weekend: one session to measure and cut, one to assemble, mount and test. Buy the slides first, because their dimensions decide the rest of the box. If you do not own the tools, rolling bins are the sensible choice for a first attempt.
 
-**Tip**: Build the drawer height a half‑inch shorter than the measured clearance so it moves freely. If you raised the bed by 3" from a 2" starting clearance, you would have 5" of clearance and could build a drawer about 4½" high – perfect for folded sweaters or shoes.
+## Safety Details
 
----
+- **Do not store anything flammable or heavy near the head of the bed.**
+- **Ventilate when finishing wood.** Paints and varnishes release organic compounds, and the U.S. EPA advises increasing ventilation when using them.
+- **Keep the path to the door clear.** Pulled-out drawers should not block the route from bed to door, and smoke alarms should stay uncovered.
 
-## Step 4 - Add Rolling Bins for Flexible Access
+## Where DIY Under-Bed Drawers Go Wrong
 
-Drawers are great for items you need often, but rolling bins give you the freedom to re‑arrange storage without rebuilding. Here’s how to integrate them:
+- Cutting the box to the full opening width and leaving no room for the slides.
+- Choosing slides by price instead of by the rated load for the drawer's contents.
+- Building tall drawers that catch the frame rail when pulled out.
+- Placing drawers where the bedroom door or a dresser blocks them from opening.
+- Filling a drawer with books or heavy tools that the slides were never rated for.
 
-1. **Select low‑profile bins** – Look for wheeled bins that sit flush with the bottom and are at least ½" shorter than your clearance (3–5" on a low frame, 6–8" only if you have 8" or more of clearance). Plastic or fabric bins with reinforced bottoms work well.
-2. **Create a guide rail** – Attach a 1×2" wooden strip along the interior side of the frame, 1" above the floor. This rail keeps the bins from sliding sideways while still allowing smooth rolling.
-3. **Space the bins** – Measure the interior width (about 58") and divide by the number of bins you want. For three bins, leave roughly 2" of clearance between each to prevent wheels from catching.
-4. **Add a lock‑in strap** – A simple elastic cord or Velcro strap across the front of the bin array prevents accidental movement when the bed is made.
-5. **Label and stack** – Use removable label tags on the front of each bin. You can also stack a second tier of bins on top of the first if the clearance allows (max 12" total height).
+## When Drawers Are Not Worth It
 
-Rolling bins are especially useful for seasonal items—swap them out when the weather changes without disturbing the drawer arrangement.
+If A is only a few inches, or the room is too tight to pull drawers out, do not force the project. Use wall storage or a narrow tall unit anchored to the wall instead. Under-bed drawers do not work in every room, and a rolling bin often does the same job for much less effort.
 
-[Read more about Bedroom Organization Step by Step](../bedroom-organization-stepbystep-48inch-clearance/)
+## Try This Tonight
 
----
-
-## Finishing Touches - Labels Wheels and Aesthetics
-
-![small bedroom storage ideas storage cabinet storage organized](images/small-bedroom-storage-ideas-diy-pull-out-6.jpg)
-
-
-A functional system looks better when it’s tidy. Consider these finishing details:
-
-- **Label system** – Use a set of reusable label sticks (like those for pantry jars). Write the category ("Winter Socks", "Work Docs", "Craft Supplies") and attach to the drawer front or bin side.
-- **Wheel covers** – If you have hardwood floors, slip on rubber caps over the bin wheels. They protect the floor and reduce noise.
-- **Color coordination** – Paint the drawer fronts a neutral shade (soft gray or muted navy) to blend with the room. Choose bins in matching or complementary colors for a cohesive look.
-- **Lighting** – Install a thin LED strip under the bed frame that glows when the drawer is pulled out. A small battery‑powered strip adds a modern touch and helps you locate items in low light.
-
-These small tweaks turn a purely utilitarian solution into a design feature that enhances the overall feel of a small bedroom.
-
----
-
-## Real World Examples - Three Small Bedroom Setups
-
-
-
-Seeing the concept in action helps you decide which configuration fits your lifestyle. Below are three realistic scenarios, each using the same queen‑size bed and 10×10 footprint.
-
-[Read more about Small Space Organization Transforming a](../small-space-organization-transforming-a-3ft-wide-hallway-into-functional-coat-and-shoe-storage/)
-
-### Example 1 – Minimalist Student Dorm
-- **Clearance**: Bed raised 2" with risers, giving 4" drawer height.
-- **Drawers**: One shallow drawer (58" × 14" × 4") for textbooks and a laptop sleeve.
-- **Bins**: Two low rolling bins (6" × 20" × 3½") for socks and gym clothes.
-- **Result**: All essentials are stored under the bed, freeing the closet for coats.
-
-### Example 2 – Home Office Hybrid
-- **Clearance**: Bed raised 3" for a 5" drawer.
-- **Drawers**: Two side‑by‑side drawers; the left holds printer paper and office supplies, the right stores a spare monitor.
-- **Bins**: One larger bin (8" × 30" × 4½") for flat‑stored archived files, plus a small bin for charging cables.
-- **Result**: The bedroom doubles as a quiet work nook without a dedicated desk.
-
-### Example 3 – Family Bedroom with Kids
-- **Clearance**: Bed raised 4" for a 6" high drawer.
-- **Drawers**: Single deep drawer for extra bedding and seasonal blankets.
-- **Bins**: Three colorful bins (6" × 18" × 5") labeled "Toys", "Art Supplies", and "Shoes".
-- **Result**: Kids learn to tidy up; parents keep the room looking neat.
-
-Each setup demonstrates how the same core system can be customized for different priorities—whether it’s study space, work efficiency, or child-friendly organization.
-
----
-
-## Common Mistakes and How to Avoid Them
-
-
-
-Even a simple DIY project can stumble if you overlook a few details. Below are the most frequent errors and corrective tips.
-
-- **Under‑estimating clearance** – Forgetting the mattress thickness leads to drawers that won’t close. *Fix*: Measure twice, add a ½" safety margin for slide hardware.
-- **Using the wrong slide type** – Full‑extension slides are essential for deep cavities; partial slides leave the back of the drawer unreachable. *Fix*: Choose slides rated for the exact drawer length.
-- **Skipping the guide rail for bins** – Without a rail, bins can slide sideways and knock against the wall. *Fix*: Install a low wooden strip or a thin metal channel.
-- **Overloading drawers** – Exceeding the slide’s weight rating causes sagging and eventual failure. *Fix*: Distribute weight evenly and keep each drawer under 80 lb.
-- **Neglecting floor protection** – Wheels on hardwood can scratch. *Fix*: Add rubber caps or a thin rug runner underneath the bins.
-
-By anticipating these pitfalls, your DIY under‑bed storage will stay functional and safe for years.
-
----
-
-## Budget Friendly Product Recommendations
-
-
-
-You don’t need high‑end brands to build a reliable system. Here are three generic product categories that are widely available at hardware stores or online marketplaces:
-
-1. **Heavy‑Duty Side‑Mount Ball Bearing Slides** – Look for a length that matches your drawer depth (typically 14–22"), 100 lb capacity, and full‑extension design.
-2. **Plastic Rolling Storage Bins with Soft‑Close Wheels** – Choose bins with a height of 6‑8" and a weight limit of at least 30 lb.
-3. **Adjustable Bed Risers (2‑4 inch)** – Metal or sturdy plastic risers that lock in place and provide a stable lift.
-
-These items typically cost under $20 each, keeping the total project budget under $150 for a complete under‑bed system.
-
----
-
-## Maintaining Your DIY Under Bed System
-
-
-
-A storage solution is only as good as its upkeep. Follow this simple maintenance routine to keep everything sliding smoothly:
-
-1. **Quarterly slide check** – Wipe dust from the slide rails with a dry cloth; apply a light silicone spray if movement feels gritty.
-2. **Wheel inspection** – Remove each bin, spin the wheels, and tighten any loose axle nuts.
-3. **Label refresh** – Update labels seasonally to reflect the items stored; this prevents rummaging and keeps the system organized.
-4. **Structural check** – Verify that the bed risers remain level and that the wooden guide rail is still firmly attached.
-
-A quick 10‑minute review every few months ensures the system remains efficient and safe.
-
----
-
-## Conclusion
-
-Turning the under‑bed space of a 10×10 queen‑size bedroom into a functional storage hub is both affordable and surprisingly simple. By measuring accurately, selecting the right slides, building shallow pull‑out drawers, and adding rolling bins, you create a versatile system that adapts to a student, a remote worker, or a growing family. The **small bedroom storage ideas** presented here focus on DIY methods, real‑world examples, and practical maintenance, so you can enjoy a clutter‑free room without sacrificing style.
-
-Ready to start? Gather your measurements, pick up a few pieces of hardware, and watch the hidden space under your bed come alive. Your small bedroom will feel larger, more organized, and uniquely yours.
-
----
-
-*If you found this guide helpful, share it with a friend who’s also battling limited bedroom space, and explore more DIY organization projects on our site.*
-
----
-
+Measure A at three points and write it down. Take a bin or box one size smaller than that and push it under the bed. If it catches, you have saved yourself a weekend of building the wrong thing.
 
 ## Frequently Asked Questions
 
 ### What should go in a DIY pull-out bedroom drawer?
-Use pull-outs for categories that benefit from visibility and easy access, such as shoes, folded clothes, bedding, or small seasonal items.
+Items you use occasionally, such as shoes, folded clothes or spare bedding. Keep nightly items elsewhere.
 
-### How much clearance should a pull-out need?
-Measure the full path, including drawer hardware and nearby furniture. Leave enough room for the drawer to open fully without blocking the walking route.
+### How much clearance do I need?
+Measure from the floor to the lowest part of the frame. Your drawer must be lower than that minus the slide or wheel allowance.
 
-### Is under-bed storage good for everyday clothing?
-It can work, but daily clothing should remain easier to reach than seasonal items.
+### Should I build drawers or buy rolling bins?
+If clearance is low or you want no tools, buy shallow bins sized to the measurement. Build drawers only with slides rated for the load.
 
-### How do I keep rolling bins from becoming messy?
-Give each bin one category and label the front. Avoid mixing unrelated items just because there is spare space.
+### Is it safe to modify the bed frame?
+Do not cut or weaken the frame. Build around it.
 
-### What is safer than building a heavy pull-out myself?
-Use properly rated hardware or a ready-made storage system when loads are significant. Do not compromise the bed frame or walking clearance.
+### Do I need ventilation when finishing wood?
+Yes. Open windows and follow the product label.
 
-### How often should I reset bedroom storage?
-Do a two-minute daily reset and a short weekly check. Re-sort a bin when its category becomes difficult to identify at a glance.
+## Sources
 
-## Related Storage Guides
+- U.S. EPA, [Volatile Organic Compounds' Impact on Indoor Air Quality](https://www.epa.gov/indoor-air-quality-iaq/volatile-organic-compounds-impact-indoor-air-quality): paints and varnishes release organic compounds; increase ventilation when using them
 
-Pair the pull-out approach with our [small bedroom organization guide](/posts/small-bedroom-organization-ideas-practical-space/), [small closet organization guide](/posts/small-closet-organization-ideas-practical-space/), [small apartment storage guide](/posts/small-apartment-storage-ideas-practical-space/), [linen closet guide](/posts/linen-closet-organization-ideas-small-shelves/), [small bathroom guide](/posts/small-bathroom-organization-ideas-practical-space/), and [decluttering guide](/posts/decluttering-ideas-for-small-homes-that-actually-last/).
+## Related Guides
 
-## Image Credits
+- [Under-Bed Storage for a Small Bedroom: A Measured 48-Inch Clearance](/posts/bedroom-organization-stepbystep-48inch-clearance/)
+- [Small Bedroom Organization: A Floor-First Plan](/posts/small-bedroom-organization-ideas-practical-space/)
+- [Small Closet Organization Ideas](/posts/small-closet-organization-ideas-practical-space/)
 
-- Photo 1: [Michael D Beckwith](https://www.pexels.com/@michael-d-beckwith-2150568551) via [Pexels](https://www.pexels.com/photo/historic-english-bedroom-with-vintage-decor-37884161/)
-- Photo 2: [Max Vakhtbovych](https://www.pexels.com/@artbovich) via [Pexels](https://www.pexels.com/photo/empty-dressing-room-11701120/)
-- Photo 3: [Manuel Aldana](https://www.pexels.com/@manuel-aldana-321951004) via [Pexels](https://www.pexels.com/photo/photo-of-a-bedroom-13893887/)
-- Photo 4: [Curtis Adams](https://www.pexels.com/@curtis-adams-1694007) via [Pexels](https://www.pexels.com/photo/photo-of-a-bedroom-6670659/)
-- Photo 5: [Keegan Checks](https://www.pexels.com/@keeganjchecks) via [Pexels](https://www.pexels.com/photo/brown-woven-basket-on-brown-wooden-cabinet-10117739/)
-- Photo 6: [murod lens](https://www.pexels.com/@murod-lens-1082996343) via [Pexels](https://www.pexels.com/photo/modern-bedroom-workspace-with-wooden-accents-37831449/)
+*The diagrams and the cover in this guide are original illustrations drawn for this article. Measurements are examples; measure your own space.*
