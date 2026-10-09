@@ -339,6 +339,10 @@
 "h": 1253,
 "w": 1880
 },
+"small-apartment-reserve-limit.svg": {
+"h": 400,
+"w": 800
+},
 "small-apartment-storage-ideas-practical-space-1.jpg": {
 "h": 627,
 "w": 940
@@ -378,6 +382,14 @@
 "small-apartment-storage-ideas-practical-space-9.jpg": {
 "h": 626,
 "w": 940
+},
+"small-apartment-storage-map-cover.jpg": {
+"h": 630,
+"w": 1200
+},
+"small-apartment-storage-map.svg": {
+"h": 400,
+"w": 800
 },
 "small-bathroom-cover.jpg": {
 "h": 630,
@@ -462,6 +474,18 @@
 "small-bathroom-organization-without-clutter--alias--small-bathroom-organization-ideas-practical-space-8.jpg": {
 "h": 627,
 "w": 940
+},
+"small-bedroom-diy-drawers-cover.jpg": {
+"h": 630,
+"w": 1200
+},
+"small-bedroom-drawer-layout.svg": {
+"h": 400,
+"w": 800
+},
+"small-bedroom-drawer-side-view.svg": {
+"h": 400,
+"w": 800
 },
 "small-bedroom-floor-first-cover.jpg": {
 "h": 630,
@@ -559,6 +583,22 @@
 "h": 627,
 "w": 940
 },
+"small-bedroom-underbed-clearance.svg": {
+"h": 400,
+"w": 800
+},
+"small-closet-five-measurements.svg": {
+"h": 440,
+"w": 800
+},
+"small-closet-height-zones-cover.jpg": {
+"h": 630,
+"w": 1200
+},
+"small-closet-height-zones.svg": {
+"h": 420,
+"w": 800
+},
 "small-closet-organization-ideas-practical-space--alias--small-closet-organization-ideas-practical-space-2.jpg": {
 "h": 627,
 "w": 940
@@ -615,6 +655,10 @@
 "h": 627,
 "w": 940
 },
+"small-kitchen-deep-cabinet.svg": {
+"h": 420,
+"w": 800
+},
 "small-kitchen-organization-5foot-galley-ideas-pull-1.jpg": {
 "h": 1253,
 "w": 1880
@@ -654,6 +698,14 @@
 "small-kitchen-organization-5foot-galley-ideas-pull-9.jpg": {
 "h": 1253,
 "w": 1880
+},
+"small-kitchen-zone-plan-cover.jpg": {
+"h": 630,
+"w": 1200
+},
+"small-kitchen-zone-plan.svg": {
+"h": 420,
+"w": 800
 },
 "small-space-organization-transforming-a-3ft-wide-hallway-int-1.jpg": {
 "h": 1255,
