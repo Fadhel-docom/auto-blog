@@ -21,6 +21,8 @@ draft = false
 slug = "small-bedroom-organization-ideas-practical-space"
 +++
 
+![Original illustration of a small bedroom floor plan with a bed, a dresser and a green walking path, titled Small Bedroom Floor-First Plan](images/small-bedroom-floor-first-cover.jpg)
+
 A small bedroom usually fails for one reason: storage gets added to a floor that was already full. The room ends up with more containers, a narrower path to the bed, and the same chair covered in clothes. This guide fixes the order. You measure first, protect a walking path, and only then decide what each wall and each height is for.
 
 You need a tape measure, painter's tape, and about 30 minutes. You do not need to buy anything before step three.
