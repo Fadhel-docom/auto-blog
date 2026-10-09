@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-09T00:21:51+00:00",
+  "timestamp": "2026-10-09T12:16:19+00:00",
   "suggestions": [
     {
       "priority": "medium",
@@ -11,6 +11,12 @@
       "priority": "medium",
       "area": "image credits",
       "url": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-simple-system/",
+      "suggestion": "Fix article-level image credits consistency."
+    },
+    {
+      "priority": "medium",
+      "area": "image credits",
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-organization-ideas-practical-space/",
       "suggestion": "Fix article-level image credits consistency."
     }
   ]

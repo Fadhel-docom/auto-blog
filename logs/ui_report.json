@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-09T00:21:50+00:00",
+  "timestamp": "2026-10-09T12:16:17+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -39,7 +39,7 @@
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 30362
+    "html_length": 30409
   },
   "articles": [
     {
@@ -66,7 +66,7 @@
       "required_failures": [
         "image credits"
       ],
-      "html_length": 36564
+      "html_length": 36588
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-small-shelves/",
@@ -90,7 +90,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 32212
+      "html_length": 32269
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-simple-system/",
@@ -116,19 +116,19 @@
       "required_failures": [
         "image credits"
       ],
-      "html_length": 26310
+      "html_length": 26348
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-organization-ideas-practical-space/",
       "status": 200,
-      "title": "Small Bedroom Organization: A Practical Small-Space Guide",
+      "title": "Small Bedroom Organization: A Floor-First Plan That Keeps the Room Usable",
       "title_capitalized": true,
-      "meta_description": "A practical small bedroom organization guide with room-size scenarios, realistic storage measurements, useful zones, and a simple maintenance system.",
+      "meta_description": "Measure the room, protect a 24-inch walking path, and give clothes, bedding and daily items a fixed height zone. A small bedroom plan with two diagrams.",
       "canonical": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-organization-ideas-practical-space/",
-      "images": 10,
+      "images": 8,
       "tags": 3,
-      "h2_count": 13,
-      "image_credits": true,
+      "h2_count": 15,
+      "image_credits": false,
       "related": true,
       "schema": {
         "present": true,
@@ -139,8 +139,10 @@
         ],
         "has_article": true
       },
-      "required_failures": [],
-      "html_length": 26474
+      "required_failures": [
+        "image credits"
+      ],
+      "html_length": 24287
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-laundry-room-organization-ideas-smart-storage/",
@@ -164,7 +166,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 39852
+      "html_length": 39755
     }
   ],
   "responsive": {
@@ -180,5 +182,5 @@
     ]
   },
   "status": "needs_attention",
-  "failure_count": 2
+  "failure_count": 3
 }
