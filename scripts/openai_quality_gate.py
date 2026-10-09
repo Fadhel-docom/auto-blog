@@ -36,17 +36,8 @@ def call(article):
                 json=payload,timeout=180
             )
             if r.status_code == 429:
-                retry_after=r.headers.get('Retry-After','')
-                try:
-                    delay=max(2,min(60,int(float(retry_after))))
-                except (ValueError,TypeError):
-                    delay=min(60,5*(2**attempt))
-                print(f'Groq transient 429; retry {attempt+1}/4 after {delay}s',file=sys.stderr)
-                last_error=RuntimeError('Groq rate limited (429)')
-                if attempt < 3:
-                    time.sleep(delay)
-                    continue
-                raise last_error
+                # Rate limits are terminal for this run: do not sleep or retry.
+                raise RuntimeError('Groq rate limited (429); quality gate blocked without retry')
             r.raise_for_status()
             c=(r.json().get('choices') or [{}])[0].get('message',{}).get('content','')
             break
