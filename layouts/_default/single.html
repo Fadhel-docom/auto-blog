@@ -46,15 +46,16 @@
       {{ $heroPath = strings.TrimPrefix "/" $heroImage | relURL }}
     {{ end }}
 
+    {{ $heroDim := index site.Data.image_dims (path.Base $heroImage) }}
     <figure class="post-hero">
       <img
         src="{{ $heroPath }}"
         alt="{{ $title }}"
         class="post-hero-image"
+        {{ with $heroDim }}{{ with .w }}width="{{ . }}"{{ end }} {{ with .h }}height="{{ . }}"{{ end }}{{ end }}
         loading="eager"
         decoding="async"
         fetchpriority="high"
-        onerror="this.src='{{ $fallbackImg }}'; this.onerror=null;"
       >
     </figure>
 

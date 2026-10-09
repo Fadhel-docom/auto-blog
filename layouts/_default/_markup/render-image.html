@@ -1,6 +1,9 @@
 {{- $src := .Destination -}}
 {{- $isExternal := or (strings.HasPrefix $src "http://") (strings.HasPrefix $src "https://") (strings.HasPrefix $src "data:") -}}
+{{- $dim := dict -}}
 {{- if not $isExternal -}}
-  {{- $src = printf "images/%s" (path.Base $src) | relURL -}}
+  {{- $base := path.Base $src -}}
+  {{- with index site.Data.image_dims $base -}}{{- $dim = . -}}{{- end -}}
+  {{- $src = printf "images/%s" $base | relURL -}}
 {{- end -}}
-<img src="{{ $src }}" alt="{{ .Text }}"{{ with .Title }} title="{{ .Title }}"{{ end }} loading="lazy" decoding="async">
+<img src="{{ $src }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ with $dim }}{{ with .w }} width="{{ . }}"{{ end }}{{ with .h }} height="{{ . }}"{{ end }}{{ end }} loading="lazy" decoding="async">

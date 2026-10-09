@@ -12,8 +12,8 @@ import sys
 from datetime import datetime
 
 POSTS = Path("content/posts")
-MIN_WORDS = 1200
-MIN_IMAGES = 3
+MIN_WORDS = 1500
+MIN_IMAGES = 5
 MIN_H2 = 8
 MIN_FAQ = 4
 
@@ -117,14 +117,29 @@ def main(target_post=None):
     elif not 80 <= len(description) <= 220:
         errors.append(f"description length {len(description)} outside 80-220")
 
+    # Hand-built guides with original diagrams (original_graphics = true) carry part of the
+    # explanation in their diagrams, so their text/image floors are lower. Counts are floors,
+    # not goals: the checks below on sources, alt text and unique images still apply to all posts.
+    original_graphics = bool(re.search(r"^original_graphics\s*=\s*true", fm, re.M))
+    min_words = 1200 if original_graphics else MIN_WORDS
+    min_images = 3 if original_graphics else MIN_IMAGES
     words = word_count(body)
-    if words < MIN_WORDS:
-        errors.append(f"only {words} body words; minimum is {MIN_WORDS}")
+    if words < min_words:
+        errors.append(f"only {words} body words; minimum is {min_words}")
 
     image_urls = re.findall(r"!\[[^\]]*\]\(([^)]+)\)", body)
     images = len(image_urls)
-    if images < MIN_IMAGES:
-        errors.append(f"only {images} inline images; minimum is {MIN_IMAGES}")
+    if images < min_images:
+        errors.append(f"only {images} inline images; minimum is {min_images}")
+
+    for alt_text in re.findall(r"!\[([^\]]*)\]\(", body):
+        if len(alt_text.strip()) < 15 or re.search(r"\.(jpe?g|png|svg|webp)$", alt_text.strip(), re.I):
+            errors.append(f"image alt text too short or filename-like: {alt_text[:40]!r}")
+            break
+
+    sources_match = re.search(r"^##+\s+(Sources|References)\b.*?$(.*?)(?=^##\s|\Z)", body, re.M | re.S | re.I)
+    if not sources_match or not re.search(r"\]\(https?://[^)\s]+\)", sources_match.group(2)):
+        errors.append("missing Sources section with at least one external https link")
 
     normalized_urls = [normalize_image_ref(x) for x in image_urls]
     if len(set(normalized_urls)) != len(normalized_urls):
