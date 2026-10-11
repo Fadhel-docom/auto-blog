@@ -72,7 +72,7 @@ Food containers are a practical example. If a cabinet comfortably holds 12 conta
 
 Avoid creating a whole-house “maybe” pile. If a decision is difficult, place only a small number of uncertain items in a dated box. Write the review date on it and keep it out of the main living area. Review it later rather than allowing an unfinished project to occupy your home.
 
-For household items that can be reused or recycled, the U.S. EPA recommends considering reduction and reuse before recycling; see its [reducing and reusing guidance](https://www.epa.gov/recycle/reducing-and-reusing-basics).
+For household items that can be reused or recycled, the U.S. EPA describes reduction and reuse as the most effective ways to save natural resources, so consider them before recycling; see its archived [reducing and reusing guidance](https://19january2025snapshot.epa.gov/recycle/reducing-and-reusing-basics).
 
 ## Give Everyday Items a Home Near Where You Use Them
 
@@ -344,7 +344,7 @@ Use a short daily reset for visible clutter and a focused category review every 
 
 ## Sources
 
-- [U.S. EPA: Reducing and Reusing Basics](https://www.epa.gov/recycle/reducing-and-reusing-basics)
+- [U.S. EPA: Reducing and Reusing Basics (archived snapshot, January 19, 2025)](https://19january2025snapshot.epa.gov/recycle/reducing-and-reusing-basics)
 - [U.S. EPA: Recycling Basics](https://www.epa.gov/recycle/recycling-basics)
 - [U.S. EPA: Household Hazardous Waste](https://www.epa.gov/hw/household-hazardous-waste-hhw)
 

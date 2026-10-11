@@ -125,7 +125,7 @@ NFPA guidance says inside each bedroom and outside each sleeping area. Do not bl
 
 ## Sources
 
-- U.S. Consumer Product Safety Commission, [Anchor It! campaign marks 10 years](https://www.cpsc.gov/Newsroom/News-Releases/2025/CPSC-AnchorIt-Campaign-Marks-10-Years-Fewer-Furniture-Tip-Overs-Lead-to-Safer-American-Households): anchoring TVs and furniture such as bookcases and dressers to the wall
+- U.S. Consumer Product Safety Commission, [Anchor It! campaign marks 10 years](https://www.anchorit.gov/2025/07/28/cpsc-anchor-it-campaign-marks-10-years-fewer-furniture-tip-overs-lead-to-safer-american-households/): anchoring TVs and furniture such as bookcases and dressers to the wall
 - International Association of Fire Chiefs, [Smart choices in smoke alarm placement](https://iafc.org/topics-and-tools/fire-prevention/smart-alarm-choices/smart-choices-in-smoke-alarm-placement): NFPA guidance to install smoke alarms inside each bedroom and outside each sleeping area
 
 ## Related Guides
