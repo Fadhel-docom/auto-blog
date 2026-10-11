@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-11T20:02:42+00:00",
+  "timestamp": "2026-10-11T20:24:53+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "PAUSED",
@@ -45,22 +45,22 @@
     }
   },
   "content": {
-    "status": "FAIL",
+    "status": "OK",
     "post": "decluttering-ideas-for-small-homes-that-actually-last.md",
-    "words": 3123,
-    "inline_images": 5,
-    "unique_inline_images": 5,
-    "h2": 15,
+    "words": 3169,
+    "inline_images": 6,
+    "unique_inline_images": 6,
+    "h2": 16,
     "faq": 6
   },
   "runs": {
     "Health Monitor": {
-      "id": 38170533361,
+      "id": 38172095946,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-10-11T20:02:34Z",
-      "updated_at": "2026-10-11T20:02:36Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/38170533361"
+      "created_at": "2026-10-11T20:24:44Z",
+      "updated_at": "2026-10-11T20:24:47Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/38172095946"
     },
     "Traffic Report": {
       "id": 38164790770,
@@ -113,20 +113,7 @@
     ]
   },
   "alerts": [],
-  "issues": [
-    {
-      "type": "Latest content quality failure",
-      "content": {
-        "status": "FAIL",
-        "post": "decluttering-ideas-for-small-homes-that-actually-last.md",
-        "words": 3123,
-        "inline_images": 5,
-        "unique_inline_images": 5,
-        "h2": 15,
-        "faq": 6
-      }
-    }
-  ],
+  "issues": [],
   "publisher_steps": {},
   "secrets": {
     "INDEXNOW_KEY": "OK",
