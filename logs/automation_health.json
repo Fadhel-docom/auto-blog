@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-11T18:45:53+00:00",
+  "timestamp": "2026-10-11T19:04:22+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "PAUSED",
@@ -55,12 +55,12 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 38165167300,
+      "id": 38166453089,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-10-11T18:45:45Z",
-      "updated_at": "2026-10-11T18:45:48Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/38165167300"
+      "created_at": "2026-10-11T19:04:14Z",
+      "updated_at": "2026-10-11T19:04:17Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/38166453089"
     },
     "Traffic Report": {
       "id": 38164790770,
@@ -75,42 +75,8 @@
     "status": "UNAVAILABLE"
   },
   "traffic": {
-    "status": "OK",
-    "visitors_today": 0,
-    "visitors_last_7_days": 49,
-    "visitors_this_month": 109,
-    "stats_today": [
-      {
-        "day": "2026-10-11",
-        "hourly": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "daily": 0
-      }
-    ]
+    "status": "UNAVAILABLE",
+    "reason": "('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
   },
   "alerts": [],
   "issues": [
@@ -124,6 +90,13 @@
         "unique_inline_images": 5,
         "h2": 15,
         "faq": 6
+      }
+    },
+    {
+      "type": "GoatCounter unavailable",
+      "traffic": {
+        "status": "UNAVAILABLE",
+        "reason": "('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
       }
     }
   ],
