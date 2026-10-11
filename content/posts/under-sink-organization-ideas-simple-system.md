@@ -1,7 +1,7 @@
 +++
 title = "Under-Sink Organization Ideas: A Measured, Leak-Aware System"
 date = "2026-09-24T09:08:00+00:00"
-lastmod = "2026-10-06T02:00:00+00:00"
+lastmod = "2026-10-11T00:00:00+00:00"
 description = "Measure six points, build three zones around the pipes, and add a leak check. An under-sink organization system with diagrams and a printable sheet."
 image = "images/under-sink-cover.jpg"
 images = ["images/under-sink-cover.jpg", "images/under-sink-measure-map.svg", "images/under-sink-bin-sizing-example.svg", "images/under-sink-zones-layout.svg", "images/under-sink-depth-side-view.svg", "images/under-sink-leak-check-points.svg"]
@@ -164,4 +164,6 @@ They help when the cabinet is deep and nothing sits in front of the track. If a 
 - [Small Apartment Organization: Maximizing Storage in 350 Sq Ft](/posts/small-apartment-organization-maximizing-storage-in-a-350sqft/)
 - [Renter-Friendly Storage Ideas for a Small Kitchen](/posts/renter-friendly-storage-ideas-small-kitchen-four/)
 
-*The diagrams in this guide are original illustrations drawn for this article.*
+## Image Credits
+
+The five diagrams and the cover illustration in this guide were created for this site. The guide uses no third-party photographs or artwork.

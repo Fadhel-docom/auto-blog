@@ -1,17 +1,11 @@
 +++
 title = "Small Laundry Room Storage: 16 Ways to Keep Supplies Under Control"
 date = "2026-09-23T20:30:00+01:00"
-lastmod = "2026-10-02T05:20:00+01:00"
+lastmod = "2026-10-11T00:00:00+00:00"
 description = "Practical small laundry room organization ideas for creating clear sorting, supply, folding, and backup-storage zones without wasting floor space."
-image = "https://images.pexels.com/photos/19980200/pexels-photo-19980200.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-images = [
-  "https://images.pexels.com/photos/19980200/pexels-photo-19980200.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-  "https://images.pexels.com/photos/7195881/pexels-photo-7195881.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-  "https://images.pexels.com/photos/4993073/pexels-photo-4993073.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-  "https://images.pexels.com/photos/10565616/pexels-photo-10565616.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-  "https://images.pexels.com/photos/28576617/pexels-photo-28576617.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-  "https://images.pexels.com/photos/7282784/pexels-photo-7282784.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-]
+image = "images/small-laundry-room-organization-ideas-smart-storage-three-zones.svg"
+images = ["images/small-laundry-room-organization-ideas-smart-storage-three-zones.svg", "images/small-laundry-room-organization-ideas-smart-storage-measure-checklist.svg", "images/small-laundry-room-organization-ideas-smart-storage-folding-destinations.svg", "images/small-laundry-room-organization-ideas-smart-storage-keep-access-clear.svg", "images/small-laundry-room-organization-ideas-smart-storage-ten-minute-reset.svg", "images/small-laundry-room-organization-ideas-smart-storage-narrow-room-sequence.svg"]
+original_graphics = true
 tags = ["small laundry room organization", "laundry room storage", "home organization", "small spaces"]
 categories = ["Laundry Room", "Small-Space Living"]
 faq = [
@@ -31,7 +25,7 @@ A small laundry room does not need more cabinets, more baskets, or a bigger budg
 
 The most useful **small laundry room organization ideas** are therefore less about filling every inch and more about giving each part of the room one clear job. This guide builds that system from the measurements up, with practical zones, vertical storage, folding space, supply control, and a maintenance routine that can survive a busy week.
 
-![Clean and organized small laundry room with washing machine and shelves](https://images.pexels.com/photos/19980200/pexels-photo-19980200.jpeg?auto=compress&cs=tinysrgb&h=650&w=940)
+![Three laundry zones shown left to right: dirty laundry, washing and supplies, and clean laundry](images/small-laundry-room-organization-ideas-smart-storage-three-zones.svg)
 
 ## 1. Measure the Laundry Room Before Buying Storage
 
@@ -49,6 +43,8 @@ Measure the vertical space as well:
 
 The appliance doors deserve special attention. A shelf that looks perfect while the machines are closed can become an obstacle when a washer door opens into the room. Measure the full door swing and leave enough room to load and unload without twisting around storage.
 
+![Top view of a washer and dryer with door-swing arcs and a checklist of eight measurements to record](images/small-laundry-room-organization-ideas-smart-storage-measure-checklist.svg)
+
 For more small-space planning ideas, compare this approach with our guide to [small apartment organization and storage](https://fadhel-docom.github.io/auto-blog/posts/small-apartment-organization-maximizing-storage-in-a-350sqft/).
 
 The rule is simple: **measure the empty space first, then choose storage that fits the space**. Do not buy a container first and hope it works later.
@@ -64,8 +60,6 @@ A compact laundry room becomes easier to maintain when you divide it into a few 
 **Clean-laundry zone:** This is a temporary landing place for clean clothes before they are folded and returned to their rooms. It might be a counter above front-loading machines, one shelf with baskets, or a small folding surface.
 
 If the room is extremely narrow, you can combine zones. For example, one tall hamper can handle dirty laundry while a shallow tray on a shelf holds daily supplies. The purpose of zoning is not to create a perfect diagram; it is to make the next action obvious.
-
-![Modern laundry area with washing machine and built-in shelves](https://images.pexels.com/photos/7195881/pexels-photo-7195881.jpeg?auto=compress&cs=tinysrgb&h=650&w=940)
 
 ## 3. Use the Wall Above the Machines
 
@@ -116,7 +110,7 @@ Store backup supplies separately. If you have several unopened bottles, keeping 
 
 For small accessories such as stain sticks, mesh bags, dryer balls, or clothespins, use a small container inside a drawer or basket. This prevents tiny items from disappearing into a deep storage bin.
 
-Follow product labels for storage and handling. The EPA's [Safer Choice program](https://www.epa.gov/saferchoice) is also a useful reference when you want to research cleaning products that meet its voluntary criteria for safer ingredients. citeturn0search6turn0search2
+Follow product labels for storage and handling. The EPA's [Safer Choice program](https://www.epa.gov/saferchoice) is also a useful reference when you want to research cleaning products that meet its voluntary criteria for safer ingredients.
 
 The organization principle is straightforward: keep the items used every load close to the machines, and move rarely used supplies higher or farther away.
 
@@ -143,7 +137,7 @@ This prevents clean laundry from becoming a permanent pile.
 
 If your laundry room is connected to another compact area, the same principle used in [narrow entryway organization](https://fadhel-docom.github.io/auto-blog/posts/narrow-entryway-organization-drop-zone/) applies: give the surface one primary job and keep temporary items moving instead of letting them become permanent storage.
 
-![Bright laundry area with a wicker basket and washing machine](https://images.pexels.com/photos/4993073/pexels-photo-4993073.jpeg?auto=compress&cs=tinysrgb&h=650&w=940)
+![A folding surface with arrows to six sorting destinations: bedroom, bathroom, kids, towels, items to hang, and items needing repair or special care](images/small-laundry-room-organization-ideas-smart-storage-folding-destinations.svg)
 
 ## 7. Create a Temporary “Problem Basket”
 
@@ -234,11 +228,13 @@ A simple rule is:
 
 At the end of a laundry session, return supplies to their zone and move clean clothes to the folding or temporary area.
 
-If you use a dryer, keep the lint filter and surrounding access clear enough for routine cleaning. ENERGY STAR recommends cleaning the lint filter after every load as part of dryer efficiency and safety practices. See its [clothes dryer guidance](https://www.energystar.gov/products/clothes_dryers) for additional laundry efficiency and maintenance information. citeturn0search5turn0search1
+If you use a dryer, keep the lint filter and surrounding access clear enough for routine cleaning. ENERGY STAR recommends cleaning the lint filter after every load as part of dryer efficiency and safety practices. See its [clothes dryer guidance](https://www.energystar.gov/products/clothes_dryers) for additional laundry efficiency and maintenance information.
+
+The National Fire Protection Association also advises keeping the area around the dryer clear of things that can burn, such as boxes, cleaning supplies and clothing.
 
 The goal is not an empty-looking room. It is a room where the important maintenance points remain accessible.
 
-![Tidy laundry room with natural light and organized storage](https://images.pexels.com/photos/10565616/pexels-photo-10565616.jpeg?auto=compress&cs=tinysrgb&h=650&w=940)
+![Front view of a washer and dryer with clear appliance tops, a dryer lint filter marker and a dashed service path](images/small-laundry-room-organization-ideas-smart-storage-keep-access-clear.svg)
 
 ## 12. Make the Weekly Reset Take Less Than 10 Minutes
 
@@ -260,7 +256,7 @@ You can shorten the routine after the system becomes familiar.
 
 The key is consistency. A ten-minute reset is easier to repeat than a large cleaning session every few weeks. If one step is repeatedly difficult, change the storage location rather than adding more rules.
 
-![Organized laundry room with ironing and folding area](https://images.pexels.com/photos/28576617/pexels-photo-28576617.jpeg?auto=compress&cs=tinysrgb&h=650&w=940)
+![Five two-minute steps for a weekly laundry room reset, from clearing the machine tops to sweeping the floor](images/small-laundry-room-organization-ideas-smart-storage-ten-minute-reset.svg)
 
 ## 13. Choose Storage Based on the Room You Actually Have
 
@@ -320,7 +316,7 @@ Use the wall above the machines for shelves, the door for lightweight accessorie
 
 If the machines are stacked, use the freed floor area for one narrow hamper or shelving unit. Do not automatically fill the entire footprint; the extra clearance can make cleaning and maintenance much easier.
 
-![Person organizing laundry in a home laundry room](https://images.pexels.com/photos/7282784/pexels-photo-7282784.jpeg?auto=compress&cs=tinysrgb&h=650&w=940)
+![A five-step sequence for an extremely narrow laundry room: door, hampers, washer and dryer, folding surface, vertical storage](images/small-laundry-room-organization-ideas-smart-storage-narrow-room-sequence.svg)
 
 ## 16. Final Checklist Before You Add Anything
 
@@ -377,11 +373,12 @@ Use the highest shelves for light, infrequently used items such as seasonal supp
 - [Renter-Friendly Closet Organization Using Adhesive Storage](https://fadhel-docom.github.io/auto-blog/posts/renter-friendly-closet-organization-using-adhesive/)
 - [Small Bathroom Organization Ideas for Practical Space](https://fadhel-docom.github.io/auto-blog/posts/small-bathroom-organization-ideas-practical-space/)
 
+## Sources
+
+- ENERGY STAR, [Clothes Dryers](https://www.energystar.gov/products/clothes_dryers) (no date shown): clean the lint filter after every load, also an important safety measure.
+- U.S. EPA, [Safer Choice](https://www.epa.gov/saferchoice) (last updated September 22, 2026): the program for cleaning and other products with safer ingredients.
+- National Fire Protection Association, [Clothes Dryer Safety tip sheet](https://www.nfpa.org/-/media/project/storefront/catalog/files/safety-tip-sheets/dryersafetytips.pdf) (© 2018): clean the lint filter before or after each load; keep the area around the dryer clear of things that can burn.
+
 ## Image Credits
 
-- Photo 1: Alex Tyson via Pexels
-- Photo 2: Max Vakhtbovycn via Pexels
-- Photo 3: Rachel Claire via Pexels
-- Photo 4: Ron Lach via Pexels
-- Photo 5: Jonathan Borba via Pexels
-- Photo 6: Sarah Chai via Pexels
+All six diagrams in this guide are original illustrations drawn for this article. The guide uses no third-party photographs or artwork.

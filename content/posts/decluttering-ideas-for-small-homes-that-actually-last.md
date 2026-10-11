@@ -1,10 +1,10 @@
 +++
 title = "Decluttering Ideas for Small Homes That Actually Last"
 date = "2026-09-26T13:45:00+00:00"
-lastmod = "2026-10-08T09:00:00+00:00"
+lastmod = "2026-10-11T00:00:00+00:00"
 description = "A practical decluttering system for small homes: audit problem areas, set space limits, create easy homes, remove excess, and maintain a simple reset routine."
 image = "images/decluttering-ideas-for-small-homes-that-actually-last-15-minute-audit.svg"
-images = ["images/decluttering-ideas-for-small-homes-that-actually-last-15-minute-audit.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-category-sort.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-storage-zones.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-physical-limits.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-exit-route.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-reset-routine.svg"]
+images = ["images/decluttering-ideas-for-small-homes-that-actually-last-15-minute-audit.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-category-sort.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-storage-zones.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-physical-limits.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-exit-route.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-reset-routine.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-surface-limits.svg"]
 original_graphics = true
 tags = ["decluttering", "small homes", "home organization"]
 categories = ["Decluttering", "Small Space"]
@@ -153,6 +153,8 @@ For example:
 A tray can help contain legitimate everyday items. But the tray should have a limit too. If it becomes an overflowing box of unrelated objects, it has stopped solving the problem.
 
 Use a two-question surface check at the end of the day: “Does this belong here?” and “Will I need it here tomorrow?” If the answer to both is no, return the item to its home.
+
+![Four busy household surfaces, each with a short allowed list, plus a two-question end-of-day check](images/decluttering-ideas-for-small-homes-that-actually-last-surface-limits.svg)
 
 The same principle works for a narrow hallway. If you are struggling with a tight entrance, a small designated drop zone can be more useful than adding a large cabinet. The [narrow entryway organization guide](../narrow-entryway-organization-drop-zone/) shows how to make a small arrival zone practical without allowing it to become a dumping area.
 
@@ -346,11 +348,13 @@ Use a short daily reset for visible clutter and a focused category review every 
 - [U.S. EPA: Recycling Basics](https://www.epa.gov/recycle/recycling-basics)
 - [U.S. EPA: Household Hazardous Waste](https://www.epa.gov/hw/household-hazardous-waste-hhw)
 
-*The diagrams in this guide are original illustrations drawn for this article.*
-
 ## Related Guides
 
 - [Small Closet Organization Ideas for Practical Space](../small-closet-organization-ideas-practical-space/)
 - [Small Bedroom Storage Ideas](../small-bedroom-storage-ideas-diy-pull-out/)
 - [Small Bathroom Organization Ideas for Practical Space](../small-bathroom-organization-ideas-practical-space/)
 - [Kitchen Organization Ideas for Small Spaces](../kitchen-organization-ideas-small-spaces-space/)
+
+## Image Credits
+
+All six diagrams in this guide are original illustrations drawn for this article. The guide uses no third-party photographs or artwork.

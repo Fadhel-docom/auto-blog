@@ -1,7 +1,7 @@
 +++
 title = "Small Bedroom Organization: A Floor-First Plan That Keeps the Room Usable"
 date = "2026-09-24T06:06:02+00:00"
-lastmod = "2026-10-09T09:00:00+00:00"
+lastmod = "2026-10-11T00:00:00+00:00"
 description = "Measure the room, protect a 24-inch walking path, and give clothes, bedding and daily items a fixed height zone. A small bedroom plan with two diagrams."
 image = "images/small-bedroom-floor-first-cover.jpg"
 images = ["images/small-bedroom-floor-first-cover.jpg", "images/small-bedroom-floor-plan.svg", "images/small-bedroom-height-zones.svg", "images/small-bedroom-underbed-clearance.svg"]
@@ -135,4 +135,6 @@ NFPA guidance says inside each bedroom and outside each sleeping area. Do not bl
 - [Small Closet Organization Ideas](/posts/small-closet-organization-ideas-practical-space/)
 - [Renter-Friendly Closet Organization With Adhesive Hooks](/posts/renter-friendly-closet-organization-using-adhesive/)
 
-*The three diagrams and the cover in this guide are original illustrations drawn for this article. Measurements are typical examples; measure your own room.*
+## Image Credits
+
+The three diagrams and the cover in this guide are original illustrations drawn for this article. Measurements are typical examples; measure your own room.
