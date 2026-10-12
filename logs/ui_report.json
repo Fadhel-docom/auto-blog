@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-12T00:21:02+00:00",
+  "timestamp": "2026-10-12T12:25:16+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -64,7 +64,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 36956
+      "html_length": 36955
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-small-shelves/",
@@ -112,7 +112,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 26407
+      "html_length": 26699
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-organization-ideas-practical-space/",
@@ -136,7 +136,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 24316
+      "html_length": 24490
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-laundry-room-organization-ideas-smart-storage/",
