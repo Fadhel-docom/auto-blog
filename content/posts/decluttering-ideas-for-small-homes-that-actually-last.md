@@ -220,7 +220,7 @@ Keep outgoing items in one temporary location and set a short deadline for movin
 
 For recycling, check the rules of your local program rather than assuming every plastic, package, cable, or household object belongs in the recycling bin. The EPA explains basic recycling principles and why accepted materials depend on local systems in its [recycling basics guide](https://www.epa.gov/recycle/recycling-basics).
 
-Some household products need a different route. Paints, solvents, pesticides, certain cleaners, and other potentially hazardous household products should not automatically go into ordinary trash or recycling. The EPA's [household hazardous waste guidance](https://www.epa.gov/hw/household-hazardous-waste-hhw) explains the category and safe disposal considerations.
+Some household products need a different route. Paints, cleaners, oils, batteries, pesticides, and other potentially hazardous household products should not automatically go into ordinary trash or recycling. The EPA's [household hazardous waste guidance](https://www.epa.gov/hw/household-hazardous-waste-hhw) explains the category and safe disposal considerations.
 
 The objective is not to make the entrance look perfect all day. It is to prevent a five-minute arrival routine from creating a 30-minute cleanup later.
 
