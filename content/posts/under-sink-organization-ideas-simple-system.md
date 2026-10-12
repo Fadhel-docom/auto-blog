@@ -92,7 +92,7 @@ The rule is simple: the more often you use something, the closer to the front it
 - Add a child-safety latch if children or pets can reach the cabinet.
 - Never store bleach next to ammonia-based or acidic cleaners. Mixed, they can release toxic gas, so give them separate bins.
 - Medicines, food, and documents do not belong here. Damp air and leaks damage them, and they should not be in a kitchen cleaning cabinet.
-- If someone swallows a product, call Poison Help in the US at 1-800-222-1222 ([poisonhelp.hrsa.gov](https://www.poisonhelp.hrsa.gov)). In the UK, call NHS 111, or 999 in an emergency.
+- If someone swallows a product, call Poison Help in the US at 1-800-222-1222 ([HRSA Poison Help, archived page](https://web.archive.org/web/20241216180525/https://poisonhelp.hrsa.gov/about-us)). In the UK, call NHS 111, or 999 in an emergency.
 
 To compare cleaners by ingredients, the [EPA Safer Choice program](https://www.epa.gov/saferchoice) lists products that meet its safer-ingredient criteria.
 
@@ -155,7 +155,7 @@ They help when the cabinet is deep and nothing sits in front of the track. If a 
 
 - U.S. EPA, [Household Hazardous Waste](https://www.epa.gov/hw/household-hazardous-waste-hhw)
 - U.S. EPA, [Safer Choice](https://www.epa.gov/saferchoice)
-- Poison Help (HRSA), [poisonhelp.hrsa.gov](https://www.poisonhelp.hrsa.gov): US helpline 1-800-222-1222
+- U.S. Health Resources and Services Administration (HRSA), [Poison Help: About Us, archived snapshot of poisonhelp.hrsa.gov, December 16, 2024](https://web.archive.org/web/20241216180525/https://poisonhelp.hrsa.gov/about-us) (page date not shown): the toll-free Poison Help line, 1-800-222-1222, connects you to your local poison center
 
 ## Related Guides
 
