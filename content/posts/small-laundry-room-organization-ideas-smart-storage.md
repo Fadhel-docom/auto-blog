@@ -137,7 +137,7 @@ This prevents clean laundry from becoming a permanent pile.
 
 If your laundry room is connected to another compact area, the same principle used in [narrow entryway organization](https://fadhel-docom.github.io/auto-blog/posts/narrow-entryway-organization-drop-zone/) applies: give the surface one primary job and keep temporary items moving instead of letting them become permanent storage.
 
-![A folding surface with arrows to six sorting destinations: bedroom, bathroom, kids, towels, items to hang, and items needing repair or special care](images/small-laundry-room-organization-ideas-smart-storage-folding-destinations.svg)
+![A folding surface with an arrow to a group of six sorting destinations: bedroom, bathroom, kids, towels, items to hang, and items needing repair or special care](images/small-laundry-room-organization-ideas-smart-storage-folding-destinations.svg)
 
 ## 7. Create a Temporary “Problem Basket”
 
