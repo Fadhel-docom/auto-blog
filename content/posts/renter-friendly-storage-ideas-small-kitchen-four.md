@@ -224,7 +224,7 @@ This routine is also useful for roommates or families because the storage rules 
 ## Sources
 
 - Quik Cabinets, [Kitchen Cabinet Sizes: Complete Guide to Standard Dimensions (2026 Charts)](https://quikcabinets.com/blogs/kitchen-remodeling-guides/kitchen-cabinet-sizes-standard-dimensions-guide) (July 2, 2026): typical base cabinets are 34.5 in tall and 24 in deep; typical wall cabinets are 12 in deep.
-- 3M, [Command Medium Timeless Hook](https://3m.com/3M/en_US/p/d/cobnaw017113) (no date shown): weight capacity 3 lb. 3M, [Command Large Matte Black Double Hook](https://3m.com/3M/en_US/p/d/cbgnawus1768) (no date shown): holds up to 4 lb, for smooth surfaces, not for wallpaper.
+- 3M, [Command Medium Timeless Hook, archived snapshot of the 3M product page, April 24, 2025](https://web.archive.org/web/20250424095210/https://www.3m.com/3M/en_US/p/d/cobnaw017113/) (page date not shown): weight capacity 3 lb. 3M, [Command Large Double Wall Hooks, archived snapshot of the 3M product page, May 22, 2025](https://web.archive.org/web/20250522044240/https://www.3m.com/3M/en_US/p/d/cbgnawus1768/) (page date not shown): holds up to 4 lb, works on smooth surfaces, not for hanging on wallpaper.
 - National Fire Protection Association, [Cooking Safety tip sheet](https://www.nfpa.org/-/media/project/storefront/catalog/files/safety-tip-sheets/cookingsafetytips.pdf) (© 2018): keep anything that can catch fire away from your stovetop.
 
 ## Image Credits
