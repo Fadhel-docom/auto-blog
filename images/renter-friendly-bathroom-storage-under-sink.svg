@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="420" viewBox="0 0 700 420" role="img" aria-labelledby="title desc">
+<title id="title">Under-sink storage that leaves plumbing accessible</title>
+<desc id="desc">Two narrow bins sit to the sides of the drain and supply lines, leaving the plumbing and shut-off valves clear.</desc>
+<rect width="700" height="420" rx="18" fill="#F6F1E8"/><text x="28" y="42" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#1F3A34">Keep the plumbing accessible</text>
+<rect x="42" y="70" width="616" height="280" rx="12" fill="#fff" stroke="#1F3A34" stroke-width="3"/>
+<path d="M300 72V130Q300 153 323 153H377Q400 153 400 177V220" fill="none" stroke="#5E6B66" stroke-width="14" stroke-linecap="round"/><path d="M350 72V118" stroke="#2F7F79" stroke-width="10" stroke-linecap="round"/>
+<rect x="66" y="190" width="190" height="130" rx="10" fill="#D8E8E2" stroke="#2F7F79" stroke-width="3"/><rect x="444" y="190" width="190" height="130" rx="10" fill="#F3DCCB" stroke="#C4622D" stroke-width="3"/>
+<g font-family="Arial,sans-serif" text-anchor="middle" fill="#1F3A34"><text x="161" y="230" font-size="19" font-weight="700">Daily supplies</text><text x="161" y="258" font-size="15">Small removable bin</text><text x="539" y="230" font-size="19" font-weight="700">Cleaning items</text><text x="539" y="258" font-size="15">Keep separate</text><text x="350" y="283" font-size="15">No bin against pipes</text><text x="350" y="305" font-size="15">or shut-off valves</text></g>
+<text x="350" y="384" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#5E6B66">Measure width, depth, height, and cabinet opening before buying.</text>
+</svg>

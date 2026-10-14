@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="420" viewBox="0 0 700 420" role="img" aria-labelledby="title desc">
+<title id="title">Renter-friendly bathroom storage without drilling</title>
+<desc id="desc">Illustrated small bathroom with a freestanding storage shelf, neatly grouped daily products, and a clear floor path.</desc>
+<rect width="700" height="420" rx="18" fill="#F6F1E8"/>
+<rect x="28" y="28" width="644" height="364" rx="12" fill="#fff" stroke="#D8E8E2" stroke-width="3"/>
+<rect x="48" y="48" width="604" height="235" rx="8" fill="#E8F0EB"/>
+<path d="M48 220H652V283H48Z" fill="#D8C9B6"/>
+<rect x="86" y="85" width="160" height="188" rx="5" fill="#C99A68" stroke="#1F3A34" stroke-width="3"/>
+<path d="M86 142H246 M86 205H246" stroke="#1F3A34" stroke-width="3"/>
+<rect x="103" y="105" width="50" height="28" rx="4" fill="#2F7F79"/><rect x="162" y="101" width="48" height="32" rx="4" fill="#F3DCCB"/>
+<rect x="106" y="162" width="45" height="34" rx="4" fill="#F3DCCB"/><rect x="161" y="166" width="49" height="30" rx="4" fill="#2F7F79"/>
+<rect x="111" y="225" width="104" height="30" rx="4" fill="#D8E8E2"/>
+<rect x="335" y="95" width="235" height="108" rx="8" fill="#fff" stroke="#1F3A34" stroke-width="4"/>
+<ellipse cx="452" cy="149" rx="80" ry="35" fill="#D8E8E2" stroke="#2F7F79" stroke-width="3"/>
+<rect x="425" y="182" width="54" height="67" fill="#C99A68"/>
+<path d="M450 92V72Q450 60 462 60H480" fill="none" stroke="#1F3A34" stroke-width="8" stroke-linecap="round"/>
+<rect x="548" y="207" width="65" height="76" rx="5" fill="#F3DCCB" stroke="#1F3A34" stroke-width="3"/>
+<path d="M560 207V190H601V207" fill="none" stroke="#1F3A34" stroke-width="3"/>
+<rect x="48" y="300" width="604" height="68" rx="8" fill="#1F3A34"/>
+<text x="350" y="328" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#fff">Bathroom Storage Without Drilling</text>
+<text x="350" y="352" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" fill="#D8E8E2">Measure first • Use what you own • Buy only what fits</text>
+</svg>
