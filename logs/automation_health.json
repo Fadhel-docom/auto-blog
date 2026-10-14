@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-14T18:45:37+00:00",
+  "timestamp": "2026-10-14T19:23:22+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "PAUSED",
@@ -45,30 +45,30 @@
     }
   },
   "content": {
-    "status": "OK",
-    "post": "decluttering-ideas-for-small-homes-that-actually-last.md",
-    "words": 3169,
-    "inline_images": 6,
-    "unique_inline_images": 6,
-    "h2": 16,
-    "faq": 6
+    "status": "FAIL",
+    "post": "renter-friendly-bathroom-storage-without-drilling.md",
+    "words": 2040,
+    "inline_images": 3,
+    "unique_inline_images": 3,
+    "h2": 14,
+    "faq": 5
   },
   "runs": {
     "Health Monitor": {
-      "id": 38617856121,
+      "id": 38623219467,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-10-14T18:45:27Z",
-      "updated_at": "2026-10-14T18:45:30Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/38617856121"
+      "created_at": "2026-10-14T19:23:10Z",
+      "updated_at": "2026-10-14T19:23:14Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/38623219467"
     },
     "Traffic Report": {
-      "id": 38568678572,
+      "id": 38620151773,
       "status": "completed",
       "conclusion": "success",
-      "created_at": "2026-10-14T13:03:39Z",
-      "updated_at": "2026-10-14T13:03:53Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/38568678572"
+      "created_at": "2026-10-14T19:01:28Z",
+      "updated_at": "2026-10-14T19:01:40Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/38620151773"
     }
   },
   "quality_gate": {
@@ -76,9 +76,9 @@
   },
   "traffic": {
     "status": "OK",
-    "visitors_today": 0,
-    "visitors_last_7_days": 9,
-    "visitors_this_month": 113,
+    "visitors_today": 2,
+    "visitors_last_7_days": 11,
+    "visitors_this_month": 115,
     "stats_today": [
       {
         "day": "2026-10-14",
@@ -103,17 +103,32 @@
           0,
           0,
           0,
-          0,
+          2,
           0,
           0,
           0
         ],
-        "daily": 0
+        "daily": 2,
+        "weekly": 2,
+        "monthly": 2
       }
     ]
   },
   "alerts": [],
-  "issues": [],
+  "issues": [
+    {
+      "type": "Latest content quality failure",
+      "content": {
+        "status": "FAIL",
+        "post": "renter-friendly-bathroom-storage-without-drilling.md",
+        "words": 2040,
+        "inline_images": 3,
+        "unique_inline_images": 3,
+        "h2": 14,
+        "faq": 5
+      }
+    }
+  ],
   "publisher_steps": {},
   "secrets": {
     "INDEXNOW_KEY": "OK",
