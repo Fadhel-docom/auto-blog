@@ -18,6 +18,8 @@ faq = [
 ]
 +++
 
+![A compact bathroom storage layout using a freestanding shelf and grouped daily essentials, with the floor path kept clear.](../images/renter-friendly-bathroom-storage-no-drill-cover.svg)
+
 Renting can make bathroom storage frustrating: drilling may be prohibited, adhesive hooks may not suit the wall, and a freestanding cabinet can swallow the little floor space you have. The answer is not to buy a stack of organizers and hope they fit. It is to match each storage choice to a specific clutter problem, the room's measurements, and the rules of your rental.
 
 This guide gives you a no-drill plan that works with a tiny vanity, a pedestal sink, limited counter space, or a shower with nowhere to put bottles. Start with what you already own; buy only the pieces that solve a measured problem.
@@ -172,6 +174,11 @@ Give daily products one easy-to-reach home, keep backups in one labeled containe
 
 ### Should I buy bathroom storage before measuring?
 No. Measure the actual usable width, depth, height, door clearance, and plumbing obstacles first. A smaller container that fits is more useful than a large organizer that cannot be removed easily.
+
+## Related Guides
+
+- [Small bathroom organization ideas: a zone-by-zone plan](/posts/small-bathroom-organization-ideas-practical-space/)
+- [Bathroom organization for a deep under-sink cabinet](/posts/bathroom-organization-maximizing-24-inch-deep-cabi/)
 
 ## Sources
 
