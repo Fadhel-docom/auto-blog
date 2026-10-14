@@ -7,7 +7,7 @@ images = ["images/renter-friendly-bathroom-storage-no-drill-cover.svg", "images/
 tags = ["renter friendly bathroom storage", "small bathroom organization", "no drill storage", "small space storage"]
 categories = ["Bathroom"]
 original_graphics = true
-draft = true
+draft = false
 slug = "renter-friendly-bathroom-storage-without-drilling"
 faq = [
   { question = "How can I add bathroom storage in a rental without drilling?", answer = "Start with countertop trays, drawer dividers, freestanding racks, and over-door storage. Use adhesive products only on compatible surfaces and within the manufacturer's stated load limits." },
