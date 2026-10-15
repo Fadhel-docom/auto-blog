@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-15T00:22:26+00:00",
+  "timestamp": "2026-10-15T01:03:57+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "PAUSED",
@@ -55,62 +55,28 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 38659640061,
+      "id": 38663552249,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-10-15T00:22:19Z",
-      "updated_at": "2026-10-15T00:22:22Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/38659640061"
+      "created_at": "2026-10-15T01:03:46Z",
+      "updated_at": "2026-10-15T01:03:50Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/38663552249"
     },
     "Traffic Report": {
-      "id": 38620151773,
+      "id": 38663301891,
       "status": "completed",
       "conclusion": "success",
-      "created_at": "2026-10-14T19:01:28Z",
-      "updated_at": "2026-10-14T19:01:40Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/38620151773"
+      "created_at": "2026-10-15T01:01:07Z",
+      "updated_at": "2026-10-15T01:01:18Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/38663301891"
     }
   },
   "quality_gate": {
     "status": "UNAVAILABLE"
   },
   "traffic": {
-    "status": "OK",
-    "visitors_today": 0,
-    "visitors_last_7_days": 6,
-    "visitors_this_month": 115,
-    "stats_today": [
-      {
-        "day": "2026-10-15",
-        "hourly": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "daily": 0
-      }
-    ]
+    "status": "UNAVAILABLE",
+    "reason": "('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
   },
   "alerts": [],
   "issues": [
@@ -124,6 +90,13 @@
         "unique_inline_images": 3,
         "h2": 14,
         "faq": 5
+      }
+    },
+    {
+      "type": "GoatCounter unavailable",
+      "traffic": {
+        "status": "UNAVAILABLE",
+        "reason": "('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
       }
     }
   ],
