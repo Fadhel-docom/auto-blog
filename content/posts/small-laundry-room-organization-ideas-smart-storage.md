@@ -381,6 +381,6 @@ Use the highest shelves for light, infrequently used items such as seasonal supp
 
 ## Image Credits
 
-All six diagrams in this guide are original illustrations drawn for this article. The guide uses no third-party photographs or artwork.
+All six diagrams in this guide are original illustrations drawn for this article. Apart from the AI-generated cover, the guide uses no photographs or third-party artwork.
 
 - Cover: AI-generated image via ChatGPT, October 2026.
