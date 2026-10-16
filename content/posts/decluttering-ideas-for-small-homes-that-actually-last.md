@@ -3,7 +3,7 @@ title = "Decluttering Ideas for Small Homes That Actually Last"
 date = "2026-09-26T13:45:00+00:00"
 lastmod = "2026-10-11T00:00:00+00:00"
 description = "A practical decluttering system for small homes: audit problem areas, set space limits, create easy homes, remove excess, and maintain a simple reset routine."
-image = "images/decluttering-ideas-for-small-homes-that-actually-last-15-minute-audit.svg"
+image = "images/decluttering-cover.jpg"
 images = ["images/decluttering-ideas-for-small-homes-that-actually-last-15-minute-audit.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-category-sort.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-storage-zones.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-physical-limits.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-exit-route.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-reset-routine.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-surface-limits.svg"]
 original_graphics = true
 tags = ["decluttering", "small homes", "home organization"]
@@ -358,3 +358,5 @@ Use a short daily reset for visible clutter and a focused category review every 
 ## Image Credits
 
 All six diagrams in this guide are original illustrations drawn for this article. The guide uses no third-party photographs or artwork.
+
+- Cover: AI-generated image via ChatGPT, October 2026.
