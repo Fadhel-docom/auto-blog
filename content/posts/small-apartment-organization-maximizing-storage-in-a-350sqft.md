@@ -221,3 +221,15 @@ Give frequently used items easy-to-reach homes and perform a short daily reset. 
 The best small-apartment organization system is not the one that stores the most objects. It is the one that makes everyday actions simple. In a 350-square-foot studio, start with measurements, remove what you do not need, create a compact clothing zone, use the space under the bed, move seasonal items upward, and give awkward corners one specific job.
 
 Work in small passes and test each change before buying more. A few well-planned storage zones can make the entire studio easier to clean, easier to navigate, and much easier to keep organized.
+
+## Sources
+
+- U.S. Consumer Product Safety Commission, [Anchor It!](https://web.archive.org/web/20260927021753/https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/AnchorItgov) (archived snapshot, September 27, 2026): the national campaign to prevent furniture and TV tip-overs.
+
+## Image Credits
+
+- Photo 1: [Max Vakhtbovych](https://www.pexels.com/@artbovich) via [Pexels](https://www.pexels.com/photo/wardrobes-and-shelves-in-flat-7614609/)
+- Photo 2: [Ketut Subiyanto](https://www.pexels.com/@ketut-subiyanto) via [Pexels](https://www.pexels.com/photo/carton-box-and-suitcases-for-relocation-on-bed-4246059/)
+- Photo 3: [Atlantic Ambience](https://www.pexels.com/@freestockpro) via [Pexels](https://www.pexels.com/photo/clothes-on-the-hangers-in-an-open-wardrobe-12945027/)
+- Photo 4: [Josh Withers](https://www.pexels.com/@hellojoshwithers) via [Pexels](https://www.pexels.com/photo/small-barn-with-wooden-sliding-doors-15990611/)
+- Photo 5: [RDNE Stock project](https://www.pexels.com/@rdne) via [Pexels](https://www.pexels.com/photo/woman-putting-glass-containers-on-a-kitchen-cabinet-8580763/)
