@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-16T00:25:56+00:00",
+  "timestamp": "2026-10-16T12:29:12+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -39,20 +39,20 @@
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 30431
+    "html_length": 30232
   },
   "articles": [
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/renter-friendly-bathroom-storage-without-drilling/",
       "status": 200,
-      "title": "Renter-Friendly Bathroom Storage Without Drilling: A Measured Plan",
+      "title": "No-Drill Bathroom Storage for Renters: Hooks, Rods and Racks",
       "title_capitalized": true,
       "meta_description": "Solve bathroom clutter in a rental without damaging walls: measure the real space, choose safer no-drill storage, control moisture, and avoid purchases that do not fit.",
       "canonical": "https://fadhel-docom.github.io/auto-blog/posts/renter-friendly-bathroom-storage-without-drilling/",
       "images": 7,
       "tags": 4,
-      "h2_count": 16,
-      "image_credits": false,
+      "h2_count": 17,
+      "image_credits": true,
       "related": true,
       "schema": {
         "present": true,
@@ -63,10 +63,8 @@
         ],
         "has_article": true
       },
-      "required_failures": [
-        "image credits"
-      ],
-      "html_length": 29430
+      "required_failures": [],
+      "html_length": 29296
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/decluttering-ideas-for-small-homes-that-actually-last/",
@@ -90,7 +88,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 36955
+      "html_length": 36803
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-small-shelves/",
@@ -99,9 +97,9 @@
       "title_capitalized": true,
       "meta_description": "Linen closet organization ideas for small shelves: measure the space, group linens by use, fold to shelf height, label simple zones, and keep everyday towels easy to reach.",
       "canonical": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-small-shelves/",
-      "images": 11,
+      "images": 12,
       "tags": 4,
-      "h2_count": 18,
+      "h2_count": 20,
       "image_credits": true,
       "related": true,
       "schema": {
@@ -114,7 +112,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 32205
+      "html_length": 32835
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-simple-system/",
@@ -138,7 +136,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 26699
+      "html_length": 26685
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-organization-ideas-practical-space/",
@@ -162,7 +160,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 24490
+      "html_length": 24482
     }
   ],
   "responsive": {
@@ -177,6 +175,6 @@
       "https://fadhel-docom.github.io/auto-blog/css/site-v2.css"
     ]
   },
-  "status": "needs_attention",
-  "failure_count": 1
+  "status": "healthy",
+  "failure_count": 0
 }
