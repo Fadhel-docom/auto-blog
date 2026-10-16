@@ -5,7 +5,7 @@ lastmod = "2026-10-10T09:00:00+00:00"
 slug = "effortless-home-organization-tips-for-small-spaces"
 aliases = ["/posts/small-space-home-organization-a-practical-room-by-room-system/"]
 description = "A practical room-by-room system for organizing a small home, with decluttering steps, storage zones, vertical space ideas, and a simple weekly reset."
-image = "images/effortless-zones.svg"
+image = "images/room-by-room-cover.jpg"
 images = ["images/effortless-zones.svg", "images/effortless-reach.svg", "images/effortless-reset.svg"]
 tags = ["home organization", "small space living", "decluttering", "storage solutions"]
 categories = ["Small Space"]
@@ -237,3 +237,7 @@ A well-organized small home is not one where every inch is occupied. It is a hom
 - [NFPA: Escape planning](https://www.nfpa.org/education-and-research/home-fire-safety/escape-planning) for planning two ways out of each room.
 
 The diagrams in this guide are original illustrations created for this site.
+
+## Image Credits
+
+- Cover: AI-generated image via ChatGPT, October 2026.
