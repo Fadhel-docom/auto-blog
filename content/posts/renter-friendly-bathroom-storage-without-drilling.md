@@ -1,5 +1,5 @@
 +++
-title = "Renter-Friendly Bathroom Storage Without Drilling: A Measured Plan"
+title = "No-Drill Bathroom Storage for Renters: Hooks, Rods and Racks"
 date = "2026-10-14T18:00:00+00:00"
 description = "Solve bathroom clutter in a rental without damaging walls: measure the real space, choose safer no-drill storage, control moisture, and avoid purchases that do not fit."
 image = "images/renter-bathroom-cover.jpg"
@@ -113,7 +113,7 @@ Keep medicines according to their labels; the bathroom's heat and humidity may n
 
 ## 8. Control moisture so storage does not become another problem
 
-Bathrooms are damp environments. Wet towels, poorly drained caddies, and containers that trap moisture can lead to musty smells and make shelves harder to clean.
+Bathrooms are damp environments. Wet towels, poorly drained caddies, and containers that trap moisture can lead to musty smells and make shelves harder to clean. The EPA advises drying wet or damp items and surfaces within 24 to 48 hours to prevent mold growth.
 
 - Hang towels spread open so they can dry.
 - Choose washable containers in areas that get splashed.
@@ -182,9 +182,8 @@ No. Measure the actual usable width, depth, height, door clearance, and plumbing
 
 ## Sources
 
-- U.S. Consumer Product Safety Commission, [Childproofing Your Home](https://www.cpsc.gov/safety-education/safety-guides/kids-and-babies/Childproofing-Your-Home) — household childproofing and securing hazardous products.
-- [Simple Project](https://simpleprojectus.com/) — check current product dimensions, prices, delivery, warranty, and return terms directly before purchase.
-- [Simple Project affiliate program information](https://simpleprojectus.com/pages/affiliate-program) — verify the current terms in your Awin account, as the public page may not reflect all publisher-specific conditions.
+- U.S. EPA, [A Brief Guide to Mold, Moisture and Your Home](https://www.epa.gov/mold/brief-guide-mold-moisture-and-your-home) (last updated February 18, 2026): dry wet or damp items and surfaces within 24 to 48 hours to prevent mold growth.
+- [Simple Project](https://simpleprojectus.com/): manufacturer site; check current product dimensions, prices, delivery, warranty, and return terms directly before purchase.
 
 ## Image Credits
 
