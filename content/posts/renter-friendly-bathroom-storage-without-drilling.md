@@ -18,7 +18,7 @@ faq = [
 ]
 +++
 
-![A compact bathroom storage layout using a freestanding shelf and grouped daily essentials, with the floor path kept clear.](../images/renter-friendly-bathroom-storage-no-drill-cover.svg)
+![A compact bathroom storage layout using a freestanding shelf and grouped daily essentials, with the floor path kept clear.](/auto-blog/images/renter-friendly-bathroom-storage-no-drill-cover.svg)
 
 Renting can make bathroom storage frustrating: drilling may be prohibited, adhesive hooks may not suit the wall, and a freestanding cabinet can swallow the little floor space you have. The answer is not to buy a stack of organizers and hope they fit. It is to match each storage choice to a specific clutter problem, the room's measurements, and the rules of your rental.
 
@@ -87,7 +87,7 @@ A pedestal sink offers little concealed storage, while a vanity cabinet often lo
 
 **For a vanity:** use two small bins around the plumbing rather than one large bin that cannot slide out. Keep cleaning products separate from personal-care products, and do not force containers against pipes or valves. Leave access to shut-off valves and plumbing connections.
 
-![Diagram of two storage bins placed on either side of the sink drain, with plumbing and valve access kept clear.](../images/renter-friendly-bathroom-storage-under-sink.svg)
+![Diagram of two storage bins placed on either side of the sink drain, with plumbing and valve access kept clear.](/auto-blog/images/renter-friendly-bathroom-storage-under-sink.svg)
 
 If children can reach the cabinet, secure cleaning products and medicines appropriately. The U.S. Consumer Product Safety Commission provides household childproofing guidance: [Childproofing Your Home](https://www.cpsc.gov/safety-education/safety-guides/kids-and-babies/Childproofing-Your-Home).
 
@@ -109,7 +109,7 @@ A bathroom is easier to maintain when every item has a zone:
 
 Keep medicines according to their labels; the bathroom's heat and humidity may not be suitable for some products. Store cleaning chemicals separately from toiletries and follow their labels.
 
-![Three-zone bathroom storage diagram: daily items close at hand, occasional items in secondary storage, and backups together in one labeled bin.](../images/renter-friendly-bathroom-storage-zones.svg)
+![Three-zone bathroom storage diagram: daily items close at hand, occasional items in secondary storage, and backups together in one labeled bin.](/auto-blog/images/renter-friendly-bathroom-storage-zones.svg)
 
 ## 8. Control moisture so storage does not become another problem
 
