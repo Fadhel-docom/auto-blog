@@ -2,7 +2,7 @@
 title = "Renter-Friendly Bathroom Storage Without Drilling: A Measured Plan"
 date = "2026-10-14T18:00:00+00:00"
 description = "Solve bathroom clutter in a rental without damaging walls: measure the real space, choose safer no-drill storage, control moisture, and avoid purchases that do not fit."
-image = "images/renter-friendly-bathroom-storage-no-drill-cover.svg"
+image = "images/renter-bathroom-cover.jpg"
 images = ["images/renter-friendly-bathroom-storage-no-drill-cover.svg", "images/renter-friendly-bathroom-storage-zones.svg", "images/renter-friendly-bathroom-storage-under-sink.svg"]
 tags = ["renter friendly bathroom storage", "small bathroom organization", "no drill storage", "small space storage"]
 categories = ["Bathroom"]
@@ -186,3 +186,6 @@ No. Measure the actual usable width, depth, height, door clearance, and plumbing
 - [Simple Project](https://simpleprojectus.com/) — check current product dimensions, prices, delivery, warranty, and return terms directly before purchase.
 - [Simple Project affiliate program information](https://simpleprojectus.com/pages/affiliate-program) — verify the current terms in your Awin account, as the public page may not reflect all publisher-specific conditions.
 
+## Image Credits
+
+- Cover: AI-generated image via ChatGPT, October 2026.
