@@ -4,7 +4,11 @@
 Keep Home Organization Ideas stable, safe, observable, and maintainable before optimizing publishing volume.
 
 ## Operating mode
-**EMERGENCY ROLLBACK — PUBLISHING PAUSED**
+**CONTROLLED RESUME — ONE ARTICLE/DAY (2026-10-16)**
+
+Publishing resumed with a single daily slot (05:00 UTC). Auto Repair no longer re-dispatches the publisher (retry storms burned generator quota on 2026-10-06 and 2026-10-16). A failed run is fail-closed: nothing is published, the cooldown persists, and the next attempt is the next scheduled slot. Each run is reviewed by the manager after completion.
+
+(Previous mode: EMERGENCY ROLLBACK — PUBLISHING PAUSED.)
 
 Scheduled publishing is paused after the custom-domain migration was found to be broken. The project has been rolled back to the known Google-indexed GitHub Pages URL while the custom domain remains off. No new generator call is allowed during this recovery.
 
