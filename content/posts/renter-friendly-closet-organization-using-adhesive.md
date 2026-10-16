@@ -284,3 +284,16 @@ Start with the category causing the most daily friction—usually shoes, accesso
 A renter-friendly closet does not need permanent construction. Measure the space, create three or four useful zones, use adhesive hooks only for appropriate loads and surfaces, and treat tension rods as load-rated hardware rather than universal shelves.
 
 The best system is the one you can explain in a few sentences: everyday clothes here, seasonal items there, shoes below, accessories on the side. When every category has a predictable home, the closet stays usable long after the initial makeover.
+
+## Sources
+
+- Command (3M), [How to use Command indoor and outdoor hooks, ledges and caddies](https://web.archive.org/web/20260517151411/https://www.command.com/3M/en_US/command/how-to-use/all-other-hooks/) (archived snapshot, May 17, 2026): wipe the wall with rubbing alcohol and follow the stated wait times before use.
+- Command (3M), [How to use Clear Command hooks](https://web.archive.org/web/20260819191925/https://www.command.com/3M/en_US/command/how-to-use/clear-hooks/) (archived snapshot, August 19, 2026): clean the surface with isopropyl rubbing alcohol, press firmly for 30 seconds, and wait 1 hour before use.
+
+## Image Credits
+
+- Photo 1: [Anastasia  Shuraeva](https://www.pexels.com/@anastasia-shuraeva) via [Pexels](https://www.pexels.com/photo/blue-and-black-clothes-hanging-in-white-wooden-cabinet-5705496/)
+- Photo 2: [https://kaboompics.com/](https://www.pexels.com/@karola-g) via [Pexels](https://www.pexels.com/photo/close-up-of-person-making-blueprint-on-paper-4977442/)
+- Photo 3: [Yaroslav Shuraev](https://www.pexels.com/@yaroslav-shuraev) via [Pexels](https://www.pexels.com/photo/person-holding-fishhook-on-white-plastic-case-8917052/)
+- Photo 4: [cottonbro studio](https://www.pexels.com/@cottonbro) via [Pexels](https://www.pexels.com/photo/assorted-clothes-hanged-on-a-clothes-rack-6068961/)
+- Photo 5: [Ron Lach](https://www.pexels.com/@ron-lach) via [Pexels](https://www.pexels.com/photo/rear-view-on-woman-checking-clothes-on-rack-9853312/)
