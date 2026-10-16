@@ -3,7 +3,7 @@ title = "Narrow Entryway Organization: Build a Drop Zone That Stays Tidy"
 date = "2026-09-23T12:00:00+00:00"
 lastmod = "2026-10-10T09:00:00+00:00"
 description = "A practical plan for organizing a narrow entryway with a simple drop zone, vertical storage, defined shoe space, and a 15-minute reset routine."
-image = "images/entryway-plan.svg"
+image = "images/entryway-cover.jpg"
 images = ["images/entryway-plan.svg", "images/entryway-heights.svg", "images/entryway-reset.svg"]
 tags = ["entryway organization", "small space organization", "drop zone", "decluttering"]
 categories = ["Small Space", "Entryway"]
@@ -190,3 +190,7 @@ A narrow entrance often works better when overflow storage is handled elsewhere.
 - [NFPA: Escape planning](https://www.nfpa.org/education-and-research/home-fire-safety/escape-planning): planning two ways out of each room.
 
 The diagrams are original illustrations made for this guide; the 12 inch strip is a planning example, not a code requirement.
+
+## Image Credits
+
+- Cover: AI-generated image via ChatGPT, October 2026.
