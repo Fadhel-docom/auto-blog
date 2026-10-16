@@ -827,3 +827,32 @@ body {
     aspect-ratio: 1.45 / 1;
   }
 }
+
+/* Affiliate call-to-action button (rendered only for Awin links) */
+.post-content a.aff-btn {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 1.6rem auto;
+  padding: .85rem 1.7rem;
+  background: var(--v2-accent-dark);
+  color: #fff !important;
+  border-radius: 999px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none !important;
+  box-shadow: var(--v2-shadow);
+  transition: background .2s ease, transform .2s ease;
+}
+
+.post-content a.aff-btn:hover,
+.post-content a.aff-btn:focus-visible {
+  background: #44503b;
+  transform: translateY(-1px);
+}
+
+.post-content a.aff-btn:focus-visible {
+  outline: 3px solid var(--v2-accent);
+  outline-offset: 3px;
+}
