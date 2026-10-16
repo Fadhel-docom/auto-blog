@@ -189,6 +189,10 @@ A pull‑out spice rack is one of the most rewarding **small kitchen organizatio
 
 ---
 
+## Sources
+
+- Quik Cabinets, [Kitchen Cabinet Sizes: Complete Guide to Standard Dimensions (2026 Charts)](https://quikcabinets.com/blogs/kitchen-remodeling-guides/kitchen-cabinet-sizes-standard-dimensions-guide) (July 2, 2026): typical base cabinets are 34.5 in tall and 24 in deep.
+
 ## Image Credits
 
 - Photo 1: [ASR Design Studio](https://www.pexels.com/@asr-design-studio-623558661) via [Pexels](https://www.pexels.com/photo/house-kitchen-interior-design-18109909/)
