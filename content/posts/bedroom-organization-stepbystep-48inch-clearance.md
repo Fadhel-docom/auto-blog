@@ -251,3 +251,17 @@ Check the access path, container width, wheels, and surrounding furniture. Often
 A successful under-bed storage plan is a measurement project first and a storage project second. Start with the lowest clearance, map the available zones, edit what you own, and choose containers that can be removed without moving the bed.
 
 Once every container has a clear category and label, the space under the bed stops being a forgotten gap and becomes a dependable part of the bedroom organization system.
+
+## Sources
+
+- U.S. Consumer Product Safety Commission, [Anchor It!](https://web.archive.org/web/20260927021753/https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/AnchorItgov) (archived snapshot, September 27, 2026): the national campaign to prevent furniture and TV tip-overs.
+- U.S. EPA, [A Brief Guide to Mold, Moisture and Your Home](https://www.epa.gov/mold/brief-guide-mold-moisture-and-your-home) (last updated February 18, 2026): dry water-damaged or damp items within 24 to 48 hours to prevent mold growth.
+- IKEA, [Under-bed storage](https://www.ikea.com/us/en/cat/under-bed-storage-19059/) (retailer category page, no date shown): examples of under-bed container sizes; check current product measurements before buying.
+
+## Image Credits
+
+- Photo 1: [Max Vakhtbovych](https://www.pexels.com/@artbovich) via [Pexels](https://www.pexels.com/photo/an-interior-of-a-bedroom-7614411/)
+- Photo 2: [Yaroslav Shuraev](https://www.pexels.com/@yaroslav-shuraev) via [Pexels](https://www.pexels.com/photo/a-person-holding-a-measuring-tape-8844560/)
+- Photo 3: [RDNE Stock project](https://www.pexels.com/@rdne) via [Pexels](https://www.pexels.com/photo/person-holding-marker-and-writing-on-paper-5915231/)
+- Photo 4: [Liliana Drew](https://www.pexels.com/@liliana-drew) via [Pexels](https://www.pexels.com/photo/red-and-black-vacuum-in-close-up-shot-9462141/)
+- Photo 5: [Sergey  Meshkov](https://www.pexels.com/@19x14) via [Pexels](https://www.pexels.com/photo/a-red-and-silver-screw-driver-8478350/)
