@@ -56,7 +56,7 @@ A magnet that barely sticks is not a reliable foundation for a loaded rack. A st
 
 Avoid placing a spice rack directly beside a burner, where heat can affect containers and their contents. Also avoid locations where jars can be hit by a cabinet door.
 
-For general food-safety practices at home, use the [FDA's food-safety guidance](https://www.fda.gov/consumers/consumer-updates/are-you-storing-food-safely) as a reference rather than treating a storage accessory as a substitute for safe food handling.
+For general food-safety practices at home, use the [FDA's food-safety guidance](https://web.archive.org/web/20261011093459/https://www.fda.gov/consumers/consumer-updates/are-you-storing-food-safely) as a reference rather than treating a storage accessory as a substitute for safe food handling.
 
 ## Measure the Usable Space Before Buying
 
@@ -351,7 +351,7 @@ For renters, that makes the approach especially practical. Measure first, test t
 
 ## Sources
 
-- U.S. FDA, [Are You Storing Food Safely?](https://www.fda.gov/consumers/consumer-updates/are-you-storing-food-safely) (no date shown): tips for storing food in the refrigerator, freezer and cupboards.
+- U.S. FDA, [Are You Storing Food Safely?](https://web.archive.org/web/20261011093459/https://www.fda.gov/consumers/consumer-updates/are-you-storing-food-safely) (archived snapshot, 2026-10-11): tips for storing food in the refrigerator, freezer and cupboards.
 
 ## Image Credits
 
