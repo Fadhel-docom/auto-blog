@@ -326,7 +326,11 @@ For additional small-space organization ideas, see [renter-friendly closet organ
 
 For the photography used in this guide, see the [Pexels](https://www.pexels.com/) source pages credited below.
 
-### Image Credits
+## Sources
+
+- International Code Council, [2021 International Residential Code, Chapter 3: Building Planning](https://codes.iccsafe.org/content/IRC2021P1/chapter-3-building-planning) (2021 edition): Section R311.6 sets the minimum hallway width at 36 inches.
+
+## Image Credits
 
 - Photo 1: Max Vakhtbovych via [Pexels](https://www.pexels.com/photo/a-hallway-at-home-7746083/)
 - Photo 2: Adrian Frentescu via [Pexels](https://www.pexels.com/photo/sneakers-displayed-on-a-wooden-wall-13807630/)
