@@ -357,6 +357,6 @@ Use a short daily reset for visible clutter and a focused category review every 
 
 ## Image Credits
 
-All six diagrams in this guide are original illustrations drawn for this article. The guide uses no third-party photographs or artwork.
+All six diagrams in this guide are original illustrations drawn for this article. Apart from the AI-generated cover, the guide uses no photographs or third-party artwork.
 
 - Cover: AI-generated image via ChatGPT, October 2026.
