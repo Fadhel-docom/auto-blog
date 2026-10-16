@@ -2,7 +2,7 @@
 title = "30 Practical Home Organization Ideas for Small Spaces"
 date = "2026-09-21T06:03:35.908777+00:00"
 description = "Thirty small-home organization ideas, grouped by problem, with the measurements and limits that decide whether each one actually works in your space."
-image = "images/30-first-pass.svg"
+image = "images/30-ideas-cover.jpg"
 tags = ["home organization ideas", "small space living", "decluttering tips", "storage solutions", "multi functional furniture"]
 categories = ["Small Space"]
 aliases = ["/posts/30-practical-home-organization-ideas-for-small-spaces/"]
@@ -112,3 +112,7 @@ For a small apartment, pair these principles with our [350-sq-ft storage plan](.
 - [NFPA: Escape planning](https://www.nfpa.org/education-and-research/home-fire-safety/escape-planning): planning two ways out of each room.
 
 The diagrams are original illustrations made for this guide.
+
+## Image Credits
+
+- Cover: AI-generated image via ChatGPT, October 2026.
