@@ -33,6 +33,8 @@ The goal is not to make a closet look like a showroom. It is to make each item e
 
 If your closet is narrow, shallow, or shared by several people, the same principles still work. You simply change the size of each zone.
 
+![Open linen closet with narrow shelves holding folded towels, sheets and woven baskets](images/linen-closet-cover.jpg)
+
 ## 1. Empty the Linen Closet Before You Organize It
 
 Take everything out before deciding where it should go. Working around existing piles usually preserves the same problems.
@@ -44,7 +46,7 @@ Put the contents into four groups:
 - seasonal or bulky items
 - items that belong somewhere else
 
-Then wipe the shelves and let them dry. Check the corners for dust and inspect any textiles that smell damp or show signs of moisture.
+Then wipe the shelves and let them dry. Check the corners for dust and inspect any textiles that smell damp or show signs of moisture. Dry anything damp completely before it goes back on a shelf; the EPA notes that when wet or damp materials are dried within 24 to 48 hours, mold usually does not grow.
 
 This is also the right time to remove worn towels, unmatched pillowcases, sheets that no longer fit, and duplicate items that nobody uses.
 
@@ -349,10 +351,12 @@ For additional small-space storage ideas, see our guides on [small closet organi
 
 For image-source information and additional free organization photography, see [Pexels](https://www.pexels.com/).
 
-### Image Credits
+## Sources
 
-The five article images are original local process diagrams created for this guide so each visual directly explains a step rather than acting as decorative showroom photography.
+- U.S. EPA, [A Brief Guide to Mold, Moisture and Your Home](https://www.epa.gov/mold/brief-guide-mold-moisture-and-your-home) (last updated February 18, 2026): drying water-damaged or damp items within 24 to 48 hours usually prevents mold growth.
 
 ## Image Credits
+
+The five article images are original local process diagrams created for this guide so each visual directly explains a step rather than acting as decorative showroom photography.
 
 - Cover: AI-generated image via ChatGPT, October 2026.
