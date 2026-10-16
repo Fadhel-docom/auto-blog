@@ -67,7 +67,7 @@ jobs:
           FAILED_RUN_ID: ${{ steps.run.outputs.run_id }}
           DAILY_WORKFLOW: daily.yml
           RATE_LIMIT_WAIT_SECONDS: "1500"
-          AUTONOMOUS_PUBLISHING_ENABLED: "true"
+          AUTONOMOUS_PUBLISHING_ENABLED: "false"
         run: |
           python scripts/auto_repair.py
 
