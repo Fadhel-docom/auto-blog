@@ -56,7 +56,7 @@ A magnet that barely sticks is not a reliable foundation for a loaded rack. A st
 
 Avoid placing a spice rack directly beside a burner, where heat can affect containers and their contents. Also avoid locations where jars can be hit by a cabinet door.
 
-For general food-safety practices at home, use the [FDA's food-safety guidance](https://www.fda.gov/consumers/consumer-updates/food-safety-home) as a reference rather than treating a storage accessory as a substitute for safe food handling.
+For general food-safety practices at home, use the [FDA's food-safety guidance](https://www.fda.gov/consumers/consumer-updates/are-you-storing-food-safely) as a reference rather than treating a storage accessory as a substitute for safe food handling.
 
 ## Measure the Usable Space Before Buying
 
@@ -349,7 +349,11 @@ A magnetic spice rack is most useful when it solves one specific problem: keepin
 
 For renters, that makes the approach especially practical. Measure first, test the surface, start with a small load, and organize around the way you actually cook. If the system works in real use, keep it. If it creates new friction, change the layout rather than adding more storage.
 
-### Image Credits
+## Sources
+
+- U.S. FDA, [Are You Storing Food Safely?](https://www.fda.gov/consumers/consumer-updates/are-you-storing-food-safely) (no date shown): tips for storing food in the refrigerator, freezer and cupboards.
+
+## Image Credits
 
 - Photo 1: [Mathias Reding](https://www.pexels.com/@matreding) via [Pexels](https://www.pexels.com/photo/jars-of-spices-on-a-shelf-11911870/)
 - Photo 2: [Polina Tankilevitch](https://www.pexels.com/@polina-tankilevitch) via [Pexels](https://www.pexels.com/photo/close-up-of-woman-and-fridge-5418583/)
