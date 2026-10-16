@@ -26,7 +26,7 @@ def call(article):
             f"source_url: {item.get('source_url','')} "
             f"dimensions: {item.get('width')}x{item.get('height')}"
         )
-    payload={'model':MODEL,'temperature':0.15,'messages':[{'role':'system','content':SYSTEM},{'role':'user','content':content_parts}],'response_format':{'type':'json_object'}}
+    payload={'model':MODEL,'temperature':0.15,'reasoning_effort':'low','max_completion_tokens':3500,'messages':[{'role':'system','content':SYSTEM},{'role':'user','content':content_parts}],'response_format':{'type':'json_object'}}
     last_error=None
     for attempt in range(4):
         try:
