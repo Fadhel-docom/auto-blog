@@ -147,7 +147,9 @@ Sometimes organization cannot solve the underlying issue: a damaged fixture, a v
 
 Check the manufacturer's dimensions and installation requirements, plumbing positions, delivery charges, return conditions, warranty, and whether professional installation is needed. Include fittings, labor, tools, disposal, and possible repairs in the total cost. For plumbing, waterproofing, or electrical work beyond your skills, consult a qualified professional and get the landlord's permission where required.
 
-If a product upgrade is genuinely useful, you can [browse bathroom products from Simple Project through this affiliate link](https://www.awin1.com/cread.php?awinmid=99013&awinaffid=3117057). This is an optional comparison link. Verify the current product specifications, price, availability, shipping, installation needs, and return terms before ordering. Do not assume every item is renter-friendly or suitable for a small bathroom.
+If a product upgrade is genuinely useful, you can compare options from Simple Project. This is an optional comparison link. Verify the current product specifications, price, availability, shipping, installation needs, and return terms before ordering. Do not assume every item is renter-friendly or suitable for a small bathroom.
+
+[Browse Simple Project bathroom products (affiliate link)](https://www.awin1.com/cread.php?awinmid=99013&awinaffid=3117057)
 
 ## 11. Maintain the system with a five-minute reset
 
