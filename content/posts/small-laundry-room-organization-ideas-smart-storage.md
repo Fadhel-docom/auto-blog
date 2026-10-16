@@ -3,7 +3,7 @@ title = "Small Laundry Room Storage: 16 Ways to Keep Supplies Under Control"
 date = "2026-09-23T20:30:00+01:00"
 lastmod = "2026-10-11T00:00:00+00:00"
 description = "Practical small laundry room organization ideas for creating clear sorting, supply, folding, and backup-storage zones without wasting floor space."
-image = "images/small-laundry-room-organization-ideas-smart-storage-three-zones.svg"
+image = "images/small-laundry-room-organization-ideas-smart-storage-cover.jpg"
 images = ["images/small-laundry-room-organization-ideas-smart-storage-three-zones.svg", "images/small-laundry-room-organization-ideas-smart-storage-measure-checklist.svg", "images/small-laundry-room-organization-ideas-smart-storage-folding-destinations.svg", "images/small-laundry-room-organization-ideas-smart-storage-keep-access-clear.svg", "images/small-laundry-room-organization-ideas-smart-storage-ten-minute-reset.svg", "images/small-laundry-room-organization-ideas-smart-storage-narrow-room-sequence.svg"]
 original_graphics = true
 tags = ["small laundry room organization", "laundry room storage", "home organization", "small spaces"]
@@ -382,3 +382,5 @@ Use the highest shelves for light, infrequently used items such as seasonal supp
 ## Image Credits
 
 All six diagrams in this guide are original illustrations drawn for this article. The guide uses no third-party photographs or artwork.
+
+- Cover: AI-generated image via ChatGPT, October 2026.
