@@ -229,6 +229,6 @@ This routine is also useful for roommates or families because the storage rules 
 
 ## Image Credits
 
-All five diagrams in this guide are original illustrations drawn for this article. The guide uses no third-party photographs or artwork.
+All five diagrams in this guide are original illustrations drawn for this article. Apart from the AI-generated cover, the guide uses no photographs or third-party artwork.
 
 - Cover: AI-generated image via ChatGPT, October 2026.
