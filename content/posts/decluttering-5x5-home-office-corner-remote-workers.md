@@ -191,6 +191,10 @@ Use the [small apartment storage guide](/posts/small-apartment-organization-maxi
 
 ---
 
+## Sources
+
+- OSHA, [Computer Workstations eTool](https://www.osha.gov/computer-workstations) (no date shown): practical guidance on arranging monitors, keyboards and the work area.
+
 ## Image Credits
 
 - Photo 1: [Max Vakhtbovych](https://www.pexels.com/@artbovich) via [Pexels](https://www.pexels.com/photo/modern-workplace-in-stylish-room-in-apartment-7167080/)
