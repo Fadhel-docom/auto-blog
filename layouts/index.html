@@ -51,7 +51,7 @@
       {{/* Normalize local image URLs to the GitHub Pages base path. */}}
       {{ $heroPath := $heroImage | relURL }}
       <a class="home-hero-image" href="{{ $heroPost.RelPermalink }}" aria-label="Read {{ $heroPost.Title }}">
-        <img src="{{ $heroPath }}" alt="{{ $heroPost.Title }}" loading="eager" decoding="async" fetchpriority="high">
+        <img {{ partial "img-srcset.html" (dict "path" $heroImage "sizes" "(min-width: 1000px) 640px, 100vw") | safeHTMLAttr }} alt="{{ $heroPost.Title }}" loading="eager" decoding="async" fetchpriority="high">
         <span class="home-hero-image-caption">
           <span>Latest guide</span>
           <strong>{{ $heroPost.Title }}</strong>
@@ -236,7 +236,7 @@
           >
 
             <img
-              src="{{ $thumbPath }}"
+              {{ partial "img-srcset.html" (dict "path" $thumbnail "sizes" "(min-width: 1000px) 420px, 100vw") | safeHTMLAttr }}
               alt="{{ $post.Title }}"
               loading="{{ if eq $index 0 }}eager{{ else }}lazy{{ end }}"
               decoding="async"
@@ -363,7 +363,7 @@
             >
 
               <img
-                src="{{ $thumbPath }}"
+                {{ partial "img-srcset.html" (dict "path" $thumbnail "sizes" "(min-width: 1000px) 420px, 100vw") | safeHTMLAttr }}
                 alt="{{ .Title }}"
                 loading="lazy"
                 decoding="async"
