@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-17T13:22:25+00:00",
+  "timestamp": "2026-10-17T13:50:10+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "PAUSED",
@@ -55,12 +55,12 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 39036277472,
+      "id": 39038184801,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-10-17T13:22:18Z",
-      "updated_at": "2026-10-17T13:22:20Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/39036277472"
+      "created_at": "2026-10-17T13:50:02Z",
+      "updated_at": "2026-10-17T13:50:05Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/39038184801"
     },
     "Traffic Report": {
       "id": 39034489479,
@@ -69,19 +69,10 @@
       "created_at": "2026-10-17T12:55:54Z",
       "updated_at": "2026-10-17T12:56:08Z",
       "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/39034489479"
-    },
-    "Scheduled Publisher": {
-      "id": 39005693693,
-      "status": "completed",
-      "conclusion": "failure",
-      "created_at": "2026-10-17T05:17:06Z",
-      "updated_at": "2026-10-17T05:17:55Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/39005693693"
     }
   },
   "quality_gate": {
-    "status": "failure",
-    "job": "publish"
+    "status": "UNAVAILABLE"
   },
   "traffic": {
     "status": "OK",
@@ -136,63 +127,9 @@
         "h2": 17,
         "faq": 6
       }
-    },
-    {
-      "type": "Quality Gate failure",
-      "quality_gate": {
-        "status": "failure",
-        "job": "publish"
-      }
-    },
-    {
-      "type": "Scheduled Publisher failure",
-      "run": {
-        "id": 39005693693,
-        "status": "completed",
-        "conclusion": "failure",
-        "created_at": "2026-10-17T05:17:06Z",
-        "updated_at": "2026-10-17T05:17:55Z",
-        "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/39005693693"
-      }
-    },
-    {
-      "type": "Quality Gate failure",
-      "step": {
-        "status": "failure",
-        "job": "publish"
-      }
     }
   ],
-  "publisher_steps": {
-    "Groq Editorial Quality Gate": {
-      "status": "success",
-      "job": "publish"
-    },
-    "Publish Hugo post": {
-      "status": "success",
-      "job": "publish"
-    },
-    "Quality Gate": {
-      "status": "failure",
-      "job": "publish"
-    },
-    "Deploy GitHub Pages": {
-      "status": "skipped",
-      "job": "publish"
-    },
-    "Verify live article": {
-      "status": "skipped",
-      "job": "publish"
-    },
-    "Submit IndexNow": {
-      "status": "skipped",
-      "job": "publish"
-    },
-    "Recovery check": {
-      "status": "skipped",
-      "job": "publish"
-    }
-  },
+  "publisher_steps": {},
   "secrets": {
     "INDEXNOW_KEY": "OK",
     "GOATCOUNTER_API_KEY": "OK"
