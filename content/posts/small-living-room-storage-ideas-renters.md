@@ -61,7 +61,7 @@ This is the one step in the guide that is about safety rather than looks. The U.
 
 For renters, the practical route is to ask your landlord what is allowed. Anchor kits use small fasteners, and some landlords permit them if you agree to repair the holes when you leave. Ask in writing so there is no confusion later. If anchoring truly is not possible, follow the low-and-back rule and avoid tall, narrow furniture altogether.
 
-The same campaign suggests not leaving things children want, such as toys and remote controls, where they might climb to reach them, and keeping cords out of reach. Both points fit naturally into a living-room system: heavy and bulky items go low, the things you use every day sit in the middle, and anything light and occasional goes high.
+The same guidance says to keep TV and cable cords out of children's reach. That fits naturally into a living-room system: heavy and bulky items go low, the things you use every day sit in the middle, and anything light and occasional goes high.
 
 ## Use the Wall Above the Console
 
@@ -159,7 +159,7 @@ For more ways to find capacity in a small home, see our guides to [decluttering 
 
 - [Access Board: ADA Standards, Chapter 4 Accessible Routes](https://www.access-board.gov/ada/chapter/ch04/): the 36 inch minimum clear width of walking surfaces, used here as a planning benchmark.
 - [Access Board: ADA Standards guide, Chapter 3 Operable Parts](https://www.access-board.gov/ada/guides/chapter-3-operable-parts/): the 15 to 48 inch unobstructed reach range.
-- [Anchor It! (U.S. Consumer Product Safety Commission)](https://anchorit.gov/): anchoring TVs and furniture to the wall, using a sturdy low base and pushing the TV back, and keeping cords out of reach.
+- [OrthoAtlanta: Anchor It! Toppling TVs, Furniture Can Injure and Kill Kids](https://www.orthoatlanta.com/health-news/anchor-it-toppling-tvs-furniture-can-injure-and-kill-kids): a health-news summary of the U.S. Consumer Product Safety Commission's Anchor It! tips: anchor TVs and furniture to the wall, use a sturdy low base and push the TV back, and keep cords out of children's reach. The campaign itself is at anchorit.gov.
 - [MidAmerican Energy: Power strip safety tips](https://www.midamericanenergy.com/articles/power-strip-safety-tips): not plugging a power strip into another, not running cords under rugs, keeping strips uncovered and unplugging one that feels hot.
 
 The diagrams are original illustrations made for this guide; the room dimensions are a planning example, not a code requirement. Adhesive products and mounting hardware vary, so always follow the manufacturer's weight limits and your lease.
