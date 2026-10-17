@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-16T12:29:12+00:00",
+  "timestamp": "2026-10-17T00:26:52+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -64,7 +64,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 29296
+      "html_length": 29360
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/decluttering-ideas-for-small-homes-that-actually-last/",
@@ -88,7 +88,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 36803
+      "html_length": 36838
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-small-shelves/",
