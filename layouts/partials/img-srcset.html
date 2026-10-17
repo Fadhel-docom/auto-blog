@@ -1,0 +1,29 @@
+{{- /* Responsive attributes for a raster cover image: src, srcset and sizes.
+   Thumbnails are generated at build time by scripts/make_thumbs.py.
+   Falls back to the original image when no thumbnail exists. */ -}}
+{{- $path := .path -}}
+{{- $sizes := .sizes -}}
+{{- $full := $path | relURL -}}
+{{- $base := path.Base $path -}}
+{{- $base = strings.TrimSuffix (path.Ext $base) $base -}}
+{{- $ext := lower (path.Ext $path) -}}
+{{- $set := slice -}}
+{{- $src := "" -}}
+{{- $best := "" -}}
+{{- if and (in (slice ".jpg" ".jpeg" ".png") $ext) (not (strings.HasPrefix $path "http")) -}}
+  {{- range (slice 640 960 1280) -}}
+    {{- $rel := printf "images/thumbs/%s-%d.jpg" $base . -}}
+    {{- if fileExists (printf "static/%s" $rel) -}}
+      {{- $url := $rel | relURL -}}
+      {{- $set = $set | append (printf "%s %dw" $url .) -}}
+      {{- $best = $url -}}
+      {{- if eq . 960 }}{{ $src = $url }}{{ end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $src }}{{ $src = $best }}{{ end -}}
+{{- if $set -}}
+src="{{ $src }}" srcset="{{ delimit $set ", " }}" sizes="{{ $sizes }}"
+{{- else -}}
+src="{{ $full }}"
+{{- end -}}
