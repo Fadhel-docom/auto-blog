@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-17T12:22:28+00:00",
+  "timestamp": "2026-10-18T00:26:41+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -39,9 +39,57 @@
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 34051
+    "html_length": 34196
   },
   "articles": [
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/toy-storage-small-apartment-rotation-system/",
+      "status": 200,
+      "title": "Toy Storage in a Small Apartment: A Reachable, Rotating System",
+      "title_capitalized": true,
+      "meta_description": "A practical toy storage system for small apartments: a low anchored shelf, open labeled bins, a simple rotation, and a ten-minute reset children can help with.",
+      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/toy-storage-small-apartment-rotation-system/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 19,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 29262
+    },
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-living-room-storage-ideas-renters/",
+      "status": 200,
+      "title": "Small Living Room Storage for Renters: A Layout-First Plan",
+      "title_capitalized": true,
+      "meta_description": "A layout-first plan for small rental living rooms: protect the walking path, anchor the TV and tall furniture, hide cords safely, and reset in ten minutes.",
+      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/small-living-room-storage-ideas-renters/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 19,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 30525
+    },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/renter-friendly-bathroom-storage-without-drilling/",
       "status": 200,
@@ -113,54 +161,6 @@
       },
       "required_failures": [],
       "html_length": 32835
-    },
-    {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-simple-system/",
-      "status": 200,
-      "title": "Under-Sink Organization Ideas: A Measured, Leak-Aware System",
-      "title_capitalized": true,
-      "meta_description": "Measure six points, build three zones around the pipes, and add a leak check. An under-sink organization system with diagrams and a printable sheet.",
-      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/under-sink-organization-ideas-simple-system/",
-      "images": 10,
-      "tags": 4,
-      "h2_count": 14,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 26685
-    },
-    {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-organization-ideas-practical-space/",
-      "status": 200,
-      "title": "Small Bedroom Organization: A Floor-First Plan That Keeps the Room Usable",
-      "title_capitalized": true,
-      "meta_description": "Measure the room, protect a 24-inch walking path, and give clothes, bedding and daily items a fixed height zone. A small bedroom plan with two diagrams.",
-      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-organization-ideas-practical-space/",
-      "images": 8,
-      "tags": 3,
-      "h2_count": 16,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 24482
     }
   ],
   "responsive": {
