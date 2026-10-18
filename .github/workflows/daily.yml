@@ -4,8 +4,11 @@ name: Scheduled Publisher
 on:
   # Regular publishing: two controlled queue checks per day (05:00 and 17:00 UTC).
   # RESUMED 2026-10-16: one controlled slot per day (05:00 UTC); Auto Repair no longer re-dispatches this workflow.
-  schedule:
-    - cron: "0 5 * * *"
+  # PAUSED 2026-10-18: the generator does not write the Sources section or front-matter FAQ that publish_guard.py requires,
+  # so every scheduled run failed at the Quality Gate. Articles are written and published by hand until the generator is repaired.
+  # To resume: restore the two lines below.
+  # schedule:
+  #   - cron: "0 5 * * *"
   workflow_dispatch:
 
 permissions:
