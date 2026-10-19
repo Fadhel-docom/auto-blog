@@ -1,7 +1,7 @@
 +++
 title = "Bathroom Organization: Maximize a 24-Inch Deep Under-Sink Cabinet"
 date = "2026-09-22T10:33:52+00:00"
-lastmod = "2026-09-22T10:33:52+00:00"
+lastmod = "2026-10-19T00:17:39+00:00"
 description = "Learn step‑by‑step how to turn a 24‑inch deep under‑sink cabinet into a tidy, accessible space using pull‑out bins and tension rods for small‑space living."
 image = "images/bathroom-organization-maximizing-24-inch-deep-cabi-1.jpg"
 images = ["images/bathroom-organization-maximizing-24-inch-deep-cabi-1.jpg", "images/bathroom-organization-maximizing-24-inch-deep-cabi-2.jpg", "images/bathroom-organization-maximizing-24-inch-deep-cabi-3.jpg", "images/bathroom-organization-maximizing-24-inch-deep-cabi-4.jpg", "images/bathroom-organization-maximizing-24-inch-deep-cabi-5.jpg"]
@@ -63,7 +63,7 @@ Pull‑out bins are the workhorse of any under‑sink makeover because they slid
 
 A tension rod is a simple, cost‑effective way to create a hanging zone inside the cabinet. It works like a miniature clothes‑line, supporting spray bottles, rolled towels, or a slim cleaning caddy without any permanent modifications.
 
-[Read more about Bedroom Organization: Step‑by‑Step Under‑Bed Storage Makeover for a Studio Apartment with 48‑Inch Clearance](../bedroom-organization-stepbystep-48inch-clearance/)
+[Read more about Bedroom Organization: Step‑by‑Step Under‑Bed Storage Makeover for a Studio Apartment with 48‑Inch Clearance](/posts/bedroom-organization-stepbystep-48inch-clearance/)
 
 **Why a tension rod works so well:**
 

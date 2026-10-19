@@ -1,7 +1,7 @@
 +++
 title = "Decluttering Ideas for Small Homes That Actually Last"
 date = "2026-09-26T13:45:00+00:00"
-lastmod = "2026-10-11T00:00:00+00:00"
+lastmod = "2026-10-19T00:17:39+00:00"
 description = "A practical decluttering system for small homes: audit problem areas, set space limits, create easy homes, remove excess, and maintain a simple reset routine."
 image = "images/decluttering-cover.jpg"
 images = ["images/decluttering-ideas-for-small-homes-that-actually-last-15-minute-audit.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-category-sort.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-storage-zones.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-physical-limits.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-exit-route.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-reset-routine.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-surface-limits.svg"]
@@ -103,7 +103,7 @@ If an item repeatedly lands on the same surface, treat that as useful informatio
 
 This zone-first approach is particularly useful in small homes because it reduces unnecessary movement. If the same category keeps traveling from room to room, the storage location is probably fighting the way you use the space.
 
-For a compact closet, you can apply the same principle with the [small closet organization guide](../small-closet-organization-ideas-practical-space/). For a bedroom with limited floor area, the [small bedroom storage guide](../small-bedroom-storage-ideas-diy-pull-out/) can help you turn unused or awkward areas into practical storage without making the room harder to use.
+For a compact closet, you can apply the same principle with the [small closet organization guide](/posts/small-closet-organization-ideas-practical-space/). For a bedroom with limited floor area, the [small bedroom storage guide](/posts/small-bedroom-storage-ideas-diy-pull-out/) can help you turn unused or awkward areas into practical storage without making the room harder to use.
 
 ## Set Physical Limits for Problem Categories
 
@@ -156,7 +156,7 @@ Use a two-question surface check at the end of the day: “Does this belong here
 
 ![Four busy household surfaces, each with a short allowed list, plus a two-question end-of-day check](images/decluttering-ideas-for-small-homes-that-actually-last-surface-limits.svg)
 
-The same principle works for a narrow hallway. If you are struggling with a tight entrance, a small designated drop zone can be more useful than adding a large cabinet. The [narrow entryway organization guide](../narrow-entryway-organization-drop-zone/) shows how to make a small arrival zone practical without allowing it to become a dumping area.
+The same principle works for a narrow hallway. If you are struggling with a tight entrance, a small designated drop zone can be more useful than adding a large cabinet. The [narrow entryway organization guide](/posts/narrow-entryway-organization-drop-zone/) shows how to make a small arrival zone practical without allowing it to become a dumping area.
 
 ## Make Small Closets Easier to See and Reach
 
@@ -310,7 +310,7 @@ A small home also benefits from intentionally empty space. An uncrowded drawer, 
 
 Decluttering works better when each room supports the next one. If the entrance has a clear landing zone, the bedroom has a defined clothing limit, and the kitchen has boundaries for containers and appliances, fewer items migrate into random piles.
 
-For a closet problem, continue with our [small closet organization guide](../small-closet-organization-ideas-practical-space/). For a bedroom that needs more usable storage, use the [small bedroom storage guide](../small-bedroom-storage-ideas-diy-pull-out/). If the bathroom is the recurring problem area, see the [small bathroom organization guide](../small-bathroom-organization-ideas-practical-space/). For a compact kitchen, use the [small kitchen organization guide](../kitchen-organization-ideas-small-spaces-space/).
+For a closet problem, continue with our [small closet organization guide](/posts/small-closet-organization-ideas-practical-space/). For a bedroom that needs more usable storage, use the [small bedroom storage guide](/posts/small-bedroom-storage-ideas-diy-pull-out/). If the bathroom is the recurring problem area, see the [small bathroom organization guide](/posts/small-bathroom-organization-ideas-practical-space/). For a compact kitchen, use the [small kitchen organization guide](/posts/kitchen-organization-ideas-small-spaces-space/).
 
 The useful test is simple: after you declutter, can a normal person in the household put an item away quickly without asking where it belongs? Can the category stay inside its physical limit? Can unwanted items leave the house without becoming a new pile?
 
@@ -350,10 +350,10 @@ Use a short daily reset for visible clutter and a focused category review every 
 
 ## Related Guides
 
-- [Small Closet Organization Ideas for Practical Space](../small-closet-organization-ideas-practical-space/)
-- [Small Bedroom Storage Ideas](../small-bedroom-storage-ideas-diy-pull-out/)
-- [Small Bathroom Organization Ideas for Practical Space](../small-bathroom-organization-ideas-practical-space/)
-- [Kitchen Organization Ideas for Small Spaces](../kitchen-organization-ideas-small-spaces-space/)
+- [Small Closet Organization Ideas for Practical Space](/posts/small-closet-organization-ideas-practical-space/)
+- [Small Bedroom Storage Ideas](/posts/small-bedroom-storage-ideas-diy-pull-out/)
+- [Small Bathroom Organization Ideas for Practical Space](/posts/small-bathroom-organization-ideas-practical-space/)
+- [Kitchen Organization Ideas for Small Spaces](/posts/kitchen-organization-ideas-small-spaces-space/)
 
 ## Image Credits
 

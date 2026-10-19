@@ -1,7 +1,7 @@
 +++
 title = "Linen Closet Organization Ideas: A Simple System for Small Shelves"
 date = "2026-09-24T21:05:00+00:00"
-lastmod = "2026-10-01T21:45:00+01:00"
+lastmod = "2026-10-19T00:17:39+00:00"
 description = "Linen closet organization ideas for small shelves: measure the space, group linens by use, fold to shelf height, label simple zones, and keep everyday towels easy to reach."
 image = "images/linen-closet-cover.jpg"
 images = [
@@ -347,7 +347,7 @@ Before you finish, confirm that:
 - the door still opens freely
 - the whole closet can be reset in a few minutes
 
-For additional small-space storage ideas, see our guides on [small closet organization](../small-closet-organization-ideas-practical-space/), [small bedroom storage](../small-bedroom-storage-ideas-diy-pull-out-drawers-and-rolling-bins-under-a-queen-bed/), [small apartment organization](../small-apartment-organization-maximizing-storage-in-a-350sqft/), [small bathroom organization](../small-bathroom-organization-ideas-practical-space/), [renter-friendly closet organization](../renter-friendly-closet-organization-using-adhesive/), [small laundry room organization](../small-laundry-room-organization-ideas-smart-storage/), and [small-space hallway organization](../small-space-organization-transforming-a-3ft-wide-hallway-into-functional-coat-and-shoe-storage/).
+For additional small-space storage ideas, see our guides on [small closet organization](/posts/small-closet-organization-ideas-practical-space/), [small bedroom storage](/posts/small-bedroom-storage-ideas-diy-pull-out/), [small apartment organization](/posts/small-apartment-organization-maximizing-storage-in-a-350sqft/), [small bathroom organization](/posts/small-bathroom-organization-ideas-practical-space/), [renter-friendly closet organization](/posts/renter-friendly-closet-organization-using-adhesive/), [small laundry room organization](/posts/small-laundry-room-organization-ideas-smart-storage/), and [small-space hallway organization](/posts/small-space-organization-transforming-a-3ft-wide-hallway-int/).
 
 For image-source information and additional free organization photography, see [Pexels](https://www.pexels.com/).
 

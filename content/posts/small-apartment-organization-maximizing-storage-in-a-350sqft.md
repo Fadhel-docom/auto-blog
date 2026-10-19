@@ -1,7 +1,7 @@
 +++
 title = "350-Sq-Ft Studio Organization: How to Create Storage Zones Without Crowding"
 date = "2026-09-21T11:30:13+00:00"
-lastmod = "2026-09-30T19:00:00+00:00"
+lastmod = "2026-10-19T00:17:39+00:00"
 description = "A practical 350-sq-ft studio organization plan: measure first, create a closet zone, use under-bed and vertical storage, and keep everyday items easy to reach."
 image = "images/small-apartment-organization-maximizing-storage-in-a-350sqft-1.jpg"
 images = ["images/small-apartment-organization-maximizing-storage-in-a-350sqft-1.jpg", "images/small-apartment-organization-maximizing-storage-in-a-350sqft-2.jpg", "images/small-apartment-organization-maximizing-storage-in-a-350sqft-3.jpg", "images/small-apartment-organization-maximizing-storage-in-a-350sqft-4.jpg", "images/small-apartment-organization-maximizing-storage-in-a-350sqft-5.jpg"]
@@ -94,7 +94,7 @@ Avoid storing damp towels, wet shoes, food, or anything that needs frequent insp
 
 Choose containers with lids or full fabric closures if dust is a concern. Label the short edge facing the foot or side of the bed so you can identify the contents without pulling everything out.
 
-For more detailed measurements and drawer ideas, see our [bedroom organization step-by-step under-bed storage guide](../bedroom-organization-stepbystep-48inch-clearance/).
+For more detailed measurements and drawer ideas, see our [bedroom organization step-by-step under-bed storage guide](/posts/bedroom-organization-stepbystep-48inch-clearance/).
 
 ## 5. Use Vertical Space Without Making the Studio Feel Heavy
 
@@ -154,7 +154,7 @@ Use three rules:
 
 Do not try to reorganize the whole studio every night. The purpose of the reset is to maintain the system you already built.
 
-If your kitchen is also tight, our [small-kitchen organization guide](../kitchen-organization-ideas-small-spaces-space/) shows how to create zones without filling every cabinet.
+If your kitchen is also tight, our [small-kitchen organization guide](/posts/kitchen-organization-ideas-small-spaces-space/) shows how to create zones without filling every cabinet.
 
 ## 9. Avoid These Small-Apartment Storage Mistakes
 

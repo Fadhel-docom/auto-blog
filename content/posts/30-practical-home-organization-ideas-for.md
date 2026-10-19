@@ -17,7 +17,7 @@ faq = [
   { question = "What is the biggest mistake in small-space organization?", answer = "Adding storage before reducing excess is a common mistake. More containers can hide clutter instead of solving the underlying volume problem." }
 ]
 original_graphics = true
-lastmod = "2026-10-19T00:15:28+00:00"
+lastmod = "2026-10-19T00:17:39+00:00"
 +++
 **Quick answer:** do not start with containers. Sort one area, give every room a single job, measure, and only then buy what the measurements require. The 30 ideas below are grouped by problem, so pick the group that matches what annoys you every day and ignore the rest.
 
@@ -100,35 +100,9 @@ If you can only do three things this month, do these: sort one problem area (ide
 
 ![Top-down room plan with furniture along both walls leaving a 60 inch walking path](images/30-walkway.svg)
 
-## Frequently Asked Questions
-
-### Where should I start when organizing a small home?
-
-Start with one high-traffic problem zone, remove items you do not use, then assign a fixed home to what remains before buying storage.
-
-### How do I organize a small kitchen without losing counter space?
-
-Move infrequently used items upward or into cabinets, group daily tools together, and use vertical or inside-door storage for small categories.
-
-### How can I make a small closet easier to maintain?
-
-Group clothing by type, use available vertical space, rotate seasonal items, and keep some empty space so categories remain visible.
-
-### How many storage products should I buy?
-
-Buy only after measuring and sorting. The right quantity depends on the categories you keep and the dimensions of the storage zone.
-
-### How often should I reset an organized home?
-
-A short weekly reset works well for daily clutter, while a deeper seasonal review helps remove items that no longer fit your routines.
-
-### What is the biggest mistake in small-space organization?
-
-Adding storage before reducing excess is a common mistake. More containers can hide clutter instead of solving the underlying volume problem.
-
 ## Related Guides
 
-For a small apartment, pair these principles with our [350-sq-ft storage plan](../small-apartment-organization-maximizing-storage-in-a-350sqft/), [small-apartment storage ideas](../small-apartment-storage-ideas-practical-space/), and [small-bedroom organization guide](../small-bedroom-organization-ideas-practical-space/). For specific zones, see the [small-closet guide](../small-closet-organization-ideas-practical-space/), [small-kitchen guide](../small-kitchen-organization-5foot-galley-ideas-pull/), and [under-sink system](../under-sink-organization-ideas-simple-system/).
+For a small apartment, pair these principles with our [350-sq-ft storage plan](/posts/small-apartment-organization-maximizing-storage-in-a-350sqft/), [small-apartment storage ideas](/posts/small-apartment-storage-ideas-practical-space/), and [small-bedroom organization guide](/posts/small-bedroom-organization-ideas-practical-space/). For specific zones, see the [small-closet guide](/posts/small-closet-organization-ideas-practical-space/), [small-kitchen guide](/posts/small-kitchen-organization-5foot-galley-ideas-pull/), and [under-sink system](/posts/under-sink-organization-ideas-simple-system/).
 
 ## Sources
 

@@ -1,7 +1,7 @@
 +++
 title = "Renter-Friendly Kitchen Organization: Magnetic Spice Rack Solutions That Require No Drilling"
 date = "2026-09-21T12:14:51+00:00"
-lastmod = "2026-10-01T08:00:00+01:00"
+lastmod = "2026-10-19T00:17:39+00:00"
 description = "Practical renter-friendly magnetic spice rack organization: measure the space, choose a safe surface, build a usable spice zone, and keep cooking supplies easy to reach."
 image = "images/renterfriendly-kitchen-organization-magnetic-spice-1.jpg"
 images = ["images/renterfriendly-kitchen-organization-magnetic-spice-1.jpg", "images/renterfriendly-kitchen-organization-magnetic-spice-2.jpg", "images/renterfriendly-kitchen-organization-magnetic-spice-3.jpg", "images/renterfriendly-kitchen-organization-magnetic-spice-4.jpg", "images/renterfriendly-kitchen-organization-magnetic-spice-5.jpg"]
@@ -197,7 +197,7 @@ The advantage is not just weight distribution. Smaller categories make the syste
 
 Leave enough vertical clearance that removing one jar does not force you to move another. If two rows are so close that your fingers cannot reach the back row, the extra capacity is not useful.
 
-Our [renter-friendly closet organization guide](../renter-friendly-closet-organization-using-adhesive/) uses the same broader idea: define a category and give it a storage zone instead of adding storage without a purpose.
+Our [renter-friendly closet organization guide](/posts/renter-friendly-closet-organization-using-adhesive/) uses the same broader idea: define a category and give it a storage zone instead of adding storage without a purpose.
 
 ## Keep the Rack Useful During Cooking
 
@@ -217,7 +217,7 @@ If a spice is used every day but sits behind three rarely used jars, change the 
 
 You can also use a simple left-to-right sequence based on cooking habits: basic seasoning first, common herbs and spices next, specialty items last.
 
-For a broader room-by-room organization system, our [practical home organization guide](../30-practical-home-organization-ideas-for/) can help you apply the same zone-based approach elsewhere.
+For a broader room-by-room organization system, our [practical home organization guide](/posts/30-practical-home-organization-ideas-for/) can help you apply the same zone-based approach elsewhere.
 
 ## Avoid These Common Magnetic-Rack Mistakes
 

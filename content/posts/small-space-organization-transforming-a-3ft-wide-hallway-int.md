@@ -1,7 +1,7 @@
 +++
 title = "Small Space Organization: Transforming a 3‑ft Wide Hallway into Functional Coat and Shoe Storage"
 date = "2026-09-21T07:38:29.258631+00:00"
-lastmod = "2026-10-07T21:00:00+00:00"
+lastmod = "2026-10-19T00:17:39+00:00"
 description = "Turn a 3‑ft-wide hallway into practical coat and shoe storage with a measurement-first plan, shallow storage, clear walking space, and a simple maintenance routine."
 image = "images/small-space-organization-transforming-a-3ft-wide-hallway-int-1.jpg"
 images = [
@@ -80,7 +80,7 @@ There are three practical approaches.
 
 Do not choose a system simply because it has the highest advertised capacity. In a narrow hallway, a smaller system that is easy to use can perform better than a larger system that becomes an obstacle.
 
-For more ideas about working with limited floor area, see our [small apartment organization guide](../small-apartment-organization-maximizing-storage-in-a-350sqft/) and [small closet organization guide](../small-closet-organization-ideas-practical-space/).
+For more ideas about working with limited floor area, see our [small apartment organization guide](/posts/small-apartment-organization-maximizing-storage-in-a-350sqft/) and [small closet organization guide](/posts/small-closet-organization-ideas-practical-space/).
 
 ## 4. Plan Separate Zones for Coats, Shoes, and Small Items
 
@@ -216,7 +216,7 @@ For example:
 
 This simple separation prevents the hallway from becoming a permanent overflow zone.
 
-For related ideas, see our [small bedroom storage guide](../small-bedroom-storage-ideas-diy-pull-out-drawers-and-rolling-bins-under-a-queen-bed/) and [small laundry room organization guide](../small-laundry-room-organization-ideas-smart-storage/).
+For related ideas, see our [small bedroom storage guide](/posts/small-bedroom-storage-ideas-diy-pull-out/) and [small laundry room organization guide](/posts/small-laundry-room-organization-ideas-smart-storage/).
 
 ## 12. Compare Three Practical Hallway Layouts
 
@@ -273,7 +273,7 @@ If the same item keeps ending up in the wrong place, do not blame the routine fi
 
 Move the item closer to where it is used, or reduce the number of steps needed to put it away.
 
-For more practical small-space systems, see our [small bathroom organization guide](../small-bathroom-organization-ideas-practical-space/) and [small-space bedroom storage guide](../small-bedroom-storage-ideas-diy-pull-out-drawers-and-rolling-bins-under-a-queen-bed/).
+For more practical small-space systems, see our [small bathroom organization guide](/posts/small-bathroom-organization-ideas-practical-space/) and [small-space bedroom storage guide](/posts/small-bedroom-storage-ideas-diy-pull-out/).
 
 ![organized hallway with a clear entry path](images/small-space-organization-transforming-a-3ft-wide-hallway-int-5.jpg)
 
@@ -322,7 +322,7 @@ Before you finish, confirm that:
 
 The best small-space organization system is not the one that stores the most objects. It is the one that solves the daily problem while leaving the hallway easy and safe to use.
 
-For additional small-space organization ideas, see [renter-friendly closet organization](../renter-friendly-closet-organization-using-adhesive/), [small apartment storage](../small-apartment-storage-ideas-practical-space/), and [linen closet organization](../linen-closet-organization-ideas-small-shelves/).
+For additional small-space organization ideas, see [renter-friendly closet organization](/posts/renter-friendly-closet-organization-using-adhesive/), [small apartment storage](/posts/small-apartment-storage-ideas-practical-space/), and [linen closet organization](/posts/linen-closet-organization-ideas-small-shelves/).
 
 For the photography used in this guide, see the [Pexels](https://www.pexels.com/) source pages credited below.
 

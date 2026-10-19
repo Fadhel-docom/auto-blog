@@ -1,7 +1,7 @@
 +++
 title = "Under-Bed Storage for a Small Bedroom: A Measured 48-Inch Clearance Plan"
 date = "2026-09-21T12:54:42+00:00"
-lastmod = "2026-10-01T00:00:00+00:00"
+lastmod = "2026-10-19T00:17:39+00:00"
 slug = "bedroom-organization-stepbystep-48inch-clearance"
 description = "Turn unused space under a studio bed into practical storage with a measured plan, low-profile bins, sliding drawers, labels, and a simple maintenance routine."
 image = "images/bedroom-organization-stepbystep-48inch-clearance-1.jpg"
@@ -64,7 +64,7 @@ Poor candidates include wet textiles, food, cleaning chemicals, or objects you n
 
 Keep a separate “relocate” pile for things that belong somewhere else. The purpose is to create useful storage, not simply move clutter into a hidden location.
 
-For a broader studio plan, continue with our [small-apartment organization guide](../small-apartment-organization-maximizing-storage-in-a-350sqft/).
+For a broader studio plan, continue with our [small-apartment organization guide](/posts/small-apartment-organization-maximizing-storage-in-a-350sqft/).
 
 ## 3. Map the Under-Bed Zones
 
@@ -136,7 +136,7 @@ For rolling bins:
 
 Do not rely on a generic weight figure from another product. Follow the actual frame, slide, wheel, and container limits supplied by the manufacturer.
 
-If you want more ideas for using the rest of a small studio, see our [small-apartment storage and organization plan](../small-apartment-organization-maximizing-storage-in-a-350sqft/).
+If you want more ideas for using the rest of a small studio, see our [small-apartment storage and organization plan](/posts/small-apartment-organization-maximizing-storage-in-a-350sqft/).
 
 ## 7. Step 3 — Create a Labeling System You Will Actually Use
 
@@ -174,11 +174,11 @@ Under-bed storage works best when it is connected to the rest of the room.
 
 Keep daily clothes in the closet or wardrobe. Use under-bed space for the overflow that you do not need every morning. Keep laundry in one defined basket rather than allowing clothes to accumulate on the bed.
 
-If the closet is crowded, our [renter-friendly closet organization guide](../renter-friendly-closet-organization-using-adhesive/) covers temporary ways to create zones with removable hardware.
+If the closet is crowded, our [renter-friendly closet organization guide](/posts/renter-friendly-closet-organization-using-adhesive/) covers temporary ways to create zones with removable hardware.
 
 If the bedroom is part of a very small studio, avoid adding a second large storage unit simply because the under-bed system is full. First ask whether an existing category can be edited or moved to a less valuable storage location.
 
-For clothing that still needs to stay visible and accessible, see our [small-bedroom organization ideas](../small-bedroom-organization-ideas-practical-space/). If the issue is mainly a crowded closet, use the [small-closet organization guide](../small-closet-organization-ideas-practical-space/) before expanding the bedroom footprint.
+For clothing that still needs to stay visible and accessible, see our [small-bedroom organization ideas](/posts/small-bedroom-organization-ideas-practical-space/). If the issue is mainly a crowded closet, use the [small-closet organization guide](/posts/small-closet-organization-ideas-practical-space/) before expanding the bedroom footprint.
 
 ## 10. Common Under-Bed Storage Mistakes
 
@@ -214,11 +214,11 @@ If a container repeatedly becomes disorganized, the category is probably too bro
 
 Storage should solve the bedroom problem without creating a new problem elsewhere. Keep everyday clothing in the easiest-to-reach zone, move seasonal pieces under the bed, and avoid using the bedroom floor as overflow.
 
-If the whole studio is short on storage, our [small-apartment organization guide](../small-apartment-organization-maximizing-storage-in-a-350sqft/) covers clothing zones, vertical storage, and awkward-space solutions.
+If the whole studio is short on storage, our [small-apartment organization guide](/posts/small-apartment-organization-maximizing-storage-in-a-350sqft/) covers clothing zones, vertical storage, and awkward-space solutions.
 
-A second useful connection is the kitchen: if your living space includes a small kitchen, our [small-kitchen organization guide](../kitchen-organization-ideas-small-spaces-space/) can help keep kitchen overflow from migrating into the bedroom.
+A second useful connection is the kitchen: if your living space includes a small kitchen, our [small-kitchen organization guide](/posts/kitchen-organization-ideas-small-spaces-space/) can help keep kitchen overflow from migrating into the bedroom.
 
-If paperwork or work supplies are also taking over the bedroom, our [5×5 home-office decluttering guide](../decluttering-5x5-home-office-corner-remote-workers/) shows how to contain those categories without adding a large desk or cabinet.
+If paperwork or work supplies are also taking over the bedroom, our [5×5 home-office decluttering guide](/posts/decluttering-5x5-home-office-corner-remote-workers/) shows how to contain those categories without adding a large desk or cabinet.
 
 ## Frequently Asked Questions
 
