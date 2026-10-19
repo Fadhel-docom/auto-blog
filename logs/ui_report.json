@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-19T00:26:50+00:00",
+  "timestamp": "2026-10-19T12:32:15+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -121,7 +121,7 @@
       "title_capitalized": true,
       "meta_description": "Solve bathroom clutter in a rental without damaging walls: measure the real space, choose safer no-drill storage, control moisture, and avoid purchases that do not fit.",
       "canonical": "https://fadhel-docom.github.io/auto-blog/posts/renter-friendly-bathroom-storage-without-drilling/",
-      "images": 7,
+      "images": 6,
       "tags": 4,
       "h2_count": 17,
       "image_credits": true,
@@ -136,7 +136,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 29805
+      "html_length": 29072
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/decluttering-ideas-for-small-homes-that-actually-last/",
