@@ -1,235 +1,172 @@
 +++
-title = "350-Sq-Ft Studio Organization: How to Create Storage Zones Without Crowding"
+title = "350-Sq-Ft Studio Organization: Plan the Walking Path First, Then the Storage Zones"
 date = "2026-09-21T11:30:13+00:00"
-lastmod = "2026-10-19T00:17:39+00:00"
-description = "A practical 350-sq-ft studio organization plan: measure first, create a closet zone, use under-bed and vertical storage, and keep everyday items easy to reach."
-image = "images/small-apartment-organization-maximizing-storage-in-a-350sqft-1.jpg"
-images = ["images/small-apartment-organization-maximizing-storage-in-a-350sqft-1.jpg", "images/small-apartment-organization-maximizing-storage-in-a-350sqft-2.jpg", "images/small-apartment-organization-maximizing-storage-in-a-350sqft-3.jpg", "images/small-apartment-organization-maximizing-storage-in-a-350sqft-4.jpg", "images/small-apartment-organization-maximizing-storage-in-a-350sqft-5.jpg"]
-tags = ["small apartment organization", "studio storage", "space saving"]
+lastmod = "2026-10-19T05:17:54+00:00"
+description = "Organize a 350-sq-ft studio path-first: keep a 36-inch main route, place sleep, clothes, kitchen and table zones around it, and store by how often you use things."
+image = "images/studio-350-sqft-zones-cover.jpg"
+images = ["images/studio-path-first-plan.svg", "images/studio-width-checks.svg", "images/studio-storage-by-frequency.svg"]
+tags = ["small apartment organization", "studio storage", "walking path", "storage zones", "space saving"]
 categories = ["Small Space"]
-faq = [
-  { question = "How do I organize a 350-square-foot apartment with no closet?", answer = "Create one clothing zone using a garment rack, compact wardrobe, or modular shelving. Add under-bed storage for seasonal items and use hooks or shallow shelves for accessories. Keep daily clothing accessible and move rarely used items higher or farther away." },
-  { question = "What should I store under a bed?", answer = "Use under-bed storage for spare bedding, seasonal clothes, luggage, shoes, and other infrequently used items. Measure the lowest clearance first and choose containers that fit without forcing them into the space." },
-  { question = "How can I add storage without making a small apartment feel crowded?", answer = "Prefer shallow, vertical, and multifunctional storage. Keep walking paths clear, avoid filling every wall, and use closed or labeled containers for categories that otherwise create visual clutter." },
-  { question = "Is vertical storage safe in a small apartment?", answer = "It can be, provided shelves and tall furniture are installed according to the manufacturer's instructions. Anchor unstable or top-heavy furniture where appropriate, and keep heavier items on lower levels." },
-  { question = "What should I organize first in a studio?", answer = "Start with the area causing the most daily friction—usually clothing, the entryway, kitchen counters, or laundry. Fix one zone completely before buying storage for another." },
-  { question = "How do I keep a small apartment organized after the makeover?", answer = "Give frequently used items easy-to-reach homes and perform a short daily reset. If something repeatedly ends up outside its assigned zone, change the system rather than blaming yourself for not maintaining it." }
-]
-
 aliases = ["/posts/small-apartment-organization-maximizing-storage-in-a-350sqft-studio-with-no-builtin-closet/"]
 draft = false
 slug = "small-apartment-organization-maximizing-storage-in-a-350sqft"
+original_graphics = true
+faq = [
+  {question = "How wide should the main path in a studio be?", answer = "Aim for at least 36 inches. The ADA Standards set 36 inches as the minimum clear width of walking surfaces, and the NKBA recommends a walkway of at least 36 inches. Neither is a rule for your own home, but 36 inches is a comfortable benchmark to tape on the floor."},
+  {question = "How do I organize a 350-square-foot studio with no closet?", answer = "Give clothing one zone: a freestanding rack for everyday pieces, a narrow wardrobe or shelf for folded items, and a few hooks. Put seasonal items under the bed or on top of the wardrobe. Anchor the tall piece to the wall, with your landlord's permission."},
+  {question = "How can I separate sleeping from living without building a wall?", answer = "Use a low open shelf, a curtain or a rack as a soft divider, and keep the path clear. A low unit keeps window light moving through the room, while a tall unit blocks it and is a tip-over risk unless anchored."},
+  {question = "How much space do I need in the kitchen aisle?", answer = "The NKBA recommends a work aisle of at least 42 inches for one cook and at least 48 inches for more than one, measured between counter fronts, tall cabinets and appliances. In a studio the main path can double as the aisle if you keep it clear."},
+  {question = "Is vertical storage safe in a small apartment?", answer = "It is safe when tall furniture is secured. Salud America, summarizing the CPSC's Anchor It! campaign, advises securing top-heavy furniture with anti-tip brackets. In a rental, ask your landlord first, because anchors leave small holes."},
+  {question = "What should I organize first in a studio?", answer = "Tape the main path, then place the zones around it, and only then edit and buy storage. Doing it in that order stops you buying furniture that blocks the way."}
+]
 +++
 
-A 350-square-foot studio can feel crowded even when you own relatively little. The problem is usually not a complete lack of storage; it is that storage has not been assigned to the right jobs. Clothes end up on chairs, cleaning supplies occupy kitchen cabinets, and useful floor space disappears under temporary piles.
+A 350-square-foot studio can feel crowded even when you own relatively little. The problem is usually the order: furniture goes in first, and the walking route is whatever is left. Clothes end up on chairs, the table becomes a shelf and the way to the window turns into an obstacle course.
 
-This guide uses a simple rule: **measure first, edit what you own, then add storage only where it solves a specific problem.** You do not need a luxury closet or a showroom-perfect room. You need a few repeatable zones that make putting things away easier than leaving them out.
+This guide reverses the order. **Draw the main path first, place five zones around it, then add storage only where it solves a specific problem.** The cover photo shows the result: a clear runner from the door to the window, a low shelf dividing the bed area, a clothing rack and wardrobe, a kitchen run on one wall and a small table by the light.
 
-## 1. Measure the Studio Before Buying Storage
+## 1. Draw the Main Path First
 
-![A small apartment storage area being assessed with boxes and a floor plan, showing the starting point for measuring available space](images/small-apartment-organization-maximizing-storage-in-a-350sqft-1.jpg)
+A 350-square-foot studio is about 14 by 25 feet in the example below. Mark where the entrance, windows, bathroom door, radiators and outlets are, then tape a path from the entrance to the window.
 
-Start with a rough floor plan. Mark the entry door, windows, bed, kitchen cabinets, bathroom door, radiators, outlets, and the main walking route.
+How wide should it be? The ADA Standards set 36 inches as the minimum clear width of walking surfaces, and allow 32 inches only for a short pinch point of up to 24 inches. The NKBA also recommends a walkway of at least 36 inches in kitchens. Neither rule applies to your own studio, but 36 inches is a sensible benchmark, wide enough to pass a laundry basket without turning sideways.
 
-Record five measurements:
+![Plan view of a 14 by 25 foot studio with a 36 inch main path from the entrance to the window and five numbered zones around it](images/studio-path-first-plan.svg)
 
-1. **Wall width** where a closet, shelf, or cabinet could fit.
-2. **Floor depth** available without narrowing the walking path.
-3. **Ceiling height** for high shelves or seasonal storage.
-4. **Under-bed clearance** from the floor to the lowest obstruction.
-5. **Door clearance** so an over-door organizer will not interfere with opening.
+Live with the tape for a day. If you keep stepping off it, the path is in the wrong place.
 
-Do not assume a standard storage product will fit. A cabinet that is only a few inches too deep can make a studio feel much smaller because it steals circulation space.
+## 2. Place Five Zones Around the Path
 
-As you measure, mark three categories on your plan: **daily**, **weekly**, and **rarely used**. Daily items should be easiest to reach. Seasonal and backup items can occupy higher or less convenient locations.
+Every studio needs the same five jobs done, whatever its shape:
 
-## 2. Declutter Before You Create More Storage
+1. **Sleep zone:** the bed and the bedside, away from the entrance sightline if you can.
+2. **Clothes zone:** one rack, one wardrobe or shelf, and a few hooks.
+3. **Kitchen run:** cabinets, counter and the stove along one wall.
+4. **Table:** meals and work in the same place, near the window.
+5. **Entry shelf:** keys, mail, shoes and a bag.
 
-Organization works better when the storage system is built around the things you actually use. Before buying bins, take everything out of the most troublesome area and sort it into four groups:
+Put the noisy and messy zones, the kitchen and the entry, near the door, and the quiet ones, sleep and work, further in. Give each zone a footprint on the tape before you buy anything.
 
-- Keep and use regularly.
-- Keep but use seasonally.
-- Relocate to another zone.
-- Donate, recycle, or discard.
+## 3. Check Widths Before You Buy
 
-Be especially strict with duplicates. Five nearly identical tote bags, three spare sets of sheets, or kitchen gadgets used once a year can consume the space needed for everyday essentials.
+Use three numbers as limits for any piece of furniture:
 
-A useful test is: **Would I look for a dedicated place for this if it were not already in my apartment?** If the answer is no, do not automatically give it premium storage.
+- **36 inches:** the main path, as above.
+- **42 inches:** the kitchen work aisle. The NKBA recommends at least 42 inches for one cook and 48 inches for more than one, measured between counter fronts, tall cabinets and appliances.
+- **32 inches:** the NKBA recommends this much clearance from the table edge to any wall or obstruction behind the seating area.
 
-This step also prevents a common mistake: buying attractive containers first and then filling them with things that should have left the apartment. Storage is not a substitute for editing.
+![Four horizontal bars drawn to the same scale: 36 inch main path, 42 inch kitchen work aisle, 32 inches behind table chairs, and a 24 inch width that is too tight](images/studio-width-checks.svg)
 
-## 3. Build One Compact Clothing Zone
+If a cabinet or table would reduce one of these widths, choose a shallower one or place it elsewhere.
 
-![An open wardrobe and hanging clothing being arranged into a compact storage zone, illustrating how to create a closet when the studio has limited built-in storage](images/small-apartment-organization-maximizing-storage-in-a-350sqft-2.jpg)
+## 4. Divide the Sleep Zone Without Walling It Off
 
-If your studio has no built-in closet, give clothing one clearly defined zone rather than scattering garments around the room.
+A wall is not needed. A low open shelf, a rack or a curtain separates the bed from the living area while keeping light moving, as in the cover photo.
 
-A practical setup can combine:
+- **Prefer low dividers.** A low unit keeps the window light reaching the bed.
+- **Make the divider useful.** An open shelf can hold baskets for linens and books.
+- **Check the bed side.** Leave space to get in and out, and keep the divider from touching the path.
+- **Use under-bed bins.** Flat bins for seasonal bedding. See our [small bedroom guide](/posts/bedroom-organization-stepbystep-48inch-clearance/) for the measuring and our [DIY under-bed drawers guide](/posts/small-bedroom-storage-ideas-diy-pull-out/) for a build.
 
-- One hanging rod for frequently worn clothes.
-- A shallow shelf for folded shirts and sweaters.
-- A lower drawer or bin for shoes.
-- A small hook row for bags, belts, and hats.
-- A labeled high shelf for seasonal clothing.
+## 5. Build One Clothes Zone
 
-Keep the most frequently used items between roughly waist and shoulder height. Put seasonal items higher. Avoid creating a deep stack of folded clothing that requires removing everything to reach the bottom item.
+If your studio has no built-in closet, give clothing one clearly defined place rather than scattering it.
 
-If you rent, a freestanding garment rack or modular shelving unit may be easier than attaching a large system to the wall. If you use tall furniture, follow the manufacturer's anchoring instructions. The U.S. Consumer Product Safety Commission recommends securing unstable furniture to reduce tip-over risks, particularly where children are present. [See CPSC's Anchor It guidance](https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/AnchorItgov).
+- A freestanding **rack** for the clothes you wear weekly.
+- A narrow **wardrobe or shelf** for folded sweaters and shoes.
+- A row of **hooks** for bags, belts and hats.
+- The top of the wardrobe for seasonal items in labeled boxes.
 
-## 4. Turn the Space Under the Bed Into a Storage Zone
+Tall furniture needs securing. Salud America, summarizing the CPSC's Anchor It! campaign, advises securing top-heavy furniture with anti-tip brackets and keeping tempting items off the top. In a rental, ask your landlord first. For a no-drill setup, see our [renter closet guide](/posts/renter-friendly-closet-organization-using-adhesive/).
 
-![Storage containers and bags being placed under a bed, showing a practical way to use otherwise unused floor space](images/small-apartment-organization-maximizing-storage-in-a-350sqft-3.jpg)
+## 6. Make the Kitchen and Table Work Together
 
-Measure the under-bed opening at its **lowest point**, not at the center. Then choose containers that are at least 1 inch shorter than that measurement so they can slide without scraping.
+In a studio, the kitchen and the table often share the same floor. Keep the kitchen run along one wall, check the 42 inch aisle, and use open shelves for daily plates, mugs and jars so you can see what you have. Overflow, such as dry goods, can go in a tall cabinet or slim shelf, as in our [guide to kitchens without a pantry](/posts/kitchen-storage-without-pantry-dry-goods-small-apartment/).
 
-Use this area for items that are not needed several times a day:
+A small round table can serve as dining table and desk. Clear it at the end of the day so it does not become a shelf, and keep the laptop, charger and notebook in one basket.
 
-- Spare bedding.
-- Off-season clothing.
-- Travel bags.
-- Shoes used occasionally.
-- Keepsakes that are properly protected.
+## 7. Give the Entrance a Small Drop Zone
 
-Avoid storing damp towels, wet shoes, food, or anything that needs frequent inspection in a sealed container under the bed.
+A few hooks and a shelf near the door stop coats and bags spreading into the room. The ADA Standards describe an unobstructed forward reach of 15 to 48 inches above the floor, a handy band for hook heights. Our [narrow entryway guide](/posts/narrow-entryway-organization-drop-zone/) shows a small drop zone in detail.
 
-Choose containers with lids or full fabric closures if dust is a concern. Label the short edge facing the foot or side of the bed so you can identify the contents without pulling everything out.
+## 8. Store by How Often You Use Things
 
-For more detailed measurements and drawer ideas, see our [bedroom organization step-by-step under-bed storage guide](/posts/bedroom-organization-stepbystep-48inch-clearance/).
+Sort what you own into three groups and put each where it matches.
 
-## 5. Use Vertical Space Without Making the Studio Feel Heavy
+![Three rows: daily items kept beside the path, weekly items inside zones, rarely used items under the bed or on top of the wardrobe](images/studio-storage-by-frequency.svg)
 
-![Storage bins being placed on an upper cabinet shelf, showing how vertical space can hold seasonal items without using floor area](images/small-apartment-organization-maximizing-storage-in-a-350sqft-4.jpg)
+- **Daily:** keys, laptop, kettle and work clothes live beside the path, on hooks, the table or an open shelf.
+- **Weekly:** laundry, spare shoes and linens live inside zones, in the wardrobe or in baskets.
+- **Rare:** luggage, seasonal clothes and backups go under the bed or on top of the wardrobe.
 
-Once the floor is organized, look upward. The best vertical storage is not necessarily the tallest possible shelving; it is storage that can be reached safely and still leaves the room usable.
+Edit first. Be strict with duplicates, such as five similar tote bags or three spare sets of sheets. A useful test is whether you would look for a place for the item if it were not already in the apartment.
 
-Good candidates include:
+## 9. Choose Furniture That Earns Its Footprint
 
-- A shelf above a desk for paper supplies.
-- High cabinet space for seasonal items.
-- A narrow shelf above a doorway for lightweight backup supplies.
-- Hooks inside a closet or on an approved surface.
-- A slim bookcase that uses wall height rather than extra floor depth.
+Every piece in a studio should do at least one extra job:
 
-Keep heavy objects low. Place lighter seasonal items on high shelves, and use a stable step stool rather than standing on a chair.
+- A **bench** with storage inside, near the door.
+- A **table** that folds or extends when guests come.
+- A **bed frame** with a clear underside for flat bins.
+- A **shelf** that also divides a zone.
 
-For tall freestanding furniture, anchoring matters. CPSC's [furniture safety guidance](https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/AnchorItgov) recommends anchoring top-heavy furniture and keeping heavier items on lower shelves.
+Avoid pieces that only look good, such as an oversized armchair that narrows the path.
 
-## 6. Give Every Awkward Nook a Specific Job
+## 10. A 10-Minute Reset
 
-Small studios often contain tiny spaces that are too narrow for normal furniture but large enough for useful storage.
+Once a day, or at least before bed, reset the room: clear the table, return clothes to the rack or wardrobe, put the keys and bag in the entry zone, and check that the path is still clear. A short reset keeps the studio from drifting back.
 
-Try assigning one job to each awkward area:
+## 11. Mistakes to Avoid
 
-- **Behind the sofa:** a slim basket for blankets or a narrow shoe organizer.
-- **Beside the refrigerator:** a narrow rolling cart for cleaning or pantry overflow.
-- **Inside a bathroom door:** lightweight hooks for towels and robes.
-- **Under a desk:** one container for cables and office supplies.
-- **Beside the bed:** a slim bedside caddy instead of a full nightstand.
+- **Placing furniture first.** The path becomes whatever is left.
+- **Buying storage before editing.** Containers do not replace decisions.
+- **Blocking the window.** A tall unit in front of the window makes the room darker and smaller.
+- **Leaving tall furniture unsecured.** A loaded wardrobe can tip.
+- **Mixing zones.** Work papers on the bed and clothes on the table make both zones fail.
 
-The key is to avoid turning every gap into a miscellaneous storage zone. A narrow space becomes useful when its contents are predictable.
+## 12. A Weekend Plan
 
-If a nook is difficult to access, reserve it for things you use only monthly or seasonally. Daily items should never require moving three other containers first.
-
-## 7. Make Multifunctional Furniture Earn Its Footprint
-
-In a 350-square-foot studio, every large piece of furniture should justify the floor area it occupies.
-
-A storage bed can replace a separate dresser. A small ottoman can provide seating and hold blankets. A fold-down desk can disappear when work is finished. A narrow console can provide a landing zone for keys while leaving the main walkway open.
-
-Before buying multifunctional furniture, measure its **open position**, not just its closed position. A desk that fits against the wall may block the walkway when lowered. A storage bench may be useful until its lid cannot open because the bed is too close.
-
-The best piece is the one that performs a job you already need without creating a new circulation problem.
-
-## 8. Create a 10-Minute Reset System
-
-A small apartment stays organized when the daily reset is easy.
-
-Use three rules:
-
-**One-touch rule:** If an item already has a home and takes seconds to put away, return it immediately.
-
-**Landing-zone rule:** Put keys, wallet, mail, and frequently used bags in one entry area instead of allowing them to migrate across the studio.
-
-**Five-minute close:** Before bed, return visible items to their zones, clear the main work surface, and move laundry to its basket.
-
-Do not try to reorganize the whole studio every night. The purpose of the reset is to maintain the system you already built.
-
-If your kitchen is also tight, our [small-kitchen organization guide](/posts/kitchen-organization-ideas-small-spaces-space/) shows how to create zones without filling every cabinet.
-
-## 9. Avoid These Small-Apartment Storage Mistakes
-
-The most common failures are predictable:
-
-- **Buying storage before measuring.** The product becomes another obstacle.
-- **Using deep bins for daily items.** Items disappear behind one another.
-- **Putting heavy objects overhead.** Retrieval becomes difficult and unsafe.
-- **Creating too many categories.** A system with 20 tiny zones is harder to maintain than one with six clear zones.
-- **Blocking the main walking route.** More storage is not useful if it makes movement awkward.
-- **Leaving containers unlabeled.** Seasonal storage becomes a guessing game.
-- **Using every empty surface.** Empty space is part of the organization system; it makes cleaning and movement easier.
-
-Aim for accessible storage rather than maximum storage density.
-
-![A compact apartment storage shelf being organized into clearly separated everyday zones](images/small-apartment-organization-maximizing-storage-in-a-350sqft-5.jpg)
-
-*Use the final storage zone for a defined category rather than turning an unused corner into miscellaneous overflow.*
-
-## 10. A Simple 350-Sq-Ft Organization Plan
-
-If the studio feels overwhelming, complete the project in this order:
-
-**Day 1 — Edit:** Remove obvious trash, duplicates, donations, and items that belong elsewhere.
-
-**Day 2 — Measure:** Record the dimensions of the bed, wardrobe area, key walls, doors, and awkward gaps.
-
-**Day 3 — Assign zones:** Decide where clothes, shoes, bedding, cleaning supplies, paperwork, and daily essentials will live.
-
-**Day 4 — Install only the essentials:** Add the smallest number of bins, hooks, shelves, or drawers needed to make those zones work.
-
-**Day 5 — Label and test:** Live with the system for a few days. Move anything that repeatedly gets left out.
-
-The goal is not a finished photograph. The goal is a studio where the easiest action is also the organized action.
+On Saturday, tape the main path and the zones, measure the three widths and list what you own by frequency. On Sunday, move furniture to fit the tape, edit the items that do not belong and give every remaining item a zone. Live with it for a week before buying anything new.
 
 ## Frequently Asked Questions
 
-### How do I organize a 350-square-foot apartment with no closet?
+### How wide should the main path in a studio be?
 
-Create one clothing zone using a garment rack, compact wardrobe, or modular shelving. Add under-bed storage for seasonal items and use hooks or shallow shelves for accessories. Keep daily clothing accessible and move rarely used items higher or farther away.
+Aim for at least 36 inches. The ADA Standards set 36 inches as the minimum clear width of walking surfaces, and the NKBA recommends a walkway of at least 36 inches. Neither is a rule for your own home, but 36 inches is a comfortable benchmark to tape on the floor.
 
-### What should I store under a bed?
+### How do I organize a 350-square-foot studio with no closet?
 
-Use under-bed storage for spare bedding, seasonal clothes, luggage, shoes, and other infrequently used items. Measure the lowest clearance first and choose containers that fit without forcing them into the space.
+Give clothing one zone: a freestanding rack for everyday pieces, a narrow wardrobe or shelf for folded items, and a few hooks. Put seasonal items under the bed or on top of the wardrobe. Anchor the tall piece to the wall, with your landlord's permission.
 
-### How can I add storage without making a small apartment feel crowded?
+### How can I separate sleeping from living without building a wall?
 
-Prefer shallow, vertical, and multifunctional storage. Keep walking paths clear, avoid filling every wall, and use closed or labeled containers for categories that otherwise create visual clutter.
+Use a low open shelf, a curtain or a rack as a soft divider, and keep the path clear. A low unit keeps window light moving through the room, while a tall unit blocks it and is a tip-over risk unless anchored.
+
+### How much space do I need in the kitchen aisle?
+
+The NKBA recommends a work aisle of at least 42 inches for one cook and at least 48 inches for more than one, measured between counter fronts, tall cabinets and appliances. In a studio the main path can double as the aisle if you keep it clear.
 
 ### Is vertical storage safe in a small apartment?
 
-It can be, provided shelves and tall furniture are installed according to the manufacturer's instructions. Anchor unstable or top-heavy furniture where appropriate, and keep heavier items on lower levels.
+It is safe when tall furniture is secured. Salud America, summarizing the CPSC's Anchor It! campaign, advises securing top-heavy furniture with anti-tip brackets. In a rental, ask your landlord first, because anchors leave small holes.
 
 ### What should I organize first in a studio?
 
-Start with the area causing the most daily friction—usually clothing, the entryway, kitchen counters, or laundry. Fix one zone completely before buying storage for another.
+Tape the main path, then place the zones around it, and only then edit and buy storage. Doing it in that order stops you buying furniture that blocks the way.
 
-### How do I keep a small apartment organized after the makeover?
+## Related Guides
 
-Give frequently used items easy-to-reach homes and perform a short daily reset. If something repeatedly ends up outside its assigned zone, change the system rather than blaming yourself for not maintaining it.
-
-## Final Takeaway
-
-The best small-apartment organization system is not the one that stores the most objects. It is the one that makes everyday actions simple. In a 350-square-foot studio, start with measurements, remove what you do not need, create a compact clothing zone, use the space under the bed, move seasonal items upward, and give awkward corners one specific job.
-
-Work in small passes and test each change before buying more. A few well-planned storage zones can make the entire studio easier to clean, easier to navigate, and much easier to keep organized.
+For the rest of a small apartment, see our guide to [small apartment storage ideas](/posts/small-apartment-storage-ideas-practical-space/), [kitchen zones and aisles](/posts/kitchen-organization-ideas-small-spaces-space/) and the [renter closet guide](/posts/renter-friendly-closet-organization-using-adhesive/).
 
 ## Sources
 
-- U.S. Consumer Product Safety Commission, [Anchor It!](https://web.archive.org/web/20260927021753/https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/AnchorItgov) (archived snapshot, September 27, 2026): the national campaign to prevent furniture and TV tip-overs.
+- US Access Board, [ADA Standards for Accessible Design](https://www.access-board.gov/ada/): 36 inch minimum clear width of walking surfaces (403.5.1), with a 32 inch pinch point of up to 24 inches.
+- NKBA, [Kitchen Planning Guidelines (PDF)](https://kb.nkba.org/uploads/2022/05/Kitchen-Planning-Guidelines.pdf): a walkway of at least 36 inches, a work aisle of at least 42 inches for one cook and 48 inches for several, and 32 inches behind seating.
+- US Access Board, [ADA Chapter 3: Operable Parts](https://www.access-board.gov/ada/guides/chapter-3-operable-parts/): the 15 to 48 inch unobstructed forward reach range.
+- Salud America, [Anchor It: Protect Kids from Dangerous Furniture Tip-Overs](https://salud-america.org/anchor-it-furniture-tip-over-danger/): a summary of the CPSC Anchor It! campaign, with anti-tip brackets and removing tempting items from furniture.
+
+The diagrams are original illustrations made for this guide. The room size and furniture sizes are planning examples, so measure your own studio and follow the manufacturer's instructions for furniture and anchors.
 
 ## Image Credits
 
-- Photo 1: [Max Vakhtbovych](https://www.pexels.com/@artbovich) via [Pexels](https://www.pexels.com/photo/wardrobes-and-shelves-in-flat-7614609/)
-- Photo 2: [Ketut Subiyanto](https://www.pexels.com/@ketut-subiyanto) via [Pexels](https://www.pexels.com/photo/carton-box-and-suitcases-for-relocation-on-bed-4246059/)
-- Photo 3: [Atlantic Ambience](https://www.pexels.com/@freestockpro) via [Pexels](https://www.pexels.com/photo/clothes-on-the-hangers-in-an-open-wardrobe-12945027/)
-- Photo 4: [Josh Withers](https://www.pexels.com/@hellojoshwithers) via [Pexels](https://www.pexels.com/photo/small-barn-with-wooden-sliding-doors-15990611/)
-- Photo 5: [RDNE Stock project](https://www.pexels.com/@rdne) via [Pexels](https://www.pexels.com/photo/woman-putting-glass-containers-on-a-kitchen-cabinet-8580763/)
+- Cover: AI-generated image via ChatGPT, October 2026.
