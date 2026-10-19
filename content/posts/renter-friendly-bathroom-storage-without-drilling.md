@@ -10,11 +10,12 @@ original_graphics = true
 draft = false
 slug = "renter-friendly-bathroom-storage-without-drilling"
 faq = [
-  { question = "How can I add bathroom storage in a rental without drilling?", answer = "Start with countertop trays, drawer dividers, freestanding racks, and over-door storage. Use adhesive products only on compatible surfaces and within the manufacturer's stated load limits." },
-  { question = "Do adhesive bathroom shelves work in humid rooms?", answer = "They can fail if the surface, humidity, preparation, curing time, or load is unsuitable. Follow the product instructions and avoid using adhesive shelves for heavy or breakable items." },
-  { question = "What is the best storage for a bathroom with no vanity?", answer = "Measure the available floor and wall space, then consider a narrow freestanding shelf or over-door organizer that does not block the door, toilet, or walking route." },
-  { question = "Can I store cleaning products under the bathroom sink?", answer = "Only if they fit safely and can be kept separate from toiletries. Keep chemicals in their original containers and secured away from children." },
-  { question = "How do I stop a small bathroom from becoming cluttered again?", answer = "Give daily products one easy-to-reach home, keep backups in one labeled container, and do a short reset after use instead of adding more organizers." }
+  {question = "How can I add bathroom storage in a rental without drilling?", answer = "Start with countertop trays, drawer dividers, freestanding racks, and compatible over-door storage. Use adhesive products only on approved surfaces and within the manufacturer's instructions and load limits."},
+  {question = "Do adhesive bathroom shelves work in humid rooms?", answer = "They can fail if the surface, humidity, preparation, curing time, or load is unsuitable. Follow the instructions and avoid placing heavy or breakable items where a fall could injure someone."},
+  {question = "What is the best storage for a bathroom with no vanity?", answer = "Measure the available floor and door space, then consider a narrow freestanding shelf or over-door organizer that does not block the door, toilet, or walking route. A daily tray can contain small essentials."},
+  {question = "Can I store cleaning products under the bathroom sink?", answer = "Only if they fit safely and can be kept separate from toiletries. Keep chemicals in original containers and secured away from children. Leave access to plumbing and shut-off valves."},
+  {question = "How do I stop a small bathroom becoming cluttered again?", answer = "Give daily products one easy-to-reach home, keep backups in one labeled container, and do a short reset after use. Check what you already own before buying replacements."},
+  {question = "Should I buy bathroom storage before measuring?", answer = "No. Measure the actual usable width, depth, height, door clearance, and plumbing obstacles first. A smaller container that fits is more useful than a large organizer that cannot be removed easily."}
 ]
 +++
 
