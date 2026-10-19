@@ -1,267 +1,158 @@
 +++
-title = "Under-Bed Storage for a Small Bedroom: A Measured 48-Inch Clearance Plan"
+title = "Small Bedroom Storage That Keeps a Clear 30-by-48-Inch Space Beside the Bed"
 date = "2026-09-21T12:54:42+00:00"
-lastmod = "2026-10-19T00:17:39+00:00"
-slug = "bedroom-organization-stepbystep-48inch-clearance"
-description = "Turn unused space under a studio bed into practical storage with a measured plan, low-profile bins, sliding drawers, labels, and a simple maintenance routine."
-image = "images/bedroom-organization-stepbystep-48inch-clearance-1.jpg"
-images = ["images/bedroom-organization-stepbystep-48inch-clearance-1.jpg", "images/bedroom-organization-stepbystep-48inch-clearance-2.jpg", "images/bedroom-organization-stepbystep-48inch-clearance-3.jpg", "images/bedroom-organization-stepbystep-48inch-clearance-4.jpg", "images/bedroom-organization-stepbystep-48inch-clearance-5.jpg"]
-tags = ["bedroom organization", "small space storage", "under-bed solutions"]
+lastmod = "2026-10-19T00:37:58+00:00"
+description = "Plan small bedroom storage around the bed: keep a 30-by-48-inch clear space, set shelf heights by reach, use under-bed bins safely and anchor tall units."
+image = "images/bedroom-clear-space-beside-bed-cover.jpg"
+images = ["images/bedroom-clear-space-plan.svg", "images/bedroom-bedside-reach-heights.svg", "images/under-bed-bin-clearance.svg"]
+tags = ["bedroom organization", "small bedroom storage", "clear floor space", "under-bed storage", "renter friendly"]
 categories = ["Bedroom"]
-faq = [
-  { question = "How much clearance do I need for under-bed storage?", answer = "There is no universal height. Measure the lowest opening under your specific bed and choose a container that fits below it with enough tolerance to move freely." },
-  { question = "What is best to store under a bed?", answer = "Seasonal clothing, spare bedding, luggage, occasional shoes, and protected keepsakes are practical choices. Avoid damp items and anything that needs daily access." },
-  { question = "Are rolling bins better than drawers?", answer = "It depends on the bed and how often you access the contents. Rolling bins are simple and flexible; drawers can be easier for frequent access but require a suitable mounting structure." },
-  { question = "How do I keep under-bed storage from getting dusty?", answer = "Use lidded bins or fully enclosed fabric cases, keep the floor clean, and inspect the storage area during seasonal rotations." },
-  { question = "Should I vacuum-seal clothes under the bed?", answer = "Vacuum storage can reduce bulk for some seasonal textiles, but it is not necessary for everyday clothing. Follow the care instructions for the fabric and make sure items are completely dry before storing." },
-  { question = "What should I do if storage fits but will not pull out?", answer = "Check the access path, container width, wheels, and surrounding furniture. Often the problem is not container height but insufficient clearance in front or beside the bed." }
-]
 draft = false
+slug = "bedroom-organization-stepbystep-48inch-clearance"
+original_graphics = true
+faq = [
+  {question = "How much clear space should I keep beside a bed?", answer = "The ADA Standards define a clear floor space as at least 30 inches by 48 inches, and they require it beside beds in guest rooms with mobility features. Your own bedroom does not have to meet that rule, but it is a practical benchmark for getting in and out of bed and making it."},
+  {question = "Where should storage go if my bedroom is very small?", answer = "Keep one side of the bed clear first. Then use the far wall for a tall slim shelf, the foot of the bed for flat bins that pull out toward the foot, and the closet for hanging clothes. Do not fill the walking path to gain a shelf."},
+  {question = "How high should bedside items be?", answer = "The ADA Standards describe an unobstructed forward reach of 15 to 48 inches above the floor. Keep the phone, glasses and book inside that band, heavy bins below it and light, rarely used items above it with a step stool."},
+  {question = "How do I choose under-bed bins?", answer = "Measure from the floor to the lowest part of the frame at several points, then choose flat bins at least 1 inch shorter than the smallest reading. Pick bins that pull out toward the foot of the bed and keep them clear of the side you use to get in."},
+  {question = "Do I need to anchor a tall shelf or dresser?", answer = "Securing top-heavy furniture with anti-tip brackets is the advice of the CPSC's Anchor It! campaign, as summarized by Salud America, which also reports that tip-overs usually occur in the bedroom. In a rental, ask your landlord first, because anchors leave small holes."},
+  {question = "Can I store blankets or clothes under the bed?", answer = "Yes, if they are clean and dry. The EPA advises drying damp items within 24 to 48 hours to prevent mold growth, so never store damp textiles in a closed bin."}
+]
 +++
 
-Under-bed storage is one of the easiest ways to gain usable space in a small bedroom, but only when the system is measured around the actual bed. A 48-inch clearance sounds generous, yet the useful opening may be much smaller once the frame, drawers, skirting, and nearby furniture are considered.
+Most bedroom storage advice starts under the bed. In a small bedroom, the thing that decides whether the room works is the floor beside it: room to step out of bed, make the bed and open a drawer without turning sideways.
 
-This guide treats the project like a small installation rather than a decorating exercise. You will measure the space, sort what belongs there, select containers, test the clearance, and build a simple retrieval system. The result should be storage that you can actually use—not a dark pile of boxes that you forget exists.
+A useful benchmark is the clear floor space defined in the ADA Standards, at least 30 inches by 48 inches, which they require beside beds in guest rooms with mobility features. Your own bedroom does not have to follow that rule, and many small rooms cannot fit it on both sides. As a comparison number, it is easy to test and it protects the part of the room you use every day.
 
-![A practical under-bed storage setup with labeled low-profile containers ready for a small bedroom organization project](images/bedroom-organization-stepbystep-48inch-clearance-1.jpg)
+The cover photo shows the idea: a clear floor strip beside the bed, a nightstand with drawers, a tall slim shelf against the wall and flat bins under the bed frame. This guide shows how to plan that layout, set heights by reach, use the space under the bed safely and keep tall furniture from tipping. For the DIY drawer build, see our [under-bed drawers and rolling bins guide](/posts/small-bedroom-storage-ideas-diy-pull-out/).
 
-## 1. Understand What the 48-Inch Measurement Means
+## 1. Measure the Room Around the Bed
 
-![A measuring tape being used beside a bed to establish the available clearance before planning storage](images/bedroom-organization-stepbystep-48inch-clearance-2.jpg)
+Measure first and write the numbers on a sketch:
 
-First, identify exactly where the 48-inch measurement comes from. Is it the floor-to-headboard height, the open area beside the bed, or the vertical clearance inside a furniture layout? Do not treat it as the maximum height of an under-bed container unless you have measured the actual opening.
+- Room width and length.
+- The bed's footprint, for example 60 by 80 inches for a queen.
+- The gap between the bed and the wall on each side and at the foot.
+- Door swing for the bedroom door and for the closet.
+- Windows, radiators and outlets that furniture must not block.
 
-For under-bed storage, the critical measurement is usually **floor to the underside of the bed frame or the lowest obstruction**. Measure at several points because floors and frames are not always perfectly level.
+Then draw the room to scale on paper, or use tape on the floor. The diagram shows a sample plan: the bed against one wall, the clear floor beside it, a tall shelf on the far wall and bins at the foot.
 
-Record:
+![Top view of a small bedroom with a queen bed, a 30 by 48 inch clear floor space beside it, a nightstand, a tall slim shelf, under-bed bins that pull out at the foot, and the door swing kept clear](images/bedroom-clear-space-plan.svg)
 
-- Lowest clearance.
-- Bed length and width.
-- Usable depth from the edge to the obstruction.
-- Width of each opening.
-- Space needed to pull a drawer or bin out.
+## 2. Protect the 30-by-48-Inch Space
 
-If a storage container will be rolled out, also measure the access space around the bed. A bin that technically fits underneath is not useful if the nightstand blocks it from opening.
+The ADA Standards set the minimum size of clear floor space at 30 inches by 48 inches, and for beds they call for it to be positioned beside the bed for a parallel approach. The standard has an exception: one clear space between two beds can serve both. Those rules apply to specific buildings, such as hotel guest rooms with mobility features, so treat them as a comparison, not a requirement for your home.
 
-## 2. Empty the Area and Sort Before Installing Anything
+Here is how to use it in a small room:
 
-![An empty space beneath a bed being vacuumed and inspected before storage containers are added](images/bedroom-organization-stepbystep-48inch-clearance-4.jpg)
+- Tape a 30 by 48 inch rectangle on the floor beside the bed, next to the side you use to get in.
+- If the room cannot fit one on each side, protect one side and use the other for a nightstand or the wall.
+- Keep the rectangle clear of door swings, laundry baskets and loose furniture.
+- Do not count a drawer that opens into the rectangle as free space. Check that it still leaves room.
 
-Clear the floor around and beneath the bed. Vacuum the area and inspect for moisture, damaged flooring, loose hardware, or objects that could catch on a container.
+If the rectangle does not fit at all, move the bed, choose a narrower nightstand or switch to a wall-mounted light before you buy more storage.
 
-Now sort what you plan to store.
+## 3. Decide What Goes Where
 
-Good under-bed candidates include:
+Think in zones around the bed, not a list of furniture:
 
-- Off-season clothing.
-- Extra blankets and sheets.
-- Luggage.
-- Shoes used occasionally.
-- Hobby supplies.
-- Keepsakes that are dry and protected.
+- **Bedside:** the few things you reach for in the dark or on waking, such as a phone, glasses, a book and a lamp.
+- **Far wall:** a tall slim shelf with baskets for things you use weekly.
+- **Foot of the bed:** flat bins for seasonal bedding and clothes, pulled out toward the foot.
+- **Closet or wall hooks:** clothes and accessories. Our [renter closet guide](/posts/renter-friendly-closet-organization-using-adhesive/) and [small closet guide](/posts/small-closet-organization-ideas-practical-space/) cover this.
 
-Poor candidates include wet textiles, food, cleaning chemicals, or objects you need several times every day.
+Give every item one zone. If something has no zone, it probably does not belong in the bedroom.
 
-Keep a separate “relocate” pile for things that belong somewhere else. The purpose is to create useful storage, not simply move clutter into a hidden location.
+## 4. Set Heights by Reach
 
-For a broader studio plan, continue with our [small-apartment organization guide](/posts/small-apartment-organization-maximizing-storage-in-a-350sqft/).
+The ADA Standards describe an unobstructed forward reach of 15 to 48 inches above the floor. Your bedroom does not have to meet them, but they make a handy comfort range for deciding what goes at what height.
 
-## 3. Map the Under-Bed Zones
+![Front view of a nightstand and a tall slim shelf over three zones: below 15 inches for heavy items, 15 to 48 inches for daily items, above 48 inches for light items](images/bedroom-bedside-reach-heights.svg)
 
-![A simple paper sketch showing a bed footprint, measurements, and storage zones before containers are purchased](images/bedroom-organization-stepbystep-48inch-clearance-3.jpg)
+- **15 to 48 inches:** daily items such as the phone, glasses, a book, a water glass and the shelf's front baskets.
+- **Below 15 inches:** heavy bins and spare bedding. Lifting is easier from low than from above shoulder height.
+- **Above 48 inches:** light, rarely used items, reached with a small step stool. Never climb on the bed or a chair.
 
-Draw the bed as a rectangle and divide the space underneath into zones. You might use one long side for clothing and the foot area for luggage, or divide both sides into equal container widths.
+The nightstand in the diagram is an example. If yours is taller or shorter, keep the same logic: the most-used items go in the middle band.
 
-Leave enough room for the container to move. If two bins are side by side, do not make the fit so tight that pulling one causes the other to shift.
+## 5. Use Under-Bed Space for What It Does Best
 
-A useful priority system is:
+Under-bed storage is best for flat, light, seasonal items such as spare bedding, off-season sweaters and luggage. It is the worst place for things you need daily.
 
-**Zone A — frequent seasonal access:** clothing that changes every few months.
+Measure from the floor to the lowest part of the frame at several points, because floors and frames are not always level. Then:
 
-**Zone B — occasional access:** spare bedding, bags, and shoes.
+- Choose flat bins at least 1 inch shorter than the smallest reading.
+- Prefer bins that pull out toward the foot of the bed, so they never block the clear side.
+- Use soft fabric bins if the gap is low, and rigid lidded bins if it is taller.
+- Leave a little room around each bin so pulling one does not drag the next.
 
-**Zone C — long-term storage:** keepsakes and rarely used items.
+![Side view of a bed on legs with a flat fabric bin underneath: clearance A is 10 inches, the bin is 9 inches tall, leaving 1 inch spare, and it pulls out toward the foot of the bed](images/under-bed-bin-clearance.svg)
 
-Put the most frequently accessed zone on the side with the easiest pull-out path. This small decision prevents frustration later.
+Keep textiles dry. The EPA advises drying damp items within 24 to 48 hours to prevent mold growth, so never put damp towels, blankets or clothes in a closed bin under the bed.
 
-## 4. Choose Containers by Measurement, Not Appearance
+## 6. Anchor Tall Furniture
 
-Under-bed products vary widely in height, width, depth, and lid design. Measure the opening first, then compare the **external dimensions** of the container—not just the advertised capacity.
+A tall slim shelf and a chest of drawers are both tip-over risks, especially where children visit. Salud America, summarizing the CPSC's Anchor It! campaign, reports that tip-overs usually occur in the bedroom, advises securing top-heavy furniture with anti-tip brackets, and recommends removing items that tempt children to climb, such as toys and remote controls, from the top of furniture.
 
-For a low opening, soft zippered cases can be easier to fit than rigid bins. For a taller opening, rigid lidded boxes can protect contents better and make stacking easier.
+In a rental, ask your landlord before you anchor, because anchors leave small holes in the wall. If anchoring is not allowed, choose a low piece instead of a tall one and keep heavy items on the lower shelves.
 
-Use this checklist:
+## 7. Keep Bedding and Clothes Dry
 
-- Container height is at least 1 inch below the measured clearance.
-- Container width leaves enough side space to pull it out.
-- Handles are accessible.
-- Wheels, if present, suit your floor surface.
-- Lids can open without hitting the frame.
-- Textiles are stored dry and appropriately for the local climate.
+A bedroom with bins, baskets and a closet should not hold moisture. Open a window briefly each day, keep damp laundry out of the room and check bins once a season. If you find a damp or musty item, dry it and look for the source before you refill the bin.
 
-IKEA's current under-bed storage range illustrates how cases, bins, and rolling solutions are specified by external dimensions. [See IKEA's under-bed storage guide](https://www.ikea.com/us/en/cat/under-bed-storage-19059/).
+## 8. Mistakes to Avoid
 
-## 5. Step 1 — Prepare the Bed and Storage Area
+- **Filling the clear space.** A bench or basket in the 30 by 48 inch rectangle defeats the point.
+- **Buying bins before measuring.** The gap under the frame is rarely uniform.
+- **Storing daily items under the bed.** You will stop using them, or stop making the bed.
+- **Placing a tall unit where a door swings.** Check swings with the door open and closed.
+- **Skipping the anchor.** A loaded shelf can tip.
+- **Using the bedside for everything.** A crowded nightstand is a sign something needs a zone.
 
-![A simple bed frame with tools and low-profile materials nearby, illustrating preparation before installing or placing under-bed storage](images/bedroom-organization-stepbystep-48inch-clearance-5.jpg)
+## 9. A 20-Minute Reset
 
-If the bed frame needs modification, follow its instructions and do not remove structural components simply to gain storage height.
+Once a month, set a timer. Return stray items to their zone, clear the bedside to the essentials, check that the clear floor space is still clear, pull out one bin and look for dampness, and check that the shelf is still firm against the wall. A short reset keeps the system from drifting back to clutter.
 
-For a basic rolling-bin system:
+## 10. Try This Weekend
 
-1. Vacuum the floor.
-2. Check the container height against the lowest point.
-3. Place one empty container underneath.
-4. Pull it out completely.
-5. Confirm that the handle or lid is accessible.
-6. Repeat on the opposite side if needed.
-
-For a drawer system, check the drawer-slide instructions before drilling. Slides need a stable mounting surface and adequate clearance. Do not attach hardware to a thin panel that was not designed to carry the load.
-
-If you are building a raised platform, calculate the finished mattress height before committing. A storage gain is not worthwhile if it creates an unstable or uncomfortable sleeping setup.
-
-## 6. Step 2 — Install Drawers or Position Rolling Bins
-
-Sliding drawers are useful when you need frequent access. Rolling bins are usually simpler when the goal is seasonal storage.
-
-For drawers, keep the installation square and level. A drawer that is slightly twisted may bind after it is loaded. Test it empty first, then add weight gradually.
-
-For rolling bins:
-
-1. Place the heaviest items at the bottom.
-2. Keep the load balanced from side to side.
-3. Add a label to the front-facing edge.
-4. Push the bin fully under the bed.
-5. Pull it out once to confirm that nothing catches.
-
-Do not rely on a generic weight figure from another product. Follow the actual frame, slide, wheel, and container limits supplied by the manufacturer.
-
-If you want more ideas for using the rest of a small studio, see our [small-apartment storage and organization plan](/posts/small-apartment-organization-maximizing-storage-in-a-350sqft/).
-
-## 7. Step 3 — Create a Labeling System You Will Actually Use
-
-A hidden storage system fails when you cannot remember what is inside.
-
-Keep labels short:
-
-- Winter clothes
-- Spare sheets
-- Guest bedding
-- Travel
-- Shoes
-- Keepsakes
-- Hobby supplies
-
-Place the label where you can see it while the container is still under the bed. If the container has two usable orientations, label the end that faces the room.
-
-For soft bags, use a large tag rather than writing directly on the fabric. For opaque bins, consider a simple inventory note on your phone if the contents change often.
-
-Avoid labels such as “miscellaneous.” That word creates a category with no useful boundary and eventually turns into a clutter drawer.
-
-## 8. Step 4 — Protect Clothing and Bedding
-
-Textiles stored for months need more attention than hard objects. Make sure clothing and bedding are completely dry before storage. Do not pack them while damp or immediately after heavy use.
-
-Fold items consistently and avoid overfilling containers. A container that is difficult to close is too full.
-
-For bedding, group complete sets together. Place sheets inside the matching pillowcase so one set stays together. For seasonal clothing, store one category per container when practical.
-
-In humid environments, inspect long-term storage periodically rather than assuming a sealed container solves every moisture problem. If you notice condensation, odor, or dampness, remove the textiles and address the moisture source before storing them again.
-
-## 9. Step 5 — Make the Rest of the Bedroom Support the System
-
-Under-bed storage works best when it is connected to the rest of the room.
-
-Keep daily clothes in the closet or wardrobe. Use under-bed space for the overflow that you do not need every morning. Keep laundry in one defined basket rather than allowing clothes to accumulate on the bed.
-
-If the closet is crowded, our [renter-friendly closet organization guide](/posts/renter-friendly-closet-organization-using-adhesive/) covers temporary ways to create zones with removable hardware.
-
-If the bedroom is part of a very small studio, avoid adding a second large storage unit simply because the under-bed system is full. First ask whether an existing category can be edited or moved to a less valuable storage location.
-
-For clothing that still needs to stay visible and accessible, see our [small-bedroom organization ideas](/posts/small-bedroom-organization-ideas-practical-space/). If the issue is mainly a crowded closet, use the [small-closet organization guide](/posts/small-closet-organization-ideas-practical-space/) before expanding the bedroom footprint.
-
-## 10. Common Under-Bed Storage Mistakes
-
-**Measuring only once:** Check the lowest clearance and the access path.
-
-**Buying by volume:** A large-capacity bin may be impossible to pull out.
-
-**Storing everything together:** Separate seasonal clothing from keepsakes and daily-use items.
-
-**Ignoring dust:** Use appropriate lids or zipped cases for textiles.
-
-**Overloading drawers:** Excess weight can damage slides, wheels, or the bed frame.
-
-**Blocking ventilation or access:** Do not pack containers so tightly that you cannot inspect the area.
-
-**Forgetting furniture stability:** Any tall furniture added around the bed should be installed and anchored according to its instructions. CPSC recommends anchoring furniture that can tip and keeping heavier items lower. [Review CPSC furniture safety guidance](https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/AnchorItgov).
-
-## 11. A 30-Minute Maintenance Routine
-
-You do not need to reorganize under the bed every week. Once the categories are stable, use a short routine:
-
-**Monthly:** pull each container out far enough to inspect it.
-
-**Seasonally:** rotate clothing and bedding.
-
-**When something is removed:** return it to the same container or update the category.
-
-**Every few months:** vacuum the floor and inspect the bed frame, wheels, and drawer hardware.
-
-If a container repeatedly becomes disorganized, the category is probably too broad. Split it into two useful groups or remove items that no longer deserve the space.
-
-## 12. Connect Under-Bed Storage to the Whole Studio
-
-Storage should solve the bedroom problem without creating a new problem elsewhere. Keep everyday clothing in the easiest-to-reach zone, move seasonal pieces under the bed, and avoid using the bedroom floor as overflow.
-
-If the whole studio is short on storage, our [small-apartment organization guide](/posts/small-apartment-organization-maximizing-storage-in-a-350sqft/) covers clothing zones, vertical storage, and awkward-space solutions.
-
-A second useful connection is the kitchen: if your living space includes a small kitchen, our [small-kitchen organization guide](/posts/kitchen-organization-ideas-small-spaces-space/) can help keep kitchen overflow from migrating into the bedroom.
-
-If paperwork or work supplies are also taking over the bedroom, our [5×5 home-office decluttering guide](/posts/decluttering-5x5-home-office-corner-remote-workers/) shows how to contain those categories without adding a large desk or cabinet.
+Tape the 30 by 48 inch rectangle on the floor beside the bed. Live with it for three days and see what you trip over, move or ignore. Then choose storage that fits around the tape, not the other way round. For the rest of a studio plan, see our [350 square foot apartment guide](/posts/small-apartment-organization-maximizing-storage-in-a-350sqft/) and the [small bedroom floor-first plan](/posts/small-bedroom-organization-ideas-practical-space/).
 
 ## Frequently Asked Questions
 
-### How much clearance is needed for under-bed storage?
+### How much clear space should I keep beside a bed?
 
-There is no universal height. Measure the lowest opening under your specific bed and choose a container that fits below it with enough tolerance to move freely.
+The ADA Standards define a clear floor space as at least 30 inches by 48 inches, and they require it beside beds in guest rooms with mobility features. Your own bedroom does not have to meet that rule, but it is a practical benchmark for getting in and out of bed and making it.
 
-### What is best to store under a bed?
+### Where should storage go if my bedroom is very small?
 
-Seasonal clothing, spare bedding, luggage, occasional shoes, and protected keepsakes are practical choices. Avoid damp items and anything that needs daily access.
+Keep one side of the bed clear first. Then use the far wall for a tall slim shelf, the foot of the bed for flat bins that pull out toward the foot, and the closet for hanging clothes. Do not fill the walking path to gain a shelf.
 
-### Are rolling bins better than drawers?
+### How high should bedside items be?
 
-It depends on the bed and how often you access the contents. Rolling bins are simple and flexible; drawers can be easier for frequent access but require a suitable mounting structure.
+The ADA Standards describe an unobstructed forward reach of 15 to 48 inches above the floor. Keep the phone, glasses and book inside that band, heavy bins below it and light, rarely used items above it with a step stool.
 
-### How do I keep under-bed storage from getting dusty?
+### How do I choose under-bed bins?
 
-Use lidded bins or fully enclosed fabric cases, keep the floor clean, and inspect the storage area during seasonal rotations.
+Measure from the floor to the lowest part of the frame at several points, then choose flat bins at least 1 inch shorter than the smallest reading. Pick bins that pull out toward the foot of the bed and keep them clear of the side you use to get in.
 
-### Should I vacuum-seal clothes under the bed?
+### Do I need to anchor a tall shelf or dresser?
 
-Vacuum storage can reduce bulk for some seasonal textiles, but it is not necessary for everyday clothing. Follow the care instructions for the fabric and make sure items are completely dry before storing.
+Securing top-heavy furniture with anti-tip brackets is the advice of the CPSC's Anchor It! campaign, as summarized by Salud America, which also reports that tip-overs usually occur in the bedroom. In a rental, ask your landlord first, because anchors leave small holes.
 
-### What should I do if my storage fits but will not pull out?
+### Can I store blankets or clothes under the bed?
 
-Check the access path, container width, wheels, and surrounding furniture. Often the problem is not the container height but insufficient clearance in front or beside the bed.
-
-## Final Takeaway
-
-A successful under-bed storage plan is a measurement project first and a storage project second. Start with the lowest clearance, map the available zones, edit what you own, and choose containers that can be removed without moving the bed.
-
-Once every container has a clear category and label, the space under the bed stops being a forgotten gap and becomes a dependable part of the bedroom organization system.
+Yes, if they are clean and dry. The EPA advises drying damp items within 24 to 48 hours to prevent mold growth, so never store damp textiles in a closed bin.
 
 ## Sources
 
-- U.S. Consumer Product Safety Commission, [Anchor It!](https://web.archive.org/web/20260927021753/https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/AnchorItgov) (archived snapshot, September 27, 2026): the national campaign to prevent furniture and TV tip-overs.
-- U.S. EPA, [A Brief Guide to Mold, Moisture and Your Home](https://www.epa.gov/mold/brief-guide-mold-moisture-and-your-home) (last updated February 18, 2026): dry water-damaged or damp items within 24 to 48 hours to prevent mold growth.
-- IKEA, [Under-bed storage](https://www.ikea.com/us/en/cat/under-bed-storage-19059/) (retailer category page, no date shown): examples of under-bed container sizes; check current product measurements before buying.
+- US Access Board, [ADA Standards for Accessible Design](https://www.access-board.gov/ada/): clear floor space of at least 30 by 48 inches (305.3) and the sleeping area requirement beside beds in guest rooms with mobility features (806.2.3).
+- US Access Board, [ADA Chapter 3: Operable Parts](https://www.access-board.gov/ada/guides/chapter-3-operable-parts/): the 15 to 48 inch unobstructed forward reach range.
+- US EPA, [A Brief Guide to Mold, Moisture and Your Home](https://www.epa.gov/mold/brief-guide-mold-moisture-and-your-home): dry damp items within 24 to 48 hours to prevent mold growth.
+- Salud America, [Anchor It: Protect Kids from Dangerous Furniture Tip-Overs](https://salud-america.org/anchor-it-furniture-tip-over-danger/): a summary of the CPSC Anchor It! campaign, with the bedroom as the usual place for tip-overs, anti-tip brackets and removing tempting items from furniture.
+
+The diagrams are original illustrations made for this guide. Room sizes, bed sizes and heights are planning examples, so measure your own room and follow the manufacturer's instructions for furniture and anchors.
 
 ## Image Credits
 
-- Photo 1: [Max Vakhtbovych](https://www.pexels.com/@artbovich) via [Pexels](https://www.pexels.com/photo/an-interior-of-a-bedroom-7614411/)
-- Photo 2: [Yaroslav Shuraev](https://www.pexels.com/@yaroslav-shuraev) via [Pexels](https://www.pexels.com/photo/a-person-holding-a-measuring-tape-8844560/)
-- Photo 3: [RDNE Stock project](https://www.pexels.com/@rdne) via [Pexels](https://www.pexels.com/photo/person-holding-marker-and-writing-on-paper-5915231/)
-- Photo 4: [Liliana Drew](https://www.pexels.com/@liliana-drew) via [Pexels](https://www.pexels.com/photo/red-and-black-vacuum-in-close-up-shot-9462141/)
-- Photo 5: [Sergey  Meshkov](https://www.pexels.com/@19x14) via [Pexels](https://www.pexels.com/photo/a-red-and-silver-screw-driver-8478350/)
+- Cover: AI-generated image via ChatGPT, October 2026.
