@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-20T02:18:00+00:00",
+  "timestamp": "2026-10-20T02:56:38+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "PAUSED",
@@ -55,12 +55,12 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 39358132558,
+      "id": 39361625237,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-10-20T02:17:47Z",
-      "updated_at": "2026-10-20T02:17:51Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/39358132558"
+      "created_at": "2026-10-20T02:56:29Z",
+      "updated_at": "2026-10-20T02:56:33Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/39361625237"
     },
     "Traffic Report": {
       "id": 39351509299,
@@ -75,42 +75,8 @@
     "status": "UNAVAILABLE"
   },
   "traffic": {
-    "status": "OK",
-    "visitors_today": 0,
-    "visitors_last_7_days": 14,
-    "visitors_this_month": 127,
-    "stats_today": [
-      {
-        "day": "2026-10-20",
-        "hourly": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "daily": 0
-      }
-    ]
+    "status": "UNAVAILABLE",
+    "reason": "HTTP 404"
   },
   "alerts": [],
   "issues": [
@@ -124,6 +90,13 @@
         "unique_inline_images": 3,
         "h2": 18,
         "faq": 6
+      }
+    },
+    {
+      "type": "GoatCounter unavailable",
+      "traffic": {
+        "status": "UNAVAILABLE",
+        "reason": "HTTP 404"
       }
     }
   ],
