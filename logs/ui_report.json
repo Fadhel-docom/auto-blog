@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-19T12:32:15+00:00",
+  "timestamp": "2026-10-20T00:30:12+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -112,7 +112,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 30525
+      "html_length": 30562
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/renter-friendly-bathroom-storage-without-drilling/",
@@ -160,7 +160,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 36992
+      "html_length": 36928
     }
   ],
   "responsive": {
