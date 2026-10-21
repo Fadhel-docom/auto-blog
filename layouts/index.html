@@ -1,12 +1,16 @@
 {{ define "main" }}
 
+<style>
+  .featured-section[hidden],
+  .featured-card[hidden] { display: none !important; }
+</style>
+
 {{ $allPosts := where site.RegularPages "Section" "posts" }}
 {{ $allPosts = $allPosts.ByDate.Reverse }}
 
 {{ $featuredPosts := first 3 $allPosts }}
 {{ $remainingPosts := after 3 $allPosts }}
 
-{{ $paginator := .Paginate $remainingPosts 12 }}
 
 <section class="home-hero home-hero-editorial" aria-labelledby="home-hero-title">
 
@@ -150,6 +154,15 @@
     <button
       type="button"
       class="category-filter"
+      data-category="living room"
+      aria-pressed="false"
+    >
+      Living Room
+    </button>
+
+    <button
+      type="button"
+      class="category-filter"
       data-category="entryway"
       aria-pressed="false"
     >
@@ -217,6 +230,15 @@
 
     {{ range $index, $post := $featuredPosts }}
 
+      {{ $fCategoryText := "" }}
+      {{ with $post.Params.categories }}
+        {{ if reflect.IsSlice . }}
+          {{ $fCategoryText = delimit . " " }}
+        {{ else }}
+          {{ $fCategoryText = . }}
+        {{ end }}
+      {{ end }}
+
       {{ $thumbnail := $post.Params.image }}
 
       {{ if not $thumbnail }}
@@ -241,6 +263,10 @@
 
       <article
         class="featured-card {{ if eq $index 0 }}featured-card-primary{{ end }}"
+        data-search-title="{{ $post.Title | plainify | lower }}"
+        data-search-description="{{ $post.Description | plainify | lower }}"
+        data-search-category="{{ $fCategoryText | plainify | lower }}"
+        data-search-tags="{{ delimit $post.Params.tags " " | plainify | lower }}"
       >
 
         {{ if $thumbnail }}
@@ -320,11 +346,11 @@
 
   </div>
 
-  {{ if $paginator.Pages }}
+  {{ if $remainingPosts }}
 
     <div class="posts-grid" id="posts-grid">
 
-      {{ range $paginator.Pages }}
+      {{ range $remainingPosts }}
 
         {{ $thumbnail := .Params.image }}
 
@@ -444,41 +470,6 @@
       No articles match your search or selected category.
     </p>
 
-    {{ if gt $paginator.TotalPages 1 }}
-
-      <nav
-        class="home-pagination"
-        aria-label="Articles pagination"
-      >
-
-        {{ if $paginator.HasPrev }}
-          <a
-            href="{{ $paginator.Prev.URL }}"
-            class="pagination-link pagination-prev"
-            rel="prev"
-          >
-            ← Newer
-          </a>
-        {{ end }}
-
-        <span class="pagination-status">
-          Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}
-        </span>
-
-        {{ if $paginator.HasNext }}
-          <a
-            href="{{ $paginator.Next.URL }}"
-            class="pagination-link pagination-next"
-            rel="next"
-          >
-            Older →
-          </a>
-        {{ end }}
-
-      </nav>
-
-    {{ end }}
-
   {{ else }}
 
     <div class="home-empty-state">
@@ -507,8 +498,10 @@
   }
 
   var cards = Array.prototype.slice.call(
-    grid.querySelectorAll(".home-post-card")
+    document.querySelectorAll(".home-post-card, .featured-card[data-search-title]")
   );
+
+  var featuredSection = document.querySelector(".featured-section");
 
   var activeCategory = "all";
 
@@ -523,6 +516,7 @@
 
     var query = normalize(searchInput.value);
     var visible = 0;
+    var featuredVisible = 0;
 
     cards.forEach(function (card) {
 
@@ -549,9 +543,16 @@
 
       if (show) {
         visible += 1;
+        if (card.classList.contains("featured-card")) {
+          featuredVisible += 1;
+        }
       }
 
     });
+
+    if (featuredSection) {
+      featuredSection.hidden = featuredVisible === 0;
+    }
 
     if (resultCount) {
       if (query || activeCategory !== "all") {
