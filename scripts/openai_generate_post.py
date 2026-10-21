@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Editorial fallback hardened: structured-output first, parser-safe retry.\n# Provider routing is dynamic: OpenAI -> Groq -> discovered OpenRouter free models.
 # Multiple free-model fallback is enabled for provider resilience.
-import csv,json,os,re,sys
+import csv,json,os,re,sys,time
 from datetime import datetime,timezone,timedelta
 from pathlib import Path
 import requests
@@ -503,9 +503,12 @@ def main():
 
         last_exc=None
         for attempt in (1,2,3):
+            if attempt > 1:
+                print(f"Waiting 30s before bounded retry {attempt}/3 to respect provider token limits.", file=sys.stderr)
+                time.sleep(30)
             try:
                 candidate=(
-                    call_groq(topic,model=chosen_model,feedback=(str(last_exc) if attempt > 1 and last_exc else None)) if name.startswith("Groq")
+                    call_groq(topic,model=chosen_model,feedback=(str(last_exc) if attempt > 1 and isinstance(last_exc, ValueError) else None)) if name.startswith("Groq")
                     else call_openrouter(topic,model=chosen_model)
                 )
                 candidate=_normalize_title(candidate)
@@ -520,6 +523,11 @@ def main():
                 print(f"{name} validation failed (attempt {attempt}/3): {exc}",file=sys.stderr)
             except Exception as exc:
                 last_exc=exc
+                error_text=str(exc).lower()
+                is_rate_limit=("429" in error_text or "rate limit" in error_text or "tokens per minute" in error_text)
+                if is_rate_limit and attempt < 3:
+                    print(f"{name} rate-limited; retrying after bounded backoff ({attempt+1}/3).", file=sys.stderr)
+                    continue
                 break
         message=str(last_exc)
         failures.append(f"{name}: {message}")
