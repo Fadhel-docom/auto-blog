@@ -502,7 +502,7 @@ def main():
             chosen_model=discovered[0] if discovered else OPENROUTER_MODEL
 
         last_exc=None
-        for attempt in (1,2):
+        for attempt in (1,2,3):
             try:
                 candidate=(
                     call_groq(topic,model=chosen_model,feedback=(str(last_exc) if attempt > 1 and last_exc else None)) if name.startswith("Groq")
@@ -517,7 +517,7 @@ def main():
             except ValueError as exc:
                 # Validation problem only: retry once, no provider cooldown.
                 last_exc=exc
-                print(f"{name} validation failed (attempt {attempt}/2): {exc}",file=sys.stderr)
+                print(f"{name} validation failed (attempt {attempt}/3): {exc}",file=sys.stderr)
             except Exception as exc:
                 last_exc=exc
                 break
