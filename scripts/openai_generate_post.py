@@ -53,7 +53,26 @@ def validate(a):
     if not 8<=len(h2s)<=12: raise ValueError(f'Expected 8-12 H2 sections, got {len(h2s)}')
     a["h2_headings"]=h2s
     if len(a["image_queries"])!=6 or len({x.lower().strip() for x in a["image_queries"]})!=6: raise ValueError("Expected 6 unique image queries")
-    if not 4<=len(a["faq"])<=6: raise ValueError("Expected 4-6 FAQs")
+    faq_items=a.get("faq")
+    if not isinstance(faq_items,list) or not 4<=len(faq_items)<=6:
+        raise ValueError("Expected 4-6 FAQs")
+    normalized_faq=[]
+    seen_questions=set()
+    for item in faq_items:
+        if not isinstance(item,dict):
+            raise ValueError("Each FAQ must be an object with question and answer")
+        question=re.sub(r"\s+"," ",str(item.get("question"," ")).strip())
+        answer=re.sub(r"\s+"," ",str(item.get("answer"," ")).strip())
+        answer_words=len(answer.split())
+        if not question.endswith("?"):
+            raise ValueError("Every FAQ question must end with a question mark")
+        if not 40<=answer_words<=110:
+            raise ValueError(f"FAQ answer has {answer_words} words; publisher requires 40-110")
+        if question.lower() in seen_questions:
+            raise ValueError("Duplicate FAQ question")
+        seen_questions.add(question.lower())
+        normalized_faq.append({"question":question,"answer":answer})
+    a["faq"]=normalized_faq
     sources=a.get("sources")
     if not isinstance(sources,list) or not 2<=len(sources)<=4:
         raise ValueError("Expected 2-4 credible sources")
