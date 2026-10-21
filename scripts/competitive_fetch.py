@@ -1636,6 +1636,39 @@ def validate_jpeg_file(
         )
 
 
+def jpeg_dimensions(path: Path) -> tuple[int, int]:
+    """Read actual JPEG dimensions from SOF markers without extra packages."""
+    data = path.read_bytes()
+    if len(data) < 4 or data[:3] != JPEG_MAGIC_BYTES:
+        raise RuntimeError(f"Not a JPEG file: {path}")
+    i = 2
+    sof_markers = {0xC0, 0xC1, 0xC2, 0xC3, 0xC5, 0xC6, 0xC7, 0xC9, 0xCA, 0xCB, 0xCD, 0xCE, 0xCF}
+    while i < len(data):
+        if data[i] != 0xFF:
+            i += 1
+            continue
+        while i < len(data) and data[i] == 0xFF:
+            i += 1
+        if i >= len(data):
+            break
+        marker = data[i]
+        i += 1
+        if marker in {0xD8, 0xD9, 0x01} or 0xD0 <= marker <= 0xD7:
+            continue
+        if i + 2 > len(data):
+            break
+        segment_length = int.from_bytes(data[i:i + 2], "big")
+        if segment_length < 2 or i + segment_length > len(data):
+            break
+        if marker in sof_markers and segment_length >= 7:
+            height = int.from_bytes(data[i + 3:i + 5], "big")
+            width = int.from_bytes(data[i + 5:i + 7], "big")
+            if width > 0 and height > 0:
+                return width, height
+        i += segment_length
+    raise RuntimeError(f"Could not read JPEG dimensions: {path}")
+
+
 def download_image(
     url: str,
     destination: Path,
@@ -1751,6 +1784,16 @@ def create_reused_image(
         destination,
     )
 
+    width = source_image.get("width")
+    height = source_image.get("height")
+    if not width or not height:
+        width, height = jpeg_dimensions(source_path)
+    width, height = int(width), int(height)
+    image_source_url = str(source_image.get("image_source_url") or "").strip()
+    if not image_source_url:
+        image_source_url = f"https://fadhel-docom.github.io/auto-blog/images/{source_path.name}"
+    aspect_ratio = source_image.get("aspect_ratio") or (width / height)
+
     return {
         "index": index,
         "query": (
@@ -1789,24 +1832,13 @@ def create_reused_image(
                 "",
             )
         ),
-        "image_source_url": (
-            source_image.get(
-                "image_source_url",
-                "",
-            )
-        ),
+        "image_source_url": image_source_url,
         "image_id": source_image.get(
             "image_id"
         ),
-        "width": source_image.get(
-            "width"
-        ),
-        "height": source_image.get(
-            "height"
-        ),
-        "aspect_ratio": source_image.get(
-            "aspect_ratio"
-        ),
+        "width": width,
+        "height": height,
+        "aspect_ratio": aspect_ratio,
         "reused": True,
         "validation_score": float(
             source_image.get(
