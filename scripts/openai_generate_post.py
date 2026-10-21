@@ -67,7 +67,7 @@ def validate(a):
         host=(parsed.hostname or "").lower()
         trusted=host.endswith(allowed_hosts) or host in {"cpsc.gov","epa.gov","cdc.gov","usda.gov","energy.gov","energystar.gov","ready.gov","consumer.ftc.gov","nps.gov"}
         if not title or parsed.scheme!="https" or not host or not trusted or parsed.username or parsed.password:
-            raise ValueError("Sources must have a title and an HTTPS URL on an authoritative .gov, .edu, or approved safety/extension domain")
+            raise ValueError(f"Invalid source item: keys={sorted(source.keys())}, title_present={bool(title)}, scheme={parsed.scheme!r}, host={host!r}; expected title/url and trusted HTTPS domain")
         if url in seen_urls: raise ValueError("Duplicate source URL")
         seen_urls.add(url)
     if len(a["title"])>68: raise ValueError("Title too long")
@@ -181,7 +181,7 @@ def discover_openrouter_free_models():
 def call_groq(topic, relaxed_json=False, model=None):
     key=os.getenv("GROQ_API_KEY")
     if not key: raise RuntimeError("GROQ_API_KEY unavailable")
-    payload={"model":model or GROQ_MODEL,"temperature":0.35,"max_tokens":6000,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":f"Focus keyword/topic: {topic}\\nWrite a complete, polished article of 1900-2100 words. MUST be at least 1800 words. Count carefully. Do not stop before reaching 1800+ words. Return ONLY one JSON object with every required field. content_markdown must contain exactly 10 H2 headings and 6 distinct image queries. Do not use markdown fences around the JSON. Do not omit fields."}]}
+    payload={"model":model or GROQ_MODEL,"temperature":0.35,"max_tokens":6000,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":f"Focus keyword/topic: {topic}\\nWrite a complete, polished article of 1900-2100 words. MUST be at least 1800 words. Count carefully. Do not stop before reaching 1800+ words. Return ONLY one JSON object with every required field. content_markdown must contain exactly 10 H2 headings and 6 distinct image queries. Include a sources array with 2-4 objects, each using exactly title and url keys. Every source URL must be a direct HTTPS link on a .gov or .edu domain, or one of these known authoritative pages when relevant: https://www.cpsc.gov/Safety-Education/Safety-Guides/Furniture-Furnishings/AnchorIt and https://www.epa.gov/mold. Do not use commercial blogs, guessed URLs, or shortened links. Do not put sources in content_markdown. Do not use markdown fences around the JSON. Do not omit fields."}]}
     if "gpt-oss" in (model or GROQ_MODEL).lower():
         payload["reasoning_effort"]="low"
         payload["include_reasoning"]=False
