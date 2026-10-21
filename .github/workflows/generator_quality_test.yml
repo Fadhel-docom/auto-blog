@@ -54,11 +54,14 @@ jobs:
           a = json.loads(Path("article.json").read_text(encoding="utf-8"))
           assert a.get("title"), "missing title"
           assert a.get("content_markdown"), "missing article body"
-          assert 4 <= len(a.get("faq") or []) <= 6, "expected 4-6 FAQ items"
+          faq = a.get("faq") or []
+          assert 4 <= len(faq) <= 6, "expected 4-6 FAQ items"
+          assert all(isinstance(x, dict) and str(x.get("question", "")).strip().endswith("?") and 40 <= len(str(x.get("answer", "")).split()) <= 110 for x in faq), "FAQ items do not meet publisher requirements"
+          assert len({str(x["question"]).strip().lower() for x in faq}) == len(faq), "duplicate FAQ questions"
           assert 2 <= len(a.get("sources") or []) <= 4, "expected 2-4 structured sources"
           assert 8 <= len(a.get("h2_headings") or []) <= 12, "expected 8-12 H2 headings per generator validator"
           print("GENERATOR CONTRACT PASS:", a["title"])
-          print("FAQ:", len(a["faq"]), "| Sources:", len(a["sources"]), "| H2:", len(a["h2_headings"]))
+          print("FAQ:", len(faq), "| Sources:", len(a["sources"]), "| H2:", len(a["h2_headings"]))
           PY
 
       - name: Fetch six real article images
