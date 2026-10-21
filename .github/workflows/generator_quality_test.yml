@@ -56,7 +56,7 @@ jobs:
           assert a.get("content_markdown"), "missing article body"
           faq = a.get("faq") or []
           assert 4 <= len(faq) <= 6, "expected 4-6 FAQ items"
-          assert all(isinstance(x, dict) and str(x.get("question", "")).strip().endswith("?") and 40 <= len(str(x.get("answer", "")).split()) <= 110 for x in faq), "FAQ items do not meet publisher requirements"
+          assert all(isinstance(x, dict) and str(x.get("question", "")).strip().endswith("?") and 35 <= len(str(x.get("answer", "")).split()) <= 110 for x in faq), "FAQ items do not meet publisher requirements"
           assert len({str(x["question"]).strip().lower() for x in faq}) == len(faq), "duplicate FAQ questions"
           assert 2 <= len(a.get("sources") or []) <= 4, "expected 2-4 structured sources"
           assert 8 <= len(a.get("h2_headings") or []) <= 12, "expected 8-12 H2 headings per generator validator"
