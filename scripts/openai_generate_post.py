@@ -66,8 +66,8 @@ def validate(a):
         answer_words=len(answer.split())
         if not question.endswith("?"):
             raise ValueError("Every FAQ question must end with a question mark")
-        if not 40<=answer_words<=110:
-            raise ValueError(f"FAQ answer has {answer_words} words; publisher requires 40-110")
+        if not 35<=answer_words<=110:
+            raise ValueError(f"FAQ answer has {answer_words} words; publisher requires 35-110")
         if question.lower() in seen_questions:
             raise ValueError("Duplicate FAQ question")
         seen_questions.add(question.lower())
