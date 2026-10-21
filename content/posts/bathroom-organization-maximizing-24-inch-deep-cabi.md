@@ -226,6 +226,11 @@ They can be useful when the cabinet is deep because they bring the back of the c
 
 ---
 
+## Sources
+
+- [Poison Control: Types of common and dangerous poisons](https://www.poison.org/common-and-dangerous-poisons) — safe storage and original-container guidance for household products.
+- [U.S. EPA: What Are Ten Things I Need to Know About Mold?](https://www.epa.gov/mold/what-are-ten-things-i-need-know-about-mold) — moisture control and drying damp materials.
+
 ### Image Credits
 
 - Photo 1: [Ryan Lansdown](https://www.pexels.com/@ryanlans) via [Pexels](https://www.pexels.com/photo/elegant-bathroom-essentials-arrangement-on-sink-32420129/)

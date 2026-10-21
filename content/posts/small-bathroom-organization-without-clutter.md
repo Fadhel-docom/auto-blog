@@ -290,7 +290,12 @@ This small rule reduces visual noise and makes restocking predictable. It also h
 
 Continue with our [small bathroom organization guide](/posts/small-bathroom-organization-ideas-practical-space/), [under-sink storage system](/posts/under-sink-organization-ideas-simple-system/), [small closet organization guide](/posts/small-closet-organization-ideas-practical-space/), [small bedroom organization guide](/posts/small-bedroom-organization-ideas-practical-space/), [linen closet guide](/posts/linen-closet-organization-ideas-small-shelves/), and [small apartment storage guide](/posts/small-apartment-storage-ideas-practical-space/).
 
-## Photo Sources
+## Sources
+
+- [Poison Control: Types of common and dangerous poisons](https://www.poison.org/common-and-dangerous-poisons) — safe storage and original-container guidance for household products.
+- [U.S. EPA: What Are Ten Things I Need to Know About Mold?](https://www.epa.gov/mold/what-are-ten-things-i-need-know-about-mold) — moisture control and drying damp materials.
+
+## Photo Credits
 
 - [Pexels — Modern minimalist bathroom interior design](https://www.pexels.com/photo/modern-minimalist-bathroom-interior-design-35505456/)
 - [Pexels — Modern minimalist bathroom interior design](https://www.pexels.com/photo/modern-minimalist-bathroom-interior-design-29252363/)
