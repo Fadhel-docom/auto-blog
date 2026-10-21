@@ -5,6 +5,7 @@ import csv,json,os,re,sys
 from datetime import datetime,timezone,timedelta
 from pathlib import Path
 import requests
+from urllib.parse import urlparse
 try:
     from json_repair import repair_json
 except ImportError:
@@ -27,7 +28,7 @@ PROVIDER_STATE_KEY="provider_cooldown"
 SYSTEM="""You are the senior editor for Home Organization Ideas, a site for people living in small homes and rentals. Write a genuinely useful, human-sounding English article. Aim for 2100-2200 words so the final validated article safely stays within the required 1500-2300 range. Never mention AI, automation, models, providers, prompts, or generation.
 ACCURACY RULES: Never invent statistics, studies, expert claims, quotes, prices, or credentials. Use only dimensions that are standard and widely documented (for example base kitchen cabinets about 24 inches deep, wall cabinets about 12 inches deep, closet rods about 66 inches high), say typically or about when you give them, and tell the reader to measure their own space. Never give an object a physically implausible size (for example a 2-inch-wide shelf, a 4-inch-tall pegboard, or a 3-foot-tall floating shelf that is only 12 inches wide). If you are not sure a number is correct, describe the idea without a number. Never contradict a number you gave earlier in the article. Never write first-person experiences, testimonials, or claims of having tested products.
 STRUCTURE RULES: Each of the 10 H2 sections must cover a DIFFERENT topic. Never write two sections about measuring, two about routines or maintenance, or two about common mistakes. Do not begin several sections with the same sentence pattern, and do not repeat a sentence or instruction from another section. Do not put the focus keyword inside H2 headings; use natural, specific headings. Include at least one markdown comparison table. Use short paragraphs and concrete examples. Never write meta-commentary such as this section focuses on, and no generic closing filler. Avoid keyword stuffing, but write the exact focus keyword phrase word for word in the first paragraph (within the first 100 words) and naturally 2 to 4 more times in the body, never inside H2 headings.
-Explain practical decisions, tradeoffs, examples, common mistakes, and maintenance. Return ONLY JSON with keys: keyword, specific_angle, title, meta_description, content_markdown, image_queries, tags, h2_headings, faq. content_markdown MUST be at least 2000 words (aim for 2100-2200). Count carefully. Do not stop before reaching 2000+ words with exactly 10 H2 headings. image_queries exactly 6 distinct concrete Pexels-ready queries. faq: 4-6 objects, each exactly {"question": "...?", "answer": "..."} where the question ends with a question mark and each answer is a plain-text paragraph of 55-90 words. title MUST be 60 characters or fewer. Count carefully. meta_description 140-158 characters."""
+Explain practical decisions, tradeoffs, examples, common mistakes, and maintenance. Return ONLY JSON with keys: keyword, specific_angle, title, meta_description, content_markdown, image_queries, tags, h2_headings, faq, sources. sources must contain 2-4 relevant, real references as objects with exactly title and url; use direct HTTPS URLs on authoritative government, university-extension, or recognized safety-organization sites, and never invent a URL. Do not put a Sources or References heading inside content_markdown; sources belong only in the JSON sources array. content_markdown MUST be at least 2000 words (aim for 2100-2200). Count carefully. Do not stop before reaching 2000+ words with exactly 10 H2 headings. image_queries exactly 6 distinct concrete Pexels-ready queries. faq: 4-6 objects, each exactly {"question": "...?", "answer": "..."} where the question ends with a question mark and each answer is a plain-text paragraph of 55-90 words. title MUST be 60 characters or fewer. Count carefully. meta_description 140-158 characters."""
 
 def load_topic():
     target=os.getenv("TARGET_KEYWORD","").strip()
@@ -43,7 +44,7 @@ def slugify(s):
     return re.sub(r"\s+","-",s).strip("-")[:70].strip("-")
 
 def validate(a):
-    req=["keyword","specific_angle","title","meta_description","content_markdown","image_queries","tags","h2_headings","faq"]
+    req=["keyword","specific_angle","title","meta_description","content_markdown","image_queries","tags","h2_headings","faq","sources"]
     missing=[k for k in req if not a.get(k)]
     if missing: raise ValueError("Missing required field(s): " + ", ".join(missing))
     words=len(re.findall(r"\b\w+\b",a["content_markdown"]))
@@ -53,6 +54,22 @@ def validate(a):
     a["h2_headings"]=h2s
     if len(a["image_queries"])!=6 or len({x.lower().strip() for x in a["image_queries"]})!=6: raise ValueError("Expected 6 unique image queries")
     if not 4<=len(a["faq"])<=6: raise ValueError("Expected 4-6 FAQs")
+    sources=a.get("sources")
+    if not isinstance(sources,list) or not 2<=len(sources)<=4:
+        raise ValueError("Expected 2-4 credible sources")
+    allowed_hosts=(".gov", ".edu", "nfpa.org", "extension.org", "extension.umn.edu", "extension.psu.edu", "extension.colostate.edu", "extension.usu.edu", "extension.illinois.edu", "extension.oregonstate.edu")
+    seen_urls=set()
+    for source in sources:
+        if not isinstance(source,dict): raise ValueError("Each source must include title and url")
+        title=str(source.get("title","")).strip()
+        url=str(source.get("url","")).strip()
+        parsed=urlparse(url)
+        host=(parsed.hostname or "").lower()
+        trusted=host.endswith(allowed_hosts) or host in {"cpsc.gov","epa.gov","cdc.gov","usda.gov","energy.gov","energystar.gov","ready.gov","consumer.ftc.gov","nps.gov"}
+        if not title or parsed.scheme!="https" or not host or not trusted or parsed.username or parsed.password:
+            raise ValueError("Sources must have a title and an HTTPS URL on an authoritative .gov, .edu, or approved safety/extension domain")
+        if url in seen_urls: raise ValueError("Duplicate source URL")
+        seen_urls.add(url)
     if len(a["title"])>68: raise ValueError("Title too long")
     md=" ".join(str(a["meta_description"]).split())
     if len(md)>158:
@@ -275,7 +292,7 @@ def _merge_article(base, incoming):
             merged["content_markdown"]=(prefix+"\\n\\n" if prefix else "")+"\\n\\n".join("## "+h+"\\n\\n"+b for h,b in ordered)
         elif len(re.findall(r"\\b\\w+\\b",new)) > len(re.findall(r"\\b\\w+\\b",old)):
             merged["content_markdown"]=new
-    for key in ["keyword","specific_angle","title","meta_description","image_queries","tags","h2_headings","faq"]:
+    for key in ["keyword","specific_angle","title","meta_description","image_queries","tags","h2_headings","faq","sources"]:
         if incoming.get(key):
             merged[key]=incoming[key]
     return merged
@@ -331,13 +348,13 @@ def _collaboration_prompt(topic, draft, stage):
     if not draft:
         return f"""Focus keyword/topic: {topic}
 You are the first editor in a cooperative writing chain. Start the shared article.
-Write ONLY valid JSON. Build the article toward 1900-2100 words, exactly 10 H2 headings, 6 unique image queries and 4-6 FAQs.
+Write ONLY valid JSON. Build the article toward 1900-2100 words, exactly 10 H2 headings, 6 unique image queries, 4-6 FAQs, and 2-4 credible sources (each {"title":"...","url":"https://..."} on a real authoritative .gov, university-extension, or recognized safety-organization page).
 You may write the first half now (roughly 900-1200 words, headings 1-5) if needed. Do not stop because of an artificial short target; produce as much high-quality article content as the response limit safely allows.
 This draft will be handed directly to another editor, who must continue it rather than restart it."""
     return f"""Focus keyword/topic: {topic}
 You are stage {stage} in a cooperative editorial chain. CONTINUE THE SHARED DRAFT below; do not restart, summarize, or rewrite completed sections.
 Add the next missing H2 sections and complete missing required fields. Preserve the existing useful text exactly where possible.
-Target a final article of 1900-2100 words with exactly 10 H2 headings, 6 unique image queries and 4-6 FAQs.
+Target a final article of 1900-2100 words with exactly 10 H2 headings, 6 unique image queries, 4-6 FAQs, and 2-4 credible sources (each {"title":"...","url":"https://..."} on a real authoritative .gov, university-extension, or recognized safety-organization page).
 Return ONLY one valid JSON object. If the previous editor stopped mid-article, continue naturally from its last complete sentence.
 
 SHARED DRAFT:

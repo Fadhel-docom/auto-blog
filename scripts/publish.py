@@ -148,6 +148,30 @@ def toml_table_array(
     return "[" + ", ".join(parts) + "]"
 
 
+def normalize_sources(value: Any) -> list[dict[str, str]]:
+    if not isinstance(value, list):
+        raise ValueError("Article must include 2-4 credible sources.")
+    sources = []
+    seen = set()
+    for item in value:
+        if not isinstance(item, dict):
+            continue
+        title = re.sub(r"\s+", " ", str(item.get("title", "")).strip())
+        url = str(item.get("url", "")).strip()
+        parsed = __import__("urllib.parse", fromlist=["urlparse"]).urlparse(url)
+        host = (parsed.hostname or "").lower()
+        allowed_hosts = (".gov", ".edu", "nfpa.org", "extension.org", "extension.umn.edu", "extension.psu.edu", "extension.colostate.edu", "extension.usu.edu", "extension.illinois.edu", "extension.oregonstate.edu")
+        trusted = host.endswith(allowed_hosts) or host in {"cpsc.gov", "epa.gov", "cdc.gov", "usda.gov", "energy.gov", "energystar.gov", "ready.gov", "consumer.ftc.gov", "nps.gov"}
+        if not title or parsed.scheme != "https" or not host or not trusted or parsed.username or parsed.password:
+            continue
+        if url not in seen:
+            seen.add(url)
+            sources.append({"title": title, "url": url})
+    if not 2 <= len(sources) <= 4:
+        raise ValueError("Article must include 2-4 distinct sources on authoritative HTTPS domains.")
+    return sources
+
+
 def normalize_tags(tags: Any) -> list[str]:
     if tags is None:
         return []
@@ -1053,6 +1077,8 @@ def main() -> int:
             article.get("tags", [])
         )
 
+        sources = normalize_sources(article.get("sources", []))
+
         images = normalize_images(article, slug)
 
         if len(images) != 6:
@@ -1141,6 +1167,21 @@ def main() -> int:
                 )
                 + "\n"
             )
+
+        # Use the structured, validated source list exactly once even if a model
+        # accidentally placed a Sources/References block in the article body.
+        content_markdown = re.sub(
+            r"(?im)^##+\s+(?:Sources|References)\b.*?(?=^##\s|\Z)",
+            "",
+            content_markdown,
+            flags=re.S,
+        ).strip()
+
+        content_markdown += (
+            "\n\n## Sources\n\n"
+            + "\n".join(f"- [{item['title']}]({item['url']})" for item in sources)
+            + "\n"
+        )
 
         faq_items = normalize_faq(
             article.get("faq", [])
