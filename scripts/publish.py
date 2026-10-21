@@ -213,7 +213,7 @@ def normalize_faq(value):
         if not question or not answer or not question.endswith("?"):
             continue
 
-        if len(answer.split()) < 40 or len(answer.split()) > 110:
+        if len(answer.split()) < 35 or len(answer.split()) > 110:
             continue
 
         key = question.lower()
