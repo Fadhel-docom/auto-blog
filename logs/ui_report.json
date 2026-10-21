@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-20T12:29:27+00:00",
+  "timestamp": "2026-10-21T03:42:28+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -34,14 +34,38 @@
     "search": true,
     "grid": true,
     "featured": true,
-    "nav_links": 12,
-    "article_cards": 15,
+    "nav_links": 11,
+    "article_cards": 26,
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 34196
+    "html_length": 55345
   },
   "articles": [
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/holiday-decoration-storage-small-apartment-count-before-you-box/",
+      "status": 200,
+      "title": "Holiday Decoration Storage in a Small Apartment: Count First, Then Box",
+      "title_capitalized": true,
+      "meta_description": "Store holiday decorations in a small apartment: count what you own, turn a closet shelf into a bin budget, place bins by reach and inspect lights before use.",
+      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/holiday-decoration-storage-small-apartment-count-before-you-box/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 15,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 27264
+    },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/kitchen-storage-without-pantry-dry-goods-small-apartment/",
       "status": 200,
@@ -88,7 +112,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 29262
+      "html_length": 29362
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-living-room-storage-ideas-renters/",
@@ -137,30 +161,6 @@
       },
       "required_failures": [],
       "html_length": 29072
-    },
-    {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/decluttering-ideas-for-small-homes-that-actually-last/",
-      "status": 200,
-      "title": "Decluttering Ideas for Small Homes That Actually Last",
-      "title_capitalized": true,
-      "meta_description": "A practical decluttering system for small homes: audit problem areas, set space limits, create easy homes, remove excess, and maintain a simple reset routine.",
-      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/decluttering-ideas-for-small-homes-that-actually-last/",
-      "images": 11,
-      "tags": 3,
-      "h2_count": 18,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 36928
     }
   ],
   "responsive": {
