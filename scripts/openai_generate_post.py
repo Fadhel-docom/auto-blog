@@ -197,10 +197,22 @@ def discover_openrouter_free_models():
         print(f"OpenRouter model discovery failed: {exc}",file=sys.stderr)
         return []
 
-def call_groq(topic, relaxed_json=False, model=None):
+def call_groq(topic, relaxed_json=False, model=None, feedback=None):
     key=os.getenv("GROQ_API_KEY")
     if not key: raise RuntimeError("GROQ_API_KEY unavailable")
-    payload={"model":model or GROQ_MODEL,"temperature":0.35,"max_tokens":6000,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":f"Focus keyword/topic: {topic}\\nWrite a complete, polished article of 1900-2100 words. MUST be at least 1800 words. Count carefully. Do not stop before reaching 1800+ words. Return ONLY one JSON object with every required field. content_markdown must contain exactly 10 H2 headings and 6 distinct image queries. Include a sources array with 2-4 objects, each using exactly title and url keys. Every source URL must be a direct HTTPS link on a .gov or .edu domain, or one of these known authoritative pages when relevant: https://www.cpsc.gov/Safety-Education/Safety-Guides/Furniture-Furnishings/AnchorIt and https://www.epa.gov/mold. Do not use commercial blogs, guessed URLs, or shortened links. Do not put sources in content_markdown. Do not use markdown fences around the JSON. Do not omit fields."}]}
+    user_prompt=(
+        f"Focus keyword/topic: {topic}\\n"
+        "Write a complete, polished article of 1900-2100 words and never below 1800 words. "
+        "Return ONLY one JSON object with every required field. content_markdown must contain exactly 10 H2 headings and 6 distinct image queries. "
+        "Include 4-6 unique FAQ objects with question ending in ? and each answer 55-90 words. "
+        "Include a sources array with 2-4 objects, each using exactly title and url keys. Every source URL must be a direct HTTPS link on a .gov or .edu domain, "
+        "or one of these known authoritative pages when relevant: https://www.cpsc.gov/Safety-Education/Safety-Guides/Furniture-Furnishings/AnchorIt and https://www.epa.gov/mold. "
+        "Do not use commercial blogs, guessed URLs, or shortened links. Do not put sources in content_markdown. "
+        "Do not use markdown fences around the JSON. Do not omit fields."
+    )
+    if feedback:
+        user_prompt += f"\n\nYour previous draft failed validation: {feedback}. Correct this specific issue, while satisfying every other requirement."
+    payload={"model":model or GROQ_MODEL,"temperature":0.35,"max_tokens":6000,"messages":[{"role":"system","content":SYSTEM},{"role":"user","content":user_prompt}]}
     if "gpt-oss" in (model or GROQ_MODEL).lower():
         payload["reasoning_effort"]="low"
         payload["include_reasoning"]=False
@@ -493,7 +505,7 @@ def main():
         for attempt in (1,2):
             try:
                 candidate=(
-                    call_groq(topic,model=chosen_model) if name.startswith("Groq")
+                    call_groq(topic,model=chosen_model,feedback=(str(last_exc) if attempt > 1 and last_exc else None)) if name.startswith("Groq")
                     else call_openrouter(topic,model=chosen_model)
                 )
                 candidate=_normalize_title(candidate)
