@@ -105,7 +105,7 @@ Only if you measure the gap at three heights and the cart does not narrow the ai
 ## Sources
 
 - National Kitchen & Bath Association, [Kitchen Planning Guidelines](https://kb.nkba.org/uploads/2022/05/Kitchen-Planning-Guidelines.pdf): work aisle, walkway and preparation-area planning guidelines (guidelines, not building code)
-- U.S. Consumer Product Safety Commission, [Anchor It! campaign marks 10 years](https://www.cpsc.gov/Newsroom/News-Releases/2025/CPSC-AnchorIt-Campaign-Marks-10-Years-Fewer-Furniture-Tip-Overs-Lead-to-Safer-American-Households): anchoring TVs and furniture such as bookcases and dressers to the wall
+- U.S. Consumer Product Safety Commission, [Anchor It! campaign marks 10 years](https://web.archive.org/web/2025/https://www.cpsc.gov/Newsroom/News-Releases/2025/CPSC-AnchorIt-Campaign-Marks-10-Years-Fewer-Furniture-Tip-Overs-Lead-to-Safer-American-Households): anchoring TVs and furniture such as bookcases and dressers to the wall
 
 ## Related Guides
 

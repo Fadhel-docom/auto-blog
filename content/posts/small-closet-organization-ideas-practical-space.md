@@ -106,7 +106,7 @@ Yes, tall freestanding units should be anchored to the wall, as the U.S. Consume
 
 ## Sources
 
-- U.S. Consumer Product Safety Commission, [Anchor It! campaign marks 10 years](https://www.cpsc.gov/Newsroom/News-Releases/2025/CPSC-AnchorIt-Campaign-Marks-10-Years-Fewer-Furniture-Tip-Overs-Lead-to-Safer-American-Households): anchoring TVs and furniture such as bookcases and dressers to the wall
+- U.S. Consumer Product Safety Commission, [Anchor It! campaign marks 10 years](https://web.archive.org/web/2025/https://www.cpsc.gov/Newsroom/News-Releases/2025/CPSC-AnchorIt-Campaign-Marks-10-Years-Fewer-Furniture-Tip-Overs-Lead-to-Safer-American-Households): anchoring TVs and furniture such as bookcases and dressers to the wall
 
 ## Related Guides
 
