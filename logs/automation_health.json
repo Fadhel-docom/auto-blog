@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-22T05:34:32+00:00",
+  "timestamp": "2026-10-22T10:38:03+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "PAUSED",
@@ -46,21 +46,21 @@
   },
   "content": {
     "status": "FAIL",
-    "post": "holiday-decoration-storage-small-apartment-count-before-you-box.md",
-    "words": 1791,
+    "post": "laundry-without-a-laundry-room-small-apartment-drying-sorting.md",
+    "words": 2283,
     "inline_images": 3,
     "unique_inline_images": 3,
-    "h2": 13,
+    "h2": 14,
     "faq": 6
   },
   "runs": {
     "Health Monitor": {
-      "id": 39728792553,
+      "id": 39764536478,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-10-22T05:34:21Z",
-      "updated_at": "2026-10-22T05:34:24Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/39728792553"
+      "created_at": "2026-10-22T10:37:51Z",
+      "updated_at": "2026-10-22T10:37:54Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/39764536478"
     },
     "Traffic Report": {
       "id": 39725724209,
@@ -118,11 +118,11 @@
       "type": "Latest content quality failure",
       "content": {
         "status": "FAIL",
-        "post": "holiday-decoration-storage-small-apartment-count-before-you-box.md",
-        "words": 1791,
+        "post": "laundry-without-a-laundry-room-small-apartment-drying-sorting.md",
+        "words": 2283,
         "inline_images": 3,
         "unique_inline_images": 3,
-        "h2": 13,
+        "h2": 14,
         "faq": 6
       }
     }
