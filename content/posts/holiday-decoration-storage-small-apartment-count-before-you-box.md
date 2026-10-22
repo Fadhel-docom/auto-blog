@@ -1,7 +1,7 @@
 +++
 title = "Holiday Decoration Storage in a Small Apartment: Count First, Then Box"
 date = "2026-10-20T08:30:00+00:00"
-lastmod = "2026-10-20T08:30:00+00:00"
+lastmod = "2026-10-22T09:00:00+00:00"
 description = "Store holiday decorations in a small apartment: count what you own, turn a closet shelf into a bin budget, place bins by reach and inspect lights before use."
 image = "images/holiday-decoration-storage-small-apartment-cover.jpg"
 images = ["images/holiday-storage-bin-budget.svg", "images/holiday-storage-reach-zones.svg", "images/holiday-storage-yearly-cycle.svg"]
@@ -87,7 +87,7 @@ Wipe the shelf before the bins go back, because dust and crumbs invite pests.
 
 Storage can damage cords, so inspect each string before plugging it in. A U.S. Fire Administration specialist advises checking holiday lights every year before putting them up, and says that open or exposed wiring, fraying or pinching are signs of weakened wiring that can break and overheat. Replace any string with damage, even if it still lights.
 
-Keep a small bag for the strings you have retired, and put it in the bin you take to the recycling point. That way you inspect once and decide once.
+Keep a separate bag for the strings that fail the check, and do not put them back in a storage bin. Take that bag to a drop-off point your local waste service accepts for old lights or small electronics, since the rules differ by area. That way you inspect once and decide once.
 
 ## 7. Label the Bins and Keep a Short List
 
