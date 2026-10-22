@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-22T03:42:19+00:00",
+  "timestamp": "2026-10-22T16:47:15+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -34,14 +34,40 @@
     "search": true,
     "grid": true,
     "featured": true,
-    "nav_links": 11,
-    "article_cards": 26,
-    "missing_text": [],
+    "nav_links": 12,
+    "article_cards": 27,
+    "missing_text": [
+      "Explore by room"
+    ],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 55345
+    "html_length": 56521
   },
   "articles": [
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/laundry-without-a-laundry-room-small-apartment-drying-sorting/",
+      "status": 200,
+      "title": "Laundry Without a Laundry Room: A Drying, Sorting and Folding Station for a Small Apartment",
+      "title_capitalized": true,
+      "meta_description": "Set up laundry in a small apartment without a laundry room: budget floor space, pick a drying spot, sort in a three-bin cart and keep humidity in check.",
+      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/laundry-without-a-laundry-room-small-apartment-drying-sorting/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 16,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 29412
+    },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/holiday-decoration-storage-small-apartment-count-before-you-box/",
       "status": 200,
@@ -64,7 +90,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 27264
+      "html_length": 27663
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/kitchen-storage-without-pantry-dry-goods-small-apartment/",
@@ -73,7 +99,7 @@
       "title_capitalized": true,
       "meta_description": "No pantry? Compare a tall pull-out cabinet with a slim open shelf, set shelf heights by reach, and keep dry goods fresh, dated and pest-free.",
       "canonical": "https://fadhel-docom.github.io/auto-blog/posts/kitchen-storage-without-pantry-dry-goods-small-apartment/",
-      "images": 7,
+      "images": 8,
       "tags": 5,
       "h2_count": 20,
       "image_credits": true,
@@ -88,7 +114,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 32648
+      "html_length": 33349
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/toy-storage-small-apartment-rotation-system/",
@@ -112,7 +138,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 29362
+      "html_length": 29527
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/small-living-room-storage-ideas-renters/",
@@ -136,31 +162,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 30562
-    },
-    {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/renter-friendly-bathroom-storage-without-drilling/",
-      "status": 200,
-      "title": "No-Drill Bathroom Storage for Renters: Hooks, Rods and Racks",
-      "title_capitalized": true,
-      "meta_description": "Solve bathroom clutter in a rental without damaging walls: measure the real space, choose safer no-drill storage, control moisture, and avoid purchases that do not fit.",
-      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/renter-friendly-bathroom-storage-without-drilling/",
-      "images": 6,
-      "tags": 4,
-      "h2_count": 17,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 29072
+      "html_length": 30691
     }
   ],
   "responsive": {
@@ -175,6 +177,6 @@
       "https://fadhel-docom.github.io/auto-blog/css/site-v2.css"
     ]
   },
-  "status": "healthy",
-  "failure_count": 0
+  "status": "needs_attention",
+  "failure_count": 1
 }
