@@ -13,7 +13,7 @@ images = [
   "images/linen-closet-door-clearance.svg"
 ]
 tags = ["linen closet organization ideas", "linen closet", "home organization", "small spaces"]
-categories = ["Home Organization"]
+categories = ["Bedroom & Closets"]
 faq = [
   { question = "How do I organize a very small linen closet?", answer = "Measure every shelf, remove items that do not belong, group linens by use, and place daily items in the easiest reach zone. Use baskets only for small categories that otherwise scatter." },
   { question = "How should towels be folded?", answer = "Choose a fold that fits the shelf depth and repeat it consistently. Keep bath towels, hand towels, and washcloths in separate groups. Shorter stacks are usually easier to maintain than tall stacks." },

@@ -8,7 +8,7 @@ description = "A practical room-by-room system for organizing a small home, with
 image = "images/room-by-room-cover.jpg"
 images = ["images/effortless-zones.svg", "images/effortless-reach.svg", "images/effortless-reset.svg"]
 tags = ["home organization", "small space living", "decluttering", "storage solutions"]
-categories = ["Small Space"]
+categories = ["Small Space Guides"]
 faq = [
   {question = "What should I organize first in a small home?", answer = "Start with the area that creates the most daily friction, usually an entryway, kitchen counter, bedroom floor, or bathroom surface. Clear it, assign zones, and test the system before buying storage."},
   {question = "Should I buy storage containers before decluttering?", answer = "Usually no. Remove duplicates and unused items first, measure the remaining space, then buy only the containers that solve a specific storage problem."},

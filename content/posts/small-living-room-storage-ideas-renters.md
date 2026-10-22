@@ -6,7 +6,7 @@ description = "A layout-first plan for small rental living rooms: protect the wa
 image = "images/small-living-room-storage-ideas-renters-cover.jpg"
 images = ["images/living-room-plan.svg", "images/living-room-heights.svg", "images/living-room-reset.svg"]
 tags = ["living room storage", "small living room", "renter friendly organization", "media console", "cable management"]
-categories = ["Small Space", "Living Room"]
+categories = ["Living Room & Entry"]
 faq = [
   {question = "How do I organize a small living room with very little storage?", answer = "Start with the layout: keep a clear walking path, put closed storage under the TV, use one wall shelf for light items, and let the coffee table hold a basket. Add storage only after the path and the daily items are sorted."},
   {question = "Should I anchor the TV and bookcases if I rent?", answer = "Yes where you can. The U.S. Consumer Product Safety Commission recommends anchoring TVs and furniture such as bookcases and dressers to the wall. Ask your landlord in writing what is allowed; if anchoring is not possible, use a sturdy, low base and push the TV back as far as it will go."},

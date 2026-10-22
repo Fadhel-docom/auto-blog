@@ -6,7 +6,7 @@ description = "Measure six points, build three zones around the pipes, and add a
 image = "images/under-sink-cover.jpg"
 images = ["images/under-sink-cover.jpg", "images/under-sink-measure-map.svg", "images/under-sink-bin-sizing-example.svg", "images/under-sink-zones-layout.svg", "images/under-sink-depth-side-view.svg", "images/under-sink-leak-check-points.svg"]
 tags = ["under sink organization ideas", "kitchen organization", "bathroom organization", "small spaces"]
-categories = ["Home Organization"]
+categories = ["Kitchen"]
 original_graphics = true
 faq = [
   { question = "What should go under a kitchen sink?", answer = "Dish soap, sponges, dishwasher tablets, cleaning cloths, and the cleaning products you actually use. Keep food, medicines, and important papers elsewhere, because a slow leak or damp air can ruin them." },

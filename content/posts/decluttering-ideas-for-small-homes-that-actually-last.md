@@ -7,7 +7,7 @@ image = "images/decluttering-cover.jpg"
 images = ["images/decluttering-ideas-for-small-homes-that-actually-last-15-minute-audit.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-category-sort.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-storage-zones.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-physical-limits.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-exit-route.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-reset-routine.svg", "images/decluttering-ideas-for-small-homes-that-actually-last-surface-limits.svg"]
 original_graphics = true
 tags = ["decluttering", "small homes", "home organization"]
-categories = ["Decluttering", "Small Space"]
+categories = ["Small Space Guides"]
 faq = [
   {question = "How do I start decluttering a small home without making a bigger mess?", answer = "Start with one visible problem area and a 15-minute timer. Remove rubbish and obvious duplicates first, then finish one small category before moving elsewhere."},
   {question = "What should I get rid of first?", answer = "Start with rubbish, broken items, obvious duplicates, and things you would not replace if they disappeared. Save sentimental decisions for later."},

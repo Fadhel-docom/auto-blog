@@ -7,7 +7,7 @@ image = "images/renter-kitchen-cover.jpg"
 images = ["images/renter-friendly-storage-ideas-small-kitchen-four-four-cabinet-zones.svg", "images/renter-friendly-storage-ideas-small-kitchen-four-measure-cabinet.svg", "images/renter-friendly-storage-ideas-small-kitchen-four-inside-cabinet.svg", "images/renter-friendly-storage-ideas-small-kitchen-four-cart-and-stove-clearance.svg", "images/renter-friendly-storage-ideas-small-kitchen-four-door-rod-and-hooks.svg"]
 original_graphics = true
 tags = ["storage ideas", "small kitchen", "renter-friendly"]
-categories = ["Rental"]
+categories = ["Kitchen"]
 faq = [
   {question = "How do you organize a small kitchen with only four cabinets?", answer = "Measure each cabinet, assign one job to each zone, use vertical dividers and removable organizers, and keep only the cookware and food supplies that support your normal routine."},
   {question = "How can renters add kitchen storage without drilling?", answer = "Use freestanding carts, tension-based organizers, removable hooks where approved, shelf risers, and other systems that match the surface and the lease."},

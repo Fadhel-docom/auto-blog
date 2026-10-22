@@ -6,7 +6,7 @@ description = "Measure five spots, set four zones, respect toilet clearances, an
 image = "images/small-bathroom-cover.jpg"
 images = ["images/small-bathroom-cover.jpg", "images/bathroom-measure-spots.svg", "images/bathroom-four-zones.svg", "images/bathroom-toilet-clearance-plan.svg", "images/bathroom-reach-zones.svg", "images/bathroom-moisture-routine.svg"]
 tags = ["small bathroom organization ideas", "bathroom storage", "small spaces", "renter friendly organization"]
-categories = ["Bathroom"]
+categories = ["Bathroom & Laundry"]
 original_graphics = true
 faq = [
   { question = "How can I organize a very small bathroom without crowding it?", answer = "Keep only daily items on the counter, give each drawer one job, and use the wall above the toilet and the back of the door for storage. Leave the clear floor space in front of the toilet untouched." },

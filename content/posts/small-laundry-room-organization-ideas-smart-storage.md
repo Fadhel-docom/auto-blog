@@ -7,7 +7,7 @@ image = "images/small-laundry-room-organization-ideas-smart-storage-cover.jpg"
 images = ["images/small-laundry-room-organization-ideas-smart-storage-three-zones.svg", "images/small-laundry-room-organization-ideas-smart-storage-measure-checklist.svg", "images/small-laundry-room-organization-ideas-smart-storage-folding-destinations.svg", "images/small-laundry-room-organization-ideas-smart-storage-keep-access-clear.svg", "images/small-laundry-room-organization-ideas-smart-storage-ten-minute-reset.svg", "images/small-laundry-room-organization-ideas-smart-storage-narrow-room-sequence.svg"]
 original_graphics = true
 tags = ["small laundry room organization", "laundry room storage", "home organization", "small spaces"]
-categories = ["Laundry Room", "Small-Space Living"]
+categories = ["Bathroom & Laundry"]
 faq = [
   {question = "How should I start organizing a small laundry room?", answer = "Measure the room first, then identify the main work zones: dirty laundry, washing supplies, clean laundry, and folding. Keep the walking path and appliance doors clear before adding storage. Use what you already own to test the layout, then add only storage that solves a specific problem."},
   {question = "What should I measure before buying laundry room storage?", answer = "Measure the room width and depth, the space above and beside the machines, door swings, drawer clearances, and the distance needed to open appliance doors fully. Also note outlets, vents, water connections, trim, and any service access that must remain reachable."},

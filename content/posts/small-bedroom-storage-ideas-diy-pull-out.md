@@ -6,7 +6,7 @@ description = "Measure the under-bed clearance, then choose rolling bins or buil
 image = "images/small-bedroom-diy-drawers-cover.jpg"
 images = ["images/small-bedroom-diy-drawers-cover.jpg", "images/small-bedroom-drawer-side-view.svg", "images/small-bedroom-drawer-layout.svg", "images/small-bedroom-drawer-slide-clearance.svg"]
 tags = ["small bedroom storage ideas", "DIY pull-out drawers", "rolling bins"]
-categories = ["Bedroom"]
+categories = ["Bedroom & Closets"]
 original_graphics = true
 faq = [
   { question = "What should go in a DIY pull-out bedroom drawer?", answer = "Items you use occasionally, such as shoes, folded clothes or spare bedding. Keep nightly items on a bedside shelf so you never reach under the bed in the dark." },

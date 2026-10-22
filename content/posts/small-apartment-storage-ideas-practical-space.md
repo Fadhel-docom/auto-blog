@@ -6,7 +6,7 @@ description = "Map your apartment into zones, put daily items at reach height an
 image = "images/small-apartment-storage-map-cover.jpg"
 images = ["images/small-apartment-storage-map-cover.jpg", "images/small-apartment-storage-map.svg", "images/small-apartment-reserve-limit.svg", "images/small-apartment-anchor-tall-unit.svg"]
 tags = ["small apartment storage ideas", "apartment storage", "small spaces"]
-categories = ["Small Space"]
+categories = ["Small Space Guides"]
 original_graphics = true
 faq = [
   { question = "How do you organize storage in a small apartment?", answer = "Divide the apartment into zones where activities happen, give every item one home inside its zone, and keep daily items at reach height. Cap backup stock at one labeled bin per category." },
