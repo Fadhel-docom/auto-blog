@@ -6,7 +6,7 @@ description = "A practical plan for organizing a narrow entryway with a simple d
 image = "images/entryway-cover.jpg"
 images = ["images/entryway-plan.svg", "images/entryway-heights.svg", "images/entryway-reset.svg"]
 tags = ["entryway organization", "small space organization", "drop zone", "decluttering"]
-categories = ["Living Room & Entry"]
+categories = ["Living Room and Entry"]
 faq = [
   {question = "How do I organize a very narrow entryway?", answer = "Start with a small drop zone for daily items, use the wall for vertical storage, give shoes a fixed footprint, and keep occasional items outside the entrance area."},
   {question = "How much storage should a small entryway have?", answer = "Use only enough storage for the items that regularly arrive and leave with you. A compact system is easier to maintain when it does not become a second closet."},

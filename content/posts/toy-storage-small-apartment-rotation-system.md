@@ -6,7 +6,7 @@ description = "A practical toy storage system for small apartments: a low anchor
 image = "images/toy-storage-small-apartment-cover.jpg"
 images = ["images/toy-corner-plan.svg", "images/toy-reach-heights.svg", "images/toy-rotation.svg"]
 tags = ["toy storage", "small apartment", "kids organization", "toy rotation", "living room corner"]
-categories = ["Living Room & Entry"]
+categories = ["Living Room and Entry"]
 faq = [
   {question = "How many toys should be out at once?", answer = "There is no proven ideal number. A small laboratory study compared four toys with sixteen for toddlers and found longer, more varied play with four, but its authors did not pinpoint an optimal count. Start with a set that fits one shelf or a few bins, then adjust by watching what your child actually uses."},
   {question = "How do I store toys in a small apartment with no playroom?", answer = "Use one corner of a shared room: a low shelf with open bins, a basket for soft toys, a rug for play, and one closed bin higher up for toys that are out of rotation."},

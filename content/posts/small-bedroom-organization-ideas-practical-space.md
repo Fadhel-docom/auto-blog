@@ -6,7 +6,7 @@ description = "Measure the room, protect a 24-inch walking path, and give clothe
 image = "images/small-bedroom-floor-first-cover.jpg"
 images = ["images/small-bedroom-floor-first-cover.jpg", "images/small-bedroom-floor-plan.svg", "images/small-bedroom-height-zones.svg", "images/small-bedroom-underbed-clearance.svg"]
 tags = ["small bedroom organization ideas", "bedroom storage", "small spaces"]
-categories = ["Bedroom & Closets"]
+categories = ["Bedroom and Closets"]
 original_graphics = true
 faq = [
   { question = "What should I do first in a small bedroom?", answer = "Measure the room and the bed, then mark where the walking path runs from the door to the bed. Remove or relocate one low-use item before you buy any storage, because extra containers cannot fix a floor that is already full." },

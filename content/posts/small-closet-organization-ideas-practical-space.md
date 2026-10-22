@@ -6,7 +6,7 @@ description = "Measure five numbers, match rod height to what you hang, and give
 image = "images/small-closet-height-zones-cover.jpg"
 images = ["images/small-closet-height-zones-cover.jpg", "images/small-closet-height-zones.svg", "images/small-closet-five-measurements.svg", "images/small-closet-door-clearance.svg"]
 tags = ["small closet organization ideas", "closet storage", "small spaces"]
-categories = ["Bedroom & Closets"]
+categories = ["Bedroom and Closets"]
 original_graphics = true
 faq = [
   { question = "How do I organize a very small closet?", answer = "Measure the inside, divide it into hanging, folded, shoe and accessory zones, and give the easiest spots to what you use daily. Move seasonal or rarely worn items out of the closet." },
