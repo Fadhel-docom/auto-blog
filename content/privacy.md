@@ -1,63 +1,44 @@
 +++
-title = "Terms of Use"
-description = "Terms of use for Home Organization Ideas — content license, disclaimers, and limitations."
-date = 2026-09-23
-lastmod = 2026-09-23
+title = "Privacy Policy"
+description = "How Home Organization Ideas handles visitor data: anonymous page-view statistics, hosting logs, affiliate links, and how to contact us."
+date = 2026-10-22
+lastmod = 2026-10-22
 draft = false
 type = "page"
 +++
 
-## Terms of Use
+## Privacy Policy
 
-By accessing Home Organization Ideas (the "Site"), you agree to these Terms of Use. If you do not agree, please do not use the Site.
+This page explains what happens to information when you read Home Organization Ideas (the "Site"). We keep it short because we collect very little.
 
-## Content and license
+## What we collect
 
-All articles, text, layouts, and original graphics are the property of Home Organization Ideas, unless otherwise noted.
+The Site has no accounts, no comment sections, and no sign-up or contact forms. We do not ask you for your name, email address, or any other personal details.
 
-You may:
+## Anonymous visitor statistics
 
-- Read, share links to, and quote short excerpts with attribution
-- Print articles for personal, non-commercial use
+We use GoatCounter, a privacy-focused analytics service, to count page views and see which guides are read. According to GoatCounter's documentation, it does not use cookies to track visitors and does not follow people across other websites. We use these numbers only to decide which guides to improve and which topics to write next.
 
-You may not:
+## Hosting
 
-- Republish full articles without written permission
-- Use our content for AI training datasets without permission
-- Remove or alter attribution
+The Site is hosted on GitHub Pages. Like most web hosts, GitHub may keep technical server logs (for example IP addresses) when you load a page. We do not have access to a personal profile of our visitors through this. GitHub's own privacy statement explains how it handles that data.
 
-Third-party images (e.g., from Pexels) are used under their own licenses and credited accordingly.
+## Affiliate links
 
-## Accuracy and no professional advice
-
-Our guides are provided for general informational purposes only. They are **not** professional advice (legal, medical, construction, electrical, or otherwise).
-
-Measurements, product recommendations, and techniques are examples and may not fit every home, material, or situation. Always verify before drilling, mounting, or modifying anything.
-
-## Affiliate disclosure
-
-Some articles may include affiliate links. If you purchase through these links, we may earn a small commission at no extra cost to you. We only recommend products relevant to the topic.
-
-## Advertising
-
-The Site may display third-party advertising. We are not responsible for the content of those ads.
-
-## Limitation of liability
-
-To the maximum extent permitted by law, Home Organization Ideas is not liable for any damages arising from:
-
-- Use or inability to use the Site
-- Reliance on information published on the Site
-- Products, services, or websites linked from the Site
+Some guides may contain affiliate links to retailers or brands. If you click one and buy something, we may earn a commission at no extra cost to you. These links are marked as sponsored. The retailer's own privacy policy applies once you leave the Site.
 
 ## External links
 
-The Site contains links to external websites. We are not responsible for their content, availability, or policies.
+Our guides link to outside sources such as standards bodies, university extensions, and manufacturers. We are not responsible for the privacy practices of those websites.
 
-## Changes to these terms
+## Your choices
 
-We may update these Terms at any time. Continued use of the Site after changes constitutes acceptance of the new terms.
+You can block analytics scripts with your browser settings or a content blocker, and the Site will still work normally.
+
+## Changes to this policy
+
+If we add new features that handle visitor data, we will update this page and its date before they go live.
 
 ## Contact
 
-Questions about these Terms? Use our [Contact page](https://github.com/Fadhel-docom/auto-blog/blob/main/content/contact.md).
+Questions about this policy? Use our [Contact page](/contact/).
