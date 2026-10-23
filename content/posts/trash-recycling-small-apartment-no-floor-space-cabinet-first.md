@@ -148,7 +148,7 @@ Recycling is run locally, so ask your landlord or your city's solid waste office
 
 - US Environmental Protection Agency, [Composting At Home](https://www.epa.gov/recycle/composting-home).
 - US Environmental Protection Agency, [How Do I Recycle Common Recyclables?](https://www.epa.gov/recycle/how-do-i-recycle-common-recyclables).
-- Republic Services, [This America Recycles Day, Remember to Practice Empty, Clean and Dry](https://investor.republicservices.com/node/6216).
+- Republic Services, [This America Recycles Day, Remember to Practice Empty, Clean and Dry (archived copy)](https://web.archive.org/web/2025/https://investor.republicservices.com/node/6216).
 - Waste Management, [Curbside Residential Recycling Myths (PDF)](https://www.wm.com/content/dam/wm/documents/RecyclingResources/Posters-Guides-Tools/Recycling-Myths-093026.pdf).
 
 ## Related Guides
