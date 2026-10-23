@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-22T16:47:15+00:00",
+  "timestamp": "2026-10-23T03:46:41+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -35,15 +35,39 @@
     "grid": true,
     "featured": true,
     "nav_links": 12,
-    "article_cards": 27,
+    "article_cards": 28,
     "missing_text": [
       "Explore by room"
     ],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 56521
+    "html_length": 58494
   },
   "articles": [
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/store-cleaning-supplies-bathroom-no-storage-closet-safe-setup/",
+      "status": 200,
+      "title": "Where to Store Cleaning Supplies in a Bathroom With No Storage Closet: A Safe, Compact Setup",
+      "title_capitalized": true,
+      "meta_description": "Store bathroom cleaning supplies safely with no storage closet: a locked wall cabinet, a cart for cloths, and rules for keeping products apart.",
+      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/store-cleaning-supplies-bathroom-no-storage-closet-safe-setup/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 17,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 28377
+    },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/laundry-without-a-laundry-room-small-apartment-drying-sorting/",
       "status": 200,
@@ -66,7 +90,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 29412
+      "html_length": 29522
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/holiday-decoration-storage-small-apartment-count-before-you-box/",
@@ -139,30 +163,6 @@
       },
       "required_failures": [],
       "html_length": 29527
-    },
-    {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/small-living-room-storage-ideas-renters/",
-      "status": 200,
-      "title": "Small Living Room Storage for Renters: A Layout-First Plan",
-      "title_capitalized": true,
-      "meta_description": "A layout-first plan for small rental living rooms: protect the walking path, anchor the TV and tall furniture, hide cords safely, and reset in ten minutes.",
-      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/small-living-room-storage-ideas-renters/",
-      "images": 8,
-      "tags": 5,
-      "h2_count": 19,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 30691
     }
   ],
   "responsive": {
