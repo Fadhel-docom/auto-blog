@@ -1,20 +1,14 @@
 """
-category_utils.py — P0-2
+category_utils.py — canonical HomeOrg category detection.
 
-Unified category detection for auto-blog.
-
-Maps each article to exactly ONE category from the
-canonical set:
-
+Maps each article to exactly ONE category from the canonical set:
     Kitchen
-    Bathroom
-    Bedroom
-    Small Space
-    Decluttering
-    Rental
+    Bathroom and Laundry
+    Bedroom and Closets
+    Living Room and Entry
+    Small Space Guides
 
-Detection uses keyword + title + tags, in that order
-of specificity.
+Detection uses keyword + title + tags, in that order of specificity.
 """
 
 from __future__ import annotations
@@ -24,105 +18,58 @@ from typing import Iterable
 
 CANONICAL_CATEGORIES = (
     "Kitchen",
-    "Bathroom",
-    "Bedroom",
-    "Small Space",
-    "Decluttering",
-    "Rental",
+    "Bathroom and Laundry",
+    "Bedroom and Closets",
+    "Living Room and Entry",
+    "Small Space Guides",
 )
 
 
-# ---------------------------------------------------------------------------
-# Rules — checked in order.
-# The FIRST match wins.
-# ---------------------------------------------------------------------------
+# Rules are checked in order; the FIRST match wins.
 _RULES = (
-    (
-        "Rental",
-        (
-            "renter",
-            "rental",
-            "renting",
-            "no drill",
-            "no-drill",
-            "drill free",
-            "drill-free",
-            "damage free",
-            "damage-free",
-            "removable",
-            "temporary",
-        ),
-    ),
     (
         "Kitchen",
         (
-            "kitchen",
-            "pantry",
-            "spice",
-            "countertop",
-            "cabinet",
-            "cabinets",
-            "fridge",
-            "refrigerator",
-            "galley",
-            "utensil",
+            "kitchen", "pantry", "spice", "countertop", "cabinet",
+            "cabinets", "fridge", "refrigerator", "galley", "utensil",
             "dish",
         ),
     ),
     (
-        "Bathroom",
+        "Bathroom and Laundry",
         (
-            "bathroom",
-            "bath",
-            "shower",
-            "sink",
-            "toilet",
-            "vanity",
-            "powder room",
-            "toiletries",
-            "towel",
-            "tension rod",
+            "bathroom", "bath", "shower", "sink", "toilet", "vanity",
+            "powder room", "toiletries", "towel", "tension rod",
+            "laundry", "washer", "dryer", "washing machine", "drying rack",
+            "hamper", "laundromat",
         ),
     ),
     (
-        "Bedroom",
+        "Bedroom and Closets",
         (
-            "bedroom",
-            "bed",
-            "closet",
-            "wardrobe",
-            "dresser",
-            "nightstand",
-            "under bed",
-            "under-bed",
-            "underbed",
+            "bedroom", "bed", "closet", "wardrobe", "dresser",
+            "nightstand", "under bed", "under-bed", "underbed",
+            "clothing storage", "hanging clothes",
         ),
     ),
     (
-        "Decluttering",
+        "Living Room and Entry",
         (
-            "declutter",
-            "decluttering",
-            "minimalist",
-            "minimalism",
-            "clutter",
-            "purge",
-            "konmari",
+            "living room", "entryway", "entry way", "entry", "foyer",
+            "mudroom", "hallway", "console table", "shoe rack", "shoes",
+            "coat rack", "keys", "sofa", "couch", "media console",
         ),
     ),
     (
-        "Small Space",
+        "Small Space Guides",
         (
-            "small space",
-            "small-space",
-            "small apartment",
-            "studio",
-            "tiny",
-            "compact",
-            "micro",
-            "5x5",
-            "3ft",
-            "3 ft",
+            "renter", "rental", "renting", "no drill", "no-drill",
+            "drill free", "drill-free", "damage free", "damage-free",
+            "removable", "temporary", "declutter", "decluttering",
+            "minimalist", "minimalism", "clutter", "purge", "konmari",
+            "small space", "small-space", "small apartment", "studio",
+            "tiny", "compact", "micro", "5x5", "3ft", "3 ft",
+            "home office", "organization", "organizing",
         ),
     ),
 )
@@ -133,105 +80,44 @@ def detect_category(
     title: str = "",
     tags: Iterable[str] | None = None,
 ) -> str:
-    """
-    Return exactly ONE canonical category.
-
-    Priority:
-        1. keyword (most specific signal)
-        2. title
-        3. tags
-        4. fallback: "Small Space"
-    """
+    """Return exactly ONE canonical category, checking keyword, title, then tags."""
     tags_list = list(tags or [])
 
     keyword_text = str(keyword or "").lower()
     title_text = str(title or "").lower()
-    tags_text = " ".join(
-        str(t).lower() for t in tags_list
-    )
+    tags_text = " ".join(str(tag).lower() for tag in tags_list)
 
-    # Check keyword first
-    for category, needles in _RULES:
-        for needle in needles:
-            if needle in keyword_text:
+    for text in (keyword_text, title_text, tags_text):
+        for category, needles in _RULES:
+            if any(needle in text for needle in needles):
                 return category
 
-    # Then title
-    for category, needles in _RULES:
-        for needle in needles:
-            if needle in title_text:
-                return category
-
-    # Then tags
-    for category, needles in _RULES:
-        for needle in needles:
-            if needle in tags_text:
-                return category
-
-    # Fallback
-    return "Small Space"
+    return "Small Space Guides"
 
 
 def is_canonical(category: str) -> bool:
+    """Return whether category exactly matches the canonical category set."""
     return category in CANONICAL_CATEGORIES
 
 
-# ---------------------------------------------------------------------------
 # Self-test — run: python scripts/category_utils.py
-# ---------------------------------------------------------------------------
 if __name__ == "__main__":
     cases = [
-        (
-            "small bathroom organization ideas",
-            "Small Bathroom Organization Ideas",
-            [],
-            "Bathroom",
-        ),
-        (
-            "small kitchen organization ideas",
-            "Small Kitchen Organization Ideas",
-            [],
-            "Kitchen",
-        ),
-        (
-            "renter friendly kitchen organization",
-            "Renter Friendly Kitchen Organization",
-            [],
-            "Rental",
-        ),
-        (
-            "small bedroom storage ideas",
-            "Small Bedroom Storage Ideas",
-            [],
-            "Bedroom",
-        ),
-        (
-            "decluttering a 5x5 home office corner",
-            "Decluttering a 5x5 Home Office Corner",
-            [],
-            "Decluttering",
-        ),
-        (
-            "small space organization",
-            "Small Space Organization",
-            [],
-            "Small Space",
-        ),
+        ("small bathroom organization ideas", "Small Bathroom Organization Ideas", [], "Bathroom and Laundry"),
+        ("small kitchen organization ideas", "Small Kitchen Organization Ideas", [], "Kitchen"),
+        ("laundry drying rack", "Laundry Drying Rack", [], "Bathroom and Laundry"),
+        ("small bedroom storage ideas", "Small Bedroom Storage Ideas", [], "Bedroom and Closets"),
+        ("entryway shoe storage", "Entryway Shoe Storage", [], "Living Room and Entry"),
+        ("decluttering a 5x5 home office corner", "Decluttering a 5x5 Home Office Corner", [], "Small Space Guides"),
+        ("small space organization", "Small Space Organization", [], "Small Space Guides"),
     ]
 
     ok = True
-
     for keyword, title, tags, expected in cases:
-        got = detect_category(
-            keyword=keyword,
-            title=title,
-            tags=tags,
-        )
+        got = detect_category(keyword=keyword, title=title, tags=tags)
         mark = "[OK]" if got == expected else "[FAIL]"
-
         if got != expected:
             ok = False
-
         print(f"{mark} {keyword!r}")
         print(f"   expected: {expected}")
         print(f"   got     : {got}")
