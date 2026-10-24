@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-24T05:11:42+00:00",
+  "timestamp": "2026-10-24T09:30:33+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "PAUSED",
@@ -46,8 +46,8 @@
   },
   "content": {
     "status": "FAIL",
-    "post": "trash-recycling-small-apartment-no-floor-space-cabinet-first.md",
-    "words": 2071,
+    "post": "shoes-bags-sliding-door-closet-half-open-plan.md",
+    "words": 1963,
     "inline_images": 3,
     "unique_inline_images": 3,
     "h2": 17,
@@ -55,12 +55,12 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 40065286179,
+      "id": 40082214827,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-10-24T05:11:33Z",
-      "updated_at": "2026-10-24T05:11:35Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/40065286179"
+      "created_at": "2026-10-24T09:30:22Z",
+      "updated_at": "2026-10-24T09:30:26Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/40082214827"
     },
     "Traffic Report": {
       "id": 40063721292,
@@ -75,8 +75,44 @@
     "status": "UNAVAILABLE"
   },
   "traffic": {
-    "status": "UNAVAILABLE",
-    "reason": "HTTP 404"
+    "status": "OK",
+    "visitors_today": 6,
+    "visitors_last_7_days": 12,
+    "visitors_this_month": 137,
+    "stats_today": [
+      {
+        "day": "2026-10-24",
+        "hourly": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "daily": 6,
+        "weekly": 6,
+        "monthly": 6
+      }
+    ]
   },
   "alerts": [],
   "issues": [
@@ -84,19 +120,12 @@
       "type": "Latest content quality failure",
       "content": {
         "status": "FAIL",
-        "post": "trash-recycling-small-apartment-no-floor-space-cabinet-first.md",
-        "words": 2071,
+        "post": "shoes-bags-sliding-door-closet-half-open-plan.md",
+        "words": 1963,
         "inline_images": 3,
         "unique_inline_images": 3,
         "h2": 17,
         "faq": 6
-      }
-    },
-    {
-      "type": "GoatCounter unavailable",
-      "traffic": {
-        "status": "UNAVAILABLE",
-        "reason": "HTTP 404"
       }
     }
   ],
