@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-23T16:38:27+00:00",
+  "timestamp": "2026-10-24T03:41:04+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -35,15 +35,63 @@
     "grid": true,
     "featured": true,
     "nav_links": 12,
-    "article_cards": 28,
+    "article_cards": 30,
     "missing_text": [
       "Explore by room"
     ],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 58494
+    "html_length": 62256
   },
   "articles": [
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/trash-recycling-small-apartment-no-floor-space-cabinet-first/",
+      "status": 200,
+      "title": "Trash and Recycling in a Small Apartment With No Floor Space: A Cabinet-First Setup",
+      "title_capitalized": true,
+      "meta_description": "Fit trash, recycling and food scraps into a small kitchen with no floor space: a two-bin cabinet slide, a door bag, a counter crock and clean-recycling rules.",
+      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/trash-recycling-small-apartment-no-floor-space-cabinet-first/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 19,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 28645
+    },
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/living-room-cord-management-without-drilling-holes/",
+      "status": 200,
+      "title": "Living Room Cord Management Without Drilling Holes: A Renter-Safe Plan for TV, Lamp and Chargers",
+      "title_capitalized": true,
+      "meta_description": "Hide living room cords without drilling: adhesive clips, a cord raceway, sleeves and a vented box, plus the safety rules for power strips, rugs and pets.",
+      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/living-room-cord-management-without-drilling-holes/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 18,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 27767
+    },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/store-cleaning-supplies-bathroom-no-storage-closet-safe-setup/",
       "status": 200,
@@ -90,7 +138,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 29522
+      "html_length": 29500
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/holiday-decoration-storage-small-apartment-count-before-you-box/",
@@ -114,55 +162,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 27663
-    },
-    {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/kitchen-storage-without-pantry-dry-goods-small-apartment/",
-      "status": 200,
-      "title": "Kitchen Storage Without a Pantry: Pull-Out Cabinet or Slim Shelves for Dry Goods",
-      "title_capitalized": true,
-      "meta_description": "No pantry? Compare a tall pull-out cabinet with a slim open shelf, set shelf heights by reach, and keep dry goods fresh, dated and pest-free.",
-      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/kitchen-storage-without-pantry-dry-goods-small-apartment/",
-      "images": 8,
-      "tags": 5,
-      "h2_count": 20,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 33349
-    },
-    {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/toy-storage-small-apartment-rotation-system/",
-      "status": 200,
-      "title": "Toy Storage in a Small Apartment: A Reachable, Rotating System",
-      "title_capitalized": true,
-      "meta_description": "A practical toy storage system for small apartments: a low anchored shelf, open labeled bins, a simple rotation, and a ten-minute reset children can help with.",
-      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/toy-storage-small-apartment-rotation-system/",
-      "images": 8,
-      "tags": 5,
-      "h2_count": 19,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 29527
+      "html_length": 27705
     }
   ],
   "responsive": {
