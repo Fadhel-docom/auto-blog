@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-24T03:41:04+00:00",
+  "timestamp": "2026-10-24T15:32:31+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -35,15 +35,39 @@
     "grid": true,
     "featured": true,
     "nav_links": 12,
-    "article_cards": 30,
+    "article_cards": 31,
     "missing_text": [
       "Explore by room"
     ],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 62256
+    "html_length": 64559
   },
   "articles": [
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/shoes-bags-sliding-door-closet-half-open-plan/",
+      "status": 200,
+      "title": "Shoes and Bags in a Closet With Sliding Doors: A Half-Open Plan That Still Works",
+      "title_capitalized": true,
+      "meta_description": "Organize shoes and bags in a sliding-door closet: a daily half and an occasional half, a two-tier rack, dry shoes, hooks for sturdy bags and shelves for leather.",
+      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/shoes-bags-sliding-door-closet-half-open-plan/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 19,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 27440
+    },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/trash-recycling-small-apartment-no-floor-space-cabinet-first/",
       "status": 200,
@@ -66,7 +90,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 28645
+      "html_length": 28617
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/living-room-cord-management-without-drilling-holes/",
@@ -138,31 +162,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 29500
-    },
-    {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/holiday-decoration-storage-small-apartment-count-before-you-box/",
-      "status": 200,
-      "title": "Holiday Decoration Storage in a Small Apartment: Count First, Then Box",
-      "title_capitalized": true,
-      "meta_description": "Store holiday decorations in a small apartment: count what you own, turn a closet shelf into a bin budget, place bins by reach and inspect lights before use.",
-      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/holiday-decoration-storage-small-apartment-count-before-you-box/",
-      "images": 8,
-      "tags": 5,
-      "h2_count": 15,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 27705
+      "html_length": 29545
     }
   ],
   "responsive": {
