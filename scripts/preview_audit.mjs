@@ -62,6 +62,7 @@ function measure() {
     if (["SCRIPT", "STYLE", "SVG", "PATH", "NOSCRIPT"].includes(el.tagName.toUpperCase())) return false;
     const own = [...el.childNodes].some(n => n.nodeType === 3 && n.textContent.trim().length > 1);
     if (!own) return false;
+    if (el.closest(".home-hero-image-caption")) return false; // text over a photo + pseudo-element gradient: not measurable
     const r = el.getBoundingClientRect();
     const cs = getComputedStyle(el);
     return r.width > 0 && r.height > 0 && cs.visibility !== "hidden" && cs.display !== "none";
