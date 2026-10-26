@@ -1,0 +1,54 @@
+name: Visual Eyes (Playwright)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: visual-eyes
+  cancel-in-progress: true
+
+jobs:
+  visual-audit:
+    name: Capture visual evidence
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Playwright
+        run: |
+          npm init -y
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+
+      - name: Capture screenshots and inspect the live site
+        env:
+          SITE_URL: "https://fadhel-docom.github.io/auto-blog/"
+        run: node scripts/visual_audit.mjs
+
+      - name: Add text report to the workflow summary
+        if: always()
+        run: |
+          if [ -f artifacts/visual-audit-report.md ]; then
+            cat artifacts/visual-audit-report.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Visual audit did not produce a report. Check the job logs." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload screenshots and machine-readable report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: homeorg-visual-eyes
+          path: artifacts/
+          if-no-files-found: warn
+          retention-days: 7
