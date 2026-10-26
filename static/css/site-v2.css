@@ -1326,8 +1326,22 @@ body {
   }
 
   .home-search .category-filter {
-    min-height: 36px;
-    padding: 6px 12px;
-    font-size: .82rem;
+    min-height: 44px;
+    padding: 8px 14px;
+    font-size: .85rem;
   }
+}
+
+/* Step A4: remaining low-contrast text found by the Preview Audit (PR #116).
+   competitive.css still defined its own muted/accent colours, and two rules in
+   this file used hard-coded greys. Everything now follows the HomeOrg palette. */
+:root {
+  --competitive-muted: var(--v2-ink-soft);
+  --competitive-accent: var(--v2-accent-dark);
+  --competitive-accent-hover: var(--v2-ink);
+}
+
+.breadcrumb,
+.post-meta {
+  color: var(--v2-ink-soft);
 }
