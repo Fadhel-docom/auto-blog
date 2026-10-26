@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-26T19:38:25+00:00",
+  "timestamp": "2026-10-26T23:19:34+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "PAUSED",
@@ -55,20 +55,20 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 40388509556,
+      "id": 40418948769,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-10-26T19:38:15Z",
-      "updated_at": "2026-10-26T19:38:19Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/40388509556"
+      "created_at": "2026-10-26T23:19:26Z",
+      "updated_at": "2026-10-26T23:19:29Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/40418948769"
     },
     "Traffic Report": {
-      "id": 40329398365,
+      "id": 40414922959,
       "status": "completed",
       "conclusion": "success",
-      "created_at": "2026-10-26T13:18:09Z",
-      "updated_at": "2026-10-26T13:18:24Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/40329398365"
+      "created_at": "2026-10-26T22:45:55Z",
+      "updated_at": "2026-10-26T22:46:12Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/40414922959"
     }
   },
   "quality_gate": {
@@ -76,9 +76,9 @@
   },
   "traffic": {
     "status": "OK",
-    "visitors_today": 7,
-    "visitors_last_7_days": 28,
-    "visitors_this_month": 155,
+    "visitors_today": 32,
+    "visitors_last_7_days": 53,
+    "visitors_this_month": 180,
     "stats_today": [
       {
         "day": "2026-10-26",
@@ -104,13 +104,43 @@
           1,
           0,
           1,
+          25,
+          0,
+          0
+        ],
+        "daily": 32,
+        "weekly": 32,
+        "monthly": 32
+      },
+      {
+        "day": "2026-10-27",
+        "hourly": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           0,
           0,
           0
         ],
-        "daily": 7,
-        "weekly": 7,
-        "monthly": 7
+        "daily": 0
       }
     ]
   },
