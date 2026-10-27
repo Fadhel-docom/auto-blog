@@ -37,11 +37,24 @@ jobs:
       - name: Build
         run: hugo --gc --minify
 
-      - name: Verify site output
+      - name: Verify site output and SEO URLs
+        env:
+          SITE_URL: "https://fadhel-docom.github.io/auto-blog"
         run: |
+          set -euo pipefail
           test -s public/index.html
           test -s public/sitemap.xml
           test -s public/index.xml
+          test -s public/robots.txt
+          # Fail the build if generated SEO signals drift from the stable indexed URL.
+          grep -Fq "${SITE_URL}/" public/index.html
+          grep -Fq "${SITE_URL}/" public/sitemap.xml
+          grep -Fq "Sitemap: ${SITE_URL}/sitemap.xml" public/robots.txt
+          if grep -R -Fq "home-organization-ideas.pages.dev" public/index.html public/sitemap.xml public/robots.txt; then
+            echo "SEO URL FAIL: temporary Cloudflare hostname leaked into production output"
+            exit 1
+          fi
+          echo "SEO URL PASS: canonical homepage, sitemap, and robots.txt use ${SITE_URL}"
 
       - name: Deploy GitHub Pages
         uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453
