@@ -389,6 +389,15 @@
   --v2-accent-soft: #eef1e9;
   --v2-warm: #f2eee6;
   --v2-shadow: 0 14px 40px rgba(36, 48, 43, .08);
+  --v2-on-accent: #ffffff;
+
+  /* Step A: one palette. Legacy tokens from custom.css (red accent, grey
+     muted text) now resolve to the HomeOrg palette so every component that
+     still uses var(--accent) / var(--muted) follows the same colours. */
+  --accent: var(--v2-accent-dark);
+  --accent-hover: var(--v2-ink);
+  --accent-light: var(--v2-accent-soft);
+  --muted: var(--v2-ink-soft);
 }
 
 body {
@@ -515,9 +524,9 @@ body {
 
 .category-filter:hover,
 .category-filter.is-active {
-  border-color: var(--v2-accent);
-  background: var(--v2-accent);
-  color: #fff;
+  border-color: var(--v2-accent-dark);
+  background: var(--v2-accent-dark);
+  color: var(--v2-on-accent);
 }
 
 .featured-section {
@@ -733,6 +742,7 @@ body {
     --v2-accent-dark: #b9c9aa;
     --v2-accent-soft: #263025;
     --v2-warm: #1d211e;
+    --v2-on-accent: #141715;
   }
 
   .site-header {
@@ -1168,7 +1178,6 @@ body {
     min-height: 270px;
   }
 
-  .home-hero-trust-row,
   .home-hero-editorial .hero-trust-row {
     gap: 7px;
     font-size: .68rem;
@@ -1212,4 +1221,11 @@ body {
   .home-post-card:hover {
     transform: none !important;
   }
+}
+
+/* Step A: filled accent surfaces use the on-accent token so text stays
+   readable in both colour schemes. */
+.featured-badge,
+.skip-link {
+  color: var(--v2-on-accent);
 }
