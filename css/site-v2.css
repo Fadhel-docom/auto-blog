@@ -1229,3 +1229,44 @@ body {
 .skip-link {
   color: var(--v2-on-accent);
 }
+
+/* Step A2: layout workaround for a markup bug in layouts/index.html.
+   A stray </div> after the category buttons closes .site-container early:
+   (1) .featured-section and .home-posts render outside the page gutters, and
+   (2) the category buttons sit inside .home-search next to the input and get
+   squeezed into narrow ovals.
+   These rules only match while that markup is unchanged (direct children of
+   main / buttons inside .home-search); once the markup is fixed they stop
+   applying. */
+.site-main > .featured-section,
+.site-main > .home-posts {
+  width: min(var(--page-width), calc(100% - 40px));
+  margin-inline: auto;
+}
+
+@media (max-width: 780px) {
+  .site-main > .featured-section,
+  .site-main > .home-posts {
+    width: min(100% - 28px, var(--page-width));
+  }
+}
+
+.home-search {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 8px;
+}
+
+.home-search input {
+  flex: 1 1 100%;
+}
+
+.home-search .category-filter {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.home-search-icon {
+  top: 29px;
+  transform: translateY(-50%);
+}
