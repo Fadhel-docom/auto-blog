@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-27T07:49:55+00:00",
+  "timestamp": "2026-10-27T13:43:29+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "PAUSED",
@@ -55,28 +55,64 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 40469475635,
+      "id": 40514551546,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-10-27T07:49:45Z",
-      "updated_at": "2026-10-27T07:49:48Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/40469475635"
+      "created_at": "2026-10-27T13:43:20Z",
+      "updated_at": "2026-10-27T13:43:23Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/40514551546"
     },
     "Traffic Report": {
-      "id": 40454355227,
+      "id": 40503674648,
       "status": "completed",
       "conclusion": "success",
-      "created_at": "2026-10-27T05:16:14Z",
-      "updated_at": "2026-10-27T05:16:27Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/40454355227"
+      "created_at": "2026-10-27T12:25:47Z",
+      "updated_at": "2026-10-27T12:25:59Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/40503674648"
     }
   },
   "quality_gate": {
     "status": "UNAVAILABLE"
   },
   "traffic": {
-    "status": "UNAVAILABLE",
-    "reason": "HTTP 404"
+    "status": "OK",
+    "visitors_today": 10,
+    "visitors_last_7_days": 63,
+    "visitors_this_month": 190,
+    "stats_today": [
+      {
+        "day": "2026-10-27",
+        "hourly": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          2,
+          0,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "daily": 10,
+        "weekly": 10,
+        "monthly": 10
+      }
+    ]
   },
   "alerts": [],
   "issues": [
@@ -90,13 +126,6 @@
         "unique_inline_images": 3,
         "h2": 17,
         "faq": 6
-      }
-    },
-    {
-      "type": "GoatCounter unavailable",
-      "traffic": {
-        "status": "UNAVAILABLE",
-        "reason": "HTTP 404"
       }
     }
   ],
