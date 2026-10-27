@@ -318,6 +318,23 @@
         </div>
 
         <nav
+          class="site-footer-rooms"
+          aria-label="Browse by room"
+        >
+
+          <p class="site-footer-heading">Browse by room</p>
+
+          <ul>
+            {{ range slice "kitchen" "bathroom-and-laundry" "bedroom-and-closets" "living-room-and-entry" "small-space-guides" }}
+              {{ with site.GetPage (printf "/categories/%s" .) }}
+                <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+              {{ end }}
+            {{ end }}
+          </ul>
+
+        </nav>
+
+        <nav
           class="site-footer-nav"
           aria-label="Footer navigation"
         >
