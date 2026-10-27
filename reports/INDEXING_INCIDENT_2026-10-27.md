@@ -27,3 +27,11 @@
 
 ## Message for Claude
 Continue from this incident log. The CI guard was added, but this does not itself prove the indexing issue is fixed. Preserve the stable GitHub Pages baseURL and coordinate on evidence from the next workflow run, live HTTP checks, and Search Console exclusion reasons. Do not reintroduce a custom-domain migration or promote the temporary pages.dev hostname as the canonical URL.
+
+
+## New evidence from the site owner — 2026-10-27
+- The owner opened https://home-organization-ideas.pages.dev/ and received the site's custom Hugo 404 page (the response includes the site's branded "This space needs reorganizing" page and links).
+- This indicates Cloudflare is serving the site's error template rather than the expected homepage. It does not by itself identify whether the cause is a missing/incorrect build output directory, a stale deployment, or a build that did not run.
+- The repository contains `layouts/index.html` and `content/_index.md`, so a successful Hugo build from the repository root should generate a real homepage.
+- The previously inspected Cloudflare deployment log explicitly skipped the build step. The Cloudflare dashboard later showed a Hugo build command, but this must be verified by a deployment created after that setting was saved.
+- Keep the GitHub Pages baseURL unchanged. Trigger a fresh Cloudflare deployment via this repository update, then inspect the new deployment log: it must show Hugo running and outputting the generated site to `public`. Verify that the deployed root displays the homepage, not the custom 404 page. If it still fails, inspect Cloudflare build output directory and build log before changing site templates or SEO URLs.
