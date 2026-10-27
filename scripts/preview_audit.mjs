@@ -116,6 +116,10 @@ function measure() {
   const tapSmall = qa("header a, header button, .site-nav a, .category-filter, .home-room-card, .home-hero-button").filter(e => {
     const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0 && (r.height < 44 || r.width < 44);
   }).length;
+  const categoryLinks = qa('a[href*="/categories/"]').length;
+  const footerRooms = qa(".site-footer-rooms a").length;
+  const cards = qa(".home-post-card").length;
+  const intro = q(".category-intro") ? q(".category-intro").textContent.trim().length : 0;
   const brokenImages = qa("img").filter(i => i.complete && i.naturalWidth === 0).length;
   const missingAnchors = [...new Set(qa('a[href^="#"]').map(a => a.getAttribute("href")).filter(h => h && h.length > 1 && !document.getElementById(decodeURIComponent(h.slice(1)))))];
   const rs = getComputedStyle(document.documentElement);
@@ -125,6 +129,7 @@ function measure() {
     overflowX: document.documentElement.scrollWidth > vw + 1, docHeight: document.documentElement.scrollHeight,
     h1: q("h1") ? q("h1").textContent.trim().slice(0, 70) : null,
     gutters, heroInfo, chipInfo, feats, metaInfo, tapSmall, brokenImages, missingAnchors, tokens,
+    categoryLinks, footerRooms, cards, intro,
     contrast: { checked, skippedOnImages: skippedImage, failing: contrastFails },
   };
 }
@@ -217,6 +222,16 @@ for (const vp of ["m360", "m390", "d1440"]) {
   lines.push(`| featured card heights (px) | ${vp} | ${fh(p)} | ${fh(l)} |`);
   lines.push(`| document height (px) | ${vp} | ${cell(p.docHeight)} | ${cell(l && l.docHeight)} |`);
   lines.push(`| small tap targets (<44px) | ${vp} | ${cell(p.tapSmall)} | ${cell(l && l.tapSmall)} |`);
+}
+lines.push("");
+
+lines.push("## Category discovery and category pages", "", "| Page | Viewport | Category links on page (preview/live) | Footer room links (preview/live) | Post cards (preview/live) | Intro chars (preview/live) |", "|---|---|---|---|---|---|");
+for (const pg of ["home", "category", "post"]) {
+  for (const vp of ["m390", "d1440"]) {
+    const p = mm(find(report.preview, pg, vp)), l = mm(find(report.live, pg, vp));
+    if (!p) continue;
+    lines.push(`| ${pg} | ${vp} | ${cell(p.categoryLinks)}/${cell(l && l.categoryLinks)} | ${cell(p.footerRooms)}/${cell(l && l.footerRooms)} | ${cell(p.cards)}/${cell(l && l.cards)} | ${cell(p.intro)}/${cell(l && l.intro)} |`);
+  }
 }
 lines.push("");
 
