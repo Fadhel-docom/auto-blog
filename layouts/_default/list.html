@@ -2,95 +2,134 @@
 
 {{ if eq .Kind "taxonomy" }}
 
-  <h1>
-    Categories
-  </h1>
+  <section class="category-index">
 
-  {{ if .Data.Terms }}
+    <header class="category-header">
+      <p class="category-kicker">Browse by room</p>
+      <h1>Categories</h1>
+      <p class="category-intro">
+        Practical organization guides, grouped by the room or problem they solve.
+      </p>
+    </header>
 
-    <ul class="post-list">
+    {{ if .Data.Terms }}
 
-      {{ range .Data.Terms.Alphabetical }}
+      <ul class="category-index-grid">
 
-        <li class="post-list-item">
+        {{ range .Data.Terms.Alphabetical }}
 
-          <h2>
-            <a href="{{ .Page.RelPermalink }}">
-              {{ .Page.Title }}
+          <li>
+            <a class="category-index-card" href="{{ .Page.RelPermalink }}">
+              <h2>{{ .Page.Title }}</h2>
+              {{ with .Page.Description }}<p>{{ . }}</p>{{ end }}
+              <span class="category-index-count">
+                {{ .Count }} {{ if eq .Count 1 }}guide{{ else }}guides{{ end }}
+              </span>
             </a>
-          </h2>
+          </li>
 
-          <p class="post-meta">
-            {{ .Count }}
-            {{ if eq .Count 1 }}
-              article
-            {{ else }}
-              articles
-            {{ end }}
-          </p>
+        {{ end }}
 
-        </li>
+      </ul>
 
-      {{ end }}
+    {{ else }}
 
-    </ul>
+      <p>No categories yet.</p>
 
-  {{ else }}
+    {{ end }}
 
-    <p>
-      No categories yet.
-    </p>
-
-  {{ end }}
-
+  </section>
 
 {{ else }}
 
-  <h1>
-    {{ .Title }}
-  </h1>
-
   {{ $posts := where .Pages "Section" "posts" }}
 
-  {{ if $posts }}
+  <section class="category-page">
 
-    <ul class="post-list">
+    <header class="category-header">
+      {{ if eq .Kind "term" }}
+        <p class="category-kicker">
+          <a href="{{ "categories/" | relURL }}">All categories</a>
+        </p>
+      {{ end }}
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p class="category-intro">{{ . }}</p>{{ end }}
+      {{ if $posts }}
+        <p class="category-count">
+          {{ len $posts }} {{ if eq (len $posts) 1 }}guide{{ else }}guides{{ end }}
+        </p>
+      {{ end }}
+    </header>
 
-      {{ range $posts.ByDate.Reverse }}
+    {{ if $posts }}
 
-        <li class="post-list-item">
+      <div class="home-posts category-posts">
+        <div class="posts-grid">
 
-          <h2>
-            <a href="{{ .RelPermalink }}">
-              {{ .Title }}
-            </a>
-          </h2>
+          {{ range $posts.ByDate.Reverse }}
 
-          <p class="post-meta">
-            {{ .Date.Format "January 2, 2006" }}
-          </p>
+          <article class="home-post-card">
 
-          {{ with .Description }}
+            {{ $thumbnail := .Params.image }}
+            {{ if not $thumbnail }}
+              {{ with .Params.images }}
+                {{ if reflect.IsSlice . }}
+                  {{ if gt (len .) 0 }}{{ $thumbnail = index . 0 }}{{ end }}
+                {{ else }}
+                  {{ $thumbnail = . }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
 
-            <p class="post-excerpt">
-              {{ . }}
-            </p>
+            {{ if $thumbnail }}
+              <a href="{{ .RelPermalink }}" class="home-post-card-image" aria-label="Read {{ .Title }}">
+                <img
+                  {{ partial "img-srcset.html" (dict "path" $thumbnail "sizes" "(min-width: 1000px) 420px, 100vw") | safeHTMLAttr }}
+                  alt="{{ .Title }}"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </a>
+            {{ else }}
+              <a href="{{ .RelPermalink }}" class="home-post-card-image home-post-card-image-empty" aria-label="Read {{ .Title }}">
+                <span aria-hidden="true">HO</span>
+              </a>
+            {{ end }}
+
+            <div class="home-post-card-body">
+              <div class="home-post-card-meta">
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+                <span aria-hidden="true">·</span>
+                <span>{{ .ReadingTime }} min read</span>
+              </div>
+
+              <h2 class="home-post-card-title">
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+              </h2>
+
+              {{ with .Description }}
+                <p class="home-post-card-description">{{ . | plainify | truncate 145 }}</p>
+              {{ end }}
+
+              <a href="{{ .RelPermalink }}" class="home-post-card-link">
+                Read more <span aria-hidden="true">→</span>
+              </a>
+            </div>
+
+          </article>
 
           {{ end }}
 
-        </li>
+        </div>
+      </div>
 
-      {{ end }}
+    {{ else }}
 
-    </ul>
+      <p>No posts yet.</p>
 
-  {{ else }}
+    {{ end }}
 
-    <p>
-      No posts yet.
-    </p>
-
-  {{ end }}
+  </section>
 
 {{ end }}
 
