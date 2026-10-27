@@ -1270,3 +1270,78 @@ body {
   top: 29px;
   transform: translateY(-50%);
 }
+
+/* Step A3: mobile polish, based on real phone screenshots of the live page.
+   1. .home-hero (defined later in this file) re-applied its padding to the
+      editorial hero, which insets the photo inside the card. Restore the
+      flush layout the editorial hero was written for.
+   2. The caption over the hero photo was hard to read on light photos.
+   3. Portrait photos made the secondary featured cards a full screen tall.
+   4. Meta text was too pale and its separator dot wrapped alone onto the
+      first line in the two-column grid. */
+.home-hero.home-hero-editorial {
+  padding: 0;
+}
+
+@media (max-width: 780px) {
+  .home-hero-copy {
+    padding: 36px 24px 30px;
+  }
+}
+
+.home-hero-image::after {
+  background: linear-gradient(180deg, transparent 28%, rgba(18, 23, 20, .8));
+}
+
+.home-hero-image-caption span {
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .featured-card:not(.featured-card-primary) .featured-card-image {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+  }
+
+  .featured-card:not(.featured-card-primary) .featured-card-image img {
+    position: absolute;
+    inset: 0;
+  }
+}
+
+.home-post-card-meta {
+  color: var(--v2-ink-soft);
+}
+
+@media (max-width: 560px) {
+  .home-posts .home-post-card-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .home-posts .home-post-card-meta > [aria-hidden="true"] {
+    display: none;
+  }
+
+  .home-search .category-filter {
+    min-height: 44px;
+    padding: 8px 14px;
+    font-size: .85rem;
+  }
+}
+
+/* Step A4: remaining low-contrast text found by the Preview Audit (PR #116).
+   competitive.css still defined its own muted/accent colours, and two rules in
+   this file used hard-coded greys. Everything now follows the HomeOrg palette. */
+:root {
+  --competitive-muted: var(--v2-ink-soft);
+  --competitive-accent: var(--v2-accent-dark);
+  --competitive-accent-hover: var(--v2-ink);
+}
+
+.breadcrumb,
+.post-meta {
+  color: var(--v2-ink-soft);
+}
