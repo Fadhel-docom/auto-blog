@@ -90,6 +90,46 @@ For each existing article, add links only where they genuinely help the reader:
 - **Weeks 2–4:** prioritize a small batch of pages based on existing impressions and clear intent gaps; refresh titles/descriptions/sections only after query evidence is reviewed.
 - **Weekly:** log changes and outcomes in Operations Room #109. Do not repeatedly resubmit the same sitemap or request mass indexing without new evidence.
 
+
+## Competitive gap audit and content inventory (2026-10-27)
+
+This is a second-pass audit to make the competitor observations actionable for the current HomeOrg inventory. It is qualitative; it does not claim competitor traffic, ranking positions, or search volumes.
+
+### What strong competitors do that HomeOrg can adapt
+
+- **Apartment Therapy uses a browseable organizing hub** with explicit room and topic routes (bedroom, bathroom, kitchen, closet; decluttering and organizing/storage), plus featured guides. This reduces the effort required to find the next relevant page. HomeOrg should preserve its five official categories and provide equivalent ordinary HTML links in persistent navigation, the category index, and relevant article context. Source: https://www.apartmenttherapy.com/organizing
+- **Good Housekeeping frames advice around concrete problems and named methods**, not only generic inspiration. Its recent roundup recommends decluttering before buying storage and describes structured methods readers can actually try. HomeOrg should make each guide answer “what do I measure, do first, avoid, and maintain?” Source: https://www.goodhousekeeping.com/home/g74181055/best-organizing-ideas/
+- **Apartment Therapy's decluttering guide packages the task as a sequence**, with a room-by-room route and a downloadable checklist. HomeOrg can compete without copying the lead magnet by offering a concise, genuinely useful printable checklist or one-page measurement planner that is original and directly tied to its guides. Source: https://www.apartmenttherapy.com/ultimate-guide-decluttering-37418107
+- **The Spruce emphasizes a manageable whole-home system**: plan room priorities, declutter before adding containers, group like items, and maintain the result. HomeOrg should connect room-specific fixes to one maintenance/decluttering guide instead of leaving each article as a dead end. Source: https://www.thespruce.com/how-to-organize-your-whole-home-8768977
+- **Google's own guidance confirms the technical implication:** important pages should be reachable through crawlable `<a href>` links; sitemap inclusion does not guarantee crawling or indexing. This supports fixing HTML discovery paths while diagnosing the actual Search Console exclusion reason separately. Sources: https://developers.google.com/search/docs/crawling-indexing/links-crawlable and https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview
+
+### Specific content gaps and overlap risks in the current inventory
+
+The repository contains 33 Markdown files in `content/posts/`; 31 article URLs are in the published sitemap. The two files not in the sitemap are explicitly marked `draft = true` (`bathroom-organization-maximizing-24-inch-deep-cabi.md` and `small-bathroom-organization-without-clutter.md`). This is consistent with draft exclusion, not evidence of a sitemap defect. Do not publish them simply to increase URL count.
+
+Before either draft is published, differentiate the intent clearly:
+
+- **Under-sink draft:** focus only on a deep cabinet with plumbing constraints—measure pipe/valve clearance, reach zones, pull-out access, leak inspection, and safe storage. Link it from the existing `under-sink-organization-ideas-simple-system` guide only if it provides a materially different, deeper solution.
+- **Small-bathroom draft:** focus on room-wide clutter control and daily/weekly maintenance—not another generic list of small-bathroom storage tips. Link to the existing small-bathroom guide for the room overview and to the under-sink guide for that subproblem.
+- **Broad-intent pages:** `30-practical-home-organization-ideas-for`, `effortless-home-organization-tips-for-small-spaces`, `small-apartment-storage-ideas-practical-space`, and `small-apartment-organization-maximizing-storage-in-a-350sqft` sit close to broad “home/small-space organization” intent. Keep each only if its promise and reader outcome are distinct; use Search Console query/page data before rewriting or merging anything.
+
+### Recommended priority order (value before volume)
+
+1. **Discovery first:** ordinary links to all five official category pages and a real target for “Browse by room”. Keep JavaScript filters as a convenience, never the only category discovery path. The homepage template is protected and must remain a separate, specifically scoped change; this document does not authorize editing it.
+2. **Strengthen the hub-to-spoke paths:** category pages should briefly explain who the room guides help, then link directly to relevant articles with descriptive titles. Each published article should link to its parent category and a small number of truly related guides where the reader naturally needs the next step.
+3. **Differentiate overlapping intents:** review the broad pages and two drafts against actual Search Console queries before publishing, rewriting, or consolidating. No title-only spin-offs and no mass content expansion.
+4. **Add one original utility asset:** a printable “measure before you buy” sheet or room reset checklist, with clear instructions and links to relevant guides. This creates a useful reason to revisit/share the site and a potential Pinterest destination without requiring a domain or paid tool.
+5. **Only then test monetization:** add a small number of clearly disclosed, problem-matched product links where the guide explains the relevant measurements, limitations, and low-cost alternatives first. Track outbound clicks; do not infer commercial value from pageviews alone.
+
+### Acceptance checks for the next implementation batch
+
+- All five category destinations exist, return HTTP 200, and are linked by ordinary `<a href>` anchors from a crawlable page.
+- No broken in-page anchors; “Browse by room” lands on the intended section.
+- Published sitemap contains the intended canonical article URLs; draft articles remain excluded until explicitly ready.
+- Every important published article has at least one meaningful internal in-link; no generic link dump or links to thin tag archives merely to increase counts.
+- The final change is checked with a real browser at mobile and desktop widths, plus a link/build audit; report the exact sample coverage and limitations.
+- Search Console baseline (indexed state, impressions, clicks, queries, and URL Inspection reason) is recorded before judging indexing or traffic impact.
+
 ## Evidence and limitations
 
 - Repository source reviewed: `config.toml`, `layouts/_default/baseof.html`, `layouts/_default/single.html`, `layouts/index.html`, and `static/robots.txt`.
