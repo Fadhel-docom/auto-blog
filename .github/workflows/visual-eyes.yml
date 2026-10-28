@@ -2,6 +2,15 @@ name: Visual Eyes (Playwright)
 
 on:
   workflow_dispatch:
+    inputs:
+      site_url:
+        description: "Choose which live HomeOrg deployment to inspect"
+        type: choice
+        required: true
+        default: "https://home-organization-ideas.pages.dev/"
+        options:
+          - "https://home-organization-ideas.pages.dev/"
+          - "https://fadhel-docom.github.io/auto-blog/"
 
 permissions:
   contents: read
@@ -32,7 +41,7 @@ jobs:
 
       - name: Capture screenshots and inspect the live site
         env:
-          SITE_URL: "https://fadhel-docom.github.io/auto-blog/"
+          SITE_URL: ${{ inputs.site_url }}
         run: node scripts/visual_audit.mjs
 
       - name: Add text report to the workflow summary
