@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-27T17:37:53+00:00",
+  "timestamp": "2026-10-28T04:32:49+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -34,14 +34,14 @@
     "search": true,
     "grid": true,
     "featured": true,
-    "nav_links": 12,
+    "nav_links": 17,
     "article_cards": 31,
     "missing_text": [
       "Explore by room"
     ],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 64559
+    "html_length": 65163
   },
   "articles": [
     {
@@ -66,7 +66,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 27440
+      "html_length": 28044
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/trash-recycling-small-apartment-no-floor-space-cabinet-first/",
@@ -90,7 +90,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 28617
+      "html_length": 29221
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/living-room-cord-management-without-drilling-holes/",
@@ -114,7 +114,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 27767
+      "html_length": 28371
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/store-cleaning-supplies-bathroom-no-storage-closet-safe-setup/",
@@ -138,7 +138,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 28377
+      "html_length": 28981
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/laundry-without-a-laundry-room-small-apartment-drying-sorting/",
@@ -162,7 +162,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 29545
+      "html_length": 30149
     }
   ],
   "responsive": {
