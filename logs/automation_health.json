@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-29T02:52:34+00:00",
+  "timestamp": "2026-10-29T09:03:43+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "PAUSED",
@@ -55,20 +55,20 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 40808906643,
+      "id": 40846660551,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-10-29T02:52:25Z",
-      "updated_at": "2026-10-29T02:52:28Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/40808906643"
+      "created_at": "2026-10-29T09:03:32Z",
+      "updated_at": "2026-10-29T09:03:35Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/40846660551"
     },
     "Traffic Report": {
-      "id": 40781960615,
+      "id": 40826520764,
       "status": "completed",
       "conclusion": "success",
-      "created_at": "2026-10-28T22:42:03Z",
-      "updated_at": "2026-10-28T22:42:16Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/40781960615"
+      "created_at": "2026-10-29T05:59:25Z",
+      "updated_at": "2026-10-29T05:59:42Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/40826520764"
     }
   },
   "quality_gate": {
@@ -76,9 +76,9 @@
   },
   "traffic": {
     "status": "OK",
-    "visitors_today": 0,
-    "visitors_last_7_days": 80,
-    "visitors_this_month": 207,
+    "visitors_today": 1,
+    "visitors_last_7_days": 81,
+    "visitors_this_month": 208,
     "stats_today": [
       {
         "day": "2026-10-29",
@@ -89,7 +89,7 @@
           0,
           0,
           0,
-          0,
+          1,
           0,
           0,
           0,
@@ -108,7 +108,9 @@
           0,
           0
         ],
-        "daily": 0
+        "daily": 1,
+        "weekly": 1,
+        "monthly": 1
       }
     ]
   },
