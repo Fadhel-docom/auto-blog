@@ -1,6 +1,72 @@
 {
-  "timestamp": "2026-10-29T13:19:31+00:00",
-  "status": "UNAVAILABLE",
-  "reason": "GoatCounter HTTP 404",
-  "response": "{\"error\":\"not found\"}"
+  "timestamp": "2026-10-29T22:51:02+00:00",
+  "status": "OK",
+  "site": "homeorganizationideas.goatcounter.com",
+  "period_start": "2026-10-28T22:00:00+00:00",
+  "period_end": "2026-10-29T22:00:00+00:00",
+  "visitors": 4,
+  "stats": [
+    {
+      "day": "2026-10-28",
+      "hourly": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "daily": 0,
+      "weekly": 4,
+      "monthly": 4
+    },
+    {
+      "day": "2026-10-29",
+      "hourly": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "daily": 4
+    }
+  ]
 }
