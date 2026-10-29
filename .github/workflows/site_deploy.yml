@@ -37,24 +37,32 @@ jobs:
       - name: Build
         run: hugo --gc --minify
 
-      - name: Verify site output and SEO URLs
-        env:
-          SITE_URL: "https://fadhel-docom.github.io/auto-blog"
+      - name: Verify build output
         run: |
           set -euo pipefail
           test -s public/index.html
           test -s public/sitemap.xml
           test -s public/index.xml
           test -s public/robots.txt
-          # Fail the build if generated SEO signals drift from the stable indexed URL.
-          grep -Fq "${SITE_URL}/" public/index.html
-          grep -Fq "${SITE_URL}/" public/sitemap.xml
-          grep -Fq "Sitemap: ${SITE_URL}/sitemap.xml" public/robots.txt
-          if grep -R -Fq "home-organization-ideas.pages.dev" public/index.html public/sitemap.xml public/robots.txt; then
-            echo "SEO URL FAIL: temporary Cloudflare hostname leaked into production output"
+
+      - name: Point the GitHub Pages copy to the canonical pages.dev site
+        run: python scripts/gh_pages_redirect.py public
+
+      - name: Verify canonical URLs and redirect
+        env:
+          CANONICAL_URL: "https://home-organization-ideas.pages.dev"
+        run: |
+          set -euo pipefail
+          # The GitHub Pages copy must announce pages.dev as the only canonical site.
+          grep -Fq "${CANONICAL_URL}/" public/index.html
+          grep -Fq "${CANONICAL_URL}/" public/sitemap.xml
+          grep -Fq "Sitemap: ${CANONICAL_URL}/sitemap.xml" public/robots.txt
+          grep -Fq 'http-equiv="refresh"' public/index.html
+          if grep -Fq "fadhel-docom.github.io/auto-blog" public/index.html public/sitemap.xml public/robots.txt; then
+            echo "SEO URL FAIL: old GitHub Pages hostname still present as a canonical URL"
             exit 1
           fi
-          echo "SEO URL PASS: canonical homepage, sitemap, and robots.txt use ${SITE_URL}"
+          echo "SEO URL PASS: GitHub Pages copy canonicalizes and redirects to ${CANONICAL_URL}/"
 
       - name: Deploy GitHub Pages
         uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453
