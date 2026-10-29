@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-29T04:48:02+00:00",
+  "timestamp": "2026-10-29T18:09:09+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -35,70 +35,22 @@
     "grid": true,
     "featured": true,
     "nav_links": 17,
-    "article_cards": 31,
+    "article_cards": 32,
     "missing_text": [
       "Explore by room"
     ],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 65190
+    "html_length": 67250
   },
   "articles": [
     {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/shoes-bags-sliding-door-closet-half-open-plan/",
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/stacked-washer-dryer-closet-fit-venting-leak-protection/",
       "status": 200,
-      "title": "Shoes and Bags in a Closet With Sliding Doors: A Half-Open Plan That Still Works",
+      "title": "Stackable Washer and Dryer in a Closet: Fit, Venting and Leak Protection for a Small Apartment",
       "title_capitalized": true,
-      "meta_description": "Organize shoes and bags in a sliding-door closet: a daily half and an occasional half, a two-tier rack, dry shoes, hooks for sturdy bags and shelves for leather.",
-      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/shoes-bags-sliding-door-closet-half-open-plan/",
-      "images": 8,
-      "tags": 5,
-      "h2_count": 19,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 28044
-    },
-    {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/trash-recycling-small-apartment-no-floor-space-cabinet-first/",
-      "status": 200,
-      "title": "Trash and Recycling in a Small Apartment With No Floor Space: A Cabinet-First Setup",
-      "title_capitalized": true,
-      "meta_description": "Fit trash, recycling and food scraps into a small kitchen with no floor space: a two-bin cabinet slide, a door bag, a counter crock and clean-recycling rules.",
-      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/trash-recycling-small-apartment-no-floor-space-cabinet-first/",
-      "images": 8,
-      "tags": 5,
-      "h2_count": 19,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 29221
-    },
-    {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/living-room-cord-management-without-drilling-holes/",
-      "status": 200,
-      "title": "Living Room Cord Management Without Drilling Holes: A Renter-Safe Plan for TV, Lamp and Chargers",
-      "title_capitalized": true,
-      "meta_description": "Hide living room cords without drilling: adhesive clips, a cord raceway, sleeves and a vented box, plus the safety rules for power strips, rugs and pets.",
-      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/living-room-cord-management-without-drilling-holes/",
+      "meta_description": "Plan a stacked washer and dryer in a closet: measure the opening, add manufacturer clearances, size the door vents, vent the dryer outside and prevent leaks.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/stacked-washer-dryer-closet-fit-venting-leak-protection/",
       "images": 8,
       "tags": 5,
       "h2_count": 18,
@@ -114,7 +66,79 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 28371
+      "html_length": 30045
+    },
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/shoes-bags-sliding-door-closet-half-open-plan/",
+      "status": 200,
+      "title": "Shoes and Bags in a Closet With Sliding Doors: A Half-Open Plan That Still Works",
+      "title_capitalized": true,
+      "meta_description": "Organize shoes and bags in a sliding-door closet: a daily half and an occasional half, a two-tier rack, dry shoes, hooks for sturdy bags and shelves for leather.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/shoes-bags-sliding-door-closet-half-open-plan/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 19,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 28207
+    },
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/trash-recycling-small-apartment-no-floor-space-cabinet-first/",
+      "status": 200,
+      "title": "Trash and Recycling in a Small Apartment With No Floor Space: A Cabinet-First Setup",
+      "title_capitalized": true,
+      "meta_description": "Fit trash, recycling and food scraps into a small kitchen with no floor space: a two-bin cabinet slide, a door bag, a counter crock and clean-recycling rules.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/trash-recycling-small-apartment-no-floor-space-cabinet-first/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 19,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 29381
+    },
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/living-room-cord-management-without-drilling-holes/",
+      "status": 200,
+      "title": "Living Room Cord Management Without Drilling Holes: A Renter-Safe Plan for TV, Lamp and Chargers",
+      "title_capitalized": true,
+      "meta_description": "Hide living room cords without drilling: adhesive clips, a cord raceway, sleeves and a vented box, plus the safety rules for power strips, rugs and pets.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/living-room-cord-management-without-drilling-holes/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 18,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 28522
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/store-cleaning-supplies-bathroom-no-storage-closet-safe-setup/",
@@ -122,7 +146,7 @@
       "title": "Where to Store Cleaning Supplies in a Bathroom With No Storage Closet: A Safe, Compact Setup",
       "title_capitalized": true,
       "meta_description": "Store bathroom cleaning supplies safely with no storage closet: a locked wall cabinet, a cart for cloths, and rules for keeping products apart.",
-      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/store-cleaning-supplies-bathroom-no-storage-closet-safe-setup/",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/store-cleaning-supplies-bathroom-no-storage-closet-safe-setup/",
       "images": 8,
       "tags": 5,
       "h2_count": 17,
@@ -138,31 +162,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 28981
-    },
-    {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/laundry-without-a-laundry-room-small-apartment-drying-sorting/",
-      "status": 200,
-      "title": "Laundry Without a Laundry Room: A Drying, Sorting and Folding Station for a Small Apartment",
-      "title_capitalized": true,
-      "meta_description": "Set up laundry in a small apartment without a laundry room: budget floor space, pick a drying spot, sort in a three-bin cart and keep humidity in check.",
-      "canonical": "https://fadhel-docom.github.io/auto-blog/posts/laundry-without-a-laundry-room-small-apartment-drying-sorting/",
-      "images": 8,
-      "tags": 5,
-      "h2_count": 16,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 30149
+      "html_length": 29186
     }
   ],
   "responsive": {
