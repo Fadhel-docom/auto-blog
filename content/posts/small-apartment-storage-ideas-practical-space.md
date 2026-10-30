@@ -1,7 +1,7 @@
 +++
 title = "Small Apartment Storage Ideas: Zones, Reach Height and a Reserve Limit"
 date = "2026-09-22T23:10:01+00:00"
-lastmod = "2026-10-09T10:00:00+00:00"
+lastmod = "2026-10-30T18:00:00+00:00"
 description = "Map your apartment into zones, put daily items at reach height and cap backup stock at one bin. Practical small-apartment storage with two diagrams."
 image = "images/small-apartment-storage-map-cover.jpg"
 images = ["images/small-apartment-storage-map-cover.jpg", "images/small-apartment-storage-map.svg", "images/small-apartment-reserve-limit.svg", "images/small-apartment-anchor-tall-unit.svg"]
@@ -68,6 +68,22 @@ Coats, bags, shoes and mail arrive at the entry first, so a narrow shelf, a row 
 
 If you rent, start with options that leave no marks: freestanding units, tension rods, over-door hooks and removable adhesive hooks within their rated load. Save drilling for pieces that truly need it, and ask your landlord first.
 
+## The Plan on One Page
+
+Once the zones are mapped, one table keeps the decisions in one place. Fill in the last column for your own apartment before you buy anything.
+
+| Zone | What lives here | How often you reach for it | Where it sits | Limit that keeps it safe |
+| --- | --- | --- | --- | --- |
+| Entry | Coats, bags, shoes, mail | Daily | Hooks and a narrow shelf by the door, mail tray within easy reach | The door swing and the route to the exit stay clear |
+| Kitchen | Cookware, food, cleaning supplies | Daily to weekly | Daily items between knee and shoulder height, heavy pots low | Nothing heavy up high; spare supplies limited to one labeled bin |
+| Sleeping | Clothes, bedding | Daily for clothes, a few times a year for spare bedding | Closet for daily clothes; under the bed only for rare items | Measure the clearance first; do not cover a smoke alarm |
+| Living | Books, devices, throws | Daily to weekly | Low, wide units; tall units only if anchored | Anchor tall furniture; keep windows and exits clear |
+| Bathroom | Toiletries, towels | Daily, with spares less often | Daily items at hand height, spares in one bin | Reserve stock stays inside its bin; check the rated load of every hook |
+
+A worked example of the reserve limit: you keep spare sponges, a second spray bottle and extra bin liners in one bin under the kitchen counter. When the bin is full, you finish one item before bringing home another. The bin sets the limit, not your willingness to squeeze one more thing in.
+
+This guide is about capacity and access in one apartment. If you would rather start from a list of ideas sorted by problem, see [30 Practical Home Organization Ideas](/posts/30-practical-home-organization-ideas-for/), and for the living room in particular, [Small Living Room Storage for Renters](/posts/small-living-room-storage-ideas-renters/).
+
 ## A Sensible Order for One Weekend
 
 Work in this order so that nothing has to be done twice. On Saturday morning, sort by zone and remove duplicates and expired items. In the afternoon, measure and mark the walking path, and decide which tall pieces stay. On Sunday, install anchors and rails first, then place bins and labels, and only then buy whatever is still missing, from a written list. If you buy storage first, you will end up choosing around the things you already own instead of around the space.
@@ -121,5 +137,7 @@ Yes. Keep exits, windows and smoke alarms clear.
 - [Narrow Entryway Organization](/posts/narrow-entryway-organization-drop-zone/)
 - [Small Bedroom Organization: A Floor-First Plan](/posts/small-bedroom-organization-ideas-practical-space/)
 - [Small Kitchen Organization Ideas](/posts/kitchen-organization-ideas-small-spaces-space/)
+- [Small Living Room Storage for Renters](/posts/small-living-room-storage-ideas-renters/)
+- [30 Practical Home Organization Ideas for Small Spaces](/posts/30-practical-home-organization-ideas-for/)
 
 *The diagrams and the cover in this guide are original illustrations drawn for this article. Measurements are examples; measure your own space.*
