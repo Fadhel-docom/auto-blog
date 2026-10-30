@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-30T06:36:42+00:00",
+  "timestamp": "2026-10-30T13:32:05+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "publishing": {
     "status": "PAUSED",
@@ -46,8 +46,8 @@
   },
   "content": {
     "status": "FAIL",
-    "post": "stacked-washer-dryer-closet-fit-venting-leak-protection.md",
-    "words": 2222,
+    "post": "workout-gear-storage-small-apartment.md",
+    "words": 2359,
     "inline_images": 3,
     "unique_inline_images": 3,
     "h2": 16,
@@ -55,62 +55,28 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 41015070639,
-      "status": "in_progress",
+      "id": 41064011190,
+      "status": "queued",
       "conclusion": null,
-      "created_at": "2026-10-30T06:36:30Z",
-      "updated_at": "2026-10-30T06:36:34Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/41015070639"
+      "created_at": "2026-10-30T13:31:55Z",
+      "updated_at": "2026-10-30T13:31:55Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/41064011190"
     },
     "Traffic Report": {
-      "id": 41011560393,
+      "id": 41061076451,
       "status": "completed",
       "conclusion": "success",
-      "created_at": "2026-10-30T06:00:28Z",
-      "updated_at": "2026-10-30T06:00:42Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/41011560393"
+      "created_at": "2026-10-30T13:10:45Z",
+      "updated_at": "2026-10-30T13:10:59Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/41061076451"
     }
   },
   "quality_gate": {
     "status": "UNAVAILABLE"
   },
   "traffic": {
-    "status": "OK",
-    "visitors_today": 0,
-    "visitors_last_7_days": 80,
-    "visitors_this_month": 211,
-    "stats_today": [
-      {
-        "day": "2026-10-30",
-        "hourly": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "daily": 0
-      }
-    ]
+    "status": "UNAVAILABLE",
+    "reason": "HTTP 404"
   },
   "alerts": [],
   "issues": [
@@ -118,12 +84,19 @@
       "type": "Latest content quality failure",
       "content": {
         "status": "FAIL",
-        "post": "stacked-washer-dryer-closet-fit-venting-leak-protection.md",
-        "words": 2222,
+        "post": "workout-gear-storage-small-apartment.md",
+        "words": 2359,
         "inline_images": 3,
         "unique_inline_images": 3,
         "h2": 16,
         "faq": 6
+      }
+    },
+    {
+      "type": "GoatCounter unavailable",
+      "traffic": {
+        "status": "UNAVAILABLE",
+        "reason": "HTTP 404"
       }
     }
   ],
