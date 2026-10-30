@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-30T04:47:13+00:00",
+  "timestamp": "2026-10-30T17:48:20+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -35,15 +35,39 @@
     "grid": true,
     "featured": true,
     "nav_links": 17,
-    "article_cards": 32,
+    "article_cards": 33,
     "missing_text": [
       "Explore by room"
     ],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 67250
+    "html_length": 68888
   },
   "articles": [
+    {
+      "url": "https://fadhel-docom.github.io/auto-blog/posts/workout-gear-storage-small-apartment/",
+      "status": 200,
+      "title": "Workout Gear Storage in a Small Apartment: Check the Load Rating First",
+      "title_capitalized": true,
+      "meta_description": "Store workout gear in a small apartment with a safe heavy-gear zone, compact mat and band storage, renter-friendly options, and a quick reset plan.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/workout-gear-storage-small-apartment/",
+      "images": 8,
+      "tags": 6,
+      "h2_count": 18,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 30904
+    },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/stacked-washer-dryer-closet-fit-venting-leak-protection/",
       "status": 200,
@@ -66,7 +90,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 30045
+      "html_length": 29957
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/shoes-bags-sliding-door-closet-half-open-plan/",
@@ -90,7 +114,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 28207
+      "html_length": 28107
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/trash-recycling-small-apartment-no-floor-space-cabinet-first/",
@@ -114,7 +138,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 29381
+      "html_length": 29327
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/living-room-cord-management-without-drilling-holes/",
@@ -138,31 +162,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 28522
-    },
-    {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/store-cleaning-supplies-bathroom-no-storage-closet-safe-setup/",
-      "status": 200,
-      "title": "Where to Store Cleaning Supplies in a Bathroom With No Storage Closet: A Safe, Compact Setup",
-      "title_capitalized": true,
-      "meta_description": "Store bathroom cleaning supplies safely with no storage closet: a locked wall cabinet, a cart for cloths, and rules for keeping products apart.",
-      "canonical": "https://home-organization-ideas.pages.dev/posts/store-cleaning-supplies-bathroom-no-storage-closet-safe-setup/",
-      "images": 8,
-      "tags": 5,
-      "h2_count": 17,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 29186
+      "html_length": 28513
     }
   ],
   "responsive": {
