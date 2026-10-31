@@ -1,6 +1,6 @@
 +++
 title = "Terms of Use"
-description = "Terms of use for Home Organization Ideas — content license, disclaimers, and limitations."
+description = "Terms of use for Home Organization Ideas: how you may use the site and its guides, the content license, disclaimers and limitations of liability."
 date = 2026-09-23
 lastmod = 2026-10-22
 draft = false
@@ -60,4 +60,4 @@ We may update these Terms at any time. Continued use of the Site after changes c
 
 ## Contact
 
-Questions about these Terms? Use our [Contact page](https://github.com/Fadhel-docom/auto-blog/blob/main/content/contact.md).
+Questions about these Terms? Use our [Contact page](/contact/).
