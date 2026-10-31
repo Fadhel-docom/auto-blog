@@ -77,7 +77,7 @@ Do not fill every shelf to its maximum capacity. A little empty space makes the 
 
 If you rent, a freestanding narrow shelf may be more practical than a permanent installation. If you mount a shelf, use hardware appropriate for the wall construction and the expected load. Storage should never interfere with ventilation, electrical access, plumbing, or appliance safety.
 
-For another room where vertical storage matters, see [linen closet organization for small shelves](https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-small-shelves/).
+For another room where vertical storage matters, see [linen closet organization for small shelves](/posts/linen-closet-organization-ideas-small-shelves/).
 
 ## 4. Give Every Basket One Clear Job
 
@@ -135,7 +135,7 @@ When a load is dry, sort it into simple destinations:
 
 This prevents clean laundry from becoming a permanent pile.
 
-If your laundry room is connected to another compact area, the same principle used in [narrow entryway organization](https://fadhel-docom.github.io/auto-blog/posts/narrow-entryway-organization-drop-zone/) applies: give the surface one primary job and keep temporary items moving instead of letting them become permanent storage.
+If your laundry room is connected to another compact area, the same principle used in [narrow entryway organization](/posts/narrow-entryway-organization-drop-zone/) applies: give the surface one primary job and keep temporary items moving instead of letting them become permanent storage.
 
 ![A folding surface with an arrow to a group of six sorting destinations: bedroom, bathroom, kids, towels, items to hang, and items needing repair or special care](images/small-laundry-room-organization-ideas-smart-storage-folding-destinations.svg)
 
@@ -198,7 +198,7 @@ Before filling the space, check:
 
 Do not use every gap simply because it exists. A little empty space can make a small laundry room easier to clean and maintain.
 
-For another practical approach to using awkward dimensions, see [small bedroom storage ideas with pull-out space](https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-storage-ideas-diy-pull-out/).
+For another practical approach to using awkward dimensions, see [small bedroom storage ideas with pull-out space](/posts/small-bedroom-storage-ideas-diy-pull-out/).
 
 ## 10. Separate Everyday Supplies From Backups
 
@@ -214,7 +214,7 @@ The backup level can be a higher shelf, a closed cabinet, or a labeled bin outsi
 
 Do not buy more storage just to hold duplicates. First check whether the duplicates are necessary. A small room benefits from a short inventory list because it reduces the chance of buying another product you already have.
 
-If you want to apply the same “daily versus backup” principle elsewhere, our [renter-friendly closet organization guide](https://fadhel-docom.github.io/auto-blog/posts/renter-friendly-closet-organization-using-adhesive/) uses a similar approach to keeping frequently used items accessible.
+If you want to apply the same “daily versus backup” principle elsewhere, our [renter-friendly closet organization guide](/posts/renter-friendly-closet-organization-using-adhesive/) uses a similar approach to keeping frequently used items accessible.
 
 ## 11. Keep the Floor and Appliance Tops Clear
 
@@ -367,11 +367,11 @@ Use the highest shelves for light, infrequently used items such as seasonal supp
 ## Related Organization Guides
 
 - [Small Apartment Organization: Maximize Storage in a 350-Square-Foot Home](/posts/small-apartment-organization-maximizing-storage-in-a-350sqft/)
-- [Linen Closet Organization Ideas for Small Shelves](https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-small-shelves/)
-- [Narrow Entryway Organization: Build a Practical Drop Zone](https://fadhel-docom.github.io/auto-blog/posts/narrow-entryway-organization-drop-zone/)
-- [Small Bedroom Storage Ideas With DIY Pull-Out Space](https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-storage-ideas-diy-pull-out/)
-- [Renter-Friendly Closet Organization Using Adhesive Storage](https://fadhel-docom.github.io/auto-blog/posts/renter-friendly-closet-organization-using-adhesive/)
-- [Small Bathroom Organization Ideas for Practical Space](https://fadhel-docom.github.io/auto-blog/posts/small-bathroom-organization-ideas-practical-space/)
+- [Linen Closet Organization Ideas for Small Shelves](/posts/linen-closet-organization-ideas-small-shelves/)
+- [Narrow Entryway Organization: Build a Practical Drop Zone](/posts/narrow-entryway-organization-drop-zone/)
+- [Small Bedroom Storage Ideas With DIY Pull-Out Space](/posts/small-bedroom-storage-ideas-diy-pull-out/)
+- [Renter-Friendly Closet Organization Using Adhesive Storage](/posts/renter-friendly-closet-organization-using-adhesive/)
+- [Small Bathroom Organization Ideas for Practical Space](/posts/small-bathroom-organization-ideas-practical-space/)
 
 ## Sources
 
