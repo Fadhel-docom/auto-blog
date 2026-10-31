@@ -2,7 +2,7 @@
 title = "Renter-Friendly Closet Organization With Adhesive Hooks and Tension Rods"
 date = "2026-09-21T19:42:52+00:00"
 lastmod = "2026-10-18T18:56:51+00:00"
-description = "Organize a rental closet without drilling: measure first, hang adhesive hooks correctly, check tension rod heights before a second hanging level, and plan removal."
+description = "Organize a rental closet without drilling: measure first, hang adhesive hooks correctly, check tension rod heights before a second level, and plan removal."
 image = "images/renter-closet-adhesive-tension-rod-cover.jpg"
 images = ["images/closet-measure-plan.svg", "images/closet-double-hang-heights.svg", "images/adhesive-hook-steps.svg"]
 tags = ["closet organization", "renter friendly", "adhesive hooks", "tension rod", "small space living"]

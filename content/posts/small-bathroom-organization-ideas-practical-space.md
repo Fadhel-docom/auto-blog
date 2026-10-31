@@ -2,7 +2,7 @@
 title = "Small Bathroom Organization Ideas: A Zone-by-Zone Plan"
 date = "2026-09-22T22:39:35+00:00"
 lastmod = "2026-10-06T10:00:00+00:00"
-description = "Measure five spots, set four zones, respect toilet clearances, and manage moisture. A zone-by-zone bathroom organization plan with diagrams and a printable sheet."
+description = "Measure five spots, set four zones, respect toilet clearances and manage moisture. A zone-by-zone bathroom plan with diagrams and a printable sheet."
 image = "images/small-bathroom-cover.jpg"
 images = ["images/small-bathroom-cover.jpg", "images/bathroom-measure-spots.svg", "images/bathroom-four-zones.svg", "images/bathroom-toilet-clearance-plan.svg", "images/bathroom-reach-zones.svg", "images/bathroom-moisture-routine.svg"]
 tags = ["small bathroom organization ideas", "bathroom storage", "small spaces", "renter friendly organization"]

@@ -2,7 +2,7 @@
 title = "Shoes and Bags in a Closet With Sliding Doors: A Half-Open Plan That Still Works"
 date = "2026-10-24T07:30:00+00:00"
 lastmod = "2026-10-24T07:30:00+00:00"
-description = "Organize shoes and bags in a sliding-door closet: a daily half and an occasional half, a two-tier rack, dry shoes, hooks for sturdy bags and shelves for leather."
+description = "Organize shoes and bags in a sliding-door closet: daily and occasional halves, a two-tier rack, dry shoes, hooks for sturdy bags and shelves for leather."
 image = "images/shoes-bags-sliding-door-closet-cover.jpg"
 images = ["images/shoes-bags-closet-zones.svg", "images/shoes-bags-dry-and-breathe.svg", "images/shoes-bags-hang-or-shelf.svg"]
 tags = ["shoe storage", "bag storage", "sliding door closet", "bedroom closet", "small apartment"]
