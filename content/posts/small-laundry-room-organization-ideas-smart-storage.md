@@ -45,7 +45,7 @@ The appliance doors deserve special attention. A shelf that looks perfect while 
 
 ![Top view of a washer and dryer with door-swing arcs and a checklist of eight measurements to record](images/small-laundry-room-organization-ideas-smart-storage-measure-checklist.svg)
 
-For more small-space planning ideas, compare this approach with our guide to [small apartment organization and storage](https://fadhel-docom.github.io/auto-blog/posts/small-apartment-organization-maximizing-storage-in-a-350sqft/).
+For more small-space planning ideas, compare this approach with our guide to [small apartment organization and storage](/posts/small-apartment-organization-maximizing-storage-in-a-350sqft/).
 
 The rule is simple: **measure the empty space first, then choose storage that fits the space**. Do not buy a container first and hope it works later.
 
@@ -366,7 +366,7 @@ Use the highest shelves for light, infrequently used items such as seasonal supp
 
 ## Related Organization Guides
 
-- [Small Apartment Organization: Maximize Storage in a 350-Square-Foot Home](https://fadhel-docom.github.io/auto-blog/posts/small-apartment-organization-maximizing-storage-in-a-350sqft/)
+- [Small Apartment Organization: Maximize Storage in a 350-Square-Foot Home](/posts/small-apartment-organization-maximizing-storage-in-a-350sqft/)
 - [Linen Closet Organization Ideas for Small Shelves](https://fadhel-docom.github.io/auto-blog/posts/linen-closet-organization-ideas-small-shelves/)
 - [Narrow Entryway Organization: Build a Practical Drop Zone](https://fadhel-docom.github.io/auto-blog/posts/narrow-entryway-organization-drop-zone/)
 - [Small Bedroom Storage Ideas With DIY Pull-Out Space](https://fadhel-docom.github.io/auto-blog/posts/small-bedroom-storage-ideas-diy-pull-out/)
