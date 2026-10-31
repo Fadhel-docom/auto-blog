@@ -2,7 +2,7 @@
 title = "Linen Closet Organization Ideas: A Simple System for Small Shelves"
 date = "2026-09-24T21:05:00+00:00"
 lastmod = "2026-10-19T00:17:39+00:00"
-description = "Linen closet organization ideas for small shelves: measure the space, group linens by use, fold to shelf height, label simple zones, and keep everyday towels easy to reach."
+description = "Linen closet organization for small shelves: measure the space, group linens by use, fold to shelf height, label zones and keep everyday towels reachable."
 image = "images/linen-closet-cover.jpg"
 images = [
   "images/linen-closet-measure-shelf.svg",
