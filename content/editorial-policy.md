@@ -1,6 +1,6 @@
 +++
 title = "Editorial Policy"
-description = "How Home Organization Ideas creates, reviews, and improves practical organization content."
+description = "How Home Organization Ideas creates, reviews, and improves its practical home organization guides for small spaces and renters."
 date = 2026-09-23
 lastmod = 2026-09-23
 draft = false
