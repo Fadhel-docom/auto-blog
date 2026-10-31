@@ -59,7 +59,7 @@ The publishing system includes checks for structure, metadata, categories, image
 
 We continuously improve the workflow when problems are discovered.
 
-Learn more about our standards on the [Editorial Policy](/auto-blog/editorial-policy/) page.
+Learn more about our standards on the [Editorial Policy](/editorial-policy/) page.
 
 ## Corrections and feedback
 
@@ -74,14 +74,14 @@ If you find:
 - A technical problem
 - A topic that deserves a better guide
 
-please let us know through the [Contact page](/auto-blog/contact/).
+please let us know through the [Contact page](/contact/).
 
 ## Contact
 
 Questions, suggestions, corrections, and feedback are welcome.
 
-[Visit the Contact page →](/auto-blog/contact/)
+[Visit the Contact page →](/contact/)
 
 ## Explore the site
 
-Browse our [categories](/auto-blog/categories/) or return to the [home page](/auto-blog/).
+Browse our [categories](/categories/) or return to the [home page](/).
