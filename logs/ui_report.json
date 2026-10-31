@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-31T04:32:08+00:00",
+  "timestamp": "2026-10-31T16:56:56+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -41,7 +41,7 @@
     ],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 68888
+    "html_length": 69149
   },
   "articles": [
     {
@@ -66,7 +66,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 30904
+      "html_length": 30878
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/stacked-washer-dryer-closet-fit-venting-leak-protection/",
@@ -90,7 +90,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 29957
+      "html_length": 29931
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/shoes-bags-sliding-door-closet-half-open-plan/",
@@ -114,7 +114,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 28107
+      "html_length": 28081
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/trash-recycling-small-apartment-no-floor-space-cabinet-first/",
@@ -138,7 +138,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 29327
+      "html_length": 29301
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/living-room-cord-management-without-drilling-holes/",
@@ -162,7 +162,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 28513
+      "html_length": 28487
     }
   ],
   "responsive": {
