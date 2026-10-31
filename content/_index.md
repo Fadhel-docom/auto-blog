@@ -1,5 +1,5 @@
 +++
 title = "Home Organization Ideas"
-description = "Practical home organization and small-space living ideas."
+description = "Practical, measured home organization ideas for small apartments and renters: kitchen, bathroom, bedroom, closet and living room storage guides."
 draft = false
 +++
