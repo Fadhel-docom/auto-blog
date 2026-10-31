@@ -2,7 +2,7 @@
 title = "Renter Friendly Storage Ideas for Small Kitchen with Four Cabinets"
 date = "2026-09-22T12:29:32+00:00"
 lastmod = "2026-10-19T00:17:39+00:00"
-description = "Discover renter‑friendly storage ideas for a tiny kitchen with only four cabinets. Practical, non‑permanent solutions that boost space without breaking your lease."
+description = "Renter‑friendly storage ideas for a tiny kitchen with only four cabinets. Practical, non‑permanent solutions that add space without breaking your lease."
 image = "images/renter-kitchen-cover.jpg"
 images = ["images/renter-friendly-storage-ideas-small-kitchen-four-four-cabinet-zones.svg", "images/renter-friendly-storage-ideas-small-kitchen-four-measure-cabinet.svg", "images/renter-friendly-storage-ideas-small-kitchen-four-inside-cabinet.svg", "images/renter-friendly-storage-ideas-small-kitchen-four-cart-and-stove-clearance.svg", "images/renter-friendly-storage-ideas-small-kitchen-four-door-rod-and-hooks.svg"]
 original_graphics = true
