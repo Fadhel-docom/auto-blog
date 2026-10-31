@@ -40,7 +40,7 @@
 
   <meta
     name="description"
-    content="{{ with .Description }}{{ . }}{{ else }}{{ if eq .Kind "term" }}Guides and ideas tagged {{ .Title }}: measured, renter-friendly storage and organization for small homes from {{ .Site.Title }}.{{ else if eq .Kind "taxonomy" }}Browse every topic on {{ .Site.Title }}: practical, measured organization guides for small homes, apartments and renters.{{ else if eq .Kind "section" }}All {{ .Site.Title }} guides in one place: measured, renter-friendly storage and organization plans for small homes and apartments.{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}"
+    content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsHome }}Practical, measured home organization ideas for small apartments and renters: kitchen, bathroom, bedroom, closet and living room storage guides.{{ else if eq .Kind "term" }}Guides and ideas tagged {{ .Title }}: measured, renter-friendly storage and organization for small homes from {{ .Site.Title }}.{{ else if eq .Kind "taxonomy" }}Browse every topic on {{ .Site.Title }}: practical, measured organization guides for small homes, apartments and renters.{{ else if eq .Kind "section" }}All {{ .Site.Title }} guides in one place: measured, renter-friendly storage and organization plans for small homes and apartments.{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}"
   >
 
   <meta
