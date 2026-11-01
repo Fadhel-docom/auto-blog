@@ -1,5 +1,5 @@
 +++
-title = "Trash and Recycling in a Small Apartment With No Floor Space: A Cabinet-First Setup"
+title = "Trash and Recycling in a Small Apartment With No Floor Space"
 date = "2026-10-23T18:40:00+00:00"
 lastmod = "2026-10-23T18:40:00+00:00"
 description = "Fit trash, recycling and food scraps into a small kitchen with no floor space: a two-bin cabinet slide, a door bag, a counter crock and clean-recycling rules."

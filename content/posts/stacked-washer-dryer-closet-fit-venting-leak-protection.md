@@ -1,5 +1,5 @@
 +++
-title = "Stackable Washer and Dryer in a Closet: Fit, Venting and Leak Protection for a Small Apartment"
+title = "Stackable Washer and Dryer in a Closet: Fit and Venting"
 date = "2026-10-29T10:05:00+00:00"
 lastmod = "2026-10-29T10:05:00+00:00"
 description = "Plan a stacked washer and dryer in a closet: measure the opening, add manufacturer clearances, size the door vents, vent the dryer outside and prevent leaks."

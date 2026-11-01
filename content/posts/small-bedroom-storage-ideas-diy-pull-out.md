@@ -1,5 +1,5 @@
 +++
-title = "Small Bedroom Storage Ideas: DIY Pull-Out Drawers and Rolling Bins Under a Queen Bed"
+title = "Small Bedroom Storage: Pull-Out Drawers Under a Queen Bed"
 date = "2026-09-22T15:39:18+00:00"
 lastmod = "2026-10-09T10:00:00+00:00"
 description = "Measure the under-bed clearance, then choose rolling bins or build simple pull-out drawers. A queen-bed plan with a side view and a top layout."
