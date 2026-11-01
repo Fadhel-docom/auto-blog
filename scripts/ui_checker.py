@@ -33,7 +33,7 @@ GOLDEN = {
     "home": {
         "required_text": [
             "Home Organization Ideas",
-            "Explore by room",
+            "Browse by room",
             "Featured organization guides",
             "Latest organization guides",
         ],
