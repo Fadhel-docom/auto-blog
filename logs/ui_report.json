@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-31T16:56:56+00:00",
+  "timestamp": "2026-11-01T04:53:14+00:00",
   "site": "https://fadhel-docom.github.io/auto-blog/",
   "golden": {
     "home": {
@@ -41,7 +41,7 @@
     ],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 69149
+    "html_length": 69061
   },
   "articles": [
     {
@@ -66,7 +66,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 30878
+      "html_length": 30874
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/stacked-washer-dryer-closet-fit-venting-leak-protection/",
@@ -90,14 +90,14 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 29931
+      "html_length": 29927
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/shoes-bags-sliding-door-closet-half-open-plan/",
       "status": 200,
       "title": "Shoes and Bags in a Closet With Sliding Doors: A Half-Open Plan That Still Works",
       "title_capitalized": true,
-      "meta_description": "Organize shoes and bags in a sliding-door closet: a daily half and an occasional half, a two-tier rack, dry shoes, hooks for sturdy bags and shelves for leather.",
+      "meta_description": "Organize shoes and bags in a sliding-door closet: daily and occasional halves, a two-tier rack, dry shoes, hooks for sturdy bags and shelves for leather.",
       "canonical": "https://home-organization-ideas.pages.dev/posts/shoes-bags-sliding-door-closet-half-open-plan/",
       "images": 8,
       "tags": 5,
@@ -114,7 +114,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 28081
+      "html_length": 28049
     },
     {
       "url": "https://fadhel-docom.github.io/auto-blog/posts/trash-recycling-small-apartment-no-floor-space-cabinet-first/",
