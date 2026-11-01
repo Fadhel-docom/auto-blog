@@ -1,7 +1,7 @@
 +++
 title = "Small Living Room Layout: Keep a 30–36-Inch Walkway"
 date = "2026-11-01T17:10:00+00:00"
-lastmod = "2026-11-01T17:10:00+00:00"
+lastmod = "2026-11-01T18:05:00+00:00"
 description = "Plan a small living room around a clear 30–36-inch walking path. Measure furniture, map door swings, and choose a layout that keeps daily routes open."
 image = "images/small-living-room-layout-clear-walkway-cover.jpg"
 images = ["images/living-room-walkway-width-scale.svg", "images/living-room-three-layouts-route.svg", "images/living-room-clearances-strip.svg"]
@@ -11,7 +11,7 @@ draft = false
 slug = "small-living-room-layout-clear-walkway"
 original_graphics = true
 faq = [
-  {question = "How wide should a walkway be in a small living room?", answer = "Aim for 30 to 36 inches between large pieces of furniture. Designers quoted by Homes & Gardens give that range and say 24 inches is the lowest figure for tight rooms, below which a space feels cramped."},
+  {question = "How wide should a walkway be in a small living room?", answer = "Aim for 30 to 36 inches between large pieces of furniture. Designers quoted by Homes & Gardens give that range and mention 24 inches only as a rule of thumb for tight rooms, not as a safety or legal minimum."},
   {question = "Is a 30-inch walkway wide enough between living room furniture?", answer = "For a short stretch it usually works, and it sits inside the 30 to 36-inch design range. For the main route from the door, use 36 inches where the room allows, especially if anyone carries loads or uses a mobility aid."},
   {question = "How do you arrange furniture in a narrow living room without blocking the path?", answer = "Set the sofa across the width of the room instead of along a long wall, and keep one straight lane down a side. Mark that lane with tape before you move anything heavy."},
   {question = "Should the main walkway go behind or in front of the sofa?", answer = "Behind the sofa defines the path clearly and makes the seating area feel more private but uses more floor. In front of the sofa feels bigger but cuts across the TV view. Choose by how much traffic the room really gets."},
@@ -28,7 +28,7 @@ This guide flips the usual order. Instead of picking furniture and hoping a path
 
 Choose one main route from the door to wherever people actually go: the window, a balcony door, the hallway or the kitchen. Keep that route 30 to 36 inches wide wherever you can, and place the sofa, table and console only in the space that remains.
 
-Interior designers quoted by Homes & Gardens suggest leaving about 30 to 36 inches between large pieces of furniture, and say that you can go as low as 24 inches in tighter quarters but that less than that starts to feel cramped. If the route does not fit even at the tight end, the answer is fewer or smaller pieces, not a narrower lane. The rest of this guide shows how to measure, draw and test that choice.
+Interior designers quoted by Homes & Gardens suggest leaving about 30 to 36 inches between large pieces of furniture, and say that you can go as low as 24 inches in tighter quarters but that less than that starts to feel cramped. That 24-inch figure is a designer's rule of thumb, not a legal or safety minimum, so do not plan an everyday route around it. If the route does not fit even at the tight end, the answer is fewer or smaller pieces, not a narrower lane. The rest of this guide shows how to measure, draw and test that choice.
 
 ## 2. What 30–36 Inches Actually Means (and What It Does Not)
 
@@ -56,7 +56,7 @@ Write these on a single sketch. The goal is to find the narrowest point on your 
 
 Draw a line on your sketch from the front door to the place people go most often. For most apartments that is the window, a balcony or the hallway to the bedroom. This is the main route, and it gets the full 30 to 36 inches.
 
-Make it as straight as the room allows, because every turn costs extra floor space. Then mark secondary routes, such as the path to the sofa or to a shelf. Those are used less often and can be narrower, but not below the 24-inch figure designers give for tight rooms. A narrow stretch is acceptable only if it is short and nobody carries anything through it.
+Make it as straight as the room allows, because every turn costs extra floor space. Then mark secondary routes, such as the path to the sofa or to a shelf. Those are used less often and can be somewhat narrower, but do not plan a route that people use every day around the 24-inch figure that appears in design advice for tight rooms. That number is a designer's rule of thumb, not a legal or safety minimum.
 
 Finally, look for the pinch point: the narrowest clear width along the route. It is usually where a coffee table corner, a sofa arm, a door swing or an open drawer comes close to something else. That single number is the one that matters, not the average width of the lane.
 
@@ -119,7 +119,7 @@ Not every room can reach the target, and it is better to say so than to fake it.
 4. Move the seating into one corner so the route runs along a clear edge.
 5. Replace the sofa with a shorter or shallower one as the last step.
 
-If the route still does not reach 30 inches everywhere, accept a narrower stretch only where it is brief, as at a door frame or a corner, and where nobody carries anything. Do not reduce the whole lane to save one piece of furniture.
+If the route still does not reach 30 inches everywhere, a narrower stretch is a last resort: keep it brief, as at a door frame or a corner, and never use it for a route people take every day. Do not rely on it if anyone uses a wheelchair or walker or carries loads; measure the real route with their device and check the requirements that apply to your home. The ADA's 32-inch exception covers specific conditions on accessible routes in section 403.5.1, so it is not a household design tip. Do not reduce the whole lane to save one piece of furniture.
 
 ## 12. Final Walkthrough: Check Door Swings, Rugs, Cords and Everyday Use
 
@@ -131,7 +131,7 @@ Do the walk once during the day and once with the lights dimmed. If you stub a t
 
 ### How wide should a walkway be in a small living room?
 
-Aim for 30 to 36 inches between large pieces of furniture. Designers quoted by Homes & Gardens give that range and say 24 inches is the lowest figure for tight rooms, below which a space feels cramped.
+Aim for 30 to 36 inches between large pieces of furniture. Designers quoted by Homes & Gardens give that range and mention 24 inches only as a rule of thumb for tight rooms, not as a safety or legal minimum.
 
 
 ### Is a 30-inch walkway wide enough between living room furniture?
