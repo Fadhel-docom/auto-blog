@@ -147,7 +147,7 @@ Use rated adhesive hooks, an over-door rack, a tension pole, and freestanding un
 
 ## Sources
 
-- International Code Council, International Residential Code (IRC), Sections R307 and P2705.1: toilet clearances of about 15 in from the center to a side wall and 21 in in front. Local codes may require more.
+- International Code Council, International Residential Code (IRC), Sections R307 and P2705.1: toilet clearances of about 15 in from the center to a side wall and 21 in front. Local codes may require more.
 - Home Ventilating Institute (HVI): run the bathroom fan about 20 minutes after bathing.
 - Poison Help (HRSA), [poisonhelp.hrsa.gov](https://web.archive.org/web/2025/https://www.poisonhelp.hrsa.gov): US helpline 1-800-222-1222
 
