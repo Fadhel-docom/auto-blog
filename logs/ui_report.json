@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-11-01T04:53:14+00:00",
-  "site": "https://fadhel-docom.github.io/auto-blog/",
+  "timestamp": "2026-11-01T17:43:27+00:00",
+  "site": "https://home-organization-ideas.pages.dev/",
   "golden": {
     "home": {
       "required_text": [
         "Home Organization Ideas",
-        "Explore by room",
+        "Browse by room",
         "Featured organization guides",
         "Latest organization guides"
       ],
@@ -28,24 +28,70 @@
     }
   },
   "home": {
-    "url": "https://fadhel-docom.github.io/auto-blog/",
+    "url": "https://home-organization-ideas.pages.dev/",
     "status": 200,
     "hero": true,
     "search": true,
     "grid": true,
     "featured": true,
-    "nav_links": 17,
-    "article_cards": 33,
-    "missing_text": [
-      "Explore by room"
-    ],
+    "nav_links": 19,
+    "article_cards": 35,
+    "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 69061
+    "html_length": 92137
   },
   "articles": [
     {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/workout-gear-storage-small-apartment/",
+      "url": "https://home-organization-ideas.pages.dev/posts/small-living-room-layout-clear-walkway/",
+      "status": 200,
+      "title": "Small Living Room Layout: Keep a 30–36-Inch Walkway",
+      "title_capitalized": true,
+      "meta_description": "Plan a small living room around a clear 30–36-inch walking path. Measure furniture, map door swings, and choose a layout that keeps daily routes open.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/small-living-room-layout-clear-walkway/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 18,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 36956
+    },
+    {
+      "url": "https://home-organization-ideas.pages.dev/posts/clothes-storage-bedroom-no-closet-measure-first/",
+      "status": 200,
+      "title": "Clothes Storage With No Closet: Measure First, Then Pick",
+      "title_capitalized": true,
+      "meta_description": "Plan clothes storage with no closet: add up rod space, check rack height, count drawer stacks, keep a clear path and anchor the dresser before you buy.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/clothes-storage-bedroom-no-closet-measure-first/",
+      "images": 8,
+      "tags": 6,
+      "h2_count": 18,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 38107
+    },
+    {
+      "url": "https://home-organization-ideas.pages.dev/posts/workout-gear-storage-small-apartment/",
       "status": 200,
       "title": "Workout Gear Storage in a Small Apartment: Check the Load Rating First",
       "title_capitalized": true,
@@ -66,12 +112,12 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 30874
+      "html_length": 35313
     },
     {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/stacked-washer-dryer-closet-fit-venting-leak-protection/",
+      "url": "https://home-organization-ideas.pages.dev/posts/stacked-washer-dryer-closet-fit-venting-leak-protection/",
       "status": 200,
-      "title": "Stackable Washer and Dryer in a Closet: Fit, Venting and Leak Protection for a Small Apartment",
+      "title": "Stackable Washer and Dryer in a Closet: Fit and Venting",
       "title_capitalized": true,
       "meta_description": "Plan a stacked washer and dryer in a closet: measure the opening, add manufacturer clearances, size the door vents, vent the dryer outside and prevent leaks.",
       "canonical": "https://home-organization-ideas.pages.dev/posts/stacked-washer-dryer-closet-fit-venting-leak-protection/",
@@ -90,10 +136,10 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 29927
+      "html_length": 34130
     },
     {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/shoes-bags-sliding-door-closet-half-open-plan/",
+      "url": "https://home-organization-ideas.pages.dev/posts/shoes-bags-sliding-door-closet-half-open-plan/",
       "status": 200,
       "title": "Shoes and Bags in a Closet With Sliding Doors: A Half-Open Plan That Still Works",
       "title_capitalized": true,
@@ -114,55 +160,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 28049
-    },
-    {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/trash-recycling-small-apartment-no-floor-space-cabinet-first/",
-      "status": 200,
-      "title": "Trash and Recycling in a Small Apartment With No Floor Space: A Cabinet-First Setup",
-      "title_capitalized": true,
-      "meta_description": "Fit trash, recycling and food scraps into a small kitchen with no floor space: a two-bin cabinet slide, a door bag, a counter crock and clean-recycling rules.",
-      "canonical": "https://home-organization-ideas.pages.dev/posts/trash-recycling-small-apartment-no-floor-space-cabinet-first/",
-      "images": 8,
-      "tags": 5,
-      "h2_count": 19,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 29301
-    },
-    {
-      "url": "https://fadhel-docom.github.io/auto-blog/posts/living-room-cord-management-without-drilling-holes/",
-      "status": 200,
-      "title": "Living Room Cord Management Without Drilling Holes: A Renter-Safe Plan for TV, Lamp and Chargers",
-      "title_capitalized": true,
-      "meta_description": "Hide living room cords without drilling: adhesive clips, a cord raceway, sleeves and a vented box, plus the safety rules for power strips, rugs and pets.",
-      "canonical": "https://home-organization-ideas.pages.dev/posts/living-room-cord-management-without-drilling-holes/",
-      "images": 8,
-      "tags": 5,
-      "h2_count": 18,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 28487
+      "html_length": 32525
     }
   ],
   "responsive": {
@@ -171,12 +169,12 @@
     "overflow_x_hidden": false,
     "stylesheet_count": 4,
     "stylesheet_urls": [
-      "https://fadhel-docom.github.io/auto-blog/css/custom.css",
-      "https://fadhel-docom.github.io/auto-blog/css/competitive.css",
-      "https://fadhel-docom.github.io/auto-blog/css/enhancements.css",
-      "https://fadhel-docom.github.io/auto-blog/css/site-v2.css"
+      "https://home-organization-ideas.pages.dev/css/custom.css",
+      "https://home-organization-ideas.pages.dev/css/competitive.css",
+      "https://home-organization-ideas.pages.dev/css/enhancements.css",
+      "https://home-organization-ideas.pages.dev/css/site-v2.css"
     ]
   },
-  "status": "needs_attention",
-  "failure_count": 1
+  "status": "healthy",
+  "failure_count": 0
 }
