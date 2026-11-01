@@ -18,3 +18,7 @@ At the start of each project task, internally confirm:
 - [ ] Defined a testable completion condition
 
 This file is a persistent repository instruction, not an automatic enforcement mechanism. Agents must still perform the checks; where possible, future CI/PR checks should enforce testable requirements.
+
+## Article publishing gate
+
+Before writing, reviewing or publishing any article, apply [docs/article-seo-checklist.md](docs/article-seo-checklist.md) together with [docs/value-before-publish-law.md](docs/value-before-publish-law.md): real reader problem, accepted AI-search questions, verified authoritative sources, click-through rules, technical checks, and post-publish steps.
