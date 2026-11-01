@@ -1,5 +1,5 @@
 +++
-title = "Living Room Cord Management Without Drilling Holes: A Renter-Safe Plan for TV, Lamp and Chargers"
+title = "Living Room Cord Management Without Drilling Holes"
 date = "2026-10-23T18:30:00+00:00"
 lastmod = "2026-10-23T18:30:00+00:00"
 description = "Hide living room cords without drilling: adhesive clips, a cord raceway, sleeves and a vented box, plus the safety rules for power strips, rugs and pets."

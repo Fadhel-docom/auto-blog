@@ -1,5 +1,5 @@
 +++
-title = "Laundry Without a Laundry Room: A Drying, Sorting and Folding Station for a Small Apartment"
+title = "Laundry Without a Laundry Room in a Small Apartment"
 date = "2026-10-22T06:00:00+00:00"
 lastmod = "2026-10-22T06:00:00+00:00"
 description = "Set up laundry in a small apartment without a laundry room: budget floor space, pick a drying spot, sort in a three-bin cart and keep humidity in check."

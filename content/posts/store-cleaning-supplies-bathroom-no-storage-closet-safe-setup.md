@@ -1,5 +1,5 @@
 +++
-title = "Where to Store Cleaning Supplies in a Bathroom With No Storage Closet: A Safe, Compact Setup"
+title = "Where to Store Cleaning Supplies With No Bathroom Closet"
 date = "2026-10-23T00:30:00+00:00"
 lastmod = "2026-10-23T00:30:00+00:00"
 description = "Store bathroom cleaning supplies safely with no storage closet: a locked wall cabinet, a cart for cloths, and rules for keeping products apart."
