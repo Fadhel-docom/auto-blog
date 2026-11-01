@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-01T00:17:23+00:00",
-  "site": "https://fadhel-docom.github.io/auto-blog/",
+  "timestamp": "2026-11-01T06:30:24+00:00",
+  "site": "https://home-organization-ideas.pages.dev/",
   "publishing": {
     "status": "PAUSED",
     "reason": "Intentional stabilization pause; overdue queue items are held safely."
@@ -31,21 +31,21 @@
     "homepage": {
       "ok": true,
       "status": 200,
-      "url": "https://fadhel-docom.github.io/auto-blog/"
+      "url": "https://home-organization-ideas.pages.dev/"
     },
     "sitemap": {
       "ok": true,
       "status": 200,
-      "url": "https://fadhel-docom.github.io/auto-blog/sitemap.xml"
+      "url": "https://home-organization-ideas.pages.dev/sitemap.xml"
     },
     "rss": {
       "ok": true,
       "status": 200,
-      "url": "https://fadhel-docom.github.io/auto-blog/index.xml"
+      "url": "https://home-organization-ideas.pages.dev/index.xml"
     }
   },
   "content": {
-    "status": "FAIL",
+    "status": "OK",
     "post": "workout-gear-storage-small-apartment.md",
     "words": 2359,
     "inline_images": 3,
@@ -55,20 +55,20 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 41256077394,
+      "id": 41281092670,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-11-01T00:17:13Z",
-      "updated_at": "2026-11-01T00:17:16Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/41256077394"
+      "created_at": "2026-11-01T06:30:16Z",
+      "updated_at": "2026-11-01T06:30:19Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/41281092670"
     },
     "Traffic Report": {
-      "id": 41244913049,
+      "id": 41280735098,
       "status": "completed",
       "conclusion": "success",
-      "created_at": "2026-10-31T21:43:31Z",
-      "updated_at": "2026-10-31T21:43:44Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/41244913049"
+      "created_at": "2026-11-01T06:24:53Z",
+      "updated_at": "2026-11-01T06:25:07Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/41280735098"
     }
   },
   "quality_gate": {
@@ -113,20 +113,7 @@
     ]
   },
   "alerts": [],
-  "issues": [
-    {
-      "type": "Latest content quality failure",
-      "content": {
-        "status": "FAIL",
-        "post": "workout-gear-storage-small-apartment.md",
-        "words": 2359,
-        "inline_images": 3,
-        "unique_inline_images": 3,
-        "h2": 16,
-        "faq": 6
-      }
-    }
-  ],
+  "issues": [],
   "publisher_steps": {},
   "secrets": {
     "INDEXNOW_KEY": "OK",
