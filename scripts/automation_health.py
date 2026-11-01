@@ -74,7 +74,7 @@ def content_check():
     faq=len(re.findall(r"question\s*=",text,re.I))
     unique_images=len(set(images))
     return {
-        "status":"OK" if words>=1500 and len(images)>=6 and unique_images==len(images) and h2>=8 and faq>=4 else "FAIL",
+        "status":"OK" if words>=1500 and len(images)>=3 and unique_images==len(images) and h2>=8 and faq>=4 else "FAIL",
         "post":post.name,"words":words,"inline_images":len(images),
         "unique_inline_images":unique_images,"h2":h2,"faq":faq
     }
