@@ -181,7 +181,7 @@ No. Measure the actual usable width, depth, height, door clearance, and plumbing
 ## Related Guides
 
 - [Small bathroom organization ideas: a zone-by-zone plan](/posts/small-bathroom-organization-ideas-practical-space/)
-- [Bathroom organization for a deep under-sink cabinet](/posts/bathroom-organization-maximizing-24-inch-deep-cabi/)
+- [Bathroom organization for a deep under-sink cabinet](/posts/under-sink-organization-ideas-simple-system/)
 
 ## Sources
 
