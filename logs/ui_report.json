@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-02T04:54:35+00:00",
+  "timestamp": "2026-11-02T21:29:15+00:00",
   "site": "https://home-organization-ideas.pages.dev/",
   "golden": {
     "home": {
@@ -35,13 +35,37 @@
     "grid": true,
     "featured": true,
     "nav_links": 19,
-    "article_cards": 35,
+    "article_cards": 36,
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 92137
+    "html_length": 94351
   },
   "articles": [
+    {
+      "url": "https://home-organization-ideas.pages.dev/posts/small-kitchen-counter-appliance-organization/",
+      "status": 200,
+      "title": "Small Kitchen Counter: Organize Daily-Use Appliances",
+      "title_capitalized": true,
+      "meta_description": "Keep daily-use appliances within reach without losing prep space. Measure each machine’s clearance, group task stations, and store occasional tools safely.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/small-kitchen-counter-appliance-organization/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 18,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 39054
+    },
     {
       "url": "https://home-organization-ideas.pages.dev/posts/small-living-room-layout-clear-walkway/",
       "status": 200,
@@ -137,30 +161,6 @@
       },
       "required_failures": [],
       "html_length": 34130
-    },
-    {
-      "url": "https://home-organization-ideas.pages.dev/posts/shoes-bags-sliding-door-closet-half-open-plan/",
-      "status": 200,
-      "title": "Shoes and Bags in a Closet With Sliding Doors: A Half-Open Plan That Still Works",
-      "title_capitalized": true,
-      "meta_description": "Organize shoes and bags in a sliding-door closet: daily and occasional halves, a two-tier rack, dry shoes, hooks for sturdy bags and shelves for leather.",
-      "canonical": "https://home-organization-ideas.pages.dev/posts/shoes-bags-sliding-door-closet-half-open-plan/",
-      "images": 8,
-      "tags": 5,
-      "h2_count": 19,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 32525
     }
   ],
   "responsive": {
