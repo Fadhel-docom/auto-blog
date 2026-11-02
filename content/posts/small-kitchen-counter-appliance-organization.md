@@ -1,7 +1,7 @@
 +++
 title = "Small Kitchen Counter: Organize Daily-Use Appliances"
 date = "2026-11-02T09:37:00+00:00"
-lastmod = "2026-11-02T09:37:00+00:00"
+lastmod = "2026-11-02T16:20:00+00:00"
 description = "Keep daily-use appliances within reach without losing prep space. Measure each machine’s clearance, group task stations, and store occasional tools safely."
 image = "images/small-kitchen-counter-appliance-organization-cover.jpg"
 images = ["images/counter-measured-plan-prep-zone.svg", "images/counter-appliance-decision-path.svg", "images/appliance-clearance-by-manual.svg"]
@@ -23,6 +23,8 @@ faq = [
 Most small kitchens do not have a storage problem so much as a decision problem. The coffee maker, the kettle, the toaster, the air fryer and the blender all got a spot on the counter one at a time, and now there is no room left to chop an onion. Moving them around rarely helps, because the real question is which of them deserve the counter at all.
 
 This guide gives you a way to decide. You will list what you actually use, measure the worktop, protect one clear prep zone, group the survivors into small stations, and check each appliance against its own manual before you commit. It includes a printable worksheet, a decision table and three original diagrams. For whole-kitchen zoning, see [Small Kitchen Organization Ideas: Zones, Aisles and Cabinets That Work](/posts/kitchen-organization-ideas-small-spaces-space/); for a very narrow galley, see [Small Kitchen Organization Ideas: Pull-Out Spice Rack for a Narrow Galley](/posts/small-kitchen-organization-5foot-galley-ideas-pull/). This page covers only the narrow question of what stays on the counter and where it goes.
+
+**Quick answer:** keep on the counter only the appliances you use most days and can run safely under their own manual. Move weekly ones to the nearest low shelf or cabinet, and take rare ones out of the kitchen zone. Reserve a real prep patch before you place anything else.
 
 ## 1. Start With the Appliances You Actually Use
 
