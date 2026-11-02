@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-labelledby="t1 d1" font-family="Arial, Helvetica, sans-serif">
+<title id="t1">A measured counter plan with one clear prep zone</title>
+<desc id="d1">Top-down view of a hypothetical 72-inch counter run: a 6-inch unreachable corner, an 18-inch coffee station, a 28-inch clear prep zone, a 12-inch toaster spot and an 8-inch margin before the sink.</desc>
+<rect width="800" height="400" fill="#fbf8f3"/>
+<text x="400" y="38" text-anchor="middle" font-size="20" font-weight="700" fill="#2d2a26">Measure the counter, then give prep space first</text>
+<text x="400" y="62" text-anchor="middle" font-size="14" fill="#5b564f">Hypothetical 72-inch run. Your numbers will differ.</text>
+<rect x="40" y="110" width="57" height="130" fill="#e3ded6" stroke="#8a8378" stroke-width="2"/>
+<rect x="97" y="110" width="170" height="130" fill="#d9e8f5" stroke="#3b6e99" stroke-width="2"/>
+<rect x="267" y="110" width="264" height="130" fill="#dcefd9" stroke="#3f7d3a" stroke-width="2"/>
+<rect x="531" y="110" width="113" height="130" fill="#f6e4c8" stroke="#a8721b" stroke-width="2"/>
+<rect x="644" y="110" width="76" height="130" fill="#ffffff" stroke="#8a8378" stroke-width="2" stroke-dasharray="6 4"/>
+<rect x="720" y="100" width="60" height="150" fill="#cfd6dc" stroke="#6b7680" stroke-width="2"/>
+<text x="68" y="170" text-anchor="middle" font-size="14" fill="#2d2a26">6 in</text>
+<text x="68" y="190" text-anchor="middle" font-size="12" fill="#5b564f">corner</text>
+<text x="182" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="#1f4a6e">Coffee station</text>
+<text x="182" y="190" text-anchor="middle" font-size="14" fill="#1f4a6e">18 in</text>
+<text x="399" y="168" text-anchor="middle" font-size="16" font-weight="700" fill="#245a20">Clear prep zone</text>
+<text x="399" y="190" text-anchor="middle" font-size="14" fill="#245a20">28 in, nothing parked here</text>
+<text x="587" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="#7a4e0a">Toaster</text>
+<text x="587" y="190" text-anchor="middle" font-size="14" fill="#7a4e0a">12 in</text>
+<text x="682" y="168" text-anchor="middle" font-size="14" fill="#2d2a26">8 in</text>
+<text x="682" y="190" text-anchor="middle" font-size="12" fill="#5b564f">margin</text>
+<text x="750" y="180" text-anchor="middle" font-size="14" fill="#2d2a26">Sink</text>
+<line x1="40" y1="272" x2="720" y2="272" stroke="#2d2a26" stroke-width="2"/>
+<line x1="40" y1="262" x2="40" y2="282" stroke="#2d2a26" stroke-width="2"/>
+<line x1="720" y1="262" x2="720" y2="282" stroke="#2d2a26" stroke-width="2"/>
+<text x="380" y="302" text-anchor="middle" font-size="15" fill="#2d2a26">6 + 18 + 28 + 12 + 8 = 72 inches of usable counter</text>
+<text x="400" y="352" text-anchor="middle" font-size="14" fill="#5b564f">Keep every appliance a safe distance from the sink and its cord off hot surfaces.</text>
+</svg>
