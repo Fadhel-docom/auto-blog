@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 490" role="img" aria-labelledby="t3 d3" font-family="Arial, Helvetica, sans-serif">
+<title id="t3">Four questions that decide whether an appliance stays on the counter</title>
+<desc id="d3">A four-step decision path: used most days, safe to lift, manual clearances can be met, cord away from heat and sink. A no at any step sends the appliance to storage or a new spot.</desc>
+<rect width="800" height="490" fill="#fbf8f3"/>
+<text x="400" y="34" text-anchor="middle" font-size="20" font-weight="700" fill="#2d2a26">Does it earn counter space?</text>
+<g fill="#dcefd9" stroke="#3f7d3a" stroke-width="2">
+<rect x="40" y="56" width="400" height="64" rx="8"/><rect x="40" y="150" width="400" height="64" rx="8"/><rect x="40" y="244" width="400" height="64" rx="8"/><rect x="40" y="338" width="400" height="64" rx="8"/></g>
+<g fill="#f6e4c8" stroke="#a8721b" stroke-width="2">
+<rect x="490" y="56" width="280" height="64" rx="8"/><rect x="490" y="150" width="280" height="64" rx="8"/><rect x="490" y="244" width="280" height="64" rx="8"/><rect x="490" y="338" width="280" height="64" rx="8"/></g>
+<g font-size="15" fill="#2d2a26">
+<text x="56" y="94">1. Used on most days?</text>
+<text x="56" y="188">2. Can you lift it safely? (check weight)</text>
+<text x="56" y="282">3. Can you meet its manual clearances here?</text>
+<text x="56" y="376">4. Cord off heat, appliance away from sink?</text>
+<text x="506" y="94">No: shelf or cabinet</text>
+<text x="506" y="188">No: low, easy-to-reach shelf</text>
+<text x="506" y="282">No: pick another spot, or store it</text>
+<text x="506" y="376">No: relocate it, or use a GFCI outlet</text></g>
+<g stroke="#2d2a26" stroke-width="2" fill="none"><line x1="240" y1="120" x2="240" y2="150"/><line x1="240" y1="214" x2="240" y2="244"/><line x1="240" y1="308" x2="240" y2="338"/><line x1="440" y1="88" x2="490" y2="88"/><line x1="440" y1="182" x2="490" y2="182"/><line x1="440" y1="276" x2="490" y2="276"/><line x1="440" y1="370" x2="490" y2="370"/></g>
+<rect x="40" y="428" width="400" height="44" rx="8" fill="#245a20"/>
+<line x1="240" y1="402" x2="240" y2="428" stroke="#2d2a26" stroke-width="2"/>
+<text x="240" y="456" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">Yes to all four: it stays on the counter</text>
+</svg>
