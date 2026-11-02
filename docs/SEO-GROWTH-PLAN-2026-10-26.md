@@ -5,8 +5,8 @@
 
 ## Executive priorities
 
-1. **Fix crawlable discovery paths on the homepage.** The current `layouts/index.html` source has five category filters implemented as buttons, not crawlable links; the visible “Browse by room” anchor points to `#browse-rooms`, but the current source excerpt contains no matching target. The category buttons are also followed by a closing `</div>` without a visible opening `<div class="category-filters">`. This is consistent with the existing DOM diagnosis in Operations Room #109. These are high-priority UX/discovery issues, but the template is protected: implement only in a separate, explicitly scoped PR after the owner confirms the exception.
-2. **Do not treat sitemap submission as the fix.** The latest Search Console notes in #109 say the category page was indexed, while sampled posts were “URL is unknown to Google”; sitemap entries were pending with zero reported errors. That points to discovery/coverage investigation, not proof of a broken sitemap. Obtain the Search Console Page indexing report before changing sitemap settings or requesting mass indexing.
+1. **Crawlable discovery paths on the homepage (status updated 2 Nov 2026).** Historical source inspection (27–28 Oct): the `#browse-rooms` hero anchor had no target and the category filters were buttons only. Since then: PR #118 added ordinary HTML links to all five category pages (category intros and footer), and PR #121 (`108b6af`) added the missing `browse-rooms` target. One stray closing `</div>` after the filter buttons was deliberately left in place on 28 Oct (a CSS workaround compensates; owner screenshots showed a correct mobile layout). `layouts/index.html` stays protected: reopen only if a real layout problem appears, in a separate, explicitly scoped PR after the owner confirms the exception.
+2. **Do not treat sitemap submission as the fix.** Baseline as of 2 Nov 2026: the Search Console sitemap for `https://home-organization-ideas.pages.dev/` is still `isPending` (submitted 27 Oct) with 0 errors and 0 warnings, and Search Analytics returned no rows for 20 Oct–2 Nov, so no current page-level indexing conclusion can be drawn from that report. Bing separately reports 99 indexed pages and 99 successful (2xx) crawls on 30 Oct, with 0 impressions and 0 clicks for 28–31 Oct. The 25 Oct observation (category page indexed, two sampled posts “URL is unknown to Google”) is historical and was recorded on the legacy host. Re-check after 3–4 days; do not resubmit sitemaps or request indexing in bulk.
 3. **Build topic clusters around practical, specific problems.** Compete on useful long-tail answers for small homes and constrained storage, rather than broad head terms dominated by major publishers.
 4. **Improve the path to revenue only after trust and usefulness.** Add genuinely useful product recommendations where they solve a stated storage problem, clearly disclose affiliate relationships, and avoid thin “best products” pages. Do not buy a domain or spend money as a prerequisite.
 
@@ -75,7 +75,7 @@ For each existing article, add links only where they genuinely help the reader:
 
 ## Revenue path without buying a domain
 
-1. **First:** improve discovery and publish/refresh genuinely useful pages under the existing GitHub Pages URL. A domain purchase is not a prerequisite for this work.
+1. **First:** improve discovery and publish/refresh genuinely useful pages on the production site, `https://home-organization-ideas.pages.dev/`. A domain purchase is not a prerequisite for this work.
 2. **Then:** test relevant affiliate links only where a product genuinely solves a stated problem (for example, a narrow over-door organizer after explaining door clearance). Clearly disclose affiliate relationships near recommendations and follow each program's terms.
 3. **Use Pinterest as a distribution channel:** create original vertical pins for the site's most useful guides, link each pin directly to the relevant guide, and track outbound clicks where available. Do not mass-produce near-identical pins.
 4. **Measure outcomes:** Search Console impressions/clicks/indexing; outbound affiliate clicks and conversions if the program provides reports; top landing pages; and which topics lead to meaningful engagement. Do not infer revenue potential from rankings or traffic alone.
@@ -83,8 +83,8 @@ For each existing article, add links only where they genuinely help the reader:
 
 ## 30-day execution sequence
 
-- **Days 1–3:** capture the Page indexing report and query/page exports; confirm which important URLs Google knows; record current indexed pages and impressions.
-- **Days 1–5 (parallel):** obtain owner approval for a narrowly scoped homepage-template PR covering crawlable category links, the missing anchor target, the category wrapper, and duplicate hero/featured image handling. Keep it separate from #111–#113.
+- **Days 1–3:** the 2 Nov snapshot is already captured (GSC sitemap pending, no Search Analytics rows; Bing 99 indexed, 0 impressions). Next check after 3–4 days: Page indexing status for a few key URLs plus query/page exports; avoid repeated sitemap submissions or mass URL requests.
+- **Days 1–5 (parallel):** homepage-template work is no longer a standing task (see priority 1); reopen only for a verified layout problem, as a narrowly scoped PR separate from #111–#113.
 - **Week 1:** map all current article URLs to one primary intent and five-category cluster; identify orphans, duplicate intents, and strongest pages using actual Search Console data.
 - **Week 2:** implement internal links in a separate approved change set; no changes to `content/posts/` until the owner explicitly authorizes a specific batch.
 - **Weeks 2–4:** prioritize a small batch of pages based on existing impressions and clear intent gaps; refresh titles/descriptions/sections only after query evidence is reviewed.
@@ -133,6 +133,6 @@ Before either draft is published, differentiate the intent clearly:
 ## Evidence and limitations
 
 - Repository source reviewed: `config.toml`, `layouts/_default/baseof.html`, `layouts/_default/single.html`, `layouts/index.html`, and `static/robots.txt`.
-- The configured canonical base is `https://fadhel-docom.github.io/auto-blog/`; robots.txt points to `https://fadhel-docom.github.io/auto-blog/sitemap.xml`.
-- Existing Operations Room notes dated 2026-10-25 report that `/categories/` was indexed while two sampled article URLs were “URL is unknown to Google”; this is evidence for those sampled URLs at that time, not a full current coverage report.
+- Production site: `https://home-organization-ideas.pages.dev/` (canonical base). Since PR #134 (`b983c5d`) both the pages.dev and the legacy GitHub Pages `robots.txt` return 200 and point to the pages.dev sitemap, which returned 200 with 164 URLs and no github.io URLs. The GitHub Pages copy is a legacy host that redirects to pages.dev (PR #122).
+- Operations Room notes dated 2026-10-25 reported that `/categories/` was indexed while two sampled article URLs were “URL is unknown to Google”; this is historical evidence on the legacy host for those sampled URLs, not a current coverage report. Inventory counts (31 sitemap articles, two drafts excluded) date from 24–27 Oct and must be rechecked before any publication decision.
 - No search-volume metrics, competitor traffic estimates, live browser visual tests, builds, sitemap submissions, indexing requests, deployments, or content changes were performed as part of this research.
