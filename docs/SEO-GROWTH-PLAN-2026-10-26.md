@@ -43,11 +43,11 @@ These are **intent-based candidates**, not measured search-volume or ranking cla
 
 ## Internal-linking actions
 
-### A. Crawlable category navigation
+### A. Crawlable category navigation — maintenance verification
 - Keep the five official category names and paths unchanged.
-- Add ordinary HTML anchors to all five category pages; JavaScript filters may remain as an enhancement but should not be the only discovery path.
-- Add the missing `browse-rooms` target so the hero anchor reaches a real section.
-- Repair the missing `category-filters` wrapper in the homepage markup. Because `layouts/index.html` is protected, do this only in a separate PR after explicit scope approval. Do not combine with CSS PRs #111–#113.
+- Implementation status (2 Nov 2026): PR #118 added ordinary HTML links to all five category pages, and PR #121 added the `browse-rooms` target. Treat these as completed changes, not pending implementation.
+- Verify that the five destinations and in-page target remain reachable after future navigation or homepage changes; JavaScript filters are an enhancement, not the sole discovery path.
+- Do not repair or otherwise edit the `category-filters` wrapper in `layouts/index.html` as part of this plan. The template remains protected, and the documented stray closing tag was intentionally left with a CSS workaround. Reopen only for a reproducible live defect and a separate, explicit owner-approved scope.
 
 ### B. Contextual links inside articles
 For each existing article, add links only where they genuinely help the reader:
@@ -115,7 +115,7 @@ Before either draft is published, differentiate the intent clearly:
 
 ### Recommended priority order (value before volume)
 
-1. **Discovery first:** ordinary links to all five official category pages and a real target for “Browse by room”. Keep JavaScript filters as a convenience, never the only category discovery path. The homepage template is protected and must remain a separate, specifically scoped change; this document does not authorize editing it.
+1. **Discovery maintenance:** verify the five category links and “Browse by room” target delivered in PRs #118/#121 remain functional. This is a regression check, not a new implementation task. Do not modify protected `layouts/index.html` unless a reproducible live defect is confirmed and the owner approves a separate, narrowly scoped PR.
 2. **Strengthen the hub-to-spoke paths:** category pages should briefly explain who the room guides help, then link directly to relevant articles with descriptive titles. Each published article should link to its parent category and a small number of truly related guides where the reader naturally needs the next step.
 3. **Differentiate overlapping intents:** review the broad pages and two drafts against actual Search Console queries before publishing, rewriting, or consolidating. No title-only spin-offs and no mass content expansion.
 4. **Add one original utility asset:** a printable “measure before you buy” sheet or room reset checklist, with clear instructions and links to relevant guides. This creates a useful reason to revisit/share the site and a potential Pinterest destination without requiring a domain or paid tool.
