@@ -1,0 +1,93 @@
+name: Preview Audit (Hugo build + Playwright)
+
+# Builds the site from the PR with the same Hugo version as Site Deploy, serves
+# it locally and measures it in a real browser. It never deploys, never pushes,
+# calls no AI API and uses no secrets. Third-party requests are blocked.
+on:
+  pull_request:
+    paths:
+      - "static/css/**"
+      - "layouts/**"
+      - "config.toml"
+      - "scripts/preview_audit.mjs"
+      - ".github/workflows/preview-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: preview-audit-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    name: Build preview and audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Install Hugo
+        uses: peaceiris/actions-hugo@2752ce1d29631191ea3f27c23495fa06139a5b78
+        with:
+          hugo-version: "0.128.0"
+          extended: true
+
+      - name: Generate responsive thumbnails
+        run: |
+          python -m pip install --quiet pillow
+          python scripts/make_thumbs.py
+
+      - name: Build preview (not deployed)
+        run: hugo --gc --minify --baseURL "http://127.0.0.1:8080/auto-blog/" --destination _site/auto-blog
+
+      - name: Verify build output
+        run: |
+          test -s _site/auto-blog/index.html
+          test -s _site/auto-blog/sitemap.xml
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Playwright
+        run: |
+          npm init -y
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+
+      - name: Serve preview and run audit
+        env:
+          PREVIEW_URL: "http://127.0.0.1:8080/auto-blog/"
+          LIVE_URL: "https://fadhel-docom.github.io/auto-blog/"
+        run: |
+          python3 -m http.server 8080 --directory _site --bind 127.0.0.1 >/dev/null 2>&1 &
+          for i in $(seq 1 30); do curl -fs http://127.0.0.1:8080/auto-blog/ >/dev/null && break; sleep 1; done
+          node scripts/preview_audit.mjs
+
+      - name: Add report to the run summary
+        if: always()
+        run: |
+          if [ -f artifacts/preview-report.md ]; then cat artifacts/preview-report.md >> "$GITHUB_STEP_SUMMARY"; else echo "No report produced. Check the job logs." >> "$GITHUB_STEP_SUMMARY"; fi
+
+      - name: Comment report on the pull request
+        if: always() && github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -f artifacts/preview-report.md ]; then
+            gh pr comment "${{ github.event.pull_request.number }}" --body-file artifacts/preview-report.md || true
+          fi
+
+      - name: Upload screenshots and JSON report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: homeorg-preview-audit
+          path: artifacts/
+          if-no-files-found: warn
+          retention-days: 7
