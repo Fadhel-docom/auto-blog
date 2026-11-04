@@ -1,7 +1,7 @@
 +++
-title = "Shared Bathroom With One Sink: A Morning-Rush Plan"
+title = "Shared Bathroom With One Sink: Fix the Morning Rush"
 date = "2026-11-04T14:40:00+00:00"
-lastmod = "2026-11-04T14:40:00+00:00"
+lastmod = "2026-11-04T20:05:00+00:00"
 description = "Share one bathroom sink without the morning pile-up. Run a minute-by-minute conflict test, set sink-side rules, and store medicines and cleaners safely."
 image = "images/shared-bathroom-one-sink-morning-rush-plan-cover.jpg"
 images = ["images/morning-sink-conflict-test.svg", "images/where-each-bathroom-item-lives.svg", "images/one-sink-no-vanity-storage-zones.svg"]
