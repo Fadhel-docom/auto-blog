@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" role="img" aria-labelledby="t1 d1" font-family="Arial, Helvetica, sans-serif">
+<title id="t1">Morning conflict test for one shared sink</title>
+<desc id="d1">A made-up three-person household needs 24 sink minutes in a 45-minute window. As planned, the adult and teen overlap for 3 minutes and the teen and child overlap for 5 minutes. After moving two start times by 3 and 8 minutes, nothing overlaps.</desc>
+<rect width="800" height="440" fill="#fbf8f3"/>
+<text x="400" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#2d2a26">Morning conflict test: who needs the sink, and when?</text>
+<text x="400" y="52" text-anchor="middle" font-size="13" fill="#5a544b">Example household, made-up times. Red = two people want the sink at once.</text>
+<line x1="150.0" y1="86" x2="150.0" y2="400" stroke="#d9d2c6" stroke-width="1"/><text x="150.0" y="78" text-anchor="middle" font-size="12" fill="#2d2a26">6:45</text><line x1="217.8" y1="86" x2="217.8" y2="400" stroke="#d9d2c6" stroke-width="1"/><text x="217.8" y="78" text-anchor="middle" font-size="12" fill="#2d2a26">6:50</text><line x1="285.6" y1="86" x2="285.6" y2="400" stroke="#d9d2c6" stroke-width="1"/><text x="285.6" y="78" text-anchor="middle" font-size="12" fill="#2d2a26">6:55</text><line x1="353.3" y1="86" x2="353.3" y2="400" stroke="#d9d2c6" stroke-width="1"/><text x="353.3" y="78" text-anchor="middle" font-size="12" fill="#2d2a26">7:00</text><line x1="421.1" y1="86" x2="421.1" y2="400" stroke="#d9d2c6" stroke-width="1"/><text x="421.1" y="78" text-anchor="middle" font-size="12" fill="#2d2a26">7:05</text><line x1="488.9" y1="86" x2="488.9" y2="400" stroke="#d9d2c6" stroke-width="1"/><text x="488.9" y="78" text-anchor="middle" font-size="12" fill="#2d2a26">7:10</text><line x1="556.7" y1="86" x2="556.7" y2="400" stroke="#d9d2c6" stroke-width="1"/><text x="556.7" y="78" text-anchor="middle" font-size="12" fill="#2d2a26">7:15</text><line x1="624.4" y1="86" x2="624.4" y2="400" stroke="#d9d2c6" stroke-width="1"/><text x="624.4" y="78" text-anchor="middle" font-size="12" fill="#2d2a26">7:20</text><line x1="692.2" y1="86" x2="692.2" y2="400" stroke="#d9d2c6" stroke-width="1"/><text x="692.2" y="78" text-anchor="middle" font-size="12" fill="#2d2a26">7:25</text><line x1="760.0" y1="86" x2="760.0" y2="400" stroke="#d9d2c6" stroke-width="1"/><text x="760.0" y="78" text-anchor="middle" font-size="12" fill="#2d2a26">7:30</text>
+<text x="40" y="104" font-size="15" font-weight="700" fill="#b3382c">As planned: 8 min of overlap</text>
+<text x="40" y="139" font-size="14" fill="#2d2a26">Adult</text>
+<rect x="150.0" y="118" width="108.4" height="28" rx="5" fill="#dcefd9" stroke="#3f7d3a" stroke-width="2"/>
+<text x="158.0" y="137" font-size="12" fill="#2d2a26">8 min</text>
+<text x="40" y="179" font-size="14" fill="#2d2a26">Teen</text>
+<rect x="217.8" y="158" width="135.5" height="28" rx="5" fill="#dcefd9" stroke="#3f7d3a" stroke-width="2"/>
+<text x="225.8" y="177" font-size="12" fill="#2d2a26">10 min</text>
+<text x="40" y="219" font-size="14" fill="#2d2a26">Child</text>
+<rect x="285.6" y="198" width="81.3" height="28" rx="5" fill="#dcefd9" stroke="#3f7d3a" stroke-width="2"/>
+<text x="293.6" y="217" font-size="12" fill="#2d2a26">6 min</text>
+<rect x="217.8" y="112" width="40.6" height="116" fill="#e8b4ab" fill-opacity="0.55" stroke="#b3382c" stroke-width="2" stroke-dasharray="5 3"/>
+<rect x="285.6" y="112" width="67.7" height="116" fill="#e8b4ab" fill-opacity="0.55" stroke="#b3382c" stroke-width="2" stroke-dasharray="5 3"/>
+<text x="40" y="276" font-size="15" font-weight="700" fill="#245a20">After shifting two starts: 0 min of overlap</text>
+<text x="40" y="311" font-size="14" fill="#2d2a26">Adult</text>
+<rect x="150.0" y="290" width="108.4" height="28" rx="5" fill="#dcefd9" stroke="#3f7d3a" stroke-width="2"/>
+<text x="158.0" y="309" font-size="12" fill="#2d2a26">8 min</text>
+<text x="40" y="351" font-size="14" fill="#2d2a26">Teen</text>
+<rect x="258.4" y="330" width="135.6" height="28" rx="5" fill="#dcefd9" stroke="#3f7d3a" stroke-width="2"/>
+<text x="266.4" y="349" font-size="12" fill="#2d2a26">10 min</text>
+<text x="40" y="391" font-size="14" fill="#2d2a26">Child</text>
+<rect x="394.0" y="370" width="81.3" height="28" rx="5" fill="#dcefd9" stroke="#3f7d3a" stroke-width="2"/>
+<text x="402.0" y="389" font-size="12" fill="#2d2a26">6 min</text>
+<text x="400" y="428" text-anchor="middle" font-size="13" fill="#5a544b">Same 24 sink minutes in both rows; only the start times changed.</text>
+</svg>
