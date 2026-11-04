@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="t2 d2" font-family="Arial, Helvetica, sans-serif">
+<title id="t2">One-sink shared bathroom without a vanity: five storage zones</title>
+<desc id="d2">A top-down sketch of a hypothetical small bathroom with a pedestal sink on the top wall, a shelf above it, a rolling cart beside it, towel cubbies on the right wall, a hook rail on the back of the door and a note that medicines and spares live outside the room.</desc>
+<rect width="800" height="500" fill="#fbf8f3"/>
+<text x="400" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#2d2a26">One sink, no vanity: move storage to walls and the door</text>
+<text x="300" y="52" text-anchor="middle" font-size="13" fill="#5a544b">Hypothetical room, not to scale</text>
+<rect x="40" y="66" width="520" height="400" fill="#ffffff" stroke="#2d2a26" stroke-width="4"/>
+<rect x="60" y="66" width="190" height="14" fill="#fbf8f3" stroke="#a8721b" stroke-width="2" stroke-dasharray="6 4"/>
+<rect x="95" y="84" width="120" height="70" rx="10" fill="#e9eef2" stroke="#2d2a26" stroke-width="2"/>
+<ellipse cx="155" cy="120" rx="38" ry="22" fill="#ffffff" stroke="#2d2a26" stroke-width="2"/>
+<text x="155" y="176" text-anchor="middle" font-size="13" fill="#2d2a26">Pedestal sink</text>
+<circle cx="155" cy="88" r="4" fill="#3f7d3a"/>
+<rect x="268" y="84" width="60" height="90" rx="6" fill="#dcefd9" stroke="#3f7d3a" stroke-width="2"/>
+<text x="298" y="134" text-anchor="middle" font-size="13" fill="#2d2a26">Cart</text>
+<rect x="496" y="150" width="56" height="150" rx="6" fill="#f6e4c8" stroke="#a8721b" stroke-width="2"/>
+<text x="524" y="230" text-anchor="middle" font-size="13" fill="#2d2a26" transform="rotate(-90 524 230)">Towel cubbies</text>
+<rect x="60" y="260" width="130" height="190" fill="#eef1f4" stroke="#2d2a26" stroke-width="2"/>
+<text x="125" y="360" text-anchor="middle" font-size="13" fill="#2d2a26">Tub / shower</text>
+<rect x="380" y="440" width="120" height="26" fill="#fbf8f3" stroke="#fbf8f3"/>
+<line x1="380" y1="466" x2="500" y2="466" stroke="#2d2a26" stroke-width="4"/>
+<path d="M380 466 A120 120 0 0 1 500 346" fill="none" stroke="#2d2a26" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="440" y="486" text-anchor="middle" font-size="13" fill="#2d2a26">Door + hook rail</text>
+<g fill="#3f7d3a" font-size="13" font-weight="700" text-anchor="middle" stroke="#ffffff" stroke-width="3" paint-order="stroke">
+<circle cx="155" cy="120" r="0"/>
+<text x="155" y="104">1</text><text x="298" y="116">2</text><text x="150" y="74" fill="#a8721b">3</text><text x="524" y="200">4</text><text x="440" y="456">5</text></g>
+<g font-size="14" fill="#2d2a26">
+<text x="590" y="100" font-weight="700">What each zone holds</text>
+<text x="590" y="132">1  Sink-side: soap, one cup</text>
+<text x="590" y="162">2  Cart: one caddy per person</text>
+<text x="590" y="192">3  Wall shelf: shared bin</text>
+<text x="590" y="222">4  Cubbies: one towel each,</text>
+<text x="590" y="240">    open, not stuffed</text>
+<text x="590" y="270">5  Door hooks: one per person</text>
+<text x="590" y="312" font-weight="700" fill="#245a20">Outside the room</text>
+<text x="590" y="336">Medicines: cool, dry, latched</text>
+<text x="590" y="360">Backups and bulk supplies</text>
+<text x="590" y="400" font-size="12" fill="#5a544b">Keep the door swing and the</text>
+<text x="590" y="418" font-size="12" fill="#5a544b">path to tub and toilet clear.</text></g>
+</svg>
