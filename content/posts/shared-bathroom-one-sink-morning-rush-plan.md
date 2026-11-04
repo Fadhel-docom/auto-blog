@@ -151,7 +151,7 @@ Move storage onto walls and the door: a shelf above the basin, an over-the-door 
 ## Sources
 
 - MedlinePlus, U.S. National Library of Medicine, [Storing your medicines](https://medlineplus.gov/ency/patientinstructions/000534.htm).
-- Health Canada, [Household chemical safety](https://www.canada.ca/en/health-canada/services/home-safety/household-chemical-safety.html).
+- Health Canada, [Household chemical safety](https://web.archive.org/web/2025/https://www.canada.ca/en/health-canada/services/home-safety/household-chemical-safety.html).
 - U.S. Environmental Protection Agency, [A Brief Guide to Mold, Moisture and Your Home](https://www.epa.gov/mold/brief-guide-mold-moisture-and-your-home).
 - U.S. Environmental Protection Agency, [Biological Contaminants and Indoor Air Quality](https://www.epa.gov/indoor-air-quality-iaq/biological-contaminants-and-indoor-air-quality).
 
