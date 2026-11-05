@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-labelledby="t3 d3" font-family="Arial, Helvetica, sans-serif">
+<title id="t3">Measuring a doorway with the door open</title>
+<desc id="d3">A top view of a wall with a door opening. The door leaf is swung open to 90 degrees. The clear opening is measured from the face of the open door to the door stop on the other side, which is narrower than the frame opening.</desc>
+<rect width="800" height="400" fill="#fbf8f3"/>
+<text x="400" y="32" text-anchor="middle" font-size="20" font-weight="700" fill="#2d2a26">Measure the clear opening, not the frame</text>
+<rect x="60" y="170" width="260" height="40" fill="#cfc7bb" stroke="#2d2a26" stroke-width="2"/>
+<rect x="520" y="170" width="220" height="40" fill="#cfc7bb" stroke="#2d2a26" stroke-width="2"/>
+<rect x="320" y="170" width="10" height="40" fill="#8a5a1f"/><rect x="510" y="170" width="10" height="40" fill="#8a5a1f"/>
+<rect x="330" y="170" width="14" height="26" fill="#2d2a26"/>
+<rect x="320" y="90" width="10" height="80" fill="#e9d3b0" stroke="#8a5a1f" stroke-width="2"/>
+<text x="305" y="132" text-anchor="end" font-size="13" fill="#2d2a26">Door open</text><text x="305" y="150" text-anchor="end" font-size="13" fill="#2d2a26">to 90°</text>
+<g stroke="#245a20" stroke-width="3"><line x1="330" y1="260" x2="510" y2="260"/><line x1="330" y1="248" x2="330" y2="272"/><line x1="510" y1="248" x2="510" y2="272"/></g>
+<text x="420" y="292" text-anchor="middle" font-size="16" font-weight="700" fill="#245a20">Clear opening</text>
+<text x="420" y="312" text-anchor="middle" font-size="13" fill="#2d2a26">door face to stop, at the narrowest point</text>
+<g stroke="#8a5a1f" stroke-width="2" stroke-dasharray="6 4"><line x1="320" y1="225" x2="520" y2="225"/></g>
+<text x="420" y="244" text-anchor="middle" font-size="12" fill="#8a5a1f">frame opening (larger, not the number to use)</text>
+<g font-size="13" fill="#2d2a26"><text x="540" y="76" font-weight="700">Then compare</text><text x="540" y="96">The piece’s diagonal depth</text><text x="540" y="114">must be less than this width</text><text x="540" y="76" fill="#2d2a26"> </text></g>
+<text x="420" y="360" text-anchor="middle" font-size="12" fill="#2d2a26">Knobs, hinges and trim can narrow the opening further. Measure there too.</text>
+</svg>

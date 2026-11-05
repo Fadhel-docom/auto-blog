@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" role="img" aria-labelledby="t2 d2" font-family="Arial, Helvetica, sans-serif">
+<title id="t2">The Room, Object, Route, Use test</title>
+<desc id="d2">Four steps in a row: measure the room with its openings and obstacles, measure the object including its diagonal, check the route it must travel, then tape the footprint and check the space needed to use it.</desc>
+<rect width="800" height="300" fill="#fbf8f3"/>
+<text x="400" y="34" text-anchor="middle" font-size="20" font-weight="700" fill="#2d2a26">Four checks before you buy</text>
+<g stroke-width="2">
+<rect x="20" y="62" width="172" height="190" rx="10" fill="#dcefd9" stroke="#3f7d3a"/>
+<rect x="212" y="62" width="172" height="190" rx="10" fill="#f6e4c8" stroke="#a8721b"/>
+<rect x="404" y="62" width="172" height="190" rx="10" fill="#dfe6f2" stroke="#44566b"/>
+<rect x="596" y="62" width="172" height="190" rx="10" fill="#efe0f0" stroke="#7a4a7e"/></g>
+<g font-size="20" font-weight="700" fill="#2d2a26" text-anchor="middle">
+<text x="106" y="98">1. Room</text><text x="298" y="98">2. Object</text><text x="490" y="98">3. Route</text><text x="682" y="98">4. Use</text></g>
+<g font-size="13" fill="#2d2a26" text-anchor="middle">
+<text x="106" y="132">Walls, doors, windows,</text><text x="106" y="152">ceiling, beams, vents</text><text x="106" y="172">and outlets</text>
+<text x="298" y="132">Width, depth, height</text><text x="298" y="152">and diagonal, with legs</text><text x="298" y="172">and moving parts</text>
+<text x="490" y="132">Truck to door, hall,</text><text x="490" y="152">stairs, lift, and the</text><text x="490" y="172">door opened to 90°</text>
+<text x="682" y="132">Tape the footprint,</text><text x="682" y="152">test the walkway and</text><text x="682" y="172">open every door</text></g>
+<g font-size="12" fill="#2d2a26" text-anchor="middle">
+<text x="106" y="226">Result: usable space</text><text x="298" y="226">Result: the footprint</text><text x="490" y="226">Result: pass or no pass</text><text x="682" y="226">Result: buy or re-measure</text></g>
+<g stroke="#2d2a26" stroke-width="2" fill="#2d2a26"><polygon points="192,157 210,157 201,150"/><polygon points="384,157 402,157 393,150"/><polygon points="576,157 594,157 585,150"/></g>
+</svg>
