@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-05T01:46:43+00:00",
+  "timestamp": "2026-11-05T08:41:47+00:00",
   "site": "https://home-organization-ideas.pages.dev/",
   "publishing": {
     "status": "PAUSED",
@@ -46,29 +46,29 @@
   },
   "content": {
     "status": "OK",
-    "post": "shared-bathroom-one-sink-morning-rush-plan.md",
-    "words": 2261,
+    "post": "board-game-night-reset-without-a-game-room.md",
+    "words": 3058,
     "inline_images": 3,
     "unique_inline_images": 3,
-    "h2": 15,
+    "h2": 17,
     "faq": 6
   },
   "runs": {
     "Health Monitor": {
-      "id": 41950784973,
+      "id": 41996434251,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-11-05T01:46:34Z",
-      "updated_at": "2026-11-05T01:46:38Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/41950784973"
+      "created_at": "2026-11-05T08:41:35Z",
+      "updated_at": "2026-11-05T08:41:38Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/41996434251"
     },
     "Traffic Report": {
-      "id": 41901217193,
+      "id": 41984142753,
       "status": "completed",
       "conclusion": "success",
-      "created_at": "2026-11-04T19:52:58Z",
-      "updated_at": "2026-11-04T19:53:16Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/41901217193"
+      "created_at": "2026-11-05T07:00:02Z",
+      "updated_at": "2026-11-05T07:00:21Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/41984142753"
     }
   },
   "quality_gate": {
