@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" role="img" aria-labelledby="t2 d2" font-family="Arial, Helvetica, sans-serif">
+<title id="t2">Three game-night setups for a small living room</title>
+<desc id="d2">Three columns compare setup A on the coffee table, setup B on a borrowed bigger surface such as a dining table, and setup C on a temporary folding table, with the games each suits and a planning target for the reset.</desc>
+<rect width="800" height="380" fill="#fbf8f3"/>
+<text x="400" y="32" text-anchor="middle" font-size="20" font-weight="700" fill="#2d2a26">Pick the setup before you pick the game</text>
+<g stroke-width="2">
+<rect x="20" y="52" width="240" height="298" rx="10" fill="#dcefd9" stroke="#3f7d3a"/>
+<rect x="280" y="52" width="240" height="298" rx="10" fill="#f6e4c8" stroke="#a8721b"/>
+<rect x="540" y="52" width="240" height="298" rx="10" fill="#dfe6f2" stroke="#44566b"/></g>
+<g font-size="17" font-weight="700" fill="#2d2a26">
+<text x="36" y="86">A. Coffee table</text><text x="296" y="86">B. Borrowed surface</text><text x="556" y="86">C. Temporary table</text></g>
+<g font-size="13" font-weight="700" fill="#2d2a26">
+<text x="36" y="122">Surface</text><text x="36" y="202">Suits</text><text x="36" y="282">Reset target</text>
+<text x="296" y="122">Surface</text><text x="296" y="202">Suits</text><text x="296" y="282">Reset target</text>
+<text x="556" y="122">Surface</text><text x="556" y="202">Suits</text><text x="556" y="282">Reset target</text></g>
+<g font-size="14" fill="#2d2a26">
+<text x="36" y="144">Low table, sofa and floor</text><text x="36" y="164">seating already in the room</text>
+<text x="36" y="224">Card games, word games,</text><text x="36" y="244">small-box games</text>
+<text x="36" y="304">About 5 minutes</text>
+<text x="296" y="144">Dining table, desk or a</text><text x="296" y="164">console with a leaf or shelf</text>
+<text x="296" y="224">Mid-size box games for</text><text x="296" y="244">three or four players</text>
+<text x="296" y="304">About 10 minutes</text>
+<text x="556" y="144">Folding table and folding</text><text x="556" y="164">chairs, stored when done</text>
+<text x="556" y="224">Large or long games,</text><text x="556" y="244">five or more players</text>
+<text x="556" y="304">About 15 minutes</text></g>
+<text x="400" y="372" text-anchor="middle" font-size="12" fill="#2d2a26">Reset targets are planning goals, not measured standards.</text>
+</svg>
