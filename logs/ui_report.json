@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-04T19:28:17+00:00",
+  "timestamp": "2026-11-05T05:36:35+00:00",
   "site": "https://home-organization-ideas.pages.dev/",
   "golden": {
     "home": {
@@ -35,13 +35,37 @@
     "grid": true,
     "featured": true,
     "nav_links": 19,
-    "article_cards": 36,
+    "article_cards": 37,
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 94417
+    "html_length": 96595
   },
   "articles": [
+    {
+      "url": "https://home-organization-ideas.pages.dev/posts/shared-bathroom-one-sink-morning-rush-plan/",
+      "status": 200,
+      "title": "Shared Bathroom With One Sink: Fix the Morning Rush",
+      "title_capitalized": true,
+      "meta_description": "Share one bathroom sink without the morning pile-up. Run a minute-by-minute conflict test, set sink-side rules, and store medicines and cleaners safely.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/shared-bathroom-one-sink-morning-rush-plan/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 17,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 36628
+    },
     {
       "url": "https://home-organization-ideas.pages.dev/posts/small-kitchen-counter-appliance-organization/",
       "status": 200,
@@ -137,30 +161,6 @@
       },
       "required_failures": [],
       "html_length": 35313
-    },
-    {
-      "url": "https://home-organization-ideas.pages.dev/posts/stacked-washer-dryer-closet-fit-venting-leak-protection/",
-      "status": 200,
-      "title": "Stackable Washer and Dryer in a Closet: Fit and Venting",
-      "title_capitalized": true,
-      "meta_description": "Plan a stacked washer and dryer in a closet: measure the opening, add manufacturer clearances, size the door vents, vent the dryer outside and prevent leaks.",
-      "canonical": "https://home-organization-ideas.pages.dev/posts/stacked-washer-dryer-closet-fit-venting-leak-protection/",
-      "images": 8,
-      "tags": 5,
-      "h2_count": 18,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 34130
     }
   ],
   "responsive": {
