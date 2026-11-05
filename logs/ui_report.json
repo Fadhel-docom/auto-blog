@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-05T05:36:35+00:00",
+  "timestamp": "2026-11-05T19:38:18+00:00",
   "site": "https://home-organization-ideas.pages.dev/",
   "golden": {
     "home": {
@@ -35,13 +35,37 @@
     "grid": true,
     "featured": true,
     "nav_links": 19,
-    "article_cards": 37,
+    "article_cards": 38,
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 96595
+    "html_length": 98860
   },
   "articles": [
+    {
+      "url": "https://home-organization-ideas.pages.dev/posts/board-game-night-reset-without-a-game-room/",
+      "status": 200,
+      "title": "Board Game Night Without a Game Room: Set Up and Reset in 15 Minutes",
+      "title_capitalized": true,
+      "meta_description": "Plan board game night in a small living room: measure the real play surface, tape a clear walkway, store games safely and reset the room in 15 minutes.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/board-game-night-reset-without-a-game-room/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 19,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 40576
+    },
     {
       "url": "https://home-organization-ideas.pages.dev/posts/shared-bathroom-one-sink-morning-rush-plan/",
       "status": 200,
@@ -112,7 +136,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 37613
+      "html_length": 37626
     },
     {
       "url": "https://home-organization-ideas.pages.dev/posts/clothes-storage-bedroom-no-closet-measure-first/",
@@ -137,30 +161,6 @@
       },
       "required_failures": [],
       "html_length": 38107
-    },
-    {
-      "url": "https://home-organization-ideas.pages.dev/posts/workout-gear-storage-small-apartment/",
-      "status": 200,
-      "title": "Workout Gear Storage in a Small Apartment: Check the Load Rating First",
-      "title_capitalized": true,
-      "meta_description": "Store workout gear in a small apartment with a safe heavy-gear zone, compact mat and band storage, renter-friendly options, and a quick reset plan.",
-      "canonical": "https://home-organization-ideas.pages.dev/posts/workout-gear-storage-small-apartment/",
-      "images": 8,
-      "tags": 6,
-      "h2_count": 18,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 35313
     }
   ],
   "responsive": {
