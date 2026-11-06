@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-05T19:38:18+00:00",
+  "timestamp": "2026-11-06T05:33:24+00:00",
   "site": "https://home-organization-ideas.pages.dev/",
   "golden": {
     "home": {
@@ -35,13 +35,37 @@
     "grid": true,
     "featured": true,
     "nav_links": 19,
-    "article_cards": 38,
+    "article_cards": 39,
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 98860
+    "html_length": 101009
   },
   "articles": [
+    {
+      "url": "https://home-organization-ideas.pages.dev/posts/how-to-measure-room-furniture-fit/",
+      "status": 200,
+      "title": "How to Measure a Room for Furniture (and Make Sure It Fits)",
+      "title_capitalized": true,
+      "meta_description": "Measure a room for furniture the right way: draw the plan, check walls, doors and obstacles, test the delivery route and tape the footprint before you buy.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/how-to-measure-room-furniture-fit/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 17,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 38529
+    },
     {
       "url": "https://home-organization-ideas.pages.dev/posts/board-game-night-reset-without-a-game-room/",
       "status": 200,
@@ -137,30 +161,6 @@
       },
       "required_failures": [],
       "html_length": 37626
-    },
-    {
-      "url": "https://home-organization-ideas.pages.dev/posts/clothes-storage-bedroom-no-closet-measure-first/",
-      "status": 200,
-      "title": "Clothes Storage With No Closet: Measure First, Then Pick",
-      "title_capitalized": true,
-      "meta_description": "Plan clothes storage with no closet: add up rod space, check rack height, count drawer stacks, keep a clear path and anchor the dresser before you buy.",
-      "canonical": "https://home-organization-ideas.pages.dev/posts/clothes-storage-bedroom-no-closet-measure-first/",
-      "images": 8,
-      "tags": 6,
-      "h2_count": 18,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 38107
     }
   ],
   "responsive": {
