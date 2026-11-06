@@ -12,12 +12,12 @@
 <path d="M180 240 A80 80 0 0 1 260 320" fill="none" stroke="#8a5a1f" stroke-width="2" stroke-dasharray="6 4"/>
 <line x1="180" y1="320" x2="260" y2="320" stroke="#8a5a1f" stroke-width="3"/>
 <text x="150" y="285" text-anchor="end" font-size="13" font-weight="700" fill="#2d2a26">DW1</text>
-<polygon points="146,322 146,298 126,310" fill="#3f7d3a"/>
+<polygon points="126,322 126,298 146,310" fill="#3f7d3a"/>
 <text x="120" y="345" font-size="12" fill="#2d2a26">Entrance</text>
 <g font-size="22" font-weight="700" fill="#245a20" text-anchor="middle">
 <text x="400" y="104">A</text><text x="588" y="224">B</text><text x="400" y="352">C</text><text x="212" y="224" fill="#245a20">D</text></g>
 <g stroke="#3f7d3a" stroke-width="3" fill="none"><path d="M236 124 L560 124"/><path d="M560 124 L560 330" /><path d="M560 330 L236 330" /></g>
-<polygon points="560,118 574,124 560,130" fill="#3f7d3a"/><polygon points="566,330 560,342 554,330" fill="#3f7d3a"/><polygon points="236,324 222,330 236,336" fill="#3f7d3a"/>
+<polygon points="560,118 574,124 560,130" fill="#3f7d3a"/><polygon points="566,236 560,248 554,236" fill="#3f7d3a"/><polygon points="236,324 222,330 236,336" fill="#3f7d3a"/>
 <g font-size="14" fill="#2d2a26">
 <text x="640" y="150" font-weight="700">Write on the plan</text>
 <text x="640" y="172" font-size="13">Each wall, edge to edge</text>

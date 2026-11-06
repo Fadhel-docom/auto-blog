@@ -12,10 +12,10 @@
 <g fill="#cfd8e3" stroke="#44566b" stroke-width="2">
 <rect x="326" y="118" width="52" height="30" rx="6"/><rect x="422" y="118" width="52" height="30" rx="6"/>
 <rect x="326" y="292" width="52" height="30" rx="6"/><rect x="422" y="292" width="52" height="30" rx="6"/></g>
-<rect x="60" y="340" width="680" height="84" fill="#dcefd9" fill-opacity="0.75" stroke="#3f7d3a" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="84" y="340" width="656" height="84" fill="#dcefd9" fill-opacity="0.75" stroke="#3f7d3a" stroke-width="2" stroke-dasharray="8 6"/>
 <text x="400" y="392" text-anchor="middle" font-size="15" font-weight="700" fill="#245a20">Walkway to tape out</text>
 <text x="400" y="412" text-anchor="middle" font-size="12" fill="#2d2a26">Yardstick: 36 in wide, measured with the chairs pulled out</text>
-<g stroke="#2d2a26" stroke-width="1.5" fill="none"><line x1="500" y1="200" x2="560" y2="200"/><line x1="474" y1="130" x2="560" y2="130"/><line x1="236" y1="306" x2="302" y2="268"/></g>
+<g stroke="#2d2a26" stroke-width="1.5" fill="none"><line x1="478" y1="200" x2="560" y2="200"/><line x1="474" y1="130" x2="560" y2="130"/><line x1="236" y1="306" x2="302" y2="268"/></g>
 <g font-size="14" fill="#2d2a26">
 <text x="566" y="196" font-weight="700">1. Clear play surface</text><text x="566" y="214" font-size="12">What is left after the lip and decor</text>
 <text x="566" y="126" font-weight="700">2. Chair space</text><text x="566" y="144" font-size="12">Seats pulled back, as in play</text>
