@@ -1,0 +1,59 @@
+{{ define "main" }}
+<article class="tool-page room-cost-planner">
+  <header class="tool-page-header">
+    {{ partial "breadcrumb.html" . }}
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="tool-intro">{{ . }}</p>{{ end }}
+  </header>
+  <div class="tool-content">{{ .Content }}</div>
+  <section class="planner-panel" aria-labelledby="planner-heading">
+    <div class="planner-topline">
+      <div><span class="planner-kicker">YOUR PROJECT</span><h2 id="planner-heading">Build your estimate</h2></div>
+      <label class="planner-field planner-currency"><span>Currency</span>
+        <select id="planner-currency" aria-label="Currency">
+          <option value="USD">USD ($)</option><option value="EUR">EUR (€)</option><option value="GBP">GBP (£)</option><option value="CAD">CAD ($)</option><option value="AUD">AUD ($)</option><option value="TND">TND (د.ت)</option><option value="other">Other</option>
+        </select>
+      </label>
+    </div>
+    <fieldset class="planner-fieldset">
+      <legend>Room dimensions (optional)</legend>
+      <div class="planner-dimensions">
+        <label class="planner-field"><span>Length</span><input id="planner-length" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 12"></label>
+        <label class="planner-field"><span>Width</span><input id="planner-width" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 10"></label>
+        <label class="planner-field"><span>Unit</span><select id="planner-unit"><option value="ft">Feet</option><option value="m">Meters</option></select></label>
+      </div>
+      <p class="planner-area" id="planner-area" aria-live="polite">Enter length and width to calculate the floor area.</p>
+    </fieldset>
+    <div class="planner-items-heading">
+      <div><h3>Materials, furniture, and labor</h3><p>Add the items you plan to buy or pay for.</p></div>
+      <button type="button" class="planner-button planner-button-secondary" id="planner-add">+ Add item</button>
+    </div>
+    <div class="planner-table-wrap">
+      <table class="planner-table">
+        <thead><tr><th scope="col">Item / work</th><th scope="col">Qty</th><th scope="col">Unit price</th><th scope="col">Line total</th><th scope="col"><span class="sr-only">Remove</span></th></tr></thead>
+        <tbody id="planner-items">
+          <tr class="planner-item-row"><td><input class="planner-name" aria-label="Item name" value="Storage unit" placeholder="Item name"></td><td><input class="planner-qty" aria-label="Quantity" type="number" min="0" step="any" value="1"></td><td><input class="planner-price" aria-label="Unit price" type="number" min="0" step="any" value="0"></td><td class="planner-line-total">—</td><td><button type="button" class="planner-remove" aria-label="Remove Storage unit">×</button></td></tr>
+          <tr class="planner-item-row"><td><input class="planner-name" aria-label="Item name" value="Furniture" placeholder="Item name"></td><td><input class="planner-qty" aria-label="Quantity" type="number" min="0" step="any" value="1"></td><td><input class="planner-price" aria-label="Unit price" type="number" min="0" step="any" value="0"></td><td class="planner-line-total">—</td><td><button type="button" class="planner-remove" aria-label="Remove Furniture">×</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="planner-adjustments">
+      <label class="planner-field"><span>Tax (%)</span><input id="planner-tax" type="number" min="0" max="100" step="any" value="0"></label>
+      <label class="planner-field"><span>Contingency (%)</span><input id="planner-contingency" type="number" min="0" max="100" step="any" value="10"></label>
+    </div>
+    <div class="planner-total-card" aria-live="polite" aria-atomic="true">
+      <div><span>Items subtotal</span><strong id="planner-subtotal">—</strong></div>
+      <div><span>Tax</span><strong id="planner-tax-total">—</strong></div>
+      <div><span>Contingency</span><strong id="planner-contingency-total">—</strong></div>
+      <div class="planner-grand"><span>Estimated total</span><strong id="planner-grand-total">—</strong></div>
+    </div>
+    <div class="planner-actions">
+      <button type="button" class="planner-button" id="planner-print">Print / Save as PDF</button>
+      <button type="button" class="planner-button planner-button-secondary" id="planner-reset">Reset estimate</button>
+    </div>
+    <p class="planner-note">Estimate only. Prices, quantities, taxes, and contingency are supplied by you. This tool does not check local building rules, labor rates, or product availability. Use your browser’s print dialog and choose “Save as PDF” for a printable copy.</p>
+  </section>
+</article>
+<link rel="stylesheet" href="{{ "css/room-cost-planner.css" | relURL }}">
+<script src="{{ "js/room-cost-planner.js" | relURL }}" defer></script>
+{{ end }}
