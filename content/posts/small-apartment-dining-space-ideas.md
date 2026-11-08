@@ -3,7 +3,7 @@ title = "Drop-Leaf, Round or Banquette? Choose a Dining Table by Seated Footprin
 date = "2026-11-07T10:45:00+00:00"
 lastmod = "2026-11-08T09:00:00+00:00"
 description = "Choose a small-apartment dining setup by measuring the table, the pulled-out chairs, the route and the door swings. Compare five layouts, work through a calculated example and print a decision sheet."
-image = "images/small-apartment-dining-space-ideas-cover.svg"
+image = "images/small-apartment-dining-space-ideas-cover.jpg"
 images = ["images/small-apartment-dining-space-ideas-footprint.svg", "images/small-apartment-dining-space-ideas-example-plan.svg", "images/small-apartment-dining-space-ideas-table-options.svg"]
 tags = ["small apartment dining", "small dining space", "dining nook", "drop leaf table", "small space furniture"]
 categories = ["Small Space Guides"]
@@ -186,3 +186,7 @@ Use painter's tape to mark the tabletop and the pulled-back chair zones at full 
 - [IKEA UK, Small space ideas for extending the dining table](https://www.ikea.com/gb/en/rooms/dining/how-to/small-space-ideas-for-extending-the-dining-table-pubc6d2e730/): seller examples of gateleg, extendable and matching second tables; product sizes and availability change.
 
 The diagrams and the 10 by 12 foot room are original, hypothetical planning illustrations. This guide supports practical planning and does not replace local code, professional accessibility advice or measuring the exact furniture you intend to buy.
+
+## Image Credits
+
+The cover image is an AI-generated image via ChatGPT, November 2026. The three diagrams are original graphics created for this guide.
