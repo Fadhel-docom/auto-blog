@@ -30,11 +30,14 @@
       minimumFractionDigits: 2, maximumFractionDigits: 2
     }) + " (your currency)";
   };
-  // Announce only the final estimate, not every subtotal on every keystroke.
-  const totalCard = $(".planner-total-card");
-  if (totalCard) totalCard.removeAttribute("aria-live");
-  const grandTotal = $("#planner-grand-total");
-  if (grandTotal) grandTotal.setAttribute("aria-live", "polite");
+  // One polite announcement, 900 ms after the user stops typing.
+  const status = $("#planner-status");
+  let statusTimer = null;
+  function announceTotal(total) {
+    if (!status) return;
+    clearTimeout(statusTimer);
+    statusTimer = setTimeout(() => { status.textContent = "Estimated total: " + money(total); }, 900);
+  }
   function createRow(name = "", qty = 1, price = 0) {
     const row = document.createElement("tr");
     row.className = "planner-item-row";
@@ -73,6 +76,7 @@
     $("#planner-tax-total").textContent = money(tax);
     $("#planner-contingency-total").textContent = money(contingency);
     $("#planner-grand-total").textContent = money(subtotal + tax + contingency);
+    announceTotal(subtotal + tax + contingency);
     updateArea();
   }
   itemsBody.addEventListener("input", calculate);
