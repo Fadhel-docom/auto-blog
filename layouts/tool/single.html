@@ -41,7 +41,7 @@
       <label class="planner-field"><span>Tax (%)</span><input id="planner-tax" type="number" min="0" max="100" step="any" value="0"></label>
       <label class="planner-field"><span>Contingency (%)</span><input id="planner-contingency" type="number" min="0" max="100" step="any" value="10"></label>
     </div>
-    <div class="planner-total-card" aria-live="polite" aria-atomic="true">
+    <div class="planner-total-card">
       <div><span>Items subtotal</span><strong id="planner-subtotal">—</strong></div>
       <div><span>Tax</span><strong id="planner-tax-total">—</strong></div>
       <div><span>Contingency</span><strong id="planner-contingency-total">—</strong></div>
@@ -51,6 +51,7 @@
       <button type="button" class="planner-button" id="planner-print">Print / Save as PDF</button>
       <button type="button" class="planner-button planner-button-secondary" id="planner-reset">Reset estimate</button>
     </div>
+    <p class="sr-only" id="planner-status" role="status" aria-live="polite" aria-atomic="true"></p>
     <p class="planner-note">Estimate only. Prices, quantities, taxes, and contingency are supplied by you. This tool does not check local building rules, labor rates, or product availability. Use your browser’s print dialog and choose “Save as PDF” for a printable copy.</p>
   </section>
 </article>
