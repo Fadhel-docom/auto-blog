@@ -8,4 +8,17 @@
 .planner-total-card{max-width:520px;margin-left:auto;padding:1.1rem 1.2rem;border-radius:14px;background:#f3f4ef;color:#28342b}.planner-total-card>div{display:flex;justify-content:space-between;gap:1rem;padding:.4rem 0}.planner-total-card .planner-grand{border-top:1px solid #c8cec5;margin-top:.5rem;padding-top:.9rem;font-size:1.15rem}.planner-grand strong{font-size:1.35rem}
 .planner-button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:.7rem 1.1rem;border:1px solid #35483a;border-radius:999px;background:#35483a;color:#fff;font:inherit;font-weight:750;cursor:pointer}.planner-button:hover{background:#26372b}.planner-button-secondary{background:transparent;color:#35483a}.planner-button-secondary:hover{background:#edf0e9}.planner-note{margin:1.2rem 0 0;color:var(--v2-ink-soft,#59635a);font-size:.84rem;line-height:1.65}
 @media(max-width:640px){.planner-dimensions{grid-template-columns:1fr}.planner-adjustments{grid-template-columns:1fr 1fr}.planner-panel{border-radius:14px}}
-@media print{body *{visibility:hidden!important}.room-cost-planner,.room-cost-planner *{visibility:visible!important}.room-cost-planner{position:absolute;inset:0;width:100%;max-width:none}.planner-panel{border:0;padding:0}.planner-button,.planner-remove,.planner-kicker,.planner-topline .planner-currency{display:none!important}.planner-table input{border:0;padding:0;min-height:0}.planner-table{border-spacing:0}.planner-table td,.planner-table th{border-bottom:1px solid #ddd}.planner-total-card{background:#fff;border:1px solid #bbb}.planner-note{font-size:9pt}}
+@media print {
+  @page { size: auto; margin: 12mm; }
+  body * { visibility: hidden !important; }
+  .room-cost-planner, .room-cost-planner * { visibility: visible !important; }
+  .room-cost-planner { position: absolute; left: 0; top: 0; width: 100%; max-width: none; }
+  .planner-panel { border: 0; padding: 0; margin: 0; }
+  .planner-button, .planner-remove, .planner-kicker, .planner-topline .planner-currency,
+  .site-header, .site-footer, header.site-header, footer.site-footer, nav { display: none !important; }
+  .planner-table input { border: 0; padding: 0; min-height: 0; }
+  .planner-table { border-spacing: 0; }
+  .planner-table td, .planner-table th { border-bottom: 1px solid #ddd; }
+  .planner-total-card { background: #fff; border: 1px solid #bbb; }
+  .planner-note { font-size: 9pt; }
+}
