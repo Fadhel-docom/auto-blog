@@ -10,20 +10,31 @@
   const unitInput = $("#planner-unit");
   const taxInput = $("#planner-tax");
   const contingencyInput = $("#planner-contingency");
-  const formatter = () => new Intl.NumberFormat(undefined, {
-    style: "currency",
-    currency: currency.value === "other" ? "USD" : currency.value,
-    maximumFractionDigits: 2
-  });
+  const formatter = () => {
+    const code = currency.value;
+    if (code === "other") return null;
+    const digits = code === "TND" ? 3 : 2;
+    return new Intl.NumberFormat(undefined, {
+      style: "currency", currency: code,
+      minimumFractionDigits: digits, maximumFractionDigits: digits
+    });
+  };
   const number = (value) => {
     const parsed = Number.parseFloat(value);
     return Number.isFinite(parsed) && parsed >= 0 ? parsed : 0;
   };
   const percent = (value) => Math.min(100, number(value));
   const money = (value) => {
-    try { return formatter().format(value); }
-    catch (_) { return value.toFixed(2) + " " + currency.value; }
+    const format = formatter();
+    return format ? format.format(value) : value.toLocaleString(undefined, {
+      minimumFractionDigits: 2, maximumFractionDigits: 2
+    }) + " (your currency)";
   };
+  // Announce only the final estimate, not every subtotal on every keystroke.
+  const totalCard = $(".planner-total-card");
+  if (totalCard) totalCard.removeAttribute("aria-live");
+  const grandTotal = $("#planner-grand-total");
+  if (grandTotal) grandTotal.setAttribute("aria-live", "polite");
   function createRow(name = "", qty = 1, price = 0) {
     const row = document.createElement("tr");
     row.className = "planner-item-row";
