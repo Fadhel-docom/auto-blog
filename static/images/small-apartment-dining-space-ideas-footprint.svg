@@ -1,5 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="760" viewBox="0 0 1000 760" role="img" aria-labelledby="title desc">
-<title id="title">Dining footprint planning diagram</title><desc id="desc">Top view showing a table, four chair zones, and a separate circulation path. Measure the actual room and furniture.</desc>
-<rect width="1000" height="760" fill="#fff"/><rect x="90" y="70" width="820" height="620" fill="#faf8f3" stroke="#65766a" stroke-width="6"/><rect x="310" y="245" width="380" height="230" rx="8" fill="#d7b58c" stroke="#9b7955" stroke-width="4"/><text x="500" y="360" text-anchor="middle" font-family="Arial" font-size="30" fill="#3e352b">TABLE</text><text x="500" y="398" text-anchor="middle" font-family="Arial" font-size="20" fill="#3e352b">tabletop footprint</text>
-<rect x="385" y="125" width="230" height="95" rx="14" fill="#9aa99a" stroke="#64796a" stroke-width="3"/><rect x="385" y="500" width="230" height="95" rx="14" fill="#9aa99a" stroke="#64796a" stroke-width="3"/><rect x="190" y="285" width="90" height="150" rx="14" fill="#9aa99a" stroke="#64796a" stroke-width="3"/><rect x="720" y="285" width="90" height="150" rx="14" fill="#9aa99a" stroke="#64796a" stroke-width="3"/>
-<path d="M115 625H875" stroke="#4d8c91" stroke-width="42" stroke-linecap="round" opacity=".35"/><path d="M115 625H875" stroke="#4d8c91" stroke-width="5" stroke-dasharray="14 12"/><text x="500" y="672" text-anchor="middle" font-family="Arial" font-size="22" fill="#28656a">Keep the needed circulation path clear</text><text x="115" y="105" font-family="Arial" font-size="20" fill="#9b6b36">Chair / pull-back zone</text><text x="500" y="35" text-anchor="middle" font-family="Arial" font-size="24" fill="#39453b">Illustrative only — measure the occupied footprint</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-labelledby="t d">
+<title id="t">Seated clearance around a 30 by 48 inch dining table</title><desc id="d">Top view of a 30 by 48 inch table with two chairs on the left, 32 inches of clearance behind the seated diner, and 36 and 44 inch clearances on the right for edging past or walking past.</desc>
+<rect width="1000" height="620" fill="#fff"/>
+<text x="500" y="30" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#2f3a31">Occupied seating needs more floor than the tabletop</text>
+<rect x="40" y="50" width="920" height="540" fill="#faf8f3" stroke="#65766a" stroke-width="4"/>
+<text x="500" y="148" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#3e352b">Knee space: 24 in (61 cm) wide per diner</text>
+<rect x="265" y="170" width="160" height="240" fill="#9aa99a" fill-opacity=".22" stroke="#4d6b55" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="575" y="170" width="180" height="240" fill="#4d8c91" fill-opacity=".12" stroke="#28656a" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="425" y="170" width="150" height="240" rx="8" fill="#d7b58c" stroke="#9b7955" stroke-width="4"/>
+<text x="500" y="282" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="26" font-weight="700" fill="#3e352b">TABLE</text>
+<text x="500" y="314" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#3e352b">30 x 48 in</text>
+<text x="500" y="340" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#3e352b">(76 x 122 cm)</text>
+<rect x="345" y="190" width="65" height="80" rx="12" fill="#9aa99a" stroke="#64796a" stroke-width="3"/>
+<rect x="345" y="310" width="65" height="80" rx="12" fill="#9aa99a" stroke="#64796a" stroke-width="3"/>
+<path d="M265 430H425M265 422V438M425 422V438" stroke="#2f4a38" stroke-width="3"/>
+<text x="345" y="460" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#2f4a38">32 in (81 cm)</text>
+<text x="345" y="486" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#2f4a38">no passage behind the diner</text>
+<path d="M575 430H755M575 422V438M755 422V438" stroke="#28656a" stroke-width="3"/>
+<text x="665" y="460" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#28656a">36 in (91 cm): edge past</text>
+<path d="M575 500H795M575 492V508M795 492V508" stroke="#28656a" stroke-width="3" stroke-dasharray="10 6"/>
+<text x="685" y="530" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#28656a">44 in (112 cm): walk past</text>
+<text x="500" y="570" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#58655b">NKBA Guideline 8 planning recommendations for kitchen seating, not a building code</text>
+</svg>
