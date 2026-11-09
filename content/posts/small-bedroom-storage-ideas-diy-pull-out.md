@@ -71,7 +71,7 @@ Rolling bins give you flexibility without building. Choose low bins with wheels 
 
 ## Step 6: Decide What Goes Under the Bed
 
-Under-bed storage works for items you need a few times a year or in a weekly rotation: off-season clothes, spare bedding, shoes and luggage. It fails for anything daily, because digging under a bed every morning is a habit that does not last. Keep nightly items on a bedside shelf or hook.
+Under-bed storage works for items you need a few times a year or in a weekly rotation: off-season clothes, spare bedding, shoes and luggage. It fails for anything daily, because digging under a bed every morning is a habit that does not last. Keep nightly items on a bedside shelf or hook. If you also need a compact place for a yoga mat, resistance bands or weights, see our [small-apartment workout gear storage guide](/posts/workout-gear-storage-small-apartment/).
 
 ## Tools and Time
 
