@@ -67,6 +67,8 @@ Check this with measurement E: open the door fully, then slide a box of the same
 - **Sloped or under-stair closets:** keep the low side for bins and the tall side for hanging.
 - **No closet at all:** a freestanding wardrobe or open rail works, and should be anchored to the wall if it is tall or top-heavy.
 
+For seasonal decorations that compete with clothing and shoes for shelf space, use our [holiday storage bin-budget method](/posts/holiday-decoration-storage-small-apartment-count-before-you-box/).
+
 ## Cheap Tests Before You Buy Anything
 
 Cut a piece of cardboard to the depth and width of the shelf you are considering and slide it into place. Stack your real folded clothes on it for a day and see whether you can lift the bottom item without disturbing the pile. Hang three of your longest garments on a temporary rod, such as a broom handle across two chairs, and see where the hems land. Tape the outline of a shoe rack on the floor and check whether the door still shuts. These tests take ten minutes each and prevent most returns.
