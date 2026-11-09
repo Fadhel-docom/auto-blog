@@ -109,9 +109,9 @@ For more on keeping the main route open in a small living room, see [Small Livin
 
 ![Plan of a hypothetical 120 by 144 inch room with an extended table, 32 inch seating zones and six seats](../images/small-apartment-dining-space-ideas-example-plan.svg)
 
-1. **Width, long-side seats only.** Table depth 30 + 32 behind one diner + 32 behind the other = **94 inches (239 cm)**. The room is 120 inches wide, so 26 inches (66 cm) are left over.
+1. **Width, long-side seats only.** Table depth 30 + 32 behind one diner + 32 behind the other = **94 inches (239 cm)**. The room is 120 inches wide, so 26 inches (66 cm) are left over on paper.
 2. **Width, if someone passes behind one side.** 30 + 32 + 44 = **106 inches (269 cm)**, which leaves 14 inches (36 cm). If both sides were a passage, 30 + 44 + 44 = 118 inches leaves only 2 inches: it fits on paper, but with no margin we treat it as a fail.
-3. **Length, extended table with end seats.** 60 + 32 + 32 = **124 inches (315 cm)**, which leaves 20 inches (51 cm) in a 144 inch room.
+3. **Length, extended table with end seats.** 60 + 32 + 32 = **124 inches (315 cm)**, which leaves 20 inches (51 cm) on paper in a 144 inch room.
 4. **Seats.** At 24 inches of knee space per diner, a 48 inch side seats two. The extended 60 inch side still seats two, and each 30 inch end seats one, so the extended table seats **six** and the closed table seats **four**.
 5. **What the sum leaves out.** Door swings, a radiator, a window sill and the route from the door to the kitchen. Draw those on the plan before you trust the result.
 
@@ -119,7 +119,7 @@ The same arithmetic with your own numbers is the whole method. For a room-by-roo
 
 ## Daily position versus extended position
 
-A drop-leaf or extendable table has more than one footprint, and the route has to survive both. In the example, the closed table needs a 48 by 94 inch footprint and the extended one needs 124 by 94 inches. The extra 12 inches of table length plus end seats is what changes the plan, not the tabletop alone.
+A drop-leaf or extendable table has more than one footprint, and the route has to survive both. In the example, the closed table needs a 112 by 94 inch footprint (284 by 239 cm: 48 + 32 + 32 inches long, 30 + 32 + 32 wide) and the extended one needs 124 by 94 inches (315 by 239 cm). The extra 12 inches of table length plus end seats is what changes the plan, not the tabletop alone.
 
 ![Two top-down sketches comparing a closed 30 by 48 inch table with four seats and an extended 30 by 60 inch table with six seats](../images/small-apartment-dining-space-ideas-table-options.svg)
 
