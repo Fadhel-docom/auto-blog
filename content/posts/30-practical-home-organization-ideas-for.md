@@ -19,7 +19,7 @@ faq = [
 original_graphics = true
 lastmod = "2026-10-19T00:17:39+00:00"
 +++
-**Quick answer:** do not start with containers. Sort one area, give every room a single job, measure, and only then buy what the measurements require. The 30 ideas below are grouped by problem, so pick the group that matches what annoys you every day and ignore the rest.
+**Quick answer:** do not start with containers. Sort one area, give every room a single job, measure, and only then buy what the measurements require. The 30 ideas below are grouped by problem, so pick the group that matches what annoys you every day and ignore the rest. If you want the full sequence from decluttering through room zones and weekly maintenance, continue with our [room-by-room small-space organization system](/posts/effortless-home-organization-tips-for-small-spaces/).
 
 ![Five-step order for organizing a small home: sort, zone, measure, buy, reset](images/30-first-pass.svg)
 
@@ -66,7 +66,7 @@ Most small-home organizing fails because the steps happen out of order. Storage 
 ## Ideas 25 to 30: Furniture, Bathroom and Daily Systems
 
 25. **Choose a storage ottoman or bench** only if you will use it for seating and the lid opens without hitting a wall.
-26. **Consider a drop-leaf or fold-down table** where meals or work only need a surface for part of the day.
+26. **Consider a drop-leaf or fold-down table** where meals or work only need a surface for part of the day. For a desk in a very tight work corner, use our [five-by-five-foot home-office layout](/posts/decluttering-5x5-home-office-corner-remote-workers/) to test desk depth, chair clearance and the route.
 27. **Secure tall leaning shelves to the wall,** especially in homes with children or pets.
 28. **Split bathroom items into daily, occasional and backup,** and keep daily items within easy reach.
 29. **Label only what is easy to confuse,** and keep a simple note or spreadsheet for items stored out of sight, such as seasonal gear.
