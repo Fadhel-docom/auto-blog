@@ -108,7 +108,7 @@ A bathroom is easier to maintain when every item has a zone:
 - **Zone B — occasional:** a secondary bin or higher shelf that remains reachable.
 - **Zone C — backups:** one labeled container, ideally outside the bathroom if the room is humid or has no spare cabinet space.
 
-Keep medicines according to their labels; the bathroom's heat and humidity may not be suitable for some products. Store cleaning chemicals separately from toiletries and follow their labels.
+Keep medicines according to their labels; the bathroom's heat and humidity may not be suitable for some products. Store cleaning chemicals separately from toiletries and follow their labels. For households sharing one basin, our [shared-bathroom morning plan](/posts/shared-bathroom-one-sink-morning-rush-plan/) covers personal caddies, sink access and timing.
 
 ![Three-zone bathroom storage diagram: daily items close at hand, occasional items in secondary storage, and backups together in one labeled bin.](../images/renter-friendly-bathroom-storage-zones.svg)
 

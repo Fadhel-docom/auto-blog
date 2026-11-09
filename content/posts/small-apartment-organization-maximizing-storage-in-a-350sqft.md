@@ -99,7 +99,7 @@ Sort what you own into three groups and put each where it matches.
 - **Weekly:** laundry, spare shoes and linens live inside zones, in the wardrobe or in baskets.
 - **Rare:** luggage, seasonal clothes and backups go under the bed or on top of the wardrobe.
 
-Edit first. Be strict with duplicates, such as five similar tote bags or three spare sets of sheets. A useful test is whether you would look for a place for the item if it were not already in the apartment.
+Edit first. Be strict with duplicates, such as five similar tote bags or three spare sets of sheets. A useful test is whether you would look for a place for the item if it were not already in the apartment. For bulky exercise items, our [workout gear storage guide](/posts/workout-gear-storage-small-apartment/) separates heavy weights, long mats and small accessories by safe storage needs.
 
 ## 9. Choose Furniture That Earns Its Footprint
 

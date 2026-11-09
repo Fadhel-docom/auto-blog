@@ -101,7 +101,7 @@ Group storage around tasks:
 
 For pantry shelves, avoid creating deep layers where the back disappears. A smaller number of visible categories is often more useful than maximum capacity.
 
-The best kitchen is not the one that stores the most. It is the one that can be reset quickly after cooking.
+The best kitchen is not the one that stores the most. It is the one that can be reset quickly after cooking. For a more exact counter plan, see our [guide to organizing daily-use kitchen appliances](/posts/small-kitchen-counter-appliance-organization/).
 
 ## 5. Make Bathroom Storage Visible but Contained
 
@@ -121,7 +121,7 @@ Bathrooms are damp, so do not pack shelves tight against the wall. The EPA advis
 
 Avoid buying a large matching set of containers just for appearance. Measure the shelf first and choose pieces that fit the actual depth and height.
 
-If a product repeatedly ends up on the counter, treat that as feedback. Its storage location may be too inconvenient.
+If a product repeatedly ends up on the counter, treat that as feedback. Its storage location may be too inconvenient. When several people share one basin, our [one-sink bathroom plan](/posts/shared-bathroom-one-sink-morning-rush-plan/) adds a timing test to the storage system.
 
 ## 6. Use the Bedroom's Hidden Storage First
 
@@ -135,7 +135,7 @@ Before adding another dresser, check the storage you already have:
 - The wall above a desk or dresser
 - Unused space beside the wardrobe
 
-Under-bed storage works best for categories that are not needed every day, such as seasonal clothing, spare bedding, or luggage accessories.
+Under-bed storage works best for categories that are not needed every day, such as seasonal clothing, spare bedding, or luggage accessories. For a measured pull-out solution, see our [small-bedroom under-bed drawer guide](/posts/small-bedroom-storage-ideas-diy-pull-out/).
 
 In the closet, keep everyday clothing in the easiest-to-reach area. Move seasonal or occasional items higher or farther back.
 
@@ -179,7 +179,7 @@ The rule is to give the gap one category.
 
 A narrow cart might be for pantry supplies. A door organizer might be for accessories. A high shelf might be for seasonal items.
 
-Do not buy an organizer simply because a gap exists. First decide what problem the space should solve.
+Do not buy an organizer simply because a gap exists. First decide what problem the space should solve. Before choosing a shelf, cart or cabinet for that gap, use our [room and furniture measuring checklist](/posts/how-to-measure-room-furniture-fit/).
 
 If the answer is “anything that does not have a home,” the organizer is likely to become a clutter collector.
 
