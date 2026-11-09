@@ -65,7 +65,7 @@ That dashed area is not storage space, even though it looks empty. Place a shelf
 - **Towels and spare zone:** the shelf above the toilet and the back of the door. Keep one towel per person in use and one spare.
 - **Cleaning zone:** the lower part of the cabinet. For layout details see the [under-sink organization guide](/posts/under-sink-organization-ideas-simple-system/).
 
-When a product has no zone, it probably does not belong in the bathroom.
+When a product has no zone, it probably does not belong in the bathroom. If several people share one sink, our [one-sink morning-rush plan](/posts/shared-bathroom-one-sink-morning-rush-plan/) helps coordinate timing as well as storage.
 
 ## Give the Counter and Drawers a Capacity Limit
 
