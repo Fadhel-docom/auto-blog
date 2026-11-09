@@ -42,7 +42,7 @@ The U.S. Access Board states that private residential housing is not covered by 
 
 ## 3. Measure the Room, Doorways and Fixed Obstacles
 
-Before you move anything, collect the measurements that decide the layout. A phone photo is not a substitute for a number.
+Before you move anything, collect the measurements that decide the layout. A phone photo is not a substitute for a number. For a complete room, doorway and delivery-route checklist, use our [guide to measuring a room for furniture](/posts/how-to-measure-room-furniture-fit/).
 
 - Interior length and width of the room, wall to wall, not including baseboard heaters or radiators.
 - Every doorway: the opening width and the arc that the door sweeps when it opens. A door that swings into the room claims floor space even when it is closed.
