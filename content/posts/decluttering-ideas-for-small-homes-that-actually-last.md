@@ -19,7 +19,7 @@ faq = [
 draft = false
 +++
 
-A small home does not need more storage every time it feels crowded. Often, the practical problem is that too many items have no clear home, a category has no physical limit, or putting something away takes more effort than leaving it out.
+A small home does not need more storage every time it feels crowded. Often, the practical problem is that too many items have no clear home, a category has no physical limit, or putting something away takes more effort than leaving it out. For a room-by-room sequence that turns those decisions into zones and a weekly reset, see our [small-space home organization system](/posts/effortless-home-organization-tips-for-small-spaces/).
 
 The most useful decluttering ideas for small homes therefore do two jobs: remove things you do not need and make the things you keep easier to manage. This guide is designed for a real home, not a one-day makeover. You can test the system without emptying every cabinet, buying a matching set of containers, or creating piles in every room.
 
@@ -299,6 +299,8 @@ Examples:
 - **Entryway:** mail is processed before it reaches another room.
 - **Bathroom:** expired or unused products leave when the storage area reaches its limit.
 - **Desk:** finished papers leave the work surface at the end of the day.
+
+If your work area is a tight five-by-five-foot corner, our [compact home-office layout guide](/posts/decluttering-5x5-home-office-corner-remote-workers/) helps fit the desk, chair and walking path before adding storage.
 
 Keep the rule specific enough to guide a real decision. “Keep the room tidy” is too vague. “Only current work stays on the desk overnight” is checkable.
 
