@@ -34,7 +34,7 @@ If an item has no obvious zone, ask where you first reach for it. That is its zo
 
 ## Step 2: Measure Before You Buy
 
-Measure the wall space, the door swing and the path to the spot, including hallways and stairs. A piece that fits the spot but cannot get through the door is a common and expensive mistake. Mark the footprint with tape and walk around it for a day. Also note the height of radiators, window sills and ceiling slopes, and keep a photo of each measurement with the tape visible so you can check it in the shop. A piece that clears the wall but covers a heater or blocks a window handle is the wrong piece, however well it fits.
+Measure the wall space, the door swing and the path to the spot, including hallways and stairs. A piece that fits the spot but cannot get through the door is a common and expensive mistake. Mark the footprint with tape and walk around it for a day. Also note the height of radiators, window sills and ceiling slopes, and keep a photo of each measurement with the tape visible so you can check it in the shop. A piece that clears the wall but covers a heater or blocks a window handle is the wrong piece, however well it fits. Our [room-measuring guide](/posts/how-to-measure-room-furniture-fit/) shows how to check the object, openings and route before buying.
 
 ## Step 3: Put Daily Items at Reach Height
 
@@ -58,7 +58,7 @@ Backup stock is what quietly takes over a small apartment: spare toiletries, cle
 
 ![Side view of shelves: daily items at eye level, weekly items on a lower shelf and reserve stock limited to one labeled bin](images/small-apartment-reserve-limit.svg)
 
-When the bin is full, stop buying more until you finish something. This single rule prevents most overflow.
+When the bin is full, stop buying more until you finish something. This single rule prevents most overflow. For seasonal items such as ornaments and lights, see our [small-apartment holiday decoration storage plan](/posts/holiday-decoration-storage-small-apartment-count-before-you-box/).
 
 ## Step 7: Make the Entry and Closets Work Harder
 
