@@ -174,8 +174,9 @@ It depends on the game. Will It Table?, a third-party fit tool, estimates that a
 
 - U.S. Access Board, [ADA Accessibility Standards, Chapter 4: Accessible Routes](https://www.access-board.gov/ada/chapter/ch04/).
 - Will It Table?, [What board games fit my table?](https://willittable.com/).
-- U.S. Consumer Product Safety Commission, [Injury and Fatality Report on TV and Furniture Tip-Over Prevention](https://web.archive.org/web/2025/https://www.cpsc.gov/Newsroom/News-Releases/2022/CPSC-Injury-and-Fatality-Report-Shows-Despite-Some-Progress-Need-for-TV-and-Furniture-Tip-Over-Prevention-Remains-Strong).
-- U.S. Consumer Product Safety Commission, [Small Parts Ban and Choking Hazard Labeling](https://web.archive.org/web/2025/https://www.cpsc.gov/smallparts).
+- U.S. Consumer Product Safety Commission, [2021 Report on TV, Furniture and Appliance Tip-Over Injuries and Fatalities (PDF)](https://www.cpsc.gov/s3fs-public/2021_Tip_Over_Report_POSTED.pdf): estimates an annual average of 22,500 emergency-department-treated tip-over injuries in 2018–2020, with 44% involving children under 18.
+- U.S. Consumer Product Safety Commission, [AnchorIt.gov campaign](https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/AnchorItgov): recommends sturdy furniture and anchoring TVs and top-heavy furniture.
+- U.S. Consumer Product Safety Commission, [Small Parts Ban and Choking Hazard Labeling](https://www.cpsc.gov/Business--Manufacturing/Business-Education/Business-Guidance/Small-Parts-for-Toys-and-Childrens-Products).
 
 ## Related Guides
 
