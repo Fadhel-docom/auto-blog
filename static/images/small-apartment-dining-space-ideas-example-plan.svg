@@ -23,12 +23,12 @@
 <text x="590" y="110" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#2f3a31">Width check</text>
 <text x="590" y="140" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#2f3a31">30 + 32 + 32 = 94 in</text>
 <text x="590" y="166" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#2f3a31">(239 cm) of 120 in</text>
-<text x="590" y="192" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#2f4a38">Spare: 26 in (66 cm)</text>
+<text x="590" y="192" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#2f4a38">Spare on paper: 26 in</text>
 <text x="590" y="280" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#2f3a31">Length check</text>
 <text x="590" y="310" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#2f3a31">(table extended)</text>
 <text x="590" y="336" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#2f3a31">60 + 32 + 32 = 124 in</text>
 <text x="590" y="362" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#2f3a31">(315 cm) of 144 in</text>
-<text x="590" y="388" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#2f4a38">Spare: 20 in (51 cm)</text>
+<text x="590" y="388" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#2f4a38">Spare on paper: 20 in</text>
 <text x="590" y="480" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#2f3a31">Seats</text>
 <text x="590" y="510" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#2f3a31">24 in knee space each</text>
 <text x="590" y="536" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#2f3a31">2 + 2 sides, 1 + 1 ends</text>
