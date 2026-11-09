@@ -36,7 +36,7 @@ The plan above is a planning example, not a code requirement. NKBA's figures are
 
 Every inch you add to the cabinets comes out of the aisle, so the aisle is the first thing to protect. NKBA's guidelines put the minimum walkway at 36 inches, and the work aisle at 42 to 48 inches. If you are below those numbers, adding more storage will not help; removing things from the floor will.
 
-Keep appliances, bins and step stools out of the aisle when you cook. A rolling cart works at the end of a galley, as the cover photo shows, but only where it leaves the walkway open. If you use a runner, give it a non-slip pad so it cannot curl or slide under your feet.
+Keep appliances, bins and step stools out of the aisle when you cook. A rolling cart works at the end of a galley, as the cover photo shows, but only where it leaves the walkway open. If you use a runner, give it a non-slip pad so it cannot curl or slide under your feet. Our [small-kitchen appliance placement guide](/posts/small-kitchen-counter-appliance-organization/) explains how to protect a prep patch and meet each machine's clearance requirements.
 
 ## Choose a Cabinet That Will Not Cook Your Spices
 
