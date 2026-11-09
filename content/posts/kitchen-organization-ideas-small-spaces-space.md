@@ -32,7 +32,7 @@ Write down four numbers: the aisle width between opposite counters, the clear co
 
 ## Step 2: Clear the Counters and Edit
 
-Take everything off the counters, then work through one cabinet at a time. Sort into three groups: used weekly, used a few times a year, and not used. Move the second group to a high shelf or another room and donate the third. Counters should hold only what you use daily, such as a cutting board, a kettle or a toaster, and one jar of utensils.
+Take everything off the counters, then work through one cabinet at a time. Sort into three groups: used weekly, used a few times a year, and not used. Move the second group to a high shelf or another room and donate the third. Counters should hold only what you use daily, such as a cutting board, a kettle or a toaster, and one jar of utensils. For deciding which machines deserve that space and where weekly appliances should go, see our [small-kitchen counter appliance guide](/posts/small-kitchen-counter-appliance-organization/).
 
 ## Step 3: Build Zones Around How You Cook
 
