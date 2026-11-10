@@ -9,9 +9,6 @@ on:
     types: [completed]
     branches: [main]
   workflow_dispatch:
-  push:
-    branches: [claude/cloudflare-deploy-hook]
-    paths: [".github/workflows/cloudflare_deploy_hook.yml"]
 
 permissions:
   contents: read
