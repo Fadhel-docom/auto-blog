@@ -1,0 +1,33 @@
+name: Cloudflare Deploy Hook
+
+# Triggers a Cloudflare Pages production build after every successful Site Deploy,
+# so pages.dev never lags behind main. The hook URL lives only in the
+# CLOUDFLARE_PAGES_DEPLOY_HOOK secret and is never printed.
+on:
+  workflow_run:
+    workflows: ["Site Deploy"]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-deploy-hook
+  cancel-in-progress: false
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    steps:
+      - name: Call Cloudflare Pages deploy hook
+        env:
+          HOOK: ${{ secrets.CLOUDFLARE_PAGES_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then echo "CLOUDFLARE_PAGES_DEPLOY_HOOK is not set"; exit 1; fi
+          code=$(curl -sS -o /tmp/hook.json -w '%{http_code}' -X POST "$HOOK")
+          echo "Cloudflare hook HTTP status: $code"
+          if [ "$code" -lt 200 ] || [ "$code" -ge 300 ]; then exit 1; fi
+          python3 -c "import json;d=json.load(open('/tmp/hook.json'));print('success:',d.get('success'));print('deployment id:',(d.get('result') or {}).get('id'))"
