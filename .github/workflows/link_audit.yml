@@ -3,9 +3,22 @@ name: Link Audit
 on:
   push:
     branches: [main]
+    paths:
+      - 'content/**'
+      - 'layouts/**'
+      - 'static/**'
+      - 'assets/**'
+      - 'data/**'
+      - 'i18n/**'
+      - 'themes/**'
+      - 'config/**'
+      - 'hugo.*'
+      - 'go.mod'
+      - 'go.sum'
+      - 'scripts/link_audit.py'
   workflow_dispatch:
   schedule:
-    - cron: '0 3 * * *'
+    - cron: '0 3 * * 1'
 
 permissions:
   contents: read
