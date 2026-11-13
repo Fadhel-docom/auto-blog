@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Closed and extended table footprints</title><desc id="d">Two top-down sketches. Left: a closed 30 by 48 inch table with four seats and 32 inch zones on the long sides. Right: the same table extended to 30 by 60 inches with six seats, two of them at the ends.</desc>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="250" y="40" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#37443b">Closed: 30 x 48 in (76 x 122 cm)</text>
+<text x="750" y="40" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#37443b">Extended: 30 x 60 in (76 x 152 cm)</text>
+<rect x="50" y="70" width="400" height="330" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<rect x="550" y="70" width="400" height="330" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<rect x="178" y="89" width="144" height="96" fill="#9aa99a" fill-opacity=".22" stroke="#4d6b55" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="178" y="275" width="144" height="96" fill="#9aa99a" fill-opacity=".22" stroke="#4d6b55" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="178" y="185" width="144" height="90" rx="7" fill="#d7b58c" stroke="#9b7955" stroke-width="3"/>
+<rect x="190" y="120" width="52" height="46" rx="8" fill="#9aa99a" stroke="#64796a" stroke-width="2"/>
+<rect x="258" y="120" width="52" height="46" rx="8" fill="#9aa99a" stroke="#64796a" stroke-width="2"/>
+<rect x="190" y="294" width="52" height="46" rx="8" fill="#9aa99a" stroke="#64796a" stroke-width="2"/>
+<rect x="258" y="294" width="52" height="46" rx="8" fill="#9aa99a" stroke="#64796a" stroke-width="2"/>
+<rect x="564" y="185" width="96" height="90" fill="#9aa99a" fill-opacity=".22" stroke="#4d6b55" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="840" y="185" width="96" height="90" fill="#9aa99a" fill-opacity=".22" stroke="#4d6b55" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="660" y="89" width="180" height="96" fill="#9aa99a" fill-opacity=".22" stroke="#4d6b55" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="660" y="275" width="180" height="96" fill="#9aa99a" fill-opacity=".22" stroke="#4d6b55" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="660" y="185" width="180" height="90" rx="7" fill="#d7b58c" stroke="#9b7955" stroke-width="3"/>
+<rect x="672" y="120" width="52" height="46" rx="8" fill="#9aa99a" stroke="#64796a" stroke-width="2"/>
+<rect x="744" y="120" width="52" height="46" rx="8" fill="#9aa99a" stroke="#64796a" stroke-width="2"/>
+<rect x="672" y="294" width="52" height="46" rx="8" fill="#9aa99a" stroke="#64796a" stroke-width="2"/>
+<rect x="744" y="294" width="52" height="46" rx="8" fill="#9aa99a" stroke="#64796a" stroke-width="2"/>
+<rect x="590" y="207" width="46" height="46" rx="8" fill="#9aa99a" stroke="#64796a" stroke-width="2"/>
+<rect x="864" y="207" width="46" height="46" rx="8" fill="#9aa99a" stroke="#64796a" stroke-width="2"/>
+<text x="250" y="432" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="19" fill="#37443b">4 seats (long sides only)</text>
+<text x="250" y="458" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#58655b">Footprint 48 x 94 in (122 x 239 cm)</text>
+<text x="750" y="432" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="19" fill="#37443b">6 seats (two at the ends)</text>
+<text x="750" y="458" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#58655b">Footprint 124 x 94 in (315 x 239 cm)</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#58655b">Dashed zones: 32 in (81 cm) behind each seated diner. The end seats, not the longer top, add the two seats.</text>
+</svg>
