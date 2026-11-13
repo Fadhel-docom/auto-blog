@@ -181,6 +181,7 @@
     rel="stylesheet"
     href="{{ "css/site-v2.css" | relURL }}"
   >
+  {{ if eq .Type "tool" }}<link rel="stylesheet" href="{{ "css/room-cost-planner.css" | relURL }}">{{ end }}
 
   {{ if .IsPage }}
 
@@ -200,7 +201,7 @@
 
     {{ $articleSchema := dict
       "@context" "https://schema.org"
-      "@type" "BlogPosting"
+      "@type" (cond (eq .Type "tool") "WebApplication" "BlogPosting")
       "headline" .Title
       "description" .Description
       "mainEntityOfPage" (dict
@@ -220,6 +221,10 @@
       "dateModified" .Lastmod
       "url" .Permalink
     }}
+
+    {{ if eq .Type "tool" }}
+      {{ $articleSchema = merge $articleSchema (dict "name" .Title "applicationCategory" "LifestyleApplication" "operatingSystem" "Any") }}
+    {{ end }}
 
     {{ if $imageURL }}
 
