@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="720" viewBox="0 0 900 720" role="img" aria-labelledby="t d">
+<title id="t">Worked example: 120 by 144 inch room with an extended table</title><desc id="d">Plan of a hypothetical room 120 inches wide and 144 inches long with a 30 by 60 inch extended table, 32 inch seating zones on all four sides and six seats. The width check is 94 inches and the length check is 124 inches.</desc>
+<rect width="900" height="720" fill="#fff"/>
+<text x="300" y="42" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#2f3a31">Room: 120 in (305 cm) wide</text>
+<rect x="60" y="60" width="480" height="576" fill="#faf8f3" stroke="#65766a" stroke-width="5"/>
+<rect x="112" y="228" width="128" height="240" fill="#9aa99a" fill-opacity=".22" stroke="#4d6b55" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="360" y="228" width="128" height="240" fill="#9aa99a" fill-opacity=".22" stroke="#4d6b55" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="240" y="100" width="120" height="128" fill="#9aa99a" fill-opacity=".22" stroke="#4d6b55" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="240" y="468" width="120" height="128" fill="#9aa99a" fill-opacity=".22" stroke="#4d6b55" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="240" y="228" width="120" height="240" rx="8" fill="#d7b58c" stroke="#9b7955" stroke-width="4"/>
+<text x="300" y="342" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#3e352b">TABLE</text>
+<text x="300" y="370" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#3e352b">30 x 60 in</text>
+<rect x="170" y="246" width="56" height="60" rx="10" fill="#9aa99a" stroke="#64796a" stroke-width="3"/>
+<rect x="170" y="342" width="56" height="60" rx="10" fill="#9aa99a" stroke="#64796a" stroke-width="3"/>
+<rect x="374" y="246" width="56" height="60" rx="10" fill="#9aa99a" stroke="#64796a" stroke-width="3"/>
+<rect x="374" y="342" width="56" height="60" rx="10" fill="#9aa99a" stroke="#64796a" stroke-width="3"/>
+<rect x="272" y="150" width="56" height="52" rx="10" fill="#9aa99a" stroke="#64796a" stroke-width="3"/>
+<rect x="272" y="494" width="56" height="52" rx="10" fill="#9aa99a" stroke="#64796a" stroke-width="3"/>
+<text x="176" y="214" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#2f4a38">32 in</text>
+<text x="424" y="214" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#2f4a38">32 in</text>
+<text x="300" y="122" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#2f4a38">32 in</text>
+<text x="300" y="584" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#2f4a38">32 in</text>
+<text x="590" y="110" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#2f3a31">Width check</text>
+<text x="590" y="140" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#2f3a31">30 + 32 + 32 = 94 in</text>
+<text x="590" y="166" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#2f3a31">(239 cm) of 120 in</text>
+<text x="590" y="192" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#2f4a38">Spare on paper: 26 in</text>
+<text x="590" y="280" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#2f3a31">Length check</text>
+<text x="590" y="310" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#2f3a31">(table extended)</text>
+<text x="590" y="336" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#2f3a31">60 + 32 + 32 = 124 in</text>
+<text x="590" y="362" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#2f3a31">(315 cm) of 144 in</text>
+<text x="590" y="388" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#2f4a38">Spare on paper: 20 in</text>
+<text x="590" y="480" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#2f3a31">Seats</text>
+<text x="590" y="510" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#2f3a31">24 in knee space each</text>
+<text x="590" y="536" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#2f3a31">2 + 2 sides, 1 + 1 ends</text>
+<text x="590" y="562" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#2f4a38">= 6 diners</text>
+<text x="450" y="684" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#58655b">Hypothetical room, 144 in (366 cm) long. Add doors and the route before trusting the sums.</text>
+</svg>
