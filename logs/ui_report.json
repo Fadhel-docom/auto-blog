@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-12T06:11:07+00:00",
+  "timestamp": "2026-11-13T12:00:09+00:00",
   "site": "https://home-organization-ideas.pages.dev/",
   "golden": {
     "home": {
@@ -35,13 +35,37 @@
     "grid": true,
     "featured": true,
     "nav_links": 19,
-    "article_cards": 39,
+    "article_cards": 40,
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 101010
+    "html_length": 113397
   },
   "articles": [
+    {
+      "url": "https://home-organization-ideas.pages.dev/posts/small-apartment-dining-space-ideas/",
+      "status": 200,
+      "title": "Drop-Leaf, Round or Banquette? Choose a Dining Table by Seated Footprint",
+      "title_capitalized": true,
+      "meta_description": "Choose a small-apartment dining setup by measuring the table, the pulled-out chairs, the route and the door swings. Compare five layouts, work through a calculated example and print a decision sheet.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/small-apartment-dining-space-ideas/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 13,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 37164
+    },
     {
       "url": "https://home-organization-ideas.pages.dev/posts/how-to-measure-room-furniture-fit/",
       "status": 200,
@@ -64,7 +88,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 38529
+      "html_length": 38566
     },
     {
       "url": "https://home-organization-ideas.pages.dev/posts/board-game-night-reset-without-a-game-room/",
@@ -88,7 +112,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 40802
+      "html_length": 40840
     },
     {
       "url": "https://home-organization-ideas.pages.dev/posts/shared-bathroom-one-sink-morning-rush-plan/",
@@ -112,7 +136,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 36628
+      "html_length": 36666
     },
     {
       "url": "https://home-organization-ideas.pages.dev/posts/small-kitchen-counter-appliance-organization/",
@@ -136,31 +160,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 39054
-    },
-    {
-      "url": "https://home-organization-ideas.pages.dev/posts/small-living-room-layout-clear-walkway/",
-      "status": 200,
-      "title": "Small Living Room Layout: Keep a 30–36-Inch Walkway",
-      "title_capitalized": true,
-      "meta_description": "Plan a small living room around a clear 30–36-inch walking path. Measure furniture, map door swings, and choose a layout that keeps daily routes open.",
-      "canonical": "https://home-organization-ideas.pages.dev/posts/small-living-room-layout-clear-walkway/",
-      "images": 8,
-      "tags": 5,
-      "h2_count": 18,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 37791
+      "html_length": 39092
     }
   ],
   "responsive": {
