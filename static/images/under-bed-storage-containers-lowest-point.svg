@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Lowest point under a bed</title><desc id="d">Side view of a bed: side rail 7.0 inches, center beam 6.5 inches and foot 6.75 inches above the floor. The lowest obstruction is 6.5 inches, so with 0.5 inch of sliding clearance the usable maximum is 6.0 inches.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Side view: the lowest obstruction sets your height</text>
+<line x1="60" y1="430" x2="940" y2="430" stroke="#8c9a8c" stroke-width="3"/>
+<rect x="120" y="110" width="760" height="40" rx="8" fill="#e6e1d6" stroke="#8c9a8c" stroke-width="3"/>
+<text x="500" y="137" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Mattress and platform</text>
+<rect x="120" y="150" width="760" height="10" rx="0" fill="#d7b58c" stroke="#9b7955" stroke-width="2"/>
+<rect x="124" y="332.0" width="12" height="98.0" rx="0" fill="#d7b58c" stroke="#9b7955" stroke-width="2"/>
+<text x="150" y="320.0" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#37443b">Side rail 7.0 in</text>
+<rect x="370" y="339.0" width="260" height="91.0" rx="0" fill="none" stroke="none" stroke-width="2"/>
+<rect x="370" y="339.0" width="260" height="10" rx="0" fill="#d7b58c" stroke="#9b7955" stroke-width="2"/>
+<rect x="494" y="339.0" width="12" height="91.0" rx="0" fill="#d7b58c" stroke="#9b7955" stroke-width="2"/>
+<text x="500" y="327.0" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#37443b">Center beam 6.5 in</text>
+<rect x="864" y="335.5" width="12" height="94.5" rx="0" fill="#d7b58c" stroke="#9b7955" stroke-width="2"/>
+<text x="870" y="323.5" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#37443b">Foot 6.75 in</text>
+<line x1="300" y1="430" x2="300" y2="339.0" stroke="#b5533c" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="312" y="404" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#b5533c">lowest = 6.5 in (17 cm)</text>
+<line x1="700" y1="430" x2="700" y2="346.0" stroke="#4d6b55" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="712" y="404" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#4d6b55">usable max = 6.0 in</text>
+<text x="500" y="468" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#37443b">Usable max = lowest 6.5 - 0.5 in sliding clearance = 6.0 in (15 cm)</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Example numbers. Measure the floor-to-obstruction gap at three or more points on your own bed.</text>
+
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Pull-out route for an under-bed container</title><desc id="d">Top view of a bed against a wall. A 32 inch long container can be pulled out from the foot because 36 inches of floor remain, leaving 4 inches to spare, but not from the wall side.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Top view: can you pull it fully out?</text>
+<rect x="100" y="90" width="300" height="360" rx="0" fill="#f8f5ee" stroke="#37443b" stroke-width="4"/>
+<text x="250" y="270" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#37443b">Bed 60 x 80 in</text>
+<text x="250" y="300" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#58655b">(152 x 203 cm)</text>
+<rect x="400" y="90" width="20" height="360" rx="0" fill="#e6e1d6" stroke="#8c9a8c" stroke-width="2"/>
+<text x="410" y="280" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#58655b">wall</text>
+<rect x="160" y="330" width="90" height="50" rx="4" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<rect x="160" y="450" width="90" height="32" rx="4" fill="none" stroke="#4d6b55" stroke-width="2" stroke-dasharray="6 4"/>
+<line x1="205" y1="380" x2="205" y2="470" stroke="#4d6b55" stroke-width="3" marker-end="url(#a)"/>
+<text x="560" y="150" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#37443b">Container is 32 in (81 cm) long</text>
+<text x="560" y="184" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="400" fill="#37443b">Foot of bed to the wall: 36 in (91 cm)</text>
+<text x="560" y="218" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#4d6b55">36 - 32 = 4 in (10 cm) to spare</text>
+<text x="560" y="262" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#b5533c">Side against a wall: 0 in, so a bin</text>
+<text x="560" y="286" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#b5533c">that opens only there goes unused.</text>
+<text x="560" y="340" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Also check: door swing, rug edge,</text>
+<text x="560" y="364" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">and the route to the bedside.</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Top-down sketch with example dimensions. Open the container from the side you actually use.</text>
+
+</svg>

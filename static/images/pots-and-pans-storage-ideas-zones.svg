@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Cookware zones along a kitchen run</title><desc id="d">Front-view schematic: everyday pots and pans in a low cabinet beside the stove, lids in a drawer or door rack, occasional baking and specialty pieces farther away, light items on upper shelves.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Zones: everyday near the stove, occasional farther away</text>
+<rect x="60" y="150" width="880" height="120" rx="0" fill="#f8f5ee" stroke="#37443b" stroke-width="4"/>
+<rect x="60" y="150" width="230" height="120" rx="0" fill="#e9efe6" stroke="#4d6b55" stroke-width="3"/>
+<text x="175" y="190" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#4d6b55">Zone 1: everyday</text>
+<text x="175" y="216" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">pans and pots, low,</text>
+<text x="175" y="238" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">within one step of the stove</text>
+<rect x="290" y="150" width="150" height="120" rx="0" fill="#ffe3cf" stroke="#b5533c" stroke-width="3"/>
+<text x="365" y="196" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#37443b">Stove</text>
+<text x="365" y="222" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">keep handles</text>
+<text x="365" y="242" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">out of the heat</text>
+<rect x="440" y="150" width="200" height="120" rx="0" fill="#e9efe6" stroke="#4d6b55" stroke-width="3"/>
+<text x="540" y="190" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#4d6b55">Zone 2: lids</text>
+<text x="540" y="216" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">drawer divider or</text>
+<text x="540" y="238" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">door rack</text>
+<rect x="640" y="150" width="300" height="120" rx="0" fill="#f1ece0" stroke="#8c9a8c" stroke-width="3"/>
+<text x="790" y="190" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#37443b">Zone 3: occasional</text>
+<text x="790" y="216" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">baking and specialty pieces,</text>
+<text x="790" y="238" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">farther from the stove</text>
+<rect x="60" y="290" width="880" height="60" rx="6" fill="none" stroke="#8c9a8c" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="500" y="326" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#37443b">Upper shelves: only light items. Heavy stacks stay in base cabinets.</text>
+<text x="500" y="410" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" fill="#37443b">Test: can you lift the most-used pan out without moving another item?</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Schematic kitchen run, front view. Adapt it to your own layout.</text>
+
+</svg>

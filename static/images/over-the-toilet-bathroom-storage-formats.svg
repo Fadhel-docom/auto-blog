@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Three over-toilet storage formats</title><desc id="d">Three panels compare wall shelves, a wall cabinet and a freestanding frame with the checks each needs: fixings and load, door swing and moisture, stability and anchoring.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Three formats, three different checks</text>
+<rect x="40" y="80" width="280" height="340" rx="12" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<text x="180" y="118" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#37443b">Wall shelves</text>
+<text x="180" y="146" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Light, dry, few items</text>
+<rect x="100" y="176" width="160" height="10" rx="0" fill="#d7b58c" stroke="#9b7955" stroke-width="2"/>
+<rect x="100" y="206" width="160" height="10" rx="0" fill="#d7b58c" stroke="#9b7955" stroke-width="2"/>
+<text x="70" y="300" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#37443b">- Wall type and fixings</text>
+<text x="70" y="334" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#37443b">- Rated load</text>
+<text x="70" y="368" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#37443b">- Lid access</text>
+<rect x="360" y="80" width="280" height="340" rx="12" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<text x="500" y="118" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#37443b">Wall cabinet</text>
+<text x="500" y="146" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Hidden spare rolls</text>
+<rect x="430" y="170" width="140" height="70" rx="4" fill="#fff" stroke="#9b7955" stroke-width="3"/>
+<line x1="500" y1="170" x2="500" y2="240" stroke="#9b7955" stroke-width="2"/>
+<text x="390" y="300" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#37443b">- Door swing</text>
+<text x="390" y="334" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#37443b">- Total depth</text>
+<text x="390" y="368" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#37443b">- Moisture finish</text>
+<rect x="680" y="80" width="280" height="340" rx="12" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<text x="820" y="118" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#37443b">Freestanding frame</text>
+<text x="820" y="146" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">No drilling in a rental</text>
+<line x1="760" y1="170" x2="760" y2="250" stroke="#9b7955" stroke-width="5"/>
+<line x1="880" y1="170" x2="880" y2="250" stroke="#9b7955" stroke-width="5"/>
+<rect x="760" y="180" width="120" height="8" rx="0" fill="#d7b58c" stroke="#9b7955" stroke-width="2"/>
+<rect x="760" y="215" width="120" height="8" rx="0" fill="#d7b58c" stroke="#9b7955" stroke-width="2"/>
+<text x="710" y="300" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#37443b">- Stability</text>
+<text x="710" y="334" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#37443b">- Anchor if advised</text>
+<text x="710" y="368" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#37443b">- Room to clean the floor</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Follow the maker's instructions for each product. A frame that needs no screws can still tip if misused.</text>
+
+</svg>
