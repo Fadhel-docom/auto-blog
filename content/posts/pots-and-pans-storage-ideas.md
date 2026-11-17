@@ -150,8 +150,8 @@ Follow the cookware maker's care instructions, add a separator or a soft liner b
 ## Sources and limits
 
 - [Homes & Gardens, Organizing pots and pans](https://www.homesandgardens.com/kitchens/organizing-pots-and-pans): editing the collection, storing occasional cookware elsewhere, placing everyday pans near the cook zone, using a deep drawer, storing lids separately and lining drawers.
-- [The Kitchn, 10 Better Ways to Store Your Pots and Pans](https://www.thekitchn.com/ways-to-store-pots-and-pans-23086964): hanging rails and racks, stacking with lids stored separately, nesting with protectors, vertical racks and organizers.
-- [Lowe's, Pots and pans storage ideas for small kitchens](https://www.lowes.com/n/ideas-inspiration/8-pots-and-pans-storage-ideas-for-small-kitchens): cabinet organizers and wall-mounted racks.
+- [The Kitchn, 10 Better Ways to Store Your Pots and Pans (archived copy)](https://web.archive.org/web/2025/https://www.thekitchn.com/ways-to-store-pots-and-pans-23086964): hanging rails and racks, stacking with lids stored separately, nesting with protectors, vertical racks and organizers.
+- [Lowe's, Pots and pans storage ideas for small kitchens (archived copy)](https://web.archive.org/web/2025/https://www.lowes.com/n/ideas-inspiration/8-pots-and-pans-storage-ideas-for-small-kitchens): cabinet organizers and wall-mounted racks.
 
 These are editorial and retail sources, not engineering standards. The cabinet, cookware sizes and slot widths are hypothetical planning examples. Follow cookware care instructions and use wall hardware rated for the combined load.
 
