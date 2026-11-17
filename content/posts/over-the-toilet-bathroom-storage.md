@@ -140,7 +140,7 @@ Mock it up with cardboard first. If it intrudes on the seated user, reduce depth
 ## Sources and limits
 
 - [U.S. EPA, What are ten things I need to know about mold?](https://www.epa.gov/mold/what-are-ten-things-i-need-know-about-mold): moisture control is the key to mold control; ventilate and dry damp materials within 24 to 48 hours.
-- [U.S. CPSC, Anchor It!](https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/AnchorItgov?language=en): advises securing top-heavy furniture and following the manufacturer's instructions.
+- [U.S. CPSC, Anchor It! (archived copy)](https://web.archive.org/web/2025/https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/AnchorItgov?language=en): advises securing top-heavy furniture and following the manufacturer's instructions.
 
 The 29 inch tank lid, the 5 inch lid allowance and all other dimensions are hypothetical planning examples, not standards. Always follow the shelf maker's load limit and installation instructions, and check for pipes and wiring before drilling.
 
