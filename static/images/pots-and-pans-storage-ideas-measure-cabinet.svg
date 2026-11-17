@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Measuring a cabinet for cookware</title><desc id="d">Schematic of a base cabinet: opening width 21 inches after the hinge, 28 inches high, a 12 inch pan with an 8 inch handle needing 20 inches of depth in a 22 inch deep cabinet.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Measure the opening and the inside, not the cabinet box</text>
+<rect x="120" y="70" width="420" height="360" rx="0" fill="#f8f5ee" stroke="#37443b" stroke-width="4"/>
+<rect x="150" y="100" width="360" height="300" rx="0" fill="#fff" stroke="#8c9a8c" stroke-width="2"/>
+<line x1="174" y1="86" x2="510" y2="86" stroke="#37443b" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="342" y="78" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#37443b">Opening width 21 in (53 cm) after the hinge</text>
+<rect x="150" y="100" width="24" height="300" rx="0" fill="#ffd7d0" stroke="#b5533c" stroke-width="1.5" stroke-dasharray="4 3"/>
+<text x="162" y="250" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="400" fill="#b5533c">hinge</text>
+<line x1="560" y1="100" x2="560" y2="400" stroke="#37443b" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="572" y="250" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#37443b">28 in high</text>
+<circle cx="320" cy="300" r="60" fill="#e6e1d6" stroke="#37443b" stroke-width="3"/>
+<rect x="375" y="296" width="115" height="10" rx="3" fill="#e6e1d6" stroke="#37443b" stroke-width="2"/>
+<text x="320" y="306" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#37443b">12 in pan</text>
+<text x="660" y="120" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#37443b">Method</text>
+<text x="660" y="158" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Measure the opening after hinges</text>
+<text x="660" y="194" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Measure depth to the back wall</text>
+<text x="660" y="230" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Measure the longest handle</text>
+<text x="660" y="266" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">12 in pan + 8 in handle = 20 in</text>
+<text x="660" y="302" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Depth 22 in: fits with 2 in spare</text>
+<text x="660" y="338" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Cardboard template before buying</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Front view of a base cabinet with example numbers. Skillet handle and lid height decide the fit.</text>
+
+</svg>

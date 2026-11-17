@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Front view with example shelf heights</title><desc id="d">Front-view schematic: an example tank lid top at 29 inches plus 5 inches of lid room puts the lowest shelf underside at 34 inches, with a second shelf at 46 inches.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Front view: example heights from the floor</text>
+<rect x="120" y="60" width="360" height="360" rx="0" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<line x1="100" y1="420" x2="500" y2="420" stroke="#8c9a8c" stroke-width="3"/>
+<rect x="210" y="290" width="180" height="130" rx="8" fill="#e8eef2" stroke="#6d8aa3" stroke-width="3"/>
+<text x="300" y="360" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Tank, lid top 29 in</text>
+<rect x="190" y="204" width="220" height="12" rx="0" fill="#d7b58c" stroke="#9b7955" stroke-width="2"/>
+<text x="300" y="198" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">Shelf 2 underside 46 in</text>
+<rect x="190" y="262" width="220" height="12" rx="0" fill="#d7b58c" stroke="#9b7955" stroke-width="2"/>
+<text x="300" y="256" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">Lowest shelf underside 34 in</text>
+<line x1="150" y1="291" x2="150" y2="420" stroke="#37443b" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="142" y="360" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#37443b">29</text>
+<text x="560" y="120" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#37443b">Example arithmetic</text>
+<text x="560" y="158" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Lid top height: 29 in (74 cm)</text>
+<text x="560" y="192" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Room to lift or slide the lid: 5 in (13 cm)</text>
+<text x="560" y="226" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Lowest shelf underside: 29 + 5 = 34 in (86 cm)</text>
+<text x="560" y="260" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Shelf depth to test: 8 in (20 cm)</text>
+<text x="560" y="294" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Heavy items stay low; light ones go higher</text>
+<text x="560" y="328" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Your toilet, lid and ceiling will differ</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Illustrative numbers for the method. They are not a standard; measure your own toilet and test with a mock-up.</text>
+
+</svg>

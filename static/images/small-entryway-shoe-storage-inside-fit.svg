@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Shoe and boot fit inside a cabinet</title><desc id="d">Two sketches: a tilt-out compartment 11 inches deep and 7 inches high cannot hold a 12.5 inch long shoe or a boot, while a 14 inch high boot compartment holds a 13 inch tall boot.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Check the inside, not the outside: shoe and boot fit</text>
+<rect x="60" y="80" width="380" height="340" rx="6" fill="#f8f5ee" stroke="#37443b" stroke-width="3"/>
+<rect x="76" y="96" width="348" height="92" rx="4" fill="#fff" stroke="#8c9a8c" stroke-width="2"/>
+<rect x="76" y="200" width="348" height="92" rx="4" fill="#fff" stroke="#8c9a8c" stroke-width="2"/>
+<rect x="76" y="304" width="348" height="92" rx="4" fill="#fff" stroke="#8c9a8c" stroke-width="2"/>
+<text x="250" y="150" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#37443b">Tilt compartment: 11 in deep, 7 in high inside</text>
+<path d="M120 410 L120 372 L200 372 L200 392 L260 392 L260 410 Z" fill="#ffd7d0" stroke="#b5533c" stroke-width="2"/>
+<text x="250" y="448" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#b5533c">Largest shoe: 12.5 in (32 cm) long</text>
+<rect x="520" y="80" width="380" height="340" rx="6" fill="#f8f5ee" stroke="#37443b" stroke-width="3"/>
+<rect x="536" y="96" width="348" height="308" rx="4" fill="#fff" stroke="#8c9a8c" stroke-width="2"/>
+<text x="710" y="130" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#37443b">Tall boot compartment: 14 in high inside</text>
+<path d="M640 380 L640 200 L700 200 L700 300 L780 300 L780 380 Z" fill="#dbe6d6" stroke="#4d6b55" stroke-width="2"/>
+<text x="710" y="448" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#4d6b55">Tall boot: 13 in (33 cm) high</text>
+<text x="250" y="482" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#b5533c">11 in &lt; 12.5 in: does not fit</text>
+<text x="710" y="482" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#4d6b55">14 in &gt; 13 in: fits</text>
+
+</svg>

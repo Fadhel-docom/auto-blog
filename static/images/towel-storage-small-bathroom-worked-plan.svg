@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Worked plan for a small bathroom</title><desc id="d">Top-down plan of an example bathroom 96 by 60 inches. A leaning ladder 14 inches deep opposite a 21 inch vanity leaves only 25 inches. An over-door rack adds no floor depth and leaves 39 inches.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Worked plan: 5 by 8 ft bathroom, ladder or door rack?</text>
+<rect x="50" y="90" width="403.20000000000005" height="252.0" rx="0" fill="#f8f5ee" stroke="#37443b" stroke-width="4"/>
+<rect x="50" y="90" width="126.0" height="88.2" rx="0" fill="#d7b58c" stroke="#9b7955" stroke-width="2"/>
+<text x="113.0" y="140.4" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="400" fill="#5a4630">vanity 21 in</text>
+<rect x="302.0" y="283.2" width="75.60000000000001" height="58.800000000000004" rx="0" fill="#ffd7d0" stroke="#b5533c" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="339.8" y="325.2" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#b5533c">ladder</text>
+<line x1="339.8" y1="178.2" x2="339.8" y2="283.2" stroke="#37443b" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="347.8" y="220.0" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#37443b">25 in</text>
+<path d="M50 216.0 A126.0 126.0 0 0 1 176.0 342.0" fill="none" stroke="#4d6b55" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="60" y="334.0" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="400" fill="#4d6b55">door swing</text>
+<rect x="327.20000000000005" y="182.4" width="126.0" height="117.60000000000001" rx="0" fill="#dfe8ee" stroke="#6d8aa3" stroke-width="2"/>
+<text x="390.20000000000005" y="241.20000000000002" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">tub</text>
+<text x="251.60000000000002" y="366.0" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#58655b">96 in (244 cm) long x 60 in (152 cm) wide, example room</text>
+<rect x="560" y="90" width="400" height="126" rx="8" fill="#fff3f0" stroke="#b5533c" stroke-width="2"/>
+<text x="760" y="118" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#b5533c">Option A: leaning ladder, 14 in deep</text>
+<text x="760" y="146" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">60 - 21 - 14 = 25 in (64 cm) left</text>
+<text x="760" y="172" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Too tight for the daily route here</text>
+<rect x="560" y="236" width="400" height="126" rx="8" fill="#eef4ec" stroke="#4d6b55" stroke-width="2"/>
+<text x="760" y="264" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#4d6b55">Option B: over-door rack</text>
+<text x="760" y="292" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">No added floor depth: 60 - 21 = 39 in (99 cm)</text>
+<text x="760" y="318" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Check swing and the gap above the door</text>
+<rect x="560" y="382" width="400" height="70" rx="8" fill="none" stroke="#8c9a8c" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="760" y="410" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#58655b">Vanity 21 in = 53 cm; ladder 14 in = 36 cm</text>
+<text x="760" y="434" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#58655b">Numbers are an example. Use your own tape measure.</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Top-down sketch, drawn to one scale for the room. Furniture sizes are illustrative.</text>
+
+</svg>
