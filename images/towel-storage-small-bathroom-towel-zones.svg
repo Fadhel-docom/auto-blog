@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Three homes for towels</title><desc id="d">Three panels: towels in use hang open in the bathroom, only the next clean set waits on a dry shelf, and backup or guest towels live outside the bathroom. Example household of three keeps eight towels in the room.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Three homes for towels: use, wait, backup</text>
+<rect x="40" y="70" width="280" height="330" rx="12" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<text x="180" y="105" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#37443b">1  In use</text>
+<text x="180" y="132" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#58655b">hooks, bar or over-door rack, hung open</text>
+<rect x="360" y="70" width="280" height="330" rx="12" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<text x="500" y="105" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#37443b">2  Next clean set</text>
+<text x="500" y="132" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#58655b">dry shelf or lidded basket in the room</text>
+<rect x="680" y="70" width="280" height="330" rx="12" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<text x="820" y="105" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#37443b">3  Backup and guests</text>
+<text x="820" y="132" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#58655b">linen closet or bedroom shelf</text>
+<rect x="62" y="160" width="66" height="40" rx="6" fill="#9aa99a" stroke="#4d6b55" stroke-width="2"/>
+<rect x="140" y="160" width="66" height="40" rx="6" fill="#9aa99a" stroke="#4d6b55" stroke-width="2"/>
+<rect x="218" y="160" width="66" height="40" rx="6" fill="#9aa99a" stroke="#4d6b55" stroke-width="2"/>
+<text x="172" y="262" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">3 bath towels</text>
+<rect x="62" y="280" width="66" height="40" rx="6" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<rect x="140" y="280" width="66" height="40" rx="6" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<text x="172" y="356" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">2 hand towels</text>
+<rect x="382" y="160" width="66" height="40" rx="6" fill="#9aa99a" stroke="#4d6b55" stroke-width="2"/>
+<rect x="460" y="160" width="66" height="40" rx="6" fill="#9aa99a" stroke="#4d6b55" stroke-width="2"/>
+<rect x="538" y="160" width="66" height="40" rx="6" fill="#9aa99a" stroke="#4d6b55" stroke-width="2"/>
+<text x="500" y="262" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">3 bath towels</text>
+<text x="500" y="300" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Only the next set,</text>
+<text x="500" y="322" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">not the whole supply</text>
+<text x="820" y="200" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="400" fill="#37443b">Spares, guest sets</text>
+<text x="820" y="228" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="400" fill="#37443b">and seasonal towels</text>
+<text x="820" y="276" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#4d6b55">Outside the bathroom</text>
+<text x="820" y="300" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">when the room stays humid</text>
+<line x1="320" y1="235" x2="360" y2="235" stroke="#37443b" stroke-width="2" marker-end="url(#a)"/>
+<line x1="640" y1="235" x2="680" y2="235" stroke="#37443b" stroke-width="2" marker-end="url(#a)"/>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Example household of three: 3 + 2 + 3 = 8 towels in the room. Replace the counts with your own.</text>
+
+</svg>

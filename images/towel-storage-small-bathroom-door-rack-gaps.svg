@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Over-door towel rack gaps</title><desc id="d">Side-view sketch of a door with an over-door towel rack. Three measurements are marked: A door thickness, B gap above the door and C space behind the rack before a wall or fixture.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Over-door rack: measure three gaps before you buy</text>
+<g transform="translate(0,34)"><line x1="100" y1="420" x2="900" y2="420" stroke="#8c9a8c" stroke-width="3"/>
+<text x="500" y="448" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#58655b">Floor</text>
+<rect x="330" y="60" width="50" height="360" rx="0" fill="#d7b58c" stroke="#9b7955" stroke-width="3"/>
+<text x="355" y="250" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#5a4630">DOOR</text>
+<rect x="280" y="40" width="150" height="18" rx="0" fill="#e6e1d6" stroke="#8c9a8c" stroke-width="2"/>
+<text x="355" y="30" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#58655b">Header / frame</text>
+<path d="M368 70 L368 52 L418 52 L418 120" fill="none" stroke="#37443b" stroke-width="5"/>
+<text x="560" y="112" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#37443b">hook goes over the door top</text>
+<line x1="555" y1="106" x2="425" y2="86" stroke="#58655b" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="418" y="120" width="10" height="140" rx="3" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<rect x="418" y="140" width="70" height="8" rx="3" fill="#9aa99a" stroke="#4d6b55" stroke-width="2"/>
+<rect x="418" y="185" width="70" height="8" rx="3" fill="#9aa99a" stroke="#4d6b55" stroke-width="2"/>
+<rect x="418" y="230" width="70" height="8" rx="3" fill="#9aa99a" stroke="#4d6b55" stroke-width="2"/>
+<text x="630" y="320" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#58655b">towel hung open</text>
+<line x1="330" y1="440" x2="380" y2="440" stroke="#37443b" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="355" y="432" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#b5533c">A</text>
+<line x1="440" y1="58" x2="440" y2="40" stroke="#37443b" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="460" y="52" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#b5533c">B</text>
+<line x1="430" y1="300" x2="640" y2="300" stroke="#37443b" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="535" y="292" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#b5533c">C</text>
+<rect x="640" y="60" width="40" height="360" rx="0" fill="#e6e1d6" stroke="#8c9a8c" stroke-width="2"/>
+<text x="660" y="50" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#58655b">Wall / fixture</text>
+<text x="40" y="110" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#37443b">A  door thickness</text>
+<text x="60" y="138" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#37443b">B  gap above the door</text>
+<text x="60" y="166" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#37443b">C  space behind the rack</text>
+<text x="40" y="206" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Measure each at three points.</text>
+<text x="40" y="230" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Open the door fully and test</text>
+<text x="40" y="254" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">the swing with the rack on.</text>
+</g><text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Side-view sketch, not to scale. Rack specifications vary, so compare every gap with the product sheet.</text>
+
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Entryway plan with shoe rack and door swing</title><desc id="d">Top-down plan of an example entry 72 by 48 inches. A shoe rack 12 inches deep plus 2 inches of toe overhang takes 14 inches, leaving 34 inches of route, and the 32 inch door arc stays clear.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Entry plan: count shoe tips and the door arc</text>
+<rect x="60" y="90" width="324.0" height="216.0" rx="0" fill="#f8f5ee" stroke="#37443b" stroke-width="4"/>
+<rect x="60" y="303.0" width="144.0" height="6" rx="0" fill="#d7b58c" stroke="#9b7955" stroke-width="2"/>
+<path d="M60 162.0 A144.0 144.0 0 0 1 204.0 306.0" fill="none" stroke="#4d6b55" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="70" y="236.0" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#4d6b55">door arc, 32 in</text>
+<rect x="321.0" y="90" width="63.0" height="162.0" rx="0" fill="#ffd7d0" stroke="#b5533c" stroke-width="2" stroke-dasharray="6 4"/>
+<rect x="330.0" y="90" width="54.0" height="162.0" rx="0" fill="#9aa99a" stroke="#4d6b55" stroke-width="2"/>
+<text x="352.5" y="171.0" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#37443b">rack</text>
+<line x1="321.0" y1="100" x2="384.0" y2="100" stroke="#37443b" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="352.5" y="82" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#b5533c">14 in</text>
+<line x1="213.0" y1="326.0" x2="321.0" y2="326.0" stroke="#37443b" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="267.0" y="348.0" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#37443b">34 in (86 cm) route</text>
+<text x="222.0" y="376.0" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#58655b">Entry 72 in (183 cm) wide x 48 in (122 cm) deep, example</text>
+<rect x="520" y="90" width="440" height="300" rx="10" fill="#fff" stroke="#8c9a8c" stroke-width="2"/>
+<text x="740" y="122" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#37443b">How to read it</text>
+<text x="544" y="160" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Shelf depth 12 in + toe overhang 2 in = 14 in</text>
+<text x="544" y="204" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Entry width 48 - 14 = 34 in left to walk</text>
+<text x="544" y="248" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Door arc 32 in must stay clear of the rack</text>
+<text x="544" y="292" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Handles, trays and a seated user need more</text>
+<text x="544" y="336" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">If the route shrinks, cut pairs, not the path</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Top-down sketch. All measurements are example values; measure the real door, wall and largest shoe.</text>
+
+</svg>

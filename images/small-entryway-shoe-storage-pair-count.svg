@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Pair count for entryway shoe storage</title><desc id="d">Three rows of shoe pairs: four current-rotation pairs and three weather or activity pairs stay by the door, five occasional pairs move elsewhere. Daily capacity is seven pairs in the example.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Count pairs first: only two groups stay by the door</text>
+<rect x="40" y="80" width="920" height="100" rx="10" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="2"/>
+<text x="60" y="114" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#37443b">Current rotation: 4 pairs</text>
+<rect x="60" y="132" width="26" height="14" rx="6" fill="#9aa99a" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="90" y="132" width="26" height="14" rx="6" fill="#9aa99a" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="122" y="132" width="26" height="14" rx="6" fill="#9aa99a" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="152" y="132" width="26" height="14" rx="6" fill="#9aa99a" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="184" y="132" width="26" height="14" rx="6" fill="#9aa99a" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="214" y="132" width="26" height="14" rx="6" fill="#9aa99a" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="246" y="132" width="26" height="14" rx="6" fill="#9aa99a" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="276" y="132" width="26" height="14" rx="6" fill="#9aa99a" stroke="#4d6b55" stroke-width="1.5"/>
+<text x="940" y="140" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#4d6b55">Stays by the door</text>
+<rect x="40" y="196" width="920" height="100" rx="10" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="2"/>
+<text x="60" y="230" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#37443b">Weather or activity: 3 pairs</text>
+<rect x="60" y="248" width="26" height="14" rx="6" fill="#cfd8c9" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="90" y="248" width="26" height="14" rx="6" fill="#cfd8c9" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="122" y="248" width="26" height="14" rx="6" fill="#cfd8c9" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="152" y="248" width="26" height="14" rx="6" fill="#cfd8c9" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="184" y="248" width="26" height="14" rx="6" fill="#cfd8c9" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="214" y="248" width="26" height="14" rx="6" fill="#cfd8c9" stroke="#4d6b55" stroke-width="1.5"/>
+<text x="940" y="256" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#4d6b55">Stays by the door</text>
+<rect x="40" y="312" width="920" height="100" rx="10" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="2"/>
+<text x="60" y="346" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#37443b">Occasional and off-season: 5 pairs</text>
+<rect x="60" y="364" width="26" height="14" rx="6" fill="#e6e1d6" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="90" y="364" width="26" height="14" rx="6" fill="#e6e1d6" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="122" y="364" width="26" height="14" rx="6" fill="#e6e1d6" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="152" y="364" width="26" height="14" rx="6" fill="#e6e1d6" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="184" y="364" width="26" height="14" rx="6" fill="#e6e1d6" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="214" y="364" width="26" height="14" rx="6" fill="#e6e1d6" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="246" y="364" width="26" height="14" rx="6" fill="#e6e1d6" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="276" y="364" width="26" height="14" rx="6" fill="#e6e1d6" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="308" y="364" width="26" height="14" rx="6" fill="#e6e1d6" stroke="#4d6b55" stroke-width="1.5"/>
+<rect x="338" y="364" width="26" height="14" rx="6" fill="#e6e1d6" stroke="#4d6b55" stroke-width="1.5"/>
+<text x="940" y="372" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#b5533c">Moves to a closet or shelf</text>
+<text x="500" y="450" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#37443b">Daily capacity = 4 + 3 = 7 pairs by the door (example household)</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Count pairs, not single shoes. Replace the example counts with the shoes your household really wears.</text>
+
+</svg>
