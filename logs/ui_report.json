@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-17T12:57:37+00:00",
+  "timestamp": "2026-11-18T12:51:18+00:00",
   "site": "https://home-organization-ideas.pages.dev/",
   "golden": {
     "home": {
@@ -35,23 +35,23 @@
     "grid": true,
     "featured": true,
     "nav_links": 19,
-    "article_cards": 40,
+    "article_cards": 45,
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 113397
+    "html_length": 125352
   },
   "articles": [
     {
-      "url": "https://home-organization-ideas.pages.dev/posts/small-apartment-dining-space-ideas/",
+      "url": "https://home-organization-ideas.pages.dev/posts/pots-and-pans-storage-ideas/",
       "status": 200,
-      "title": "Drop-Leaf, Round or Banquette? Choose a Dining Table by Seated Footprint",
+      "title": "How to Store Pots and Pans in a Small Kitchen Without Stacking Chaos",
       "title_capitalized": true,
-      "meta_description": "Choose a small-apartment dining setup by measuring the table, the pulled-out chairs, the route and the door swings. Compare five layouts, work through a calculated example and print a decision sheet.",
-      "canonical": "https://home-organization-ideas.pages.dev/posts/small-apartment-dining-space-ideas/",
+      "meta_description": "Organize cookware in a small kitchen by editing first, measuring the real opening, giving lids their own slot and choosing between dividers, deep drawers, nesting and wall storage.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/pots-and-pans-storage-ideas/",
       "images": 8,
       "tags": 5,
-      "h2_count": 13,
+      "h2_count": 16,
       "image_credits": true,
       "related": true,
       "schema": {
@@ -64,18 +64,18 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 37164
+      "html_length": 31330
     },
     {
-      "url": "https://home-organization-ideas.pages.dev/posts/how-to-measure-room-furniture-fit/",
+      "url": "https://home-organization-ideas.pages.dev/posts/under-bed-storage-containers/",
       "status": 200,
-      "title": "How to Measure a Room for Furniture (and Make Sure It Fits)",
+      "title": "Under-Bed Storage Containers: Choose by Clearance, Access, and Dust",
       "title_capitalized": true,
-      "meta_description": "Measure a room for furniture the right way: draw the plan, check walls, doors and obstacles, test the delivery route and tape the footprint before you buy.",
-      "canonical": "https://home-organization-ideas.pages.dev/posts/how-to-measure-room-furniture-fit/",
+      "meta_description": "Measure the lowest point under your bed, add up container height with lid and wheels, plan the pull-out route and protect textiles from dust and damp before buying bins.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/under-bed-storage-containers/",
       "images": 8,
       "tags": 5,
-      "h2_count": 17,
+      "h2_count": 15,
       "image_credits": true,
       "related": true,
       "schema": {
@@ -88,18 +88,18 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 38566
+      "html_length": 30064
     },
     {
-      "url": "https://home-organization-ideas.pages.dev/posts/board-game-night-reset-without-a-game-room/",
+      "url": "https://home-organization-ideas.pages.dev/posts/over-the-toilet-bathroom-storage/",
       "status": 200,
-      "title": "Board Game Night Without a Game Room: Set Up and Reset in 15 Minutes",
+      "title": "Over-the-Toilet Storage: Measure Clearance Before Choosing Shelves",
       "title_capitalized": true,
-      "meta_description": "Plan board game night in a small living room: measure the real play surface, tape a clear walkway, store games safely and reset the room in 15 minutes.",
-      "canonical": "https://home-organization-ideas.pages.dev/posts/board-game-night-reset-without-a-game-room/",
+      "meta_description": "Plan over-the-toilet shelves or a cabinet by checking tank-lid access, seated head clearance, wall construction, depth and bathroom moisture before you buy.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/over-the-toilet-bathroom-storage/",
       "images": 8,
       "tags": 5,
-      "h2_count": 19,
+      "h2_count": 15,
       "image_credits": true,
       "related": true,
       "schema": {
@@ -112,18 +112,18 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 40840
+      "html_length": 29960
     },
     {
-      "url": "https://home-organization-ideas.pages.dev/posts/shared-bathroom-one-sink-morning-rush-plan/",
+      "url": "https://home-organization-ideas.pages.dev/posts/small-entryway-shoe-storage/",
       "status": 200,
-      "title": "Shared Bathroom With One Sink: Fix the Morning Rush",
+      "title": "Small Entryway Shoe Storage: Choose by Pair Count and Door Clearance",
       "title_capitalized": true,
-      "meta_description": "Share one bathroom sink without the morning pile-up. Run a minute-by-minute conflict test, set sink-side rules, and store medicines and cleaners safely.",
-      "canonical": "https://home-organization-ideas.pages.dev/posts/shared-bathroom-one-sink-morning-rush-plan/",
+      "meta_description": "Choose a shoe rack or cabinet for a small entryway by counting daily pairs, measuring the largest shoe, adding toe overhang and checking the door swing and walking route.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/small-entryway-shoe-storage/",
       "images": 8,
       "tags": 5,
-      "h2_count": 17,
+      "h2_count": 16,
       "image_credits": true,
       "related": true,
       "schema": {
@@ -136,18 +136,18 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 36666
+      "html_length": 31168
     },
     {
-      "url": "https://home-organization-ideas.pages.dev/posts/small-kitchen-counter-appliance-organization/",
+      "url": "https://home-organization-ideas.pages.dev/posts/towel-storage-small-bathroom/",
       "status": 200,
-      "title": "Small Kitchen Counter: Organize Daily-Use Appliances",
+      "title": "Towel Storage for a Small Bathroom With No Wall Space",
       "title_capitalized": true,
-      "meta_description": "Keep daily-use appliances within reach without losing prep space. Measure each machine’s clearance, group task stations, and store occasional tools safely.",
-      "canonical": "https://home-organization-ideas.pages.dev/posts/small-kitchen-counter-appliance-organization/",
+      "meta_description": "No room for a towel bar? Count the towels that must live in the bathroom, measure the door and floor, then compare over-door racks, ladders and storage outside the room.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/towel-storage-small-bathroom/",
       "images": 8,
       "tags": 5,
-      "h2_count": 18,
+      "h2_count": 14,
       "image_credits": true,
       "related": true,
       "schema": {
@@ -160,7 +160,7 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 39092
+      "html_length": 31682
     }
   ],
   "responsive": {
