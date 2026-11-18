@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Deep pantry shelf side view</title><desc id="d">Side view of an 18 inch deep pantry shelf divided as an 8 inch rear bin, an 8 inch front bin and a 2 inch hand gap, with three retrieval tests.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Side view of an 18 in deep shelf: two bins and a hand gap</text>
+<line x1="100" y1="380" x2="900" y2="380" stroke="#37443b" stroke-width="5"/>
+<line x1="100" y1="380" x2="100" y2="90" stroke="#37443b" stroke-width="5"/>
+<text x="100" y="410" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#58655b">back wall</text>
+<rect x="130" y="230" width="208" height="150" rx="6" fill="#cfd8c9" stroke="#4d6b55" stroke-width="3"/>
+<text x="234" y="300" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#37443b">Rear bin</text>
+<text x="234" y="326" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#37443b">backstock, noted</text>
+<rect x="338" y="230" width="208" height="150" rx="6" fill="#e6e1d6" stroke="#4d6b55" stroke-width="3"/>
+<text x="442" y="300" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#37443b">Front bin</text>
+<text x="442" y="326" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#37443b">daily items</text>
+<rect x="546" y="230" width="52" height="150" rx="0" fill="none" stroke="#b5533c" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="572" y="300" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#b5533c">gap</text>
+<line x1="130" y1="420" x2="598" y2="420" stroke="#37443b" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="364" y="448" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#37443b">shelf depth 18 in (46 cm) = 8 + 8 + 2</text>
+<text x="640" y="150" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#37443b">Retrieval test</text>
+<text x="640" y="190" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">1  Can you pull the rear bin</text>
+<text x="640" y="222" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">    without lifting the front one?</text>
+<text x="640" y="254" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">2  Can you read every label?</text>
+<text x="640" y="286" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">3  Can you return it easily?</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Example numbers; measure your own shelf. Pantry shelves are often quoted at 14 to 16 in.</text>
+
+</svg>
