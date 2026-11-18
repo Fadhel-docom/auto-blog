@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Three storage zones without a linen closet</title><desc id="d">Three panels: a daily-use zone in the bathroom, a dry clean-linen zone nearby, and a backup zone outside the room.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Three zones: what stays in the bathroom, what waits nearby</text>
+<rect x="30" y="70" width="300" height="350" rx="12" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<text x="180" y="108" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#37443b">Daily-use zone</text>
+<text x="180" y="136" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#4d6b55">In the bathroom</text>
+<text x="54" y="190" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">- tray or drawer divider</text>
+<text x="54" y="242" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">- routine toiletries</text>
+<text x="54" y="294" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">- towels in use on hooks</text>
+<rect x="350" y="70" width="300" height="350" rx="12" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<text x="500" y="108" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#37443b">Clean-linen zone</text>
+<text x="500" y="136" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#4d6b55">Dry, nearby</text>
+<text x="374" y="190" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">- wardrobe or hall cupboard</text>
+<text x="374" y="242" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">- dry basket if space allows</text>
+<text x="374" y="294" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">- fully dry towels only</text>
+<rect x="670" y="70" width="300" height="350" rx="12" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<text x="820" y="108" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#37443b">Backup zone</text>
+<text x="820" y="136" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#4d6b55">Outside the room</text>
+<text x="694" y="190" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">- unopened toiletries</text>
+<text x="694" y="242" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">- extra toilet rolls</text>
+<text x="694" y="294" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">- lidded bin or cupboard</text>
+<line x1="330" y1="245" x2="350" y2="245" stroke="#37443b" stroke-width="2" marker-end="url(#a)"/>
+<line x1="650" y1="245" x2="670" y2="245" stroke="#37443b" stroke-width="2" marker-end="url(#a)"/>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Keep only the quantity the room's space and ventilation can handle. Move the rest to dry storage.</text>
+
+</svg>

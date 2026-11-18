@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Shared closet zones</title><desc id="d">Front-view sketch of a shared closet: an upper shelf for occasional items, a long hanging rod for person A, a shorter rod and drawers for person B, and a small shared zone for bedding.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Front view: personal zones plus one small shared zone</text>
+<rect x="80" y="70" width="840" height="380" rx="0" fill="#f8f5ee" stroke="#37443b" stroke-width="4"/>
+<rect x="100" y="90" width="500" height="36" rx="4" fill="#e6e1d6" stroke="#8c9a8c" stroke-width="2"/>
+<text x="350" y="114" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#37443b">Upper shelf: occasional items, light and low-risk</text>
+<line x1="100" y1="170" x2="600" y2="170" stroke="#37443b" stroke-width="5"/>
+<text x="350" y="158" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#37443b">Person A: long hanging rod</text>
+<line x1="600" y1="170" x2="780" y2="170" stroke="#37443b" stroke-width="5"/>
+<text x="690" y="158" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#37443b">Person B: rod</text>
+<line x1="110" y1="172" x2="110" y2="260" stroke="#4d6b55" stroke-width="3"/>
+<line x1="144" y1="172" x2="144" y2="260" stroke="#4d6b55" stroke-width="3"/>
+<line x1="178" y1="172" x2="178" y2="260" stroke="#4d6b55" stroke-width="3"/>
+<line x1="212" y1="172" x2="212" y2="260" stroke="#4d6b55" stroke-width="3"/>
+<line x1="246" y1="172" x2="246" y2="260" stroke="#4d6b55" stroke-width="3"/>
+<line x1="280" y1="172" x2="280" y2="260" stroke="#4d6b55" stroke-width="3"/>
+<line x1="314" y1="172" x2="314" y2="260" stroke="#4d6b55" stroke-width="3"/>
+<line x1="348" y1="172" x2="348" y2="260" stroke="#4d6b55" stroke-width="3"/>
+<line x1="382" y1="172" x2="382" y2="260" stroke="#4d6b55" stroke-width="3"/>
+<line x1="416" y1="172" x2="416" y2="260" stroke="#4d6b55" stroke-width="3"/>
+<line x1="450" y1="172" x2="450" y2="260" stroke="#4d6b55" stroke-width="3"/>
+<line x1="484" y1="172" x2="484" y2="260" stroke="#4d6b55" stroke-width="3"/>
+<line x1="518" y1="172" x2="518" y2="260" stroke="#4d6b55" stroke-width="3"/>
+<line x1="552" y1="172" x2="552" y2="260" stroke="#4d6b55" stroke-width="3"/>
+<line x1="586" y1="172" x2="586" y2="260" stroke="#4d6b55" stroke-width="3"/>
+<line x1="612" y1="172" x2="612" y2="230" stroke="#9aa99a" stroke-width="3"/>
+<line x1="642" y1="172" x2="642" y2="230" stroke="#9aa99a" stroke-width="3"/>
+<line x1="672" y1="172" x2="672" y2="230" stroke="#9aa99a" stroke-width="3"/>
+<line x1="702" y1="172" x2="702" y2="230" stroke="#9aa99a" stroke-width="3"/>
+<line x1="732" y1="172" x2="732" y2="230" stroke="#9aa99a" stroke-width="3"/>
+<line x1="762" y1="172" x2="762" y2="230" stroke="#9aa99a" stroke-width="3"/>
+<rect x="620" y="300" width="150" height="130" rx="4" fill="#fff" stroke="#9b7955" stroke-width="2"/>
+<text x="695" y="345" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#37443b">B: drawers</text>
+<text x="695" y="370" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">folded clothes</text>
+<rect x="790" y="300" width="110" height="130" rx="4" fill="#f1ece0" stroke="#8c9a8c" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="845" y="350" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#37443b">Shared</text>
+<text x="845" y="374" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">bedding</text>
+<rect x="100" y="300" width="500" height="130" rx="4" fill="#fff" stroke="#8c9a8c" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="350" y="360" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">A: bins or shoes, labeled</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Illustrative layout. Heavy boxes stay low; anchor any tall freestanding unit as the maker instructs.</text>
+
+</svg>

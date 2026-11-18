@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Shelf spacing for folded towels</title><desc id="d">Side view of a shelf holding three folded towels: 9 inches of stack plus 1 inch to lift gives 10 inches of vertical spacing in an example.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Shelf spacing from the folded towel, not from the shelf</text>
+<line x1="80" y1="430" x2="520" y2="430" stroke="#37443b" stroke-width="4"/>
+<rect x="160" y="210" width="240" height="6" rx="0" fill="#d7b58c" stroke="#9b7955" stroke-width="2"/>
+<rect x="180" y="364" width="200" height="64" rx="4" fill="#e6e1d6" stroke="#4d6b55" stroke-width="2"/>
+<rect x="180" y="298" width="200" height="64" rx="4" fill="#e6e1d6" stroke="#4d6b55" stroke-width="2"/>
+<rect x="180" y="232" width="200" height="64" rx="4" fill="#e6e1d6" stroke="#4d6b55" stroke-width="2"/>
+<line x1="130" y1="430" x2="130" y2="232" stroke="#37443b" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="120" y="340" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#37443b">9 in</text>
+<line x1="420" y1="430" x2="420" y2="210" stroke="#b5533c" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="430" y="320" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#b5533c">10 in</text>
+<text x="580" y="120" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#37443b">Example arithmetic</text>
+<text x="580" y="160" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Folded towel: 12 x 10 x 3 in</text>
+<text x="580" y="194" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Three towels: 3 x 3 = 9 in high</text>
+<text x="580" y="228" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Add 1 in to lift: 10 in spacing</text>
+<text x="580" y="262" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Metric: 9 in = 23 cm; 10 in = 25 cm</text>
+<text x="580" y="296" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Measure your own folded size</text>
+<text x="580" y="330" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Keep the stack fully dry</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Illustrative sizes. Fold and measure the towels you actually own before fixing any shelf height.</text>
+
+</svg>
