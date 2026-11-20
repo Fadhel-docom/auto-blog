@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-19T16:56:39+00:00",
+  "timestamp": "2026-11-20T01:32:05+00:00",
   "site": "https://home-organization-ideas.pages.dev/",
   "publishing": {
     "status": "PAUSED",
@@ -55,12 +55,12 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 44571704712,
+      "id": 44654286853,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-11-19T16:56:30Z",
-      "updated_at": "2026-11-19T16:56:33Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/44571704712"
+      "created_at": "2026-11-20T01:31:54Z",
+      "updated_at": "2026-11-20T01:31:57Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/44654286853"
     },
     "Traffic Report": {
       "id": 44544624469,
@@ -75,45 +75,19 @@
     "status": "UNAVAILABLE"
   },
   "traffic": {
-    "status": "OK",
-    "visitors_today": 0,
-    "visitors_last_7_days": 3,
-    "visitors_this_month": 92,
-    "stats_today": [
-      {
-        "day": "2026-11-19",
-        "hourly": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "daily": 0
-      }
-    ]
+    "status": "UNAVAILABLE",
+    "reason": "HTTP 404"
   },
   "alerts": [],
-  "issues": [],
+  "issues": [
+    {
+      "type": "GoatCounter unavailable",
+      "traffic": {
+        "status": "UNAVAILABLE",
+        "reason": "HTTP 404"
+      }
+    }
+  ],
   "publisher_steps": {},
   "secrets": {
     "INDEXNOW_KEY": "OK",
