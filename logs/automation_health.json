@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-21T04:47:32+00:00",
+  "timestamp": "2026-11-21T15:46:25+00:00",
   "site": "https://home-organization-ideas.pages.dev/",
   "publishing": {
     "status": "PAUSED",
@@ -55,39 +55,65 @@
   },
   "runs": {
     "Health Monitor": {
-      "id": 44867782215,
+      "id": 44920940846,
       "status": "in_progress",
       "conclusion": null,
-      "created_at": "2026-11-21T04:47:16Z",
-      "updated_at": "2026-11-21T04:47:19Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/44867782215"
+      "created_at": "2026-11-21T15:46:15Z",
+      "updated_at": "2026-11-21T15:46:20Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/44920940846"
     },
     "Traffic Report": {
-      "id": 44750872969,
+      "id": 44909631052,
       "status": "completed",
       "conclusion": "success",
-      "created_at": "2026-11-20T14:10:14Z",
-      "updated_at": "2026-11-20T14:10:30Z",
-      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/44750872969"
+      "created_at": "2026-11-21T13:35:34Z",
+      "updated_at": "2026-11-21T13:35:58Z",
+      "url": "https://github.com/Fadhel-docom/auto-blog/actions/runs/44909631052"
     }
   },
   "quality_gate": {
     "status": "UNAVAILABLE"
   },
   "traffic": {
-    "status": "UNAVAILABLE",
-    "reason": "HTTP 404"
+    "status": "OK",
+    "visitors_today": 0,
+    "visitors_last_7_days": 3,
+    "visitors_this_month": 92,
+    "stats_today": [
+      {
+        "day": "2026-11-21",
+        "hourly": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "daily": 0
+      }
+    ]
   },
   "alerts": [],
-  "issues": [
-    {
-      "type": "GoatCounter unavailable",
-      "traffic": {
-        "status": "UNAVAILABLE",
-        "reason": "HTTP 404"
-      }
-    }
-  ],
+  "issues": [],
   "publisher_steps": {},
   "secrets": {
     "INDEXNOW_KEY": "OK",
