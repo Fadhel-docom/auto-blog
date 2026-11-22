@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-21T12:20:38+00:00",
+  "timestamp": "2026-11-22T12:24:05+00:00",
   "site": "https://home-organization-ideas.pages.dev/",
   "golden": {
     "home": {
@@ -35,116 +35,20 @@
     "grid": true,
     "featured": true,
     "nav_links": 19,
-    "article_cards": 45,
+    "article_cards": 50,
     "missing_text": [],
     "title": "Home Organization Ideas",
     "viewport": true,
-    "html_length": 125352
+    "html_length": 138067
   },
   "articles": [
     {
-      "url": "https://home-organization-ideas.pages.dev/posts/pots-and-pans-storage-ideas/",
+      "url": "https://home-organization-ideas.pages.dev/posts/storage-ottoman-vs-coffee-table-with-drawers/",
       "status": 200,
-      "title": "How to Store Pots and Pans in a Small Kitchen Without Stacking Chaos",
+      "title": "Storage Ottoman vs. Coffee Table With Drawers: Which Works Better?",
       "title_capitalized": true,
-      "meta_description": "Organize cookware in a small kitchen by editing first, measuring the real opening, giving lids their own slot and choosing between dividers, deep drawers, nesting and wall storage.",
-      "canonical": "https://home-organization-ideas.pages.dev/posts/pots-and-pans-storage-ideas/",
-      "images": 8,
-      "tags": 5,
-      "h2_count": 16,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 31330
-    },
-    {
-      "url": "https://home-organization-ideas.pages.dev/posts/under-bed-storage-containers/",
-      "status": 200,
-      "title": "Under-Bed Storage Containers: Choose by Clearance, Access, and Dust",
-      "title_capitalized": true,
-      "meta_description": "Measure the lowest point under your bed, add up container height with lid and wheels, plan the pull-out route and protect textiles from dust and damp before buying bins.",
-      "canonical": "https://home-organization-ideas.pages.dev/posts/under-bed-storage-containers/",
-      "images": 8,
-      "tags": 5,
-      "h2_count": 15,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 30064
-    },
-    {
-      "url": "https://home-organization-ideas.pages.dev/posts/over-the-toilet-bathroom-storage/",
-      "status": 200,
-      "title": "Over-the-Toilet Storage: Measure Clearance Before Choosing Shelves",
-      "title_capitalized": true,
-      "meta_description": "Plan over-the-toilet shelves or a cabinet by checking tank-lid access, seated head clearance, wall construction, depth and bathroom moisture before you buy.",
-      "canonical": "https://home-organization-ideas.pages.dev/posts/over-the-toilet-bathroom-storage/",
-      "images": 8,
-      "tags": 5,
-      "h2_count": 15,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 29960
-    },
-    {
-      "url": "https://home-organization-ideas.pages.dev/posts/small-entryway-shoe-storage/",
-      "status": 200,
-      "title": "Small Entryway Shoe Storage: Choose by Pair Count and Door Clearance",
-      "title_capitalized": true,
-      "meta_description": "Choose a shoe rack or cabinet for a small entryway by counting daily pairs, measuring the largest shoe, adding toe overhang and checking the door swing and walking route.",
-      "canonical": "https://home-organization-ideas.pages.dev/posts/small-entryway-shoe-storage/",
-      "images": 8,
-      "tags": 5,
-      "h2_count": 16,
-      "image_credits": true,
-      "related": true,
-      "schema": {
-        "present": true,
-        "valid_blocks": 2,
-        "types": [
-          "BlogPosting",
-          "FAQPage"
-        ],
-        "has_article": true
-      },
-      "required_failures": [],
-      "html_length": 31168
-    },
-    {
-      "url": "https://home-organization-ideas.pages.dev/posts/towel-storage-small-bathroom/",
-      "status": 200,
-      "title": "Towel Storage for a Small Bathroom With No Wall Space",
-      "title_capitalized": true,
-      "meta_description": "No room for a towel bar? Count the towels that must live in the bathroom, measure the door and floor, then compare over-door racks, ladders and storage outside the room.",
-      "canonical": "https://home-organization-ideas.pages.dev/posts/towel-storage-small-bathroom/",
+      "meta_description": "Compare a storage ottoman with a coffee table that has drawers by what you store, the surface you need, cleaning, safety and the walking route left in your living room.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/storage-ottoman-vs-coffee-table-with-drawers/",
       "images": 8,
       "tags": 5,
       "h2_count": 14,
@@ -160,7 +64,103 @@
         "has_article": true
       },
       "required_failures": [],
-      "html_length": 31682
+      "html_length": 30002
+    },
+    {
+      "url": "https://home-organization-ideas.pages.dev/posts/shared-closet-organization-two-people-different-routines/",
+      "status": 200,
+      "title": "Shared Closet Organization for Two People With Different Routines",
+      "title_capitalized": true,
+      "meta_description": "Organize a shared closet by clothing volume, hanging versus folded needs and daily routine instead of an automatic 50/50 split, with a worked rod-length example and a two-week review.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/shared-closet-organization-two-people-different-routines/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 17,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 31469
+    },
+    {
+      "url": "https://home-organization-ideas.pages.dev/posts/bathroom-storage-without-linen-closet/",
+      "status": 200,
+      "title": "Bathroom Storage Without a Linen Closet: Where Towels and Toiletries Go",
+      "title_capitalized": true,
+      "meta_description": "With no linen closet, split storage into daily-use, clean-linen and backup zones, measure shelf spacing from your folded towels and keep medicines out of damp bathroom cabinets.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/bathroom-storage-without-linen-closet/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 17,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 31500
+    },
+    {
+      "url": "https://home-organization-ideas.pages.dev/posts/deep-pantry-organization-shelf-depth-food-type/",
+      "status": 200,
+      "title": "How to Organize a Deep Pantry by Shelf Depth and Food Type",
+      "title_capitalized": true,
+      "meta_description": "Make a deep pantry usable by measuring shelf depth, assigning front, pull-forward and backstock zones, grouping food by how your household cooks and rotating stock when you shop.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/deep-pantry-organization-shelf-depth-food-type/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 17,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 31899
+    },
+    {
+      "url": "https://home-organization-ideas.pages.dev/posts/corner-kitchen-cabinet-storage-system-fits/",
+      "status": 200,
+      "title": "Corner Kitchen Cabinet Storage: How to Choose a System That Fits",
+      "title_capitalized": true,
+      "meta_description": "Choose corner kitchen cabinet storage by naming the cabinet type, measuring the clear opening and obstructions, and matching a rotating shelf, pull-out or bins to what you store.",
+      "canonical": "https://home-organization-ideas.pages.dev/posts/corner-kitchen-cabinet-storage-system-fits/",
+      "images": 8,
+      "tags": 5,
+      "h2_count": 16,
+      "image_credits": true,
+      "related": true,
+      "schema": {
+        "present": true,
+        "valid_blocks": 2,
+        "types": [
+          "BlogPosting",
+          "FAQPage"
+        ],
+        "has_article": true
+      },
+      "required_failures": [],
+      "html_length": 32276
     }
   ],
   "responsive": {
