@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Walking route with a table or ottoman</title><desc id="d">Two linear plans of a 120 inch room: a 24 inch coffee table leaves 42 inches of route, a 30 inch ottoman leaves 36 inches.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Same room, two choices: how much walking route is left?</text>
+<text x="60" y="96" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#37443b">Option A: drawer coffee table 24 in deep</text>
+<rect x="60" y="110" width="250.79999999999998" height="52" rx="0" fill="#e6e1d6" stroke="#8c9a8c" stroke-width="2"/>
+<text x="185.39999999999998" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">sofa 38</text>
+<rect x="310.79999999999995" y="110" width="105.6" height="52" rx="0" fill="#fff" stroke="#8c9a8c" stroke-width="2"/>
+<text x="363.59999999999997" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">gap 16</text>
+<rect x="416.4" y="110" width="158.39999999999998" height="52" rx="0" fill="#cfd8c9" stroke="#8c9a8c" stroke-width="2"/>
+<text x="495.59999999999997" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">table 24</text>
+<rect x="574.8" y="110" width="277.2" height="52" rx="0" fill="#eef4ec" stroke="#8c9a8c" stroke-width="2"/>
+<text x="713.4" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">route 42</text>
+<text x="60" y="236" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#37443b">Option B: square ottoman 30 in deep</text>
+<rect x="60" y="250" width="250.79999999999998" height="52" rx="0" fill="#e6e1d6" stroke="#8c9a8c" stroke-width="2"/>
+<text x="185.39999999999998" y="282" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">sofa 38</text>
+<rect x="310.79999999999995" y="250" width="105.6" height="52" rx="0" fill="#fff" stroke="#8c9a8c" stroke-width="2"/>
+<text x="363.59999999999997" y="282" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">gap 16</text>
+<rect x="416.4" y="250" width="198.0" height="52" rx="0" fill="#cfd8c9" stroke="#8c9a8c" stroke-width="2"/>
+<text x="515.4" y="282" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">ottoman 30</text>
+<rect x="614.4" y="250" width="237.6" height="52" rx="0" fill="#eef4ec" stroke="#8c9a8c" stroke-width="2"/>
+<text x="733.1999999999999" y="282" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">route 36</text>
+<text x="500" y="390" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#37443b">Room length from sofa back to the far wall: 120 in (305 cm)</text>
+<text x="500" y="422" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#37443b">A: 38 + 16 + 24 + 42 = 120.   B: 38 + 16 + 30 + 36 = 120.</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Example numbers. Tape the real footprint on your floor and walk the route before ordering.</text>
+
+</svg>
