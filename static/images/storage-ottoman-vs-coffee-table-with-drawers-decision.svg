@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Decision guide for ottoman or drawer table</title><desc id="d">Three panels: a storage ottoman for soft bulky items and seating, a drawer coffee table for small items and a hard surface, or neither large piece in a very tight room.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Choose by the job, not by the advertised volume</text>
+<rect x="30" y="80" width="300" height="300" rx="12" fill="#f8f5ee" stroke="#4d6b55" stroke-width="3"/>
+<text x="180" y="120" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="700" fill="#4d6b55">Storage ottoman</text>
+<text x="180" y="176" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#37443b">Best for:</text>
+<text x="180" y="204" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#37443b">blankets, cushions, soft toys</text>
+<text x="180" y="260" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#37443b">Also:</text>
+<text x="180" y="288" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">footrest or extra seat; use a tray</text>
+<rect x="350" y="80" width="300" height="300" rx="12" fill="#f8f5ee" stroke="#4d6b55" stroke-width="3"/>
+<text x="500" y="120" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="700" fill="#4d6b55">Drawer coffee table</text>
+<text x="500" y="176" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#37443b">Best for:</text>
+<text x="500" y="204" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#37443b">remotes, coasters, chargers</text>
+<text x="500" y="260" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#37443b">Also:</text>
+<text x="500" y="288" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">hard surface for drinks and a laptop</text>
+<rect x="670" y="80" width="300" height="300" rx="12" fill="#f8f5ee" stroke="#b5533c" stroke-width="3"/>
+<text x="820" y="120" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="700" fill="#b5533c">Neither large piece</text>
+<text x="820" y="176" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#37443b">Best for:</text>
+<text x="820" y="204" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#37443b">very tight room</text>
+<text x="820" y="260" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#37443b">Also:</text>
+<text x="820" y="288" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">side or nesting tables protect the route</text>
+<text x="500" y="430" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#37443b">Tape the footprint, sit down, stand up, open the lid or drawer, walk the route.</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Typical heights quoted by a retailer: coffee tables 16 to 18 in, ottomans 16 to 20 in. Match them to your sofa.</text>
+
+</svg>

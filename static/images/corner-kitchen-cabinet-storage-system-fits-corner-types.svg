@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Four corner cabinet types</title><desc id="d">Four simplified top-down sketches: L-shaped base with a rotating shelf, blind-corner base with a pull-out, upper diagonal corner cabinet, and corner sink base where plumbing comes first.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Name the corner first: four corner types, four fixes</text>
+<rect x="30" y="70" width="220" height="360" rx="12" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<text x="140" y="102" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#37443b">L-shaped base</text>
+<rect x="70" y="140" width="60" height="150" rx="0" fill="#d7b58c" stroke="#9b7955" stroke-width="2"/>
+<rect x="70" y="230" width="140" height="60" rx="0" fill="#d7b58c" stroke="#9b7955" stroke-width="2"/>
+<path d="M130 230 L160 200 L190 230" fill="none" stroke="#4d6b55" stroke-width="2" stroke-dasharray="5 4"/>
+<circle cx="140" cy="262" r="18" fill="none" stroke="#4d6b55" stroke-width="2"/>
+<text x="140" y="330" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">Rotating shelf or carous</text>
+<text x="140" y="352" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">el</text>
+<rect x="270" y="70" width="220" height="360" rx="12" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<text x="380" y="102" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#37443b">Blind-corner base</text>
+<rect x="300" y="150" width="70" height="130" rx="0" fill="#d7b58c" stroke="#9b7955" stroke-width="2"/>
+<rect x="370" y="150" width="90" height="130" rx="0" fill="#fff" stroke="#9b7955" stroke-width="2" stroke-dasharray="6 4"/>
+<rect x="370" y="150" width="28" height="130" rx="0" fill="#d7b58c" stroke="#9b7955" stroke-width="2"/>
+<text x="430" y="225" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="400" fill="#58655b">hidden</text>
+<text x="380" y="330" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">Pull-out that swings the</text>
+<text x="380" y="352" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">hidden side forward</text>
+<rect x="510" y="70" width="220" height="360" rx="12" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<text x="620" y="102" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#37443b">Upper corner</text>
+<path d="M560 150 L680 150 L680 200 L620 260 L560 200 Z" fill="#d7b58c" stroke="#9b7955" stroke-width="2"/>
+<text x="620" y="330" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">Diagonal cabinet, shallo</text>
+<text x="620" y="352" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">w grouped items</text>
+<rect x="750" y="70" width="220" height="360" rx="12" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<text x="860" y="102" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#37443b">Corner sink base</text>
+<rect x="790" y="160" width="140" height="110" rx="0" fill="#d7b58c" stroke="#9b7955" stroke-width="2"/>
+<circle cx="860" cy="215" r="28" fill="#dfe8ee" stroke="#6d8aa3" stroke-width="2"/>
+<line x1="860" y1="243" x2="860" y2="270" stroke="#6d8aa3" stroke-width="4"/>
+<text x="860" y="330" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">Plumbing first; keep acc</text>
+<text x="860" y="352" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#37443b">ess</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Top-down sketches, simplified. Always confirm the cabinet code, door side and opening with the cabinet maker.</text>
+
+</svg>

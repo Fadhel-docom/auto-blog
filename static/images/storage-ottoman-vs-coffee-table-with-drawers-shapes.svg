@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Ottoman and drawer table storage shapes</title><desc id="d">Two panels: a storage ottoman with one deep compartment under a lift-up top and a coffee table with four small drawers for sorted items.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Storage shape: one deep compartment or small drawers</text>
+<rect x="40" y="80" width="430" height="330" rx="12" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<text x="255" y="114" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#37443b">Storage ottoman</text>
+<rect x="110" y="200" width="290" height="110" rx="10" fill="#e6e1d6" stroke="#4d6b55" stroke-width="3"/>
+<path d="M110 200 L150 160 L400 160 L400 200" fill="none" stroke="#4d6b55" stroke-width="3"/>
+<text x="255" y="262" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">one deep compartment</text>
+<text x="255" y="360" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#58655b">lift the top to reach it</text>
+<rect x="530" y="80" width="430" height="330" rx="12" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<text x="745" y="114" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#37443b">Coffee table with drawers</text>
+<rect x="580" y="200" width="330" height="110" rx="6" fill="#e6e1d6" stroke="#4d6b55" stroke-width="3"/>
+<rect x="600" y="220" width="140" height="30" rx="0" fill="#fff" stroke="#4d6b55" stroke-width="2"/>
+<rect x="760" y="220" width="130" height="30" rx="0" fill="#fff" stroke="#4d6b55" stroke-width="2"/>
+<rect x="600" y="262" width="140" height="30" rx="0" fill="#fff" stroke="#4d6b55" stroke-width="2"/>
+<rect x="760" y="262" width="130" height="30" rx="0" fill="#fff" stroke="#4d6b55" stroke-width="2"/>
+<text x="745" y="340" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">small items sorted in drawers</text>
+<text x="745" y="370" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#58655b">drawers must clear the sofa</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Compare usable access, not nominal volume. Check lid hinges, stability and any stated weight limit.</text>
+
+</svg>

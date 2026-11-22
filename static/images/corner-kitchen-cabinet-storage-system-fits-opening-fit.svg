@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Opening width versus hardware requirement</title><desc id="d">Two paired bars: a 9 inch opening against a 15 inch requirement is 6 inches short, and a 10 inch example opening against a 12 inch requirement is 2 inches short.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">The clear opening decides whether the hardware fits</text>
+<text x="60" y="96" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#37443b">Example from a cabinet maker: 36 in blind base</text>
+<rect x="60" y="110" width="180" height="32" rx="0" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<text x="150.0" y="132" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#37443b">opening 9 in</text>
+<rect x="60" y="154" width="300" height="32" rx="0" fill="#ffd7d0" stroke="#b5533c" stroke-width="2"/>
+<text x="210.0" y="176" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#37443b">needs 15 in</text>
+<text x="380" y="160" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#b5533c">short by 6 in</text>
+<text x="60" y="246" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#37443b">Our planning example: a 10 in opening</text>
+<rect x="60" y="260" width="200" height="32" rx="0" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<text x="160.0" y="282" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#37443b">opening 10 in</text>
+<rect x="60" y="304" width="240" height="32" rx="0" fill="#ffd7d0" stroke="#b5533c" stroke-width="2"/>
+<text x="180.0" y="326" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#37443b">needs 12 in</text>
+<text x="320" y="310" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#b5533c">short by 2 in</text>
+<text x="500" y="430" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#37443b">If the opening is smaller than the mechanism, the wide interior does not help.</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Maker figure from Lily Ann Cabinets: 42 in blind base has a 15 in opening; 36 in base has a 9 in opening.</text>
+
+</svg>

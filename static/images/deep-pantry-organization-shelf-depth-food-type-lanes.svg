@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Pantry lane arithmetic</title><desc id="d">Top view of a 30 inch wide shelf divided into three 10 inch lanes, each holding 3 cans across and 2 cans deep, 6 cans per layer in an example.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Top view: 30 in wide shelf, three 10 in lanes</text>
+<rect x="60" y="80" width="600" height="360" rx="0" fill="#f8f5ee" stroke="#37443b" stroke-width="4"/>
+<rect x="66" y="274" width="188" height="160" rx="6" fill="#e6e1d6" stroke="#4d6b55" stroke-width="2"/>
+<circle cx="96" cy="308" r="30" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<circle cx="156" cy="308" r="30" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<circle cx="216" cy="308" r="30" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<circle cx="96" cy="368" r="30" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<circle cx="156" cy="368" r="30" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<circle cx="216" cy="368" r="30" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<text x="160" y="466" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#58655b">lane 1</text>
+<rect x="266" y="274" width="188" height="160" rx="6" fill="#e6e1d6" stroke="#4d6b55" stroke-width="2"/>
+<circle cx="296" cy="308" r="30" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<circle cx="356" cy="308" r="30" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<circle cx="416" cy="308" r="30" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<circle cx="296" cy="368" r="30" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<circle cx="356" cy="368" r="30" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<circle cx="416" cy="368" r="30" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<text x="360" y="466" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#58655b">lane 2</text>
+<rect x="466" y="274" width="188" height="160" rx="6" fill="#e6e1d6" stroke="#4d6b55" stroke-width="2"/>
+<circle cx="496" cy="308" r="30" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<circle cx="556" cy="308" r="30" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<circle cx="616" cy="308" r="30" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<circle cx="496" cy="368" r="30" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<circle cx="556" cy="368" r="30" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<circle cx="616" cy="368" r="30" fill="#cfd8c9" stroke="#4d6b55" stroke-width="2"/>
+<text x="560" y="466" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#58655b">lane 3</text>
+<text x="360.0" y="66" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#37443b">30 in (76 cm) wide</text>
+<text x="720" y="150" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#37443b">Can lane arithmetic</text>
+<text x="690" y="190" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Lane: 10 in wide x 8 in deep</text>
+<text x="690" y="222" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Can diameter: 3 in</text>
+<text x="690" y="254" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Across: 3 cans (9 in)</text>
+<text x="690" y="286" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Deep: 2 cans (6 in)</text>
+<text x="690" y="318" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Per layer: 3 x 2 = 6 cans</text>
+<text x="690" y="350" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#37443b">Two layers: 12 cans per lane</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Illustrative numbers. Weigh a full bin; keep dense cans on a lower shelf.</text>
+
+</svg>

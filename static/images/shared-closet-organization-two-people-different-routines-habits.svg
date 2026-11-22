@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Habit-based closet design</title><desc id="d">Four rows: folding becomes drawers or open bins, hanging gets rod length matched to the count, pocket items get a drop tray, and clothes on a chair mean the zone should change; review after two weeks.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Design around habits, then review after two weeks</text>
+<rect x="60" y="80" width="880" height="70" rx="10" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="2"/>
+<text x="90" y="122" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#37443b">Folds clothes</text>
+<line x1="380" y1="115" x2="440" y2="115" stroke="#37443b" stroke-width="2" marker-end="url(#a)"/>
+<text x="460" y="122" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="400" fill="#37443b">drawers or labeled open bins</text>
+<rect x="60" y="168" width="880" height="70" rx="10" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="2"/>
+<text x="90" y="210" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#37443b">Hangs clothes</text>
+<line x1="380" y1="203" x2="440" y2="203" stroke="#37443b" stroke-width="2" marker-end="url(#a)"/>
+<text x="460" y="210" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="400" fill="#37443b">rod length matched to the count</text>
+<rect x="60" y="256" width="880" height="70" rx="10" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="2"/>
+<text x="90" y="298" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#37443b">Pocket items</text>
+<line x1="380" y1="291" x2="440" y2="291" stroke="#37443b" stroke-width="2" marker-end="url(#a)"/>
+<text x="460" y="298" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="400" fill="#37443b">small drop tray, not the floor</text>
+<rect x="60" y="344" width="880" height="70" rx="10" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="2"/>
+<text x="90" y="386" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#37443b">Clothes land on a chair</text>
+<line x1="380" y1="379" x2="440" y2="379" stroke="#37443b" stroke-width="2" marker-end="url(#a)"/>
+<text x="460" y="386" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="400" fill="#37443b">change the zone, do not add a rule</text>
+<text x="500" y="455" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#37443b">Try it for two weeks. Keep what works; move what does not.</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">The aim is fewer morning bottlenecks, not two identical halves.</text>
+
+</svg>

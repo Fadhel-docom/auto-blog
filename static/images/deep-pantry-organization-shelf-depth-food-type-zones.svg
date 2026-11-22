@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="t d">
+<title id="t">Pantry zones by household routine</title><desc id="d">Four bins for breakfast, baking, dinner base and snacks, plus a backstock row with a visible note and a rule to rotate older packages forward.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#37443b"/></marker></defs>
+<rect width="1000" height="520" fill="#fff"/>
+<text x="500" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#37443b">Group by how the household cooks, not only by product</text>
+<rect x="30" y="90" width="220" height="230" rx="12" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<text x="140" y="128" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#37443b">Breakfast bin</text>
+<text x="140" y="158" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#58655b">oats, toppings, cereal</text>
+<rect x="70" y="190" width="140" height="90" rx="8" fill="#e6e1d6" stroke="#4d6b55" stroke-width="2"/>
+<text x="140" y="242" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#37443b">one lane</text>
+<rect x="270" y="90" width="220" height="230" rx="12" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<text x="380" y="128" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#37443b">Baking bin</text>
+<text x="380" y="158" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#58655b">flour, sugar, extracts</text>
+<rect x="310" y="190" width="140" height="90" rx="8" fill="#e6e1d6" stroke="#4d6b55" stroke-width="2"/>
+<text x="380" y="242" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#37443b">one lane</text>
+<rect x="510" y="90" width="220" height="230" rx="12" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<text x="620" y="128" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#37443b">Dinner base</text>
+<text x="620" y="158" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#58655b">pasta, rice, sauces</text>
+<rect x="550" y="190" width="140" height="90" rx="8" fill="#e6e1d6" stroke="#4d6b55" stroke-width="2"/>
+<text x="620" y="242" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#37443b">one lane</text>
+<rect x="750" y="90" width="220" height="230" rx="12" fill="#f8f5ee" stroke="#8c9a8c" stroke-width="3"/>
+<text x="860" y="128" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#37443b">Snack bin</text>
+<text x="860" y="158" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#58655b">reviewed weekly</text>
+<rect x="790" y="190" width="140" height="90" rx="8" fill="#e6e1d6" stroke="#4d6b55" stroke-width="2"/>
+<text x="860" y="242" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" fill="#37443b">one lane</text>
+<rect x="30" y="350" width="940" height="90" rx="10" fill="#eef4ec" stroke="#4d6b55" stroke-width="2"/>
+<text x="500" y="386" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#37443b">Backstock: unopened duplicates and occasional items, with a visible note of what is there</text>
+<text x="500" y="416" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" fill="#4d6b55">Rotate older packages forward when new groceries go in</text>
+<text x="500" y="500" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" fill="#58655b">Keep original packaging for allergen, preparation and expiry information; decant only when it helps access.</text>
+
+</svg>
