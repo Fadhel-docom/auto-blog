@@ -1,5 +1,5 @@
 +++
-title = "Small Kitchen Organization Ideas: Pull-Out Spice Rack for a Narrow Galley"
+title = "Small Galley Kitchen Organization: Pull-Out Spice Storage"
 date = "2026-09-22T12:48:45+00:00"
 lastmod = "2026-10-18T01:00:00+00:00"
 description = "How to organize a narrow galley kitchen and add a pull-out spice tray: the real aisle numbers, where spices belong, how to size the slides, and a simple build."

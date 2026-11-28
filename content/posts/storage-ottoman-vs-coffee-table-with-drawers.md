@@ -2,7 +2,7 @@
 title = "Storage Ottoman vs. Coffee Table With Drawers: Which Works Better?"
 date = "2026-11-18T00:50:00+00:00"
 lastmod = "2026-11-18T00:50:00+00:00"
-description = "Compare a storage ottoman with a coffee table that has drawers by what you store, the surface you need, cleaning, safety and the walking route left in your living room."
+description = "Compare a storage ottoman and coffee table with drawers by storage needs, surface use, cleaning, safety and the walking space left in your living room."
 image = "images/storage-ottoman-vs-coffee-table-with-drawers-cover.jpg"
 images = ["images/storage-ottoman-vs-coffee-table-with-drawers-route.svg", "images/storage-ottoman-vs-coffee-table-with-drawers-shapes.svg", "images/storage-ottoman-vs-coffee-table-with-drawers-decision.svg"]
 tags = ["storage ottoman vs coffee table", "coffee table with drawers", "small living room storage furniture", "ottoman storage", "living room furniture"]

@@ -2,7 +2,7 @@
 title = "Towel Storage for a Small Bathroom With No Wall Space"
 date = "2026-11-16T06:00:00+00:00"
 lastmod = "2026-11-16T06:00:00+00:00"
-description = "No room for a towel bar? Count the towels that must live in the bathroom, measure the door and floor, then compare over-door racks, ladders and storage outside the room."
+description = "No room for a towel bar? Count bathroom towels, measure the door and floor, then compare over-door racks, ladders and storage outside the room."
 image = "images/towel-storage-small-bathroom-cover.jpg"
 images = ["images/towel-storage-small-bathroom-towel-zones.svg", "images/towel-storage-small-bathroom-door-rack-gaps.svg", "images/towel-storage-small-bathroom-worked-plan.svg"]
 tags = ["towel storage", "small bathroom", "over door towel rack", "towel ladder", "bathroom organization"]

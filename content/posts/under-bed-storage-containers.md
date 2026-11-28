@@ -2,7 +2,7 @@
 title = "Under-Bed Storage Containers: Choose by Clearance, Access, and Dust"
 date = "2026-11-16T06:30:00+00:00"
 lastmod = "2026-11-16T06:30:00+00:00"
-description = "Measure the lowest point under your bed, add up container height with lid and wheels, plan the pull-out route and protect textiles from dust and damp before buying bins."
+description = "Measure bed clearance and container height, plan the pull-out route, and protect stored textiles from dust and damp before buying under-bed bins."
 image = "images/under-bed-storage-containers-cover.jpg"
 images = ["images/under-bed-storage-containers-lowest-point.svg", "images/under-bed-storage-containers-fit-math.svg", "images/under-bed-storage-containers-pull-out.svg"]
 tags = ["under bed storage", "storage containers", "small bedroom", "bedroom storage", "bed clearance"]

@@ -2,7 +2,7 @@
 title = "Shared Closet Organization for Two People With Different Routines"
 date = "2026-11-18T00:40:00+00:00"
 lastmod = "2026-11-18T00:40:00+00:00"
-description = "Organize a shared closet by clothing volume, hanging versus folded needs and daily routine instead of an automatic 50/50 split, with a worked rod-length example and a two-week review."
+description = "Organize a shared closet around each person’s clothing, hanging needs and routine—not an automatic 50/50 split—with a worked rod-length example."
 image = "images/shared-closet-organization-two-people-different-routines-cover.jpg"
 images = ["images/shared-closet-organization-two-people-different-routines-rod-split.svg", "images/shared-closet-organization-two-people-different-routines-zones.svg", "images/shared-closet-organization-two-people-different-routines-habits.svg"]
 tags = ["shared closet organization", "couple closet storage", "small shared wardrobe", "closet zones", "closet rod"]

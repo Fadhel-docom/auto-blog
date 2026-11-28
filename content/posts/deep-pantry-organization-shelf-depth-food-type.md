@@ -2,7 +2,7 @@
 title = "How to Organize a Deep Pantry by Shelf Depth and Food Type"
 date = "2026-11-18T00:20:00+00:00"
 lastmod = "2026-11-18T00:20:00+00:00"
-description = "Make a deep pantry usable by measuring shelf depth, assigning front, pull-forward and backstock zones, grouping food by how your household cooks and rotating stock when you shop."
+description = "Make a deep pantry easier to use: measure shelf depth, set front and backstock zones, group foods by use and rotate supplies when you shop."
 image = "images/deep-pantry-organization-shelf-depth-food-type-cover.jpg"
 images = ["images/deep-pantry-organization-shelf-depth-food-type-side-view.svg", "images/deep-pantry-organization-shelf-depth-food-type-lanes.svg", "images/deep-pantry-organization-shelf-depth-food-type-zones.svg"]
 tags = ["deep pantry organization", "pantry shelf depth", "pantry zones", "pantry food rotation", "pantry bins"]

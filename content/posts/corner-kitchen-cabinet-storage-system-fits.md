@@ -2,7 +2,7 @@
 title = "Corner Kitchen Cabinet Storage: How to Choose a System That Fits"
 date = "2026-11-18T00:10:00+00:00"
 lastmod = "2026-11-18T00:10:00+00:00"
-description = "Choose corner kitchen cabinet storage by naming the cabinet type, measuring the clear opening and obstructions, and matching a rotating shelf, pull-out or bins to what you store."
+description = "Choose corner cabinet storage by measuring the opening and obstructions, then match a rotating shelf, pull-out or bins to the items you keep there."
 image = "images/corner-kitchen-cabinet-storage-system-fits-cover.jpg"
 images = ["images/corner-kitchen-cabinet-storage-system-fits-corner-types.svg", "images/corner-kitchen-cabinet-storage-system-fits-opening-fit.svg", "images/corner-kitchen-cabinet-storage-system-fits-bins.svg"]
 tags = ["corner kitchen cabinet organization", "blind corner cabinet", "lazy susan", "corner cabinet pull-out", "kitchen cabinet measurements"]

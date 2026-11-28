@@ -2,7 +2,7 @@
 title = "Small Entryway Shoe Storage: Choose by Pair Count and Door Clearance"
 date = "2026-11-16T06:10:00+00:00"
 lastmod = "2026-11-16T06:10:00+00:00"
-description = "Choose a shoe rack or cabinet for a small entryway by counting daily pairs, measuring the largest shoe, adding toe overhang and checking the door swing and walking route."
+description = "Choose small-entryway shoe storage by counting daily pairs, measuring the largest shoe and checking door swing, toe space and walking route."
 image = "images/small-entryway-shoe-storage-cover.jpg"
 images = ["images/small-entryway-shoe-storage-pair-count.svg", "images/small-entryway-shoe-storage-entry-plan.svg", "images/small-entryway-shoe-storage-inside-fit.svg"]
 tags = ["small entryway shoe storage", "shoe rack", "shoe cabinet", "entryway organization", "narrow entryway"]

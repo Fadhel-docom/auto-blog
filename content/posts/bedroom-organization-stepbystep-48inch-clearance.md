@@ -1,5 +1,5 @@
 +++
-title = "Small Bedroom Storage That Keeps a Clear 30-by-48-Inch Space Beside the Bed"
+title = "Small Bedroom Storage: Keep 30-by-48 Inches Beside the Bed"
 date = "2026-09-21T12:54:42+00:00"
 lastmod = "2026-10-19T00:37:58+00:00"
 description = "Plan small bedroom storage around the bed: keep a 30-by-48-inch clear space, set shelf heights by reach, use under-bed bins safely and anchor tall units."

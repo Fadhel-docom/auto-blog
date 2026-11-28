@@ -1,8 +1,8 @@
 +++
-title = "Drop-Leaf, Round or Banquette? Choose a Dining Table by Seated Footprint"
+title = "Small Apartment Dining: Choose a Table by Seated Footprint"
 date = "2026-11-07T10:45:00+00:00"
 lastmod = "2026-11-08T09:00:00+00:00"
-description = "Choose a small-apartment dining setup by measuring the table, the pulled-out chairs, the route and the door swings. Compare five layouts, work through a calculated example and print a decision sheet."
+description = "Measure the table, pulled-out chairs, walking route and door swings before choosing a small-apartment dining setup. Compare five layouts with a decision sheet."
 image = "images/small-apartment-dining-space-ideas-cover.jpg"
 images = ["images/small-apartment-dining-space-ideas-footprint.svg", "images/small-apartment-dining-space-ideas-example-plan.svg", "images/small-apartment-dining-space-ideas-table-options.svg"]
 tags = ["small apartment dining", "small dining space", "dining nook", "drop leaf table", "small space furniture"]

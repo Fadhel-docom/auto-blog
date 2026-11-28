@@ -1,8 +1,8 @@
 +++
-title = "Bathroom Storage Without a Linen Closet: Where Towels and Toiletries Go"
+title = "Bathroom Storage Without a Linen Closet: Towels & Toiletries"
 date = "2026-11-18T00:30:00+00:00"
 lastmod = "2026-11-18T00:30:00+00:00"
-description = "With no linen closet, split storage into daily-use, clean-linen and backup zones, measure shelf spacing from your folded towels and keep medicines out of damp bathroom cabinets."
+description = "No linen closet? Create daily-use, clean-linen and backup zones; measure shelf spacing for folded towels and keep medicines away from damp cabinets."
 image = "images/bathroom-storage-without-linen-closet-cover.jpg"
 images = ["images/bathroom-storage-without-linen-closet-zones.svg", "images/bathroom-storage-without-linen-closet-shelf-spacing.svg", "images/bathroom-storage-without-linen-closet-medicines.svg"]
 tags = ["bathroom storage without linen closet", "towel storage", "small bathroom storage", "bathroom toiletries organization", "bathroom humidity"]

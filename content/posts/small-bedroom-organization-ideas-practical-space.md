@@ -1,5 +1,5 @@
 +++
-title = "Small Bedroom Organization: A Floor-First Plan That Keeps the Room Usable"
+title = "Small Bedroom Organization: A Floor-First Plan"
 date = "2026-09-24T06:06:02+00:00"
 lastmod = "2026-10-11T00:00:00+00:00"
 description = "Measure the room, protect a 24-inch walking path, and give clothes, bedding and daily items a fixed height zone. A small bedroom plan with two diagrams."
