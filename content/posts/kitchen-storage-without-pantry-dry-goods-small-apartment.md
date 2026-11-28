@@ -1,5 +1,5 @@
 +++
-title = "Kitchen Storage Without a Pantry: Pull-Out Cabinet or Slim Shelves for Dry Goods"
+title = "Kitchen Storage Without a Pantry: Pull-Outs or Slim Shelves"
 date = "2026-10-18T18:46:13+00:00"
 lastmod = "2026-10-18T18:46:13+00:00"
 description = "No pantry? Compare a tall pull-out cabinet with a slim open shelf, set shelf heights by reach, and keep dry goods fresh, dated and pest-free."

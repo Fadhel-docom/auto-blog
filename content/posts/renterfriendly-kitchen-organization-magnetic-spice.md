@@ -1,5 +1,5 @@
 +++
-title = "Magnetic Spice Storage for Renters: Test the Surface, Mind the Weight and Heat"
+title = "Magnetic Spice Storage for Renters: Check Weight and Heat"
 date = "2026-09-21T12:14:51+00:00"
 lastmod = "2026-10-19T05:45:46+00:00"
 description = "Add magnetic spice storage to a rental kitchen without drilling: test your fridge surface, check the load, keep spices away from heat and plan one or two rows."

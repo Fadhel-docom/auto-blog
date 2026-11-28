@@ -1,5 +1,5 @@
 +++
-title = "Shoes and Bags in a Closet With Sliding Doors: A Half-Open Plan That Still Works"
+title = "Shoes and Bags for Sliding-Door Closets: A Half-Open Plan"
 date = "2026-10-24T07:30:00+00:00"
 lastmod = "2026-10-24T07:30:00+00:00"
 description = "Organize shoes and bags in a sliding-door closet: daily and occasional halves, a two-tier rack, dry shoes, hooks for sturdy bags and shelves for leather."

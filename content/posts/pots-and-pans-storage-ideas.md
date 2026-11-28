@@ -2,7 +2,7 @@
 title = "How to Store Pots and Pans in a Small Kitchen Without Stacking Chaos"
 date = "2026-11-16T06:40:00+00:00"
 lastmod = "2026-11-16T06:40:00+00:00"
-description = "Organize cookware in a small kitchen by editing first, measuring the real opening, giving lids their own slot and choosing between dividers, deep drawers, nesting and wall storage."
+description = "Organize small-kitchen cookware by measuring the cabinet, separating lids and choosing dividers, deep drawers, nesting or wall storage."
 image = "images/pots-and-pans-storage-ideas-cover.jpg"
 images = ["images/pots-and-pans-storage-ideas-measure-cabinet.svg", "images/pots-and-pans-storage-ideas-layouts.svg", "images/pots-and-pans-storage-ideas-zones.svg"]
 tags = ["pots and pans storage", "cookware organization", "small kitchen", "pot lid storage", "cabinet organization"]

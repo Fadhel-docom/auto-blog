@@ -1,5 +1,5 @@
 +++
-title = "350-Sq-Ft Studio Organization: Plan the Walking Path First, Then the Storage Zones"
+title = "350-Sq-Ft Studio Organization: Plan Paths Before Storage"
 date = "2026-09-21T11:30:13+00:00"
 lastmod = "2026-10-19T05:17:54+00:00"
 description = "Organize a 350-sq-ft studio path-first: keep a 36-inch main route, place sleep, clothes, kitchen and table zones around it, and store by frequency of use."
